@@ -1,0 +1,1 @@
+export default function isMobile () { return document.body.clientWidth <= 876 }
