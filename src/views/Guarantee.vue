@@ -22,6 +22,12 @@
 
       
       <article class="guarantee">
+        <div
+					class="guide__text_warranty"
+					v-html="data?.text_block"
+				></div>
+
+
 				<h3 class="guarantee__h">
 					{{ i18n.pages.guarantee.conditions?.[langStore.activeLang] }}
 				</h3>
@@ -76,10 +82,7 @@
 				class="guide"
 				v-if="models"
 			>
-				<div
-					class="guide__text"
-					v-html="data?.text_block"
-				></div>
+				
 				<h3 class="guide__h">
 					{{ i18n.pages.guarantee.userGuide?.[langStore.activeLang] }}
 				</h3>
@@ -163,6 +166,14 @@ function getAccordionBody(html) {
 </script>
 
 <style lang="scss" scoped>
+
+
+.guide__text_warranty {
+  font-size: 28px;
+  line-height: 1.25;
+  text-align: center;
+}
+
 .guide {
   margin: 60px 76px;
 
