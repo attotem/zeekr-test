@@ -152,7 +152,9 @@ import Logo from '@/components/icons/logo.vue'
 import Map from '@/components/Map.vue'
 import { useLoaderStore } from '@/stores/loader'
 import Modal from '@/components/Modal.vue'
-
+import Phone from '@/components/icons/phone.vue'
+import Geo from '@/components/icons/geo.vue'
+import Calendar from '@/components/icons/calendar.vue'
 const langStore = useLangStore()
 
 const serviceData = ref({}),
