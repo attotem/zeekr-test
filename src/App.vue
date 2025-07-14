@@ -449,7 +449,7 @@ body {
 }
 
 ul {
-  margin: 16px 0;
+  margin: 8px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -663,7 +663,7 @@ ul {
   gap: 24px;
   justify-content: center;
   align-items: center;
-  margin: 80px 76px;
+  margin: 30px 76px;
 
   &__h {
     font-family: Tenor Sans;
@@ -737,6 +737,11 @@ ul {
 }
 
 @media screen and (max-width: 876px) {
+
+ul {
+  grid-template-columns: 1fr;
+
+}
   .center {
     width: 100%;
     gap: 8px;
@@ -934,7 +939,7 @@ ul {
     }
 
     &__text {
-      columns: 1;
+      columns: 1 !important;
     }
   }
 

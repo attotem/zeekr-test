@@ -50,8 +50,8 @@ const router = createRouter({
 			component: Diagnostics,
 		},
 		{
-			path: "/guarantee",
-			name: "guarantee",
+			path: "/warranty",
+			name: "warranty",
 			component: Guarantee,
 		},
 		{

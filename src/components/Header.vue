@@ -83,7 +83,7 @@
 						v-for="lang in langStore.langs"
 						class="dropdown__item"
 						:class="{ 'dropdown__item--active': lang == langStore.activeLang }"
-						@click="langStore.changeLang(lang)"
+						@click="langStore.changeLang(lang); sessionStorage.setItem('lang', lang);"
 					>
 						{{ lang }}
 					</div>
@@ -141,7 +141,7 @@
 					class="lang"
 					v-for="lang in langStore.langs"
 					:class="{ 'lang--active': lang == langStore.activeLang }"
-					@click="langStore.changeLang(lang)"
+					@click="langStore.changeLang(lang); sessionStorage.setItem('lang', lang);"
 				>
 					{{ lang }}
 				</div>
@@ -207,6 +207,13 @@ let headerItems = ref([
       { name: 'example-service', id: 1 }
     ]
     */
+  },
+  {
+    label: {
+      en: 'Warranty',
+      ua: 'Гарантійна політика'
+    },
+    name: 'warranty'
   },
   {
     label: {

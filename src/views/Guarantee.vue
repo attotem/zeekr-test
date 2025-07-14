@@ -8,7 +8,7 @@
 		</div>
 		<template v-if="data">
 			<article
-				class="article-1"
+				class="article-1-guarantee"
 				:style="{ backgroundImage: `url(${data?.banner_image})` }"
 			>
 				<h1 class="article-1__h article-1__h--1">
@@ -18,6 +18,59 @@
 					{{ data?.banner_subtitle }}
 				</h2>
 			</article>
+
+
+      
+      <article class="guarantee">
+				<h3 class="guarantee__h">
+					{{ i18n.pages.guarantee.conditions?.[langStore.activeLang] }}
+				</h3>
+				<div class="guarantee__text">
+					<ul v-if="!isMobile">
+						<li
+							v-for="text in data?.guarantee_clauses"
+							v-html="text.value.title"
+							:key="text.id"
+						></li>
+					</ul>
+					<ul class="guarantee-accordion" v-else>
+						<li
+							v-for="(text, idx) in data?.guarantee_clauses"
+							:key="text.id"
+							:class="{ 'accordion--active': openIndexes.includes(idx) }"
+						>
+							<div class="accordion__heading dropdown-icon--outer" @click="toggleAccordion(idx)">
+								<span v-html="getAccordionTitle(text.value.title)"></span>
+								<Dropdown :class="{ 'dropdown-icon--active': openIndexes.includes(idx) }" />
+							</div>
+							<div class="accordion__dropdown" v-show="openIndexes.includes(idx)">
+								<div v-html="getAccordionBody(text.value.title)"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</article>
+
+      <div class="pdf-container">
+        <iframe :src="pdfUrl" class="pdf-frame" />
+          <div class="pdf-actions">
+            <a
+              :href="'/warranty.pdf.p7s'"
+              download
+              class="btn btn--orange"
+            >
+              Завантажити підписаний файл
+            </a>
+            <a
+              href="https://czo.gov.ua/verify"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--orange"
+            >
+              Перевірити підпис
+            </a>
+          </div>
+      </div>
 
 			<article
 				class="guide"
@@ -34,8 +87,9 @@
 					<a
 						class="model"
 						v-for="model in data?.auto_cards"
-						:href="model.value.document.url"
 						:key="model.id"
+						href="#"
+						@click.prevent="openPdf(model.value.document.url)"
 					>
 						<img
 							class="model__image"
@@ -47,20 +101,7 @@
 				</div>
 			</article>
 
-			<article class="guarantee">
-				<h3 class="guarantee__h">
-					{{ i18n.pages.guarantee.conditions?.[langStore.activeLang] }}
-				</h3>
-				<div class="guarantee__text">
-					<ul>
-						<li
-							v-for="text in data?.guarantee_clauses"
-							v-html="text.value.title"
-							:key="text.id"
-						></li>
-					</ul>
-				</div>
-			</article>
+		
 		</template>
 	</TransitionGroup>
 </template>
@@ -71,6 +112,7 @@ import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
 import { computed, onMounted, ref } from "vue";
+import Dropdown from '@/components/icons/dropdown.vue';
 
 let models = ref([]),
   data = ref({})
@@ -78,13 +120,46 @@ let models = ref([]),
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
+const showPdf = ref(false)
+const pdfUrl = ref("/garantee.pdf");
+
+function openPdf(url) {
+  pdfUrl.value = url;
+  showPdf.value = true;
+}
+
+const openIndexes = ref([]);
+const isMobile = ref(false);
+
+function toggleAccordion(idx) {
+  if (openIndexes.value.includes(idx)) {
+    openIndexes.value = openIndexes.value.filter(i => i !== idx);
+  } else {
+    openIndexes.value.push(idx);
+  }
+}
+
 onMounted(async () => {
   useLoaderStore().isLoading = true
   data.value = await API.GuaranteePage.get();
   models.value = (await API.Models.get()).car_models;
-  console.log(models.value)
   useLoaderStore().isLoading = false
-})
+});
+
+onMounted(() => {
+  isMobile.value = window.innerWidth <= 876;
+  window.addEventListener('resize', () => {
+    isMobile.value = window.innerWidth <= 876;
+  });
+});
+
+function getAccordionTitle(html) {
+  const match = html.match(/<p[^>]*>.*?<\/p>/);
+  return match ? match[0] : html;
+}
+function getAccordionBody(html) {
+  return html.replace(/<p[^>]*>.*?<\/p>/, "");
+}
 </script>
 
 <style lang="scss" scoped>
@@ -149,13 +224,50 @@ onMounted(async () => {
   }
 }
 
+
+
+.article-1-guarantee {
+  width: 100dvw;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+.pdf-frame {
+  width: calc(100% - 152px);
+  height: 80vh;
+  border: none;
+  background: #fff;
+  margin: 30px 76px;
+}
+
+.pdf-actions {
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+@media screen and (min-width: 877px) {
+  .article-1-guarantee {
+    height: 300px;
+  }
+}
+
 @media screen and (max-width: 876px) {
+
   .guide {
     margin: 50px 16px;
 
     &__text {
       font-size: 18px;
     }
+
 
     &__h {
       margin-top: 5px;
@@ -193,8 +305,85 @@ onMounted(async () => {
     }
 
     &__text {
-      columns: 1;
+      columns: 1 !important;
+    }
+  }
+  .guarantee__text {
+    columns: 1 !important;
+  }
+
+
+  .pdf-frame{
+    margin: 10px 16px;
+    width: calc(100% - 32px);
+  }
+
+.pdf-actions {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+  
+  .guarantee-accordion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      border-bottom: 1px solid #eee;
+      margin: 0; 
+      padding: 0px;
+      &.accordion--active .dropdown-icon {
+        transform: rotate(180deg);
+      }
+    }
+    .accordion__heading {
+      cursor: pointer;
+      padding: 8px 0;
+      
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        margin: -16px 0
+       
+      }
+    }
+    .dropdown-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: url('data:image/svg+xml;utf8,<svg ...>') center/contain no-repeat;
+      transition: transform 0.2s;
+    }
+    .accordion__dropdown {
+      padding: 4px 0 8px 0; 
+      
+      font-size: 15px;
+      color: #444;
+      div{
+        margin: -16px 0;
+      }
     }
   }
 }
+
+.guarantee-accordion ul li {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+.guarantee-accordion .accordion__dropdown p {
+  margin: 0 !important;
+}
+
+.guarantee__text .guarantee-accordion ul li {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
 </style>
