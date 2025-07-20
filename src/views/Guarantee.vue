@@ -47,7 +47,7 @@
 						>
 							<div class="accordion__heading dropdown-icon--outer" @click="toggleAccordion(idx)">
 								<span v-html="getAccordionTitle(text.value.title)"></span>
-								<Dropdown :class="{ 'dropdown-icon--active': openIndexes.includes(idx) }" />
+								<Dropdown  />
 							</div>
 							<div class="accordion__dropdown" v-show="openIndexes.includes(idx)">
 								<div v-html="getAccordionBody(text.value.title)"></div>
@@ -58,7 +58,7 @@
 			</article>
 
       <div class="pdf-container">
-        <iframe :src="pdfUrl" class="pdf-frame" />
+        <iframe :src="isAndroid ? `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfUrl)}` : pdfUrl" class="pdf-frame" />
           <div class="pdf-actions">
             <a
               :href="'/warranty.pdf.p7s'"
@@ -77,6 +77,32 @@
             </a>
           </div>
       </div>
+
+      <article v-if="data?.guarantee_versions?.length" class="guarantee-archive">
+        <div class="guarantee-archive__header dropdown-icon--outer" @click="toggleArchive">
+          <h3 class="guarantee__h">Архів гарантійних політик</h3>
+          <Dropdown :class="{ 'dropdown-icon--active': isArchiveOpen }" />
+        </div>
+        <div class="guarantee-archive__content" v-show="isArchiveOpen">
+          <ul class="guarantee-archive__list">
+            <li
+              v-for="version in data.guarantee_versions"
+              :key="version.id"
+              class="guarantee-archive__item"
+            >
+              <a
+                :href="version.value.document.url"
+                target="_blank"
+                rel="noopener"
+                class="guarantee-archive__link"
+                download
+              >
+                Гарантійна Політика {{ version.value.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
 
 			<article
 				class="guide"
@@ -124,7 +150,9 @@ let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
 const showPdf = ref(false)
-const pdfUrl = ref("/garantee.pdf");
+const pdfUrl = ref("https://zeekr.com.ua/garantee.pdf");
+
+const isAndroid = computed(() => /android/i.test(navigator.userAgent));
 
 function openPdf(url) {
   pdfUrl.value = url;
@@ -133,6 +161,7 @@ function openPdf(url) {
 
 const openIndexes = ref([]);
 const isMobile = ref(false);
+const isArchiveOpen = ref(false);
 
 function toggleAccordion(idx) {
   if (openIndexes.value.includes(idx)) {
@@ -140,6 +169,10 @@ function toggleAccordion(idx) {
   } else {
     openIndexes.value.push(idx);
   }
+}
+
+function toggleArchive() {
+  isArchiveOpen.value = !isArchiveOpen.value;
 }
 
 onMounted(async () => {
@@ -204,7 +237,6 @@ function getAccordionBody(html) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // 20px here for parent h-gap
     width: calc((100% - (20px * 3)) / 4);
 
     &:hover {
@@ -321,6 +353,9 @@ function getAccordionBody(html) {
   }
   .guarantee__text {
     columns: 1 !important;
+    ul{
+      gap: 0 !important;
+    }
   }
 
 
@@ -359,10 +394,7 @@ function getAccordionBody(html) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      span {
-        margin: -16px 0
-       
-      }
+      
     }
     .dropdown-icon {
       display: inline-block;
@@ -376,11 +408,34 @@ function getAccordionBody(html) {
       
       font-size: 15px;
       color: #444;
-      div{
-        margin: -16px 0;
-      }
+     
     }
   }
+  .guarantee-accordion .accordion__heading {
+    min-height: 48px;
+    // height: 48px;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between; 
+  }
+
+.guarantee-accordion .accordion__heading span {
+  display: block;
+  flex: 1 1 auto;
+  vertical-align: middle;
+  line-height: 1.2;
+  max-width: 95%;
+}
+
+.guarantee-accordion .dropdown-icon--outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+}
 }
 
 .guarantee-accordion ul li {
@@ -394,6 +449,92 @@ function getAccordionBody(html) {
 .guarantee__text .guarantee-accordion ul li {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
+}
+
+.guarantee-archive {
+  margin: 60px 76px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #ff6600;
+    }
+
+    .guarantee__h {
+      margin: 0;
+      cursor: pointer;
+      font-size: 24px;
+      text-align: left;
+    }
+  }
+
+  &__content {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    margin-bottom: 12px;
+  }
+
+  &__link {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+    color: #69514B;
+    transition: color 0.2s;
+    
+    &:hover {
+      color: #ff6600;
+      text-decoration: underline;
+    }
+  }
+}
+
+.guarantee-archive__content,
+.guarantee-archive__list {
+  text-align: left;
+  display: block;
+}
+.guarantee-archive__list {
+  margin-left: 0;
+}
+.guarantee-archive__item {
+  text-align: left;
+}
+.guarantee-archive__link {
+  display: block;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 876px) {
+  .guarantee-archive {
+    margin: 50px 16px;
+
+    &__header {
+      .guarantee__h {
+        font-size: 20px;
+        text-align: left;
+      }
+    }
+
+    &__link {
+      font-size: 14px;
+    }
+  }
 }
 
 

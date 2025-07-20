@@ -36,11 +36,6 @@ watch(() => route.fullPath, () => {
   box-sizing: border-box;
   scroll-behavior: smooth;
 
-  /*
-  &:has(>.dropdown) {
-    cursor: pointer;
-  }
-  */
 }
 
 h1,h2,h3,h4 {
@@ -73,7 +68,9 @@ a {
   color: #000;
   text-decoration: none;
 }
-
+p{
+  margin: 5px 0;
+}
 body {
   margin: 0;
   padding: 0;
@@ -819,6 +816,7 @@ ul {
 
     &-2 {
       margin: 50px 16px;
+      position: relative;
 
       &__h {
         font-size: 36px;

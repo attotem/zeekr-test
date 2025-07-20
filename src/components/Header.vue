@@ -97,7 +97,10 @@
 		:class="{ 'header--expanded': isExpanded, 'header--black': $route.name == 'models', 'header--mobile-bg': isMobileBg, 'header--mobile-hidden': !isMobileBg }"
 	>
 		<div class="header__top">
-			<Logo class="header__logo" />
+			<RouterLink to="/">
+				<Logo class="header__logo" />
+			</RouterLink>
+      
 			<Burger
 				@click="isExpanded = !isExpanded"
 				:is-expanded="isExpanded"

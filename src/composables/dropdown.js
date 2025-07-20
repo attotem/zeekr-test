@@ -10,9 +10,9 @@ export default function addDropdown(id, isLangs = false, isQuestion = false) {
 		),
 		header = document.querySelector(".header");
 
+
 	nextTick(() => {
 		if (!parent || !dropdown) {
-			console.warn(`[addDropdown] Missing elements for id="${id}"`);
 			return;
 		}
 
@@ -44,44 +44,50 @@ export default function addDropdown(id, isLangs = false, isQuestion = false) {
 					});
 				}
 			} else {
-				parent
-					.querySelector(".dropdown-icon--outer")
-					?.addEventListener("click", (e) => {
-						e.preventDefault();
-						e.stopImmediatePropagation();
+				const iconOuter = parent.querySelector(".dropdown-icon--outer");
+				console.log('[addDropdown] iconOuter:', iconOuter);
+				iconOuter?.addEventListener("click", (e) => {
+					console.log('[addDropdown] CLICK on iconOuter for id:', id);
+					e.preventDefault();
+					e.stopImmediatePropagation();
 
-						if (
-							dropdown.style.maxHeight &&
-							dropdown.style.maxHeight !== "0px"
-						) {
-							dropdown.style.maxHeight = 0;
-							parent
-								.querySelector(".dropdown-icon")
-								?.classList.remove("dropdown-icon--active");
-						} else {
-							dropdown.style.maxHeight = dropdown.scrollHeight + "px";
-							parent
-								.querySelector(".dropdown-icon")
-								?.classList.add("dropdown-icon--active");
-						}
-					});
+					if (
+						dropdown.style.maxHeight &&
+						dropdown.style.maxHeight !== "0px"
+					) {
+						dropdown.style.maxHeight = 0;
+						parent
+							.querySelector(".dropdown-icon")
+							?.classList.remove("dropdown-icon--active");
+						console.log('[addDropdown] CLOSE', id);
+					} else {
+						dropdown.style.maxHeight = dropdown.scrollHeight + "px";
+						parent
+							.querySelector(".dropdown-icon")
+							?.classList.add("dropdown-icon--active");
+						console.log('[addDropdown] OPEN', id);
+					}
+				});
 			}
 		} else {
 			let activeQuestion = null;
 
 			parent.addEventListener("click", () => {
+				console.log('[addDropdown] FAQ CLICK', id);
 				if (activeQuestion === id) {
 					dropdown.style.maxHeight = 0;
 					parent
 						.querySelector(".dropdown-icon")
 						?.classList.remove("dropdown-icon--active");
 					activeQuestion = null;
+					console.log('[addDropdown] FAQ CLOSE', id);
 				} else {
 					dropdown.style.maxHeight = dropdown.scrollHeight + "px";
 					parent
 						.querySelector(".dropdown-icon")
 						?.classList.add("dropdown-icon--active");
 					activeQuestion = id;
+					console.log('[addDropdown] FAQ OPEN', id);
 				}
 			});
 		}

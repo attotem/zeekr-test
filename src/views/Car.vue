@@ -100,7 +100,7 @@
 			<article class="article-2">
 				<h3 class="article-2__h">{{ modelData.images_slider_title }}</h3>
 
-				<div class="swiper">
+				<div class="swiper" ref="photoSwiper">
 					<div class="swiper__inner swiper-wrapper">
 						<img
 							class="swiper__image swiper-slide"
@@ -109,6 +109,7 @@
 						/>
 					</div>
 				</div>
+				
 			</article>
 
 			<article class="article-2 tech">
@@ -237,6 +238,7 @@ import { useRouter } from 'vue-router'
 import { watch } from 'vue'
 import { useLoaderStore } from "@/stores/loader";
 import Modal from "@/components/Modal.vue";
+import { ref as vueRef } from 'vue';
 
 const router = useRouter();
 let isLoading = computed(() => useLoaderStore().isLoading)
@@ -276,6 +278,18 @@ let modelData = ref({}),
 	isModalOpened = ref(false),
 	mailObj = ref({}),
 	modalType = ref()
+
+const photoSwiper = vueRef();
+let currentPhotoIndex = ref(0);
+
+function slidePhoto(dir) {
+	const images = modelData.value.slider_images || [];
+	currentPhotoIndex.value = Math.max(0, Math.min(currentPhotoIndex.value + dir, images.length - 1));
+	// Прокрутка слайдера через Swiper API
+	if (photoSwiper.value && photoSwiper.value.swiper) {
+		photoSwiper.value.swiper.slideTo(currentPhotoIndex.value);
+	}
+}
 
 onMounted(async () => {
 	await loadModelData()
