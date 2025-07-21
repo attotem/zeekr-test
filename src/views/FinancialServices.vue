@@ -72,12 +72,16 @@ import Modal from "@/components/Modal.vue";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 let langStore = useLangStore(),
   data = ref({}),
   isModalOpened = ref(false)
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.FinancialServicesPage.get()
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

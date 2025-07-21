@@ -114,7 +114,7 @@
 
 <script setup>
 import Slider from "@/components/Slider.vue";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import isMobile from "@/composables/isMobile";
@@ -126,6 +126,15 @@ let models = ref([]),
   sliderData = ref({})
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  news.value = await API.News.get();
+
+  sliderData.value = await API.HomePage.get();
+  document.title = sliderData.value.title;
+  models.value = sliderData.value.car_models;
+  console.log(models.value)
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

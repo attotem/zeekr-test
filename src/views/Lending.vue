@@ -128,7 +128,7 @@ import Modal from "@/components/Modal.vue";
 import API from '@/composables/API';
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
-import { computed, markRaw, onMounted, ref } from 'vue';
+import { computed, markRaw, onMounted, ref, watch } from 'vue';
 
 let data = ref({}),
   langStore = useLangStore(),
@@ -163,6 +163,10 @@ let data = ref({}),
   activeCategoryIndex = ref(0),
 	isModalOpened = ref(false)
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.LendingPage.get();
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

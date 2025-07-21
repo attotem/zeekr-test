@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import Calendar from "@/components/icons/calendar.vue";
 import Geo from "@/components/icons/geo.vue";
 import Phone from "@/components/icons/phone.vue";
@@ -59,9 +59,14 @@ import API from "@/composables/API";
 import Map from "@/components/Map.vue";
 import Logo from "@/components/icons/logo.vue";
 import { useLoaderStore } from "@/stores/loader";
+import { useLangStore } from "@/stores/lang";
 const data = ref({});
 let chosenCenterId = ref()
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => useLangStore().activeLang, async () => {
+  data.value = await API.ContactsPage.get();
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

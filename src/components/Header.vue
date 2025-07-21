@@ -249,6 +249,19 @@ watch(useRoute(), () => {
   isExpanded.value = false;
 }, { flush: 'pre', deep: true })
 
+watch(() => langStore.activeLang, async () => {
+  headerItems.value[0].children = (await API.Models.get()).car_models;
+
+  console.log(headerItems.value[0].children)
+
+  nextTick(() => {
+    headerItems.value.map(el => {
+      if (Object.hasOwn(el, 'children')) addDropdown(el.name)
+    })
+  })
+  addDropdown('langs', true)
+})
+
 onMounted(async () => {
   document.addEventListener('wheel', (e) => {
     if (e.deltaY > 0) {

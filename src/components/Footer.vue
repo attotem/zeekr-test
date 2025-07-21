@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import { markRaw, nextTick, onMounted, ref } from 'vue';
+import { markRaw, nextTick, onMounted, ref, watch } from 'vue';
 import Logo from './icons/logo.vue';
 import { useLangStore } from '@/stores/lang';
 import Instagram from './icons/socials/instagram.vue';
@@ -94,6 +94,15 @@ let socials = ref([
 ])
 
 let data = ref()
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.Footer.get();
+  nextTick(() => {
+    Object.entries(data.value).map((el, counter) => {
+      addDropdown(`footer-${counter}`)
+    })
+  })
+})
 
 onMounted(async () => {
   data.value = await API.Footer.get();

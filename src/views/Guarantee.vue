@@ -19,14 +19,11 @@
 				</h2>
 			</article>
 
-
-      
-      <article class="guarantee">
-        <div
+			<article class="guarantee">
+				<div
 					class="guide__text_warranty"
 					v-html="data?.text_block"
 				></div>
-
 
 				<h3 class="guarantee__h">
 					{{ i18n.pages.guarantee.conditions?.[langStore.activeLang] }}
@@ -39,17 +36,26 @@
 							:key="text.id"
 						></li>
 					</ul>
-					<ul class="guarantee-accordion" v-else>
+					<ul
+						class="guarantee-accordion"
+						v-else
+					>
 						<li
 							v-for="(text, idx) in data?.guarantee_clauses"
 							:key="text.id"
 							:class="{ 'accordion--active': openIndexes.includes(idx) }"
 						>
-							<div class="accordion__heading dropdown-icon--outer" @click="toggleAccordion(idx)">
+							<div
+								class="accordion__heading dropdown-icon--outer"
+								@click="toggleAccordion(idx)"
+							>
 								<span v-html="getAccordionTitle(text.value.title)"></span>
-								<Dropdown  />
+								<Dropdown />
 							</div>
-							<div class="accordion__dropdown" v-show="openIndexes.includes(idx)">
+							<div
+								class="accordion__dropdown"
+								v-show="openIndexes.includes(idx)"
+							>
 								<div v-html="getAccordionBody(text.value.title)"></div>
 							</div>
 						</li>
@@ -57,58 +63,69 @@
 				</div>
 			</article>
 
-      <div class="pdf-container">
-        <iframe :src="isAndroid ? `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfUrl)}` : pdfUrl" class="pdf-frame" />
-          <div class="pdf-actions">
-            <a
-              :href="'/warranty.pdf.p7s'"
-              download
-              class="btn btn--orange"
-            >
-              Завантажити підписаний файл
-            </a>
-            <a
-              href="https://czo.gov.ua/verify"
-              target="_blank"
-              rel="noopener"
-              class="btn btn--orange"
-            >
-              Перевірити підпис
-            </a>
-          </div>
-      </div>
+			<div class="pdf-container">
+				<iframe
+					:src="isAndroid ? `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfUrl)}` : pdfUrl"
+					class="pdf-frame"
+				/>
+				<div class="pdf-actions">
+					<a
+						:href="'/warranty.pdf.p7s'"
+						download
+						class="btn btn--orange"
+					>
+						Завантажити підписаний файл
+					</a>
+					<a
+						href="https://czo.gov.ua/verify"
+						target="_blank"
+						rel="noopener"
+						class="btn btn--orange"
+					>
+						Перевірити підпис
+					</a>
+				</div>
+			</div>
 
-      <article v-if="data?.guarantee_versions?.length" class="guarantee-archive">
-        <div class="guarantee-archive__header dropdown-icon--outer" @click="toggleArchive">
-          <h3 class="guarantee__h">Архів гарантійних політик</h3>
-          <Dropdown :class="{ 'dropdown-icon--active': isArchiveOpen }" />
-        </div>
-        <div class="guarantee-archive__content" v-show="isArchiveOpen">
-          <ul class="guarantee-archive__list">
-            <li
-              v-for="version in data.guarantee_versions"
-              :key="version.id"
-              class="guarantee-archive__item"
-            >
-              <a
-                :href="version.value.document.url"
-                target="_blank"
-                rel="noopener"
-                class="guarantee-archive__link"
-                download
-              >
-                Гарантійна Політика {{ version.value.title }}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </article>
+			<article
+				v-if="data?.guarantee_versions?.length"
+				class="guarantee-archive"
+			>
+				<div
+					class="guarantee-archive__header dropdown-icon--outer"
+					@click="toggleArchive"
+				>
+					<h3 class="guarantee__h">Архів гарантійних політик</h3>
+					<Dropdown :class="{ 'dropdown-icon--active': isArchiveOpen }" />
+				</div>
+				<div
+					class="guarantee-archive__content"
+					v-show="isArchiveOpen"
+				>
+					<ul class="guarantee-archive__list">
+						<li
+							v-for="version in data.guarantee_versions"
+							:key="version.id"
+							class="guarantee-archive__item"
+						>
+							<a
+								:href="version.value.document.url"
+								target="_blank"
+								rel="noopener"
+								class="guarantee-archive__link"
+								download
+							>
+								Гарантійна Політика {{ version.value.title }}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</article>
 
 			<article
 				class="guide"
 				v-if="models"
 			>
-				
 				<h3 class="guide__h">
 					{{ i18n.pages.guarantee.userGuide?.[langStore.activeLang] }}
 				</h3>
@@ -129,8 +146,6 @@
 					</a>
 				</div>
 			</article>
-
-		
 		</template>
 	</TransitionGroup>
 </template>
@@ -140,7 +155,7 @@ import Logo from "@/components/icons/logo.vue";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import Dropdown from '@/components/icons/dropdown.vue';
 
 let models = ref([]),
@@ -148,6 +163,11 @@ let models = ref([]),
 
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.GuaranteePage.get();
+  models.value = (await API.Models.get()).car_models;
+})
 
 const showPdf = ref(false)
 const pdfUrl = ref("https://zeekr.com.ua/garantee.pdf");
@@ -372,7 +392,7 @@ function getAccordionBody(html) {
   justify-content: center;
   align-items: center;
 }
-  
+
   .guarantee-accordion {
     list-style: none;
     padding: 0;
@@ -380,7 +400,7 @@ function getAccordionBody(html) {
 
     li {
       border-bottom: 1px solid #eee;
-      margin: 0; 
+      margin: 0;
       padding: 0px;
       &.accordion--active .dropdown-icon {
         transform: rotate(180deg);
@@ -389,12 +409,12 @@ function getAccordionBody(html) {
     .accordion__heading {
       cursor: pointer;
       padding: 8px 0;
-      
+
       font-weight: 500;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      
+
     }
     .dropdown-icon {
       display: inline-block;
@@ -404,11 +424,11 @@ function getAccordionBody(html) {
       transition: transform 0.2s;
     }
     .accordion__dropdown {
-      padding: 4px 0 8px 0; 
-      
+      padding: 4px 0 8px 0;
+
       font-size: 15px;
       color: #444;
-     
+
     }
   }
   .guarantee-accordion .accordion__heading {
@@ -418,7 +438,7 @@ function getAccordionBody(html) {
     align-items: center;
     display: flex;
     box-sizing: border-box;
-    justify-content: space-between; 
+    justify-content: space-between;
   }
 
 .guarantee-accordion .accordion__heading span {
@@ -496,7 +516,7 @@ function getAccordionBody(html) {
     font-size: 16px;
     color: #69514B;
     transition: color 0.2s;
-    
+
     &:hover {
       color: #ff6600;
       text-decoration: underline;
@@ -536,6 +556,4 @@ function getAccordionBody(html) {
     }
   }
 }
-
-
 </style>

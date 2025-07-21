@@ -647,9 +647,41 @@ ul {
 }
 
 .swiper {
+  &:has(.swiper-button-prev, .swiper-button-next) {
+    padding-bottom: 40px;
+  }
   &-slide {
     &-active {
       filter: opacity(1);
+    }
+  }
+  &-button {
+    &-next, &-prev {
+      top: unset !important;
+      bottom: 0 !important;
+      width: 34px !important;
+      height: 34px !important;
+      border: 1px solid #000;
+      border-radius: 100%;
+      padding: 9px !important;
+      color: black !important;
+      cursor: pointer;
+      transition: .3s ease-in-out;
+
+      &::after {
+        font-size: unset !important;
+      }
+
+      &--inactive {
+        cursor: not-allowed;
+        opacity: .5;
+      }
+    }
+    &-prev {
+      left: 24px !important;
+    }
+    &-next {
+      right: 24px !important;
     }
   }
 }

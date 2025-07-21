@@ -112,6 +112,20 @@
 				
 			</article>
 
+			<article class="article-2">
+				<h3 class="article-2__h">{{ modelData.images_slider_title1 }}</h3>
+
+				<div class="swiper">
+					<div class="swiper__inner swiper-wrapper">
+						<img
+							class="swiper__image swiper-slide"
+							v-for="image in modelData.slider_images1"
+							:src="image.value.image.url"
+						/>
+					</div>
+				</div>
+			</article>
+
 			<article class="article-2 tech">
 				<h3 class="article-2__h">{{ modelData.technology_block_title }}</h3>
 
@@ -126,20 +140,6 @@
 					<h4 class="tech__h">{{ item.value.name }}</h4>
 					<div class="tech__text">
 						{{ item.value.description }}
-					</div>
-				</div>
-			</article>
-
-			<article class="article-2">
-				<h3 class="article-2__h">{{ modelData.images_slider_title1 }}</h3>
-
-				<div class="swiper">
-					<div class="swiper__inner swiper-wrapper">
-						<img
-							class="swiper__image swiper-slide"
-							v-for="image in modelData.slider_images1"
-							:src="image.value.image.url"
-						/>
 					</div>
 				</div>
 			</article>
@@ -292,22 +292,28 @@ function slidePhoto(dir) {
 }
 
 onMounted(async () => {
+	useLoaderStore().isLoading = true;
 	await loadModelData()
+	useLoaderStore().isLoading = false;
 	initSwipers()
+})
+
+watch(() => langStore.activeLang, async () => {
+	await loadModelData()
 })
 
 watch(
   () => [route.params.parentId, route.params.childId],
   async () => {
+		useLoaderStore().isLoading = true;
     await loadModelData()
+		useLoaderStore().isLoading = false;
     initSwipers()
   },
   { immediate: true }
 )
 
 async function loadModelData() {
-	useLoaderStore().isLoading = true;
-
 	if (!route.params.childId) {
 		console.warn("No model ID provided");
 		router.push("/404");
@@ -338,23 +344,23 @@ async function loadModelData() {
 function initSwipers() {
 	nextTick(() => {
 		document.querySelectorAll('.swiper').forEach(el => {
-		new Swiper(el, {
-			slidesPerView: 1.1,
-			speed: 750,
-			centeredSlides: true,
-			breakpoints: {
-			876: {
-				slidesPerView: 1.67,
-				centeredSlides: false,
-				slidesOffsetAfter: 400,
-				slidesOffsetBefore: 0,
-			}
-			},
-			slideToClickedSlide: true,
-			modules: [Navigation],
-			navigation: el.classList.contains('swiper--video'),
-			createElements: el.classList.contains('swiper--video')
-		});
+			new Swiper(el, {
+				slidesPerView: 1.1,
+				speed: 750,
+				centeredSlides: true,
+				breakpoints: {
+				876: {
+					slidesPerView: 1.67,
+					centeredSlides: false,
+					slidesOffsetAfter: 400,
+					slidesOffsetBefore: 0,
+				}
+				},
+				slideToClickedSlide: true,
+				modules: [Navigation],
+				navigation: el.classList.contains('swiper--video') || window.innerWidth <= 876,
+				createElements: el.classList.contains('swiper--video') || window.innerWidth <= 876
+			});
 		});
 	});
 }

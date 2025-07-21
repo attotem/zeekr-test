@@ -1,11 +1,13 @@
 import { useLangStore } from "@/stores/lang";
 
+let lastLang = null;
+
 class Models {
 	models = null;
 	modelById = null;
 
 	async get() {
-		if (!this.models) {
+		if (!this.models || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_car_models_page?lang_code=${useLangStore().activeLang}`,
 				{
@@ -16,6 +18,7 @@ class Models {
 			);
 			let body = await resp.json();
 			this.models = body;
+			lastLang = useLangStore().activeLang;
 		}
 
 		return this.models;
@@ -44,6 +47,7 @@ class Models {
 
 		try {
 			const body = await response.json();
+			lastLang = useLangStore().activeLang;
 			return body;
 		} catch (e) {
 			console.error("[API] Failed to parse JSON:", e);
@@ -150,6 +154,7 @@ class News {
 			},
 		];
 
+		lastLang = useLangStore().activeLang;
 		return this.news;
 	}
 }
@@ -158,7 +163,7 @@ class HomePage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_homepage/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -170,6 +175,7 @@ class HomePage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -179,7 +185,7 @@ class ServicePage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_service_page/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -191,6 +197,7 @@ class ServicePage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -200,7 +207,7 @@ class ContactsPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_contacts_page/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -212,6 +219,7 @@ class ContactsPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -221,7 +229,7 @@ class FinancialServicesPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_financial_services_page/?lang_code=${
 					useLangStore().activeLang
@@ -235,6 +243,7 @@ class FinancialServicesPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -244,7 +253,7 @@ class GuaranteePage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_guarantee_page/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -256,6 +265,7 @@ class GuaranteePage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -265,7 +275,7 @@ class AboutTOVPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_about_tov_company_page/?lang_code=${
 					useLangStore().activeLang
@@ -279,6 +289,7 @@ class AboutTOVPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -288,7 +299,7 @@ class PrivacyPolicyPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_privacy_policy_page/?lang_code=${
 					useLangStore().activeLang
@@ -302,6 +313,7 @@ class PrivacyPolicyPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -311,7 +323,7 @@ class DiagnosticsPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_diagnostics_page/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -323,6 +335,7 @@ class DiagnosticsPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -332,7 +345,7 @@ class LeasingPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_leasing_page/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -344,6 +357,7 @@ class LeasingPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -353,7 +367,7 @@ class LendingPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_lending_page/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -365,6 +379,7 @@ class LendingPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -374,7 +389,7 @@ class AboutCompanyPage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_about_company_page/?lang_code=${
 					useLangStore().activeLang
@@ -388,6 +403,7 @@ class AboutCompanyPage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -397,7 +413,7 @@ class InsurancePage {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_insurance_page/?lang_code=${useLangStore().activeLang}`,
 				{
@@ -409,6 +425,7 @@ class InsurancePage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -418,7 +435,7 @@ class Footer {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_footer/?lang=${useLangStore().activeLang}`,
 				{
@@ -430,6 +447,7 @@ class Footer {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -439,7 +457,7 @@ class BecomeADealer {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_become_dealer_page/?lang=${useLangStore().activeLang}`,
 				{
@@ -451,6 +469,7 @@ class BecomeADealer {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}
@@ -460,7 +479,7 @@ class BecomeAPartner {
 	data = null;
 
 	async get() {
-		if (!this.data) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_become_partner_page/?lang=${useLangStore().activeLang}`,
 				{
@@ -472,6 +491,7 @@ class BecomeAPartner {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
+			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
 	}

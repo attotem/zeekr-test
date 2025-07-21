@@ -97,12 +97,17 @@
 import Logo from "@/components/icons/logo.vue";
 import Modal from "@/components/Modal.vue";
 import API from "@/composables/API";
+import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
-import { computed, markRaw, onMounted, ref } from "vue";
+import { computed, markRaw, onMounted, ref, watch } from "vue";
 
 let data = ref(),
 	isModalOpened = ref(false)
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => useLangStore().activeLang, async () => {
+  data.value = await API.InsurancePage.get();
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

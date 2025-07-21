@@ -100,7 +100,7 @@ import Modal from "@/components/Modal.vue";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 let langStore = useLangStore()
 let isModalOpened = ref(false),
@@ -108,6 +108,11 @@ let isModalOpened = ref(false),
 	centers = ref({})
 let isLoading = computed(() => useLoaderStore().isLoading)
 let chosenCenterId = ref()
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.DiagnosticsPage.get();
+  centers.value = await API.ContactsPage.get();
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

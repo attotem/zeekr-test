@@ -39,11 +39,15 @@ import Logo from '@/components/icons/logo.vue';
 import API from '@/composables/API';
 import { useLangStore } from '@/stores/lang';
 import { useLoaderStore } from '@/stores/loader';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 
 let modelsData = ref({})
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  modelsData.value = await API.Models.get()
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

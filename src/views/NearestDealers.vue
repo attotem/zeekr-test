@@ -78,14 +78,20 @@ import Geo from '@/components/icons/geo.vue';
 import Phone from '@/components/icons/phone.vue';
 import API from '@/composables/API';
 import Map from '@/components/Map.vue';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import Logo from '@/components/icons/logo.vue';
 import { useLoaderStore } from '@/stores/loader';
+import { useLangStore } from '@/stores/lang';
 
 let data = ref({})
 let isLoading = computed(() => useLoaderStore().isLoading)
 let chosenCenterId = ref()
 let centers = ref({})
+
+watch(() => useLangStore().activeLang, async () => {
+  centers.value = await API.ContactsPage.get();
+  //data.value = await API.dealersPage.get();
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true

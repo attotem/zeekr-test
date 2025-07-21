@@ -176,18 +176,22 @@
 </template>
 
 <script setup>
-import Guarantee1 from "@/assets/img/guarantee1.jpg"
 import Logo from "@/components/icons/logo.vue";
 import Slider from "@/components/Slider.vue";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
-import { computed, markRaw, onMounted, ref } from "vue";
+import { computed, markRaw, onMounted, ref, watch } from "vue";
 
 let langStore = useLangStore()
 let news = ref([]),
   data = ref({})
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.AboutCompanyPage.get();
+  news.value = await API.News.get();
+})
 
 onMounted(async () => {
 	useLoaderStore().isLoading = true;

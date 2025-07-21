@@ -142,7 +142,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, nextTick } from 'vue'
+import { ref, onMounted, computed, nextTick, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
 import API from '@/composables/API'
 import addDropdown from '@/composables/dropdown'
@@ -165,6 +165,21 @@ let isLoading = computed(() => useLoaderStore().isLoading)
 let chosenCenterId = ref()
 
 const isMobile = computed(() => isMobileFn())
+
+watch(() => langStore.activeLang, async () => {
+  serviceData.value = await API.ServicePage.get()
+  centers.value = await API.ContactsPage.get();
+  console.log(serviceData.value)
+
+  setTimeout(() => {
+    nextTick(() => {
+      serviceData.value.faq.forEach(q => {
+        console.log(`question-${q.id}`)
+        addDropdown(`question-${q.id}`, false, true)
+      })
+    })
+  }, 100)
+})
 
 onMounted(async () => {
   try {

@@ -52,12 +52,16 @@ import Logo from "@/components/icons/logo.vue";
 import { useLoaderStore } from "@/stores/loader";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 let langStore = useLangStore()
 let isModalOpened = ref(false),
   data = ref({})
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.AboutTOVPage.get()
+})
 
 onMounted(async () => {
 	useLoaderStore().isLoading = true;

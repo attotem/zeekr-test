@@ -99,12 +99,17 @@
 import Logo from "@/components/icons/logo.vue";
 import Modal from "@/components/Modal.vue";
 import API from "@/composables/API";
+import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 let data = ref({})
 let isLoading = computed(() => useLoaderStore().isLoading),
 	isModalOpened = ref(false)
+
+watch(() => useLangStore().activeLang, async () => {
+  data.value = await API.LeasingPage.get();
+})
 
 onMounted(async () => {
   useLoaderStore().isLoading = true
