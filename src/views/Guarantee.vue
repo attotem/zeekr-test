@@ -87,36 +87,38 @@
 				</div>
 			</div>
 
-			<article
-				v-if="data?.guarantee_versions?.length"
-				class="guarantee-archive"
+			<div
+				class="guide__text_warranty waranrty-padding"
+				v-html="data?.archive_block_text"
 			>
-				<div
-					class="guarantee-archive__header dropdown-icon--outer"
-					@click="toggleArchive"
-				>
-					<h3 class="guarantee__h">Архів гарантійних політик</h3>
-					<Dropdown :class="{ 'dropdown-icon--active': isArchiveOpen }" />
+			</div>
+
+			<article v-if="data?.guarantee_versions?.length" class="guarantee-archive">
+				<div class="guarantee-archive__header dropdown-icon--outer" @click="toggleArchive">
+					<span class="guarantee-archive__header-text">
+						<h3 class="guarantee__h">Архів гарантійних політик</h3>
+						<Dropdown :class="{ 'dropdown-icon--active': isArchiveOpen }" />
+					</span>
 				</div>
-				<div
-					class="guarantee-archive__content"
-					v-show="isArchiveOpen"
-				>
+				<div class="guarantee-archive__content" v-show="isArchiveOpen">
 					<ul class="guarantee-archive__list">
 						<li
 							v-for="version in data.guarantee_versions"
 							:key="version.id"
 							class="guarantee-archive__item"
 						>
-							<a
-								:href="version.value.document.url"
-								target="_blank"
-								rel="noopener"
-								class="guarantee-archive__link"
-								download
-							>
-								Гарантійна Політика {{ version.value.title }}
-							</a>
+							<span class="guarantee-archive__link">
+								<a
+									:href="version.value.document.url"
+									target="_blank"
+									rel="noopener"
+									class="archive-text-link"
+									title="Відкрити у новому вікні"
+								>
+									Гарантійна Політика {{ version.value.title }}
+								</a>
+								<DownloadIcon class="download-icon" @click.prevent="downloadFile(version.value.document.url)" />
+							</span>
 						</li>
 					</ul>
 				</div>
@@ -157,6 +159,7 @@ import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
 import { computed, onMounted, ref, watch } from "vue";
 import Dropdown from '@/components/icons/dropdown.vue';
+import DownloadIcon from '@/components/icons/download.vue';
 
 let models = ref([]),
   data = ref({})
@@ -194,6 +197,36 @@ function toggleAccordion(idx) {
 function toggleArchive() {
   isArchiveOpen.value = !isArchiveOpen.value;
 }
+
+async function downloadFile(url) {
+  try {
+    const response = await fetch(url, {
+      mode: 'cors',
+      credentials: 'omit' 
+    });
+
+    if (!response.ok) throw new Error('Network response was not ok');
+
+    const blob = await response.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = blobUrl;
+    a.download = getFileNameFromUrl(url); 
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(blobUrl);
+  } catch (err) {
+    console.error('Error downloading file:', err);
+  }
+}
+
+function getFileNameFromUrl(url) {
+  return decodeURIComponent(url.split('/').pop().split('?')[0]);
+}
+
 
 onMounted(async () => {
   useLoaderStore().isLoading = true
@@ -518,7 +551,7 @@ function getAccordionBody(html) {
     transition: color 0.2s;
 
     &:hover {
-      color: #ff6600;
+      // color: #ff6600;
       text-decoration: underline;
     }
   }
@@ -536,13 +569,37 @@ function getAccordionBody(html) {
   text-align: left;
 }
 .guarantee-archive__link {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 8px;
+  gap: 8px;
+}
+.archive-text-link {
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px;
+}
+.download-icon-link {
+  display: flex;
+  align-items: center;
+  margin-left: 6px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.download-icon:hover {
+  color: #ff6600;
+}
+.download-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
 }
 
 @media screen and (max-width: 876px) {
   .guarantee-archive {
-    margin: 50px 16px;
+    margin: 20px 16px;
 
     &__header {
       .guarantee__h {
@@ -555,5 +612,36 @@ function getAccordionBody(html) {
       font-size: 14px;
     }
   }
+
+  .guide__text_warranty.waranrty-padding {
+    font-size: 14px;
+    line-height: 1.3;
+  }
 }
+
+.waranrty-padding {
+  padding: 10px;
+}
+
+.guarantee-archive__header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.2s;
+
+  .guarantee-archive__header-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .guarantee__h {
+    margin: 0;
+    cursor: pointer;
+    font-size: 24px;
+    text-align: left;
+  }
+}
+
 </style>
