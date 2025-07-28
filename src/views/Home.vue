@@ -87,26 +87,25 @@
 					:slider-type="2"
 					:count="news?.length"
 				>
-					<article
+					<RouterLink
 						class="slide"
-						v-for="article in news"
-						:key="article.id"
+						v-for="article in news.results"
+						:id="article.id"
+						:to="`/news/${article.id}/${langStore.activeLang}`"
 					>
 						<img
 							class="slide__image"
-							:src="article.image"
+							v-if="article.banner_image"
+							:src="article.banner_image"
 						/>
 						<div class="slide__date">
-							{{ new Date(article.date).toLocaleDateString() }}
+							{{ article.post_date }}
 						</div>
 						<div class="slide__h">
-							{{ article.heading?.[langStore.activeLang] }}
+							{{ article.banner_title }}
 						</div>
-					</article>
+					</RouterLink>
 				</Slider>
-				<div class="btn btn--black">
-					{{ i18n.universal.more?.[langStore.activeLang] }}
-				</div>
 			</div>
 		</template>
 	</TransitionGroup>
@@ -145,6 +144,7 @@ onMounted(async () => {
   models.value = sliderData.value.car_models;
   console.log(models.value)
   useLoaderStore().isLoading = false
+  news.value = await API.News.get();
 })
 </script>
 

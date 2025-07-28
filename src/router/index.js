@@ -20,6 +20,7 @@ import BecomeADealer from "@/views/BecomeADealer.vue";
 import BecomeAPartner from "@/views/BecomeAPartner.vue";
 import Accessories from "@/views/Accessories.vue";
 import News from "@/views/News.vue";
+import NewsById from "@/views/NewsById.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -133,6 +134,11 @@ const router = createRouter({
 			path: "/news",
 			name: "news",
 			component: News,
+		},
+		{
+			path: "/news/:id/:lang_code",
+			name: "newsId",
+			component: NewsById,
 		},
 	],
 });

@@ -58,104 +58,42 @@ class Models {
 
 class News {
 	news = [];
+	id = null;
 
-	async get() {
-		/*
-    if (!this.news) {
-      let resp = await fetch(`${path}/news`)
-      let body = await resp.json()
-    }
-    */
-
-		this.news = [
+	async get(offset = 0, limit = 9) {
+		let resp = await fetch(
+			`${path}/get_news_page?lang_code=${
+				useLangStore().activeLang
+			}&offset=${offset}&limit=${limit}`,
 			{
-				image: "https://cdn-icons-png.flaticon.com/256/2555/2555013.png",
-				text: {
-					en: "Stunning, powerful, sophisticated",
+				headers: {
+					accept: "application/json",
 				},
-				price: "1 339 000 UAH",
-				heading: {
-					en: "News article 1",
-				},
-				date: 1739217920592,
-				id: 1,
-			},
-			{
-				image: "https://cdn-icons-png.flaticon.com/256/2555/2555013.png",
-				text: {
-					en: "Stunning, powerful, sophisticated",
-				},
-				price: "1 339 000 UAH",
-				heading: {
-					en: "News article 2",
-				},
-				date: 1739218920592,
-				id: 2,
-			},
-			{
-				image: "https://cdn-icons-png.flaticon.com/256/2555/2555013.png",
-				text: {
-					en: "Stunning, powerful, sophisticated",
-				},
-				price: "1 339 000 UAH",
-				heading: {
-					en: "News article 3",
-				},
-				date: 1739219920592,
-				id: 3,
-			},
-			{
-				image: "https://cdn-icons-png.flaticon.com/256/2555/2555013.png",
-				text: {
-					en: "Stunning, powerful, sophisticated",
-				},
-				price: "1 339 000 UAH",
-				heading: {
-					en: "News article 4",
-				},
-				date: 1739220920592,
-				id: 4,
-			},
-			{
-				image: "https://cdn-icons-png.flaticon.com/256/2555/2555013.png",
-				text: {
-					en: "Stunning, powerful, sophisticated",
-				},
-				price: "1 339 000 UAH",
-				heading: {
-					en: "News article 5",
-				},
-				date: 1739230920592,
-				id: 5,
-			},
-			{
-				image: "https://cdn-icons-png.flaticon.com/256/2555/2555013.png",
-				text: {
-					en: "Stunning, powerful, sophisticated",
-				},
-				price: "1 339 000 UAH",
-				heading: {
-					en: "News article 6",
-				},
-				date: 1739240920592,
-				id: 6,
-			},
-			{
-				image: "https://cdn-icons-png.flaticon.com/256/2555/2555013.png",
-				text: {
-					en: "Stunning, powerful, sophisticated",
-				},
-				price: "1 339 000 UAH",
-				heading: {
-					en: "News article 6",
-				},
-				date: 1739250920592,
-				id: 7,
-			},
-		];
-
+			}
+		);
+		let body = await resp.json();
+		this.news = body;
 		lastLang = useLangStore().activeLang;
+
 		return this.news;
+	}
+
+	async getById(id, lang_code = useLangStore().activeLang) {
+		if (this.id == null || useLangStore().activeLang !== lastLang) {
+			let resp = await fetch(
+				`${path}/get_detailed_news_page/?lang_code=${lang_code}&id=${id}`,
+				{
+					headers: {
+						accept: "application/json",
+					},
+				}
+			);
+			let body = await resp.json();
+			this.id = body;
+			lastLang = useLangStore().activeLang;
+		}
+
+		return this.id;
 	}
 }
 
@@ -497,6 +435,28 @@ class BecomeAPartner {
 	}
 }
 
+class Accessories {
+	data = null;
+
+	async get() {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
+			let resp = await fetch(
+				`${path}/get_accessories_page/?lang_code=${useLangStore().activeLang}`,
+				{
+					headers: {
+						accept: "application/json",
+					},
+				}
+			);
+			let body = await resp.json();
+			this.data = body;
+			console.log(body);
+			lastLang = useLangStore().activeLang;
+		}
+		return this.data;
+	}
+}
+
 class Mail {
 	/**
 	 * https://docs.google.com/document/d/1LEm10dwbKTMEciKYhXuH5HHV75vqz65mZiaIk0y2e-o/edit?tab=t.0
@@ -545,6 +505,7 @@ const API = {
 	Mail: new Mail(),
 	BecomeADealer: new BecomeADealer(),
 	BecomeAPartner: new BecomeAPartner(),
+	Accessories: new Accessories(),
 };
 
 export default API;

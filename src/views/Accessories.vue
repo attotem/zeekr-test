@@ -1,42 +1,61 @@
 <template>
-	<div class="accessories">
-		<div class="accessories__h">
-			{{ i18n.universal.accessories?.[langStore.activeLang] }}
+	<TransitionGroup name="loading">
+		<div
+			class="loading-spinner"
+			v-if="isLoading"
+		>
+			<Logo />
 		</div>
 
-		<div class="sort dropdown">
-			<div class="sort__inner">
-				<div class="sort__active">{{ sorts[activeSortsIndex] }}</div>
-				<Dropdown />
-			</div>
-			<div class="dropdown__inner">
+		<template v-else-if="data">
+			<div class="accessories">
+				<h1 class="accessories__h">
+					{{ i18n.universal.accessories?.[langStore.activeLang] }}
+				</h1>
+
 				<div
-					class="sort__item"
-					v-for="(sort, counter) in sorts"
-					:class="{ 'sort__item--active': activeSortsIndex == counter }"
+					class="sort dropdown"
+					v-if="false"
 				>
-					{{ sort.text }}
+					<div class="sort__inner">
+						<div class="sort__active">{{ sorts[activeSortsIndex] }}</div>
+						<Dropdown />
+					</div>
+					<div class="dropdown__inner">
+						<div
+							class="sort__item"
+							v-for="(sort, counter) in sorts"
+							:class="{ 'sort__item--active': activeSortsIndex == counter }"
+						>
+							{{ sort.text }}
+						</div>
+					</div>
+				</div>
+
+				<div class="items">
+					<h2
+						class="item"
+						v-for="item in data"
+					>
+						<img
+							class="item__image"
+							v-if="item.banner_image"
+							:src="item.banner_image"
+						/>
+						{{ item.banner_title }}
+					</h2>
 				</div>
 			</div>
-		</div>
-
-		<div class="items">
-			<div
-				class="item"
-				v-for="item in 6"
-			>
-				<img
-					class="item__image"
-					src="@/assets/img/home1.jpg"
-				/>
-				Item
-			</div>
-		</div>
-	</div>
+		</template>
+	</TransitionGroup>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import API from "@/composables/API";
+import { useLangStore } from "@/stores/lang";
+import { useLoaderStore } from "@/stores/loader";
+import Logo from '@/components/icons/logo.vue';
 
 let sorts = ref([
   {
@@ -56,6 +75,20 @@ let sorts = ref([
     text: 'By price increase'
   }
 ]), activeSortsIndex = ref(0)
+
+let langStore = useLangStore(),
+  data = ref(),
+  isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.Accessories.get();
+})
+
+onMounted(async () => {
+	useLoaderStore().isLoading = true;
+  data.value = await API.Accessories.get();
+	useLoaderStore().isLoading = false;
+})
 </script>
 
 <style lang="scss" scoped>

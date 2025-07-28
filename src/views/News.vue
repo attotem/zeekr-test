@@ -1,22 +1,77 @@
 <template>
-  <div class="news">
-    <div class="news__h">news</div>
+	<TransitionGroup name="loading">
+		<div
+			class="loading-spinner"
+			v-if="isLoading"
+		>
+			<Logo />
+		</div>
 
-    <div class="items">
-      <div
-        class="item"
-        v-for="item in 6"
-      >
-        <img
-          class="item__image"
-          src="@/assets/img/home1.jpg"
-        />
-        <div class="item__date">12.11.2024</div>
-        <div class="item__text">Item</div>
-      </div>
-    </div>
-  </div>
+		<template v-else-if="data.results">
+			<div class="news">
+				<h1 class="news__h">
+					{{ i18n.universal.news?.[langStore.activeLang] }}
+				</h1>
+
+				<div class="items">
+					<RouterLink
+						class="item"
+						v-for="item in data.results"
+						:to="`news/${item.id}/${useLangStore().activeLang}`"
+					>
+						<img
+							class="item__image"
+							v-if="item.banner_image"
+							:src="item.banner_image"
+						/>
+						<div class="item__date">{{ item.post_date }}</div>
+						<h2 class="item__text">{{ item.banner_title }}</h2>
+					</RouterLink>
+				</div>
+
+				<div
+					class="btn btn--black"
+					@click="loadMore"
+					v-if="data.has_more"
+				>
+					{{ i18n.universal.more?.[langStore.activeLang] }}
+				</div>
+			</div>
+		</template>
+	</TransitionGroup>
 </template>
+
+<script setup>
+import Logo from '@/components/icons/logo.vue';
+import API from '@/composables/API';
+import { useLangStore } from '@/stores/lang';
+import { useLoaderStore } from '@/stores/loader';
+import { computed, onMounted, ref, watch } from 'vue';
+import { RouterLink } from 'vue-router';
+
+let langStore = useLangStore(),
+  data = ref([]),
+  offset = ref(0),
+  limit = 9,
+  isLoading = computed(() => useLoaderStore().isLoading)
+
+watch(() => langStore.activeLang, async () => {
+  data.value = await API.News.get(0, limit);
+})
+
+onMounted(async () => {
+	useLoaderStore().isLoading = true;
+  data.value = await API.News.get(0, limit);
+	useLoaderStore().isLoading = false;
+})
+
+const loadMore = async () => {
+  offset.value += limit;
+  let resp = await API.News.get(offset.value, limit)
+  data.value.push(resp.results)
+  data.has_more = resp.has_more
+}
+</script>
 
 <style lang="scss" scoped>
 .news {
