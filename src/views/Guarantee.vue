@@ -64,6 +64,13 @@
 			</article>
 
 			<div class="pdf-container">
+
+        <div
+				class="guide__text_warranty waranrty-padding"
+				v-html="data?.archive_block_text"
+			>
+			</div>
+      
 				<iframe
 					:src="isAndroid ? `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfUrl)}` : pdfUrl"
 					class="pdf-frame"
@@ -87,11 +94,7 @@
 				</div>
 			</div>
 
-			<div
-				class="guide__text_warranty waranrty-padding"
-				v-html="data?.archive_block_text"
-			>
-			</div>
+		
 
 			<article v-if="data?.guarantee_versions?.length" class="guarantee-archive">
 				<div class="guarantee-archive__header dropdown-icon--outer" @click="toggleArchive">
