@@ -17,7 +17,7 @@
 					<RouterLink
 						class="item"
 						v-for="item in data.results"
-						:to="`news/${item.id}/${useLangStore().activeLang}`"
+						:to="`news/${item.id}`"
 					>
 						<img
 							class="item__image"

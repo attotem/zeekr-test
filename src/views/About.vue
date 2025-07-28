@@ -154,7 +154,7 @@
 						class="slide"
 						v-for="article in news.results"
 						:id="article.id"
-						:to="`/news/${article.id}/${langStore.activeLang}`"
+						:to="`/news/${article.id}`"
 					>
 						<img
 							class="slide__image"

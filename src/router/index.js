@@ -136,7 +136,7 @@ const router = createRouter({
 			component: News,
 		},
 		{
-			path: "/news/:id/:lang_code",
+			path: "/news/:id",
 			name: "newsId",
 			component: NewsById,
 		},

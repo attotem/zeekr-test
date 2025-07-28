@@ -41,7 +41,7 @@
 						<RouterLink
 							class="slide"
 							v-if="article.id != $route.params.id"
-							:to="`/news/${article.id}/${langStore.activeLang}`"
+							:to="`/news/${article.id}`"
 						>
 							<img
 								class="slide__image"
@@ -113,6 +113,45 @@ onMounted(async () => {
     max-width: 100%;
     margin-bottom: 24px;
   }
+
+	&__text {
+		max-width: 981px;
+	}
+}
+
+:deep(ul) {
+	margin: unset;
+	display: block;
+	padding-left: 24px;
+	margin-bottom: 24px;
+
+	li {
+		border: unset;
+		padding: unset;
+		margin-bottom: 6px;
+	}
+}
+
+:deep(p) {
+	margin: 16px 0;
+}
+
+:deep(h2) {
+	margin: 32px 0 16px 0;
+	font-weight: 600;
+	font-size: 30px;
+	line-height: 1.4;
+}
+
+:deep(h3) {
+	margin: 16px 0 8px 0;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+:deep(hr) {
+	border: unset;
 }
 
 @media screen and (max-width: 876px) {
