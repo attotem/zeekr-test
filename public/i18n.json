@@ -119,6 +119,38 @@
       "sendAnApplication": {
         "en": "Send an application",
         "uk": "Надіслати заявку"
+      },
+      "newCar": {
+        "en": "New car",
+        "uk": "Новий автомобіль"
+      },
+      "baseCharacteristics": {
+        "en": "Base characteristics",
+        "uk": "Базові характеристики"
+      },
+      "description": {
+        "en": "Description",
+        "uk": "Опис"
+      },
+      "techCharacteristics": {
+        "en": "Technical characteristics",
+        "uk": "Технічні характеристики"
+      },
+      "videoReview": {
+        "en": "Video review",
+        "uk": "Відео-огляд"
+      },
+      "interior": {
+        "en": "Interior",
+        "uk": "Інтер'єр"
+      },
+      "contactWithDealer": {
+        "en": "Contact with dealer",
+        "uk": "Зв'язатись з ділером"
+      },
+      "interestedIn": {
+        "en": "You may also be interested in",
+        "uk": "Вас також можуть зацікавити"
       }
     }
   },

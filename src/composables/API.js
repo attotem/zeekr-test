@@ -457,6 +457,30 @@ class Accessories {
 	}
 }
 
+class CarsInStock {
+	data = null;
+
+	async getById(id) {
+		if (!this.data || useLangStore().activeLang !== lastLang) {
+			let resp = await fetch(
+				`${path}/get_car_in_stock/?id=${id}&lang_code=${
+					useLangStore().activeLang
+				}`,
+				{
+					headers: {
+						accept: "application/json",
+					},
+				}
+			);
+			let body = await resp.json();
+			this.data = body;
+			console.log(body);
+			lastLang = useLangStore().activeLang;
+		}
+		return this.data;
+	}
+}
+
 class Mail {
 	/**
 	 * https://docs.google.com/document/d/1LEm10dwbKTMEciKYhXuH5HHV75vqz65mZiaIk0y2e-o/edit?tab=t.0
@@ -506,6 +530,7 @@ const API = {
 	BecomeADealer: new BecomeADealer(),
 	BecomeAPartner: new BecomeAPartner(),
 	Accessories: new Accessories(),
+	CarsInStock: new CarsInStock(),
 };
 
 export default API;

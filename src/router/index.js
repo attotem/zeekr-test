@@ -21,6 +21,7 @@ import BecomeAPartner from "@/views/BecomeAPartner.vue";
 import Accessories from "@/views/Accessories.vue";
 import News from "@/views/News.vue";
 import NewsById from "@/views/NewsById.vue";
+import StockId from "@/views/StockId.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -81,11 +82,6 @@ const router = createRouter({
 			component: About,
 		},
 		{
-			path: "/stock",
-			name: "stock",
-			component: Stock,
-		},
-		{
 			path: "/contacts",
 			name: "contacts",
 			component: Contacts,
@@ -139,6 +135,16 @@ const router = createRouter({
 			path: "/news/:id",
 			name: "newsId",
 			component: NewsById,
+		},
+		{
+			path: "/cars-in-stock",
+			name: "stock",
+			component: Stock,
+		},
+		{
+			path: "/cars-in-stock/:id",
+			name: "stockId",
+			component: StockId,
 		},
 	],
 });
