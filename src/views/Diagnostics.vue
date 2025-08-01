@@ -83,7 +83,7 @@
 				</div>
 			</div>
 
-			<Modal
+			<ModalContact
 				:heading="i18n.modal.diagnostics"
 				:is-opened="isModalOpened"
 				:mailObj="{type: 'signup_for_service', page: 'signup_for_service'}"
@@ -96,7 +96,7 @@
 <script setup>
 import Logo from "@/components/icons/logo.vue";
 import Map from "@/components/Map.vue";
-import Modal from "@/components/Modal.vue";
+import ModalContact from "@/components/ModalContact.vue";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";

@@ -100,10 +100,12 @@ watch(() => props.isOpened, () => {
   transition: .5s ease-in-out;
   opacity: 0;
   cursor: pointer;
+  user-select: none;
 
   &--opened {
     z-index: 100000;
     opacity: 1;
+    user-select: unset;
   }
 
   &__inner {

@@ -39,11 +39,15 @@
 								class="characteristic"
 								v-for="char in data.data.base_features"
 							>
-								<img
-									class="characteristic__image"
+								<div
 									v-if="char.icon"
-									:src="char.icon"
-								/>
+									class="characteristic__image-outer"
+								>
+									<img
+										class="characteristic__image"
+										:src="char.icon"
+									/>
+								</div>
 								<span class="characteristic__name">{{ char.key }}</span>
 								<span class="characteristic__value">{{ char.value }}</span>
 							</div>
@@ -88,18 +92,23 @@
 					<div
 						class="block"
 						v-if="data.video_review"
+						@click="modalPictures = data.videoReview; isModalOpened = true"
 					>
-						<img
+						<div
 							class="block__img"
-							src=""
-						/>
+							v-html="data.videoReview"
+						></div>
 						<div class="block__overlay">
 							<Video />
 							{{ i18n.pages.stock.videoReview[langStore.activeLang] }}
 						</div>
 					</div>
 
-					<div class="block">
+					<div
+						class="block"
+						v-if="data.interior_images"
+						@click="modalPictures = data.interior_images; isModalOpened = true"
+					>
 						<img
 							class="block__img"
 							:src="data.interior_images?.[0]"
@@ -149,7 +158,7 @@
 					<RouterLink
 						class="slide"
 						v-for="article in data.similar_cars"
-						:to="`stock/${article.id}`"
+						:to="`${article.id}`"
 						:key="article.id"
 					>
 						<img
@@ -170,9 +179,11 @@
 		</div>
 	</TransitionGroup>
 
-	<!--
-  TODO add modal for images
-  -->
+	<ModalPictures
+		:data="modalPictures"
+		:is-opened="isModalOpened !== false"
+		@close="isModalOpened = false"
+	/>
 </template>
 
 <script setup>
@@ -181,7 +192,7 @@ import Eye from '@/components/icons/eye.vue';
 import Logo from '@/components/icons/logo.vue';
 import Phone from '@/components/icons/phone.vue';
 import Video from '@/components/icons/video.vue';
-import Modal from '@/components/Modal.vue';
+import ModalPictures from '@/components/ModalPictures.vue';
 import Slider from '@/components/Slider.vue';
 import API from '@/composables/API';
 import { useLangStore } from '@/stores/lang';
@@ -192,6 +203,7 @@ import { useRoute } from 'vue-router';
 let data = ref({})
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
+let modalPictures = ref([]), isModalOpened = ref(false)
 
 const moneyFormat = (price) => new Intl.NumberFormat("ua-UA").format(price)
 
@@ -295,13 +307,17 @@ onMounted(async () => {
 	line-height: 120%;
 
 	&__image {
-		grid-column: 1;
-		grid-row: 1 / span 2;
-		border-radius: 100%;
 		padding: 8px;
-		width: 40px;
-		height: 40px;
 		background-color: #EAE8E2;
+		&-outer {
+			overflow: hidden;
+			width: 40px;
+			height: 40px;
+			grid-column: 1;
+			grid-row: 1 / span 2;
+			border-radius: 100%;
+			background-color: #EAE8E2;
+		}
 	}
 	&__name {
 		font-weight: 500;

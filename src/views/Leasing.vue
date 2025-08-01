@@ -85,7 +85,7 @@
 				</div>
 			</article>
 
-			<Modal
+			<ModalContact
 				:heading="i18n.modal.service"
 				:is-opened="isModalOpened"
 				:mailObj="{type: 'financial_service', page: 'financial_service'}"
@@ -97,7 +97,7 @@
 
 <script setup>
 import Logo from "@/components/icons/logo.vue";
-import Modal from "@/components/Modal.vue";
+import ModalContact from "@/components/ModalContact.vue";
 import API from "@/composables/API";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";

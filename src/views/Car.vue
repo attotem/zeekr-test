@@ -100,7 +100,10 @@
 			<article class="article-2">
 				<h3 class="article-2__h">{{ modelData.images_slider_title }}</h3>
 
-				<div class="swiper" ref="photoSwiper">
+				<div
+					class="swiper"
+					ref="photoSwiper"
+				>
 					<div class="swiper__inner swiper-wrapper">
 						<img
 							class="swiper__image swiper-slide"
@@ -109,7 +112,6 @@
 						/>
 					</div>
 				</div>
-				
 			</article>
 
 			<article class="article-2">
@@ -214,7 +216,7 @@
 				</Slider>
 			</article>
 
-			<Modal
+			<ModalContact
 				:heading="i18n.modal?.[modalType]"
 				:is-opened="isModalOpened !== false"
 				:mailObj="mailObj"
@@ -237,8 +239,8 @@ import { Navigation } from 'swiper/modules';
 import { useRouter } from 'vue-router'
 import { watch } from 'vue'
 import { useLoaderStore } from "@/stores/loader";
-import Modal from "@/components/Modal.vue";
 import { ref as vueRef } from 'vue';
+import ModalContact from "@/components/ModalContact.vue";
 
 const router = useRouter();
 let isLoading = computed(() => useLoaderStore().isLoading)

@@ -1,7 +1,7 @@
 <template>
 	<header
 		class="header header--desktop"
-		:class="{ 'header--black': ['models', 'contacts', 'NotFound'].includes($route.name) }"
+		:class="{ 'header--black': ['models', 'contacts', 'NotFound', 'stockId'].includes($route.name) }"
 	>
 		<RouterLink
 			style="color: inherit;"
@@ -100,7 +100,7 @@
 			<RouterLink to="/">
 				<Logo class="header__logo" />
 			</RouterLink>
-      
+
 			<Burger
 				@click="isExpanded = !isExpanded"
 				:is-expanded="isExpanded"

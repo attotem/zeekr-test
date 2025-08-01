@@ -7,7 +7,7 @@
 	</div>
 
 	<Teleport to="body">
-		<Modal
+		<ModalContact
 			:heading="i18n.modal.chat"
 			:is-opened="isModalOpened !== false"
 			:mailObj="{type: 'chat', page: $route.path}"
@@ -19,7 +19,7 @@
 <script setup>
 import { ref } from 'vue';
 import ChatIcon from './icons/chat.vue';
-import Modal from './Modal.vue';
+import ModalContact from './ModalContact.vue';
 
 let isModalOpened = ref(false)
 </script>

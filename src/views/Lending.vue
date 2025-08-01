@@ -104,7 +104,7 @@
 				</div>
 			</article>
 
-			<Modal
+			<ModalContact
 				:heading="i18n.modal.service"
 				:is-opened="isModalOpened"
 				:mailObj="{type: 'financial_service', page: 'financial_service'}"
@@ -124,7 +124,7 @@ import Main from "@/components/icons/techs/main.vue";
 import Multimedia from "@/components/icons/techs/multimedia.vue";
 import Safety from "@/components/icons/techs/safety.vue";
 import Wheels from "@/components/icons/techs/wheels.vue";
-import Modal from "@/components/Modal.vue";
+import ModalContact from "@/components/ModalContact.vue";
 import API from '@/composables/API';
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
