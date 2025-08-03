@@ -28,6 +28,7 @@
 				<Slider
 					class="content"
 					:slider-type="1"
+					:count="data?.length"
 				>
 					<article
 						class="slide"

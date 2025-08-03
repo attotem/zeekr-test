@@ -1,37 +1,37 @@
 <template>
-  <div
-    class="slider"
-    @touchstart="touchStart"
-    @touchend="touchEnd"
-    :class="{ 'sliderType--1': props.sliderType == 1, 'sliderType--2': props.sliderType == 2 }"
-  >
-    <div
-      class="slider__inner"
-      :style="{ width: `${props.sliderType == 1 ? 100 * (props.count) + '%' : 'max-content'}`, transform: `translateX(${-100 * activeBulletIndex / props.count}%)` }"
-    >
-      <slot></slot>
-    </div>
-    <div class="slider__controls">
-      <Horizontal
-        class="slider__control slider__left"
-        :class="{ 'slider__control--inactive': activeBulletIndex == 0 }"
-        @click="prev"
-      />
-      <Horizontal
-        class="slider__control slider__right"
-        :class="{ 'slider__control--inactive': activeBulletIndex == props.count - 1 }"
-        @click="next"
-      />
-    </div>
-    <div class="slider__progress">
-      <div
-        class="slider__bullet"
-        v-for="(bullet, counter) in props.count"
-        :class="{ 'slider__bullet--active': counter == activeBulletIndex }"
-        @click="activeBulletIndex = counter"
-      ></div>
-    </div>
-  </div>
+	<div
+		class="slider"
+		@touchstart="touchStart"
+		@touchend="touchEnd"
+		:class="{ 'sliderType--1': props.sliderType == 1, 'sliderType--2': props.sliderType == 2 }"
+	>
+		<div
+			class="slider__inner"
+			:style="{ width: `${props.sliderType == 1 ? 100 * (props.count) + '%' : 'max-content'}`, transform: `translateX(${-100 * activeBulletIndex / props.count}%)` }"
+		>
+			<slot></slot>
+		</div>
+		<div class="slider__controls">
+			<Horizontal
+				class="slider__control slider__left"
+				:class="{ 'slider__control--inactive': activeBulletIndex == 0 }"
+				@click="prev"
+			/>
+			<Horizontal
+				class="slider__control slider__right"
+				:class="{ 'slider__control--inactive': activeBulletIndex == props.count - 1 }"
+				@click="next"
+			/>
+		</div>
+		<div class="slider__progress">
+			<div
+				class="slider__bullet"
+				v-for="(bullet, counter) in props.count"
+				:class="{ 'slider__bullet--active': counter == activeBulletIndex }"
+				@click="activeBulletIndex = counter"
+			></div>
+		</div>
+	</div>
 </template>
 
 <script setup>
@@ -70,6 +70,7 @@ const touchEnd = (e) => {
   position: relative;
 
   &Type--1 {
+    overflow: hidden;
     .slider {
       &__inner {
         overflow: hidden;

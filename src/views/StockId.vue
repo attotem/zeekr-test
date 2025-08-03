@@ -18,7 +18,10 @@
 				</div>
 
 				<main class="main">
-					<Slider :slider-type="1">
+					<Slider
+						:slider-type="1"
+						:count="data.exterior_images?.length"
+					>
 						<article
 							class="slide"
 							v-for="slide in data.exterior_images"
@@ -92,11 +95,11 @@
 					<div
 						class="block"
 						v-if="data.video_review"
-						@click="modalPictures = data.videoReview; isModalOpened = true"
+						@click="modalPictures = data.video_review; isModalOpened = true"
 					>
 						<div
 							class="block__img"
-							v-html="data.videoReview"
+							v-html="data.video_review"
 						></div>
 						<div class="block__overlay">
 							<Video />
@@ -254,6 +257,10 @@ onMounted(async () => {
 
 	:deep(.slider) {
 		aspect-ratio: 852/488;
+
+		.slider__controls {
+			padding: 76px 16px;
+		}
 	}
 
 	&__h {
@@ -380,6 +387,10 @@ onMounted(async () => {
 			object-fit: cover;
 			left: 0;
 			top: 0;
+			:deep(iframe) {
+				width: 100%;
+				height: 100%;
+			}
 		}
 		&__overlay {
 			z-index: 1;
