@@ -126,7 +126,7 @@ onMounted(async () => {
   gap: 10px;
 
   &s {
-    width: 100%;
+    width: auto;
     margin-top: 24px;
     display: flex;
     flex-direction: row;

@@ -47,14 +47,14 @@
 
 					<br />
 					<a
-						class="btn btn--transparent"
+						class="btn btn--transparent btn--transparent-black"
 						:href="activePopup.link"
 						target="_blank"
 						>Прокласти маршрут в Google Maps
 						<GoogleMaps />
 					</a>
 					<a
-						class="btn btn--transparent"
+						class="btn btn--transparent btn--transparent-black"
 						:href="`https://waze.com/ul?ll=${activePopup.lat},${activePopup.lng}`"
 						target="_blank"
 						>Прокласти маршрут в Waze

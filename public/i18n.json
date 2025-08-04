@@ -151,6 +151,14 @@
       "interestedIn": {
         "en": "You may also be interested in",
         "uk": "Вас також можуть зацікавити"
+      },
+      "priceFilter": {
+        "en": "Price, UAH",
+        "uk": "Ціна, грн"
+      },
+      "applyFilters": {
+        "en": "Apply filters",
+        "uk": "Застосувати фільтри"
       }
     }
   },

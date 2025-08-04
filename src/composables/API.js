@@ -459,9 +459,47 @@ class Accessories {
 
 class CarsInStock {
 	data = null;
+	id = null;
+	filters = null;
+
+	async get(filters) {
+		let resp = await fetch(
+			`${path}/get_cars_in_stock/?lang_code=${useLangStore().activeLang}${
+				filters ? "&" + filters : ""
+			}`,
+			{
+				headers: {
+					accept: "application/json",
+				},
+			}
+		);
+		let body = await resp.json();
+		this.data = body;
+		console.log(body);
+		lastLang = useLangStore().activeLang;
+		return this.data;
+	}
+
+	async getFilters() {
+		if (!this.filters || useLangStore().activeLang !== lastLang) {
+			let resp = await fetch(
+				`${path}/get_filters/?lang_code=${useLangStore().activeLang}`,
+				{
+					headers: {
+						accept: "application/json",
+					},
+				}
+			);
+			let body = await resp.json();
+			this.filters = body;
+			console.log(body);
+			lastLang = useLangStore().activeLang;
+		}
+		return this.filters;
+	}
 
 	async getById(id) {
-		if (!this.data || useLangStore().activeLang !== lastLang) {
+		if (!this.id || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
 				`${path}/get_car_in_stock/?id=${id}&lang_code=${
 					useLangStore().activeLang
@@ -473,11 +511,11 @@ class CarsInStock {
 				}
 			);
 			let body = await resp.json();
-			this.data = body;
+			this.id = body;
 			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
-		return this.data;
+		return this.id;
 	}
 }
 

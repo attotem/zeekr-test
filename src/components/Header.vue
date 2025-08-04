@@ -1,7 +1,7 @@
 <template>
 	<header
 		class="header header--desktop"
-		:class="{ 'header--black': ['models', 'contacts', 'NotFound', 'stockId'].includes($route.name) }"
+		:class="{ 'header--black': ['models', 'contacts', 'NotFound', 'stock', 'stockId'].includes($route.name) }"
 	>
 		<RouterLink
 			style="color: inherit;"

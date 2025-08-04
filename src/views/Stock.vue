@@ -1,129 +1,220 @@
 <template>
-	<div class="stock">
-		<div class="stock__h">
-			{{ i18n.pages.stock.carsInStock?.[langStore.activeLang] }}
+	<TransitionGroup name="loading">
+		<div
+			class="loading-spinner"
+			v-if="isLoading"
+		>
+			<Logo />
 		</div>
 
-		<div class="sort dropdown">
-			<div class="sort__inner">
-				<div class="sort__active">{{ sorts[activeSortsIndex] }}</div>
-				<Dropdown />
-			</div>
-			<div class="dropdown__inner">
-				<div
-					class="sort__item"
-					v-for="(sort, counter) in sorts"
-					:class="{ 'sort__item--active': activeSortsIndex == counter }"
-				>
-					{{ sort.text }}
+		<div
+			class="bg"
+			v-if="data"
+		>
+			<div class="stock">
+				<div class="stock__h">
+					{{ i18n.pages.stock.carsInStock?.[langStore.activeLang] }}
 				</div>
-			</div>
-		</div>
 
-		<main class="main">
-			<aside class="filters">
 				<div
-					class="filter dropdown"
-					v-for="filter in filters"
+					class="sort"
+					id="sort"
 				>
-					<div class="filter__name">{{ filter.name }}</div>
-					<Expand />
-
-					<div class="dropdown__inner">
-						<template v-if="filter.type == 'checkbox'">
-							<input
-								class="filter__checkbox"
-								type="checkbox"
-								:name="filter.name"
-								v-for="item in filter.items"
-								:id="`filter-${filter.name}-checkbox-${item.id}`"
-								:key="item.id"
-								:value="item?.text"
-							/>
-						</template>
-						<div
-							v-else-if="filter.type == 'range'"
-							class="range"
-						>
-							<input
-								class="range__input"
-								type="number"
-								min="0"
-								:max="maxCarPrice"
-								:value="filter.range[0]"
-							/>
-							<div class="range__delimiter"></div>
-							<input
-								class="range__input"
-								type="number"
-								min="0"
-								:max="maxCarPrice"
-								:value="filter.range[1]"
-							/>
+					<div class="sort__inner">
+						<div class="sort__active">
+							{{ sorts[activeSortsIndex]?.label || sorts[activeSortsIndex]?.text }}
 						</div>
+						<Dropdown />
 					</div>
-				</div>
-			</aside>
-
-			<section class="cars">
-				<div
-					class="car"
-					v-for="car in cars"
-				>
-					<div class="car__images">
-						<img
-							class="car__image car__image--main"
-							:src="activeImagesIndex[car.id]"
-						/>
-						<img
-							class="car__image"
-							v-for="(image, counter) in Math.min(car.images, 3)"
-							:src="image"
-							@click="activeImagesIndex[car.id] = counter"
-						/>
-					</div>
-
-					<div class="car__info">
-						<div class="car__name">{{ car.name }}</div>
-						<div
-							class="car__char"
-							v-for="char in car"
-						>
-							<strong>{{ char.name }}:</strong> {{ char.value }}
-						</div>
-
-						<div class="car__price-primary">{{ car.price.primary }}</div>
-						<div class="car__price-secondary">{{ car.price.secondary }}</div>
-
-						<div class="car__btns">
-							<div class="btn btn--white">
-								{{ i18n.pages.stock.details?.[langStore.activeLang] }}
-							</div>
-							<div class="btn btn--black">
-								{{ i18n.pages.stock.sendAnApplication?.[langStore.activeLang] }}
+					<div
+						class="dropdown"
+						id="sort-dropdown"
+					>
+						<div class="dropdown__inner">
+							<div
+								class="sort__item"
+								v-for="(sort, counter) in sorts"
+								:class="{ 'sort__item--active': activeSortsIndex == counter }"
+							>
+								{{ sort.text }}
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-		</main>
-	</div>
+
+				<main class="main">
+					<aside class="filters">
+						<div
+							class="filter"
+							v-for="filter in filters"
+							:id="`filter-${filter.id}`"
+							:key="`filter-${filter.id}`"
+						>
+							<div class="filter__name">{{ filter.name }}</div>
+							<Expand />
+
+							<div
+								class="dropdown"
+								:id="`filter-${filter.id}-dropdown`"
+							>
+								<div class="dropdown__inner">
+									<template v-if="true || filter.type == 'checkbox'">
+										<label
+											class="filter__label"
+											v-for="item in filter.values"
+											@click.stop
+											:key="item.id"
+										>
+											<input
+												class="filter__input"
+												type="checkbox"
+												:id="`filter-${filter.id}-checkbox-${item.id}`"
+												@change="applyFilter(filter.id, item.id)"
+											/>
+											<div
+												class="filter__checkbox"
+												:id="`filter-${filter.id}-checkbox-${item.id}`"
+											>
+												<Checkbox></Checkbox>
+											</div>
+											{{ item.string }}
+										</label>
+									</template>
+								</div>
+							</div>
+						</div>
+
+						<div
+							class="filter"
+							:id="`filter-price`"
+							:key="`filter-price`"
+						>
+							<div class="filter__name">
+								{{ i18n.pages.stock.priceFilter?.[langStore.activeLang] }}
+							</div>
+							<Expand />
+
+							<div
+								class="dropdown"
+								:id="`filter-price-dropdown`"
+								@click.stop
+							>
+								<div class="dropdown__inner">
+									<div class="range">
+										<input
+											class="range__input"
+											type="number"
+											min="0"
+											:max="maxCarPrice"
+											v-model="price.range[0]"
+											name="priceMin"
+										/>
+										<div class="range__delimiter"></div>
+										<input
+											class="range__input"
+											type="number"
+											min="0"
+											:max="maxCarPrice"
+											v-model="price.range[1]"
+											name="priceMax"
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div
+							class="btn btn--black"
+							@click="search"
+						>
+							{{ i18n.pages.stock.applyFilters[langStore.activeLang] }}
+						</div>
+					</aside>
+
+					<section class="cars">
+						<div
+							class="car"
+							v-for="car in data"
+							:key="car.id"
+						>
+							<div class="car__images">
+								<img
+									class="car__image car__image--main"
+									v-if="activeImagesMap?.[car.id] || car?.exterior_images?.[0]"
+									:src="activeImagesMap[car.id] || car?.exterior_images?.[0]"
+								/>
+								<img
+									class="car__image"
+									v-for="(image, counter) in car.exterior_images"
+									:key="`${car.id}-image-${counter}`"
+									:src="image"
+									@click="activeImagesMap[car.id] = image"
+								/>
+							</div>
+
+							<div class="car__info">
+								<div class="car__name">{{ car.car_model_name }}</div>
+								<div
+									class="car__char"
+									v-for="char in car.data.base_features"
+									:key="`${car.id}-${char.key}`"
+								>
+									<span>
+										<strong>{{ char.key }}:</strong> {{ char.value }}
+									</span>
+								</div>
+
+								<div class="car__price">
+									{{ moneyFormat(car.price_uah) }} UAH
+
+									<div class="car__price-secondary">
+										{{ moneyFormat(car.price) }}$
+									</div>
+								</div>
+
+								<div class="car__btns">
+									<RouterLink
+										:to="`cars-in-stock/${car.id}`"
+										class="btn btn--transparent btn--transparent-black"
+									>
+										{{ i18n.pages.stock.details?.[langStore.activeLang] }}
+									</RouterLink>
+									<div class="btn btn--black">
+										{{ i18n.pages.stock.sendAnApplication?.[langStore.activeLang] }}
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</main>
+			</div>
+		</div>
+	</TransitionGroup>
 </template>
 
 <script setup>
+import Checkbox from '@/components/icons/checkbox.vue';
 import Dropdown from '@/components/icons/dropdown.vue';
 import Expand from '@/components/icons/expand.vue';
-import { computed, onMounted, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import Logo from '@/components/icons/logo.vue';
+import API from '@/composables/API';
+import addDropdown from '@/composables/dropdown';
+import { useLangStore } from '@/stores/lang';
+import { useLoaderStore } from '@/stores/loader';
+import { computed, nextTick, onMounted, ref, watch } from 'vue';
+
+const moneyFormat = (price) => new Intl.NumberFormat("ua-UA").format(price)
 
 let sorts = ref([
   {
     id: 0,
-    text: 'By novelty (newest by publication date)'
+    text: 'By novelty (newest by publication date)',
+		label: 'By novelty'
   },
   {
     id: 1,
-    text: 'By popularity (the largest number of applications)'
+    text: 'By popularity (the largest number of applications)',
+		label: 'By popularity'
   },
   {
     id: 2,
@@ -135,92 +226,315 @@ let sorts = ref([
   }
 ]),
   activeSortsIndex = ref(0),
-  filters = ref([
-    {
-      id: 0,
-      name: 'Models',
-      type: 'checkbox',
-      items: [
-        {
-          id: '0-0',
-          text: '001'
-        },
-        {
-          id: '0-1',
-          text: '007'
-        }
-      ]
-    }, {
-      id: 1,
-      name: 'Car drive type',
-      type: 'checkbox',
-      items: [
-        {
-          id: '0-0',
-          text: '001'
-        },
-        {
-          id: '0-1',
-          text: '007'
-        }
-      ]
-    }, {
-      id: 2,
-      name: 'Price, UAH',
-      type: 'range',
-      range: [0, 2_699_000]
-    }
-  ]),
-  cars = ref(),
-  // TODO analyze cars max price from cars list here
-  maxCarPrice = computed(() => 999_999_999)
+	activeImagesMap = ref({}),
+  filters = ref([]),
+	chosenFilters = ref({}),
+  data = ref(),
+	maxCarPrice = ref(null),
+	price = ref({
+		range: []
+	})
 
-onMounted(() => {
-  alert('Сторінка ще в розробці!')
-  useRouter().push('/')
+let langStore = useLangStore()
+let isLoading = computed(() => useLoaderStore().isLoading)
+
+const applyFilter = (categoryId, optionId) => {
+	console.log(categoryId, optionId)
+	if(chosenFilters.value[categoryId]) {
+		if(chosenFilters.value[categoryId].includes(optionId)) {
+			chosenFilters.value[categoryId] = chosenFilters.value[categoryId].filter(el => el !== optionId)
+			if(chosenFilters.value[categoryId].length == 0) delete chosenFilters.value[categoryId]
+		}
+		else chosenFilters.value[categoryId].push(optionId)
+	}
+	else {
+		chosenFilters.value[categoryId] = [optionId]
+	}
+	console.log(chosenFilters.value)
+}
+
+const transformFilters = () => Object.entries(chosenFilters.value).map(el => `${el[0]}=${el[1]}`).join("&")
+
+const search = async () => {
+	console.log(chosenFilters.value, transformFilters())
+  data.value = await API.CarsInStock.get(transformFilters())
+}
+
+watch(() => langStore.activeLang, async () => {
+  search();
+})
+
+onMounted(async () => {
+  useLoaderStore().isLoading = true
+  filters.value = await API.CarsInStock.getFilters();
+	data.value = await API.CarsInStock.get();
+	maxCarPrice.value = Math.max(...data.value.map(el => el.price_uah))
+	price.value.range = [0, maxCarPrice.value];
+	console.log(data.value, maxCarPrice.value)
+  useLoaderStore().isLoading = false
+	nextTick(() => {
+		addDropdown("sort", false, false);
+		filters.value.forEach(el => {
+			addDropdown(`filter-${el.id}`, false, true)
+		})
+		addDropdown(`filter-price`, false, true)
+	})
 })
 </script>
 
 <style lang="scss" scoped>
-.stock {
-  &__h {}
+.bg{
+	background-color: #f6f6f6;
 }
 
-.main {}
+.stock {
+	max-width: 1288px;
+	display: flex;
+	flex-direction: column;
+  padding: 144px 0 80px 0;
+	margin: auto;
+	background-color: #f6f6f6;
+
+  &__h {
+		font-family: Tenor Sans;
+		font-size: 56px;
+		line-height: 125%;
+	}
+}
+
+.sort {
+	position: relative;
+	max-height: unset;
+	width: fit-content;
+	margin-left: auto;
+
+	&__inner {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px;
+		padding: 12px 16px;
+		border-radius: 8px;
+		background-color: #FFFFFF;
+
+		font-weight: 500;
+		font-size: 16px;
+	}
+
+	&__item {
+		font-size: 16px;
+		cursor: pointer;
+
+		&:hover {
+			text-decoration: underline;
+		}
+
+		&--active {
+			color: #69514B;
+			text-decoration: underline;
+		}
+	}
+
+	.dropdown {
+		left: unset;
+		right: 0;
+		width: max-content;
+		border-radius: 8px;
+
+		&__inner {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			padding: 16px;
+			background-color: #fff;
+			box-shadow: 4px 4px 12px 2px #4444440D;
+		}
+	}
+}
+
+.main {
+	display: grid;
+	grid-template-columns: max(10%, 308px) auto;
+	gap: 20px;
+	margin-top: 12px;
+}
 
 .filter {
-  &__s {}
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	justify-content: space-between;
+	align-items: center;
+	padding: 24px 0;
+	cursor: pointer;
 
-  &__name {}
+	&:has(+&) {
+		border-bottom: 1px solid #000;
+	}
 
-  &__checkbox {}
+  &s {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+  &__name {
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 120%;
+	}
+
+	.dropdown {
+		top: unset;
+		position: relative;
+		grid-column: 1 / span 2;
+
+		&__inner {
+			padding-top: 16px;
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+	}
+
+	&__label {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+		font-size: 16px;
+		line-height: 100%;
+		color: #2b2b2b;
+		cursor: pointer;
+	}
+
+	&__input {
+		display: none;
+
+		&:checked + .filter__checkbox svg {
+			opacity: 1;
+		}
+	}
+
+  &__checkbox {
+		width: 20px;
+		height: 20px;
+		aspect-ratio: 1/1;
+		border: 1px solid #000;
+		border-radius: 4px;
+
+		svg {
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: .2s ease-in-out;
+		}
+	}
 
   .range {
-    &__input {}
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 6px;
 
-    &__delimiter {}
+    &__input {
+			width: 100%;
+			padding: 10px 12px;
+			border: 1px solid #DDDDDD;
+			font-size: 14px;
+			border-radius: 8px;
+		}
+
+    &__delimiter {
+			flex-shrink: 0;
+			width: 20px;
+			height: 1px;
+			background-color: #DDDDDD;
+		}
   }
 }
 
 .car {
-  &__s {}
+	overflow: hidden;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	border-radius: 8px;
+	background-color: #fff;
 
-  &__images {
-    &--main {}
+  &s {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+	}
+
+  &__image {
+		width: 100%;
+		height: 137px;
+		aspect-ratio: 169/137;
+		object-fit: cover;
+
+		&s {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
+			height: fit-content;
+		}
+
+    &--main {
+			grid-column: 1 / span 3;
+			aspect-ratio: 525/301;
+			height: 301px;
+		}
   }
 
-  &__info {}
+  &__info {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		padding: 28px 20px;
+	}
 
-  &__name {}
+  &__name {
+		font-family: Tenor Sans;
+		font-weight: 400;
+		font-size: 40px;
+		line-height: 125%;
+	}
 
-  &__char {}
+  &__char {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 120%;
+
+		strong {
+			font-weight: 500;
+		}
+	}
 
   &__price {
-    &-primary {}
+		margin-top: 8px;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 120%;
 
-    &-secondary {}
+    &-secondary {
+			font-weight: 400;
+			font-size: 16px;
+			color: #9DA2A5;
+		}
   }
 
-  &__btns {}
+  &__btns {
+		margin-top: 24px;
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+	}
 }
 </style>
