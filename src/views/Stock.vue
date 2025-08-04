@@ -145,7 +145,7 @@
 								/>
 								<img
 									class="car__image"
-									v-for="(image, counter) in car.exterior_images"
+									v-for="(image, counter) in car.exterior_images.slice(0,3)"
 									:key="`${car.id}-image-${counter}`"
 									:src="image"
 									@click="activeImagesMap[car.id] = image"
