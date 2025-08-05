@@ -163,6 +163,18 @@
       "filters": {
         "en": "Filters",
         "uk": "Фільтри"
+      },
+      "sort": {
+        "en": "Sort",
+        "uk": "Сортування"
+      },
+      "notFound": {
+        "en": "Unfortunately, nothing was found for your query",
+        "uk": "Нажаль, за вашим запитом нічого не знайдено"
+      },
+      "otherOptions": {
+        "en": "Try using other filtering options and create your own Zeekr using the configurator",
+        "uk": "Спробуйте інші фільтри та створіть свій Zeekr в конфігураторі"
       }
     }
   },

@@ -21,7 +21,10 @@
 						class="sort"
 						id="sort"
 					>
-						<div class="sort__inner">
+						<div
+							class="sort__inner"
+							@click="mobileSortOpened = true"
+						>
 							<Sort class="sort__icon" />
 							<div class="sort__active">
 								{{ sorts[activeSortsIndex]?.label || sorts[activeSortsIndex]?.text }}
@@ -31,12 +34,20 @@
 						<div
 							class="dropdown"
 							id="sort-dropdown"
+							:class="{'dropdown--opened': mobileSortOpened}"
+							@click="mobileSortOpened = false"
 						>
 							<div class="dropdown__inner">
+								<div class="dropdown__h--mobile">
+									{{ i18n.pages.stock.sort?.[langStore.activeLang] }}
+									<Cross @click="mobileSortOpened = false" />
+								</div>
+
 								<div
 									class="sort__item"
 									v-for="(sort, counter) in sorts"
 									:class="{ 'sort__item--active': activeSortsIndex == counter }"
+									@click="activeSortsIndex = counter; mobileSortOpened = false"
 								>
 									{{ sort.text }}
 								</div>
@@ -55,6 +66,28 @@
 							v-if="Object.keys(chosenFilters)?.length"
 						>
 							{{ Object.keys(chosenFilters)?.length }}
+						</div>
+					</div>
+
+					<div
+						v-if="Object.keys(chosenFilters).length"
+						class="list"
+					>
+						<div
+							v-for="filter in Object.entries(chosenFilters)"
+							class="list__category"
+						>
+							{{ filters.find(el => el.id == filter[0]).name }}:
+							<div
+								v-for="value in filter[1]"
+								class="list__value"
+							>
+								{{ filters.find(el => el.id == filter[0]).values.find(el => el.id == value)?.string }}
+							</div>
+							<Cross
+								class="list__cross"
+								@click="delete chosenFilters[filter[0]]"
+							/>
 						</div>
 					</div>
 
@@ -97,7 +130,7 @@
 												class="filter__checkbox"
 												:id="`filter-${filter.id}-checkbox-${item.id}`"
 											>
-												<Checkbox></Checkbox>
+												<Checkbox />
 											</div>
 											{{ item.string }}
 										</label>
@@ -153,7 +186,10 @@
 						</div>
 					</aside>
 
-					<section class="cars">
+					<section
+						class="cars"
+						v-if="data?.length"
+					>
 						<div
 							class="car"
 							v-for="car in data"
@@ -208,6 +244,23 @@
 							</div>
 						</div>
 					</section>
+					<div
+						v-else
+						class="notFound"
+					>
+						<div class="notFound__h">
+							{{ i18n.pages.stock.notFound[langStore.activeLang] }}
+						</div>
+						<div class="notFound__text">
+							{{ i18n.pages.stock.otherOptions[langStore.activeLang] }}
+						</div>
+						<div
+							class="btn btn--orange"
+							v-if="false"
+						>
+							Configurator
+						</div>
+					</div>
 				</main>
 			</div>
 		</div>
@@ -259,7 +312,8 @@ let sorts = ref([
 	price = ref({
 		range: []
 	}),
-	mobileFiltersOpened = ref(false)
+	mobileFiltersOpened = ref(false),
+	mobileSortOpened = ref(false)
 
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
@@ -373,6 +427,10 @@ onMounted(async () => {
 		}
 	}
 
+	&__checkbox {
+		display: none;
+	}
+
 	.dropdown {
 		left: unset;
 		right: 0;
@@ -387,6 +445,10 @@ onMounted(async () => {
 			padding: 16px;
 			background-color: #fff;
 			box-shadow: 4px 4px 12px 2px #4444440D;
+		}
+
+		&__h--mobile {
+			display: none;
 		}
 	}
 }
@@ -495,6 +557,10 @@ onMounted(async () => {
   }
 }
 
+.list {
+	display: none;
+}
+
 .car {
 	overflow: hidden;
 	width: 100%;
@@ -578,6 +644,32 @@ onMounted(async () => {
 	}
 }
 
+.notFound {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	margin-top: 24px;
+
+	&__h {
+		font-family: Tenor Sans;
+		font-size: 22px;
+		line-height: 125%;
+	}
+
+	&__text {
+		font-size: 14px;
+		line-height: 120%;
+	}
+
+	.btn {
+		margin-top: 12px;
+	}
+}
+
 @media screen and (max-width: 876px) {
 	.stock {
 		max-width: unset;
@@ -615,6 +707,57 @@ onMounted(async () => {
 
 		&__active {
 			margin-right: auto;
+		}
+
+		&__checkbox {
+			display: block;
+		}
+
+		.dropdown {
+			z-index: -1;
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #00000066;
+			transition: .3s ease-in-out;
+			max-height: unset;
+			right: unset;
+			border-radius: unset;
+			top: unset;
+			opacity: 0;
+
+			&--opened {
+				z-index: 1000000;
+				opacity: 1;
+
+				.dropdown__inner {
+					bottom: 0;
+				}
+			}
+
+			&__inner {
+				position: absolute;
+				height: fit-content;
+				margin-top: auto;
+				border-radius: 8px 8px 0 0;
+				bottom: -100%;
+				transition: .5s ease-in-out;
+			}
+
+			&__h--mobile {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				width: 100%;
+				background-color: #fff;
+
+				font-weight: 500;
+				font-size: 20px;
+				line-height: 140%;
+			}
 		}
 	}
 
@@ -696,12 +839,55 @@ onMounted(async () => {
 		}
 	}
 
+	.list {
+		grid-column: 1 / span 2;
+		grid-row: 2;
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 16px;
+
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 1;
+
+		&__category {
+			position: relative;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 1ch;
+			padding: 10px 12px;
+			border-radius: 6px;
+			background-color: #EAE8E2;
+			// for cross
+			padding-right: 40px;
+		}
+
+		&__value {
+			&:not(&:last-of-type)::after {
+				content: ',';
+			}
+		}
+
+		&__cross {
+			position: absolute;
+			right: 10px;
+			top: 5px;
+			margin-left: auto;
+		}
+	}
+
 	.car {
 		flex-direction: column;
 
 		&s {
 			grid-column: 1 / span 2;
-			grid-row: 2;
+			grid-row: 3;
 			gap: 24px;
 		}
 
@@ -746,6 +932,15 @@ onMounted(async () => {
 				width: auto;
 			}
 		}
+	}
+
+	.notFound {
+		grid-column: 1 / span 2;
+		padding: 16px 42px;
+		margin-top: unset;
+		border-radius: 6px;
+		background-color: #fff;
+		text-align: center;
 	}
 }
 </style>
