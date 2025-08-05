@@ -159,6 +159,10 @@
       "applyFilters": {
         "en": "Apply filters",
         "uk": "Застосувати фільтри"
+      },
+      "filters": {
+        "en": "Filters",
+        "uk": "Фільтри"
       }
     }
   },

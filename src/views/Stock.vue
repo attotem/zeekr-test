@@ -16,34 +16,56 @@
 					{{ i18n.pages.stock.carsInStock?.[langStore.activeLang] }}
 				</div>
 
-				<div
-					class="sort"
-					id="sort"
-				>
-					<div class="sort__inner">
-						<div class="sort__active">
-							{{ sorts[activeSortsIndex]?.label || sorts[activeSortsIndex]?.text }}
-						</div>
-						<Dropdown />
-					</div>
+				<main class="main">
 					<div
-						class="dropdown"
-						id="sort-dropdown"
+						class="sort"
+						id="sort"
 					>
-						<div class="dropdown__inner">
-							<div
-								class="sort__item"
-								v-for="(sort, counter) in sorts"
-								:class="{ 'sort__item--active': activeSortsIndex == counter }"
-							>
-								{{ sort.text }}
+						<div class="sort__inner">
+							<Sort class="sort__icon" />
+							<div class="sort__active">
+								{{ sorts[activeSortsIndex]?.label || sorts[activeSortsIndex]?.text }}
+							</div>
+							<Dropdown />
+						</div>
+						<div
+							class="dropdown"
+							id="sort-dropdown"
+						>
+							<div class="dropdown__inner">
+								<div
+									class="sort__item"
+									v-for="(sort, counter) in sorts"
+									:class="{ 'sort__item--active': activeSortsIndex == counter }"
+								>
+									{{ sort.text }}
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<main class="main">
-					<aside class="filters">
+					<div
+						class="filters--mobile"
+						@click="mobileFiltersOpened = true"
+					>
+						<Filters />
+						{{ i18n.pages.stock.filters?.[langStore.activeLang] }}
+						<div
+							class="filters__count"
+							v-if="Object.keys(chosenFilters)?.length"
+						>
+							{{ Object.keys(chosenFilters)?.length }}
+						</div>
+					</div>
+
+					<aside
+						class="filters"
+						:class="{'filters--opened': mobileFiltersOpened}"
+					>
+						<div class="filters__h--mobile">
+							{{ i18n.pages.stock.filters?.[langStore.activeLang] }}
+							<Cross @click="mobileFiltersOpened = false" />
+						</div>
 						<div
 							class="filter"
 							v-for="filter in filters"
@@ -125,7 +147,7 @@
 
 						<div
 							class="btn btn--black"
-							@click="search"
+							@click="mobileFiltersOpened = false; search()"
 						>
 							{{ i18n.pages.stock.applyFilters[langStore.activeLang] }}
 						</div>
@@ -197,11 +219,14 @@ import Checkbox from '@/components/icons/checkbox.vue';
 import Dropdown from '@/components/icons/dropdown.vue';
 import Expand from '@/components/icons/expand.vue';
 import Logo from '@/components/icons/logo.vue';
+import Filters from '@/components/icons/filters.vue';
 import API from '@/composables/API';
 import addDropdown from '@/composables/dropdown';
 import { useLangStore } from '@/stores/lang';
 import { useLoaderStore } from '@/stores/loader';
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
+import Sort from '@/components/icons/sort.vue';
+import Cross from '@/components/icons/cross.vue';
 
 const moneyFormat = (price) => new Intl.NumberFormat("ua-UA").format(price)
 
@@ -233,7 +258,8 @@ let sorts = ref([
 	maxCarPrice = ref(null),
 	price = ref({
 		range: []
-	})
+	}),
+	mobileFiltersOpened = ref(false)
 
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
@@ -302,7 +328,14 @@ onMounted(async () => {
 	}
 }
 
+.main {
+	display: grid;
+	grid-template-columns: max(10%, 308px) auto 198px;
+	gap: 12px 20px;
+}
+
 .sort {
+	grid-column: 3;
 	position: relative;
 	max-height: unset;
 	width: fit-content;
@@ -320,6 +353,10 @@ onMounted(async () => {
 
 		font-weight: 500;
 		font-size: 16px;
+	}
+
+	&__icon {
+		display: none;
 	}
 
 	&__item {
@@ -354,14 +391,8 @@ onMounted(async () => {
 	}
 }
 
-.main {
-	display: grid;
-	grid-template-columns: max(10%, 308px) auto;
-	gap: 20px;
-	margin-top: 12px;
-}
-
 .filter {
+	grid-column: 1;
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr auto;
@@ -378,6 +409,14 @@ onMounted(async () => {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
+
+		&--mobile {
+			display: none;
+		}
+
+		&__h--mobile {
+			display: none;
+		}
 	}
 
   &__name {
@@ -468,6 +507,7 @@ onMounted(async () => {
 		display: flex;
 		flex-direction: column;
 		gap: 32px;
+		grid-column: 2 / span 2;
 	}
 
   &__image {
@@ -535,6 +575,177 @@ onMounted(async () => {
 		display: flex;
 		flex-direction: row;
 		gap: 20px;
+	}
+}
+
+@media screen and (max-width: 876px) {
+	.stock {
+		max-width: unset;
+		width: 100%;
+		padding: 96px 16px;
+		margin: unset;
+
+		&__h {
+			font-size: 42px;
+		}
+	}
+
+	.main {
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+	}
+
+	.sort {
+		grid-column: 2;
+		grid-row: 1;
+		width: 100%;
+
+		&__inner {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			gap: 4px;
+			font-weight: 400;
+		}
+
+		&__icon {
+			display: block;
+		}
+
+		&__active {
+			margin-right: auto;
+		}
+	}
+
+	.filter {
+		padding: 16px 0;
+		margin: 0 16px;
+
+		&s {
+			z-index: 10000;
+			position: fixed;
+			left: 0;
+			bottom: -100%;
+			width: 100dvw;
+			height: 100dvh;
+			background-color: #f6f6f6;
+			transition: .5s ease-in-out;
+
+			&--mobile {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 4px;
+				padding: 8px;
+				border-radius: 8px;
+				background-color: #fff;
+			}
+
+			&--opened {
+				bottom: 0;
+			}
+
+			&__count {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 16px;
+				height: 16px;
+				padding: 2px 4px;
+				border-radius: 100%;
+				background-color: #F75400;
+				font-size: 10px;
+				line-height: 1;
+				color: #fff;
+			}
+
+			&__h--mobile {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				width: 100%;
+				height: 64px;
+				padding: 16px;
+				background-color: #fff;
+
+				font-weight: 500;
+				font-size: 20px;
+				line-height: 140%;
+			}
+
+			.btn {
+				width: auto;
+				margin: 0 16px;
+			}
+		}
+
+		&__name {
+			font-size: 16px;
+		}
+
+		.dropdown {
+			gap: 10px;
+		}
+
+		&__label {
+			font-size: 14px;
+		}
+	}
+
+	.car {
+		flex-direction: column;
+
+		&s {
+			grid-column: 1 / span 2;
+			grid-row: 2;
+			gap: 24px;
+		}
+
+		&__image {
+			aspect-ratio: 112/65;
+			height: 65px;
+
+			&s {
+				gap: 5px;
+			}
+
+			&--main {
+				aspect-ratio: 345/201;
+				height: 201px;
+			}
+		}
+
+		&__info {
+			padding: 16px;
+			gap: 6px;
+		}
+
+		&__name {
+			margin-bottom: 6px;
+		}
+
+		&__char {
+			gap: 8px;
+			font-size: 14px;
+		}
+
+		&__price {
+			margin-top: 10px;
+		}
+
+		&__btns {
+			margin-top: 18px;
+			gap: 16px;
+
+			.btn {
+				min-width: 128px;
+				width: auto;
+			}
+		}
 	}
 }
 </style>

@@ -248,6 +248,10 @@ body {
   gap: 8px;
 }
 
+svg {
+  flex-shrink: 0;
+}
+
 .map {
   position: relative;
   width: 100%;
