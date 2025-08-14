@@ -125,10 +125,12 @@ onMounted(async () => {
       color: #000;
       transition: .3s ease-in-out;
 
+      /*
       &:hover {
         color: #69514B;
         text-decoration: underline;
       }
+      */
     }
   }
 }
