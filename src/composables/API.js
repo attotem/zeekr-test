@@ -79,19 +79,17 @@ class News {
 	}
 
 	async getById(id, lang_code = useLangStore().activeLang) {
-		if (this.id == null || useLangStore().activeLang !== lastLang) {
-			let resp = await fetch(
-				`${path}/get_detailed_news_page/?lang_code=${lang_code}&id=${id}`,
-				{
-					headers: {
-						accept: "application/json",
-					},
-				}
-			);
-			let body = await resp.json();
-			this.id = body;
-			lastLang = useLangStore().activeLang;
-		}
+		let resp = await fetch(
+			`${path}/get_detailed_news_page/?lang_code=${lang_code}&id=${id}`,
+			{
+				headers: {
+					accept: "application/json",
+				},
+			}
+		);
+		let body = await resp.json();
+		this.id = body;
+		lastLang = useLangStore().activeLang;
 
 		return this.id;
 	}

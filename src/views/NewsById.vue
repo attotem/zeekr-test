@@ -38,10 +38,10 @@
 						v-for="article in allNews.results"
 						:key="article.id"
 					>
-						<RouterLink
+						<a
 							class="slide"
 							v-if="article.id != $route.params.id"
-							:to="`/news/${article.id}`"
+							:href="`/news/${article.id}`"
 						>
 							<img
 								class="slide__image"
@@ -54,7 +54,7 @@
 							<div class="slide__h">
 								{{ article.banner_title }}
 							</div>
-						</RouterLink>
+						</a>
 					</template>
 				</Slider>
 			</div>
@@ -83,6 +83,7 @@ watch(() => langStore.activeLang, async () => {
 })
 
 onMounted(async () => {
+	console.log(1);
 	useLoaderStore().isLoading = true;
   data.value = await API.News.getById(route.params.id, route.params.lang_code)
 	useLoaderStore().isLoading = false;

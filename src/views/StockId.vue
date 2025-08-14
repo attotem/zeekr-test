@@ -12,10 +12,13 @@
 			v-else-if="data"
 		>
 			<div class="page">
-				<div class="back">
+				<RouterLink
+					to="/cars-in-stock"
+					class="back"
+				>
 					<Back />
 					Назад
-				</div>
+				</RouterLink>
 
 				<main class="main">
 					<Slider
@@ -158,10 +161,10 @@
 					:slider-type="2"
 					:count="data.similar_cars?.length"
 				>
-					<RouterLink
+					<a
 						class="slide"
 						v-for="article in data.similar_cars"
-						:to="`${article.id}`"
+						:href="`${article.id}`"
 						:key="article.id"
 					>
 						<img
@@ -176,7 +179,7 @@
 								{{ moneyFormat(article.price) }} $
 							</div>
 						</div>
-					</RouterLink>
+					</a>
 				</Slider>
 			</div>
 		</div>

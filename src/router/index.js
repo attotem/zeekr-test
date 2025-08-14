@@ -150,8 +150,4 @@ const router = createRouter({
 	],
 });
 
-router.beforeEach(() => {
-	useLoaderStore().isLoading = true;
-});
-
 export default router;
