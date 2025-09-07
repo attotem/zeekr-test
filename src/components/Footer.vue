@@ -23,6 +23,8 @@
 					<component :is="item.component" />
 				</a>
 			</div>
+
+
 		</div>
 
 		<div
@@ -163,6 +165,54 @@ onMounted(async () => {
     }
   }
 
+  .developer {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #6f6f6f;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      position: relative;
+      transition: color .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &__logo {
+      height: 16px;
+      width: auto;
+      display: block;
+    }
+
+    a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      opacity: .35;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    a:hover {
+      color: #000;
+    }
+
+    a:hover::after {
+      transform: scaleX(1);
+      opacity: .6;
+    }
+  }
+
   &__second {
     display: flex;
     flex-direction: row;
@@ -224,6 +274,11 @@ onMounted(async () => {
         font-size: 14px;
         line-height: 1.25;
       }
+    }
+
+    .developer {
+      font-size: 12px;
+      margin-top: 8px;
     }
 
     &__second {

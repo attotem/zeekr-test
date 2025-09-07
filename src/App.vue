@@ -5,6 +5,14 @@
 	<Chat />
 	<Footer />
 	<Legal />
+
+	<div class="developer-global">
+		<a href="https://t.me/dmytro_obka" target="_blank" rel="noopener noreferrer">
+      <span>developed by </span>
+			<img src="@/assets/img/leetsoft_logo.svg" alt="LeetSoft logo" class="developer-global__logo" />
+			<span>LeetSoft</span>
+		</a>
+	</div>
 </template>
 
 <script setup>
@@ -82,6 +90,54 @@ body {
   overflow-x: hidden;
   width: 100%;
   height: 100%;
+}
+
+.developer-global {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 16px 20px;
+  background: #000;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #e0e0e0;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    transition: color .2s ease;
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    opacity: .35;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+
+  a:hover::after {
+    transform: scaleX(1);
+    opacity: .6;
+  }
+
+  &__logo {
+    height: 16px;
+    width: auto;
+  }
 }
 
 .btn {
