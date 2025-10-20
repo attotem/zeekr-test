@@ -67,25 +67,32 @@
 			</RouterLink>
 		</div>
 
-		<div
-			class="lang"
-			id="langs"
-		>
-			{{ langStore.activeLang }}
-			<Dropdown />
+		<div class="actions">
+			<a class="phone" href="tel:+380731329056">
+				<Phone />
+				<span>+38 073 132 90 56</span>
+			</a>
 
 			<div
-				class="dropdown dropdown--langs"
-				id="langs-dropdown"
+				class="lang"
+				id="langs"
 			>
-				<div class="dropdown__inner">
-					<div
-						v-for="lang in langStore.langs"
-						class="dropdown__item"
-						:class="{ 'dropdown__item--active': lang == langStore.activeLang }"
-						@click="langStore.changeLang(lang); sessionStorage.setItem('lang', lang);"
-					>
-						{{ lang }}
+				{{ langStore.activeLang }}
+				<Dropdown />
+
+				<div
+					class="dropdown dropdown--langs"
+					id="langs-dropdown"
+				>
+					<div class="dropdown__inner">
+						<div
+							v-for="lang in langStore.langs"
+							class="dropdown__item"
+							:class="{ 'dropdown__item--active': lang == langStore.activeLang }"
+							@click="langStore.changeLang(lang); sessionStorage.setItem('lang', lang);"
+						>
+							{{ lang }}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -139,6 +146,11 @@
 				</div>
 			</div>
 
+			<a class="phone phone--mobile" href="tel:+380731329056">
+				<Phone />
+				<span>+38 073 132 90 56</span>
+			</a>
+
 			<div class="langs">
 				<div
 					class="lang"
@@ -163,6 +175,7 @@ import API from "@/composables/API";
 import Burger from "./icons/burger.vue";
 import Expand from "./icons/expand.vue";
 import addDropdown from "@/composables/dropdown";
+import Phone from "./icons/phone.vue";
 
 let langStore = useLangStore()
 
@@ -400,6 +413,30 @@ onMounted(async () => {
   }
 }
 
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: currentColor;
+  transition: .3s;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  span {
+    font-weight: 400;
+  }
+}
+
 #models {
   position: static;
 }
@@ -600,6 +637,14 @@ onMounted(async () => {
           grid-template-columns: auto 1fr;
         }
       }
+    }
+
+    .phone--mobile {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 12px 16px 0;
+      font-size: 16px;
     }
 
     .dropdown {

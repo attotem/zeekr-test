@@ -62,8 +62,6 @@ import Logo from './icons/logo.vue';
 import { useLangStore } from '@/stores/lang';
 import Instagram from './icons/socials/instagram.vue';
 import Facebook from './icons/socials/facebook.vue';
-import Xtwitter from './icons/socials/xtwitter.vue';
-import Linkedin from './icons/socials/linkedin.vue';
 import Dropdown from './icons/dropdown.vue';
 import addDropdown from '@/composables/dropdown';
 import API from '@/composables/API';
@@ -86,13 +84,7 @@ let socials = ref([
   }, {
     href: 'https://www.facebook.com/people/Zeekr-Ukraine/61565869926215/',
     component: markRaw(Facebook)
-  }, {
-    href: '',
-    component: markRaw(Xtwitter)
-  }, {
-    href: '',
-    component: markRaw(Linkedin)
-  }
+  }, 
 ])
 
 let data = ref()

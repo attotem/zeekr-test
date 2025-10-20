@@ -519,8 +519,8 @@ class CarsInStock {
 
 class Mail {
 	/**
-	 * https://docs.google.com/document/d/1LEm10dwbKTMEciKYhXuH5HHV75vqz65mZiaIk0y2e-o/edit?tab=t.0
-	 * @param {*} page 'test_drive' | 'order' | 'signup_for_service' | 'financial_service'
+
+	* @param {*} page 'test_drive' | 'order' | 'signup_for_service' | 'financial_service'
 	 */
 	async send({ type, name, phone, page }) {
 		let resp = await fetch(`${path}/send_email/`, {
