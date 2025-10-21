@@ -7,7 +7,7 @@
 	<Legal />
 
 	<div class="developer-global">
-		<a href="https://t.me/dmytro_obka" target="_blank" rel="noopener noreferrer">
+		<a href="https://leetsoft.dev/" target="_blank" rel="noopener noreferrer">
       <span>Developed by </span>
 			<img src="@/assets/img/leetsoft_logo.svg" alt="LeetSoft logo" class="developer-global__logo" />
 			<span>LeetSoft</span>
