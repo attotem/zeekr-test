@@ -520,24 +520,31 @@ class CarsInStock {
 class Mail {
 	/**
 
-	* @param {*} page 'test_drive' | 'order' | 'signup_for_service' | 'financial_service'
+	* @param {*} page 'test_drive' | 'order' | 'signup_for_service' | 'financial_service' | 'event_registration'
 	 */
-	async send({ type, name, phone, page }) {
+	async send({ type, name, phone, page, email, city, isZeekrOwner }) {
+		let body = {
+			email_type: type,
+			client_name: name,
+			client_phone: phone,
+			popup_page: page,
+		};
+
+		// Добавляем дополнительные поля если они есть
+		if (email) body.client_email = email;
+		if (city) body.client_city = city;
+		if (isZeekrOwner !== undefined) body.is_zeekr_owner = isZeekrOwner;
+
 		let resp = await fetch(`${path}/send_email/`, {
 			method: "POST",
 			headers: {
 				accept: "application/json",
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({
-				email_type: type,
-				client_name: name,
-				client_phone: phone,
-				popup_page: page,
-			}),
+			body: JSON.stringify(body),
 		});
-		let body = await resp.json();
-		return body;
+		let responseBody = await resp.json();
+		return responseBody;
 	}
 }
 

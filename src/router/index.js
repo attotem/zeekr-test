@@ -22,6 +22,7 @@ import Accessories from "@/views/Accessories.vue";
 import News from "@/views/News.vue";
 import NewsById from "@/views/NewsById.vue";
 import StockId from "@/views/StockId.vue";
+import PresentationZeekr9x from "@/views/PresentationZeekr9x.vue";
 import { useLoaderStore } from "@/stores/loader";
 
 const router = createRouter({
@@ -146,6 +147,11 @@ const router = createRouter({
 			path: "/cars-in-stock/:id",
 			name: "stockId",
 			component: StockId,
+		},
+		{
+			path: "/presentation-zeekr-9x-test-test",
+			name: "presentation-zeekr-9x",
+			component: PresentationZeekr9x,
 		},
 	],
 });

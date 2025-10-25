@@ -6,6 +6,7 @@ import VueGoogleMaps from "@fawmi/vue-google-maps";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "fullpage.js/dist/fullpage.min.css";
 
 (async () => {
 	const resp = await fetch(`/i18n.json`);
