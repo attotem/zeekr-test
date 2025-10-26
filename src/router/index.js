@@ -149,7 +149,7 @@ const router = createRouter({
 			component: StockId,
 		},
 		{
-			path: "/presentation-zeekr-9x-test-test",
+			path: "/presentation-9x",
 			name: "presentation-zeekr-9x",
 			component: PresentationZeekr9x,
 		},

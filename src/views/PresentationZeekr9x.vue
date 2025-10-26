@@ -50,6 +50,7 @@
 				<article
 					class="section presentation-banner"
 					:style="{ backgroundImage: `url(${backgroundImage})` }"
+					loading="eager"
 				>
 				<div class="presentation-banner__content">
 					<h1 class="article-1__h article-1__h--1">
@@ -67,6 +68,7 @@
 				<article 
 					class="section car-showcase"
 					:style="{ backgroundImage: `url(${carImage})` }"
+					loading="lazy"
 				>
 				<div class="car-showcase__overlay"></div>
 				<div class="car-showcase__content">
@@ -80,6 +82,7 @@
 				<article 
 					class="section program-section"
 					:style="{ backgroundImage: `url(${programImage})` }"
+					loading="lazy"
 				>
 				<div class="program-section__overlay"></div>
 				<div class="program-section__content">
@@ -134,6 +137,7 @@
 				<article 
 					class="section video-section"
 					:style="{ backgroundImage: `url(${videoImage})` }"
+					loading="lazy"
 				>
 				<div class="video-section__overlay"></div>
 				<video 
@@ -143,7 +147,7 @@
 					muted
 					loop
 					playsinline
-					preload="metadata"
+					preload="none"
 					@loadeddata="onVideoLoaded"
 					@error="onVideoError"
 				>
@@ -160,6 +164,7 @@
 				<article 
 					class="section social-section"
 					:style="{ backgroundImage: `url(${socialBackground})` }"
+					loading="lazy"
 				>
 				<div class="social-section__overlay"></div>
 				<div class="social-section__content">
@@ -167,7 +172,7 @@
 						<h2 class="guests-section__title">СПЕЦІАЛЬНО ЗАПРОШЕНІ ГОСТІ</h2>
 						<div class="guests-section__list">
 							<div class="guest-item" v-for="n in 6" :key="n">
-								<img :src="guestsImage" alt="Guest" class="guest-item__image" />
+								<img :src="guestsImage" alt="Guest" class="guest-item__image" loading="lazy" />
 							</div>
 						</div>
 					</div>
@@ -186,13 +191,13 @@
 						<div class="social-links-section__list">
 							<a href="https://www.instagram.com/zeekr.ukraine" target="_blank" rel="noopener noreferrer" class="social-link social-link--instagram">
 								<div class="social-link__icon">
-									<img :src="instagramIcon" alt="Instagram" />
+									<img :src="instagramIcon" alt="Instagram" loading="lazy" />
 								</div>
 								<div class="social-link__text">zeekr.ukraine</div>
 							</a>
 							<a href="https://www.facebook.com/people/Zeekr-Ukraine/61565869926215/" target="_blank" rel="noopener noreferrer" class="social-link social-link--facebook">
 								<div class="social-link__icon">
-									<img :src="facebookIcon" alt="Facebook" />
+									<img :src="facebookIcon" alt="Facebook" loading="lazy" />
 								</div>
 								<div class="social-link__text">Zeekr Ukraine</div>
 							</a>
@@ -305,6 +310,37 @@ const onVideoLoaded = () => {
 	isVideoLoaded.value = true;
 }
 
+const preloadNextImages = () => {
+	if (screenWidth.value <= 768) {
+		const nextImages = [car375, program375, video375, social375];
+		nextImages.forEach(img => {
+			const link = document.createElement('link');
+			link.rel = 'preload';
+			link.as = 'image';
+			link.href = img;
+			document.head.appendChild(link);
+		});
+	} else if (screenWidth.value <= 1200) {
+		const nextImages = [car1080, program1080, video1080, social1080];
+		nextImages.forEach(img => {
+			const link = document.createElement('link');
+			link.rel = 'preload';
+			link.as = 'image';
+			link.href = img;
+			document.head.appendChild(link);
+		});
+	} else {
+		const nextImages = [car2048, program2048, video2048, social2048];
+		nextImages.forEach(img => {
+			const link = document.createElement('link');
+			link.rel = 'preload';
+			link.as = 'image';
+			link.href = img;
+			document.head.appendChild(link);
+		});
+	}
+}
+
 const onVideoError = () => {
 	console.log('Video failed to load, keeping background image');
 }
@@ -329,6 +365,10 @@ onMounted(async () => {
 	if (isMobile.value) {
 		window.addEventListener('scroll', handleMobileScroll, { passive: true });
 	}
+	
+	setTimeout(() => {
+		preloadNextImages();
+	}, 2000);
 	
 	useLoaderStore().isLoading = true;
 	setTimeout(() => {

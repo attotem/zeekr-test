@@ -1057,7 +1057,6 @@ ul {
   }
 }
 
-// Скрытие ватермарки fullpage.js
 .fp-watermark {
   display: none !important;
 }
