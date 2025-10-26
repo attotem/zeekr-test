@@ -46,7 +46,7 @@
 			</div>
 			</div>
 			
-			<div id="fullpage">
+			<div id="fullpage" :class="{ 'mobile-scroll': isMobile }">
 				<article
 					class="section presentation-banner"
 					:style="{ backgroundImage: `url(${backgroundImage})` }"
@@ -137,6 +137,7 @@
 				>
 				<div class="video-section__overlay"></div>
 				<video 
+					v-if="!isMobile"
 					:class="['video-section__background-video', { 'loaded': isVideoLoaded }]"
 					autoplay
 					muted
@@ -171,14 +172,14 @@
 						</div>
 					</div>
 
-					<div class="partners-section">
+					<!-- <div class="partners-section">
 						<h2 class="partners-section__title">ПАРТНЕРИ ZEEKR UKRAINE БЛОК</h2>
 						<div class="partners-section__list">
 							<div class="partner-item" v-for="n in 4" :key="n">
 								<img :src="partnerLogo" alt="Partner" class="partner-item__logo" />
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="social-links-section">
 						<h2 class="social-links-section__title">ПОСИЛАННЯ НА СОЦМЕРЕЖІ</h2>
@@ -218,13 +219,27 @@ import Logo from "@/components/icons/logo.vue";
 import { useLoaderStore } from "@/stores/loader";
 import { computed, onMounted, ref, onUnmounted } from "vue";
 import fullpage from 'fullpage.js';
-import backgroundImage from "@/assets/img/9x/B66A1339.jpg";
-import carImage from "@/assets/img/9x/9X-21_ZOLCuP0.original.jpg";
-import programImage from "@/assets/img/9x/B66A0753.jpg";
-import videoImage from "@/assets/img/9x/希拉夫.jpg";
+
+import banner2048 from "@/assets/img/9x/2048x1440/1.png";
+import car2048 from "@/assets/img/9x/2048x1440/2.png";
+import program2048 from "@/assets/img/9x/2048x1440/3.png";
+import video2048 from "@/assets/img/9x/2048x1440/4.png";
+import social2048 from "@/assets/img/9x/2048x1440/5.png";
+
+import banner1080 from "@/assets/img/9x/1080x836/1.png";
+import car1080 from "@/assets/img/9x/1080x836/2.png";
+import program1080 from "@/assets/img/9x/1080x836/3.png";
+import video1080 from "@/assets/img/9x/1080x836/4.png";
+import social1080 from "@/assets/img/9x/1080x836/5.png";
+
+import banner375 from "@/assets/img/9x/375x700/1.png";
+import car375 from "@/assets/img/9x/375x700/2.png";
+import program375 from "@/assets/img/9x/375x700/3.png";
+import video375 from "@/assets/img/9x/375x700/4.png";
+import social375 from "@/assets/img/9x/375x700/5.png";
+
 import guestsImage from "@/assets/img/9x/images.jpg";
 import partnerLogo from "@/assets/img/9x/_logo_white .png";
-import socialBackground from "@/assets/img/9x/1W9A0045-2.jpg";
 import instagramIcon from "@/assets/img/9x/Instagram_white.svg";
 import facebookIcon from "@/assets/img/9x/Facebook_white_icon_svg.svg";
 import RegistrationModal from "@/components/RegistrationModal.vue";
@@ -233,6 +248,58 @@ let isLoading = computed(() => useLoaderStore().isLoading)
 let isVideoLoaded = ref(false)
 let currentSection = ref(0)
 let isRegistrationModalOpened = ref(false)
+let screenWidth = ref(window.innerWidth)
+let isMobile = computed(() => screenWidth.value <= 768)
+
+const backgroundImage = computed(() => {
+	if (screenWidth.value <= 768) return banner375;
+	if (screenWidth.value <= 1200) return banner1080;
+	return banner2048;
+})
+
+const carImage = computed(() => {
+	if (screenWidth.value <= 768) return car375;
+	if (screenWidth.value <= 1200) return car1080;
+	return car2048;
+})
+
+const programImage = computed(() => {
+	if (screenWidth.value <= 768) return program375;
+	if (screenWidth.value <= 1200) return program1080;
+	return program2048;
+})
+
+const videoImage = computed(() => {
+	if (screenWidth.value <= 768) return video375;
+	if (screenWidth.value <= 1200) return video1080;
+	return video2048;
+})
+
+const socialBackground = computed(() => {
+	if (screenWidth.value <= 768) return social375;
+	if (screenWidth.value <= 1200) return social1080;
+	return social2048;
+})
+
+const updateScreenWidth = () => {
+	screenWidth.value = window.innerWidth;
+}
+
+const handleMobileScroll = () => {
+	if (!isMobile.value) return;
+	
+	const sections = document.querySelectorAll('.section');
+	const scrollPosition = window.scrollY + window.innerHeight / 2;
+	
+	sections.forEach((section, index) => {
+		const sectionTop = section.offsetTop;
+		const sectionBottom = sectionTop + section.offsetHeight;
+		
+		if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+			currentSection.value = index;
+		}
+	});
+}
 
 const onVideoLoaded = () => {
 	isVideoLoaded.value = true;
@@ -243,7 +310,13 @@ const onVideoError = () => {
 }
 
 const moveToSection = (sectionIndex) => {
-	if (fullpageInstance) {
+	if (isMobile.value) {
+		const sections = document.querySelectorAll('.section');
+		if (sections[sectionIndex]) {
+			sections[sectionIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+			currentSection.value = sectionIndex;
+		}
+	} else if (fullpageInstance) {
 		fullpageInstance.moveTo(sectionIndex + 1);
 	}
 }
@@ -251,88 +324,98 @@ const moveToSection = (sectionIndex) => {
 let fullpageInstance = null;
 
 onMounted(async () => {
+	window.addEventListener('resize', updateScreenWidth);
+	
+	if (isMobile.value) {
+		window.addEventListener('scroll', handleMobileScroll, { passive: true });
+	}
+	
 	useLoaderStore().isLoading = true;
 	setTimeout(() => {
 		useLoaderStore().isLoading = false;
 		
-		setTimeout(() => {
-			fullpageInstance = new fullpage('#fullpage', {
-				menu: false,
-				lockAnchors: false,
-				anchors: ['banner', 'car-showcase', 'program', 'video', 'social'],
-				navigation: false,
-				navigationPosition: 'right',
-				navigationTooltips: ['Баннер', 'Автомобиль', 'Программа', 'Видео', 'Социальные сети'],
-				showActiveTooltip: false,
-				navigationColor: '#333',
-				slidesNavigation: false,
-				slidesNavPosition: 'bottom',
-				css3: true,
-				scrollingSpeed: 1000,
-				autoScrolling: true,
-				fitToSection: true,
-				fitToSectionDelay: 1000,
-				scrollBar: false,
-				easing: 'easeInOutQuart',
-				easingcss3: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-				loopBottom: false,
-				loopTop: false,
-				loopHorizontal: true,
-				continuousVertical: false,
-				continuousHorizontal: false,
-				scrollHorizontally: false,
-				interlockedSlides: false,
-				dragAndMove: false,
-				offsetSections: false,
-				resetSliders: false,
-				fadingEffect: false,
-				normalScrollElements: null,
-				scrollOverflow: false,
-				scrollOverflowReset: false,
-				touchSensitivity: 15,
-				bigSectionsDestination: null,
-				keyboardScrolling: true,
-				animateAnchor: true,
-				recordHistory: true,
-				controlArrows: true,
-				verticalCentered: true,
-				sectionsColor: ['transparent', 'transparent', 'transparent', 'transparent', 'transparent'],
-				fixedElements: null,
-				responsiveWidth: 0,
-				responsiveHeight: 0,
-				responsiveSlides: false,
-				parallax: false,
-				parallaxOptions: { type: 'reveal', percentage: 62, property: 'translate' },
-				sectionSelector: '.section',
-				slideSelector: '.slide',
-				onLeave: function(origin, destination, direction) {
-					console.log('Leaving section: ' + origin.index);
-				},
-				afterLoad: function(origin, destination, direction) {
-					console.log('After load: ' + destination.index);
-					currentSection.value = destination.index;
-				},
-				afterRender: function() {
-					console.log('Fullpage.js initialized');
-				},
-				afterResize: function(width, height) {
-					console.log('Resized to: ' + width + 'x' + height);
-				},
-				afterResponsive: function(isResponsive) {
-					console.log('Responsive mode: ' + isResponsive);
-				},
-				afterSlideLoad: function(section, origin, destination, direction) {
-					console.log('After slide load: ' + destination.index);
-				},
-				onSlideLeave: function(section, origin, destination, direction) {
-					console.log('Leaving slide: ' + origin.index);
-				}
-			});
-		}, 100);
+		if (!isMobile.value) {
+			setTimeout(() => {
+				fullpageInstance = new fullpage('#fullpage', {
+					menu: false,
+					lockAnchors: false,
+					anchors: ['banner', 'car-showcase', 'program', 'video', 'social'],
+					navigation: false,
+					navigationPosition: 'right',
+					navigationTooltips: ['Баннер', 'Автомобиль', 'Программа', 'Видео', 'Социальные сети'],
+					showActiveTooltip: false,
+					navigationColor: '#333',
+					slidesNavigation: false,
+					slidesNavPosition: 'bottom',
+					css3: true,
+					scrollingSpeed: 1000,
+					autoScrolling: true,
+					fitToSection: true,
+					fitToSectionDelay: 1000,
+					scrollBar: false,
+					easing: 'easeInOutQuart',
+					easingcss3: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+					loopBottom: false,
+					loopTop: false,
+					loopHorizontal: true,
+					continuousVertical: false,
+					continuousHorizontal: false,
+					scrollHorizontally: false,
+					interlockedSlides: false,
+					dragAndMove: false,
+					offsetSections: false,
+					resetSliders: false,
+					fadingEffect: false,
+					normalScrollElements: null,
+					scrollOverflow: false,
+					scrollOverflowReset: false,
+					touchSensitivity: 15,
+					bigSectionsDestination: null,
+					keyboardScrolling: true,
+					animateAnchor: true,
+					recordHistory: true,
+					controlArrows: true,
+					verticalCentered: true,
+					sectionsColor: ['transparent', 'transparent', 'transparent', 'transparent', 'transparent'],
+					fixedElements: null,
+					responsiveWidth: 0,
+					responsiveHeight: 0,
+					responsiveSlides: false,
+					parallax: false,
+					parallaxOptions: { type: 'reveal', percentage: 62, property: 'translate' },
+					sectionSelector: '.section',
+					slideSelector: '.slide',
+					onLeave: function(origin, destination, direction) {
+						console.log('Leaving section: ' + origin.index);
+					},
+					afterLoad: function(origin, destination, direction) {
+						console.log('After load: ' + destination.index);
+						currentSection.value = destination.index;
+					},
+					afterRender: function() {
+						console.log('Fullpage.js initialized');
+					},
+					afterResize: function(width, height) {
+						console.log('Resized to: ' + width + 'x' + height);
+					},
+					afterResponsive: function(isResponsive) {
+						console.log('Responsive mode: ' + isResponsive);
+					},
+					afterSlideLoad: function(section, origin, destination, direction) {
+						console.log('After slide load: ' + destination.index);
+					},
+					onSlideLeave: function(section, origin, destination, direction) {
+						console.log('Leaving slide: ' + origin.index);
+					}
+				});
+			}, 100);
+		}
 	}, 1000);
 });
 
 onUnmounted(() => {
+	window.removeEventListener('resize', updateScreenWidth);
+	window.removeEventListener('scroll', handleMobileScroll);
 	if (fullpageInstance) {
 		fullpageInstance.destroy('all');
 	}
@@ -345,6 +428,17 @@ onUnmounted(() => {
 		height: 100vh;
 		width: 100vw;
 		position: relative;
+	}
+	
+	&.mobile-scroll {
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		scroll-behavior: smooth;
+		
+		.section {
+			min-height: 100vh;
+			height: auto;
+		}
 	}
 }
 
@@ -364,6 +458,7 @@ onUnmounted(() => {
 		justify-content: center;
 		cursor: pointer;
 		transition: all 0.1s ease;
+		will-change: transform;
 		
 		&__circle {
 			width: 8px;
@@ -372,6 +467,7 @@ onUnmounted(() => {
 			background: rgba(100, 100, 100, 0.6);
 			border: 1px solid rgba(100, 100, 100, 0.8);
 			transition: all 0.1s ease;
+			will-change: transform, background-color;
 		}
 		
 		&.active {
@@ -401,9 +497,12 @@ onUnmounted(() => {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: scroll;
     width: 100vw;
     height: 100vh;
     min-height: 736px;
+    transform: translateZ(0);
+    will-change: scroll-position;
 	
 	&::before {
 		content: '';
@@ -424,6 +523,11 @@ onUnmounted(() => {
         z-index: 2;
         position: relative;
         margin-left: 0;
+        padding: 40px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
 	}
 
 
@@ -466,10 +570,13 @@ onUnmounted(() => {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: scroll;
     width: 100vw;
     height: 100vh;
     min-height: 736px;
     justify-content: flex-start;
+    transform: translateZ(0);
+    will-change: scroll-position;
 
 	&__overlay {
 		position: absolute;
@@ -484,6 +591,11 @@ onUnmounted(() => {
 	&__content {
 		position: relative;
 		z-index: 2;
+		padding: 30px;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 12px;
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
 	}
 
 	&__title {
@@ -513,9 +625,12 @@ onUnmounted(() => {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-attachment: scroll;
 	width: 100vw;
 	height: 100vh;
 	min-height: 736px;
+	transform: translateZ(0);
+	will-change: scroll-position;
 
 	&__overlay {
 		position: absolute;
@@ -531,6 +646,11 @@ onUnmounted(() => {
 		position: relative;
 		z-index: 2;
 		max-width: 600px;
+		padding: 30px;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 12px;
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
 	}
 
 	&__title {
@@ -580,10 +700,13 @@ onUnmounted(() => {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-attachment: scroll;
 	width: 100vw;
 	height: 100vh;
 	min-height: 736px;
 	overflow: hidden;
+	transform: translateZ(0);
+	will-change: scroll-position;
 
 	&__overlay {
 		position: absolute;
@@ -646,9 +769,12 @@ onUnmounted(() => {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-attachment: scroll;
 	width: 100vw;
 	height: 100vh;
 	min-height: 736px;
+	transform: translateZ(0);
+	will-change: scroll-position;
 
 	&__overlay {
 		position: absolute;
@@ -670,6 +796,11 @@ onUnmounted(() => {
 		gap: 60px;
 		width: 100%;
 		height: 100%;
+		padding: 40px;
+		background: rgba(0, 0, 0, 0.3);
+		border-radius: 12px;
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
 	}
 }
 
@@ -847,6 +978,7 @@ onUnmounted(() => {
 		
 		&__content {
 			gap: 28px;
+			padding: 30px;
 		}
 	}
 
@@ -861,6 +993,10 @@ onUnmounted(() => {
 	.car-showcase,
 	.program-section {
 		padding: 80px 40px;
+		
+		&__content {
+			padding: 30px;
+		}
 	}
 
 	.video-section {
@@ -894,6 +1030,7 @@ onUnmounted(() => {
 		
 		&__content {
 			gap: 26px;
+			padding: 25px;
 		}
 
 		&__button {
@@ -1028,6 +1165,7 @@ onUnmounted(() => {
 			align-items: center;
 			gap: 24px;
 			max-width: 100%;
+			padding: 20px;
 		}
 
 		&__button {
@@ -1214,6 +1352,7 @@ onUnmounted(() => {
 		
 		&__content {
 			gap: 20px;
+			padding: 18px;
 		}
 
 		&__button {
@@ -1393,6 +1532,7 @@ onUnmounted(() => {
 		
 		&__content {
 			gap: 18px;
+			padding: 16px;
 		}
 
 		&__button {
@@ -1556,6 +1696,10 @@ onUnmounted(() => {
 	.presentation-banner {
 		padding: 35px 12px 100px 12px;
 		min-height: 480px;
+		
+		&__content {
+			padding: 14px;
+		}
 		
 		&__button {
 			max-width: 220px;
