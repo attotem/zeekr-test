@@ -79,7 +79,7 @@ const send = async () => {
 	}
 
     try {
-	await fetch('https://script.google.com/macros/s/AKfycbzq0v9VRMg3g2ZptvJE8uG9yd8tl9jl3Y1AQuo53cBFSP1jRy1XAEuYMD3mm9mnQRrh/exec', {
+	await fetch('https://script.google.com/macros/s/AKfycbzyt4axGtYNKGQ4gHYCwVQrtZSupOYilCLIZNDnOWx7If238K9H4x10ObQVbbKE_Dvo/exec', {
 		method: 'POST',
 		mode: 'no-cors',
 		headers: { 'Content-Type': 'application/json' },
@@ -99,7 +99,6 @@ const send = async () => {
 
 };
 
-// Сброс при повторном открытии модалки
 watch(() => props.isOpened, () => {
 	isSent.value = false;
 	selectedCity.value = '';
@@ -267,3 +266,4 @@ watch(() => props.isOpened, () => {
 	}
 }
 </style>
+

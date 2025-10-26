@@ -530,7 +530,6 @@ class Mail {
 			popup_page: page,
 		};
 
-		// Добавляем дополнительные поля если они есть
 		if (email) body.client_email = email;
 		if (city) body.client_city = city;
 		if (isZeekrOwner !== undefined) body.is_zeekr_owner = isZeekrOwner;
