@@ -66,7 +66,6 @@ let isZeekrOwner = ref(false);
 let props = defineProps(['isOpened']);
 let emits = defineEmits(['close']);
 
-// 🚀 Отправка напрямую в Google Sheets
 const send = async () => {
 	if (!fullName.value?.content || !email.value?.content || !phone.value?.content || !selectedCity.value) {
 		alert("Будь ласка, заповніть всі обов'язкові поля");
@@ -85,7 +84,7 @@ const send = async () => {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			name: fullName.value.content,
-			phone: phone.value.content,
+			phone: "'"+phone.value.content,
 			email: email.value.content,
 			city: selectedCity.value,
 			isZeekrOwner: isZeekrOwner.value
@@ -266,4 +265,5 @@ watch(() => props.isOpened, () => {
 	}
 }
 </style>
+
 
