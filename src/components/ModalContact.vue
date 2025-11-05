@@ -105,6 +105,12 @@ watch(() => city.value?.content, (val) => {
   const cleaned = val.replace(/[^A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s-]/g, '')
   if (cleaned !== val) city.value.content = cleaned
 })
+
+watch(() => name.value?.content, (val) => {
+  if (val == null) return
+  const cleaned = val.replace(/[^A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s-]/g, '')
+  if (cleaned !== val) name.value.content = cleaned
+})
 </script>
 
 <style lang="scss" scoped>
