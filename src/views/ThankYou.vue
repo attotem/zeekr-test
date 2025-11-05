@@ -1,12 +1,8 @@
 <template>
 	<article class="thank-you">
 		<div class="thank-you__content">
-			<h1 class="thank-you__title">
-				{{ i18n.modal?.thankYouTitle?.[langStore.activeLang] || 'Дякуємо за реєстрацію!' }}
-			</h1>
-			<div class="thank-you__message">
-				{{ i18n.modal?.thankYouMessage?.[langStore.activeLang] || 'Ми отримали вашу заявку. Наш менеджер зв\'яжеться з вами найближчим часом для підтвердження участі.' }}
-			</div>
+			<h1 class="thank-you__title">Дякуємо</h1>
+			<div class="thank-you__message">Ми отримали вашу заявку. Наш менеджер зв'яжеться з вами найближчим часом.</div>
 			<RouterLink
 				class="btn btn--orange"
 				to="/"
