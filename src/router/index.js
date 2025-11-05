@@ -23,6 +23,7 @@ import News from "@/views/News.vue";
 import NewsById from "@/views/NewsById.vue";
 import StockId from "@/views/StockId.vue";
 import PresentationZeekr9x from "@/views/PresentationZeekr9x.vue";
+import ThankYou from "@/views/ThankYou.vue";
 import { useLoaderStore } from "@/stores/loader";
 
 const router = createRouter({
@@ -152,6 +153,11 @@ const router = createRouter({
 			path: "/presentation-9x",
 			name: "presentation-zeekr-9x",
 			component: PresentationZeekr9x,
+		},
+		{
+			path: "/thank-you-page",
+			name: "thank-you",
+			component: ThankYou,
 		},
 	],
 });

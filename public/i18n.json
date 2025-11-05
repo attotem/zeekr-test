@@ -49,8 +49,8 @@
     },
     "car": {
       "testDrive": {
-        "en": "Test drive",
-        "uk": "Тест-драйв"
+        "en": "Consultation",
+        "uk": "Консультація"
       },
       "order": {
         "en": "Order",
@@ -260,8 +260,8 @@
       "uk": "Зв'язатися з нами"
     },
     "testDrive": {
-      "en": "Order a test drive",
-      "uk": "Тест-драйв"
+      "en": "Order a consultation",
+      "uk": "Замовити консультацію"
     },
     "car": {
       "en": "Order a car",
@@ -290,6 +290,18 @@
     "OK": {
       "en": "Ok",
       "uk": "Гаразд"
+    },
+    "thankYouTitle": {
+      "en": "Thank you for registration!",
+      "uk": "Дякуємо за реєстрацію!"
+    },
+    "thankYouMessage": {
+      "en": "We have received your request. Our manager will contact you shortly to confirm your participation.",
+      "uk": "Ми отримали вашу заявку. Наш менеджер зв'яжеться з вами найближчим часом для підтвердження участі."
+    },
+    "backToHome": {
+      "en": "Back to homepage",
+      "uk": "Повернутися на головну"
     }
   },
   "header": {

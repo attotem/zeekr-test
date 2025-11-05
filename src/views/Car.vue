@@ -25,12 +25,12 @@
 					>
 						{{ i18n.pages.car.testDrive?.[langStore.activeLang] }}
 					</div>
-					<div
+					<!-- <div
 						class="btn btn--transparent btn--transparent-white"
 						@click="isModalOpened = i18n.modal.car; modalType = 'car'; mailObj = {type: 'order', page: 'order'}"
 					>
 						{{ i18n.pages.car.order?.[langStore.activeLang] }}
-					</div>
+					</div> -->
 					<a
 						v-if="modelData.price_list"
 						class="btn btn--transparent btn--transparent-white"

@@ -11,9 +11,13 @@
 		</div>
 		<input
 			class="input__inner"
-			:placeholder="props.name"
+			:placeholder="placeholderText"
 			:type="props.type"
 			:required="props.isRequired"
+			:inputmode="props.type == 'tel' ? 'tel' : undefined"
+			autocomplete="tel"
+			:maxlength="props.type == 'tel' ? maxLengthAttr : undefined"
+			@keydown="onKeyDown"
 			v-model="content"
 		/>
 		<template v-if="props.isRequired">
@@ -33,27 +37,44 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import Wrong from './icons/wrong.vue';
 import Ok from './icons/ok.vue';
 import { useLangStore } from '@/stores/lang';
 
 const content = defineModel({
   set(value) {
-    if (value && value !== '+' && props.type == 'tel') {
-      let temp = value.replace(/\D/g, '')
-      if(value.startsWith('0')) return `${temp.slice(0, 1)} ${temp.slice(1, 3)} ${temp.slice(3, 6)} ${temp.slice(6)}`.trimEnd()
-      else return `+${temp.slice(0, 3)} ${temp.slice(3, 5)} ${temp.slice(5, 8)} ${temp.slice(8)}`
-    }
-    return ''
+    if (props.type !== 'tel') return value
+
+    if (!value) return ''
+
+    let digits = value.replace(/\D/g, '')
+    if (digits.startsWith('0')) digits = digits.slice(1)
+    if (digits.startsWith('380')) digits = digits.slice(3)
+
+    const d = digits.slice(0, 9)
+    if (d.length === 0) return ''
+    const i1 = d.slice(0, 2)
+    const i2 = d.slice(2, 5)
+    const i3 = d.slice(5, 7)
+    const i4 = d.slice(7, 9)
+    return `+380${i1 ? ' ' + i1 : ''}${i2 ? ' ' + i2 : ''}${i3 ? ' ' + i3 : ''}${i4 ? ' ' + i4 : ''}`.trim()
   },
   get(value) {
-    if (value && value !== '+' && props.type == 'tel') {
-      let temp = value.replace(/\D/g, '')
-      if(value.startsWith('0')) return `${temp.slice(0, 1)} ${temp.slice(1, 3)} ${temp.slice(3, 6)} ${temp.slice(6)}`.trimEnd()
-      else return `+${temp.slice(0, 3)} ${temp.slice(3, 5)} ${temp.slice(5, 8)} ${temp.slice(8)}`.trimEnd()
-    }
-    return value
+    if (props.type !== 'tel') return value
+    if (!value) return ''
+
+    let digits = value.replace(/\D/g, '')
+    if (digits.startsWith('0')) digits = digits.slice(1)
+    if (digits.startsWith('380')) digits = digits.slice(3)
+
+    const d = digits.slice(0, 9)
+    if (d.length === 0) return ''
+    const i1 = d.slice(0, 2)
+    const i2 = d.slice(2, 5)
+    const i3 = d.slice(5, 7)
+    const i4 = d.slice(7, 9)
+    return `+380${i1 ? ' ' + i1 : ''}${i2 ? ' ' + i2 : ''}${i3 ? ' ' + i3 : ''}${i4 ? ' ' + i4 : ''}`.trim()
   }
 })
 
@@ -62,9 +83,52 @@ let langStore = useLangStore()
 let props = defineProps(['name', 'isRequired', 'type'])
 let isError = ref(false)
 
+const placeholderText = computed(() => {
+  if (props.type == 'tel') return '+380 __ ___ __ __'
+  return props.name
+})
+
+const maxLengthAttr = computed(() => 17) 
+
+const onKeyDown = (e) => {
+  if (props.type !== 'tel') return
+
+  const allowedControl = [
+    'Backspace','Delete','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab','Home','End'
+  ]
+  if (allowedControl.includes(e.key) || (e.ctrlKey || e.metaKey)) return
+
+  const isDigit = /\d/.test(e.key)
+
+  if (!isDigit) {
+    e.preventDefault()
+    return
+  }
+
+  const inputEl = e.currentTarget
+  const current = String(content.value || '')
+  const start = inputEl.selectionStart || 0
+  const end = inputEl.selectionEnd || 0
+  const nextRaw = current.slice(0, start) + e.key + current.slice(end)
+  const nextDigits = nextRaw.replace(/\D/g, '')
+
+  let nd = nextDigits
+  if (nd.startsWith('0')) nd = nd.slice(1)
+  if (nd.startsWith('380')) nd = nd.slice(3)
+  const maxDigits = 9
+  if (nd.length > maxDigits) {
+    e.preventDefault()
+  }
+}
+
 watch(content, () => {
-  if (props.type == 'tel' && !content.value.replace(/\D/g, '').match(/^[0-9]{4,16}$/gm)) isError.value = true;
-  else isError.value = false;
+  if (props.type == 'tel') {
+    const digits = (content.value || '').replace(/\D/g, '')
+    if (digits.startsWith('0')) isError.value = digits.length !== 10
+    else isError.value = digits.startsWith('380') ? digits.length !== 12 : digits.length !== 9 && digits.length !== 12
+  } else {
+    isError.value = false
+  }
 })
 
 defineExpose({ isError, content })

@@ -91,6 +91,8 @@ const send = async () => {
 		})
 	});
 	isSent.value = true;
+	emits('close');
+	router.push('/thank-you-page');
 } catch (error) {
 	console.error('Error sending registration:', error);
 	alert('Помилка при відправці. Спробуйте ще раз.');
@@ -265,5 +267,6 @@ watch(() => props.isOpened, () => {
 	}
 }
 </style>
+
 
 

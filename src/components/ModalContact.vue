@@ -23,6 +23,13 @@
 					/>
 
 					<Input
+						:name="langStore.activeLang == 'en' ? 'City' : 'Місто'"
+						:isRequired="true"
+						ref="city"
+						:type="'text'"
+					/>
+
+					<Input
 						:name="langStore.activeLang == 'en' ? 'Your phone number' : 'Ваш телефон'"
 						:isRequired="true"
 						ref="phone"
@@ -57,31 +64,46 @@
 
 <script setup>
 import { ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import Input from './input.vue';
 import { useLangStore } from '@/stores/lang';
 import API from '@/composables/API';
 
+const router = useRouter();
 let langStore = useLangStore()
 let isSent = ref(false)
 let phone = ref(),
-  name = ref()
+  name = ref(),
+  city = ref()
 
 let props = defineProps(['heading', 'isOpened', 'mailObj'])
 let emits = defineEmits(['close'])
 
 const send = async () => {
-  if (phone.value.isError && !(phone.value.content?.length > 0 && name.value.content?.length > 0)) return;
+  const nameOk = name.value?.content?.length > 0
+  const cityOk = city.value?.content?.length > 0
+  const phoneOk = !!phone.value?.content && !phone.value?.isError
+  if (!(nameOk && cityOk && phoneOk)) return;
   let res = await API.Mail.send({
     type: props.mailObj.type,
     page: props.mailObj.page,
     name: name.value.content,
-    phone: phone.value.content
+    phone: phone.value.content,
+    city: city.value.content
   })
   isSent.value = true
+  emits('close')
+  router.push('/thank-you-page')
 }
 
 watch(() => props.isOpened, () => {
   isSent.value = false;
+})
+
+watch(() => city.value?.content, (val) => {
+  if (val == null) return
+  const cleaned = val.replace(/[^A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s-]/g, '')
+  if (cleaned !== val) city.value.content = cleaned
 })
 </script>
 
