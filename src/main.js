@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import { createPinia } from "pinia";
 import VueGoogleMaps from "@fawmi/vue-google-maps";
+import { initLanguageWatch } from "./composables/API";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -24,4 +25,6 @@ import "fullpage.js/dist/fullpage.min.css";
 
 	app.config.globalProperties.i18n = i18n;
 	app.mount("#app");
+	
+	initLanguageWatch();
 })();

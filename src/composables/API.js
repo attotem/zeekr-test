@@ -1,4 +1,5 @@
 import { useLangStore } from "@/stores/lang";
+import { watch } from "vue";
 
 let lastLang = null;
 
@@ -7,9 +8,11 @@ class Models {
 	modelById = null;
 
 	async get() {
-		if (!this.models || useLangStore().activeLang !== lastLang) {
+		const langStore = useLangStore();
+		const currentLang = langStore.activeLang;
+		if (!this.models || currentLang !== lastLang) {
 			let resp = await fetch(
-				`${path}/get_car_models_page?lang_code=${useLangStore().activeLang}`,
+				`${path}/get_car_models_page?lang_code=${currentLang}`,
 				{
 					headers: {
 						accept: "application/json",
@@ -18,7 +21,7 @@ class Models {
 			);
 			let body = await resp.json();
 			this.models = body;
-			lastLang = useLangStore().activeLang;
+			lastLang = currentLang;
 		}
 
 		return this.models;
@@ -99,9 +102,11 @@ class HomePage {
 	data = null;
 
 	async get() {
-		if (!this.data || useLangStore().activeLang !== lastLang) {
+		const langStore = useLangStore();
+		const currentLang = langStore.activeLang;
+		if (!this.data || currentLang !== lastLang) {
 			let resp = await fetch(
-				`${path}/get_homepage/?lang_code=${useLangStore().activeLang}`,
+				`${path}/get_homepage/?lang_code=${currentLang}`,
 				{
 					headers: {
 						accept: "application/json",
@@ -111,7 +116,7 @@ class HomePage {
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
-			lastLang = useLangStore().activeLang;
+			lastLang = currentLang;
 		}
 		return this.data;
 	}
@@ -373,7 +378,7 @@ class Footer {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				`${path}/get_footer/?lang=${useLangStore().activeLang}`,
+				`${path}/get_footer/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: {
 						accept: "application/json",
@@ -574,5 +579,29 @@ const API = {
 	Accessories: new Accessories(),
 	CarsInStock: new CarsInStock(),
 };
+
+// Function to initialize language watch (should be called after app initialization)
+export function initLanguageWatch() {
+	const langStore = useLangStore();
+	
+	watch(() => langStore.activeLang, (newLang, oldLang) => {
+		if (newLang !== oldLang && oldLang !== null) {
+			// Clear all cached data when language changes
+			API.HomePage.data = null;
+			API.ServicePage.data = null;
+			API.DiagnosticsPage.data = null;
+			API.GuaranteePage.data = null;
+			API.LeasingPage.data = null;
+			API.LendingPage.data = null;
+			API.InsurancePage.data = null;
+			API.AboutCompanyPage.data = null;
+			API.CarsInStock.data = null;
+			API.Models.models = null;
+			API.News.news = [];
+			API.News.id = null;
+			lastLang = newLang;
+		}
+	});
+}
 
 export default API;
