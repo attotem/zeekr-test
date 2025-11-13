@@ -528,16 +528,32 @@ class Mail {
 	* @param {*} page 'test_drive' | 'order' | 'signup_for_service' | 'financial_service' | 'event_registration'
 	 */
 	async send({ type, name, phone, page, email, city, isZeekrOwner }) {
-		let body = {
-			email_type: type,
-			client_name: name,
-			client_phone: phone,
-			popup_page: page,
+		const registerMethodMap = {
+			'test_drive': 'model',
+			'order': 'model',
+			'signup_for_service': 'service',
+			'financial_service': 'warranty',
+			'chat': 'service',
+			'event_registration': 'model'
 		};
 
-		if (email) body.client_email = email;
-		if (city) body.client_city = city;
-		if (isZeekrOwner !== undefined) body.is_zeekr_owner = isZeekrOwner;
+		// Get current page URL for Commentary (full URL with query params)
+		const currentUrl = window.location.href;
+		
+		// Get first page URL from localStorage for BpmHref
+		const bpmHref = localStorage.getItem('bpmHref') || window.location.href;
+
+		// Format phone number (remove spaces and format)
+		const formattedPhone = phone ? phone.replace(/\s/g, '') : '';
+
+		let body = {
+			Contact: name || '',
+			CityStr: city || '',
+			MobilePhone: formattedPhone,
+			Commentary: currentUrl,
+			RegisterMethodId: registerMethodMap[type] || 'service',
+			BpmHref: bpmHref
+		};
 
 		let resp = await fetch(`${path}/send_email/`, {
 			method: "POST",

@@ -13,6 +13,11 @@ import "fullpage.js/dist/fullpage.min.css";
 	const resp = await fetch(`/i18n.json`);
 	const i18n = await resp.json();
 
+	if (!localStorage.getItem('bpmHref')) {
+		const firstUrl = window.location.href;
+		localStorage.setItem('bpmHref', firstUrl);
+	}
+
 	const app = createApp(App)
 		.use(router)
 		.use(createPinia())
