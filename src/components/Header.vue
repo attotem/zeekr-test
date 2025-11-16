@@ -68,9 +68,13 @@
 		</div>
 
 		<div class="actions">
-			<a class="phone" href="tel:+380731329056">
+			<a
+				v-if="phoneNumber"
+				class="phone"
+				:href="`tel:${phoneNumber.replace(/\s/g, '')}`"
+			>
 				<Phone />
-				<span>+38 073 132 90 56</span>
+				<span>{{ phoneNumber }}</span>
 			</a>
 
 			<div
@@ -146,9 +150,13 @@
 				</div>
 			</div>
 
-			<a class="phone phone--mobile" href="tel:+380731329056">
+			<a
+				v-if="phoneNumber"
+				class="phone phone--mobile"
+				:href="`tel:${phoneNumber.replace(/\s/g, '')}`"
+			>
 				<Phone />
-				<span>+38 073 132 90 56</span>
+				<span>{{ phoneNumber }}</span>
 			</a>
 
 			<div class="langs">
@@ -180,7 +188,8 @@ import Phone from "./icons/phone.vue";
 let langStore = useLangStore()
 
 let isExpanded = ref(false),
-  isMobileBg = ref(true)
+  isMobileBg = ref(true),
+  phoneNumber = ref('')
 
 let headerItems = ref([
   {
@@ -267,6 +276,17 @@ watch(() => langStore.activeLang, async () => {
 
   console.log(headerItems.value[0].children)
 
+  // Load phone number from API
+  const contacts = await API.Contacts.get();
+  if (contacts && Array.isArray(contacts)) {
+    const phoneContact = contacts.find(contact => 
+      contact.short_name?.toLowerCase() === 'phone'
+    );
+    if (phoneContact && phoneContact.url) {
+      phoneNumber.value = phoneContact.url;
+    }
+  }
+
   nextTick(() => {
     headerItems.value.map(el => {
       if (Object.hasOwn(el, 'children')) addDropdown(el.name)
@@ -313,6 +333,17 @@ onMounted(async () => {
   headerItems.value[0].children = (await API.Models.get()).car_models;
 
   console.log(headerItems.value[0].children)
+
+  // Load phone number from API
+  const contacts = await API.Contacts.get();
+  if (contacts && Array.isArray(contacts)) {
+    const phoneContact = contacts.find(contact => 
+      contact.short_name?.toLowerCase() === 'phone'
+    );
+    if (phoneContact && phoneContact.url) {
+      phoneNumber.value = phoneContact.url;
+    }
+  }
 
   nextTick(() => {
     headerItems.value.map(el => {

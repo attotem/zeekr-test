@@ -7,10 +7,29 @@
 			<Logo />
 		</div>
 		<template v-if="data">
-			<article
-				class="article-1"
-				:style="{ backgroundImage: `url(${data?.banner_image})` }"
-			>
+			<article class="article-1">
+				<picture class="picture intro-background">
+					<source
+						v-if="data?.banner_image_pc"
+						:srcset="data.banner_image_pc"
+						media="(min-width: 992px)"
+					/>
+					<source
+						v-if="data?.banner_image_tablet"
+						:srcset="data.banner_image_tablet"
+						media="(min-width: 576px) and (max-width: 991px)"
+					/>
+					<source
+						v-if="data?.banner_image_phone"
+						:srcset="data.banner_image_phone"
+						media="(max-width: 575px)"
+					/>
+					<img
+						:src="data?.banner_image_pc || data?.banner_image_tablet || data?.banner_image_phone || data?.banner_image"
+						alt="Zeekr"
+						loading="lazy"
+					/>
+				</picture>
 				<h1 class="article-1__h article-1__h--1">
 					{{ data?.banner_title }}
 				</h1>
@@ -38,10 +57,29 @@
 				</section>
 			</article>
 
-			<article
-				class="article-1 dealers"
-				:style="{ backgroundImage: `url(${data?.find_dealer_banner_image})` }"
-			>
+			<article class="article-1 dealers">
+				<picture class="picture intro-background">
+					<source
+						v-if="data?.find_dealer_banner_image_pc"
+						:srcset="data.find_dealer_banner_image_pc"
+						media="(min-width: 992px)"
+					/>
+					<source
+						v-if="data?.find_dealer_banner_image_tablet"
+						:srcset="data.find_dealer_banner_image_tablet"
+						media="(min-width: 576px) and (max-width: 991px)"
+					/>
+					<source
+						v-if="data?.find_dealer_banner_image_phone"
+						:srcset="data.find_dealer_banner_image_phone"
+						media="(max-width: 575px)"
+					/>
+					<img
+						:src="data?.find_dealer_banner_image_pc || data?.find_dealer_banner_image_tablet || data?.find_dealer_banner_image_phone || data?.find_dealer_banner_image"
+						alt="Zeekr"
+						loading="lazy"
+					/>
+				</picture>
 				<h3 class="article-1__h article-1__h--1">
 					{{ data?.find_dealer_banner_title }}
 				</h3>
@@ -92,6 +130,32 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .article {
+  &-1 {
+    position: relative;
+    overflow: hidden;
+
+    .picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    h1, h2 {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
   &-3 {
     margin: 80px 76px;
 
@@ -134,6 +198,29 @@ onMounted(async () => {
 .dealers {
   padding: 50px;
   justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+
+  .picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  h3, div {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 @media screen and (max-width: 876px) {

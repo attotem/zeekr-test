@@ -12,7 +12,10 @@
 				</div>
 			</div>
 
-			<div class="socials">
+			<div
+				class="socials"
+				v-if="socials.length > 0"
+			>
 				<a
 					v-for="item in socials"
 					:href="item.href"
@@ -62,6 +65,7 @@ import Logo from './icons/logo.vue';
 import { useLangStore } from '@/stores/lang';
 import Instagram from './icons/socials/instagram.vue';
 import Facebook from './icons/socials/facebook.vue';
+import XTwitter from './icons/socials/xtwitter.vue';
 import Dropdown from './icons/dropdown.vue';
 import addDropdown from '@/composables/dropdown';
 import API from '@/composables/API';
@@ -77,20 +81,41 @@ let first = ref({
   }
 })
 
-let socials = ref([
-  {
-    href: 'https://www.instagram.com/zeekr.ukraine',
-    component: markRaw(Instagram)
-  }, {
-    href: 'https://www.facebook.com/people/Zeekr-Ukraine/61565869926215/',
-    component: markRaw(Facebook)
-  }, 
-])
+let socials = ref([])
 
 let data = ref()
 
+const updateSocials = (contacts) => {
+  if (!contacts || !Array.isArray(contacts)) return;
+  
+  socials.value = [];
+  
+  const socialMap = {
+    'inst': { component: markRaw(Instagram) },
+    'instagram': { component: markRaw(Instagram) },
+    'x': { component: markRaw(XTwitter) },
+    'xcom': { component: markRaw(XTwitter) },
+    'twitter': { component: markRaw(XTwitter) },
+    'xtwitter': { component: markRaw(XTwitter) },
+    'facebook': { component: markRaw(Facebook) },
+    'fb': { component: markRaw(Facebook) }
+  };
+  
+  contacts.forEach(contact => {
+    const shortName = contact.short_name?.toLowerCase();
+    if (socialMap[shortName]) {
+      socials.value.push({
+        href: contact.url,
+        component: socialMap[shortName].component
+      });
+    }
+  });
+}
+
 watch(() => langStore.activeLang, async () => {
   data.value = await API.Footer.get();
+  const contacts = await API.Contacts.get();
+  updateSocials(contacts);
   nextTick(() => {
     Object.entries(data.value).map((el, counter) => {
       addDropdown(`footer-${counter}`)
@@ -100,6 +125,8 @@ watch(() => langStore.activeLang, async () => {
 
 onMounted(async () => {
   data.value = await API.Footer.get();
+  const contacts = await API.Contacts.get();
+  updateSocials(contacts);
   nextTick(() => {
     Object.entries(data.value).map((el, counter) => {
       addDropdown(`footer-${counter}`)

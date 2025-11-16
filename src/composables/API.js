@@ -1,6 +1,19 @@
 import { useLangStore } from "@/stores/lang";
 import { watch } from "vue";
 
+let path = "https://zeekr-back.xyz/api";
+let ngrokHeader = {
+	"ngrok-skip-browser-warning": "69420",
+};
+
+// Helper function to get headers with ngrok header
+function getHeaders(additionalHeaders = {}) {
+	return {
+		...ngrokHeader,
+		...additionalHeaders
+	};
+}
+
 let lastLang = null;
 
 class Models {
@@ -14,9 +27,9 @@ class Models {
 			let resp = await fetch(
 				`${path}/get_car_models_page?lang_code=${currentLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -35,9 +48,9 @@ class Models {
 				useLangStore().activeLang
 			}`,
 			{
-				headers: {
+				headers: getHeaders({
 					accept: "application/json",
-				},
+				}),
 			}
 		);
 
@@ -69,9 +82,9 @@ class News {
 				useLangStore().activeLang
 			}&offset=${offset}&limit=${limit}`,
 			{
-				headers: {
+				headers: getHeaders({
 					accept: "application/json",
-				},
+				}),
 			}
 		);
 		let body = await resp.json();
@@ -85,9 +98,9 @@ class News {
 		let resp = await fetch(
 			`${path}/get_detailed_news_page/?lang_code=${lang_code}&id=${id}`,
 			{
-				headers: {
+				headers: getHeaders({
 					accept: "application/json",
-				},
+				}),
 			}
 		);
 		let body = await resp.json();
@@ -105,14 +118,14 @@ class HomePage {
 		const langStore = useLangStore();
 		const currentLang = langStore.activeLang;
 		if (!this.data || currentLang !== lastLang) {
-			let resp = await fetch(
-				`${path}/get_homepage/?lang_code=${currentLang}`,
-				{
-					headers: {
-						accept: "application/json",
-					},
-				}
-			);
+		let resp = await fetch(
+			`${path}/get_homepage/?lang_code=${currentLang}`,
+			{
+				headers: getHeaders({
+					accept: "application/json",
+				}),
+			}
+		);
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
@@ -130,9 +143,9 @@ class ServicePage {
 			let resp = await fetch(
 				`${path}/get_service_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -152,9 +165,9 @@ class ContactsPage {
 			let resp = await fetch(
 				`${path}/get_contacts_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -176,9 +189,9 @@ class FinancialServicesPage {
 					useLangStore().activeLang
 				}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -198,9 +211,9 @@ class GuaranteePage {
 			let resp = await fetch(
 				`${path}/get_guarantee_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -222,9 +235,9 @@ class AboutTOVPage {
 					useLangStore().activeLang
 				}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -246,9 +259,9 @@ class PrivacyPolicyPage {
 					useLangStore().activeLang
 				}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -268,9 +281,9 @@ class DiagnosticsPage {
 			let resp = await fetch(
 				`${path}/get_diagnostics_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -290,9 +303,9 @@ class LeasingPage {
 			let resp = await fetch(
 				`${path}/get_leasing_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -312,9 +325,9 @@ class LendingPage {
 			let resp = await fetch(
 				`${path}/get_lending_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -336,9 +349,9 @@ class AboutCompanyPage {
 					useLangStore().activeLang
 				}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -358,9 +371,9 @@ class InsurancePage {
 			let resp = await fetch(
 				`${path}/get_insurance_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -380,15 +393,35 @@ class Footer {
 			let resp = await fetch(
 				`${path}/get_footer/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
 			this.data = body;
 			console.log(body);
 			lastLang = useLangStore().activeLang;
+		}
+		return this.data;
+	}
+}
+
+class Contacts {
+	data = null;
+
+	async get() {
+		if (!this.data) {
+			let resp = await fetch(
+				`${path}/get_contacts/`,
+				{
+					headers: getHeaders({
+						accept: "application/json",
+					}),
+				}
+			);
+			let body = await resp.json();
+			this.data = body;
 		}
 		return this.data;
 	}
@@ -402,9 +435,9 @@ class BecomeADealer {
 			let resp = await fetch(
 				`${path}/get_become_dealer_page/?lang=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -424,9 +457,9 @@ class BecomeAPartner {
 			let resp = await fetch(
 				`${path}/get_become_partner_page/?lang=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -446,9 +479,9 @@ class Accessories {
 			let resp = await fetch(
 				`${path}/get_accessories_page/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -471,9 +504,9 @@ class CarsInStock {
 				filters ? "&" + filters : ""
 			}`,
 			{
-				headers: {
+				headers: getHeaders({
 					accept: "application/json",
-				},
+				}),
 			}
 		);
 		let body = await resp.json();
@@ -488,9 +521,9 @@ class CarsInStock {
 			let resp = await fetch(
 				`${path}/get_filters/?lang_code=${useLangStore().activeLang}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -508,9 +541,9 @@ class CarsInStock {
 					useLangStore().activeLang
 				}`,
 				{
-					headers: {
+					headers: getHeaders({
 						accept: "application/json",
-					},
+					}),
 				}
 			);
 			let body = await resp.json();
@@ -537,13 +570,8 @@ class Mail {
 			'event_registration': 'model'
 		};
 
-		// Get current page URL for Commentary (full URL with query params)
 		const currentUrl = window.location.href;
-		
-		// Get first page URL from localStorage for BpmHref
-		const bpmHref = localStorage.getItem('bpmHref') || window.location.href;
-
-		// Format phone number (remove spaces and format)
+		const bpmHref = localStorage.getItem('bpmHref');
 		const formattedPhone = phone ? phone.replace(/\s/g, '') : '';
 
 		let body = {
@@ -557,21 +585,16 @@ class Mail {
 
 		let resp = await fetch(`${path}/send_email/`, {
 			method: "POST",
-			headers: {
+			headers: getHeaders({
 				accept: "application/json",
 				"Content-Type": "application/json",
-			},
+			}),
 			body: JSON.stringify(body),
 		});
 		let responseBody = await resp.json();
 		return responseBody;
 	}
 }
-
-let path = "https://zeekr-back.xyz/api",
-	ngrokHeader = {
-		"ngrok-skip-browser-warning": "69420",
-	};
 
 const API = {
 	Models: new Models(),
@@ -589,6 +612,7 @@ const API = {
 	AboutCompanyPage: new AboutCompanyPage(),
 	InsurancePage: new InsurancePage(),
 	Footer: new Footer(),
+	Contacts: new Contacts(),
 	Mail: new Mail(),
 	BecomeADealer: new BecomeADealer(),
 	BecomeAPartner: new BecomeAPartner(),
@@ -596,13 +620,11 @@ const API = {
 	CarsInStock: new CarsInStock(),
 };
 
-// Function to initialize language watch (should be called after app initialization)
 export function initLanguageWatch() {
 	const langStore = useLangStore();
 	
 	watch(() => langStore.activeLang, (newLang, oldLang) => {
 		if (newLang !== oldLang && oldLang !== null) {
-			// Clear all cached data when language changes
 			API.HomePage.data = null;
 			API.ServicePage.data = null;
 			API.DiagnosticsPage.data = null;

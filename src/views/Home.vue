@@ -9,20 +9,42 @@
 		<template v-if="sliderData">
 			<div class="article-1">
 				<Slider
-					v-if="Object.keys(sliderData?.media_content || {}).length > 0"
-					:count="Object.keys(sliderData?.media_content || {}).length"
+					v-if="sliderData?.banner_info && sliderData.banner_info.length > 0"
+					:count="sliderData.banner_info.length"  
 					:slider-type="1"
 				>
 					<article
 						class="slide"
-						v-for="slide in sliderData.media_content"
-						:style="{ backgroundImage: `url(${slide.value.image_url || slide.value.video_url})` }"
+						v-for="banner in sliderData.banner_info"
+						:key="banner.id"
 					>
+						<picture class="picture intro-background">
+							<source
+								v-if="banner.value?.image_pc?.url"
+								:srcset="banner.value.image_pc.url"
+								media="(min-width: 992px)"
+							/>
+							<source
+								v-if="banner.value?.image_tablet?.url"
+								:srcset="banner.value.image_tablet.url"
+								media="(min-width: 576px) and (max-width: 991px)"
+							/>
+							<source
+								v-if="banner.value?.image_phone?.url"
+								:srcset="banner.value.image_phone.url"
+								media="(max-width: 575px)"
+							/>
+							<img
+								:src="banner.value?.image_pc?.url || banner.value?.image_tablet?.url || banner.value?.image_phone?.url || banner.value?.image?.url || banner.value?.image"
+								alt="Zeekr"
+								loading="lazy"
+							/>
+						</picture>
 						<div class="article-1__h article-1__h--1">
-							{{ sliderData.banner_title }}
+							{{ banner.value?.banner_title }}
 						</div>
 						<div class="article-1__h article-1__h--2">
-							{{ sliderData.banner_subtitle }}
+							{{ banner.value?.banner_subtitle }}
 						</div>
 					</article>
 				</Slider>
@@ -155,12 +177,35 @@ onMounted(async () => {
     height: 100%;
   }
 
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
   color: #fff;
+  overflow: hidden;
+
+  .picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .article-1__h {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .model {

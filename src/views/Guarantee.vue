@@ -7,10 +7,29 @@
 			<Logo />
 		</div>
 		<template v-if="data">
-			<article
-				class="article-1-guarantee"
-				:style="{ backgroundImage: `url(${data?.banner_image})` }"
-			>
+			<article class="article-1-guarantee">
+				<picture class="picture intro-background">
+					<source
+						v-if="data?.banner_image_pc"
+						:srcset="data.banner_image_pc"
+						media="(min-width: 992px)"
+					/>
+					<source
+						v-if="data?.banner_image_tablet"
+						:srcset="data.banner_image_tablet"
+						media="(min-width: 576px) and (max-width: 991px)"
+					/>
+					<source
+						v-if="data?.banner_image_phone"
+						:srcset="data.banner_image_phone"
+						media="(max-width: 575px)"
+					/>
+					<img
+						:src="data?.banner_image_pc || data?.banner_image_tablet || data?.banner_image_phone || data?.banner_image"
+						alt="Zeekr"
+						loading="lazy"
+					/>
+				</picture>
 				<h1 class="article-1__h article-1__h--1">
 					{{ data?.banner_title }}
 				</h1>
@@ -326,6 +345,7 @@ function getAccordionBody(html) {
 
 
 .article-1-guarantee {
+  position: relative;
   width: 100dvw;
   height: 350px;
   display: flex;
@@ -333,8 +353,28 @@ function getAccordionBody(html) {
   justify-content: center;
   align-items: center;
   color: #fff;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+
+  .picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  h1, h2 {
+    position: relative;
+    z-index: 1;
+  }
 }
 .pdf-frame {
   width: calc(100% - 152px);

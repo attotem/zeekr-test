@@ -8,10 +8,29 @@
 		</div>
 
 		<template v-else-if="modelData">
-			<article
-				class="article-1"
-				:style="{ backgroundImage: `url(${modelData.image})` }"
-			>
+			<article class="article-1">
+				<picture class="picture intro-background">
+					<source
+						v-if="modelData.banner_image_pc"
+						:srcset="modelData.banner_image_pc"
+						media="(min-width: 992px)"
+					/>
+					<source
+						v-if="modelData.banner_image_tablet"
+						:srcset="modelData.banner_image_tablet"
+						media="(min-width: 576px) and (max-width: 991px)"
+					/>
+					<source
+						v-if="modelData.banner_image_phone"
+						:srcset="modelData.banner_image_phone"
+						media="(max-width: 575px)"
+					/>
+					<img
+						:src="modelData.banner_image_pc || modelData.banner_image_tablet || modelData.banner_image_phone || modelData.image"
+						alt="Zeekr"
+						loading="lazy"
+					/>
+				</picture>
 				<h1 class="article-1__h article-1__h--1">
 					{{ modelData.banner_title }}
 				</h1>
@@ -370,6 +389,30 @@ function initSwipers() {
 
 <style lang="scss" scoped>
 .article-1 {
+  position: relative;
+  overflow: hidden;
+
+  .picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  h1, h2, &__btns {
+    position: relative;
+    z-index: 1;
+  }
+
   &__btns {
     display: flex;
     flex-direction: row;
