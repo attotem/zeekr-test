@@ -13,8 +13,11 @@ import "fullpage.js/dist/fullpage.min.css";
 	const resp = await fetch(`/i18n.json`);
 	const i18n = await resp.json();
 
-	if (!localStorage.getItem('bpmHref')) {
-		const firstUrl = window.location.href;
+	const firstUrl = window.location.href;
+	const search = window.location.search || '';
+
+	const hasUtmParams = /[?&]utm_[^=]+=/i.test(search);
+	if (hasUtmParams) {
 		localStorage.setItem('bpmHref', firstUrl);
 	}
 
