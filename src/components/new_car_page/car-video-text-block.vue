@@ -2,9 +2,10 @@
   <section class="car-video-text-block">
     <div class="car-video-text-block__inner">
       <div class="car-video-text-block__grid">
-        <!-- Top Left: Video 1 -->
+        <!-- Top Left: Video 1 or Image 1 -->
         <div class="car-video-text-block__video-wrap car-video-text-block__video-wrap--top-left">
           <video
+            v-if="blockData.video1 && !blockData.image1"
             :src="resolveVideo(blockData.video1)"
             class="car-video-text-block__video"
             autoplay
@@ -12,6 +13,13 @@
             loop
             playsinline
           ></video>
+          <img
+            v-else-if="blockData.image1"
+            :src="resolveImage(blockData.image1)"
+            class="car-video-text-block__image"
+            alt=""
+            loading="lazy"
+          />
         </div>
 
         <!-- Top Right: Text Block 1 -->
@@ -50,9 +58,10 @@
           </div>
         </div>
 
-        <!-- Bottom Right: Video 2 -->
+        <!-- Bottom Right: Video 2 or Image 2 -->
         <div class="car-video-text-block__video-wrap car-video-text-block__video-wrap--bottom-right">
           <video
+            v-if="blockData.video2 && !blockData.image2"
             :src="resolveVideo(blockData.video2)"
             class="car-video-text-block__video"
             autoplay
@@ -60,6 +69,13 @@
             loop
             playsinline
           ></video>
+          <img
+            v-else-if="blockData.image2"
+            :src="resolveImage(blockData.image2)"
+            class="car-video-text-block__image"
+            alt=""
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
@@ -106,6 +122,15 @@ const resolveVideo = (videoPath) => {
   }
   return `/pages/${props.carId}/${videoPath}`
 }
+
+const resolveImage = (imagePath) => {
+  if (!imagePath) return ''
+  if (imagePath.startsWith('/')) return imagePath
+  if (import.meta.env.DEV) {
+    return `/src/assets/pages/${props.carId}/${imagePath}`
+  }
+  return `/pages/${props.carId}/${imagePath}`
+}
 </script>
 
 <style lang="scss" scoped>
@@ -144,6 +169,14 @@ const resolveVideo = (videoPath) => {
   }
 
   &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  &__image {
     width: 100%;
     height: 100%;
     object-fit: cover;

@@ -74,6 +74,10 @@ import CarBatteryBlock from '@/components/new_car_page/car-battery-block.vue'
 import CarTwoImagesBlock from '@/components/new_car_page/car-two-images-block.vue'
 import CarImageTextBottomBlock from '@/components/new_car_page/car-image-text-bottom-block.vue'
 import CarImageWithTextBelow from '@/components/new_car_page/car-image-with-text-below.vue'
+import CarVideoWithTextTop from '@/components/new_car_page/car-video-with-text-top.vue'
+import CarVideoNotFullscreenWithTextTop from '@/components/new_car_page/car-video-not-fullscreen-with-text-top.vue'
+import CarVideoWithTextOverlay from '@/components/new_car_page/car-video-with-text-overlay.vue'
+import CarVideoSwitcherBlock from '@/components/new_car_page/car-video-switcher-block.vue'
 import CarMassageBlock from '@/components/new_car_page/car-massage-block.vue'
 import CarMaterialsBlock from '@/components/new_car_page/car-materials-block.vue'
 import CarCabinFunctionsBlock from '@/components/new_car_page/car-cabin-functions-block.vue'
@@ -178,6 +182,10 @@ const componentMap = {
       twoImagesBlock: CarTwoImagesBlock,
       imageTextBottomBlock: CarImageTextBottomBlock,
       imageWithTextBelow: CarImageWithTextBelow,
+      videoWithTextTop: CarVideoWithTextTop,
+      videoNotFullscreenWithTextTop: CarVideoNotFullscreenWithTextTop,
+      videoWithTextOverlay: CarVideoWithTextOverlay,
+      videoSwitcherBlock: CarVideoSwitcherBlock,
       massageBlock: CarMassageBlock,
       materialsBlock: CarMaterialsBlock,
       cabinFunctionsBlock: CarCabinFunctionsBlock,

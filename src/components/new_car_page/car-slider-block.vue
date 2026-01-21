@@ -31,7 +31,7 @@
             >
               <div class="car-slider-block__image-wrap">
                 <img
-                  v-if="slot.slide"
+                  v-if="slot.slide && !isVideo(slot.slide.image)"
                   :src="resolveImage(slot.slide.image)"
                   class="car-slider-block__image"
                   :alt="getText(slot.slide.caption)"
@@ -39,6 +39,15 @@
                   decoding="sync"
                   fetchpriority="high"
                 />
+                <video
+                  v-else-if="slot.slide && isVideo(slot.slide.image)"
+                  :src="resolveImage(slot.slide.image)"
+                  class="car-slider-block__video"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                ></video>
               </div>
               <div class="car-slider-block__caption">{{ slot.slide ? getText(slot.slide.caption) : '' }}</div>
             </div>
@@ -93,6 +102,11 @@ const getText = (textObj) => {
     return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
   }
   return ''
+}
+
+const isVideo = (imagePath) => {
+  if (!imagePath) return false
+  return imagePath.endsWith('.mp4') || imagePath.endsWith('.webm')
 }
 
 const resolveImage = (imagePath) => {
@@ -432,6 +446,14 @@ const next = async () => {
     opacity: 1;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
 
   &__slide.is-empty &__image {

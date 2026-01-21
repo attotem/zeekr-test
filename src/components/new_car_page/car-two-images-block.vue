@@ -1,6 +1,9 @@
 <template>
   <section class="car-two-images-block" :style="{ background: blockData.background || '#fff' }">
     <div class="car-two-images-block__inner">
+      <h2 v-if="getText(blockData.title)" class="car-two-images-block__title">
+        {{ getText(blockData.title) }}
+      </h2>
       <div class="car-two-images-block__grid">
         <div
           v-for="(item, index) in images"
@@ -110,6 +113,16 @@ const images = computed(() => {
     padding: 0 20px;
   }
 
+  &__title {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #111;
+    margin: 0 0 60px 0;
+    text-align: center;
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,6 +202,11 @@ const images = computed(() => {
 
     &__inner {
       padding: 0 16px;
+    }
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 44px;
     }
 
     &__grid {

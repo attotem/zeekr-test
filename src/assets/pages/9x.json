@@ -1,0 +1,714 @@
+{
+  "layout": [
+    { "type": "hero", "dataKey": "hero" },
+    { "type": "textBlock", "dataKey": "textBlock" },
+    { "type": "navigationBlock", "dataKey": "navigationBlock" },
+    { "type": "designBlock", "dataKey": "designBlock" },
+    { "type": "designBlock", "dataKey": "designBlock2" },
+    { "type": "textSimpleBlock", "dataKey": "textBlock360" },
+    { "type": "color360Block", "dataKey": "color360Block" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockInside" },
+    { "type": "insideBlock", "dataKey": "insideBlock" },
+    { "type": "textBlock", "dataKey": "textBlockSpace" },
+    { "type": "videoWithTextTop", "dataKey": "luxuryVideoBlock" },
+    { "type": "sliderBlock", "dataKey": "sliderBlock2" },
+    { "type": "screensBlock", "dataKey": "lightBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockCloud" },
+    { "type": "videoTextBlock", "dataKey": "skyVideosBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockChair" },
+    { "type": "videoWithTextOverlay", "dataKey": "chairVideoBlock" },
+    { "type": "twoImagesBlock", "dataKey": "chairImagesBlock" },
+    { "type": "videoSwitcherBlock", "dataKey": "chairSwitcherBlock" },
+    { "type": "twoImagesBlock", "dataKey": "spaceBlock" }
+  ],
+  "hero": {
+    "title": {
+      "ua": "ZEEKR 9X",
+      "en": "ZEEKR 9X"
+    },
+    "subtitle": {
+      "ua": "Глобальний надрозкішний SUV новий флагман",
+      "en": "Global Ultra-Luxury SUV New Flagship"
+    },
+    "video": "9x_hero.mp4",
+    "image": {
+      "desktop": "",
+      "tablet": "",
+      "mobile": ""
+    },
+    "buttons": [
+      {
+        "text": {
+          "ua": "Записатися на тест-драйв",
+          "en": "Book a Test Drive"
+        },
+        "type": "test_drive",
+        "style": "transparent"
+      },
+      {
+        "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      }
+    ],
+    "specs": []
+  },
+  "textBlock": {
+    "title": {
+      "en": "Powerful Elegance",
+      "ua": "Потужна елегантність"
+    },
+    "subtitle": {
+      "en": "Original Flagship Aesthetics",
+      "ua": "Оригінальна флагманська естетика"
+    }
+  },
+  "navigationBlock": {
+    "title": {
+      "ua": "ZEEKR 9X",
+      "en": "ZEEKR 9X"
+    },
+    "image": {
+      "desktop": "9x_specs.webp",
+      "tablet": "9x_specs.webp",
+      "mobile": "9x_specs.webp"
+    },
+    "navigation": [
+      {
+        "id": "design",
+        "label": {
+          "ua": "Дизайн",
+          "en": "Design"
+        }
+      },
+      {
+        "id": "space",
+        "label": {
+          "ua": "Простір",
+          "en": "Space"
+        }
+      },
+      {
+        "id": "performance",
+        "label": {
+          "ua": "Продуктивність",
+          "en": "Performance"
+        }
+      },
+      {
+        "id": "safety",
+        "label": {
+          "ua": "Безпека",
+          "en": "Safety"
+        }
+      },
+      {
+        "id": "intelligence",
+        "label": {
+          "ua": "Інтелект",
+          "en": "Intelligence"
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": {
+          "ua": "Записатися на тест-драйв",
+          "en": "Book a Test Drive"
+        },
+        "type": "test_drive",
+        "style": "transparent"
+      },
+      {
+        "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      }
+    ],
+    "specs": [
+      {
+        "value": "5239 mm",
+        "label": {
+          "ua": "Довжина кузова",
+          "en": "Body Length"
+        }
+      },
+      {
+        "value": "2029 mm",
+        "label": {
+          "ua": "Ширина кузова",
+          "en": "Body Width"
+        }
+      },
+      {
+        "value": "1819 mm",
+        "label": {
+          "ua": "Висота кузова",
+          "en": "Body Height"
+        }
+      },
+      {
+        "value": "3169 mm",
+        "label": {
+          "ua": "Колісна база",
+          "en": "Wheelbase"
+        }
+      }
+    ]
+  },
+  "designBlock": {
+    "topTitle": {
+      "en": "Boundless Horizon, Complete Serenity",
+      "ua": "Безмежний горизонт, повна впевненість"
+    },
+    "images": [
+      "9x_slider1_1.webp",
+      "9x_slider1_2.webp",
+      "9x_slider1_3.webp"
+    ],
+    "items": [
+      {
+        "title": {
+          "en": "Yacht-Style Flybridge Roof",
+          "ua": "Яхтовий дах у стилі flybridge"
+        },
+        "description": {
+          "en": "Features an integrated C-ring design, seamlessly connecting the roof and body like a luxury yacht's flybridge",
+          "ua": "Відрізняється інтегрованим дизайном C-кільця, який плавно з'єднує дах і кузов, наче flybridge розкішної яхти"
+        }
+      },
+      {
+        "title": {
+          "en": "Luxurious Body Proportions",
+          "ua": "Розкішні пропорції кузова"
+        },
+        "description": {
+          "en": "Following the golden ratio, achieving an elegant side profile and spacious entry/exit areas, perfectly balancing grandeur and comfort",
+          "ua": "Дотримуючись золотого перерізу, досягаючи елегантного бічного профілю та просторних зон входу/виходу, ідеально поєднуючи велич та комфорт"
+        }
+      },
+      {
+        "title": {
+          "en": "22-Inch Mirror-Forged Wheels",
+          "ua": "22-дюймові дзеркальні ковані диски"
+        },
+        "description": {
+          "en": "Exceptional mirror finish, striking and distinguished",
+          "ua": "Виняткове дзеркальне покриття, помітне та аристократичне"
+        }
+      }
+    ]
+  },
+  "designBlock2": {
+    "topTitle": {
+      "en": "Starry Galaxy Speaks, Heart Reflects",
+      "ua": "Зоряна галактика говорить, серце відображає"
+    },
+    "images": [
+      "9x_slider2_1.mp4",
+      "9x_slider2_2.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "en": "Vast Star Diamond Matrix Lighting",
+          "ua": "Матричне освітлення «Безмежна зіркова діамант»"
+        },
+        "description": {
+          "en": "Light as language, illuminating the path ahead",
+          "ua": "Світло як мова, освітлюючи шлях вперед"
+        }
+      },
+      {
+        "title": {
+          "en": "Dual Million-Pixel Intelligent Projection Headlights",
+          "ua": "Подвійні інтелектуальні проекційні фари з мільйоном пікселів"
+        },
+        "description": {
+          "en": "1.3 million headlight pixels | 1,800 lumens luminous flux | 150-inch projection size",
+          "ua": "1,3 мільйона пікселів фар | 1 800 люмен світлового потоку | 150 дюймів розмір проекції"
+        }
+      }
+    ]
+  },
+  "textBlock360": {
+    "title": {
+      "en": "Observe Heaven and Earth, Reveal True Nature",
+      "ua": "Спостерігаючи небо і землю, відкриваючи справжню сутність"
+    }
+  },
+  "color360Block": {
+    "colors": [
+      {
+        "id": "black",
+        "name": {
+          "ua": "Полярна ніч чорний",
+          "en": "Arctic Night Black"
+        },
+        "value": "#1a1a1a",
+        "description": {
+          "ua": "Мовчазна глибина, як опівнічне небо, це найвища зовнішня проява потужної аури та внутрішньої сили",
+          "en": "Silent and profound like the midnight sky, it is the ultimate manifestation of powerful aura and inner strength"
+        }
+      },
+      {
+        "id": "white",
+        "name": {
+          "ua": "Полярний день білий",
+          "en": "Polar White"
+        },
+        "value": "#ffffff",
+        "description": {
+          "ua": "Вічний базовий колір на північ від 66.5° північної широти, як світло полярного дня, чистий і священний",
+          "en": "The eternal base color north of 66.5° N latitude, like the aurora borealis in the polar day, pure and sacred"
+        }
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ua": "Зоряний купол сірий",
+          "en": "Stellar Grey"
+        },
+        "value": "#808080",
+        "description": {
+          "ua": "Нічне небо Сахари, сіра завіса зірок, що приховує глибоку мудрість всесвіту",
+          "en": "The night sky of the Sahara, with a grey curtain of falling stars, concealing the profound wisdom of the universe"
+        }
+      },
+      {
+        "id": "silver",
+        "name": {
+          "ua": "Льодовик срібний",
+          "en": "Glacier Silver"
+        },
+        "value": "#c0c0c0",
+        "description": {
+          "ua": "Як льодовики в снігових регіонах Аляски, срібне світіння холодне та різке, розкриваючи свою грань між світлом і тінню",
+          "en": "Like glaciers in the snowy regions of Alaska, the silver gleam is cold and sharp, revealing its edge between light and shadow"
+        }
+      },
+      {
+        "id": "purple",
+        "name": {
+          "ua": "Темна ніч фіолетовий",
+          "en": "Dark Night Purple"
+        },
+        "value": "#6A1B9A",
+        "description": {
+          "ua": "Останній промінь сутінків у вечірній сутінок, фіолетовий шарм природного походження, що виявляє стриману розкіш",
+          "en": "The last ray of twilight in the dusk, with a naturally formed purple charm, revealing a subdued luxury"
+        }
+      }
+    ]
+  },
+  "textBlockSpace": {
+    "title": {
+      "en": "Wide Enjoyment, Global Cabin",
+      "ua": "Широкий простір, світовий салон"
+    },
+    "subtitle": {
+      "en": "Heart with Structure, Ambition in the World",
+      "ua": "Серце зі структурою, амбіції в усьому світі"
+    }
+  },
+  "luxuryVideoBlock": {
+    "video": "9x_luxury.mp4",
+    "title": {
+      "en": "Outstanding World, Luxurious Spacious Realm",
+      "ua": "Винятковий світ, розкішна просторова сфера"
+    },
+    "features": [
+      {
+        "value": "6.3 m²",
+        "label": {
+          "en": "Cabin area",
+          "ua": "Площа салону"
+        }
+      },
+      {
+        "value": "1.05 m²",
+        "label": {
+          "en": "Per capita cabin area",
+          "ua": "Площа салону на людину"
+        }
+      }
+    ]
+  },
+  "textBlockInside": {
+    "title": {
+      "en": "Embrace Nature, Nurture the Soul",
+      "ua": "Охоплюючи суть неба, плекаючи глибини серця."
+    }
+  },
+  "insideBlock": {
+    "title": {
+      "en": "",
+      "ua": ""
+    },
+    "options": [
+      {
+        "id": "biege",
+        "name": {
+          "en": "Polar White",
+          "ua": "Полярний білий"
+        },
+        "description": {
+          "en": "The pure glimmer of Arctic snow melting under sunlight. Spacious yet serene, tranquility within white",
+          "ua": "Чисте світіння арктичного снігу, що тане під сонячним світлом. Просторість і водночас спокій, тиша в білому"
+        }
+      },
+      {
+        "id": "black",
+        "name": {
+          "en": "Moon Shadow Blue",
+          "ua": "Синій місячної тіні"
+        },
+        "description": {
+          "en": "A secluded mystery in the ocean depths under moonlight. Deep still waters flow, resonating with profound echoes",
+          "ua": "Відокремлена таємниця в глибинах океану під місячним світлом. Глибокі тихі води течуть, резонуючи з глибокими відлуннями"
+        }
+      },
+      {
+        "id": "brown",
+        "name": {
+          "en": "Amber Brown",
+          "ua": "Бурштиновий коричневий"
+        },
+        "description": {
+          "en": "The timeless brown tone of amber, a warm gift from the earth. Gentle and enduring, embodying eternity",
+          "ua": "Вічний коричневий тон бурштину — теплий дар землі. Ніжний і міцний, втілює вічність"
+        }
+      },
+      {
+        "id": "blackGold",
+        "name": {
+          "en": "Starlight Night Gold",
+          "ua": "Золото зоряної ночі"
+        },
+        "description": {
+          "en": "Under the night sky, starlight touches the brilliant moment of golden ore veins. Night conceals its edge, while gold illuminates all things",
+          "ua": "Під зоряним небом зоряне світло торкається блискучої миті золотих жил руди. Ніч приховує свою гострий край, поки золото освітлює всі речі"
+        }
+      }
+    ],
+    "note": {
+      "en": "",
+      "ua": ""
+    }
+  },
+  "sliderBlock2": {
+    "title": {
+      "en": "Inherit Full-Seat Hospitality",
+      "ua": "Успадковувати гостинність повного салону"
+    },
+    "slides": [
+      {
+        "image": "9x_slider2_1.webp",
+        "caption": {
+          "en": "Electric Running Board - The posture of arrival, respectful welcome",
+          "ua": "Електрична підножка - Поза прибуття, шанобливе привітання"
+        }
+      },
+      {
+        "image": "9x_slider2_2.webp",
+        "caption": {
+          "en": "Spacious Door - Nearly 90° maximum door opening, 1044mm maximum door opening width, elegant entry and exit",
+          "ua": "Просторі двері - Максимальне відкриття дверей майже на 90°, максимальна ширина отвору 1044мм, елегантний вхід і вихід"
+        }
+      },
+      {
+        "image": "9x_slider2_3.webp",
+        "caption": {
+          "en": "170mm Wide Central Aisle - Hallway aisle, easy to pass through",
+          "ua": "170мм широкий центральний прохід - Коридорний прохід, легко проходити"
+        }
+      },
+      {
+        "image": "9x_slider2_4.webp",
+        "caption": {
+          "en": "Convenient Access to the Third Row - Seamless entry, shared luxury",
+          "ua": "Зручний доступ до третього ряду - Безшовний вхід, спільна розкіш"
+        }
+      }
+    ]
+  },
+  "lightBlock": {
+    "title": {
+      "en": "Heaven and Earth Delight the Eyes and Mind",
+      "ua": "Небо і земля радують очі та розум"
+    },
+    "screens": [
+      {
+        "image": "9x_light_1.webp",
+        "title": {
+          "en": "Three-Row Six-Seat Layout, Theatre-Style Cabin",
+          "ua": "Трирядний шестимісний салон, театральний стиль"
+        },
+        "description": {
+          "en": "Seats elevated, suitable for all rows",
+          "ua": "Місця підняті, підходять для всіх рядів"
+        }
+      },
+      {
+        "image": "9x_light_2.webp",
+        "title": {
+          "en": "4.2m² Total Vehicle Transparent Area",
+          "ua": "4.2м² загальна прозора площа автомобіля"
+        },
+        "description": {
+          "en": "Travel in light, full of brilliance",
+          "ua": "Подорож у світлі, сповнена блиску"
+        }
+      },
+      {
+        "image": "9x_light_3.webp",
+        "title": {
+          "en": "1.32m² Roof Glass Transparent Area",
+          "ua": "1.32м² прозора площа скляного даху"
+        },
+        "description": {
+          "en": "Third-row exclusive independent panoramic roof, third-row starry sky, sharing daylight",
+          "ua": "Ексклюзивний незалежний панорамний дах для третього ряду, зоряне небо третього ряду, спільне денне світло"
+        }
+      },
+      {
+        "image": "9x_light_4.webp",
+        "title": {
+          "en": "1.03m² Large-Area Openable Panoramic Sunroof",
+          "ua": "1.03м² велика відкривається панорамна люк-даху"
+        },
+        "description": {
+          "en": "Wind follows movement, transparent vision",
+          "ua": "Вітер слідує за рухом, прозорий огляд"
+        }
+      }
+    ]
+  },
+  "screensBlock": {
+    "title": {
+      "en": "High-Definition Multi-Screen Panoramic Interaction",
+      "ua": "Високоякісна багатоекранна панорамна взаємодія"
+    },
+    "screens": [
+      {
+        "image": "9x_screen_1.webp",
+        "title": {
+          "en": "Advanced Display System",
+          "ua": "Передова система відображення"
+        },
+        "description": {
+          "en": "Premium display technology for enhanced user experience",
+          "ua": "Преміальна технологія відображення для покращеного користувацького досвіду"
+        }
+      },
+      {
+        "image": "9x_screen_2.webp",
+        "title": {
+          "en": "Interactive Control Screen",
+          "ua": "Інтерактивний екран керування"
+        },
+        "description": {
+          "en": "Intuitive interface for seamless control",
+          "ua": "Інтуїтивний інтерфейс для безшовного керування"
+        }
+      }
+    ]
+  },
+  "textBlockCloud": {
+    "title": {
+      "en": "Sit and Watch the Clouds Rise, Heart Relaxed and Spirit Free",
+      "ua": "Сидячи спостерігати за хмарами, серце розслаблене, дух вільний"
+    }
+  },
+  "skyVideosBlock": {
+    "image1": "9x_chair_1.webp",
+    "image2": "9x_chair_2.webp",
+    "text1": {
+      "title": {
+        "en": "Soft NAPPA Full-Grain Top-Layer Leather",
+        "ua": "М'яка NAPPA повнозерниста верхня шкіра"
+      },
+      "items": [
+        {
+          "value": "5.5 m²",
+          "label": {
+            "en": "Total car coverage area",
+            "ua": "Загальна площа покриття автомобіля"
+          }
+        },
+        {
+          "value": "40%+",
+          "label": {
+            "en": "Comfort improvement",
+            "ua": "Покращення комфорту"
+          }
+        }
+      ],
+      "note": {
+        "en": "* Soft NAPPA full-grain top-layer leather covers all car seats, human contact areas, central armrests, partial door panels, and other areas",
+        "ua": "* М'яка NAPPA повнозерниста верхня шкіра покриває всі сидіння автомобіля, зони контакту з людиною, центральні підлокітники, часткові панелі дверей та інші зони"
+      }
+    },
+    "text2": {
+      "title": {
+        "en": "Third Row Can Sit or Recline, Every Seat Ultra-Luxurious",
+        "ua": "Третій ряд може сидіти або відкидатися, кожне місце надзвичайно розкішне"
+      },
+      "items": [
+        {
+          "value": "140 mm",
+          "label": {
+            "en": "Electric front and rear sliding range",
+            "ua": "Електричний діапазон ковзання вперед і назад"
+          }
+        },
+        {
+          "value": "135°",
+          "label": {
+            "en": "Maximum recline angle",
+            "ua": "Максимальний кут відкидання"
+          }
+        }
+      ]
+    }
+  },
+  "textBlockChair": {
+    "title": {
+      "en": "Globally Original Flowing Cloud Seat",
+      "ua": "Глобально оригінальне крісло «Пливуча хмара»"
+    }
+  },
+  "chairVideoBlock": {
+    "video": "9x_chair_3.mp4",
+    "title": {
+      "en": "Cloud support, never tired from sitting for a long time",
+      "ua": "Підтримка хмари, ніколи не втомлюється від тривалого сидіння"
+    },
+    "subtitle": {
+      "en": "",
+      "ua": ""
+    }
+  },
+  "chairImagesBlock": {
+    "images": [
+      {
+        "image": "9x_chair_4.webp",
+        "title": {
+          "en": "12-Layer Seat Structure",
+          "ua": "12-шарова структура сидіння"
+        },
+        "description": {
+          "en": "10mm dreamy rebound sponge, soft and comfortable, all-round support, not tired after long sitting",
+          "ua": "10мм мрійлива губка з відскоком, м'яка та комфортна, всебічна підтримка, не втомлюється після тривалого сидіння"
+        }
+      },
+      {
+        "image": "9x_chair_5.webp",
+        "title": {
+          "en": "Globally Pioneering Four-Way Adaptive Lumbar Support",
+          "ua": "Глобально піонерська чотиристороння адаптивна підтримка попереку"
+        },
+        "description": {
+          "en": "Spine-friendly ergonomic seat, relieves whole-body pressure",
+          "ua": "Ергономічне сидіння, дружнє до хребта, знімає тиск на все тіло"
+        }
+      }
+    ]
+  },
+  "chairSwitcherBlock": {
+    "title": {
+      "en": "Four Postures, Physical and Mental Relaxation",
+      "ua": "Чотири позиції, фізичний та психічний розслаблення"
+    },
+    "videos": [
+      "9x_chair_6.mp4",
+      "9x_chair_7.mp4",
+      "9x_chair_8.mp4",
+      "9x_chair_9.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "en": "Zero Gravity Seat Mode",
+          "ua": "Режим сидіння з нульовою гравітацією"
+        },
+        "description": {
+          "en": "As if in outer space, the whole body and mind can be deeply relaxed",
+          "ua": "Ніби в космосі, все тіло та розум можуть глибоко розслабитися"
+        }
+      },
+      {
+        "title": {
+          "en": "Eames Lounge Chair Mode",
+          "ua": "Режим крісла Eames"
+        },
+        "description": {
+          "en": "Legs can be fully stretched, freely enjoy leisure time",
+          "ua": "Ноги можуть бути повністю розтягнуті, вільно насолоджуватися вільним часом"
+        }
+      },
+      {
+        "title": {
+          "en": "Rotating Seat Mode",
+          "ua": "Режим обертального сидіння"
+        },
+        "description": {
+          "en": "It is a place for leisure and entertainment, and also a place for making tea and discussing business",
+          "ua": "Це місце для відпочинку та розваг, а також місце для чаювання та обговорення бізнесу"
+        }
+      },
+      {
+        "title": {
+          "en": "Professional Massage Chair Mode",
+          "ua": "Режим професійного масажного крісла"
+        },
+        "description": {
+          "en": "22 massage points, 8 massage techniques, enjoy body and mind SPA",
+          "ua": "22 точки масажу, 8 технік масажу, насолоджуйтеся SPA для тіла та розуму"
+        }
+      }
+    ]
+  },
+  "spaceBlock": {
+    "title": {
+      "en": "Stepless Rotation, Free Scene",
+      "ua": "Безступеневе обертання, вільна сцена"
+    },
+    "images": [
+      {
+        "image": "9x_space_1.webp",
+        "title": {
+          "en": "Up and Down Freedom",
+          "ua": "Вільність руху вгору і вниз"
+        }
+      },
+      {
+        "image": "9x_space_2.webp",
+        "title": {
+          "en": "Business Reception",
+          "ua": "Ділова приймальня"
+        }
+      },
+      {
+        "image": "9x_space_3.webp",
+        "title": {
+          "en": "Family Gathering",
+          "ua": "Сімейна зустріч"
+        }
+      },
+      {
+        "image": "9x_space_4.webp",
+        "title": {
+          "en": "Travel Residence Large Bed",
+          "ua": "Велике ліжко для подорожей"
+        }
+      }
+    ]
+  }
+}

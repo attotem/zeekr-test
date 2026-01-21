@@ -3,13 +3,22 @@
     <div class="car-image-with-text-below__inner">
       <div class="car-image-with-text-below__image-wrap">
         <img
-          v-if="imageSrc"
+          v-if="imageSrc && !isVideo"
           :src="imageSrc"
           :alt="getText(blockData.title)"
           class="car-image-with-text-below__image"
           loading="lazy"
           @error="onImageError"
         />
+        <video
+          v-else-if="videoSrc"
+          :src="videoSrc"
+          class="car-image-with-text-below__video"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
       </div>
       
       <div class="car-image-with-text-below__content">
@@ -52,8 +61,26 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
+const isVideo = computed(() => {
+  const mediaPath = blockData.value.video || blockData.value.image
+  return mediaPath && (mediaPath.endsWith('.mp4') || mediaPath.endsWith('.webm'))
+})
+
 const imageSrc = computed(() => {
+  if (blockData.value.video && !isVideo.value) {
+    return resolveImage(blockData.value.video)
+  }
   return resolveImage(blockData.value.image)
+})
+
+const videoSrc = computed(() => {
+  if (blockData.value.video && isVideo.value) {
+    return resolveImage(blockData.value.video)
+  }
+  if (blockData.value.image && isVideo.value) {
+    return resolveImage(blockData.value.image)
+  }
+  return ''
 })
 
 const onImageError = (event) => {
@@ -114,6 +141,14 @@ const resolveImage = (imagePath) => {
   }
 
   &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__video {
     width: 100%;
     height: 100%;
     display: block;

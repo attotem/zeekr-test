@@ -79,13 +79,17 @@ const getInsideImage = (id) => {
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   const path1 = `${basePath}/${props.carId}/inside/inside_${id}.webp`
   const path2 = `${basePath}/${props.carId}/${props.carId}_inside_${id}.webp`
-  // For now, return path2 for 001, path1 for others
-  if (props.carId === '001') {
+  // For now, return path2 for 001 and 9x, path1 for others
+  if (props.carId === '001' || props.carId === '9x') {
     return path2
   }
   return path1
 }
-const getColorIcon = (id) => `/src/assets/colors/${id}.webp`
+const getColorIcon = (id) => {
+  // Map biege to beige for icon
+  const iconId = id === 'biege' ? 'beige' : id
+  return `/src/assets/colors/${iconId}.webp`
+}
 
 // Preload images and store Image objects
 const preloadedImages = ref({})
