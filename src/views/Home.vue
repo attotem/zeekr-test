@@ -75,7 +75,8 @@
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x', index)"
                 >
-                  7X
+                  <span class="carousel__tab-switcher-btn-bg"></span>
+                  <span class="carousel__tab-switcher-btn-text">7X</span>
                 </button>
                 <span class="carousel__tab-switcher-separator">|</span>
                 <button
@@ -84,7 +85,8 @@
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x_eu' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x_eu', index)"
                 >
-                  7X EU
+                  <span class="carousel__tab-switcher-btn-bg"></span>
+                  <span class="carousel__tab-switcher-btn-text">7X EU</span>
                 </button>
               </div>
             </div>
@@ -95,7 +97,8 @@
               :class="{ 'carousel__tab--active': index === activeCarouselIndex }"
               @click="handleTabClick(index, item.id)"
             >
-              {{ item.label }}
+              <span class="carousel__tab-bg"></span>
+              <span class="carousel__tab-text">{{ item.label }}</span>
             </button>
           </template>
         </div>
@@ -352,20 +355,44 @@ onMounted(async () => {
 
   &__tab {
     color: #000;
-    border-color: rgba(0, 0, 0, .15);
+    border: 1px solid rgba(0, 0, 0, .15);
     font-size: 14px;
-    border-radius: .520833333rem;
     padding: 6px 12px;
     cursor: pointer;
     background: none;
     white-space: nowrap;
     border-radius: 20px;
-    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: color .3s ease, border-color .3s ease;
+
+    &-bg {
+      position: absolute;
+      inset: 0;
+      background: #F75400;
+      border-radius: 20px;
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform .4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
+    }
+
+    &-text {
+      position: relative;
+      z-index: 1;
+    }
 
     &--active {
-      background: #000;
       color: #fff;
-      border-color: #000;
+      border-color: #F75400;
+
+      .carousel__tab-bg {
+        transform: scale(1);
+      }
+    }
+
+    &:hover:not(&--active) {
+      border-color: rgba(247, 84, 0, .5);
     }
   }
 
@@ -378,11 +405,16 @@ onMounted(async () => {
     display: flex;
     align-items: center;
     background: none;
-    border: .0078125rem solid rgba(0, 0, 0, .15);
+    border: 1px solid rgba(0, 0, 0, .15);
     border-radius: 20px;
     padding: 0;
     gap: 0;
     position: relative;
+    transition: border-color .3s ease;
+
+    &:has(.carousel__tab-switcher-btn--active) {
+      border-color: #F75400;
+    }
   }
 
   &__tab-switcher-btn {
@@ -394,18 +426,37 @@ onMounted(async () => {
     border: none;
     white-space: nowrap;
     border-radius: 20px;
-    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
     position: relative;
+    overflow: hidden;
+    transition: color .3s ease;
     z-index: 1;
 
+    &-bg {
+      position: absolute;
+      inset: 0;
+      background: #F75400;
+      border-radius: 20px;
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform .4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
+    }
+
+    &-text {
+      position: relative;
+      z-index: 1;
+    }
+
     &--active {
-      background: #000;
       color: #fff;
-      border-color: #000;
+
+      .carousel__tab-switcher-btn-bg {
+        transform: scale(1);
+      }
     }
 
     &:hover:not(&--active) {
-      color: #333;
+      color: #F75400;
     }
   }
 
@@ -478,6 +529,10 @@ onMounted(async () => {
       flex-shrink: 0;
       font-size: 12px;
       padding: 6px 12px;
+
+      &-bg {
+        border-radius: 20px;
+      }
     }
 
     &__tab-switcher {
@@ -487,6 +542,10 @@ onMounted(async () => {
     &__tab-switcher-btn {
       font-size: 12px;
       padding: 6px 10px;
+
+      &-bg {
+        border-radius: 20px;
+      }
     }
 
     &__tab-switcher-separator {

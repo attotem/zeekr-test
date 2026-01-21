@@ -1,5 +1,5 @@
 <template>
-  <section class="car-video-with-text-overlay">
+  <section class="car-video-with-text-overlay" :style="{ background: blockData.background || '#fff' }">
     <div class="car-video-with-text-overlay__inner">
       <div class="car-video-with-text-overlay__video-wrap">
         <video
@@ -74,8 +74,7 @@ const videoSrc = computed(() => {
 .car-video-with-text-overlay {
   width: calc(100% - 40px);
   margin: 0 20px;
-  padding: 0 60px 0;
-  background: #fff;
+  padding: 60px 0;
 
   &__inner {
     width: 100%;

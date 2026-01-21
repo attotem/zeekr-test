@@ -19,7 +19,40 @@
     { "type": "videoWithTextOverlay", "dataKey": "chairVideoBlock" },
     { "type": "twoImagesBlock", "dataKey": "chairImagesBlock" },
     { "type": "videoSwitcherBlock", "dataKey": "chairSwitcherBlock" },
-    { "type": "twoImagesBlock", "dataKey": "spaceBlock" }
+    { "type": "twoImagesBlock", "dataKey": "spaceBlock" },
+    { "type": "twoImagesBlock", "dataKey": "luxuryBlock" },
+    { "type": "textBlock", "dataKey": "textBlockSafetySystem" },
+    { "type": "luxuryBlock", "dataKey": "securityLuxuryBlock" },
+    { "type": "textSimpleBlock", "dataKey": "audioVideoCaptionBlock" },
+    { "type": "imageWithTextBelow", "dataKey": "audioVideoBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockAudio" },
+    { "type": "videoSwitcherBlock", "dataKey": "audioSwitcherBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockNoiseReduction" },
+    { "type": "videoSwitcherBlock", "dataKey": "noiseReductionBlock" },
+    { "type": "imageWithTextBelow", "dataKey": "ambientLightBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockIntelligentControl" },
+    { "type": "sliderBlock", "dataKey": "sliderBlock5" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockAIOS7" },
+    { "type": "videoBlock", "dataKey": "aiOS7Block" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockLuxury" },
+    { "type": "luxuryBlock", "dataKey": "luxuryBlock1" },
+    { "type": "luxuryBlock", "dataKey": "luxuryBlock2" },
+    { "type": "textBlock", "dataKey": "textBlockHybrid" },
+    { "type": "performanceBlock", "dataKey": "performanceBlock" },
+    { "type": "textBlock", "dataKey": "textBlockChassis" },
+    { "type": "videoWithTextTop", "dataKey": "chassisVideoBlock" },
+    { "type": "imageTextBlock", "dataKey": "suspensionBlock" },
+    { "type": "imageTextBlock", "dataKey": "stabilizerBlock" },
+    { "type": "videoWithTextTop", "dataKey": "intelligentHubBlock" },
+    { "type": "terrainBlock", "dataKey": "terrainBlock" },
+    { "type": "textBlock", "dataKey": "textBlockSafety" },
+    { "type": "strengthBlock", "dataKey": "strengthBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockHybridSafety" },
+    { "type": "cabinFunctionsBlock", "dataKey": "safetyFunctionsBlock" },
+    { "type": "textBlock", "dataKey": "textBlockDrivingAssist" },
+    { "type": "imageTextOverlayBlock", "dataKey": "powerBlock" },
+    { "type": "detectBlock", "dataKey": "detectBlock" },
+    { "type": "videoWithTextTop", "dataKey": "redundancyVideoBlock" }
   ],
   "hero": {
     "title": {
@@ -710,5 +743,675 @@
         }
       }
     ]
+  },
+  "audioVideoBlock": {
+    "background": "rgb(235, 232, 227)",
+    "video": "9x_video_1.mp4"
+  },
+  "audioVideoCaptionBlock": {
+    "title": {
+      "en": "Global Audio-Visual, Sensory Feast",
+      "ua": "Глобальний аудіовізуальний, чуттєвий бенкет"
+    }
+  },
+  "textBlockAudio": {
+    "title": {
+      "en": "Naim Hall of Sound Audio System",
+      "ua": "Аудіосистема Naim Hall of Sound"
+    }
+  },
+  "audioSwitcherBlock": {
+    "title": {
+      "en": "",
+      "ua": ""
+    },
+    "videos": [
+      "9x_slider3_1.mp4",
+      "9x_slider3_2.mp4",
+      "9x_slider3_3.mp4",
+      "9x_slider3_4.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "en": "Peak",
+          "ua": "Вершина"
+        },
+        "description": {
+          "en": "Peak power 3868W",
+          "ua": "Пікова потужність 3868W"
+        }
+      },
+      {
+        "title": {
+          "en": "Restore",
+          "ua": "Відтворення"
+        },
+        "description": {
+          "en": "20-40000Hz Ultra-wide Frequency Coverage",
+          "ua": "20-40000Гц надшироке покриття частотного діапазону"
+        }
+      },
+      {
+        "title": {
+          "en": "Immersive",
+          "ua": "Імерсивний"
+        },
+        "description": {
+          "en": "9.2.4.8 Full-Dimensional Immersive Sound Field Layout, 32 Top-Level Speakers",
+          "ua": "9.2.4.8 повнорозмірне імерсивне звукове поле, 32 топ-рівневі динаміки"
+        }
+      },
+      {
+        "title": {
+          "en": "M-Shaped Patented Structure",
+          "ua": "Патентована структура типу M"
+        },
+        "description": {
+          "en": "Titanium tweeter unit, greatly enhances high-frequency resolution",
+          "ua": "Титановий твітер, значно підвищує роздільну здатність високих частот"
+        }
+      }
+    ]
+  },
+  "textBlockNoiseReduction": {
+    "title": {
+      "en": "Active Noise Reduction, Luxurious Quiet Realm",
+      "ua": "Активне зниження шуму, розкішна тиха сфера"
+    }
+  },
+  "noiseReductionBlock": {
+    "title": {
+      "en": "",
+      "ua": ""
+    },
+    "videos": [
+      "9x_slider4_1.mp4",
+      "9x_slider4_1.mp4",
+      "9x_slider4_1.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "en": "Active Noise Reduction",
+          "ua": "Активне зниження шуму"
+        },
+        "description": {
+          "en": "Advanced noise cancellation technology for a quiet cabin experience",
+          "ua": "Передова технологія шумопоглинання для тихого салону"
+        }
+      },
+      {
+        "title": {
+          "en": "Active Noise Reduction",
+          "ua": "Активне зниження шуму"
+        },
+        "description": {
+          "en": "Advanced noise cancellation technology for a quiet cabin experience",
+          "ua": "Передова технологія шумопоглинання для тихого салону"
+        }
+      },
+      {
+        "title": {
+          "en": "Active Noise Reduction",
+          "ua": "Активне зниження шуму"
+        },
+        "description": {
+          "en": "Advanced noise cancellation technology for a quiet cabin experience",
+          "ua": "Передова технологія шумопоглинання для тихого салону"
+        }
+      }
+    ]
+  },
+  "ambientLightBlock": {
+    "image": "9x_light_5.webp",
+    "title": {
+      "en": "16.8 Million Colors Flowing Ambient Light",
+      "ua": "16.8 мільйонів кольорів переливається атмосферне освітлення"
+    },
+    "subtitle": {
+      "en": "256-color spectrum deep tuning | 16.8 million colors changeable at will | Constant current technology to eliminate flicker",
+      "ua": "Глибоке налаштування спектру 256 кольорів | 16.8 мільйонів кольорів змінюються за бажанням | Технологія постійного струму для усунення мерехтіння"
+    }
+  },
+  "textBlockIntelligentControl": {
+    "title": {
+      "en": "Heart's Desire, Ultimate Intelligent Control",
+      "ua": "Бажання серця, найвищий інтелектуальний контроль"
+    }
+  },
+  "sliderBlock5": {
+    "title": {
+      "en": "",
+      "ua": ""
+    },
+    "slides": [
+      {
+        "image": "9x_slider5_1.webp",
+        "caption": {
+          "en": "16-inch 3.5K OLED Central Control and Passenger Dual Screens - Global connected screens, clear at a glance",
+          "ua": "16-дюймовий 3.5K OLED центральний контроль та подвійні екрани пасажира - Глобальні з'єднані екрани, все на очах"
+        }
+      },
+      {
+        "image": "9x_slider5_2.webp",
+        "caption": {
+          "en": "6.3-inch OLED Magic Control Screen - Streamlined control screen, mastered in one hand",
+          "ua": "6.3-дюймовий OLED екран магічного керування - Оптимізований екран керування, контроль однією рукою"
+        }
+      },
+      {
+        "image": "9x_slider5_3.webp",
+        "caption": {
+          "en": "47-inch AR-HUD Head-up Display - Maximum brightness 20000nit, clear display in all scenarios",
+          "ua": "47-дюймовий AR-HUD проекційний дисплей - Максимальна яскравість 20000nit, чітке відображення у всіх сценаріях"
+        }
+      },
+      {
+        "image": "9x_slider5_4.webp",
+        "caption": {
+          "en": "Dual 8295 Intelligent Cockpit Computing Platform - Top-tier dual computing power, ultimate smooth experience",
+          "ua": "Подвійна платформа обчислень інтелектуального салону 8295 - Найвища подвійна обчислювальна потужність, ідеальний плавний досвід"
+        }
+      }
+    ]
+  },
+  "textBlockAIOS7": {
+    "title": {
+      "en": "Zeekr AI OS7 Intelligent Cockpit System",
+      "ua": "Zeekr AI OS7 Система інтелектуального салону "
+    }
+  },
+  "aiOS7Block": {
+    "title": {
+      "en": "",
+      "ua": ""
+    },
+    "subtitle": {
+      "en": "",
+      "ua": ""
+    },
+    "video": "9x_video_2.mp4"
+  },
+  "textBlockLuxury": {
+    "title": {
+      "en": "Luxury in Every Detail",
+      "ua": "Розкіш у кожній деталі"
+    }
+  },
+  "luxuryBlock1": {
+    "items": [
+      {
+        "image": "9x_luxury_1.webp",
+        "title": {
+          "en": "Crystal Rotary Knob",
+          "ua": "Кришталева поворотна ручка"
+        },
+        "description": {
+          "en": "",
+          "ua": ""
+        }
+      },
+      {
+        "image": "9x_luxury_2.webp",
+        "title": {
+          "en": "Physical Button Components",
+          "ua": "Фізичні кнопки керування"
+        },
+        "description": {
+          "en": "",
+          "ua": ""
+        }
+      },
+      {
+        "image": "9x_luxury_3.webp",
+        "title": {
+          "en": "Nordic Natural Wood Trim",
+          "ua": "Скандинавська натуральна деревина"
+        },
+        "description": {
+          "en": "",
+          "ua": ""
+        }
+      }
+    ]
+  },
+  "luxuryBlock2": {
+    "items": [
+      {
+        "image": "9x_luxury_4.webp",
+        "title": {
+          "en": "Fast Charging Retractable Cable",
+          "ua": "Висувний кабель швидкої зарядки"
+        },
+        "description": {
+          "en": "",
+          "ua": ""
+        }
+      },
+      {
+        "image": "9x_luxury_5.webp",
+        "title": {
+          "en": "Full Vehicle Privacy Sunshades",
+          "ua": "Приватні сонцезахисні штори по всьому автомобілю"
+        },
+        "description": {
+          "en": "",
+          "ua": ""
+        }
+      },
+      {
+        "image": "9x_luxury_6.webp",
+        "title": {
+          "en": "Smart Hot and Cold Refrigerator",
+          "ua": "Розумний холодильник з підігрівом та охолодженням"
+        },
+        "description": {
+          "en": "",
+          "ua": ""
+        }
+      }
+    ]
+  },
+  "textBlockHybrid": {
+    "title": {
+      "en": "Vast Super Electric Hybrid",
+      "ua": "Vast супер електричний гібрид"
+    },
+    "subtitle": {
+      "en": "Heart of Vastness, Calmly Reaching Far",
+      "ua": "Серце безмежності, спокійно досягаючи далечі"
+    }
+  },
+  "performanceBlock": {
+    "image1": "9x_hybrid_1.webp",
+    "image2": "9x_hybrid_2.webp",
+    "version1": {
+      "title": {
+        "en": "All Series 3-Second Acceleration",
+        "ua": "Прискорення за 3 секунди для всієї серії"
+      },
+      "specs": [
+        {
+          "value": "3.1 s",
+          "label": {
+            "en": "0-100 km/h fastest acceleration time",
+            "ua": "Найшвидший час розгону 0-100 км/год"
+          }
+        },
+        {
+          "value": "1030 kW",
+          "label": {
+            "en": "Peak total power",
+            "ua": "Пікова загальна потужність"
+          }
+        }
+      ],
+      "note": {
+        "en": "*Data sourced from engineering measurements, may vary due to road conditions, weather, load, tires and other test factors",
+        "ua": "*Дані з інженерних вимірювань, можуть відрізнятися через дорожні умови, погоду, навантаження, шини та інші тестові фактори"
+      }
+    },
+    "version2": {
+      "title": {
+        "en": "No Downgrade in Low Battery Experience",
+        "ua": "Без погіршення досвіду при низькому заряді"
+      },
+      "specs": [
+        {
+          "value": "205 kW",
+          "label": {
+            "en": "Peak power",
+            "ua": "Пікова потужність"
+          }
+        },
+        {
+          "value": "46%+",
+          "label": {
+            "en": "Combined thermal efficiency",
+            "ua": "Комбінована теплова ефективність"
+          }
+        }
+      ],
+      "note": {
+        "en": "2.0T Super Electric Hybrid Dedicated Engine",
+        "ua": "2.0T спеціалізований двигун супер електричного гібрида"
+      }
+    }
+  },
+  "textBlockChassis": {
+    "title": {
+      "en": "Vast AI Digital Chassis",
+      "ua": "Vast AI цифрове шасі"
+    },
+    "subtitle": {
+      "en": "Traverse Heaven and Earth, Travel Far with Ease",
+      "ua": "Перетинаючи небо і землю, подорожуючи далеко з легкістю"
+    }
+  },
+  "chassisVideoBlock": {
+    "video": "9x_video_3.mp4",
+    "title": {
+      "en": "Million-Level Luxury Chassis",
+      "ua": "Розкішне шасі преміум-класу"
+    },
+    "features": []
+  },
+  "suspensionBlock": {
+    "image": "9x_wheels_1.webp",
+    "title": {
+      "en": "Closed Dual-Chamber Dual-Valve Air Suspension Kit",
+      "ua": "Закрита двокамерна двоклапанна пневматична підвіска"
+    },
+    "features": [
+      {
+        "en": "Perfect balance of handling, comfort and off-road capability",
+        "ua": "Ідеальний баланс керованості, комфорту та позашляхових можливостей"
+      },
+      {
+        "en": "Closed dual-chamber air suspension: Lower noise, faster lift, no fear of altitude sickness",
+        "ua": "Закрита двокамерна пневмопідвіска: менше шуму, швидший підйом, без страху висотної хвороби"
+      },
+      {
+        "en": "110 mm maximum adjustment travel",
+        "ua": "110 мм максимальний хід регулювання"
+      },
+      {
+        "en": "Dual-valve CCD electromagnetic dampers: Independent compression and rebound control, 2-3x wider damping bandwidth than single-valve CCD",
+        "ua": "Двоклапанні CCD електромагнітні амортизатори: незалежний контроль стиснення та відбою, в 2-3 рази ширша смуга демпфування порівняно з одноклапанними CCD"
+      }
+    ]
+  },
+  "stabilizerBlock": {
+    "image": "9x_wheels_2.webp",
+    "textRight": true,
+    "title": {
+      "en": "48V Active Stabilizer Bar",
+      "ua": "48V активний стабілізатор"
+    },
+    "features": [
+      {
+        "en": "High-speed cornering with near-zero body roll; stable even on rugged terrain",
+        "ua": "Проходження поворотів на високій швидкості з майже нульовим креном кузова; стабільність навіть на нерівній місцевості"
+      },
+      {
+        "en": "0.2 s instantaneous response",
+        "ua": "0.2 с миттєва реакція"
+      },
+      {
+        "en": "1400 N·m lift torque",
+        "ua": "1400 Н·м підйомний крутний момент"
+      }
+    ]
+  },
+  "intelligentHubBlock": {
+    "video": "9x_video_4.mp4",
+    "title": {
+      "en": "Dinghai Intelligent Hub",
+      "ua": "Інтелектуальний центр Dinghai"
+    },
+    "features": [
+      {
+        "value": "",
+        "label": {
+          "en": "Real-time calling of intelligent driving assistance computing power and perception capabilities, coordinating chassis, powertrain, cabin and other multi-domain actuators",
+          "ua": "Виклик у реальному часі обчислювальної потужності інтелектуальної допомоги водію та можливостей сприйняття, координуючи шасі, силову установку, салон та інші багатодоменні виконавчі механізми"
+        }
+      }
+    ]
+  },
+  "terrainBlock": {
+    "image": "9x_terrain.webp",
+    "title": {
+      "en": "All-Terrain Adaptive",
+      "ua": "Адаптація до будь-якого рельєфу"
+    },
+    "subtitle": {
+      "en": "All-weather worry-free, all-terrain fearless, all-scenario composed",
+      "ua": "Без турбот у будь-яку погоду, безстрашність на будь-якому рельєфі, впевненість у будь-якому сценарії"
+    },
+    "standardModes": {
+      "title": {
+        "en": "3 Standard Modes",
+        "ua": "3 стандартні режими"
+      },
+      "items": [
+        {
+          "icon": "icon_comfort.webp",
+          "label": {
+            "en": "Comfort",
+            "ua": "Комфорт"
+          }
+        },
+        {
+          "icon": "icon_economy.webp",
+          "label": {
+            "en": "Economy",
+            "ua": "Економія"
+          }
+        },
+        {
+          "icon": "icon_sport.webp",
+          "label": {
+            "en": "Sport",
+            "ua": "Спорт"
+          }
+        }
+      ]
+    },
+    "adaptiveModes": {
+      "title": {
+        "en": "7 Adaptive Modes",
+        "ua": "7 адаптивних режимів"
+      },
+      "items": [
+        {
+          "icon": "icon_grass.webp",
+          "label": {
+            "en": "Grass/Gravel",
+            "ua": "Трава/Гравій"
+          }
+        },
+        {
+          "icon": "icon_snow.webp",
+          "label": {
+            "en": "Light Snow",
+            "ua": "Легкий сніг"
+          }
+        },
+        {
+          "icon": "icon_bigSnow.webp",
+          "label": {
+            "en": "Deep Snow",
+            "ua": "Глибокий сніг"
+          }
+        },
+        {
+          "icon": "icon_mud.webp",
+          "label": {
+            "en": "Mud",
+            "ua": "Бруд"
+          }
+        },
+        {
+          "icon": "icon_dessert.webp",
+          "label": {
+            "en": "Sand",
+            "ua": "Пісок"
+          }
+        },
+        {
+          "icon": "icon_rock.webp",
+          "label": {
+            "en": "Rock Climbing",
+            "ua": "Скелі"
+          }
+        },
+        {
+          "icon": "icon_mountain.webp",
+          "label": {
+            "en": "Mountain Road",
+            "ua": "Гірська дорога"
+          }
+        }
+      ]
+    }
+  },
+  "textBlockSafety": {
+    "title": {
+      "en": "Vast Safety Armor",
+      "ua": "Vast безпечна броня"
+    },
+    "subtitle": {
+      "en": "Steel Bones and Iron Frame, Complete Protection",
+      "ua": "Сталевий каркас, повний захист"
+    }
+  },
+  "strengthBlock": {
+    "image": "9x_strength.webp",
+    "title": {
+      "en": "Highway Tank",
+      "ua": "Шосейний танк"
+    },
+    "specs": [
+      {
+        "value": "41600 N·m/deg",
+        "label": {
+          "en": "Body torsional rigidity",
+          "ua": "Жорсткість кузова на кручення"
+        }
+      },
+      {
+        "value": "91%",
+        "label": {
+          "en": "High-strength steel and aluminum alloy proportion",
+          "ua": "Частка високоміцної сталі та алюмінієвого сплаву"
+        }
+      },
+      {
+        "value": "10 × 2000 MPa",
+        "label": {
+          "en": "Ultra-high strength hot-formed steel throughout vehicle",
+          "ua": "Надміцна гарячеформована сталь по всьому автомобілю"
+        }
+      }
+    ]
+  },
+  "textBlockHybridSafety": {
+    "title": {
+      "en": "Hybrid Professional Protection, Original Safety Design",
+      "ua": "Професійний захист гібрида, оригінальний дизайн безпеки"
+    }
+  },
+  "safetyFunctionsBlock": {
+    "background": "rgb(235, 232, 227)",
+    "items": [
+      {
+        "image": "9x_safety_1.webp",
+        "title": {
+          "en": "Third Energy Absorption Box",
+          "ua": "Третій енергопоглинаючий блок"
+        },
+        "description": {
+          "en": "Industry first",
+          "ua": "Перший у галузі"
+        }
+      },
+      {
+        "image": "9x_safety_2.webp",
+        "title": {
+          "en": "8×9 Ten-Cell Grid",
+          "ua": "Сітка 8×9 з десяти комірок"
+        },
+        "description": {
+          "en": "Battery protection",
+          "ua": "Захист батареї"
+        }
+      },
+      {
+        "image": "9x_safety_3.webp",
+        "title": {
+          "en": "Anti-Collision Stopper Block",
+          "ua": "Протиударний стопорний блок"
+        },
+        "description": {
+          "en": "Fuel tank puncture prevention",
+          "ua": "Запобігання пробиттю паливного бака"
+        }
+      },
+      {
+        "image": "9x_safety_4.webp",
+        "title": {
+          "en": "High-Voltage Distribution Box Active Flip Technology",
+          "ua": "Технологія активного перевертання високовольтного розподільчого блоку"
+        },
+        "description": {
+          "en": "Avoids collision-induced deformation safety risks",
+          "ua": "Запобігає ризикам безпеки через деформацію при зіткненні"
+        }
+      }
+    ]
+  },
+  "textBlockDrivingAssist": {
+    "title": {
+      "en": "Vast H9 Driving Assistance System",
+      "ua": "Система допомоги водію Vast H9"
+    },
+    "subtitle": {
+      "en": "Perceive All Things, Act with Wisdom",
+      "ua": "Сприймати все, діяти з мудрістю"
+    }
+  },
+  "powerBlock": {
+    "image": "9x_power.webp",
+    "title": {
+      "en": "Hardcore Dual-Core Computing Power",
+      "ua": "Хардкорна двоядерна обчислювальна потужність"
+    },
+    "subtitles": [
+      {
+        "en": "Dual NVIDIA DRIVE Thor-U Chips",
+        "ua": "Подвійні чипи NVIDIA DRIVE Thor-U"
+      },
+      {
+        "en": "1400 TOPS Chip Computing Power",
+        "ua": "1400 TOPS обчислювальна потужність чипів"
+      }
+    ]
+  },
+  "detectBlock": {
+    "image": "9x_detect.webp",
+    "title": {
+      "en": "Full-Domain, Omni-Directional, All-Time\nPerception Without Blind Spots",
+      "ua": "Повнодоменне, всенаправлене, цілодобове\nсприйняття без мертвих зон"
+    },
+    "subtitle": {
+      "en": "5 LiDAR Perception Solution",
+      "ua": "5 лідарів для системи сприйняття"
+    },
+    "specs": [
+      {
+        "value": "1",
+        "label": {
+          "en": "520-line Ultra-Long Range LiDAR",
+          "ua": "520-лінійний лідар надвеликої дальності"
+        }
+      },
+      {
+        "value": "4",
+        "label": {
+          "en": "High-Precision Solid-State LiDAR",
+          "ua": "Високоточні твердотільні лідари"
+        }
+      }
+    ]
+  },
+  "redundancyVideoBlock": {
+    "video": "9x_video_5.mp4",
+    "title": {
+      "en": "Full-Link Dual Backup with 8 Major Safety Redundancies",
+      "ua": "Повне резервування з 8 основними системами безпеки"
+    },
+    "features": []
   }
 }

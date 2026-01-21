@@ -91,6 +91,9 @@ import CarTitleTwoSubtitlesBlock from '@/components/new_car_page/car-title-two-s
 import CarPerformanceBlock from '@/components/new_car_page/car-performance-block.vue'
 import CarTwoVideosBlock from '@/components/new_car_page/car-two-videos-block.vue'
 import CarVideoTextBlock from '@/components/new_car_page/car-video-text-block.vue'
+import CarTerrainBlock from '@/components/new_car_page/car-terrain-block.vue'
+import CarStrengthBlock from '@/components/new_car_page/car-strength-block.vue'
+import CarDetectBlock from '@/components/new_car_page/car-detect-block.vue'
 import pageDataJson from '@/assets/pages/7x.json'
 
 const props = defineProps({
@@ -198,7 +201,10 @@ const componentMap = {
   titleTwoSubtitlesBlock: CarTitleTwoSubtitlesBlock,
       performanceBlock: CarPerformanceBlock,
       twoVideosBlock: CarTwoVideosBlock,
-  videoTextBlock: CarVideoTextBlock
+  videoTextBlock: CarVideoTextBlock,
+  terrainBlock: CarTerrainBlock,
+  strengthBlock: CarStrengthBlock,
+  detectBlock: CarDetectBlock
 }
 
 const getComponent = (type) => {

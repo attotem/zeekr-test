@@ -1128,7 +1128,7 @@
   "batteryBlock": {
     "batteries": [
       {
-        "image": "7x_battery_1.webp",
+        "image": "battery/7x_battery_1.webp",
         "name": {
           "uk": "Батарея 75 кВт·год Щит Золота Цегла",
           "en": "75 kWh Aegis Golden Brick Battery",
@@ -1170,7 +1170,7 @@
         ]
       },
       {
-        "image": "7x_battery_2.webp",
+        "image": "battery/7x_battery_2.webp",
         "name": {
           "uk": "Батарея 103 кВт·год Кілін",
           "en": "103 kWh Kirin Battery",

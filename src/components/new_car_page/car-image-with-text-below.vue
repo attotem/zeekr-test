@@ -1,5 +1,5 @@
 <template>
-  <section class="car-image-with-text-below">
+  <section class="car-image-with-text-below" :style="{ background: blockData.background || '#fff' }">
     <div class="car-image-with-text-below__inner">
       <div class="car-image-with-text-below__image-wrap">
         <img
