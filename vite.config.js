@@ -12,7 +12,7 @@ function copyPagesPlugin() {
 		apply: "build",
 		async generateBundle() {
 			const srcDir = fileURLToPath(new URL("./src/assets/pages", import.meta.url));
-			const projectRoot = fileURLToPath(new URL("./", import.meta.url));
+			const self = this;
 			
 			if (!existsSync(srcDir)) {
 				console.warn("⚠️ src/assets/pages directory not found");
@@ -28,7 +28,7 @@ function copyPagesPlugin() {
 					});
 				} else {
 					const relPath = relative(baseSrc, src);
-					this.emitFile({
+					self.emitFile({
 						type: "asset",
 						fileName: `pages/${relPath}`,
 						source: readFileSync(src)
