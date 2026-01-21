@@ -11,32 +11,42 @@ function copyPagesPlugin() {
 		name: "copy-pages",
 		apply: "build",
 		async generateBundle() {
-			const srcDir = fileURLToPath(new URL("./src/assets/pages", import.meta.url));
+			const pagesDir = fileURLToPath(new URL("./src/assets/pages", import.meta.url));
+			const colorsDir = fileURLToPath(new URL("./src/assets/colors", import.meta.url));
 			const self = this;
 			
-			if (!existsSync(srcDir)) {
-				console.warn("⚠️ src/assets/pages directory not found");
-				return;
-			}
-			
-			function copyRecursive(src, baseSrc) {
+			function copyRecursive(src, baseSrc, destPrefix) {
+				if (!existsSync(src)) return;
+				
 				const stats = statSync(src);
 				if (stats.isDirectory()) {
 					const files = readdirSync(src);
 					files.forEach(file => {
-						copyRecursive(join(src, file), baseSrc);
+						copyRecursive(join(src, file), baseSrc, destPrefix);
 					});
 				} else {
 					const relPath = relative(baseSrc, src);
 					self.emitFile({
 						type: "asset",
-						fileName: `pages/${relPath}`,
+						fileName: `${destPrefix}/${relPath}`,
 						source: readFileSync(src)
 					});
 				}
 			}
 			
-			copyRecursive(srcDir, srcDir);
+			// Copy pages directory
+			if (existsSync(pagesDir)) {
+				copyRecursive(pagesDir, pagesDir, "pages");
+			} else {
+				console.warn("⚠️ src/assets/pages directory not found");
+			}
+			
+			// Copy colors directory to dist/src/assets/colors to match dev paths
+			if (existsSync(colorsDir)) {
+				copyRecursive(colorsDir, colorsDir, "src/assets/colors");
+			} else {
+				console.warn("⚠️ src/assets/colors directory not found");
+			}
 		}
 	};
 }
