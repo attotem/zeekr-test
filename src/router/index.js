@@ -24,6 +24,7 @@ import NewsById from "@/views/NewsById.vue";
 import StockId from "@/views/StockId.vue";
 import PresentationZeekr9x from "@/views/PresentationZeekr9x.vue";
 import ThankYou from "@/views/ThankYou.vue";
+import Test7x from "@/views/Test7x.vue";
 import { useLoaderStore } from "@/stores/loader";
 
 const router = createRouter({
@@ -158,6 +159,16 @@ const router = createRouter({
 			path: "/thank-you-page",
 			name: "thank-you",
 			component: ThankYou,
+		},
+		{
+			path: "/test-7x",
+			name: "test-7x",
+			component: Test7x,
+		},
+		{
+			path: "/car/:carId",
+			name: "car-page",
+			component: Test7x,
 		},
 	],
 });

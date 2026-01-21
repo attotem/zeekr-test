@@ -1,0 +1,1770 @@
+{
+  "layout": [
+    { "type": "hero", "dataKey": "hero" },
+    { "type": "textBlock", "dataKey": "textBlock" },
+    { "type": "navigationBlock", "dataKey": "navigationBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlock360" },
+    { "type": "color360Block", "dataKey": "color360Block" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockCarbon" },
+    { "type": "twoImagesBlock", "dataKey": "carbonImagesBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockCargo" },
+    { "type": "imageTextBottomBlock", "dataKey": "cargoBlock" },
+    { "type": "textBlock", "dataKey": "textBlockStargateMusic" },
+    { "type": "videoBlock", "dataKey": "cealingVideoBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockInside" },
+    { "type": "insideBlock", "dataKey": "insideBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockSky" },
+    { "type": "videoTextBlock", "dataKey": "skyVideosBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockAudio" },
+    { "type": "imageWithTextBelow", "dataKey": "audioBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockChair" },
+    { "type": "imageWithTextBelow", "dataKey": "chairBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockMassage" },
+    { "type": "massageBlock", "dataKey": "massageBlock" },
+    { "type": "videoBlock", "dataKey": "massageVideoBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockLight" },
+    { "type": "stargateBlock", "dataKey": "lightVideoBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockMaterials" },
+    { "type": "materialsBlock", "dataKey": "materialsBlock" },
+    { "type": "screensBlock", "dataKey": "screensBlock" },
+    { "type": "luxuryBlock", "dataKey": "luxuryBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockStandard" },
+    { "type": "sliderBlock", "dataKey": "standardSliderBlock" },
+    { "type": "textBlock", "dataKey": "textBlockPerformance" },
+    { "type": "textImageBlock", "dataKey": "batteryImageBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockBattery" },
+    { "type": "batteryBlock", "dataKey": "batteryBlock" },
+    { "type": "titleTwoSubtitlesBlock", "dataKey": "batteryFastChargeBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockDriveSystem" },
+
+    { "type": "performanceBlock", "dataKey": "performanceBlock" },
+    { "type": "textBlock", "dataKey": "textBlockChassis" },
+    { "type": "designBlock", "dataKey": "chassisBlock" },
+    { "type": "designBlock", "dataKey": "aiChassisBlock" },
+    { "type": "imageTextOverlayBlock", "dataKey": "energyBlock" },
+    { "type": "textBlock", "dataKey": "textBlockIntelligenceSafety" },
+    { "type": "designBlock", "dataKey": "securityBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockCabin" },
+    { "type": "cabinFunctionsBlock", "dataKey": "cabinBlock" },
+    { "type": "textBlock", "dataKey": "textBlockSafetySystem" },
+    { "type": "luxuryBlock", "dataKey": "securityLuxuryBlock" },
+    { "type": "twoImagesBlock", "dataKey": "securityTwoImagesBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockParkingKing" },
+    { "type": "sliderBlock", "dataKey": "parkingSliderBlock" },
+    { "type": "textBlock", "dataKey": "textBlockHighwayTank" },
+    { "type": "passiveSecurityBlock", "dataKey": "passiveSecurityBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockActiveIntelligentSafety" },
+    { "type": "twoImagesBlock", "dataKey": "activeIntelligentSafetyBlock" },
+    { "type": "batterySafetyBlock", "dataKey": "batterySafetyBlock" }
+  ],
+  "hero": {
+    "title": {
+      "ua": "Оновлений ZEEKR 001",
+      "en": "Renewed ZEEKR 001"
+    },
+    "subtitle": {
+      "ua": "Розкішний мисливський купе",
+      "en": "Luxury Shooting Brake Sedan"
+    },
+    "video": "",
+    "image": {
+      "desktop": "001_hero.webp",
+      "tablet": "001_hero.webp",
+      "mobile": "001_hero.webp"
+    },
+    "buttons": [
+      {
+        "text": {
+          "ua": "Записатися на тест-драйв",
+          "en": "Book a Test Drive"
+        },
+        "type": "test_drive",
+        "style": "transparent"
+      },
+      {
+        "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      }
+    ]
+    
+  },
+  "textBlock": {
+    "title": {
+      "ua": "Класичний мисливський автомобіль",
+      "en": "Classic shooting brake"
+    },
+    "subtitle": {
+      "ua": "Елегантний та потужний",
+      "en": "Elegant and powerful"
+    }
+  },
+  "navigationBlock": {
+    "title": {
+      "ua": "Оновлений ZEEKR 001",
+      "en": "Renewed ZEEKR 001"
+    },
+    "image": {
+      "desktop": "001_stargate.webp",
+      "tablet": "001_hero.webp",
+      "mobile": "001_hero.webp"
+    },
+    "navigation": [
+      {
+        "id": "design",
+        "label": {
+          "ua": "Дизайн",
+          "en": "Design"
+        }
+      },
+      {
+        "id": "space",
+        "label": {
+          "ua": "Простір",
+          "en": "Space"
+        }
+      },
+      {
+        "id": "performance",
+        "label": {
+          "ua": "Продуктивність",
+          "en": "Performance"
+        }
+      },
+      {
+        "id": "safety",
+        "label": {
+          "ua": "Безпека",
+          "en": "Safety"
+        }
+      },
+      {
+        "id": "intelligence",
+        "label": {
+          "ua": "Інтелект",
+          "en": "Intelligence"
+        }
+      }
+    ],
+    "buttons": [
+      {
+        "text": {
+          "ua": "Записатися на тест-драйв",
+          "en": "Book a Test Drive"
+        },
+        "type": "test_drive",
+        "style": "white"
+      },
+      {
+        "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      }
+    ],
+    "specs": [
+      {
+        "value": "4977 mm",
+        "label": {
+          "ua": "Довжина кузова",
+          "en": "Body Length"
+        }
+      },
+      {
+        "value": "1999 mm",
+        "label": {
+          "ua": "Ширина кузова",
+          "en": "Body Width"
+        }
+      },
+      {
+        "value": "1533 mm",
+        "label": {
+          "ua": "Висота кузова (версія з пневмопідвіскою)",
+          "en": "Body Height (air suspension version)"
+        }
+      },
+      {
+        "value": "3005 mm",
+        "label": {
+          "ua": "Колісна база",
+          "en": "Wheelbase"
+        }
+      }
+    ]
+  },
+  "textBlockCarbon": {
+    "title": {
+      "ua": "Спортивні деталі з карбонового волокна в стилі 001FR",
+      "en": "001FR same style carbon fiber sports parts"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "carbonImagesBlock": {
+    "images": [
+      {
+        "image": "001_carbon_1.webp",
+        "caption": {
+          "ua": "Легке зовнішнє дзеркало заднього виду з карбонового волокна",
+          "en": "Carbon fiber lightweight exterior rearview mirror housing"
+        }
+      },
+      {
+        "image": "001_carbon_2.webp",
+        "caption": {
+          "ua": "Спортивне заднє крило з карбонового волокна з вітровим лезом",
+          "en": "Carbon fiber wind blade gliding sport rear wing"
+        }
+      }
+    ]
+  },
+
+  "textBlock360": {
+    "title": {
+      "ua": "7 варіантів зовнішнього вигляду",
+      "en": "7 exterior options"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "color360Block": {
+    "colors": [
+      {
+        "id": "white",
+        "name": {
+          "ua": "Білий",
+          "en": "White"
+        },
+        "value": "#ffffff",
+        "description": {
+          "ua": "Чистий білий колір для сучасного вигляду",
+          "en": "Pure white color for a modern look"
+        }
+      },
+      {
+        "id": "interstellarViolet",
+        "name": {
+          "ua": "Міжзоряний фіолетовий",
+          "en": "Interstellar Violet"
+        },
+        "value": "#6A1B9A",
+        "description": {
+          "ua": "Глибокий міжзоряний фіолетовий колір",
+          "en": "Deep interstellar violet color"
+        }
+      },
+      {
+        "id": "grey",
+        "name": {
+          "ua": "Сірий",
+          "en": "Grey"
+        },
+        "value": "#808080",
+        "description": {
+          "ua": "Елегантний сірий колір",
+          "en": "Elegant grey color"
+        }
+      },
+      {
+        "id": "green",
+        "name": {
+          "ua": "Зелений",
+          "en": "Green"
+        },
+        "value": "#4CAF50",
+        "description": {
+          "ua": "Природний зелений колір",
+          "en": "Natural green color"
+        }
+      },
+      {
+        "id": "darkPurple",
+        "name": {
+          "ua": "Темно-фіолетовий",
+          "en": "Dark Purple"
+        },
+        "value": "#6A1B9A",
+        "description": {
+          "ua": "Глибокий темно-фіолетовий колір",
+          "en": "Deep dark purple color"
+        }
+      },
+      {
+        "id": "black",
+        "name": {
+          "ua": "Чорний",
+          "en": "Black"
+        },
+        "value": "#1a1a1a",
+        "description": {
+          "ua": "Класичний чорний колір для елегантного вигляду",
+          "en": "Classic black color for an elegant look"
+        }
+      },
+      {
+        "id": "beige",
+        "name": {
+          "ua": "Бежевий",
+          "en": "Beige"
+        },
+        "value": "#F5F5DC",
+        "description": {
+          "ua": "Теплий бежевий колір",
+          "en": "Warm beige color"
+        }
+      }
+    ],
+    "note": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockCargo": {
+    "title": {
+      "ua": "Перевершує завантажувальний простір SUV того ж класу",
+      "en": "Exceeds the loading space of same-class SUVs"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "cargoBlock": {
+    "image": "001_cargo_1.webp",
+    "title": {
+      "ua": "Величезний багажний простір",
+      "en": "Spacious cargo space"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    },
+    "features": [
+      {
+        "ua": "740 л стандартний об'єм багажника",
+        "en": "740L standard trunk volume"
+      },
+      {
+        "ua": "2144 л максимальний розширений об'єм",
+        "en": "2144L maximum expandable volume"
+      }
+    ]
+  },
+  "textBlockStargateMusic": {
+    "title": {
+      "ua": "Концертный зал «Старлайт»",
+      "en": "Starlight Concert Hall"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "cealingVideoBlock": {
+    "video": "001_cealing.mp4",
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockAudio": {
+    "title": {
+      "ua": "Аудіосистема Dolphin Sound театрального рівня",
+      "en": "Dolphin Sound Theater-Grade Audio System"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "audioBlock": {
+    "image": "001_sound.webp",
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    },
+    "features": [
+      {
+        "value": {
+          "ua": "4680 Вт",
+          "en": "4680W"
+        },
+        "label": {
+          "ua": "Пікова потужність",
+          "en": "Peak Power"
+        }
+      },
+      {
+        "value": {
+          "ua": "0.025 мм",
+          "en": "0.025 mm"
+        },
+        "label": {
+          "ua": "Графенова діафрагма твітера",
+          "en": "Graphene Tweeter Diaphragm"
+        }
+      },
+      {
+        "value": {
+          "ua": "7.1.4.8",
+          "en": "7.1.4.8"
+        },
+        "label": {
+          "ua": "Компоновка об'ємного звуку",
+          "en": "Surround Sound Field Layout"
+        }
+      },
+      {
+        "value": {
+          "ua": "29",
+          "en": "29"
+        },
+        "label": {
+          "ua": "Динаміки",
+          "en": "Speakers"
+        }
+      },
+      {
+        "value": {
+          "ua": "50000 Гц",
+          "en": "50000 Hz"
+        },
+        "label": {
+          "ua": "Максимальна частота",
+          "en": "Highest Frequency"
+        }
+      },
+      {
+        "value": {
+          "ua": "Dolby Atmos",
+          "en": "Dolby Atmos"
+        },
+        "label": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockChair": {
+    "title": {
+      "ua": "Режим крісла Eames Lounge Chair",
+      "en": "Eames Lounge Chair Mode"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "chairBlock": {
+    "image": "001_chair.webp",
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    },
+    "features": [
+      {
+        "value": {
+          "ua": "125°",
+          "en": "125°"
+        },
+        "label": {
+          "ua": "Максимальний кут нахилу сидіння",
+          "en": "Maximum Recline Angle"
+        }
+      },
+      {
+        "value": {
+          "ua": "4",
+          "en": "4-way"
+        },
+        "label": {
+          "ua": "Електрична підставка для ніг",
+          "en": "Electric Leg Rest"
+        }
+      },
+      {
+        "value": {
+          "ua": "2",
+          "en": "2-way"
+        },
+        "label": {
+          "ua": "Електрична підставка для стоп",
+          "en": "Electric Footrest"
+        }
+      },
+      {
+        "value": {
+          "ua": "1002 мм",
+          "en": "1002 mm"
+        },
+        "label": {
+          "ua": "Максимальний простір для ніг",
+          "en": "Maximum Legroom"
+        }
+      }
+    ]
+  },
+  "textBlockMassage": {
+    "title": {
+      "ua": "3D масаж глибоких тканин",
+      "en": "3D Deep Tissue Massage"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "massageBlock": {
+    "sections": [
+      {
+        "title": {
+          "ua": "Кількість точок масажу",
+          "en": "Number of Massage Points"
+        },
+        "items": [
+          {
+            "value": {
+              "ua": "20",
+              "en": "20"
+            },
+            "label": {
+              "ua": "Передній ряд",
+              "en": "Front Row"
+            }
+          },
+          {
+            "value": {
+              "ua": "12",
+              "en": "12"
+            },
+            "label": {
+              "ua": "Задній ряд",
+              "en": "Rear Row"
+            }
+          }
+        ]
+      },
+      {
+        "title": {
+          "ua": "Точні точки масажу",
+          "en": "Precise Massage Points"
+        },
+        "items": [
+          {
+            "value": {
+              "ua": "6",
+              "en": "6"
+            },
+            "label": {
+              "ua": "Точки масажу попереку",
+              "en": "Lumbar Massage Points"
+            }
+          },
+          {
+            "value": {
+              "ua": "8",
+              "en": "8"
+            },
+            "label": {
+              "ua": "Точки масажу стегон та ніг",
+              "en": "Thigh and Leg Massage Points"
+            }
+          }
+        ]
+      },
+      {
+        "title": {
+          "ua": "Висока інтенсивність масажу",
+          "en": "High Massage Intensity"
+        },
+        "items": [
+          {
+            "value": {
+              "ua": "50 кПа",
+              "en": "50 kPa"
+            },
+            "label": {
+              "ua": "Максимальна інтенсивність масажу",
+              "en": "Maximum Massage Intensity"
+            }
+          }
+        ]
+      },
+      {
+        "title": {
+          "ua": "Багаті функції масажу",
+          "en": "Rich Massage Functions"
+        },
+        "items": [
+          {
+            "value": {
+              "ua": "8",
+              "en": "8"
+            },
+            "label": {
+              "ua": "Професійні режими масажу",
+              "en": "Professional Massage Modes"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "massageVideoBlock": {
+    "video": "001_massage.mp4",
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockLight": {
+    "title": {
+      "ua": "Панорамне оточення світла «Гармонія світлових потоків»",
+      "en": "「Flowing Light Harmony」Panoramic Ambient Lighting"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "lightVideoBlock": {
+    "video": "001_light.mp4",
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    },
+    "features": [
+      {
+        "value": {
+          "ua": "Пряме освітлення",
+          "en": "Direct Illumination"
+        },
+        "label": {
+          "ua": "Видиме джерело світла підкреслює технології",
+          "en": "Visible light source highlights technology"
+        }
+      },
+      {
+        "value": {
+          "ua": "Розсіяне відбиття",
+          "en": "Diffuse Reflection"
+        },
+        "label": {
+          "ua": "Приховане джерело світла додає світло та тінь",
+          "en": "Hidden light source adds light and shadow"
+        }
+      },
+      {
+        "value": {
+          "ua": "Двоколірний градієнт",
+          "en": "Dual-color Gradient"
+        },
+        "label": {
+          "ua": "Перехід кольору м'який та природний",
+          "en": "Color transition is soft and natural"
+        }
+      },
+      {
+        "value": {
+          "ua": "Атмосферне світло динаміків",
+          "en": "Speaker Ambient Light"
+        },
+        "label": {
+          "ua": "Чуєш мелодію, бачиш ритм",
+          "en": "Hear the melody, see the rhythm"
+        }
+      }
+    ]
+  },
+  "textBlockMaterials": {
+    "title": {
+      "ua": "Розкішні матеріали та технології по всьому автомобілю",
+      "en": "Luxury Materials and Craftsmanship Throughout the Vehicle"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "materialsBlock": {
+    "materials": [
+      {
+        "image": "001_material_1.webp",
+        "title": {
+          "ua": "Сидіння з повношкірної шкіри Monaco NAPPA",
+          "en": "Monaco NAPPA Full-Grain Top-Layer Leather Seats"
+        },
+        "description": {
+          "ua": "Розкішні сидіння з повношкірної шкіри NAPPA найвищої якості",
+          "en": "Luxurious seats made from premium full-grain NAPPA leather"
+        }
+      },
+      {
+        "image": "001_material_2.webp",
+        "title": {
+          "ua": "Рулеве колесо з обробкою NAPPA",
+          "en": "NAPPA Leather-Wrapped Steering Wheel"
+        },
+        "description": {
+          "ua": "Рулеве колесо обтягнуте шкірою NAPPA для максимального комфорту",
+          "en": "Steering wheel wrapped in NAPPA leather for maximum comfort"
+        }
+      },
+      {
+        "image": "001_material_3.webp",
+        "title": {
+          "ua": "Покриття стелі з алькантари",
+          "en": "Suede Headliner Covering"
+        },
+        "description": {
+          "ua": "М'яке покриття стелі з алькантари для преміум відчуття",
+          "en": "Soft suede headliner for a premium feel"
+        }
+      },
+      {
+        "image": "001_material_4.webp",
+        "title": {
+          "ua": "Технологія PVD покриття металу",
+          "en": "PVD Metal Coating Process"
+        },
+        "description": {
+          "ua": "Високотехнологічне PVD покриття металу для довговічності та преміум вигляду",
+          "en": "High-tech PVD metal coating for durability and premium appearance"
+        }
+      },
+      {
+        "image": "001_material_5.webp",
+        "title": {
+          "ua": "Текстура \"тисяча птахів\"",
+          "en": "Houndstooth Pattern"
+        },
+        "description": {
+          "ua": "Елегантна текстура в стилі \"тисяча птахів\" для унікального дизайну",
+          "en": "Elegant houndstooth pattern texture for unique design"
+        }
+      },
+      {
+        "image": "001_material_6.webp",
+        "title": {
+          "ua": "Паризькі декоративні елементи",
+          "en": "Parisian Studs"
+        },
+        "description": {
+          "ua": "Декоративні елементи в паризькому стилі для вишуканості інтер'єру",
+          "en": "Parisian-style decorative elements for interior elegance"
+        }
+      },
+      {
+        "image": "001_material_7.webp",
+        "title": {
+          "ua": "Металеві решітки динаміків",
+          "en": "Speaker Metal Grilles"
+        },
+        "description": {
+          "ua": "Металеві решітки динаміків з преміум обробкою",
+          "en": "Premium metal speaker grilles with sophisticated finish"
+        }
+      }
+    ]
+  },
+  "screensBlock": {
+    "title": {
+      "ua": "Високоякісна чотириекранна панорамна взаємодія",
+      "en": "High-Definition Four-Screen Panoramic Interaction"
+    },
+    "screens": [
+      {
+        "image": "001_screen_1.webp",
+        "title": {
+          "ua": "39.3-дюймова система AR-HUD проекції на лобове скло",
+          "en": "39.3-inch AR-HUD Head-Up Display System"
+        },
+        "description": {
+          "ua": "20,000 ніт, найвища яскравість у своєму класі",
+          "en": "20,000 nits, highest brightness in its class"
+        }
+      },
+      {
+        "image": "001_screen_2.webp",
+        "title": {
+          "ua": "16-дюймовий 3.5K Mini-LED високоточний центральний екран",
+          "en": "16-inch 3.5K Mini-LED High-Definition Central Control Screen"
+        },
+        "description": {
+          "ua": "3.5K надвисока роздільна здатність, співвідношення контрастності 200,000:1",
+          "en": "3.5K ultra-high resolution, 200,000:1 ultra-high contrast ratio"
+        }
+      },
+      {
+        "image": "001_screen_3.webp",
+        "title": {
+          "ua": "13.02-дюймовий високоточний екран приладів капітана",
+          "en": "13.02-inch High-Definition Captain's Instrument Screen"
+        },
+        "description": {
+          "ua": "2,560*536 надвисока роздільна здатність",
+          "en": "2,560*536 ultra-high resolution"
+        }
+      },
+      {
+        "image": "001_screen_4.webp",
+        "title": {
+          "ua": "8-дюймовий 2K Mini-LED високоточний екран розваг для задніх пасажирів",
+          "en": "8-inch 2K Mini-LED High-Definition Rear Entertainment Control Screen"
+        },
+        "description": {
+          "ua": "2K надвисока роздільна здатність, співвідношення контрастності 200,000:1",
+          "en": "2K ultra-high resolution, 200,000:1 ultra-high contrast ratio"
+        }
+      }
+    ]
+  },
+  "luxuryBlock": {
+    "title": {
+      "ua": "Розкішний досвід та спортивне керування в ідеальному поєднанні",
+      "en": "Luxury Experience and Sporty Control in Perfect Harmony"
+    },
+    "items": [
+      {
+        "image": "001_luxury_1.webp",
+        "title": {
+          "ua": "Передні інтегровані спортивні сидіння",
+          "en": "Front Integrated Sports Seats"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_luxury_2.webp",
+        "title": {
+          "ua": "D-подібне спортивне рульове колесо",
+          "en": "D-Shaped Sports Steering Wheel"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_luxury_3.webp",
+        "title": {
+          "ua": "Фізичні кнопки у стилі клавіш піаніно",
+          "en": "Piano-Key Style Physical Buttons"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockStandard": {
+    "title": {
+      "ua": "Розкішна стандартна комплектація",
+      "en": "Luxury Standard Equipment"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "standardSliderBlock": {
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "slides": [
+      {
+        "image": "001_slider1_1.webp",
+        "caption": {
+          "ua": "Чотиридверне подвійне скло з шумоізоляцією",
+          "en": "Four-door double-layer laminated soundproof glass"
+        }
+      },
+      {
+        "image": "001_slider1_2.webp",
+        "caption": {
+          "ua": "Заднє приватне скло",
+          "en": "Rear privacy glass"
+        }
+      },
+      {
+        "image": "001_slider1_3.webp",
+        "caption": {
+          "ua": "220V джерело живлення в багажнику",
+          "en": "220V power supply in trunk"
+        }
+      },
+      {
+        "image": "001_slider1_4.webp",
+        "caption": {
+          "ua": "Подвійна бездротова зарядка телефонів 50 Вт",
+          "en": "Dual 50-watt mobile phone wireless charging"
+        }
+      },
+      {
+        "image": "001_slider1_5.webp",
+        "caption": {
+          "ua": "Тризонний автоматичний клімат-контроль з постійною температурою",
+          "en": "Three-zone automatic constant temperature air conditioning"
+        }
+      },
+      {
+        "image": "001_slider1_6.webp",
+        "caption": {
+          "ua": "Вентиляція та підігрів сидінь переднього та заднього рядів",
+          "en": "Front and rear seat ventilation and heating"
+        }
+      }
+    ]
+  },
+  "textBlockPerformance": {
+    "title": {
+      "ua": "Продуктивність триелектричної системи",
+      "en": "Three-Electric Performance"
+    }
+  },
+  "batteryImageBlock": {
+    "image": "001_battery_1.webp",
+    "title": {
+      "ua": "Всі моделі стандартно оснащені 900V повноцінною високовольтною архітектурою",
+      "en": "All Series Standard with 900V Full-Stack High-Voltage Architecture"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockBattery": {
+    "title": {
+      "ua": "Всі моделі стандартно оснащені 900V надшвидкою зарядкою та великою батареєю",
+      "en": "All Series Standard with 900V Ultra-Fast Charging Large Battery"
+    }
+  },
+  "batteryBlock": {
+    "batteries": [
+      {
+        "image": "001_battery_2.webp",
+        "name": {
+          "ua": "103 кВт·год Батарея Kirin",
+          "en": "103 kWh Kirin Battery"
+        },
+        "specs": [
+          {
+            "value": "810 км",
+            "label": {
+              "ua": "Найбільший запас ходу CLTC",
+              "en": "Longest CLTC Range"
+            }
+          },
+          {
+            "value": "6C",
+            "label": {
+              "ua": "Пікова швидкість зарядки",
+              "en": "Peak Charging Rate"
+            }
+          },
+          {
+            "value": "10 хв",
+            "label": {
+              "ua": "Найшвидший час зарядки від 10% до 80%",
+              "en": "Fastest Charging Time from 10% to 80%"
+            }
+          },
+          {
+            "value": "Задній привід",
+            "label": {
+              "ua": "Версія",
+              "en": "Version"
+            }
+          }
+        ]
+      },
+      {
+        "image": "001_battery_3.webp",
+        "name": {
+          "ua": "95 кВт·год Батарея Aegis Golden Brick",
+          "en": "95 kWh Aegis Golden Brick Battery"
+        },
+        "specs": [
+          {
+            "value": "710 км",
+            "label": {
+              "ua": "Найбільший запас ходу CLTC",
+              "en": "Longest CLTC Range"
+            }
+          },
+          {
+            "value": "12C",
+            "label": {
+              "ua": "Пікова швидкість зарядки",
+              "en": "Peak Charging Rate"
+            }
+          },
+          {
+            "value": "7 хв",
+            "label": {
+              "ua": "Найшвидший час зарядки від 10% до 80%",
+              "en": "Fastest Charging Time from 10% to 80%"
+            }
+          },
+          {
+            "value": "Повний привід",
+            "label": {
+              "ua": "Версія",
+              "en": "Version"
+            }
+          }
+        ]
+      }
+    ],
+    "footnotes": [
+      {
+        "ua": "Дані про зарядку базуються на найшвидшому часі зарядки при нормальній температурі з використанням V3 рідкоохолоджуваної надшвидкої зарядної станції",
+        "en": "Charging data is based on the fastest charging time at normal temperature using V3 liquid-cooled ultra-fast charging pile"
+      },
+      {
+        "ua": "Дані про зарядку базуються на найшвидшому часі зарядки при нормальній температурі з використанням V4 рідкоохолоджуваної надшвидкої зарядної станції",
+        "en": "Charging data is based on the fastest charging time at normal temperature using V4 liquid-cooled ultra-fast charging pile"
+      }
+    ]
+  },
+  "batteryFastChargeBlock": {
+    "image": "001_battery_4.webp",
+    "title": {
+      "ua": "Ера надшвидкої зарядки за 7 хвилин",
+      "en": "The Era of 7-Minute Ultra-Fast Charging"
+    },
+    "subtitleLeft": {
+      "ua": "Пікова потужність зарядки: 1.32 МВт",
+      "en": "Peak charging power: 1.32 MW"
+    },
+    "subtitleRight": {
+      "ua": "Макс. приріст запасу ходу: 2.4 км/с",
+      "en": "Max range gain: 2.4 km/s"
+    }
+  },
+  "textBlockInside": {
+    "title": {
+      "ua": "4 варіанти інтер'єру",
+      "en": "4 interior options"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "insideBlock": {
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "options": [
+      {
+        "id": "white",
+        "name": {
+          "ua": "Білий",
+          "en": "White"
+        },
+        "description": {
+          "ua": "Чистий та елегантний білий інтер'єр",
+          "en": "Clean and elegant white interior"
+        }
+      },
+      {
+        "id": "black",
+        "name": {
+          "ua": "Чорний",
+          "en": "Black"
+        },
+        "description": {
+          "ua": "Розкішний чорний інтер'єр",
+          "en": "Luxurious black interior"
+        }
+      },
+      {
+        "id": "gold",
+        "name": {
+          "ua": "Золотий",
+          "en": "Gold"
+        },
+        "description": {
+          "ua": "Престижний золотий інтер'єр",
+          "en": "Prestigious gold interior"
+        }
+      },
+      {
+        "id": "silver",
+        "name": {
+          "ua": "Срібний",
+          "en": "Silver"
+        },
+        "description": {
+          "ua": "Сучасний срібний інтер'єр",
+          "en": "Modern silver interior"
+        }
+      }
+    ],
+    "note": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockSky": {
+    "title": {
+      "ua": "Нескінченне зоряне небо",
+      "en": "Vast starry sky"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "skyVideosBlock": {
+    "video1": "001_sky_1.mp4",
+    "video2": "001_sky_2.mp4",
+    "text1": {
+      "title": {
+        "ua": "Технологія зоряного неба з провідною плівкою",
+          "en": "Starlight Film Conductive Technology"
+        },
+      "items": [
+        {
+          "value": "500",
+          "label": {
+            "ua": "Незалежних зірок",
+            "en": "Independent stars"
+          }
+        },
+        {
+          "value": "3",
+          "label": {
+            "ua": "Траєкторії метеорів",
+            "en": "Meteor trails"
+          }
+        },
+        {
+          "value": "22",
+          "label": {
+            "ua": "Візерунки сузір'їв",
+            "en": "Constellation patterns"
+          }
+        },
+        {
+          "value": "12",
+          "label": {
+            "ua": "Режими сузір'їв",
+            "en": "Constellation modes"
+          }
+        }
+      ],
+      "note": {
+        "ua": "*Відео лише для демонстрації, фактичні характеристики залежать від реального автомобіля",
+        "en": "*Video is for illustration only, subject to actual vehicle delivery"
+      }
+    },
+    "text2": {
+      "title": {
+        "ua": "Акриловий LV зонований затемнюючий дах",
+          "en": "Ink-wash LV Zoned Dimming Canopy"
+        },
+      "items": [
+        {
+          "value": "10 зон, 10 рівнів",
+          "label": {
+            "ua": "Точне регулювання",
+            "en": "Fine adjustment"
+          }
+        },
+        {
+          "value": "2-5 сек",
+          "label": {
+            "ua": "Час затемнення",
+            "en": "Dimming time"
+          }
+        },
+        {
+          "value": "99.99%",
+          "label": {
+            "ua": "Коефіцієнт блокування УФ-випромінювання",
+            "en": "UV isolation rate"
+          }
+        },
+        {
+          "value": "99.88%",
+          "label": {
+            "ua": "Максимальний коефіцієнт затемнення",
+            "en": "Maximum dark state shading rate"
+          }
+        }
+      ],
+      "note": {
+        "ua": "*Дані з інженерних вимірювань\n*Відео лише для демонстрації, фактичні характеристики залежать від реального автомобіля",
+        "en": "*Data from engineering measurements\n*Video is for illustration only, subject to actual vehicle delivery"
+      }
+    }
+  },
+  "performanceBlock": {
+    "image1": "001_desert_1.webp",
+    "image2": "001_desert_2.webp",
+    "version1": {
+      "title": {
+        "ua": "Повний привід",
+        "en": "Four-wheel drive version"
+      },
+      "specs": [
+        {
+          "value": "2.83 сек",
+          "label": {
+            "ua": "Найшвидший розгін 0-100*",
+            "en": "Fastest 0-100 acceleration*"
+          }
+        },
+        {
+          "value": "680 кВт",
+          "label": {
+            "ua": "Пікова потужність",
+            "en": "Peak power"
+          }
+        },
+        {
+          "value": "925 к.с.",
+          "label": {
+            "ua": "Максимальна потужність",
+            "en": "Maximum horsepower"
+          }
+        }
+      ],
+      "note": {
+        "ua": "*Дані з інженерних вимірювань, час розгону не включає перший фут старту",
+        "en": "*Data from engineering tests, acceleration time does not include the first foot of rollout"
+      }
+    },
+    "version2": {
+      "title": {
+        "ua": "Задній привід",
+        "en": "Rear-wheel drive version"
+      },
+      "specs": [
+        {
+          "value": "4.98 сек",
+          "label": {
+            "ua": "Найшвидший розгін 0-100*",
+            "en": "Fastest 0-100 acceleration*"
+          }
+        },
+        {
+          "value": "370 кВт",
+          "label": {
+            "ua": "Пікова потужність",
+            "en": "Peak power"
+          }
+        },
+        {
+          "value": "503 к.с.",
+          "label": {
+            "ua": "Максимальна потужність",
+            "en": "Maximum horsepower"
+          }
+        }
+      ],
+      "note": {
+        "ua": "*Дані з інженерних вимірювань, час розгону не включає перший фут старту",
+        "en": "*Data from engineering tests, acceleration time does not include the first foot of rollout"
+      }
+    }
+  },
+  "chassisBlock": {
+    "media": [
+      "001_chassis_1.webp",
+      "001_chassis_2.webp",
+      "001_chassis_3.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "ua": "Закрита двохкамерна пневмопідвіска",
+          "en": "Closed Dual-Chamber Air Suspension"
+        },
+        "description": {
+          "ua": "Діапазон регулювання висоти 85 мм, максимальний дорожній просвіт 206 мм",
+          "en": "85mm height adjustment range, 206mm maximum ground clearance"
+        }
+      },
+      {
+        "title": {
+          "ua": "CCD електромагнітна система демпфування",
+          "en": "CCD Electromagnetic Damping System"
+        },
+        "description": {
+          "ua": "Реальний час підбору оптимального демпфування, мілісекундний відгук, поєднання керованості та комфорту",
+          "en": "Real-time matching of optimal damping, millisecond-level response, balancing handling and comfort"
+        }
+      },
+      {
+        "title": {
+          "ua": "Інтелектуальна функція «Чарівний килимок»",
+          "en": "Intelligent Magic Carpet Function"
+        },
+        "description": {
+          "ua": "Завчасно сприймає інформацію про дорожнє покриття, інтелектуально попередньо налаштовує підвіску",
+          "en": "Pre-senses road surface information, intelligently pre-adjusts suspension"
+        }
+      }
+    ]
+  },
+  "textBlockChassis": {
+    "title": {
+      "ua": "Управління шасі",
+      "en": "Chassis Control"
+    }
+  },
+  "aiChassisBlock": {
+    "topTitle": {
+      "ua": "Vast AI Цифрова платформа шасі",
+      "en": "Vast AI Digital Chassis"
+    },
+    "media": [
+      "001_ai_1.webp",
+      "001_ai_2.webp",
+      "001_ai_3.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "ua": "Dinghai Інтелектуальний хаб",
+          "en": "Dinghai Intelligent Hub"
+        },
+        "description": {
+          "ua": "Реальний час використання обчислювальної потужності та можливостей сприйняття інтелектуальної допомоги водію, через власний алгоритм AI шасі координує виконавчі механізми шасі, силової установки, салону та інших доменів",
+          "en": "Real-time calling of intelligent driving assistance computing power and perception capabilities, through self-developed chassis AI algorithm coordinating chassis, powertrain, cabin and other multi-domain actuators"
+        }
+      },
+      {
+        "title": {
+          "ua": "9 режимів водіння",
+          "en": "9 Driving Modes"
+        },
+        "description": {
+          "ua": "Економія, Комфорт, Спорт, Спорт+, Сніг, Пісок, Позашляховик, Адаптивний, Індивідуальний",
+          "en": "Economy, Comfort, Sport, Sport+, Snow, Sand, Off-road, Adaptive, Personalized"
+        }
+      },
+      {
+        "title": {
+          "ua": "Адаптивна здатність водіння",
+          "en": "Adaptive Driving Capability"
+        },
+        "description": {
+          "ua": "6 режимів (Економія, Комфорт, Спорт, Сніг, Пісок, Позашляховик) можуть розпізнаватися та автоматично перемикатися через камери та датчики динаміки кузова",
+          "en": "6 modes (Economy, Comfort, Sport, Snow, Sand, Off-road) can be recognized and actively switched through cameras and body dynamic sensors"
+        }
+      }
+    ]
+  },
+  "energyBlock": {
+    "image": "001_energy.webp",
+    "title": {
+      "ua": "Енергоефективність всього автомобіля повністю підвищена",
+      "en": "Overall Vehicle Energy Efficiency Comprehensively Improved"
+    },
+    "subtitles": [
+      {
+        "ua": "Задній привід CLTC мінімальна енерговитрата на 100 км: 13.6 кВт·год",
+        "en": "Rear-wheel drive CLTC minimum energy consumption per 100 km: 13.6 kWh"
+      },
+      {
+        "ua": "Повний привід CLTC мінімальна енерговитрата на 100 км: 14.6 кВт·год",
+        "en": "Four-wheel drive CLTC minimum energy consumption per 100 km: 14.6 kWh"
+      }
+    ]
+  },
+  "textBlockIntelligenceSafety": {
+    "title": {
+      "ua": "Інтелект та безпека",
+      "en": "Intelligence and Safety"
+    }
+  },
+  "textBlockCabin": {
+    "title": {
+      "ua": "300+ функцій розумного салону",
+      "en": "300+ Smart Cockpit Functions"
+    }
+  },
+  "cabinBlock": {
+    "background": "rgb(245, 246, 247)",
+    "items": [
+      {
+        "image": "001_cabin_1.mp4",
+        "title": {
+          "ua": "Преміум навігація та музика",
+          "en": "Premium Navigation/Music Journey"
+        },
+        "description": {
+          "ua": "Динамічно регулює звукове поле та ритм музики відповідно до стану водіння",
+          "en": "Dynamically adjusts music sound field and rhythm according to driving status"
+        }
+      },
+      {
+        "image": "001_cabin_2.webp",
+        "title": {
+          "ua": "Кабіна здоров'я та релаксації",
+          "en": "Health Decompression Cabin"
+        },
+        "description": {
+          "ua": "Соматосенсорна вібраційна музична терапія, ефективне розслаблення",
+          "en": "Somatosensory vibration music therapy, effective relaxation"
+        }
+      },
+      {
+        "image": "001_cabin_3.webp",
+        "title": {
+          "ua": "Zeekr Кінотеатр",
+          "en": "ZEEKR Cinema"
+        },
+        "description": {
+          "ua": "Зв'язок салону, занурювальний 5D кіноперегляд",
+          "en": "Cabin linkage, immersive 5D viewing experience"
+        }
+      },
+      {
+        "image": "001_cabin_4.webp",
+        "title": {
+          "ua": "KTV без мікрофона",
+          "en": "Mic-free KTV"
+        },
+        "description": {
+          "ua": "Не потрібно тримати мікрофон, співай коли захочеш",
+          "en": "No need to hold a microphone, sing whenever you want"
+        }
+      }
+    ]
+  },
+  "securityBlock": {
+    "media": [
+      "001_security_1.mp4",
+      "001_security_2.mp4",
+      "001_security_3.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "ua": "Zeekr AI OS7 Система розумного салону",
+          "en": "Zeekr AI OS7 Smart Cockpit System"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "title": {
+          "ua": "AI Eva Еволюція великої моделі",
+          "en": "AI Eva Large Model Capability Evolution"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "title": {
+          "ua": "Обчислювальна платформа розумного салону",
+          "en": "Smart Cockpit Computing Platform"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockSafetySystem": {
+    "title": {
+      "ua": "Система допомоги водію з безпекою Vast H7",
+      "en": "Vast H7 Safety-Assisted Driving System"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "securityLuxuryBlock": {
+    "items": [
+      {
+        "image": "001_security_4.webp",
+        "title": {
+          "ua": "Всі моделі стандартно оснащені лазерним радаром, 31 одиниця сприйняття",
+          "en": "All series standard with lidar, 31 sensing units"
+        }
+      },
+      {
+        "image": "001_security_5.webp",
+        "title": {
+          "ua": "Всі моделі стандартно оснащені чипом NVIDIA DRIVE Thor-U, обчислювальна потужність 700TOPS",
+          "en": "All series standard with NVIDIA DRIVE Thor-U chip, 700TOPS computing power"
+        }
+      },
+      {
+        "image": "001_security_6.webp",
+        "title": {
+          "ua": "«Маленький синій світло» індикатор стану допомоги водію",
+          "en": "\"Small blue light\" assisted driving status indicator light"
+        }
+      }
+    ]
+  },
+  "securityTwoImagesBlock": {
+    "background": "rgb(235, 232, 227)",
+    "images": [
+      {
+        "image": "001_security_7.webp",
+        "title": {
+          "ua": "NZP навігаційна допомога по маршруту",
+          "en": "NZP Navigation Pilot"
+        },
+        "description": {
+          "ua": "Покриття по країні, навігація по країні",
+          "en": "Nationwide coverage, nationwide navigation capability"
+        }
+      },
+      {
+        "image": "001_security_8.webp",
+        "title": {
+          "ua": "Навігація «від паркування до паркування»",
+          "en": "\"Parking-to-Parking\" Navigation Assist"
+        },
+        "description": {
+          "ua": "Повноцінна інтелектуальна навігація: веде там, де можна їхати — менше зайвих маневрів",
+          "en": "Full-scenario intelligent navigation: guides where you can drive, with fewer unnecessary maneuvers"
+        }
+      }
+    ]
+  },
+  "textBlockParkingKing": {
+    "title": {
+      "ua": "Всесильний майстер паркування",
+      "en": "All‑Round Parking King"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "parkingSliderBlock": {
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "slides": [
+      {
+        "image": "001_slider2_1.webp",
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_slider2_2.webp",
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_slider2_3.webp",
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_slider2_4.webp",
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_slider2_5.webp",
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockHighwayTank": {
+    "title": {
+      "ua": "«Шосейний танк»",
+      "en": "\"Highway Tank\""
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "passiveSecurityBlock": {
+    "background": "rgb(245, 246, 247)",
+    "materials": [
+      {
+        "image": "001_passiveSecurity_1.webp",
+        "title": {
+          "ua": "Високоміцний сталево-алюмінієвий гібридний кузов",
+          "en": "High-strength steel-aluminum hybrid body"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_passiveSecurity_2.webp",
+        "title": {
+          "ua": "Ціліснолита задня частина кузова з алюмінію",
+          "en": "One-piece die-cast rear aluminum body"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_passiveSecurity_3.webp",
+        "title": {
+          "ua": "Захисна конструкція батареї з 10-секційним каркасом",
+          "en": "10-cell battery crash protection structure"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_passiveSecurity_4.webp",
+        "title": {
+          "ua": "CBS високоміцний композитний матеріал",
+          "en": "CBS high-strength composite material"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": "001_passiveSecurity_5.webp",
+        "title": {
+          "ua": "Дальні подушки безпеки",
+          "en": "Far-side airbags"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockDriveSystem": {
+    "title": {
+      "ua": "900V високопродуктивна система електроприводу на основі карбіду кремнію",
+      "en": "900V High-Performance Silicon Carbide Electric Drive System"
+    }
+  },
+  "textBlockActiveIntelligentSafety": {
+    "title": {
+      "ua": "Активна та інтелектуальна безпека",
+      "en": "Active and Intelligent Safety"
+    }
+  },
+  "activeIntelligentSafetyBlock": {
+    "background": "#fff",
+    "images": [
+      {
+        "image": "001_intelligentSafety_1.webp",
+        "title": {
+          "ua": "G-AES: безперервне автоматичне уникнення перешкод",
+          "en": "G-AES: Continuous Automatic Obstacle Avoidance"
+        },
+        "description": {
+          "ua": "До 130 км/год: безперервне автоматичне уникнення з розпізнаванням перешкод",
+          "en": "Up to 130 km/h: continuous automatic avoidance with obstacle recognition"
+        }
+      },
+      {
+        "image": "001_intelligentSafety_2.mp4",
+        "title": {
+          "ua": "Керування під час проколу шини в різних сценаріях",
+          "en": "All-Scenario Tire Blowout Control"
+        },
+        "description": {
+          "ua": "120 км/год: контроль під час проколу без втрати керованості\n50 км/год: контроль під час повторних проколів без втрати керованості",
+          "en": "120 km/h: blowout control without loss of stability\n50 km/h: continuous blowout control without loss of stability"
+        }
+      }
+    ]
+  },
+  "batterySafetyBlock": {
+    "background": "#fff",
+    "title": {
+      "ua": "Безпека батареї",
+      "en": "Battery Safety"
+    },
+    "image": "001_battery_last.webp",
+    "stats": [
+      {
+        "value": "6",
+        "label": {
+          "ua": "Режимів випробувань",
+          "en": "Test scenarios"
+        }
+      },
+      {
+        "value": "240",
+        "label": {
+          "ua": "Системних тестів",
+          "en": "System-level tests"
+        }
+      },
+      {
+        "value": "2000+",
+        "label": {
+          "ua": "Тестів компонентів",
+          "en": "Component tests"
+        }
+      }
+    ]
+  }
+}

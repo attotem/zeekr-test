@@ -1,70 +1,100 @@
 <template>
 	<header
-		class="header header--desktop"
+		class="header header--desktop header--desktop-transparent"
 		:class="{ 'header--black': ['models', 'contacts', 'NotFound', 'stock', 'stockId'].includes($route.name) }"
 	>
-		<RouterLink
-			style="color: inherit;"
-			to="/"
-		>
-			<Logo class="header__logo" />
-		</RouterLink>
-
-		<div class="menu">
+		<div class="header__left">
 			<RouterLink
-				class="menu__item"
-				:class="{ 'menu__item--dropdown': Object.hasOwn(item, 'children'), 'btn btn--transparent btn--transparent-white': item.isConfigurator }"
-				v-for="(item, counter) in headerItems"
-				:to="item.name ? `/${item.name}` : ''"
-				:id="item.name"
+				style="color: inherit;"
+				to="/"
 			>
-				{{ item.label.ua }}
-				<template v-if="Object.hasOwn(item, 'children')">
-					<Dropdown />
-
-					<Teleport to="body">
-						<div
-							class="dropdown"
-							id="models-dropdown"
-						>
-							<div
-								class="dropdown__inner"
-								v-if="counter == 0"
-							>
-								<div class="name">
-									<div class="name__heading">
-										{{ i18n.header.models?.[langStore.activeLang] }}
-									</div>
-									<div class="name__text">
-										{{ i18n.header.discoverTheRange?.[langStore.activeLang] }}
-									</div>
-								</div>
-
-								<div
-									class="models"
-									v-if="item.children"
-								>
-									<RouterLink
-										class="model"
-										v-for="model in item.children"
-										:to="model.model_page ? `/${model.model_page.url.child}` : ''"
-									>
-										<img
-											v-if="model.image"
-											class="model__image"
-											:src="model.image"
-										/>
-										<div class="model__name">{{ model.name }}</div>
-										<div class="model__learn">
-											{{ i18n.header.learn?.[langStore.activeLang] }}
-										</div>
-									</RouterLink>
-								</div>
-							</div>
-						</div>
-					</Teleport>
-				</template>
+				<LogoIcon class="header__logo" />
 			</RouterLink>
+
+			<div class="menu">
+				<div
+					v-for="(item, counter) in headerItems"
+					:key="item.name"
+					:id="item.name"
+				>
+					<!-- "Моделі" — без перехода, только открытие меню -->
+					<button
+						v-if="item.name === 'models'"
+						type="button"
+						class="menu__item"
+						:class="{ 'menu__item--dropdown': Object.hasOwn(item, 'children') }"
+					>
+						{{ item.label.ua }}
+						<template v-if="Object.hasOwn(item, 'children')">
+							<Dropdown />
+
+							<Teleport to="body">
+								<div
+									class="dropdown"
+									id="models-dropdown"
+								>
+									<div
+										class="dropdown__inner"
+										v-if="counter == 0"
+									>
+										<button
+											type="button"
+											class="dropdown__close"
+										>
+											<span class="dropdown__close-text">Сховати</span>
+											<Dropdown class="dropdown__close-icon" />
+										</button>
+
+										<div class="name">
+											<div class="name__heading">
+												{{ i18n.header.models?.[langStore.activeLang] }}
+											</div>
+											<div class="name__text">
+												{{ i18n.header.discoverTheRange?.[langStore.activeLang] }}
+											</div>
+										</div>
+
+										<div
+											class="models"
+											v-if="item.children"
+										>
+											<RouterLink
+												class="model"
+												v-for="model in item.children"
+												:to="getModelLink(model)"
+											>
+												<img
+													v-if="model.image"
+													class="model__image"
+													:src="model.image"
+												/>
+												<div class="model__name">{{ model.name }}</div>
+												<div class="model__learn">
+													{{ i18n.header.learn?.[langStore.activeLang] }}
+												</div>
+											</RouterLink>
+										</div>
+									</div>
+								</div>
+							</Teleport>
+						</template>
+					</button>
+
+					<RouterLink
+						v-else
+						class="menu__item"
+						:class="{ 'menu__item--dropdown': Object.hasOwn(item, 'children'), 'btn btn--transparent btn--transparent-white': item.isConfigurator }"
+						:to="item.name ? `/${item.name}` : ''"
+					>
+						{{ item.label.ua }}
+					</RouterLink>
+				</div>
+			</div>
+		</div>
+
+		<div class="header__brand">
+			<img src="@/assets/img/logo.png" alt="ZEEKR" class="header__brand-image header__brand-image--light" />
+			<img src="@/assets/img/logo_black.png" alt="ZEEKR" class="header__brand-image header__brand-image--dark" />
 		</div>
 
 		<div class="actions">
@@ -141,7 +171,7 @@
 							<RouterLink
 								class="dropdown__item"
 								v-for="item in item.children"
-								:to="counter == 0 ? item.model_page ? `/${item.model_page.url.child}` : '' : ''"
+								:to="counter == 0 ? getModelLink(item) : ''"
 							>
 								{{ item.name }}
 							</RouterLink>
@@ -175,6 +205,8 @@
 
 <script setup>
 import Logo from "@/components/icons/logo.vue"
+import LogoIcon from "@/components/icons/logoIcon.vue"
+import LogoWord from "@/components/icons/logoWord.vue"
 import { RouterLink, useRoute } from "vue-router";
 import Dropdown from "./icons/dropdown.vue";
 import { useLangStore } from "@/stores/lang";
@@ -186,6 +218,23 @@ import addDropdown from "@/composables/dropdown";
 import Phone from "./icons/phone.vue";
 
 let langStore = useLangStore()
+
+const getModelLink = (model) => {
+  if (!model.model_page?.url?.child) return ''
+  
+  const modelId = model.model_page.url.child.toLowerCase()
+  const modelName = model.name?.toLowerCase() || ''
+  
+  if (modelId === '001' || modelId === 'car-001' || modelName === '001' || modelName.includes('001')) {
+    return '/car/001'
+  }
+  
+  if (modelId === '7x' || modelId === 'car-7x' || modelName === '7x' || modelName.includes('7x')) {
+    return '/car/7x'
+  }
+  
+  return `/${model.model_page.url.child}`
+}
 
 let isExpanded = ref(false),
   isMobileBg = ref(true),
@@ -296,18 +345,34 @@ watch(() => langStore.activeLang, async () => {
 })
 
 onMounted(async () => {
-  document.addEventListener('wheel', (e) => {
-    if (e.deltaY > 0) {
-      document.querySelector('.header--desktop').classList.add('header--desktop-hidden')
-      document.querySelector('.header--desktop').classList.remove('header--desktop-bg')
+  // Логика скролла для хедера: белый фон при любом скролле, прозрачный только в самом верху
+  const handleScroll = () => {
+    const header = document.querySelector('.header--desktop');
+    if (!header) return;
+    
+    // Если меню моделей открыто (есть класс header--black), не меняем фон при скролле
+    if (header.classList.contains('header--black')) {
+      return;
     }
-    else {
-      document.querySelector('.header--desktop').classList.remove('header--desktop-hidden')
+    
+    const scrollTop = document.scrollingElement?.scrollTop || window.scrollY || 0;
+    
+    if (scrollTop === 0) {
+      // В самом верху — прозрачный фон
+      header.classList.remove('header--desktop-bg');
+      header.classList.add('header--desktop-transparent');
+    } else {
+      // Как только ушли от верха — белый фон
+      header.classList.add('header--desktop-bg');
+      header.classList.remove('header--desktop-transparent');
+    }
+  };
 
-      if (document.scrollingElement.scrollTop > 0) document.querySelector('.header--desktop').classList.add('header--desktop-bg')
-      else document.querySelector('.header--desktop').classList.remove('header--desktop-bg')
-    }
-  });
+  // Инициализация при загрузке
+  handleScroll();
+  
+  // Отслеживание скролла
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   let lastPhoneY = null
   document.addEventListener('touchstart', (e) => {
@@ -366,29 +431,29 @@ onMounted(async () => {
   }
 
   &--desktop {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     padding: 16px 76px;
-    transition-duration: .75s;
-    transition-timing-function: linear, ease-in-out;
-    transition-property: background-color, opacity;
-    transition-delay: .5s, 0s;
+    transition: none;
     background-color: transparent;
     max-height: 70px;
     opacity: 1;
+    color: #fff;
 
-    &-hidden {
-      opacity: 0;
+    &-transparent {
+      background-color: transparent;
+      color: #fff;
+    }
+
+    &-bg {
+      background-color: #ffffff;
       color: #000;
     }
 
-    &-bg, &:hover {
-      background-color: #ffffffd0;
-      backdrop-filter: blur(2px);
-      color: #000;
-      opacity: 1;
+    &.header--collapsed {
+      transform: translateY(-100%);
+      transition: transform .4s ease, opacity .4s ease;
     }
   }
 
@@ -420,6 +485,53 @@ onMounted(async () => {
     transition: .5s ease-in-out;
     color: inherit;
   }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__brand {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-image {
+      height: 14px;
+      width: auto;
+      display: none;
+    }
+
+    &-image--light {
+      display: block;
+    }
+
+    &-image--dark {
+      display: none;
+    }
+  }
+}
+
+/* Когда хедер на белом фоне или в чёрном варианте — показываем чёрный логотип */
+.header--desktop-bg .header__brand-image--light,
+.header--black .header__brand-image--light {
+  display: none;
+}
+
+.header--desktop-bg .header__brand-image--dark,
+.header--black .header__brand-image--dark {
+  display: block;
+}
+
+/* Когда хедер прозрачный — показываем белый логотип */
+.header--desktop-transparent .header__brand-image--light {
+  display: block;
+}
+
+.header--desktop-transparent .header__brand-image--dark {
+  display: none;
 }
 
 .menu {
@@ -432,6 +544,14 @@ onMounted(async () => {
   &__item {
     transition: .3s;
     color: currentColor;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 
     &--dropdown {
       position: relative;
@@ -439,7 +559,7 @@ onMounted(async () => {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      gap: 6px;
+      gap: 0px;
     }
   }
 }
@@ -480,6 +600,7 @@ onMounted(async () => {
   background-color: #fff;
 
   .dropdown__inner {
+    position: relative;
     width: 100%;
     height: fit-content;
     padding: 88px 76px 40px;
@@ -491,6 +612,32 @@ onMounted(async () => {
 
     color: #000;
     transition: 1s;
+  }
+
+  .dropdown__close {
+    position: absolute;
+    top: 120px;
+    left: 76px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 999px;
+    background: none;
+    cursor: pointer;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .dropdown__close-text {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .dropdown__close-icon {
+    width: 14px;
+    height: 14px;
   }
 
   .name {
