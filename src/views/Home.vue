@@ -82,15 +82,16 @@
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x', index)"
                 >
-                  <span class="carousel__tab-switcher-btn-text">7X</span>
+                  <span class="carousel__tab-switcher-btn-text">7X New</span>
                 </button>
+                <span class="carousel__tab-switcher-divider"></span>
                 <button
                   type="button"
                   class="carousel__tab-switcher-btn"
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x_eu' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x_eu', index)"
                 >
-                  <span class="carousel__tab-switcher-btn-text">7X EU</span>
+                  <span class="carousel__tab-switcher-btn-text">7X CCS 2</span>
                 </button>
               </div>
             </div>
@@ -243,7 +244,7 @@ let isLoading = computed(() => useLoaderStore().isLoading)
 
 const carouselModels = ref([
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xMb, link: "/car/7x" },
-  { id: "001", label: "001", image: img001, imageMobile: img001Mb, link: "/car/001" },
+  { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/car/001" },
   { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/car/9x" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
   { id: "001fr", label: "001 FR", image: img001fr, imageMobile: img001frMb, link: "/zeekr-001-fr" },
@@ -406,8 +407,7 @@ onMounted(async () => {
   }
 
   &__tab-switcher {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     align-items: center;
     background: none;
     border: 1px solid rgba(0, 0, 0, .15);
@@ -423,14 +423,14 @@ onMounted(async () => {
     &-slider {
       position: absolute;
       top: 3px;
-      left: 3px;
-      width: calc(50% - 3px);
       height: calc(100% - 6px);
       background: #F75400;
       border-radius: 16px;
-      transition: left .4s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
+      transition: left .4s cubic-bezier(0.4, 0, 0.2, 1), width .4s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
       z-index: 0;
       opacity: 0;
+      left: 3px;
+      width: calc(50% - 10px);
     }
 
     &--active &-slider {
@@ -438,7 +438,15 @@ onMounted(async () => {
     }
 
     &--eu &-slider {
-      left: calc(50%);
+      left: calc(50% + 7px);
+    }
+
+    &-divider {
+      width: 1px;
+      height: 16px;
+      background: rgba(0, 0, 0, .2);
+      flex-shrink: 0;
+      z-index: 2;
     }
   }
 
