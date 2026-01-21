@@ -68,24 +68,28 @@
         <div class="carousel__tabs">
           <template v-for="(item, index) in carouselModels" :key="item.id">
             <div v-if="item.id === '7x'" class="carousel__tab-wrapper">
-              <div class="carousel__tab-switcher">
+              <div 
+                class="carousel__tab-switcher"
+                :class="{ 
+                  'carousel__tab-switcher--active': index === activeCarouselIndex,
+                  'carousel__tab-switcher--eu': selected7xVersion === '7x_eu' && index === activeCarouselIndex
+                }"
+              >
+                <span class="carousel__tab-switcher-slider"></span>
                 <button
                   type="button"
                   class="carousel__tab-switcher-btn"
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x', index)"
                 >
-                  <span class="carousel__tab-switcher-btn-bg"></span>
                   <span class="carousel__tab-switcher-btn-text">7X</span>
                 </button>
-                <span class="carousel__tab-switcher-separator">|</span>
                 <button
                   type="button"
                   class="carousel__tab-switcher-btn"
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x_eu' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x_eu', index)"
                 >
-                  <span class="carousel__tab-switcher-btn-bg"></span>
                   <span class="carousel__tab-switcher-btn-text">7X EU</span>
                 </button>
               </div>
@@ -240,7 +244,7 @@ let isLoading = computed(() => useLoaderStore().isLoading)
 const carouselModels = ref([
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xMb, link: "/car/7x" },
   { id: "001", label: "001", image: img001, imageMobile: img001Mb, link: "/car/001" },
-  { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/zeekr-9x" },
+  { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/car/9x" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
   { id: "001fr", label: "001 FR", image: img001fr, imageMobile: img001frMb, link: "/zeekr-001-fr" },
   { id: "009", label: "009", image: img009, imageMobile: img009Mb, link: "/zeekr-009" },
@@ -402,45 +406,57 @@ onMounted(async () => {
   }
 
   &__tab-switcher {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     background: none;
     border: 1px solid rgba(0, 0, 0, .15);
     border-radius: 20px;
-    padding: 0;
-    gap: 0;
+    padding: 3px;
     position: relative;
     transition: border-color .3s ease;
 
-    &:has(.carousel__tab-switcher-btn--active) {
+    &--active {
       border-color: #F75400;
+    }
+
+    &-slider {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: calc(50% - 3px);
+      height: calc(100% - 6px);
+      background: #F75400;
+      border-radius: 16px;
+      transition: left .4s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
+      z-index: 0;
+      opacity: 0;
+    }
+
+    &--active &-slider {
+      opacity: 1;
+    }
+
+    &--eu &-slider {
+      left: calc(50%);
     }
   }
 
   &__tab-switcher-btn {
     color: #000;
     font-size: 14px;
-    padding: 6px 12px;
+    padding: 6px 14px;
     cursor: pointer;
     background: none;
     border: none;
     white-space: nowrap;
-    border-radius: 20px;
+    border-radius: 16px;
+    text-align: center;
     position: relative;
     overflow: hidden;
     transition: color .3s ease;
     z-index: 1;
-
-    &-bg {
-      position: absolute;
-      inset: 0;
-      background: #F75400;
-      border-radius: 20px;
-      transform: scale(0);
-      transform-origin: center;
-      transition: transform .4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 0;
-    }
+    flex: 1;
 
     &-text {
       position: relative;
@@ -449,24 +465,11 @@ onMounted(async () => {
 
     &--active {
       color: #fff;
-
-      .carousel__tab-switcher-btn-bg {
-        transform: scale(1);
-      }
     }
 
     &:hover:not(&--active) {
       color: #F75400;
     }
-  }
-
-  &__tab-switcher-separator {
-    color: rgba(0, 0, 0, .3);
-    font-size: 14px;
-    padding: 0 4px;
-    user-select: none;
-    position: relative;
-    z-index: 2;
   }
 
   &__actions {
@@ -537,20 +540,16 @@ onMounted(async () => {
 
     &__tab-switcher {
       flex-shrink: 0;
+
+      &-slider {
+        border-radius: 16px;
+      }
     }
 
     &__tab-switcher-btn {
       font-size: 12px;
       padding: 6px 10px;
-
-      &-bg {
-        border-radius: 20px;
-      }
-    }
-
-    &__tab-switcher-separator {
-      font-size: 12px;
-      padding: 0 2px;
+      border-radius: 16px;
     }
 
     &__actions {
