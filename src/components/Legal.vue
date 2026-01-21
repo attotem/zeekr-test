@@ -22,32 +22,32 @@ let langStore = useLangStore()
 
 <style lang="scss" scoped>
 .legal {
-  padding: 60px 76px;
+  padding: 16px 76px;
   background-color: #000;
 
   &__text {
-    font-size: 16px;
-    line-height: 1.25;
+    font-size: 12px;
+    line-height: 1.3;
     color: #fff;
 
     &--pale {
       color: #D9C5B7;
-      margin-left: 6px;
+      margin-left: 4px;
     }
 
     &--big {
-      margin-top: 16px;
+      margin-top: 8px;
     }
   }
 }
 
 @media screen and (max-width: 876px) {
   .legal {
-    padding: 40px 16px;
+    padding: 12px 16px;
 
     &__text {
-      font-size: 14px;
-      line-height: 1.25;
+      font-size: 10px;
+      line-height: 1.3;
     }
   }
 }

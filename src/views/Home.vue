@@ -78,13 +78,12 @@
                 <span class="carousel__tab-switcher-slider"></span>
                 <button
                   type="button"
-                  class="carousel__tab-switcher-btn"
+                  class="carousel__tab-switcher-btn carousel__tab-switcher-btn--first"
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x', index)"
                 >
                   7X New
                 </button>
-                <span class="carousel__tab-switcher-separator">|</span>
                 <button
                   type="button"
                   class="carousel__tab-switcher-btn"
@@ -235,6 +234,7 @@ import img009xMb from "@/assets/courusel/009x_mb.webp";
 import img007Mb from "@/assets/courusel/007_mb.webp";
 import imgMixMb from "@/assets/courusel/mix_mb.webp";
 import imgXMb from "@/assets/courusel/x_mb.webp";
+import img7xEuMb from "@/assets/courusel/7x_eu_mb.webp";
 
 let models = ref([]),
   news = ref([]),
@@ -243,7 +243,7 @@ let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
 const carouselModels = ref([
-  { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xMb, link: "/car/7x" },
+  { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/car/7x" },
   { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/car/001" },
   { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/car/9x" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
@@ -411,8 +411,8 @@ onMounted(async () => {
     align-items: center;
     background: none;
     border: 1px solid rgba(0, 0, 0, .15);
-    border-radius: 20px;
-    padding: 3px;
+    border-radius: 24px;
+    padding: 4px;
     gap: 0;
     position: relative;
     transition: border-color .3s ease;
@@ -423,16 +423,17 @@ onMounted(async () => {
 
     &-slider {
       position: absolute;
-      top: 3px;
-      bottom: 3px;
-      left: 3px;
-      width: calc(50% - 12px);
+      top: 4px;
+      bottom: 4px;
+      left: 4px;
+      right: calc(50% + 4px);
       background: #F75400;
-      border-radius: 16px;
+      border-radius: 20px;
       z-index: 0;
       opacity: 0;
       transition: 
-        left .3s cubic-bezier(0.4, 0, 0.2, 1),
+        left .35s cubic-bezier(0.4, 0, 0.2, 1),
+        right .35s cubic-bezier(0.4, 0, 0.2, 1),
         opacity .2s ease;
     }
 
@@ -441,23 +442,38 @@ onMounted(async () => {
     }
 
     &--right &-slider {
-      left: calc(50% + 9px);
+      left: calc(50% + 4px);
+      right: 4px;
     }
   }
 
   &__tab-switcher-btn {
     color: #000;
     font-size: 14px;
-    padding: 6px 14px;
+    padding: 8px 16px;
     cursor: pointer;
     background: none;
     border: none;
     white-space: nowrap;
-    border-radius: 16px;
+    border-radius: 20px;
     position: relative;
     transition: color .3s ease;
     z-index: 1;
     text-align: center;
+
+    &--first {
+      &::after {
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 16px;
+        background: rgba(0, 0, 0, .2);
+        z-index: 3;
+      }
+    }
 
     &--active {
       color: #fff;
@@ -466,15 +482,6 @@ onMounted(async () => {
     &:hover:not(&--active) {
       color: #F75400;
     }
-  }
-
-  &__tab-switcher-separator {
-    color: rgba(0, 0, 0, .2);
-    font-size: 14px;
-    padding: 0 2px;
-    user-select: none;
-    position: relative;
-    z-index: 2;
   }
 
   &__actions {
@@ -542,21 +549,32 @@ onMounted(async () => {
 
     &__tab-switcher {
       flex-shrink: 0;
+      padding: 3px;
+      border-radius: 20px;
 
       &-slider {
-        border-radius: 14px;
+        top: 3px;
+        bottom: 3px;
+        left: 3px;
+        right: calc(50% + 3px);
+        border-radius: 17px;
+      }
+
+      &--right &-slider {
+        left: calc(50% + 3px);
+        right: 3px;
       }
     }
 
     &__tab-switcher-btn {
       font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 14px;
-    }
+      padding: 6px 12px;
+      border-radius: 17px;
 
-    &__tab-switcher-separator {
-      font-size: 12px;
-      padding: 0 2px;
+      &--first::after {
+        right: -3px;
+        font-size: 12px;
+      }
     }
 
     &__actions {
