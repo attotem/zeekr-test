@@ -233,6 +233,10 @@ const getModelLink = (model) => {
     return '/car/7x'
   }
   
+  if (modelId === '9x' || modelId === 'car-9x' || modelName === '9x' || modelName.includes('9x')) {
+    return '/car/9x'
+  }
+  
   return `/${model.model_page.url.child}`
 }
 
@@ -251,39 +255,6 @@ let headerItems = ref([
   },
   {
     label: {
-      en: 'Service',
-      ua: 'Сервіс'
-    },
-    name: 'service',
-    /*
-    children: [
-      { name: 'example-service', id: 1 }
-    ]
-    */
-  },
-  /*
-  {
-    label: {
-      en: 'Available cars',
-      ua: 'Доступні автівки'
-    },
-    name: 'available-cars'
-  },
-  */
-  {
-    label: {
-      en: 'Financial services',
-      ua: 'Фінансовий сервіс'
-    },
-    name: 'financial-services',
-    /*
-    children: [
-      { name: 'example-service', id: 1 }
-    ]
-    */
-  },
-  {
-    label: {
       en: 'Warranty',
       ua: 'Гарантійна політика'
     },
@@ -291,21 +262,11 @@ let headerItems = ref([
   },
   {
     label: {
-      en: 'About the company',
-      ua: 'Про нас'
+      en: 'Service',
+      ua: 'Сервіс'
     },
-    name: 'about'
-  },
-  /*
-  {
-    label: {
-      en: 'Configurator',
-      ua: 'Конфігуратор'
-    },
-    isConfigurator: true,
-    name: 'configurator'
+    name: 'service'
   }
-    */
 ])
 
 watch(useRoute(), () => {
@@ -431,8 +392,8 @@ onMounted(async () => {
   }
 
   &--desktop {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 16px 76px;
     transition: none;
@@ -493,7 +454,9 @@ onMounted(async () => {
   }
 
   &__brand {
-    justify-self: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -72,7 +72,7 @@
                 class="carousel__tab-switcher"
                 :class="{ 
                   'carousel__tab-switcher--active': index === activeCarouselIndex,
-                  'carousel__tab-switcher--eu': selected7xVersion === '7x_eu' && index === activeCarouselIndex
+                  'carousel__tab-switcher--right': selected7xVersion === '7x_eu' && index === activeCarouselIndex
                 }"
               >
                 <span class="carousel__tab-switcher-slider"></span>
@@ -82,16 +82,16 @@
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x', index)"
                 >
-                  <span class="carousel__tab-switcher-btn-text">7X New</span>
+                  7X New
                 </button>
-                <span class="carousel__tab-switcher-divider"></span>
+                <span class="carousel__tab-switcher-separator">|</span>
                 <button
                   type="button"
                   class="carousel__tab-switcher-btn"
                   :class="{ 'carousel__tab-switcher-btn--active': selected7xVersion === '7x_eu' && index === activeCarouselIndex }"
                   @click="handle7xVersionClick('7x_eu', index)"
                 >
-                  <span class="carousel__tab-switcher-btn-text">7X CCS 2</span>
+                  7X CCS 2
                 </button>
               </div>
             </div>
@@ -114,7 +114,7 @@
 				<div class="carousel__actions">
 					<RouterLink
 						:to="getCarDetailLink()"
-						class="btn btn--white carousel__more"
+						class="btn btn--orange carousel__more"
 					>
 						Детальніше
 					</RouterLink>
@@ -413,6 +413,7 @@ onMounted(async () => {
     border: 1px solid rgba(0, 0, 0, .15);
     border-radius: 20px;
     padding: 3px;
+    gap: 0;
     position: relative;
     transition: border-color .3s ease;
 
@@ -423,30 +424,24 @@ onMounted(async () => {
     &-slider {
       position: absolute;
       top: 3px;
-      height: calc(100% - 6px);
+      bottom: 3px;
+      left: 3px;
+      width: calc(50% - 12px);
       background: #F75400;
       border-radius: 16px;
-      transition: left .4s cubic-bezier(0.4, 0, 0.2, 1), width .4s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
       z-index: 0;
       opacity: 0;
-      left: 3px;
-      width: calc(50% - 10px);
+      transition: 
+        left .3s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity .2s ease;
     }
 
     &--active &-slider {
       opacity: 1;
     }
 
-    &--eu &-slider {
-      left: calc(50% + 7px);
-    }
-
-    &-divider {
-      width: 1px;
-      height: 16px;
-      background: rgba(0, 0, 0, .2);
-      flex-shrink: 0;
-      z-index: 2;
+    &--right &-slider {
+      left: calc(50% + 9px);
     }
   }
 
@@ -459,17 +454,10 @@ onMounted(async () => {
     border: none;
     white-space: nowrap;
     border-radius: 16px;
-    text-align: center;
     position: relative;
-    overflow: hidden;
     transition: color .3s ease;
     z-index: 1;
-    flex: 1;
-
-    &-text {
-      position: relative;
-      z-index: 1;
-    }
+    text-align: center;
 
     &--active {
       color: #fff;
@@ -478,6 +466,15 @@ onMounted(async () => {
     &:hover:not(&--active) {
       color: #F75400;
     }
+  }
+
+  &__tab-switcher-separator {
+    color: rgba(0, 0, 0, .2);
+    font-size: 14px;
+    padding: 0 2px;
+    user-select: none;
+    position: relative;
+    z-index: 2;
   }
 
   &__actions {
@@ -489,9 +486,6 @@ onMounted(async () => {
   &__more {
     min-width: 120px;
     font-size: 14px;
-    background: none;
-    border: .0078125rem solid #000;
-
   }
 
   &__image-wrapper {
@@ -550,14 +544,19 @@ onMounted(async () => {
       flex-shrink: 0;
 
       &-slider {
-        border-radius: 16px;
+        border-radius: 14px;
       }
     }
 
     &__tab-switcher-btn {
       font-size: 12px;
       padding: 6px 10px;
-      border-radius: 16px;
+      border-radius: 14px;
+    }
+
+    &__tab-switcher-separator {
+      font-size: 12px;
+      padding: 0 2px;
     }
 
     &__actions {
