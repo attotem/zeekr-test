@@ -242,8 +242,8 @@
           "en": "Cream"
         },
         "description": {
-          "ua": "Оригінальна природна текстура, велична без втрати розкоші",
-          "en": "Original natural texture, magnificent without losing luxury",
+          "ua": "Оригінальна природна текстура — велична, без втрати розкоші.",
+          "en": "Original natural texture — magnificent, without losing luxury.",
           "zh": "原始的自然质感，壮阔不失豪华感"
         }
       },
@@ -427,33 +427,33 @@
       {
         "image": "slider/7x_slider_1.webp",
         "caption": {
+          "uk": "Динамічний дизайн передньої частини",
+          "en": "Dynamic front design",
+          "zh": "动感前脸设计"
+        }
+      },
+      {
+        "image": "slider/7x_slider_2.webp",
+        "caption": {
+          "uk": "Бічний вигляд з плаваючим дахом",
+          "en": "Side view with floating roof",
+          "zh": "悬浮车顶侧视图"
+        }
+      },
+      {
+        "image": "slider/7x_slider_3.webp",
+        "caption": {
           "uk": "Динамічний дизайн задньої частини",
           "en": "Dynamic rear design",
           "zh": "动感尾部设计"
         }
       },
       {
-        "image": "slider/7x_slider_2.webp",
-        "caption": {
-          "uk": "Спортивний дизайн передньої частини",
-          "en": "Sporty front design",
-          "zh": "运动前脸设计"
-        }
-      },
-      {
-        "image": "slider/7x_slider_3.webp",
-        "caption": {
-          "uk": "Дизайн «плаваючого» даху",
-          "en": "Floating roof design",
-          "zh": "悬浮车顶设计"
-        }
-      },
-      {
         "image": "slider/7x_slider_4.webp",
         "caption": {
-          "uk": "Чисті деталі",
-          "en": "Pure details",
-          "zh": "纯粹细节"
+          "uk": "Бічний вигляд",
+          "en": "Side view",
+          "zh": "侧视图"
         }
       }
     ]
@@ -592,8 +592,8 @@
         },
         "value": "#4A90E2",
         "description": {
-          "ua": "Вода тече між камінням, виявляючи глибокий синій, спокійний і далекий",
-          "en": "Water flows between the stones, revealing a deep blue, calm and distant"
+          "ua": "Глибокий синій, спокійний, як плин води.",
+          "en": "Deep blue, calm, like the flow of water."
         }
       },
       {
@@ -695,20 +695,20 @@
     },
     "text2": {
       "title": {
-        "uk": "Надзвичайно великий задній простір",
-        "en": "Super large rear space",
+        "uk": "Величезний простір на задньому сидінні.",
+        "en": "Huge space on the rear seat.",
         "zh": "超大后排空间"
       },
       "items": [
         {
           "value": "1021mm",
           "label": {
-            "uk": "Головний простір",
+            "uk": "Простір над головою",
             "en": "Headroom",
             "zh": "头部空间"
           },
           "description": {
-            "uk": "Максимальний головний простір 1021mm. Не-купе форма забезпечує достатній головний простір для задніх пасажирів, ширший огляд, комфорт при тривалих поїздках",
+            "uk": "Максимальний простір над головою — 1021 мм. Форма кузова не типу купе забезпечує достатній простір для задніх пасажирів, покращений огляд та комфорт під час тривалих поїздок.",
             "en": "Maximum headroom 1021mm. Non-fastback design brings ample headroom to the rear, wider field of vision, comfortable for long sits",
             "zh": "头部空间最大1021mm。不溜背造型为后排带来充足头部空间,视野更开阔,久坐不压抑"
           }
@@ -721,7 +721,7 @@
             "zh": "腿部空间"
           },
           "description": {
-            "uk": "Максимальний простір для ніг 1187mm. Сімейні поїздки тепер без тісноти, навіть під час тривалих поїздок можна розслабитися та почуватися комфортно",
+            "uk": "Максимальний простір для ніг — 1187 мм. Сімейні поїздки тепер проходять без тісноти: можна розслабитися та почуватися комфортно навіть у тривалих мандрівках.",
             "en": "Maximum legroom 1187mm. Family travel bids farewell to cramped spaces, long-distance rides can also be relaxed and comfortable",
             "zh": "腿部空间最大1187mm。全家出行从此告别局促,长途乘坐也能舒展自在"
           }
@@ -933,7 +933,7 @@
           "zh": "麂皮绒包覆顶棚"
         },
         "description": {
-          "uk": "Стеля салону та стійки оббиті алькантарою, ніжний на дотик, як високогірна кашемір, підвищує розкішну якість інтер'єру",
+          "uk": "Стеля салону та стійки оббиті алькантарою, яка ніжна на дотик, як високогірний кашемір, і це підвищує розкішний вигляд інтер'єру.",
           "en": "The cabin ceiling and pillars are covered in suede, with a delicate and skin-friendly feel like high-mountain cashmere, enhancing the luxurious texture of the interior",
           "zh": "座舱顶棚和立柱采用麂皮绒包覆,如高山羊绒般触感细腻亲肤,提升内饰豪华质感"
         }
@@ -1055,7 +1055,7 @@
           "zh": "后排座椅石墨烯加热"
         },
         "description": {
-          "uk": "5 хвилин від холоду до тепла, швидше та рівномірніше за традиційний нагрів, графеновий нагрів + зв'язок з масажем, задні сидіння також можуть розслабитися як гарячий камінь SPA",
+          "uk": "Від холоду до тепла — всього за 5 хвилин. Графеновий нагрів працює швидше та рівномірніше за традиційний, а в поєднанні з функцією масажу перетворює задні сидіння на справжній SPA-відпочинок з ефектом «гарячого каміння",
           "en": "5 minutes from cold to warm, faster and more even than traditional heating, graphene heating + massage linkage, the rear can also relax like a hot stone SPA",
           "zh": "5分钟从冷到暖,比传统加热更快、更均匀,石墨烯加热+按摩联动,后排也能像做热石SPA一样放松"
         }
@@ -1115,7 +1115,7 @@
   },
   "rangeTextBlock": {
     "title": {
-      "uk": "Довгий запас ходу, надшвидка зарядка",
+      "uk": "Великий запас ходу, надшвидке заряджання.",
       "en": "Long range, ultra-fast charging",
       "zh": "长续航，超快充"
     },

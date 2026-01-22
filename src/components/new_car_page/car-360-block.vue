@@ -151,8 +151,9 @@ const folderNameMapping = {
 }
 
 // Mapping for file names (handles typos in file names)
+// Only for 9x: files are named "sliver" but color id is "silver"
 const fileNameMapping = {
-  'silver': 'sliver' // Files are named "sliver" but color id is "silver"
+  'silver': 'sliver' // Only applies to 9x
 }
 
 // Get mobile color name from desktop color name
@@ -183,8 +184,9 @@ const getImagePath = (colorId, frame) => {
   const folderColorName = (!isMobileDevice.value && folderNameMapping[mappedColorId]) 
     ? folderNameMapping[mappedColorId] 
     : mappedColorId
-  // Get file name (handles typos in file names - only for desktop 360 folder)
-  const fileColorName = (!isMobileDevice.value && fileNameMapping[mappedColorId]) 
+  // Get file name (handles typos in file names - only for desktop 360 folder and only for 9x)
+  // For 7x, files are correctly named "silver", so don't apply mapping
+  const fileColorName = (!isMobileDevice.value && props.carId === '9x' && fileNameMapping[mappedColorId]) 
     ? fileNameMapping[mappedColorId] 
     : mappedColorId
   return `${basePath}/${props.carId}/${folderName}/${folderColorName}/${fileColorName}_${frame}.webp`

@@ -34,12 +34,12 @@ const props = defineProps({
     type: Object,
     default: () => ({
       standard: {
-        ua: 'Стандартна версія',
-        en: 'Standard Version'
+        ua: '7X New',
+        en: '7X New'
       },
       kz: {
-        ua: 'KZ версія',
-        en: 'KZ Version'
+        ua: '7X CCS 2',
+        en: '7X CCS 2'
       }
     })
   }

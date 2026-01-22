@@ -20,12 +20,12 @@
             v-model="selected360Version"
             :labels="{
               standard: {
-                ua: 'Стандартна версія',
-                en: 'Standard Version'
+                ua: '7X New',
+                en: '7X New'
               },
               kz: {
-                ua: 'Китайська версія',
-                en: 'Chinese Version'
+                ua: '7X CCS 2',
+                en: '7X CCS 2'
               }
             }"
           />
