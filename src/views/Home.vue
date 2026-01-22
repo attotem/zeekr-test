@@ -68,11 +68,10 @@
 										{{ slide.subtitle }}
 									</div>
 									<div v-if="slide.variants" class="article-1__h article-1__h--variants article-1__h--top">
-										<span>MAX</span>
-										<span class="article-1__h-separator">|</span>
-										<span>ULTRA</span>
-										<span class="article-1__h-separator">|</span>
-										<span>ULTRA+</span>
+										<template v-for="(variant, index) in slide.variants.split(' ')" :key="index">
+											<span>{{ variant }}</span>
+											<span v-if="index < slide.variants.split(' ').length - 1" class="article-1__h-separator">|</span>
+										</template>
 									</div>
 								</div>
 							</div>
@@ -315,14 +314,15 @@ const mainSliderSlides = [
     mobile: slide7xMb,
     title: "7X New",
     subtitle: "Оновлена модель 2026MY",
-    variants: "MAX ULTRA ULTRA+"
+    variants: "MAX ULTRA"
   },
   {
     pc: slide9xPc,
     tablet: slide9xTablet,
     mobile: slide9xMb,
-    title: "ZEEKR 9X",
-    subtitle: ""
+    title: "9X NEW",
+    subtitle: "Ультралюксовий SUV нового покоління",
+    variants: "MAX ULTRA HYPER"
   }
 ]
 
