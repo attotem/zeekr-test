@@ -1,10 +1,34 @@
 <template>
   <section class="car-hero">
-    <!-- Hero video background -->
+    <!-- Placeholder image -->
+    <picture
+      v-if="placeholderImage"
+      class="car-hero__placeholder"
+      :class="{ 'is-hidden': isContentLoaded }"
+    >
+      <source
+        v-if="placeholderImage.desktop"
+        :srcset="placeholderImage.desktop"
+        media="(min-width: 576px)"
+      />
+      <source
+        v-if="placeholderImage.mobile"
+        :srcset="placeholderImage.mobile"
+        media="(max-width: 575px)"
+      />
+      <img
+        :src="placeholderImage.desktop || placeholderImage.mobile"
+        :alt="getText(heroData.title) || 'Zeekr'"
+        loading="eager"
+        @load="onPlaceholderLoaded"
+      />
+    </picture>
+
     <video
       v-if="videoSrc"
       ref="videoElement"
       class="car-hero__video"
+      :class="{ 'is-loaded': isVideoLoaded }"
       autoplay
       muted
       loop
@@ -18,6 +42,7 @@
     <picture
       v-else-if="heroImage"
       class="car-hero__image"
+      :class="{ 'is-loaded': isImageLoaded }"
     >
       <source
         v-if="heroImage.desktop"
@@ -38,6 +63,8 @@
         :src="heroImage.desktop || heroImage.tablet || heroImage.mobile"
         :alt="getText(heroData.title) || 'Zeekr'"
         loading="eager"
+        @load="onImageLoaded"
+        @error="onImageError"
       />
     </picture>
 
@@ -103,6 +130,20 @@ const heroData = computed(() => {
   return props.data?.hero || props.data || {}
 })
 const videoElement = ref(null)
+const isVideoLoaded = ref(false)
+const isImageLoaded = ref(false)
+const isPlaceholderLoaded = ref(false)
+
+const isContentLoaded = computed(() => {
+  if (videoSrc.value) {
+    return isVideoLoaded.value
+  }
+  if (heroImage.value) {
+    return isImageLoaded.value
+  }
+  // If no video or image, keep placeholder visible
+  return false
+})
 
 const videoSrc = computed(() => {
   if (heroData.value.video) {
@@ -137,6 +178,16 @@ const heroImage = computed(() => {
   }
 })
 
+const placeholderImage = computed(() => {
+  const placeholderDesktop = `${props.carId}_hero_placeholder.webp`
+  const placeholderMobile = `${props.carId}_hero_placeholder_mb.webp`
+  
+  return {
+    desktop: resolveImagePath(placeholderDesktop),
+    mobile: resolveImagePath(placeholderMobile)
+  }
+})
+
 const getText = (textObj) => {
   if (!textObj) return ''
   if (typeof textObj === 'string') return textObj
@@ -157,8 +208,22 @@ const handleButtonClick = (type) => {
   // Здесь можно открыть модальное окно или выполнить другое действие
 }
 
+const onPlaceholderLoaded = () => {
+  isPlaceholderLoaded.value = true
+}
+
+const onImageLoaded = () => {
+  isImageLoaded.value = true
+}
+
+const onImageError = () => {
+  // Mark as loaded even on error to hide placeholder
+  isImageLoaded.value = true
+}
+
 const onVideoLoaded = () => {
   console.log('Video loaded successfully')
+  isVideoLoaded.value = true
   // Попытка воспроизвести видео
   if (videoElement.value) {
     videoElement.value.play().catch(err => {
@@ -170,6 +235,7 @@ const onVideoLoaded = () => {
 const onVideoError = (error) => {
   console.error('Video loading error:', error)
   console.log('Video src:', videoSrc.value)
+  isVideoLoaded.value = true // Mark as loaded even on error to hide placeholder
 }
 
 onMounted(async () => {
@@ -192,6 +258,7 @@ onMounted(async () => {
   justify-content: center;
   overflow: hidden;
 
+  &__placeholder,
   &__video,
   &__image {
     position: absolute;
@@ -200,6 +267,28 @@ onMounted(async () => {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: -2;
+    transition: opacity 0.5s ease;
+  }
+
+  &__placeholder {
+    z-index: -3;
+    
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+  }
+
+  &__placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__video.is-loaded,
+  &__image.is-loaded {
     z-index: -2;
   }
 

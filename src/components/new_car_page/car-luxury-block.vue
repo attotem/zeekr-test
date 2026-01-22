@@ -76,7 +76,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
@@ -121,6 +121,35 @@ const items = computed(() => {
     return blockData.value.items
   }
   return []
+})
+
+// Preload all images
+const preloadAllImages = () => {
+  if (!items.value || items.value.length === 0) return
+  
+  items.value.forEach(item => {
+    if (!item || !item.image) return
+    
+    const imgSrc = resolveImage(item.image)
+    if (!imgSrc) return
+    
+    const img = new Image()
+    img.onerror = () => {
+      console.warn(`Failed to preload luxury image: ${imgSrc}`)
+    }
+    img.src = imgSrc
+  })
+}
+
+// Watch items to preload when they change
+watch(items, (newItems) => {
+  if (newItems && newItems.length > 0) {
+    preloadAllImages()
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  preloadAllImages()
 })
 </script>
 

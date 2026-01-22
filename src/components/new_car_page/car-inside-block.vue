@@ -2,17 +2,12 @@
   <section class="car-inside-block">
     <div class="car-inside-block__image-wrap">
       <div
-        class="car-inside-block__image car-inside-block__image--layer1"
+        v-for="opt in options"
+        :key="opt.id"
+        class="car-inside-block__image"
+        :class="{ 'active': activeId === opt.id }"
         :style="{ 
-          backgroundImage: currentImageUrl1,
-          opacity: layer1Opacity
-        }"
-      ></div>
-      <div
-        class="car-inside-block__image car-inside-block__image--layer2"
-        :style="{ 
-          backgroundImage: currentImageUrl2,
-          opacity: layer2Opacity
+          backgroundImage: `url(${getInsideImage(opt.id)})`
         }"
       ></div>
     </div>
@@ -91,156 +86,13 @@ const getColorIcon = (id) => {
   return `/src/assets/colors/${iconId}.webp`
 }
 
-// Preload images and store Image objects
-const preloadedImages = ref({})
-
+// Preload images
 onMounted(() => {
   options.value.forEach(o => {
     const img = new Image()
-    img.onload = () => {
-      preloadedImages.value[o.id] = img
-    }
     img.src = getInsideImage(o.id)
   })
 })
-
-const currentSrc = computed(() => {
-  const id = activeId.value || options.value?.[0]?.id
-  if (!id) return ''
-  return getInsideImage(id)
-})
-
-// Crossfade: two layers with smooth opacity transition
-const currentLayer = ref('layer1')
-const layer1Src = ref('')
-const layer2Src = ref('')
-const layer1Opacity = ref(1)
-const layer2Opacity = ref(0)
-let transitionTimer = null
-let pendingTransition = null
-
-const currentImageUrl1 = computed(() => (layer1Src.value ? `url(${layer1Src.value})` : 'none'))
-const currentImageUrl2 = computed(() => (layer2Src.value ? `url(${layer2Src.value})` : 'none'))
-
-// Initialize first image when activeId is set
-watch([activeId, options], ([id, opts]) => {
-  if (opts?.length && id && !layer1Src.value) {
-    const firstSrc = getInsideImage(id)
-    layer1Src.value = firstSrc
-    layer1Opacity.value = 1
-    layer2Opacity.value = 0
-    currentLayer.value = 'layer1'
-  }
-}, { immediate: true })
-
-watch(currentSrc, (newSrc, oldSrc) => {
-  if (!newSrc || newSrc === oldSrc) return
-  
-  // Cancel any pending transitions
-  if (transitionTimer) {
-    clearTimeout(transitionTimer)
-    transitionTimer = null
-  }
-  if (pendingTransition) {
-    clearTimeout(pendingTransition)
-    pendingTransition = null
-  }
-  
-  // Store the source we want to transition to
-  const targetSrc = newSrc
-  const targetId = activeId.value
-  
-  // Ensure image is preloaded before transition
-  const checkAndTransition = () => {
-    // Double-check this is still the current source
-    if (currentSrc.value !== targetSrc) return
-    
-    // Cancel any pending transition
-    if (transitionTimer) {
-      clearTimeout(transitionTimer)
-      transitionTimer = null
-    }
-    
-    performTransition(targetSrc)
-  }
-  
-  if (preloadedImages.value[targetId] && preloadedImages.value[targetId].complete) {
-    // Image already loaded, transition immediately
-    pendingTransition = setTimeout(checkAndTransition, 0)
-  } else {
-    // Wait for image to load
-    const img = new Image()
-    img.onload = () => {
-      preloadedImages.value[targetId] = img
-      checkAndTransition()
-    }
-    img.onerror = () => {
-      // Even if error, try to transition (image might be cached)
-      checkAndTransition()
-    }
-    img.src = targetSrc
-  }
-})
-
-function performTransition(newSrc) {
-  // Double-check this is still the current source
-  if (currentSrc.value !== newSrc) return
-  
-  // Cancel any pending cleanup
-  if (transitionTimer) {
-    clearTimeout(transitionTimer)
-    transitionTimer = null
-  }
-  
-  if (currentLayer.value === 'layer1') {
-    // Show new image on layer2, fade it in while fading out layer1
-    layer2Src.value = newSrc
-    layer2Opacity.value = 0
-    
-    // Use requestAnimationFrame for smooth transition
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        // Double-check again before starting transition
-        if (currentSrc.value !== newSrc) return
-        
-        layer1Opacity.value = 0
-        layer2Opacity.value = 1
-        currentLayer.value = 'layer2'
-        
-        // Clear layer1 after transition completes
-        transitionTimer = setTimeout(() => {
-          if (currentLayer.value === 'layer2' && layer2Src.value === newSrc) {
-            layer1Src.value = ''
-            layer1Opacity.value = 1
-          }
-        }, 650)
-      })
-    })
-  } else {
-    // Show new image on layer1, fade it in while fading out layer2
-    layer1Src.value = newSrc
-    layer1Opacity.value = 0
-    
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        // Double-check again before starting transition
-        if (currentSrc.value !== newSrc) return
-        
-        layer2Opacity.value = 0
-        layer1Opacity.value = 1
-        currentLayer.value = 'layer1'
-        
-        // Clear layer2 after transition completes
-        transitionTimer = setTimeout(() => {
-          if (currentLayer.value === 'layer1' && layer1Src.value === newSrc) {
-            layer2Src.value = ''
-            layer2Opacity.value = 1
-          }
-        }, 650)
-      })
-    })
-  }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -261,19 +113,23 @@ function performTransition(newSrc) {
 
   &__image {
     position: absolute;
-    inset: 0;
+    inset: 0px;
     background-color: #f5f5f5;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.25s linear;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    will-change: opacity;
-    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1);
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+
+    &.active {
+      opacity: 1;
+    }
   }
 
   &__bottom {

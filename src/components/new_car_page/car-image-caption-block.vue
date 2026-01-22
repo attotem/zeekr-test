@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
@@ -56,6 +56,32 @@ const resolveImage = (imagePath) => {
   }
   return `/pages/${props.carId}/${imagePath}`
 }
+
+// Preload image
+const preloadImage = () => {
+  const imagePath = blockData.value.image
+  if (!imagePath) return
+  
+  const imgSrc = resolveImage(imagePath)
+  if (!imgSrc) return
+  
+  const img = new Image()
+  img.onerror = () => {
+    console.warn(`Failed to preload image: ${imgSrc}`)
+  }
+  img.src = imgSrc
+}
+
+// Watch blockData to preload when image changes
+watch(() => blockData.value.image, (newImage) => {
+  if (newImage) {
+    preloadImage()
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  preloadImage()
+})
 </script>
 
 <style lang="scss" scoped>

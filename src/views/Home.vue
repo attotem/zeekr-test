@@ -9,43 +9,67 @@
 		<template v-if="sliderData">
 			<div class="article-1">
 				<Slider
-					v-if="sliderData?.banner_info && sliderData.banner_info.length > 0"
-					:count="sliderData.banner_info.length"  
+					:count="mainSliderSlides.length"  
 					:slider-type="1"
 				>
 					<article
 						class="slide"
-						v-for="banner in sliderData.banner_info"
-						:key="banner.id"
+						v-for="(slide, index) in mainSliderSlides"
+						:key="index"
 					>
 						<picture class="picture intro-background">
 							<source
-								v-if="banner.value?.image_pc?.url"
-								:srcset="banner.value.image_pc.url"
+								v-if="slide.pc"
+								:srcset="slide.pc"
 								media="(min-width: 992px)"
 							/>
 							<source
-								v-if="banner.value?.image_tablet?.url"
-								:srcset="banner.value.image_tablet.url"
+								v-if="slide.tablet"
+								:srcset="slide.tablet"
 								media="(min-width: 576px) and (max-width: 991px)"
 							/>
 							<source
-								v-if="banner.value?.image_phone?.url"
-								:srcset="banner.value.image_phone.url"
+								v-if="slide.mobile"
+								:srcset="slide.mobile"
 								media="(max-width: 575px)"
 							/>
 							<img
-								:src="banner.value?.image_pc?.url || banner.value?.image_tablet?.url || banner.value?.image_phone?.url || banner.value?.image?.url || banner.value?.image"
-								alt="Zeekr"
-								loading="lazy"
+								:src="slide.pc || slide.tablet || slide.mobile"
+								:alt="slide.title || 'Zeekr'"
+								loading="eager"
 							/>
 						</picture>
-						<div class="article-1__h article-1__h--1">
-							{{ banner.value?.banner_title }}
-						</div>
-						<div class="article-1__h article-1__h--2">
-							{{ banner.value?.banner_subtitle }}
-						</div>
+						<template v-if="slide.isShowroom">
+							<div class="article-1__showroom-content">
+								<div v-if="slide.title" class="article-1__h article-1__h--1 article-1__h--showroom">
+									<span v-if="slide.titleHighlight">
+										{{ slide.title.replace(slide.titleHighlight, '') }}
+										<span class="article-1__h-highlight">{{ slide.titleHighlight }}</span>
+									</span>
+									<span v-else>{{ slide.title }}</span>
+								</div>
+								<div class="article-1__info">
+									<div v-if="slide.address" class="article-1__info-item">
+										{{ slide.address }}
+									</div>
+									<div v-if="slide.date" class="article-1__info-item">
+										{{ slide.date }}
+									</div>
+								</div>
+							</div>
+						</template>
+						<template v-else>
+							<div class="article-1__slide-content">
+								<div class="article-1__slide-text">
+									<div v-if="slide.title" class="article-1__h article-1__h--1 article-1__h--top">
+										{{ slide.title }}
+									</div>
+									<div v-if="slide.subtitle" class="article-1__h article-1__h--2 article-1__h--top">
+										{{ slide.subtitle }}
+									</div>
+								</div>
+							</div>
+						</template>
 					</article>
 				</Slider>
 			</div>
@@ -236,11 +260,62 @@ import imgMixMb from "@/assets/courusel/mix_mb.webp";
 import imgXMb from "@/assets/courusel/x_mb.webp";
 import img7xEuMb from "@/assets/courusel/7x_eu_mb.webp";
 
+// Main slider images
+import showroomPc from "@/assets/slider/showroom/showroom_pc.png";
+import showroomTablet from "@/assets/slider/showroom/showroom_tablet.png";
+import showroomMb from "@/assets/slider/showroom/showroom_mb.png";
+
+import slide001Pc from "@/assets/slider/001/001_pc.webp";
+import slide001Tablet from "@/assets/slider/001/001_tablet.webp";
+import slide001Mb from "@/assets/slider/001/001_mb.webp";
+
+import slide7xPc from "@/assets/slider/7x/7X_pc.webp";
+import slide7xTablet from "@/assets/slider/7x/7X_tablet.webp";
+import slide7xMb from "@/assets/slider/7x/7X_mb.webp";
+
+import slide9xPc from "@/assets/slider/9x/9X_pc.webp";
+import slide9xTablet from "@/assets/slider/9x/9X_tablet.webp";
+import slide9xMb from "@/assets/slider/9x/9X_mb.webp";
+
 let models = ref([]),
   news = ref([]), 
   sliderData = ref({})
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+const mainSliderSlides = [
+  {
+    pc: showroomPc,
+    tablet: showroomTablet,
+    mobile: showroomMb,
+    title: "Відкриття шоуруму у Львові",
+    titleHighlight: "Львові",
+    address: "с. Малехів, вул. Київська 8Б",
+    date: "24-25 січня",
+    isShowroom: true
+  },
+  {
+    pc: slide001Pc,
+    tablet: slide001Tablet,
+    mobile: slide001Mb,
+    title: "All New",
+    subtitle: "001"
+  },
+  {
+    pc: slide7xPc,
+    tablet: slide7xTablet,
+    mobile: slide7xMb,
+    title: "7X All new",
+    subtitle: ""
+  },
+  {
+    pc: slide9xPc,
+    tablet: slide9xTablet,
+    mobile: slide9xMb,
+    title: "ZEEKR 9X",
+    subtitle: ""
+  }
+]
 
 const carouselModels = ref([
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/car/7x" },
@@ -629,9 +704,120 @@ onMounted(async () => {
     }
   }
 
+  .article-1__showroom-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 20px 60px;
+    z-index: 1;
+    
+    @media screen and (max-width: 876px) {
+      padding: 90px 16px 60px;
+    }
+  }
+
+  .article-1__slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 80px 20px 60px;
+    z-index: 1;
+    
+    @media screen and (max-width: 876px) {
+      padding: 90px 16px 60px;
+    }
+  }
+
+  .article-1__slide-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
   .article-1__h {
     position: relative;
     z-index: 1;
+    
+    &--showroom {
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      
+      @media screen and (max-width: 876px) {
+        font-size: 36px;
+      }
+    }
+
+    &--top {
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+      font-size: 90px;
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      
+      @media screen and (max-width: 876px) {
+        font-size: 48px;
+      }
+    }
+    
+    &-highlight {
+      text-decoration: underline;
+      text-decoration-color: #F75400;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+    }
+  }
+  
+  .article-1__info {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    
+    @media screen and (max-width: 876px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+  
+  .article-1__info-item {
+    background: transparent;
+    border: 1px solid #F75400;
+    border-radius: 8px;
+    padding: 18px 32px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    
+    @media screen and (max-width: 876px) {
+      font-size: 16px;
+      padding: 14px 24px;
+    }
   }
 }
 

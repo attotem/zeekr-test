@@ -92,11 +92,29 @@ const resolveImage = (imagePath) => {
 }
 
 // Preload images
-onMounted(() => {
+const preloadAllImages = () => {
+  if (!images.value || images.value.length === 0) return
+  
   images.value.forEach(imgSrc => {
+    if (!imgSrc) return
+    
     const img = new Image()
+    img.onerror = () => {
+      console.warn(`Failed to preload storage image: ${imgSrc}`)
+    }
     img.src = imgSrc
   })
+}
+
+// Watch images to preload when they change
+watch(images, (newImages) => {
+  if (newImages && newImages.length > 0) {
+    preloadAllImages()
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  preloadAllImages()
 })
 
 const items = computed(() => {

@@ -242,8 +242,8 @@
           "en": "Cream"
         },
         "description": {
-          "ua": "Оригінальна природна текстура — велична, без втрати розкоші.",
-          "en": "Original natural texture — magnificent, without losing luxury.",
+          "ua": "Оригінальна природна текстура — велична, без втрати розкоші",
+          "en": "Original natural texture — magnificent, without losing luxury",
           "zh": "原始的自然质感，壮阔不失豪华感"
         }
       },
@@ -592,8 +592,8 @@
         },
         "value": "#4A90E2",
         "description": {
-          "ua": "Глибокий синій, спокійний, як плин води.",
-          "en": "Deep blue, calm, like the flow of water."
+          "ua": "Глибокий синій, спокійний, як плин води",
+          "en": "Deep blue, calm, like the flow of water"
         }
       },
       {
@@ -695,8 +695,8 @@
     },
     "text2": {
       "title": {
-        "uk": "Величезний простір на задньому сидінні.",
-        "en": "Huge space on the rear seat.",
+        "uk": "Величезний простір на задньому сидінні",
+        "en": "Huge space on the rear seat",
         "zh": "超大后排空间"
       },
       "items": [
@@ -933,9 +933,9 @@
           "zh": "麂皮绒包覆顶棚"
         },
         "description": {
-          "uk": "Стеля салону та стійки оббиті алькантарою, яка ніжна на дотик, як високогірний кашемір, і це підвищує розкішний вигляд інтер'єру.",
+          "uk": "Стеля салону та стійки оббиті алькантарою, яка ніжна на дотик, як високогірний кашемір, і це підвищує розкішний вигляд інтер'єру",
           "en": "The cabin ceiling and pillars are covered in suede, with a delicate and skin-friendly feel like high-mountain cashmere, enhancing the luxurious texture of the interior",
-          "zh": "座舱顶棚和立柱采用麂皮绒包覆,如高山羊绒般触感细腻亲肤,提升内饰豪华质感"
+          "zh": "座舱顶棚和立柱采用麂皮绒包覆,如高山羊绒般触感细腻亲肤,提升内饰豪华质感"  
         }
       },
       {
@@ -1115,7 +1115,7 @@
   },
   "rangeTextBlock": {
     "title": {
-      "uk": "Великий запас ходу, надшвидке заряджання.",
+      "uk": "Великий запас ходу, надшвидке заряджання",
       "en": "Long range, ultra-fast charging",
       "zh": "长续航，超快充"
     },

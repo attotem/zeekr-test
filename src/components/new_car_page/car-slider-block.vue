@@ -139,12 +139,12 @@ function preloadImage(src) {
   })
 }
 
-// Preload all images immediately for smooth transitions
-onMounted(async () => {
-  // Preload all images in parallel with high priority
-  const preloadPromises = slides.value.map((s, index) => {
+// Preload all images immediately for smooth transitions (non-blocking)
+onMounted(() => {
+  // Preload all images in parallel without blocking rendering
+  slides.value.forEach((s) => {
     const src = resolveImage(s.image)
-    if (!src) return Promise.resolve()
+    if (!src) return
     
     // Use link preload for better browser optimization
     const link = document.createElement('link')
@@ -154,12 +154,14 @@ onMounted(async () => {
     link.fetchPriority = 'high'
     document.head.appendChild(link)
     
-    return preloadImage(src).finally(() => {
+    // Preload in background without blocking
+    preloadImage(src).finally(() => {
       // Remove link after image is loaded
-      document.head.removeChild(link)
+      if (document.head.contains(link)) {
+        document.head.removeChild(link)
+      }
     })
   })
-  await Promise.all(preloadPromises)
 })
 
 watch([active, slides], ([newActive, newSlides]) => {
@@ -236,15 +238,38 @@ function translateToCenterSlot(slotIndex) {
   return xCenter - slotCenter
 }
 
-function recenterTrack() {
-  // keep the active slide (middle slot) centered inside viewport
-  trackTranslatePx.value = translateToCenterSlot(1)
+function translateToActiveSlide() {
+  // For mobile: center the active slide directly
+  const vw = getViewportWidthPx()
+  const sw = getSlideWidthPx()
+  const gap = getGapPx()
+  if (!vw || !sw) return 0
+  const xCenter = vw / 2
+  const slideCenter = active.value * (sw + gap) + sw / 2
+  return xCenter - slideCenter
+}
+
+function recenterTrack(skipAnimation = false) {
+  // If skipAnimation is true, we're recentering after transition
+  // so isAnimating should already be false
+  if (isMobile.value) {
+    // On mobile, center the active slide directly
+    trackTranslatePx.value = translateToActiveSlide()
+  } else {
+    // On desktop, keep the active slide (middle slot) centered inside viewport
+    trackTranslatePx.value = translateToCenterSlot(1)
+  }
 }
 
 function scheduleRecenter() {
+  // Don't recenter during animation
+  if (isAnimating.value) return
+  
   cancelAnimationFrame(rafId)
   rafId = requestAnimationFrame(() => {
-    recenterTrack()
+    if (!isAnimating.value) {
+      recenterTrack()
+    }
   })
 }
 
@@ -260,13 +285,31 @@ function handleTransitionEnd(e) {
     return
   }
 
-  if (pendingDir.value === 'next') active.value = Math.min(len - 1, active.value + 1)
-  if (pendingDir.value === 'prev') active.value = Math.max(0, active.value - 1)
+  // On mobile, update active and recenter
+  if (isMobile.value) {
+    const dir = pendingDir.value
+    if (dir === 'next') active.value = Math.min(len - 1, active.value + 1)
+    if (dir === 'prev') active.value = Math.max(0, active.value - 1)
+    
+    isAnimating.value = false
+    pendingDir.value = null
+    recenterTrack(true)
+    return
+  }
 
-  // snap back to center without visible jump: disable transition for this frame
-  isAnimating.value = false
-  pendingDir.value = null
-  recenterTrack()
+  // Desktop: Update active index first
+  const dir = pendingDir.value
+  if (dir === 'next') active.value = Math.min(len - 1, active.value + 1)
+  if (dir === 'prev') active.value = Math.max(0, active.value - 1)
+
+  // Wait for DOM to update with new slots, then recenter
+  nextTick(() => {
+    isAnimating.value = false
+    pendingDir.value = null
+    
+    // Recenter without animation to keep 3 images visible
+    recenterTrack(true)
+  })
 }
 
 const leftIndex = computed(() => (active.value > 0 ? active.value - 1 : null))
@@ -278,22 +321,90 @@ const activeSlide = computed(() => (slides.value.length ? slides.value[active.va
 const rightSlide = computed(() => (rightIndex.value === null ? null : slides.value[rightIndex.value]))
 const rightRightSlide = computed(() => (rightRightIndex.value === null ? null : slides.value[rightRightIndex.value]))
 
-const visibleSlots = computed(() => ([
-  { key: `left-${leftIndex.value ?? 'none'}-${active.value}`, role: leftIndex.value === null ? 'is-empty' : 'is-left', slide: leftSlide.value },
-  { key: `active-${active.value}`, role: 'is-active', slide: activeSlide.value },
-  { key: `right-${rightIndex.value ?? 'none'}-${active.value}`, role: rightIndex.value === null ? 'is-empty' : 'is-right', slide: rightSlide.value }
-]))
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+
+const isMobile = computed(() => windowWidth.value <= 876)
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    const handleResize = () => {
+      windowWidth.value = window.innerWidth
+    }
+    window.addEventListener('resize', handleResize)
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', handleResize)
+    })
+  }
+})
+
+const visibleSlots = computed(() => {
+  // On mobile, show all slides for proper sliding
+  if (isMobile.value) {
+    return slides.value.map((slide, index) => ({
+      key: `slide-${index}-${active.value}`,
+      role: index === active.value ? 'is-active' : 'is-hidden',
+      slide: slide
+    }))
+  }
+  
+  // On desktop, show 3 slots (left, active, right) - always show 3
+  const slots = []
+  
+  // Left slot
+  if (leftIndex.value !== null) {
+    slots.push({ 
+      key: `left-${leftIndex.value}-${active.value}`, 
+      role: 'is-left', 
+      slide: leftSlide.value 
+    })
+  } else {
+    slots.push({ 
+      key: `left-empty-${active.value}`, 
+      role: 'is-empty', 
+      slide: null 
+    })
+  }
+  
+  // Active slot
+  slots.push({ 
+    key: `active-${active.value}`, 
+    role: 'is-active', 
+    slide: activeSlide.value 
+  })
+  
+  // Right slot
+  if (rightIndex.value !== null) {
+    slots.push({ 
+      key: `right-${rightIndex.value}-${active.value}`, 
+      role: 'is-right', 
+      slide: rightSlide.value 
+    })
+  } else {
+    slots.push({ 
+      key: `right-empty-${active.value}`, 
+      role: 'is-empty', 
+      slide: null 
+    })
+  }
+  
+  return slots
+})
 
 watch([slides, active], () => {
-  scheduleRecenter()
+  // Only recenter if not animating (will be handled by transitionend)
+  if (!isAnimating.value && slides.value.length > 0) {
+    scheduleRecenter()
+  }
 }, { immediate: true })
 
 onMounted(() => {
-  // center on first render
-  scheduleRecenter()
-  // keep centered on resizes
-  resizeObserver = new ResizeObserver(() => scheduleRecenter())
-  if (viewportEl.value) resizeObserver.observe(viewportEl.value)
+  // center on first render immediately
+  nextTick(() => {
+    recenterTrack()
+    // keep centered on resizes
+    resizeObserver = new ResizeObserver(() => scheduleRecenter())
+    if (viewportEl.value) resizeObserver.observe(viewportEl.value)
+  })
 })
 
 onBeforeUnmount(() => {
@@ -350,8 +461,21 @@ const prev = async () => {
   
   pendingDir.value = 'prev'
   isAnimating.value = true
-  // animate so left slot moves into center
-  trackTranslatePx.value = translateToCenterSlot(0)
+  
+  if (isMobile.value) {
+    // On mobile, calculate target position for previous slide
+    const vw = getViewportWidthPx()
+    const sw = getSlideWidthPx()
+    const gap = getGapPx()
+    if (vw && sw) {
+      const xCenter = vw / 2
+      const targetSlideCenter = targetIndex * (sw + gap) + sw / 2
+      trackTranslatePx.value = xCenter - targetSlideCenter
+    }
+  } else {
+    // On desktop, animate so left slot moves into center
+    trackTranslatePx.value = translateToCenterSlot(0)
+  }
 }
 
 const next = async () => {
@@ -362,16 +486,28 @@ const next = async () => {
   await preloadImageForIndex(targetIndex)
   
   pendingDir.value = 'next'
-  
-  // Wait for DOM to update with new slide data
-  await nextTick()
-  
-  // Small delay to ensure image is rendered
-  await new Promise(resolve => requestAnimationFrame(resolve))
-  
   isAnimating.value = true
-  // animate so right slot moves into center
-  trackTranslatePx.value = translateToCenterSlot(2)
+  
+  if (isMobile.value) {
+    // On mobile, calculate target position for next slide
+    const vw = getViewportWidthPx()
+    const sw = getSlideWidthPx()
+    const gap = getGapPx()
+    if (vw && sw) {
+      const xCenter = vw / 2
+      const targetSlideCenter = targetIndex * (sw + gap) + sw / 2
+      trackTranslatePx.value = xCenter - targetSlideCenter
+    }
+  } else {
+    // Wait for DOM to update with new slide data
+    await nextTick()
+    
+    // Small delay to ensure image is rendered
+    await new Promise(resolve => requestAnimationFrame(resolve))
+    
+    // animate so right slot moves into center
+    trackTranslatePx.value = translateToCenterSlot(2)
+  }
 }
 </script>
 
@@ -380,6 +516,8 @@ const next = async () => {
   background: rgb(235, 232, 227);
   overflow: hidden;
   padding: 64px 0 72px;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in;
 
   &__inner {
     width: 100%;
@@ -404,6 +542,7 @@ const next = async () => {
   &__viewport {
     width: 100%;
     overflow: hidden;
+    min-height: 400px;
   }
 
   &__track {
@@ -413,6 +552,10 @@ const next = async () => {
     will-change: transform;
     transform: translateX(0px);
     padding-left: calc((100% - (4 * calc((100% - 66px) / 4) + 3 * 22px)) / 2);
+  }
+  
+  &__track:has(.is-hidden) {
+    padding-left: 0;
   }
 
   &__track.is-animating {
@@ -498,6 +641,11 @@ const next = async () => {
     pointer-events: none;
   }
 
+  .is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   &__arrow {
     position: absolute;
     top: 50%;
@@ -557,9 +705,23 @@ const next = async () => {
       flex: 0 0 100%;
     }
 
+    &__track {
+      padding-left: 0;
+    }
+
     .is-left,
-    .is-right {
+    .is-right,
+    .is-empty {
       display: none;
+    }
+    
+    .is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .is-active {
+      opacity: 1;
     }
 
     &__arrow--left {
@@ -569,6 +731,15 @@ const next = async () => {
     &__arrow--right {
       right: 8px;
     }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

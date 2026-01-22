@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
@@ -107,9 +107,37 @@ const resolveImage = (imagePath) => {
   if (imagePath.startsWith('/')) return imagePath
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   const resolvedPath = `${basePath}/${props.carId}/${imagePath}`
-  console.log('🖼️ Performance block resolving image:', imagePath, '->', resolvedPath, 'carId:', props.carId)
   return resolvedPath
 }
+
+// Preload images
+const preloadAllImages = () => {
+  const images = [blockData.value.image1, blockData.value.image2].filter(Boolean)
+  
+  images.forEach(imagePath => {
+    if (!imagePath) return
+    
+    const imgSrc = resolveImage(imagePath)
+    if (!imgSrc) return
+    
+    const img = new Image()
+    img.onerror = () => {
+      console.warn(`Failed to preload performance image: ${imgSrc}`)
+    }
+    img.src = imgSrc
+  })
+}
+
+// Watch blockData to preload when images change
+watch(() => [blockData.value.image1, blockData.value.image2], ([img1, img2]) => {
+  if (img1 || img2) {
+    preloadAllImages()
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  preloadAllImages()
+})
 </script>
 
 <style lang="scss" scoped>

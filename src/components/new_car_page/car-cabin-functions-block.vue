@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
@@ -90,6 +90,38 @@ const items = computed(() => {
     return blockData.value.items
   }
   return []
+})
+
+// Preload all images (not videos)
+const preloadAllImages = () => {
+  if (!items.value || items.value.length === 0) return
+  
+  items.value.forEach(item => {
+    if (!item) return
+    
+    const mediaPath = item.image || item.video
+    if (!mediaPath || isVideo(mediaPath)) return
+    
+    const imgSrc = resolveMedia(mediaPath)
+    if (!imgSrc) return
+    
+    const img = new Image()
+    img.onerror = () => {
+      console.warn(`Failed to preload cabin function image: ${imgSrc}`)
+    }
+    img.src = imgSrc
+  })
+}
+
+// Watch items to preload when they change
+watch(items, (newItems) => {
+  if (newItems && newItems.length > 0) {
+    preloadAllImages()
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  preloadAllImages()
 })
 </script>
 

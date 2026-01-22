@@ -94,29 +94,6 @@ const viewerElement = ref(null)
 const colorImages = ref({})
 const preloadedImageObjects = ref({})
 
-const reloadImages = () => {
-  colorImages.value = {}
-  preloadedImageObjects.value = {}
-  
-  colors.value.forEach(color => {
-    const images = []
-    for (let i = 0; i < totalFrames; i++) {
-      const imagePath = getImagePath(color.id, i)
-      images.push(imagePath)
-    }
-    colorImages.value[color.id] = images
-    
-    preloadImages(images, color.id)
-  })
-}
-
-// Initialize activeColor when colors are available
-watch(colors, (newColors) => {
-  if (newColors.length > 0 && !activeColor.value) {
-    activeColor.value = newColors[0].id
-  }
-  }, { immediate: true })
-
 const getImagePath = (colorId, frame) => {
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   const folderName = '360_kz'
@@ -130,21 +107,97 @@ const getColorImagePath = (colorId) => {
 
 const preloadImages = (images, colorId) => {
   const imageObjects = []
+  let loadedCount = 0
+  let errorCount = 0
   
   images.forEach((imagePath) => {
     const img = new Image()
+    
+    img.onload = () => {
+      loadedCount++
+    }
+    
+    img.onerror = () => {
+      errorCount++
+      console.warn(`Failed to load image: ${imagePath}`)
+    }
+    
     img.src = imagePath
     imageObjects.push(img)
   })
   
   preloadedImageObjects.value[colorId] = imageObjects
+  
+  // Log summary after a delay
+  setTimeout(() => {
+    if (errorCount > 0) {
+      console.warn(`Color ${colorId}: ${errorCount} images failed to load out of ${images.length}`)
+    } else if (loadedCount === images.length) {
+      console.log(`Color ${colorId}: All ${images.length} images preloaded successfully`)
+    }
+  }, 1000)
 }
 
-onMounted(() => {
-  reloadImages()
+const reloadImages = () => {
+  if (!colors.value || colors.value.length === 0) {
+    console.warn('Cannot reload images: colors not available')
+    return
+  }
   
-  if (colors.value.length > 0 && !activeColor.value) {
-    activeColor.value = colors.value[0].id
+  colorImages.value = {}
+  preloadedImageObjects.value = {}
+  
+  const activeColorId = activeColor.value || (colors.value.length > 0 ? colors.value[0].id : null)
+  const activeColorObj = colors.value.find(c => c.id === activeColorId)
+  const otherColors = colors.value.filter(c => c.id !== activeColorId)
+  
+  // First, preload active color
+  if (activeColorObj) {
+    const activeImages = []
+    for (let i = 0; i < totalFrames; i++) {
+      const imagePath = getImagePath(activeColorObj.id, i)
+      activeImages.push(imagePath)
+    }
+    colorImages.value[activeColorObj.id] = activeImages
+    preloadImages(activeImages, activeColorObj.id)
+  }
+  
+  // Then preload other colors
+  otherColors.forEach(color => {
+    const images = []
+    for (let i = 0; i < totalFrames; i++) {
+      const imagePath = getImagePath(color.id, i)
+      images.push(imagePath)
+    }
+    colorImages.value[color.id] = images
+    preloadImages(images, color.id)
+  })
+}
+
+// Initialize activeColor when colors are available
+watch(colors, (newColors, oldColors) => {
+  if (newColors.length > 0) {
+    if (!activeColor.value) {
+      activeColor.value = newColors[0].id
+    }
+    // Reload images when colors are loaded/updated
+    const colorsChanged = !oldColors || 
+      newColors.length !== oldColors.length || 
+      newColors.some((c, i) => !oldColors[i] || c.id !== oldColors[i].id)
+    if (colorsChanged) {
+      reloadImages()
+    }
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  if (colors.value.length > 0) {
+    if (!activeColor.value) {
+      activeColor.value = colors.value[0].id
+    }
+    // Initial load only if colors are already available
+    // Otherwise, watch(colors) will trigger reloadImages when colors are loaded
+    reloadImages()
   }
 })
 

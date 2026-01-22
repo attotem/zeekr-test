@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
@@ -88,6 +88,7 @@ const resolveImage = (imagePath) => {
 
 const isVideo = (path) => {
   if (!path) return false
+  if (typeof path !== 'string') return false
   return path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov')
 }
 
@@ -96,6 +97,39 @@ const images = computed(() => {
     return blockData.value.images
   }
   return []
+})
+
+// Preload all images (not videos)
+const preloadAllImages = () => {
+  if (!images.value || images.value.length === 0) return
+  
+  images.value.forEach(item => {
+    if (!item) return
+    
+    // item can be a string or an object with image property
+    const imagePath = typeof item === 'string' ? item : item.image
+    if (!imagePath || isVideo(imagePath)) return
+    
+    const imgSrc = resolveImage(imagePath)
+    if (!imgSrc) return
+    
+    const img = new Image()
+    img.onerror = () => {
+      console.warn(`Failed to preload two-images image: ${imgSrc}`)
+    }
+    img.src = imgSrc
+  })
+}
+
+// Watch images to preload when they change
+watch(images, (newImages) => {
+  if (newImages && newImages.length > 0) {
+    preloadAllImages()
+  }
+}, { immediate: true })
+
+onMounted(() => {
+  preloadAllImages()
 })
 </script>
 
