@@ -67,6 +67,13 @@
 									<div v-if="slide.subtitle" class="article-1__h article-1__h--2 article-1__h--top">
 										{{ slide.subtitle }}
 									</div>
+									<div v-if="slide.variants" class="article-1__h article-1__h--variants article-1__h--top">
+										<span>MAX</span>
+										<span class="article-1__h-separator">|</span>
+										<span>ULTRA</span>
+										<span class="article-1__h-separator">|</span>
+										<span>ULTRA+</span>
+									</div>
 								</div>
 							</div>
 						</template>
@@ -298,8 +305,9 @@ const mainSliderSlides = [
     pc: slide001Pc,
     tablet: slide001Tablet,
     mobile: slide001Mb,
-    title: "All New",
-    subtitle: "001"
+    title: "ALL NEW",
+    subtitle: "Оновлена модель 001",
+    variants: "MAX ULTRA ULTRA+"
   },
   {
     pc: slide7xPc,
@@ -744,7 +752,7 @@ onMounted(async () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
   }
 
   .article-1__h {
@@ -773,9 +781,45 @@ onMounted(async () => {
       text-align: center;
       margin: 0;
       color: #fff;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.85) 35%,
+        #fff 50%,
+        rgba(255, 255, 255, 0.85) 65%,
+        rgba(255, 255, 255, 0.6) 100%
+      );
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.2));
       
       @media screen and (max-width: 876px) {
         font-size: 48px;
+      }
+    }
+
+    &--2 {
+      font-size: 32px;
+      font-weight: 400;
+      
+      @media screen and (max-width: 876px) {
+        font-size: 20px;
+      }
+    }
+
+    &--variants {
+      font-size: 32px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      
+      @media screen and (max-width: 876px) {
+        font-size: 20px;
+        gap: 12px;
       }
     }
     
@@ -784,6 +828,11 @@ onMounted(async () => {
       text-decoration-color: #F75400;
       text-decoration-thickness: 2px;
       text-underline-offset: 6px;
+    }
+
+    &-separator {
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 300;
     }
   }
   
@@ -958,6 +1007,15 @@ onMounted(async () => {
       height: 540px;
       object-fit: cover;
     }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
 </style>

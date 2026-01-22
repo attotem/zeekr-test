@@ -138,7 +138,6 @@ const reloadImages = () => {
     preloadImages(images, color.id)
   })
   
-  // Reset flag after a short delay to allow images to start loading
   setTimeout(() => {
     isLoadingImages.value = false
   }, 100)
@@ -146,7 +145,6 @@ const reloadImages = () => {
 
 let colorsWatchTimeout = null
 watch(colors, (newColors, oldColors) => {
-  // Only reload if colors actually changed (not just reference)
   const colorsChanged = !oldColors || 
     newColors.length !== oldColors.length || 
     newColors.some((c, i) => !oldColors[i] || c.id !== oldColors[i].id)
@@ -156,7 +154,6 @@ watch(colors, (newColors, oldColors) => {
       activeColor.value = newColors[0].id
     }
     
-    // Debounce reload to avoid multiple calls
     if (colorsChanged) {
       clearTimeout(colorsWatchTimeout)
       colorsWatchTimeout = setTimeout(() => {

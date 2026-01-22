@@ -161,8 +161,6 @@ const videoSrc = computed(() => {
 const resolveImagePath = (imagePath) => {
   if (!imagePath) return ''
   if (imagePath.startsWith('/')) return imagePath
-  // In dev mode, use /src/assets/pages/... (Vite dev server serves from src)
-  // In production, use /pages/... (files should be in public/pages/)
   if (import.meta.env.DEV) {
     return `/src/assets/pages/${props.carId}/${imagePath}`
   }
