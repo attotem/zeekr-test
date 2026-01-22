@@ -3,6 +3,8 @@
 		class="slider"
 		@touchstart="touchStart"
 		@touchend="touchEnd"
+		@mouseenter="pauseAutoSlide"
+		@mouseleave="resumeAutoSlide"
 		:class="{ 'sliderType--1': props.sliderType == 1, 'sliderType--2': props.sliderType == 2 }"
 	>
 		<div
@@ -14,12 +16,10 @@
 		<div class="slider__controls">
 			<Horizontal
 				class="slider__control slider__left"
-				:class="{ 'slider__control--inactive': activeBulletIndex == 0 }"
 				@click="prev"
 			/>
 			<Horizontal
 				class="slider__control slider__right"
-				:class="{ 'slider__control--inactive': activeBulletIndex == props.count - 1 }"
 				@click="next"
 			/>
 		</div>
@@ -28,27 +28,77 @@
 				class="slider__bullet"
 				v-for="(bullet, counter) in props.count"
 				:class="{ 'slider__bullet--active': counter == activeBulletIndex }"
-				@click="activeBulletIndex = counter"
+				@click="goToSlide(counter)"
 			></div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, onBeforeUnmount, ref, computed, nextTick } from 'vue';
 import Horizontal from './icons/horizontal.vue';
 
 let props = defineProps(['sliderType', 'count'])
-let activeBulletIndex = ref(0)
+let realIndex = ref(0) // Реальний індекс для безперервного перелистування
 let touch = ref()
+let autoSlideInterval = null
+let isPaused = ref(false)
+let isTransitioning = ref(false)
+
+// Computed для відображення індексу (завжди в межах 0..count-1)
+const activeBulletIndex = computed(() => {
+  return realIndex.value % props.count;
+})
 
 const next = () => {
-  // TODO if props.sliderType == 2 do check for visual place also (to stop sliding not on last element but when visually no need for scroll) ?
-  if (activeBulletIndex.value !== props.count - 1) activeBulletIndex.value++;
+  realIndex.value++;
+  
+  // Пауза при ручному переключенні
+  if (props.sliderType === 1) {
+    pauseAutoSlide();
+    setTimeout(() => {
+      resumeAutoSlide();
+    }, 5000);
+  }
 }
 
 const prev = () => {
-  if (activeBulletIndex.value !== 0) activeBulletIndex.value--;
+  if (realIndex.value > 0) {
+    realIndex.value--;
+  } else {
+    // Якщо на першому слайді, переходимо на останній
+    realIndex.value = props.count - 1;
+  }
+  
+  // Пауза при ручному переключенні
+  if (props.sliderType === 1) {
+    pauseAutoSlide();
+    setTimeout(() => {
+      resumeAutoSlide();
+    }, 5000);
+  }
+}
+
+const goToSlide = (index) => {
+  // Встановлюємо realIndex так, щоб activeBulletIndex був правильним
+  const currentActive = realIndex.value % props.count;
+  
+  if (index > currentActive) {
+    realIndex.value = realIndex.value + (index - currentActive);
+  } else if (index < currentActive) {
+    realIndex.value = realIndex.value - (currentActive - index);
+  } else {
+    // Якщо індекс той самий, встановлюємо найближче значення
+    realIndex.value = Math.floor(realIndex.value / props.count) * props.count + index;
+  }
+  
+  // Пауза при ручному переключенні
+  if (props.sliderType === 1) {
+    pauseAutoSlide();
+    setTimeout(() => {
+      resumeAutoSlide();
+    }, 5000);
+  }
 }
 
 const touchStart = (e) => {
@@ -62,7 +112,65 @@ const touchEnd = (e) => {
   if (e.changedTouches[0].pageX > touch.value) prev()
   else next()
   touch.value = null;
+  // Пауза при свайпі
+  pauseAutoSlide();
+  setTimeout(() => {
+    resumeAutoSlide();
+  }, 5000);
 }
+
+const startAutoSlide = () => {
+  if (props.sliderType !== 1) return;
+  
+  autoSlideInterval = setInterval(() => {
+    if (!isPaused.value) {
+      const currentActive = realIndex.value % props.count;
+      realIndex.value++;
+      const newActive = realIndex.value % props.count;
+      
+      // Якщо переходимо з останнього на перший, робимо миттєвий перехід
+      if (currentActive === props.count - 1 && newActive === 0) {
+        isTransitioning.value = true;
+        nextTick(() => {
+          const inner = document.querySelector('.sliderType--1 .slider__inner');
+          if (inner) {
+            // Миттєвий перехід без анімації
+            inner.style.transition = 'none';
+            // Після миттєвого переходу повертаємо анімацію
+            setTimeout(() => {
+              if (inner) {
+                inner.style.transition = '';
+              }
+              isTransitioning.value = false;
+            }, 50);
+          } else {
+            isTransitioning.value = false;
+          }
+        });
+      }
+    }
+  }, 3000);
+}
+
+const pauseAutoSlide = () => {
+  isPaused.value = true;
+}
+
+const resumeAutoSlide = () => {
+  isPaused.value = false;
+}
+
+onMounted(() => {
+  if (props.sliderType === 1) {
+    startAutoSlide();
+  }
+});
+
+onBeforeUnmount(() => {
+  if (autoSlideInterval) {
+    clearInterval(autoSlideInterval);
+  }
+});
 </script>
 
 <style lang="scss" scoped>
