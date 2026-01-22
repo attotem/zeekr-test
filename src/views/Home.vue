@@ -313,8 +313,9 @@ const mainSliderSlides = [
     pc: slide7xPc,
     tablet: slide7xTablet,
     mobile: slide7xMb,
-    title: "7X All new",
-    subtitle: ""
+    title: "7X New",
+    subtitle: "Оновлена модель 2026MY",
+    variants: "MAX ULTRA ULTRA+"
   },
   {
     pc: slide9xPc,
