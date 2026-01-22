@@ -305,8 +305,8 @@ const mainSliderSlides = [
     pc: slide001Pc,
     tablet: slide001Tablet,
     mobile: slide001Mb,
-    title: "ALL NEW",
-    subtitle: "Оновлена модель 001",
+    title: "001 NEW",
+    subtitle: "Оновлена модель 2026 MY",
     variants: "MAX ULTRA ULTRA+"
   },
   {
@@ -775,50 +775,49 @@ onMounted(async () => {
 
     &--top {
       font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-      font-size: 90px;
+      font-size: 64px;
       font-weight: 400;
       line-height: 1.2;
       text-align: center;
       margin: 0;
-      color: #fff;
+      color: #fff4e2;
       background: linear-gradient(
         90deg,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.85) 35%,
-        #fff 50%,
-        rgba(255, 255, 255, 0.85) 65%,
-        rgba(255, 255, 255, 0.6) 100%
+        rgba(255, 244, 226, 0.7) 0%,
+        #fff4e2 50%,
+        rgba(255, 244, 226, 0.7) 100%
       );
       background-size: 200% 100%;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: shimmer 3.5s ease-in-out infinite;
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.2));
+      animation: shimmer 4s linear infinite;
       
       @media screen and (max-width: 876px) {
-        font-size: 48px;
+        font-size: 36px;
       }
     }
 
     &--2 {
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 400;
+      color: #fff4e2;
       
       @media screen and (max-width: 876px) {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
 
     &--variants {
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 400;
       display: flex;
       align-items: center;
       gap: 16px;
+      color: #fff4e2;
       
       @media screen and (max-width: 876px) {
-        font-size: 20px;
+        font-size: 18px;
         gap: 12px;
       }
     }
@@ -831,7 +830,7 @@ onMounted(async () => {
     }
 
     &-separator {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 244, 226, 0.5);
       font-weight: 300;
     }
   }
