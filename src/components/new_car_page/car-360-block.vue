@@ -111,27 +111,37 @@ const reloadImages = () => {
   colorImages.value = {}
   preloadedImageObjects.value = {}
   
-  colors.value.forEach(color => {
+  const activeColorId = activeColor.value || (colors.value.length > 0 ? colors.value[0].id : null)
+  const activeColorObj = colors.value.find(c => c.id === activeColorId)
+  const otherColors = colors.value.filter(c => c.id !== activeColorId)
+  
+  if (activeColorObj) {
+    const activeImages = []
+    for (let i = 0; i < 36; i++) {
+      const imagePath = getImagePath(activeColorObj.id, i)
+      activeImages.push(imagePath)
+    }
+    colorImages.value[activeColorObj.id] = activeImages
+    preloadImages(activeImages, activeColorObj.id)
+  }
+  
+  otherColors.forEach(color => {
     const images = []
     for (let i = 0; i < 36; i++) {
       const imagePath = getImagePath(color.id, i)
       images.push(imagePath)
     }
     colorImages.value[color.id] = images
-    
-    // Preload all images once and keep references
     preloadImages(images, color.id)
   })
 }
 
-// Initialize activeColor when colors are available
 watch(colors, (newColors) => {
   if (newColors.length > 0 && !activeColor.value) {
     activeColor.value = newColors[0].id
   }
 }, { immediate: true })
 
-// Mapping between desktop color names and mobile color names
 const colorNameMapping = {
   // Desktop name -> Mobile name
   'interstellarViolet': 'purple',
@@ -204,7 +214,14 @@ const preloadImages = (images, colorId) => {
   
   images.forEach((imagePath) => {
     const img = new Image()
-    img.src = imagePath // This loads image into browser cache
+    
+    // Add error handling
+    img.onerror = () => {
+      console.warn(`Failed to load image: ${imagePath}`)
+    }
+    
+    // Start loading immediately - browser will cache it
+    img.src = imagePath
     imageObjects.push(img) // Keep reference to prevent GC
   })
   

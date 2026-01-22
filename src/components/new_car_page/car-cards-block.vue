@@ -166,7 +166,6 @@ const rightCards = computed(() => {
   }
 
   &__card {
-    border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;

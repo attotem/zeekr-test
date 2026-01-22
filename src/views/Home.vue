@@ -237,7 +237,7 @@ import imgXMb from "@/assets/courusel/x_mb.webp";
 import img7xEuMb from "@/assets/courusel/7x_eu_mb.webp";
 
 let models = ref([]),
-  news = ref([]),
+  news = ref([]), 
   sliderData = ref({})
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)

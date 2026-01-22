@@ -142,9 +142,7 @@ const videoSrc = computed(() => {
       max-width: 100%;
     }
 
-    &__video-wrap {
-      border-radius: 12px;
-    }
+ 
 
     &__text {
       top: 10%;
