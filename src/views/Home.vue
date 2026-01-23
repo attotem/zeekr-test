@@ -114,6 +114,7 @@
                 >
                   7X New
                 </button>
+                <span class="carousel__tab-switcher-divider"></span>
                 <button
                   type="button"
                   class="carousel__tab-switcher-btn"
@@ -509,14 +510,13 @@ onMounted(async () => {
       top: 4px;
       bottom: 4px;
       left: 4px;
-      right: calc(50% + 4px);
+      width: calc(50% - 10px);
       background: #F75400;
       border-radius: 20px;
       z-index: 0;
       opacity: 0;
       transition: 
-        left .35s cubic-bezier(0.4, 0, 0.2, 1),
-        right .35s cubic-bezier(0.4, 0, 0.2, 1),
+        transform .35s cubic-bezier(0.4, 0, 0.2, 1),
         opacity .2s ease;
     }
 
@@ -525,12 +525,23 @@ onMounted(async () => {
     }
 
     &--right &-slider {
-      left: calc(50% + 4px);
-      right: 4px;
+      transform: translateX(calc(100% + 10px));
     }
   }
 
+  &__tab-switcher-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(0, 0, 0, .2);
+    flex-shrink: 0;
+    z-index: 3;
+    position: relative;
+    margin: 0 8px;
+    align-self: center;
+  }
+
   &__tab-switcher-btn {
+    flex: 1 1 50%;
     color: #000;
     font-size: 14px;
     padding: 8px 16px;
@@ -543,20 +554,10 @@ onMounted(async () => {
     transition: color .3s ease;
     z-index: 1;
     text-align: center;
-
-    &--first {
-      &::after {
-        content: '';
-        position: absolute;
-        right: -6px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1px;
-        height: 16px;
-        background: rgba(0, 0, 0, .2);
-        z-index: 3;
-      }
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
 
     &--active {
       color: #fff;
@@ -639,25 +640,29 @@ onMounted(async () => {
         top: 3px;
         bottom: 3px;
         left: 3px;
-        right: calc(50% + 3px);
+        width: calc(50% - 9px);
         border-radius: 17px;
       }
 
       &--right &-slider {
-        left: calc(50% + 3px);
-        right: 3px;
+        transform: translateX(calc(100% + 9px));
       }
     }
 
+    &__tab-switcher-divider {
+      height: 14px;
+      margin: 0 6px;
+    }
+
     &__tab-switcher-btn {
+      flex: 1 1 50%;
       font-size: 12px;
       padding: 6px 12px;
       border-radius: 17px;
-
-      &--first::after {
-        right: -3px;
-        font-size: 12px;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
     }
 
     &__actions {

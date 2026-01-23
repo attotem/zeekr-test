@@ -2,6 +2,7 @@
 	<div
 		class="slider"
 		@touchstart="touchStart"
+		@touchmove="touchMove"
 		@touchend="touchEnd"
 		@mouseenter="pauseAutoSlide"
 		@mouseleave="resumeAutoSlide"
@@ -41,6 +42,7 @@ import Horizontal from './icons/horizontal.vue';
 let props = defineProps(['sliderType', 'count'])
 let realIndex = ref(0) // Реальний індекс для безперервного перелистування
 let touch = ref()
+let touchStartY = ref(null)
 let autoSlideInterval = null
 let isPaused = ref(false)
 let isTransitioning = ref(false)
@@ -98,15 +100,40 @@ const goToSlide = (index) => {
 
 const touchStart = (e) => {
   if (props.sliderType !== 1) return;
-  console.log(e.touches[0].pageX)
   touch.value = e.touches[0].pageX;
+  touchStartY.value = e.touches[0].pageY;
+}
+
+const touchMove = (e) => {
+  if (props.sliderType !== 1) return;
+  if (!touch.value || !touchStartY.value) return;
+  
+  const touchX = e.touches[0].pageX;
+  const touchY = e.touches[0].pageY;
+  const deltaX = Math.abs(touchX - touch.value);
+  const deltaY = Math.abs(touchY - touchStartY.value);
+  
+  // Якщо горизонтальний свайп більший за вертикальний, запобігаємо скролу
+  if (deltaX > deltaY && deltaX > 10) {
+    e.preventDefault();
+  }
 }
 
 const touchEnd = (e) => {
   if (props.sliderType !== 1) return;
-  if (e.changedTouches[0].pageX > touch.value) prev()
-  else next()
+  if (!touch.value) return;
+  
+  const deltaX = e.changedTouches[0].pageX - touch.value;
+  const deltaY = touchStartY.value ? Math.abs(e.changedTouches[0].pageY - touchStartY.value) : 0;
+  
+  // Перемикаємо слайдер тільки якщо горизонтальний рух більший за вертикальний
+  if (Math.abs(deltaX) > deltaY && Math.abs(deltaX) > 30) {
+    if (deltaX > 0) prev()
+    else next()
+  }
+  
   touch.value = null;
+  touchStartY.value = null;
   // Пауза при свайпі
   pauseAutoSlide();
   setTimeout(() => {
@@ -174,6 +201,8 @@ onBeforeUnmount(() => {
 
   &Type--1 {
     overflow: hidden;
+    touch-action: pan-y pinch-zoom;
+    
     .slider {
       &__inner {
         overflow: hidden;
@@ -192,6 +221,7 @@ onBeforeUnmount(() => {
         opacity: 1;
         transition: .3s ease-in-out;
         cursor: pointer;
+        touch-action: manipulation;
 
         &s {
           top: 0;
@@ -239,6 +269,7 @@ onBeforeUnmount(() => {
         opacity: .2;
         transition: .3s ease-in-out;
         cursor: pointer;
+        touch-action: manipulation;
 
         &--active {
           opacity: 1;
