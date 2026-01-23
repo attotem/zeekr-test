@@ -266,7 +266,6 @@ import imgMixMb from "@/assets/courusel/mix_mb.webp";
 import imgXMb from "@/assets/courusel/x_mb.webp";
 import img7xEuMb from "@/assets/courusel/7x_eu_mb.webp";
 
-// Main slider images
 import showroomPc from "@/assets/slider/showroom/showroom_pc.webp";
 import showroomTablet from "@/assets/slider/showroom/showroom_tablet.webp";
 import showroomMb from "@/assets/slider/showroom/showroom_mb.png";
@@ -327,9 +326,9 @@ const mainSliderSlides = [
 ]
 
 const carouselModels = ref([
-  { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/car/7x" },
-  { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/car/001" },
-  { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/car/9x" },
+  { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },
+  { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/zeekr-001" },
+  { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/zeekr-9x" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
   { id: "001fr", label: "001 FR", image: img001fr, imageMobile: img001frMb, link: "/zeekr-001-fr" },
   { id: "009", label: "009", image: img009, imageMobile: img009Mb, link: "/zeekr-009" },
