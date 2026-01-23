@@ -227,7 +227,7 @@ const resolveImage = (imagePath) => {
   .car-space-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 44px 0;
+    padding: 28px 0;
 
     &__inner {
       padding: 0 16px;

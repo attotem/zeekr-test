@@ -32,6 +32,21 @@
         </div>
       </div>
     </div>
+    <!-- Псевдоблок для мобільних - текст під фото -->
+    <div class="car-image-text-overlay-block__text-mobile">
+      <h2 v-if="getText(blockData.title)" class="car-image-text-overlay-block__title-mobile">
+        {{ getText(blockData.title) }}
+      </h2>
+      <div v-if="blockData.subtitles && blockData.subtitles.length" class="car-image-text-overlay-block__subtitles-mobile">
+        <p
+          v-for="(subtitle, index) in blockData.subtitles"
+          :key="index"
+          class="car-image-text-overlay-block__subtitle-mobile"
+        >
+          {{ getText(subtitle) }}
+        </p>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -179,6 +194,10 @@ const isVideo = (path) => {
       background: rgba(0, 0, 0, 0.3);
     }
   }
+
+  &__text-mobile {
+    display: none;
+  }
 }
 
 @keyframes fadeUp {
@@ -196,22 +215,54 @@ const isVideo = (path) => {
   .car-image-text-overlay-block {
     width: 100%;
     margin: 0;
+    padding: 0;
 
     &__image-wrap {
-      min-height: 50vh;
+      min-height: auto;
+      margin-bottom: 0;
     }
 
     &__text {
-      padding: 40px 16px;
+      display: none;
     }
 
-    &__title {
-      font-size: 32px;
-      margin-bottom: 20px;
+    &__text-mobile {
+      display: block;
+      text-align: left;
+      padding: 20px 16px;
+      background: #fff;
     }
 
-    &__subtitle {
-      font-size: 16px;
+    &__title-mobile {
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+      font-size: 20px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: #111;
+      margin: 0 0 12px 0;
+      text-align: left;
+    }
+
+    &__subtitles-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    &__subtitle-mobile {
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #666;
+      margin: 0;
+      padding: 0;
+      position: relative;
+
+      &:not(:last-child)::after {
+        display: none;
+      }
     }
   }
 }

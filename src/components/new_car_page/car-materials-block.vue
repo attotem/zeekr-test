@@ -196,7 +196,7 @@ const isVideo = (path) => {
   .car-materials-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 44px 0;
+    padding: 28px 0;
 
     &__inner {
       padding: 0 16px;
@@ -204,20 +204,23 @@ const isVideo = (path) => {
 
     &__grid {
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 0px;
     }
 
     &__content {
       padding: 20px 16px;
+      text-align: center;
     }
 
     &__title {
       font-size: 18px;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     &__description {
       font-size: 13px;
+      text-align: center;
     }
   }
 }

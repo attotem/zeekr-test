@@ -300,7 +300,7 @@ watch(() => langStore.activeLang, () => {
 
 @media screen and (max-width: 876px) {
   .car-video-switcher-block {
-    padding: 44px 0;
+    padding: 28px 0;
 
     &__inner {
       padding: 0 16px;

@@ -160,7 +160,7 @@ const resolveImage = (imagePath) => {
 
     &__overlay {
       width: 100%;
-      padding: 24px;
+      padding: 20px;
       background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
     }
 

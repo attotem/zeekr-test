@@ -415,7 +415,7 @@ const currentItemDescription = computed(() => {
 
     &__top-title {
       font-size: 32px;
-      padding: 44px 16px 32px;
+      padding: 28px 16px 24px;
     }
 
     &__image-wrap {

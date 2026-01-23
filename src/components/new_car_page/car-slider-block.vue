@@ -533,6 +533,9 @@ const next = async () => {
     margin: 0 0 44px;
     color: #111;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
   &__slider {
@@ -612,6 +615,10 @@ const next = async () => {
     font-size: 16px;
     line-height: 1.4;
     color: rgba(17, 17, 17, 0.75);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .is-active {
@@ -685,24 +692,60 @@ const next = async () => {
   .car-slider-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 44px 0 52px;
+    padding: 28px 0 36px;
+    box-sizing: border-box;
+    overflow-x: hidden;
 
     &__inner {
       padding: 0 16px;
+      box-sizing: border-box;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     &__title {
       font-size: 28px;
       margin-bottom: 28px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    &__viewport {
+      max-width: 100%;
+      overflow-x: hidden;
+      box-sizing: border-box;
     }
 
     &__track {
       gap: 18px;
       transform: translateX(0px);
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     &__slide {
       flex: 0 0 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    &__image-wrap {
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    &__caption {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      overflow: hidden;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     &__track {

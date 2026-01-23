@@ -18,6 +18,13 @@
           </p>
         </div>
       </div>
+      <!-- Псевдоблок для мобільних - текст під відео -->
+      <div class="car-video-block__text-mobile">
+        <h2 class="car-video-block__title-mobile">{{ getText(blockData.title) }}</h2>
+        <p v-if="getText(blockData.subtitle)" class="car-video-block__subtitle-mobile">
+          {{ getText(blockData.subtitle) }}
+        </p>
+      </div>
     </div>
   </section>
 </template>
@@ -130,32 +137,48 @@ const videoSrc = computed(() => {
     margin: 0;
     opacity: 0.9;
   }
+
+  &__text-mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 876px) {
   .car-video-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 48px 0 56px;
+    padding: 32px 0 40px;
 
     &__inner {
       max-width: 100%;
     }
 
- 
-
     &__text {
-      top: 10%;
-      padding: 0 16px;
+      display: none;
     }
 
-    &__title {
+    &__text-mobile {
+      display: block;
+      text-align: center;
+      color: #111;
+      padding: 24px 16px 0;
+    }
+
+    &__title-mobile {
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
       font-size: 26px;
-      margin-bottom: 6px;
+      line-height: 1.2;
+      font-weight: 400;
+      margin: 0 0 8px;
+      color: #111;
     }
 
-    &__subtitle {
+    &__subtitle-mobile {
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
       font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+      color: rgba(17, 17, 17, 0.9);
     }
   }
 }

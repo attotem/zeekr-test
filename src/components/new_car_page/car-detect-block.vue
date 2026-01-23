@@ -169,11 +169,11 @@ const resolveImage = (imagePath) => {
   .car-detect-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 44px 0;
+    padding: 28px 0;
 
     &__overlay {
       width: 100%;
-      padding: 24px;
+      padding: 20px;
       background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 70%, transparent 100%);
     }
 

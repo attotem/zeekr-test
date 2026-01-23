@@ -169,7 +169,7 @@ const resolveImage = (imagePath) => {
     }
 
     &__text {
-      padding: 30px 16px;
+      padding: 24px 16px;
       gap: 20px;
     }
 

@@ -220,7 +220,7 @@ const videoSrc = computed(() => {
 @media screen and (max-width: 876px) {
   .car-video-with-text-top {
     &__title-wrap {
-      padding: 40px 16px 32px;
+      padding: 28px 16px 24px;
     }
 
     &__title {

@@ -200,7 +200,7 @@ onMounted(() => {
 
 @media screen and (max-width: 876px) {
   .car-cabin-functions-block {
-    padding: 44px 0;
+    padding: 28px 0;
 
     &__inner {
       width: calc(100% - 32px);

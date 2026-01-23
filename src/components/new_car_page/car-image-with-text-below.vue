@@ -229,7 +229,7 @@ const resolveImage = (imagePath) => {
     }
 
     &__content {
-      padding: 40px 16px;
+      padding: 28px 16px;
     }
 
     &__title {

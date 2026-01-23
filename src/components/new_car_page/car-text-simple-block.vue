@@ -153,7 +153,7 @@ const getText = (textObj) => {
 @media screen and (max-width: 876px) {
   .car-text-simple-block {
     min-height: 10vh;
-    padding: 40px 16px;
+    padding: 28px 16px;
 
     &__title {
       font-size: 32px;
