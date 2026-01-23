@@ -267,8 +267,8 @@ import imgXMb from "@/assets/courusel/x_mb.webp";
 import img7xEuMb from "@/assets/courusel/7x_eu_mb.webp";
 
 // Main slider images
-import showroomPc from "@/assets/slider/showroom/showroom_pc.png";
-import showroomTablet from "@/assets/slider/showroom/showroom_tablet.png";
+import showroomPc from "@/assets/slider/showroom/showroom_pc.webp";
+import showroomTablet from "@/assets/slider/showroom/showroom_tablet.webp";
 import showroomMb from "@/assets/slider/showroom/showroom_mb.png";
 
 import slide001Pc from "@/assets/slider/001/001_pc.webp";

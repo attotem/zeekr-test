@@ -66,11 +66,9 @@ const prev = () => {
   if (realIndex.value > 0) {
     realIndex.value--;
   } else {
-    // Якщо на першому слайді, переходимо на останній
     realIndex.value = props.count - 1;
   }
   
-  // Пауза при ручному переключенні
   if (props.sliderType === 1) {
     pauseAutoSlide();
     setTimeout(() => {
@@ -80,7 +78,6 @@ const prev = () => {
 }
 
 const goToSlide = (index) => {
-  // Встановлюємо realIndex так, щоб activeBulletIndex був правильним
   const currentActive = realIndex.value % props.count;
   
   if (index > currentActive) {
@@ -88,11 +85,9 @@ const goToSlide = (index) => {
   } else if (index < currentActive) {
     realIndex.value = realIndex.value - (currentActive - index);
   } else {
-    // Якщо індекс той самий, встановлюємо найближче значення
     realIndex.value = Math.floor(realIndex.value / props.count) * props.count + index;
   }
   
-  // Пауза при ручному переключенні
   if (props.sliderType === 1) {
     pauseAutoSlide();
     setTimeout(() => {
