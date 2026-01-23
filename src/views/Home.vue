@@ -744,7 +744,7 @@ onMounted(async () => {
     z-index: 1;
     
     @media screen and (max-width: 876px) {
-      padding: 250px 16px 60px;
+      padding: 150px 16px 60px;
     }
   }
 

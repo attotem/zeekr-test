@@ -6,11 +6,7 @@ let ngrokHeader = {
 	"ngrok-skip-browser-warning": "69420",
 };
 
-export function addRegionParam(url) {
-	const separator = url.includes('?') ? '&' : '?';
-	return `${url}${separator}region_param=dnipro`;
-}
-
+// Helper function to get headers with ngrok header
 function getHeaders(additionalHeaders = {}) {
 	return {
 		...ngrokHeader,
@@ -29,7 +25,7 @@ class Models {
 		const currentLang = langStore.activeLang;
 		if (!this.models || currentLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_car_models_page?lang_code=${currentLang}`),
+				`${path}/get_car_models_page?lang_code=${currentLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -48,9 +44,9 @@ class Models {
 
 	async getByURL(url = null) {
 		const response = await fetch(
-			addRegionParam(`${path}/get_car_model_page/?url=${url}&?lang_code=${
+			`${path}/get_car_model_page/?url=${url}&?lang_code=${
 				useLangStore().activeLang
-			}`),
+			}`,
 			{
 				headers: getHeaders({
 					accept: "application/json",
@@ -82,9 +78,9 @@ class News {
 
 	async get(offset = 0, limit = 9) {
 		let resp = await fetch(
-			addRegionParam(`${path}/get_news_page?lang_code=${
+			`${path}/get_news_page?lang_code=${
 				useLangStore().activeLang
-			}&offset=${offset}&limit=${limit}`),
+			}&offset=${offset}&limit=${limit}`,
 			{
 				headers: getHeaders({
 					accept: "application/json",
@@ -100,7 +96,7 @@ class News {
 
 	async getById(id, lang_code = useLangStore().activeLang) {
 		let resp = await fetch(
-			addRegionParam(`${path}/get_detailed_news_page/?lang_code=${lang_code}&id=${id}`),
+			`${path}/get_detailed_news_page/?lang_code=${lang_code}&id=${id}`,
 			{
 				headers: getHeaders({
 					accept: "application/json",
@@ -123,7 +119,7 @@ class HomePage {
 		const currentLang = langStore.activeLang;
 		if (!this.data || currentLang !== lastLang) {
 		let resp = await fetch(
-			addRegionParam(`${path}/get_homepage/?lang_code=${currentLang}`),
+			`${path}/get_homepage/?lang_code=${currentLang}`,
 			{
 				headers: getHeaders({
 					accept: "application/json",
@@ -145,7 +141,7 @@ class ServicePage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_service_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_service_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -167,7 +163,7 @@ class ContactsPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_contacts_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_contacts_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -189,9 +185,9 @@ class FinancialServicesPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_financial_services_page/?lang_code=${
+				`${path}/get_financial_services_page/?lang_code=${
 					useLangStore().activeLang
-				}`),
+				}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -213,7 +209,7 @@ class GuaranteePage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_guarantee_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_guarantee_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -235,9 +231,9 @@ class AboutTOVPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_about_tov_company_page/?lang_code=${
+				`${path}/get_about_tov_company_page/?lang_code=${
 					useLangStore().activeLang
-				}`),
+				}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -259,9 +255,9 @@ class PrivacyPolicyPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_privacy_policy_page/?lang_code=${
+				`${path}/get_privacy_policy_page/?lang_code=${
 					useLangStore().activeLang
-				}`),
+				}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -283,7 +279,7 @@ class DiagnosticsPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_diagnostics_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_diagnostics_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -305,7 +301,7 @@ class LeasingPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_leasing_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_leasing_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -327,7 +323,7 @@ class LendingPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_lending_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_lending_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -349,9 +345,9 @@ class AboutCompanyPage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_about_company_page/?lang_code=${
+				`${path}/get_about_company_page/?lang_code=${
 					useLangStore().activeLang
-				}`),
+				}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -373,7 +369,7 @@ class InsurancePage {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_insurance_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_insurance_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -395,7 +391,7 @@ class Footer {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_footer/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_footer/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -417,7 +413,7 @@ class Contacts {
 	async get() {
 		if (!this.data) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_contacts/`),
+				`${path}/get_contacts/`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -437,7 +433,7 @@ class BecomeADealer {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_become_dealer_page/?lang=${useLangStore().activeLang}`),
+				`${path}/get_become_dealer_page/?lang=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -459,7 +455,7 @@ class BecomeAPartner {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_become_partner_page/?lang=${useLangStore().activeLang}`),
+				`${path}/get_become_partner_page/?lang=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -481,7 +477,7 @@ class Accessories {
 	async get() {
 		if (!this.data || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_accessories_page/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_accessories_page/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -504,9 +500,9 @@ class CarsInStock {
 
 	async get(filters) {
 		let resp = await fetch(
-			addRegionParam(`${path}/get_cars_in_stock/?lang_code=${useLangStore().activeLang}${
+			`${path}/get_cars_in_stock/?lang_code=${useLangStore().activeLang}${
 				filters ? "&" + filters : ""
-			}`),
+			}`,
 			{
 				headers: getHeaders({
 					accept: "application/json",
@@ -523,7 +519,7 @@ class CarsInStock {
 	async getFilters() {
 		if (!this.filters || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_filters/?lang_code=${useLangStore().activeLang}`),
+				`${path}/get_filters/?lang_code=${useLangStore().activeLang}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -541,9 +537,9 @@ class CarsInStock {
 	async getById(id) {
 		if (!this.id || useLangStore().activeLang !== lastLang) {
 			let resp = await fetch(
-				addRegionParam(`${path}/get_car_in_stock/?id=${id}&lang_code=${
+				`${path}/get_car_in_stock/?id=${id}&lang_code=${
 					useLangStore().activeLang
-				}`),
+				}`,
 				{
 					headers: getHeaders({
 						accept: "application/json",
@@ -587,7 +583,7 @@ class Mail {
 			BpmHref: bpmHref
 		};
 
-		let resp = await fetch(addRegionParam(`${path}/send_email/`), {
+		let resp = await fetch(`${path}/send_email/`, {
 			method: "POST",
 			headers: getHeaders({
 				accept: "application/json",
