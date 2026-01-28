@@ -28,6 +28,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: { type: Object, required: true },
@@ -51,12 +52,7 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveMedia = (mediaPath) => {
-  if (!mediaPath) return ''
-  if (mediaPath.startsWith('/')) return mediaPath
-  if (import.meta.env.DEV) return `/src/assets/pages/${props.carId}/${mediaPath}`
-  return `/pages/${props.carId}/${mediaPath}`
-}
+const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
 const items = computed(() => {
   // Backward compatible: allow `materials` or `items`
@@ -147,7 +143,7 @@ const items = computed(() => {
 
 @media screen and (max-width: 876px) {
   .car-passive-security-block {
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       width: calc(100% - 32px);

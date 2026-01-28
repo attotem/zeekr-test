@@ -85,6 +85,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -123,14 +124,7 @@ const resolveVideo = (videoPath) => {
   return `/pages/${props.carId}/${videoPath}`
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 </script>
 
 <style lang="scss" scoped>

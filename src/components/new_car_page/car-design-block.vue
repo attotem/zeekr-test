@@ -65,6 +65,7 @@
 <script setup>
 import { computed, ref, onMounted, watch, nextTick } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -98,29 +99,35 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveMedia = (mediaPath) => {
-  if (!mediaPath) return ''
-  if (mediaPath.startsWith('/')) return mediaPath
-  const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
-  return `${basePath}/${props.carId}/${mediaPath}`
-}
+const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
 const mediaItems = computed(() => {
   const mediaList = blockData.value.media || blockData.value.images || []
   if (mediaList.length > 0) {
     return mediaList.map(media => {
-      const isVideo = typeof media === 'string' ? media.endsWith('.mp4') : media.type === 'video' || media.src?.endsWith('.mp4')
-      const src = typeof media === 'string' ? media : media.src
+      const path = pickResponsivePath(
+        typeof media === 'string' || Array.isArray(media) ? media : (media.src || media)
+      )
+      const isVideo =
+        path &&
+        typeof path === 'string' &&
+        (path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov'))
       return {
         type: isVideo ? 'video' : 'image',
-        src: resolveMedia(src)
+        src: resolveMedia(
+          typeof media === 'string' || Array.isArray(media) ? media : (media.src || media)
+        )
       }
     })
   }
   // Fallback to single image
   const imagePath = blockData.value.image
   if (imagePath) {
-    const isVideo = imagePath.endsWith('.mp4')
+    const path = pickResponsivePath(imagePath)
+    const isVideo =
+      path &&
+      typeof path === 'string' &&
+      (path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov'))
     return [{
       type: isVideo ? 'video' : 'image',
       src: resolveMedia(imagePath)
@@ -415,7 +422,7 @@ const currentItemDescription = computed(() => {
 
     &__top-title {
       font-size: 32px;
-      padding: 28px 16px 24px;
+      padding: 44px 16px 32px;
     }
 
     &__image-wrap {

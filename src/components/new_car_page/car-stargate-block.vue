@@ -229,7 +229,7 @@ const getText = (textObj) => {
     min-height: 50vh;
 
     &__content {
-      padding: 24px 16px;
+      padding: 32px 20px;
       min-height: 50vh;
     }
 

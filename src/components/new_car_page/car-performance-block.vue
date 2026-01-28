@@ -69,6 +69,7 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -99,25 +100,16 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) {
-    console.warn('⚠️ Performance block: empty image path')
-    return ''
-  }
-  if (imagePath.startsWith('/')) return imagePath
-  const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
-  const resolvedPath = `${basePath}/${props.carId}/${imagePath}`
-  return resolvedPath
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
 // Preload images
 const preloadAllImages = () => {
   const images = [blockData.value.image1, blockData.value.image2].filter(Boolean)
   
-  images.forEach(imagePath => {
-    if (!imagePath) return
-    
-    const imgSrc = resolveImage(imagePath)
+  images.forEach(image => {
+    if (!image) return
+
+    const imgSrc = resolveImage(image)
     if (!imgSrc) return
     
     const img = new Image()

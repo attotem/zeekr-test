@@ -78,6 +78,7 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -107,14 +108,7 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
 const items = computed(() => {
   if (blockData.value.items && Array.isArray(blockData.value.items)) {
@@ -254,7 +248,7 @@ onMounted(() => {
   .car-luxury-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       padding: 0 16px;

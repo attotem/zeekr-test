@@ -270,7 +270,6 @@ let headerItems = ref([
 ])
 
 watch(useRoute(), () => {
-  console.log('CHANGE')
   let parent = document.querySelector(`#models`),
     dropdown = document.querySelector(`#models-dropdown`),
     header = document.querySelector('.header')
@@ -284,7 +283,6 @@ watch(useRoute(), () => {
 watch(() => langStore.activeLang, async () => {
   headerItems.value[0].children = (await API.Models.get()).car_models;
 
-  console.log(headerItems.value[0].children)
 
   // Load phone number from API
   const contacts = await API.Contacts.get();
@@ -344,7 +342,6 @@ onMounted(async () => {
     let deltaY = lastPhoneY - e.changedTouches[0].clientY,
       threshold = 20
 
-    console.log(lastPhoneY, e.changedTouches[0].clientY, deltaY > threshold, deltaY < (-1 * threshold))
 
     if (deltaY > threshold) {
       // swipe from down to up = scroll down
@@ -358,7 +355,6 @@ onMounted(async () => {
 
   headerItems.value[0].children = (await API.Models.get()).car_models;
 
-  console.log(headerItems.value[0].children)
 
   // Load phone number from API
   const contacts = await API.Contacts.get();

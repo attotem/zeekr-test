@@ -188,12 +188,10 @@ const isMobile = computed(() => isMobileFn())
 watch(() => langStore.activeLang, async () => {
   serviceData.value = await API.ServicePage.get()
   centers.value = await API.ContactsPage.get();
-  console.log(serviceData.value)
 
   setTimeout(() => {
     nextTick(() => {
       serviceData.value.faq.forEach(q => {
-        console.log(`question-${q.id}`)
         addDropdown(`question-${q.id}`, false, true)
       })
     })
@@ -205,12 +203,10 @@ onMounted(async () => {
     useLoaderStore().isLoading = true
     serviceData.value = await API.ServicePage.get()
     centers.value = await API.ContactsPage.get();
-    console.log(serviceData.value)
 
     setTimeout(() => {
       nextTick(() => {
         serviceData.value.faq.forEach(q => {
-          console.log(`question-${q.id}`)
           addDropdown(`question-${q.id}`, false, true)
         })
       })

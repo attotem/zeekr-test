@@ -106,7 +106,7 @@
     },
     "image": {
       "desktop": "9x_specs.webp",
-      "tablet": "9x_specs.webp",
+      "tablet": "9x_specs_tablet.webp",
       "mobile": "9x_specs.webp"
     },
     "navigation": [
@@ -201,9 +201,21 @@
       "ua": "Безмежний горизонт, повна впевненість"
     },
     "images": [
-      "9x_slider1_1.webp",
-      "9x_slider1_2.webp",
-      "9x_slider1_3.webp"
+      {
+        "desktop": "9x_slider1_1.webp",
+        "tablet": "9x_slider1_1.webp",
+        "mobile": "9x_slider1_1_phone.webp"
+      },
+      {
+        "desktop": "9x_slider1_2.webp",
+        "tablet": "9x_slider1_2.webp",
+        "mobile": "9x_slider1_2.webp"
+      },
+      {
+        "desktop": "9x_slider1_3.webp",
+        "tablet": "9x_slider1_3_tablet.webp",
+        "mobile": "9x_slider1_3_phone.webp"
+      }
     ],
     "items": [
       {
@@ -251,7 +263,7 @@
       {
         "title": {
           "en": "Vast Star Diamond Matrix Lighting",
-          "ua": "Матричне освітлення «Безмежна зіркова діамант»"
+          "ua": "Матричне освітлення «Безмежний зірковий діамант»"
         },
         "description": {
           "en": "Light as language, illuminating the path ahead",
@@ -334,7 +346,7 @@
         },
         "value": "#6A1B9A",
         "description": {
-          "ua": "Останній промінь сутінків у вечірній сутінок, фіолетовий шарм природного походження, що виявляє стриману розкіш",
+          "ua": "Останній промінь сутінків у вечірньому небі - фіолетовий шарм природного походження, що виявляє стриману розкіш",
           "en": "The last ray of twilight in the dusk, with a naturally formed purple charm, revealing a subdued luxury"
         }
       }
@@ -376,7 +388,7 @@
   "textBlockInside": {
     "title": {
       "en": "Embrace Nature, Nurture the Soul",
-      "ua": "Охоплюючи суть неба, плекаючи глибини серця."
+      "ua": "Охоплюючи суть неба, плекаючи глибини серця"
     }
   },
   "insideBlock": {
@@ -384,7 +396,7 @@
       "en": "",
       "ua": ""
     },
-    "options": [
+    "options": [ 
       {
         "id": "biege",
         "name": {
@@ -442,28 +454,44 @@
     },
     "slides": [
       {
-        "image": "9x_slider2_1.webp",
+        "image": {
+          "desktop": "9x_slider2_1.webp",
+          "tablet": "9x_slider2_1.webp",
+          "mobile": "9x_slider2_1.webp"
+        },
         "caption": {
           "en": "Electric Running Board - The posture of arrival, respectful welcome",
-          "ua": "Електрична підножка - Поза прибуття, шанобливе привітання"
+          "ua": "Електрична підножка - поза прибуття, шанобливе привітання"
         }
       },
       {
-        "image": "9x_slider2_2.webp",
+        "image": {
+          "desktop": "9x_slider2_2.webp",
+          "tablet": "9x_slider2_2.webp",
+          "mobile": "9x_slider2_2_phone.webp"
+        },
         "caption": {
           "en": "Spacious Door - Nearly 90° maximum door opening, 1044mm maximum door opening width, elegant entry and exit",
-          "ua": "Просторі двері - Максимальне відкриття дверей майже на 90°, максимальна ширина отвору 1044мм, елегантний вхід і вихід"
+          "ua": "Просторі двері - максимальне відкриття дверей майже на 90°, максимальна ширина отвору 1044мм, елегантний вхід і вихід"
         }
       },
       {
-        "image": "9x_slider2_3.webp",
+        "image": {
+          "desktop": "9x_slider2_3.webp",
+          "tablet": "9x_slider2_3_tablet.webp",
+          "mobile": "9x_slider2_3.webp"
+        },
         "caption": {
           "en": "170mm Wide Central Aisle - Hallway aisle, easy to pass through",
-          "ua": "170мм широкий центральний прохід - Коридорний прохід, легко проходити"
+          "ua": "170мм широкий центральний прохід - коридорний прохід, легко проходити"
         }
       },
       {
-        "image": "9x_slider2_4.webp",
+        "image": {
+          "desktop": "9x_slider2_4.webp",
+          "tablet": "9x_slider2_4.webp",
+          "mobile": "9x_slider2_4.webp"
+        },
         "caption": {
           "en": "Convenient Access to the Third Row - Seamless entry, shared luxury",
           "ua": "Зручний доступ до третього ряду - Безшовний вхід, спільна розкіш"
@@ -478,7 +506,11 @@
     },
     "screens": [
       {
-        "image": "9x_light_1.webp",
+        "image": {
+          "desktop": "9x_light_1.webp",
+          "tablet": "9x_light_1_tablet.webp",
+          "mobile": "9x_light_1.webp"
+        },
         "title": {
           "en": "Three-Row Six-Seat Layout, Theatre-Style Cabin",
           "ua": "Трирядний шестимісний салон, театральний стиль"
@@ -489,7 +521,11 @@
         }
       },
       {
-        "image": "9x_light_2.webp",
+        "image": {
+          "desktop": "9x_light_2.webp",
+          "tablet": "9x_light_2_tablet.webp",
+          "mobile": "9x_light_2.webp"
+        },
         "title": {
           "en": "4.2m² Total Vehicle Transparent Area",
           "ua": "4.2м² загальна прозора площа автомобіля"
@@ -500,7 +536,11 @@
         }
       },
       {
-        "image": "9x_light_3.webp",
+        "image": {
+          "desktop": "9x_light_3.webp",
+          "tablet": "9x_light_3_tablet.webp",
+          "mobile": "9x_light_3.webp"
+        },
         "title": {
           "en": "1.32m² Roof Glass Transparent Area",
           "ua": "1.32м² прозора площа скляного даху"
@@ -511,7 +551,11 @@
         }
       },
       {
-        "image": "9x_light_4.webp",
+        "image": {
+          "desktop": "9x_light_4.webp",
+          "tablet": "9x_light_4_tablet.webp",
+          "mobile": "9x_light_4.webp"
+        },
         "title": {
           "en": "1.03m² Large-Area Openable Panoramic Sunroof",
           "ua": "1.03м² велика відкривається панорамна люк-даху"
@@ -530,7 +574,11 @@
     },
     "screens": [
       {
-        "image": "9x_screen_1.webp",
+        "image": {
+          "desktop": "9x_screen_1.webp",
+          "tablet": "9x_screen_1_tablet.webp",
+          "mobile": "9x_screen_1.webp"
+        },
         "title": {
           "en": "Advanced Display System",
           "ua": "Передова система відображення"
@@ -541,7 +589,11 @@
         }
       },
       {
-        "image": "9x_screen_2.webp",
+        "image": {
+          "desktop": "9x_screen_2.webp",
+          "tablet": "9x_screen_2_tablet.webp",
+          "mobile": "9x_screen_2.webp"
+        },
         "title": {
           "en": "Interactive Control Screen",
           "ua": "Інтерактивний екран керування"
@@ -556,16 +608,24 @@
   "textBlockCloud": {
     "title": {
       "en": "Sit and Watch the Clouds Rise, Heart Relaxed and Spirit Free",
-      "ua": "Сидячи спостерігати за хмарами, серце розслаблене, дух вільний"
+      "ua": "Сидячи, спостерігаючи за хмарами, серце розслаблене, дух вільний"
     }
   },
   "skyVideosBlock": {
-    "image1": "9x_chair_1.webp",
-    "image2": "9x_chair_2.webp",
+    "image1": {
+      "desktop": "9x_chair_1.webp",
+      "tablet": "9x_chair_1_tablet.webp",
+      "mobile": "9x_chair_1_phone.webp"
+    },
+    "image2": {
+      "desktop": "9x_chair_2.webp",
+      "tablet": "9x_chair_2_tablet.webp",
+      "mobile": "9x_chair_2_phone.webp"
+    },
     "text1": {
       "title": {
         "en": "Soft NAPPA Full-Grain Top-Layer Leather",
-        "ua": "М'яка NAPPA повнозерниста верхня шкіра"
+        "ua": "М'яка NAPPA — повнозерниста верхня шкіра"
       },
       "items": [
         {
@@ -585,7 +645,7 @@
       ],
       "note": {
         "en": "* Soft NAPPA full-grain top-layer leather covers all car seats, human contact areas, central armrests, partial door panels, and other areas",
-        "ua": "* М'яка NAPPA повнозерниста верхня шкіра покриває всі сидіння автомобіля, зони контакту з людиною, центральні підлокітники, часткові панелі дверей та інші зони"
+        "ua": "* М'яка NAPPA — повнозерниста верхня шкіра, що покриває всі сидіння автомобіля, зони контакту з людиною, центральні підлокітники, часткові панелі дверей та інші зони"
       }
     },
     "text2": {
@@ -631,7 +691,11 @@
   "chairImagesBlock": {
     "images": [
       {
-        "image": "9x_chair_4.webp",
+        "image": {
+          "desktop": "9x_chair_4.webp",
+          "tablet": "9x_chair_4_tablet.webp",
+          "mobile": "9x_chair_4_phone.webp"
+        },
         "title": {
           "en": "12-Layer Seat Structure",
           "ua": "12-шарова структура сидіння"
@@ -642,10 +706,14 @@
         }
       },
       {
-        "image": "9x_chair_5.webp",
+        "image": {
+          "desktop": "9x_chair_5.webp",
+          "tablet": "9x_chair_5_tablet.webp",
+          "mobile": "9x_chair_5_phone.webp"
+        },
         "title": {
           "en": "Globally Pioneering Four-Way Adaptive Lumbar Support",
-          "ua": "Глобально піонерська чотиристороння адаптивна підтримка попереку"
+          "ua": "Глобальна піонерська чотиристороння адаптивна підтримка попереку"
         },
         "description": {
           "en": "Spine-friendly ergonomic seat, relieves whole-body pressure",
@@ -657,7 +725,7 @@
   "chairSwitcherBlock": {
     "title": {
       "en": "Four Postures, Physical and Mental Relaxation",
-      "ua": "Чотири позиції, фізичний та психічний розслаблення"
+      "ua": "Чотири позиції, фізичне та психологічне розслаблення"
     },
     "videos": [
       "9x_chair_6.mp4",
@@ -683,7 +751,7 @@
         },
         "description": {
           "en": "Legs can be fully stretched, freely enjoy leisure time",
-          "ua": "Ноги можуть бути повністю розтягнуті, вільно насолоджуватися вільним часом"
+          "ua": "Ноги можуть бути повністю розтягнуті, і ви можете вільно насолоджуватися вільним часом"
         }
       },
       {
@@ -715,28 +783,44 @@
     },
     "images": [
       {
-        "image": "9x_space_1.webp",
+        "image": {
+          "desktop": "9x_space_1.webp",
+          "tablet": "9x_space_1_tablet.webp",
+          "mobile": "9x_space_1_phone.webp"
+        },
         "title": {
           "en": "Up and Down Freedom",
           "ua": "Вільність руху вгору і вниз"
         }
       },
       {
-        "image": "9x_space_2.webp",
+        "image": {
+          "desktop": "9x_space_2.webp",
+          "tablet": "9x_space_2_tablet.webp",
+          "mobile": "9x_space_2_phone.webp"
+        },
         "title": {
           "en": "Business Reception",
           "ua": "Ділова приймальня"
         }
       },
       {
-        "image": "9x_space_3.webp",
+        "image": {
+          "desktop": "9x_space_3.webp",
+          "tablet": "9x_space_3_tablet.webp",
+          "mobile": "9x_space_3_phone.webp"
+        },
         "title": {
           "en": "Family Gathering",
           "ua": "Сімейна зустріч"
         }
       },
       {
-        "image": "9x_space_4.webp",
+        "image": {
+          "desktop": "9x_space_4.webp",
+          "tablet": "9x_space_4_tablet.webp",
+          "mobile": "9x_space_4_phone.webp"
+        },
         "title": {
           "en": "Travel Residence Large Bed",
           "ua": "Велике ліжко для подорожей"
@@ -864,10 +948,14 @@
     ]
   },
   "ambientLightBlock": {
-    "image": "9x_light_5.webp",
+    "image": {
+      "desktop": "9x_light_5.webp",
+      "tablet": "9x_light_5_tablet.webp",
+      "mobile": "9x_light_5_phone.webp"
+    },
     "title": {
       "en": "16.8 Million Colors Flowing Ambient Light",
-      "ua": "16.8 мільйонів кольорів переливається атмосферне освітлення"
+      "ua": "16,8 мільйонів кольорів переливається в атмосферному освітленні"
     },
     "subtitle": {
       "en": "256-color spectrum deep tuning | 16.8 million colors changeable at will | Constant current technology to eliminate flicker",
@@ -887,28 +975,44 @@
     },
     "slides": [
       {
-        "image": "9x_slider5_1.webp",
+        "image": {
+          "desktop": "9x_slider5_1.webp",
+          "tablet": "9x_slider5_1_tablet.webp",
+          "mobile": "9x_slider5_1_phone.webp"
+        },
         "caption": {
           "en": "16-inch 3.5K OLED Central Control and Passenger Dual Screens - Global connected screens, clear at a glance",
-          "ua": "16-дюймовий 3.5K OLED центральний контроль та подвійні екрани пасажира - Глобальні з'єднані екрани, все на очах"
+          "ua": "16-дюймовий 3,5K OLED центральний контроль та подвійні екрани для пасажира — глобальні з'єднані екрани, все на очах"
         }
       },
       {
-        "image": "9x_slider5_2.webp",
+        "image": {
+          "desktop": "9x_slider5_2.webp",
+          "tablet": "9x_slider5_2_tablet.webp",
+          "mobile": "9x_slider5_2_phone.webp"
+        },
         "caption": {
           "en": "6.3-inch OLED Magic Control Screen - Streamlined control screen, mastered in one hand",
-          "ua": "6.3-дюймовий OLED екран магічного керування - Оптимізований екран керування, контроль однією рукою"
+          "ua": "6,3-дюймовий OLED екран магічного керування — оптимізоване управління, контроль однією рукою"
         }
       },
       {
-        "image": "9x_slider5_3.webp",
+        "image": {
+          "desktop": "9x_slider5_3.webp",
+          "tablet": "9x_slider5_3_tablet.webp",
+          "mobile": "9x_slider5_3_phone.webp"
+        },
         "caption": {
           "en": "47-inch AR-HUD Head-up Display - Maximum brightness 20000nit, clear display in all scenarios",
-          "ua": "47-дюймовий AR-HUD проекційний дисплей - Максимальна яскравість 20000nit, чітке відображення у всіх сценаріях"
+          "ua": "47-дюймовий AR-HUD проекційний дисплей — максимальна яскравість 20000nit, чітке відображення у всіх сценаріях"
         }
       },
       {
-        "image": "9x_slider5_4.webp",
+        "image": {
+          "desktop": "9x_slider5_4.webp",
+          "tablet": "9x_slider5_4_tablet.webp",
+          "mobile": "9x_slider5_4_phone.webp"
+        },
         "caption": {
           "en": "Dual 8295 Intelligent Cockpit Computing Platform - Top-tier dual computing power, ultimate smooth experience",
           "ua": "Подвійна платформа обчислень інтелектуального салону 8295 - Найвища подвійна обчислювальна потужність, ідеальний плавний досвід"
@@ -942,7 +1046,11 @@
   "luxuryBlock1": {
     "items": [
       {
-        "image": "9x_luxury_1.webp",
+        "image": {
+          "desktop": "9x_luxury_1.webp",
+          "tablet": "9x_luxury_1_tablet.webp",
+          "mobile": "9x_luxury_1_phone.webp"
+        },
         "title": {
           "en": "Crystal Rotary Knob",
           "ua": "Кришталева поворотна ручка"
@@ -953,7 +1061,11 @@
         }
       },
       {
-        "image": "9x_luxury_2.webp",
+        "image": {
+          "desktop": "9x_luxury_2.webp",
+          "tablet": "9x_luxury_2_tablet.webp",
+          "mobile": "9x_luxury_2_phone.webp"
+        },
         "title": {
           "en": "Physical Button Components",
           "ua": "Фізичні кнопки керування"
@@ -964,7 +1076,11 @@
         }
       },
       {
-        "image": "9x_luxury_3.webp",
+        "image": {
+          "desktop": "9x_luxury_3.webp",
+          "tablet": "9x_luxury_3_tablet.webp",
+          "mobile": "9x_luxury_3_phone.webp"
+        },
         "title": {
           "en": "Nordic Natural Wood Trim",
           "ua": "Скандинавська натуральна деревина"
@@ -979,7 +1095,11 @@
   "luxuryBlock2": {
     "items": [
       {
-        "image": "9x_luxury_4.webp",
+        "image": {
+          "desktop": "9x_luxury_4.webp",
+          "tablet": "9x_luxury_4_tablet.webp",
+          "mobile": "9x_luxury_4_phone.webp"
+        },
         "title": {
           "en": "Fast Charging Retractable Cable",
           "ua": "Висувний кабель швидкої зарядки"
@@ -990,7 +1110,11 @@
         }
       },
       {
-        "image": "9x_luxury_5.webp",
+        "image": {
+          "desktop": "9x_luxury_5.webp",
+          "tablet": "9x_luxury_5_tablet.webp",
+          "mobile": "9x_luxury_5_phone.webp"
+        },
         "title": {
           "en": "Full Vehicle Privacy Sunshades",
           "ua": "Приватні сонцезахисні штори по всьому автомобілю"
@@ -1001,10 +1125,14 @@
         }
       },
       {
-        "image": "9x_luxury_6.webp",
+        "image": {
+          "desktop": "9x_luxury_6.webp",
+          "tablet": "9x_luxury_6_tablet.webp",
+          "mobile": "9x_luxury_6_phone.webp"
+        },
         "title": {
           "en": "Smart Hot and Cold Refrigerator",
-          "ua": "Розумний холодильник з підігрівом та охолодженням"
+          "ua": "Розумний холодильник із підігрівом та охолодженням"
         },
         "description": {
           "en": "",
@@ -1020,12 +1148,20 @@
     },
     "subtitle": {
       "en": "Heart of Vastness, Calmly Reaching Far",
-      "ua": "Серце безмежності, спокійно досягаючи далечі"
+      "ua": "Серце безмежності, спокійно досягаючи даль"
     }
   },
   "performanceBlock": {
-    "image1": "9x_hybrid_1.webp",
-    "image2": "9x_hybrid_2.webp",
+    "image1": {
+      "desktop": "9x_hybrid_1.webp",
+      "tablet": "9x_hybrid_1_tablet.webp",
+      "mobile": "9x_hybrid_1_phone.webp"
+    },
+    "image2": {
+      "desktop": "9x_hybrid_2.webp",
+      "tablet": "9x_hybrid_2_tablet.webp",
+      "mobile": "9x_hybrid_2_phone.webp"
+    },
     "version1": {
       "title": {
         "en": "All Series 3-Second Acceleration",
@@ -1098,10 +1234,14 @@
     "features": []
   },
   "suspensionBlock": {
-    "image": "9x_wheels_1.webp",
+    "image": {
+      "desktop": "9x_wheels_1.webp",
+      "tablet": "9x_wheels_1_tablet.webp",
+      "mobile": "9x_wheels_1_phone.webp"
+    },
     "title": {
       "en": "Closed Dual-Chamber Dual-Valve Air Suspension Kit",
-      "ua": "Закрита двокамерна двоклапанна пневматична підвіска"
+      "ua": "Закрита двокамерна пневматична підвіска з двоклапанною системою"
     },
     "features": [
       {
@@ -1114,7 +1254,7 @@
       },
       {
         "en": "110 mm maximum adjustment travel",
-        "ua": "110 мм максимальний хід регулювання"
+        "ua": "110 мм — максимальний хід регулювання"
       },
       {
         "en": "Dual-valve CCD electromagnetic dampers: Independent compression and rebound control, 2-3x wider damping bandwidth than single-valve CCD",
@@ -1123,7 +1263,11 @@
     ]
   },
   "stabilizerBlock": {
-    "image": "9x_wheels_2.webp",
+    "image": {
+      "desktop": "9x_wheels_2.webp",
+      "tablet": "9x_wheels_2_tablet.webp",
+      "mobile": "9x_wheels_2_phone.webp"
+    },
     "textRight": true,
     "title": {
       "en": "48V Active Stabilizer Bar",
@@ -1161,7 +1305,11 @@
     ]
   },
   "terrainBlock": {
-    "image": "9x_terrain.webp",
+    "image": {
+      "desktop": "9x_terrain.webp",
+      "tablet": "9x_terrain_tablet.webp",
+      "mobile": "9x_terrain_phone.webp"
+    },
     "title": {
       "en": "All-Terrain Adaptive",
       "ua": "Адаптація до будь-якого рельєфу"
@@ -1268,7 +1416,11 @@
     }
   },
   "strengthBlock": {
-    "image": "9x_strength.webp",
+    "image": {
+      "desktop": "9x_strength.webp",
+      "tablet": "9x_strength_tablet.webp",
+      "mobile": "9x_strength_phone.webp"
+    },
     "title": {
       "en": "Highway Tank",
       "ua": "Шосейний танк"
@@ -1307,7 +1459,11 @@
     "background": "rgb(235, 232, 227)",
     "items": [
       {
-        "image": "9x_safety_1.webp",
+        "image": {
+          "desktop": "9x_safety_1.webp",
+          "tablet": "9x_safety_1_tablet.webp",
+          "mobile": "9x_safety_1_phone.webp"
+        },
         "title": {
           "en": "Third Energy Absorption Box",
           "ua": "Третій енергопоглинаючий блок"
@@ -1318,7 +1474,11 @@
         }
       },
       {
-        "image": "9x_safety_2.webp",
+        "image": {
+          "desktop": "9x_safety_2.webp",
+          "tablet": "9x_safety_2_tablet.webp",
+          "mobile": "9x_safety_2_phone.webp"
+        },
         "title": {
           "en": "8×9 Ten-Cell Grid",
           "ua": "Сітка 8×9 з десяти комірок"
@@ -1329,7 +1489,11 @@
         }
       },
       {
-        "image": "9x_safety_3.webp",
+        "image": {
+          "desktop": "9x_safety_3.webp",
+          "tablet": "9x_safety_3_tablet.webp",
+          "mobile": "9x_safety_3_phone.webp"
+        },
         "title": {
           "en": "Anti-Collision Stopper Block",
           "ua": "Протиударний стопорний блок"
@@ -1340,7 +1504,11 @@
         }
       },
       {
-        "image": "9x_safety_4.webp",
+        "image": {
+          "desktop": "9x_safety_4.webp",
+          "tablet": "9x_safety_4_tablet.webp",
+          "mobile": "9x_safety_4_phone.webp"
+        },
         "title": {
           "en": "High-Voltage Distribution Box Active Flip Technology",
           "ua": "Технологія активного перевертання високовольтного розподільчого блоку"
@@ -1363,7 +1531,11 @@
     }
   },
   "powerBlock": {
-    "image": "9x_power.webp",
+    "image": {
+      "desktop": "9x_power.webp",
+      "tablet": "9x_power_tablet.webp",
+      "mobile": "9x_power_phone.webp"
+    },
     "title": {
       "en": "Hardcore Dual-Core Computing Power",
       "ua": "Хардкорна двоядерна обчислювальна потужність"
@@ -1380,7 +1552,11 @@
     ]
   },
   "detectBlock": {
-    "image": "9x_detect.webp",
+    "image": {
+      "desktop": "9x_detect.webp",
+      "tablet": "9x_detect_tablet.webp",
+      "mobile": "9x_detect_phone.webp"
+    },
     "title": {
       "en": "Full-Domain, Omni-Directional, All-Time\nPerception Without Blind Spots",
       "ua": "Повнодоменне, всенаправлене, цілодобове\nсприйняття без мертвих зон"

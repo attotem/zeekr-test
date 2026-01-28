@@ -37,6 +37,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: { type: Object, required: true },
@@ -60,15 +61,11 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveMedia = (path) => {
-  if (!path) return ''
-  if (path.startsWith('/')) return path
-  if (import.meta.env.DEV) return `/src/assets/pages/${props.carId}/${path}`
-  return `/pages/${props.carId}/${path}`
-}
+const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
-const isVideo = (path) => {
-  if (!path) return false
+const isVideo = (media) => {
+  const path = pickResponsivePath(media)
+  if (!path || typeof path !== 'string') return false
   return path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov')
 }
 
@@ -147,7 +144,7 @@ const stats = computed(() => {
 
 @media screen and (max-width: 876px) {
   .car-battery-safety-block {
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       width: calc(100% - 32px);

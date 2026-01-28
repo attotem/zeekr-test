@@ -202,7 +202,6 @@ const getText = (textObj) => {
 
 const handleButtonClick = (type) => {
   // Обработка клика по кнопке
-  console.log('Button clicked:', type)
   // Здесь можно открыть модальное окно или выполнить другое действие
 }
 
@@ -220,7 +219,6 @@ const onImageError = () => {
 }
 
 const onVideoLoaded = () => {
-  console.log('Video loaded successfully')
   isVideoLoaded.value = true
   // Попытка воспроизвести видео
   if (videoElement.value) {
@@ -232,12 +230,10 @@ const onVideoLoaded = () => {
 
 const onVideoError = (error) => {
   console.error('Video loading error:', error)
-  console.log('Video src:', videoSrc.value)
   isVideoLoaded.value = true // Mark as loaded even on error to hide placeholder
 }
 
 onMounted(async () => {
-  console.log('Hero data:', heroData.value)
   
   await nextTick()
   if (videoElement.value) {

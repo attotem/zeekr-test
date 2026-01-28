@@ -28,6 +28,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -60,12 +61,7 @@ const hasSubtitles = computed(() => {
   return !!(getText(blockData.value.subtitleLeft) || getText(blockData.value.subtitleRight))
 })
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
-  return `${basePath}/${props.carId}/${imagePath}`
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 </script>
 
 <style lang="scss" scoped>

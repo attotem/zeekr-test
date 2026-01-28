@@ -223,7 +223,7 @@ onMounted(() => {
     height: 100vh;
 
     &__bottom {
-      padding: 20px 16px;
+      padding: 24px 16px;
     }
 
     &__colors {

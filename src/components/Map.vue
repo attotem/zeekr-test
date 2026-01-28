@@ -116,7 +116,6 @@ watch(() => useLangStore().activeLang, async () => {
 
 	if (contactsData.center_contacts?.length) {
 		centers.value = contactsData.center_contacts.map(c => {
-			console.log(c);
 			const coords = coordinatesMap[c.id] || { lat: 0, lng: 0 }
 			return {
 				id: c.id,
@@ -132,7 +131,6 @@ watch(() => useLangStore().activeLang, async () => {
 		})
 	}
 
-	console.log(centers.value)
 
 	if(props.chosenCenterId) activePopup.value = centers.value.find(el => el.id == props.chosenCenterId)
 	else activePopup.value = centers.value[0]
@@ -144,7 +142,6 @@ onMounted(async () => {
 
 	if (contactsData.center_contacts?.length) {
 		centers.value = contactsData.center_contacts.map(c => {
-			console.log(c);
 			const coords = coordinatesMap[c.id] || { lat: 0, lng: 0 }
 			return {
 				id: c.id,
@@ -160,7 +157,6 @@ onMounted(async () => {
 		})
 	}
 
-	console.log(centers.value)
 
 	if(props.chosenCenterId) activePopup.value = centers.value.find(el => el.id == props.chosenCenterId)
 	else activePopup.value = centers.value[0]

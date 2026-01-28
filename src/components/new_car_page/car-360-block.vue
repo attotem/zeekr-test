@@ -242,7 +242,6 @@ const preloadImages = (images, colorId) => {
       loadedCount++
       // Log progress for first color only to avoid spam
       if (colorId === (activeColor.value || colors.value[0]?.id) && index % 6 === 0) {
-        console.log(`Preloading ${colorId}: ${loadedCount}/${images.length} images loaded`)
       }
     }
     
@@ -265,7 +264,6 @@ const preloadImages = (images, colorId) => {
     if (errorCount > 0) {
       console.warn(`Color ${colorId}: ${errorCount} images failed to load out of ${images.length}`)
     } else if (loadedCount === images.length) {
-      console.log(`Color ${colorId}: All ${images.length} images preloaded successfully`)
     }
   }, 1000)
 }

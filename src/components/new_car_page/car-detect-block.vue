@@ -35,6 +35,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -64,14 +65,7 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 </script>
 
 <style lang="scss" scoped>
@@ -169,11 +163,11 @@ const resolveImage = (imagePath) => {
   .car-detect-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__overlay {
       width: 100%;
-      padding: 20px;
+      padding: 24px;
       background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 70%, transparent 100%);
     }
 

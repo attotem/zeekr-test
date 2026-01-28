@@ -17,21 +17,13 @@
         </p>
       </div>
     </div>
-    <!-- Псевдоблок для мобільних - текст під фото -->
-    <div class="car-text-image-block__text-mobile">
-      <h2 v-if="getText(blockData.title)" class="car-text-image-block__title-mobile">
-        {{ getText(blockData.title) }}
-      </h2>
-      <p v-if="getText(blockData.subtitle)" class="car-text-image-block__subtitle-mobile">
-        {{ getText(blockData.subtitle) }}
-      </p>
-    </div>
   </section>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -61,14 +53,7 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 </script>
 
 <style lang="scss" scoped>
@@ -135,52 +120,28 @@ const resolveImage = (imagePath) => {
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
-
-  &__text-mobile {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 876px) {
   .car-text-image-block {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    width: calc(100% - 32px);
+    margin: 0 16px;
 
     &__image-wrap {
-      min-height: auto;
-      margin-bottom: 0;
+      min-height: 40vh;
     }
 
     &__text {
-      display: none;
+      padding: 32px 16px;
     }
 
-    &__text-mobile {
-      display: block;
-      text-align: left;
-      padding: 20px 16px;
-      background: #fff;
+    &__title {
+      font-size: 32px;
+      margin-bottom: 12px;
     }
 
-    &__title-mobile {
-      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-      font-size: 20px;
-      line-height: 1.3;
-      padding: 0;
-      font-weight: 400;
-      color: #111;
-      margin: 0 0 12px 0;
-      text-align: left;
-    }
-
-    &__subtitle-mobile {
-      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
-      font-size: 14px;
-      line-height: 1.5;
-      color: #666;
-      margin: 0;
-      text-align: left;
+    &__subtitle {
+      font-size: 16px;
     }
   }
 }

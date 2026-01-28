@@ -20,6 +20,13 @@
           </h2>
         </div>
       </div>
+
+      <!-- Текст под видео для мобильных -->
+      <div class="car-video-with-text-overlay__text-mobile">
+        <h2 v-if="getText(blockData.title)" class="car-video-with-text-overlay__title-mobile">
+          {{ getText(blockData.title) }}
+        </h2>
+      </div>
     </div>
   </section>
 </template>
@@ -136,13 +143,17 @@ const videoSrc = computed(() => {
     text-align: center;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   }
+
+  &__text-mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 876px) {
   .car-video-with-text-overlay {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       padding: 0 16px;
@@ -153,11 +164,23 @@ const videoSrc = computed(() => {
     }
 
     &__text {
-      padding: 40px 16px;
+      display: none;
     }
 
-    &__title {
-      font-size: 32px;
+    &__text-mobile {
+      display: block;
+      padding: 20px 16px 0;
+      text-align: left;
+    }
+
+    &__title-mobile {
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+      font-size: 24px;
+      line-height: 1.3;
+      font-weight: 400;
+      color: #111;
+      margin: 0;
+      text-align: left;
     }
   }
 }

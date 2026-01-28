@@ -342,7 +342,6 @@ const preloadNextImages = () => {
 }
 
 const onVideoError = () => {
-	console.log('Video failed to load, keeping background image');
 }
 
 const moveToSection = (sectionIndex) => {
@@ -426,26 +425,19 @@ onMounted(async () => {
 					sectionSelector: '.section',
 					slideSelector: '.slide',
 					onLeave: function(origin, destination, direction) {
-						console.log('Leaving section: ' + origin.index);
 					},
 					afterLoad: function(origin, destination, direction) {
-						console.log('After load: ' + destination.index);
 						currentSection.value = destination.index;
 					},
 					afterRender: function() {
-						console.log('Fullpage.js initialized');
 					},
 					afterResize: function(width, height) {
-						console.log('Resized to: ' + width + 'x' + height);
 					},
 					afterResponsive: function(isResponsive) {
-						console.log('Responsive mode: ' + isResponsive);
 					},
 					afterSlideLoad: function(section, origin, destination, direction) {
-						console.log('After slide load: ' + destination.index);
 					},
 					onSlideLeave: function(section, origin, destination, direction) {
-						console.log('Leaving slide: ' + origin.index);
 					}
 				});
 			}, 100);

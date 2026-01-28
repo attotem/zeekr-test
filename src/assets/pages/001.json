@@ -70,7 +70,7 @@
     "image": {
       "desktop": "001_hero.webp",
       "tablet": "001_hero.webp",
-      "mobile": "001_hero.webp"
+      "mobile": "001_hero_phone.webp"
     },
     "buttons": [
       {
@@ -109,8 +109,8 @@
     },
     "image": {
       "desktop": "001_stargate.webp",
-      "tablet": "001_hero.webp",
-      "mobile": "001_hero.webp"
+      "tablet": "001_stargate_tablet.webp",
+      "mobile": "001_stargate_phone.webp"
     },
     "navigation": [
       {
@@ -211,14 +211,22 @@
   "carbonImagesBlock": {
     "images": [
       {
-        "image": "001_carbon_1.webp",
+        "image": {
+          "desktop": "001_carbon_1.webp",
+          "tablet": "001_carbon_1_tablet.webp",
+          "mobile": "001_carbon_1_phone.webp"
+        },
         "caption": {
           "ua": "Легке зовнішнє дзеркало заднього виду з карбонового волокна",
           "en": "Carbon fiber lightweight exterior rearview mirror housing"
         }
       },
       {
-        "image": "001_carbon_2.webp",
+        "image": {
+          "desktop": "001_carbon_2.webp",
+          "tablet": "001_carbon_2_tablet.webp",
+          "mobile": "001_carbon_2_phone.webp"
+        },
         "caption": {
           "ua": "Спортивне заднє крило з карбонового волокна з вітровим лезом",
           "en": "Carbon fiber wind blade gliding sport rear wing"
@@ -340,7 +348,11 @@
     }
   },
   "cargoBlock": {
-    "image": "001_cargo_1.webp",
+    "image": {
+      "desktop": "001_cargo_1.webp",
+      "tablet": "001_cargo_1_tablet.webp",
+      "mobile": "001_cargo_1_phone.webp"
+    },
     "title": {
       "ua": "Величезний багажний простір",
       "en": "Spacious cargo space"
@@ -392,7 +404,11 @@
     }
   },
   "audioBlock": {
-    "image": "001_sound.webp",
+    "image": {
+      "desktop": "001_sound.webp",
+      "tablet": "001_sound_tablet.webp",
+      "mobile": "001_sound_phone.webp"
+    },
     "title": {
       "ua": "",
       "en": ""
@@ -475,7 +491,11 @@
     }
   },
   "chairBlock": {
-    "image": "001_chair.webp",
+    "image": {
+      "desktop": "001_chair.webp",
+      "tablet": "001_chair_tablet.webp",
+      "mobile": "001_chair_phone.webp"
+    },
     "title": {
       "ua": "",
       "en": ""
@@ -720,7 +740,11 @@
   "materialsBlock": {
     "materials": [
       {
-        "image": "001_material_1.webp",
+        "image": {
+          "desktop": "001_material_1.webp",
+          "tablet": "001_material_1_tablet.webp",
+          "mobile": "001_material_1_phone.webp"
+        },
         "title": {
           "ua": "Сидіння з повношкірної шкіри Monaco NAPPA",
           "en": "Monaco NAPPA Full-Grain Top-Layer Leather Seats"
@@ -731,7 +755,11 @@
         }
       },
       {
-        "image": "001_material_2.webp",
+        "image": {
+          "desktop": "001_material_2.webp",
+          "tablet": "001_material_2_tablet.webp",
+          "mobile": "001_material_2_phone.webp"
+        },
         "title": {
           "ua": "Рулеве колесо з обробкою NAPPA",
           "en": "NAPPA Leather-Wrapped Steering Wheel"
@@ -742,7 +770,11 @@
         }
       },
       {
-        "image": "001_material_3.webp",
+        "image": {
+          "desktop": "001_material_3.webp",
+          "tablet": "001_material_3_tablet.webp",
+          "mobile": "001_material_3_phone.webp"
+        },
         "title": {
           "ua": "Покриття стелі з алькантари",
           "en": "Suede Headliner Covering"
@@ -753,7 +785,11 @@
         }
       },
       {
-        "image": "001_material_4.webp",
+        "image": {
+          "desktop": "001_material_4.webp",
+          "tablet": "001_material_4_tablet.webp",
+          "mobile": "001_material_4_phone.webp"
+        },
         "title": {
           "ua": "Технологія PVD покриття металу",
           "en": "PVD Metal Coating Process"
@@ -764,7 +800,11 @@
         }
       },
       {
-        "image": "001_material_5.webp",
+        "image": {
+          "desktop": "001_material_5.webp",
+          "tablet": "001_material_5_tablet.webp",
+          "mobile": "001_material_5_phone.webp"
+        },
         "title": {
           "ua": "Текстура \"тисяча птахів\"",
           "en": "Houndstooth Pattern"
@@ -775,7 +815,11 @@
         }
       },
       {
-        "image": "001_material_6.webp",
+        "image": {
+          "desktop": "001_material_6.webp",
+          "tablet": "001_material_6_tablet.webp",
+          "mobile": "001_material_6_phone.webp"
+        },
         "title": {
           "ua": "Паризькі декоративні елементи",
           "en": "Parisian Studs"
@@ -786,7 +830,11 @@
         }
       },
       {
-        "image": "001_material_7.webp",
+        "image": {
+          "desktop": "001_material_7.webp",
+          "tablet": "001_material_7_tablet.webp",
+          "mobile": "001_material_7_phone.webp"
+        },
         "title": {
           "ua": "Металеві решітки динаміків",
           "en": "Speaker Metal Grilles"
@@ -805,7 +853,11 @@
     },
     "screens": [
       {
-        "image": "001_screen_1.webp",
+        "image": {
+          "desktop": "001_screen_1.webp",
+          "tablet": "001_screen_1_tablet.webp",
+          "mobile": "001_screen_1_phone.webp"
+        },
         "title": {
           "ua": "39.3-дюймова система AR-HUD проекції на лобове скло",
           "en": "39.3-inch AR-HUD Head-Up Display System"
@@ -816,7 +868,11 @@
         }
       },
       {
-        "image": "001_screen_2.webp",
+        "image": {
+          "desktop": "001_screen_2.webp",
+          "tablet": "001_screen_2_tablet.webp",
+          "mobile": "001_screen_2_phone.webp"
+        },
         "title": {
           "ua": "16-дюймовий 3.5K Mini-LED високоточний центральний екран",
           "en": "16-inch 3.5K Mini-LED High-Definition Central Control Screen"
@@ -827,7 +883,11 @@
         }
       },
       {
-        "image": "001_screen_3.webp",
+        "image": {
+          "desktop": "001_screen_3.webp",
+          "tablet": "001_screen_3_tablet.webp",
+          "mobile": "001_screen_3_phone.webp"
+        },
         "title": {
           "ua": "13.02-дюймовий високоточний екран приладів капітана",
           "en": "13.02-inch High-Definition Captain's Instrument Screen"
@@ -838,7 +898,11 @@
         }
       },
       {
-        "image": "001_screen_4.webp",
+        "image": {
+          "desktop": "001_screen_4.webp",
+          "tablet": "001_screen_4_tablet.webp",
+          "mobile": "001_screen_4_phone.webp"
+        },
         "title": {
           "ua": "8-дюймовий 2K Mini-LED високоточний екран розваг для задніх пасажирів",
           "en": "8-inch 2K Mini-LED High-Definition Rear Entertainment Control Screen"
@@ -857,7 +921,11 @@
     },
     "items": [
       {
-        "image": "001_luxury_1.webp",
+        "image": {
+          "desktop": "001_luxury_1.webp",
+          "tablet": "001_luxury_1_tablet.webp",
+          "mobile": "001_luxury_1_phone.webp"
+        },
         "title": {
           "ua": "Передні інтегровані спортивні сидіння",
           "en": "Front Integrated Sports Seats"
@@ -868,7 +936,11 @@
         }
       },
       {
-        "image": "001_luxury_2.webp",
+        "image": {
+          "desktop": "001_luxury_2.webp",
+          "tablet": "001_luxury_2_tablet.webp",
+          "mobile": "001_luxury_2_phone.webp"
+        },
         "title": {
           "ua": "D-подібне спортивне рульове колесо",
           "en": "D-Shaped Sports Steering Wheel"
@@ -879,7 +951,11 @@
         }
       },
       {
-        "image": "001_luxury_3.webp",
+        "image": {
+          "desktop": "001_luxury_3.webp",
+          "tablet": "001_luxury_3_tablet.webp",
+          "mobile": "001_luxury_3_phone.webp"
+        },
         "title": {
           "ua": "Фізичні кнопки у стилі клавіш піаніно",
           "en": "Piano-Key Style Physical Buttons"
@@ -908,42 +984,66 @@
     },
     "slides": [
       {
-        "image": "001_slider1_1.webp",
+        "image": {
+          "desktop": "001_slider1_1.webp",
+          "tablet": "001_slider1_1_tablet.webp",
+          "mobile": "001_slider1_1_phone.webp"
+        },
         "caption": {
           "ua": "Чотиридверне подвійне скло з шумоізоляцією",
           "en": "Four-door double-layer laminated soundproof glass"
         }
       },
       {
-        "image": "001_slider1_2.webp",
+        "image": {
+          "desktop": "001_slider1_2.webp",
+          "tablet": "001_slider1_2_tablet.webp",
+          "mobile": "001_slider1_2_phone.webp"
+        },
         "caption": {
           "ua": "Заднє приватне скло",
           "en": "Rear privacy glass"
         }
       },
       {
-        "image": "001_slider1_3.webp",
+        "image": {
+          "desktop": "001_slider1_3.webp",
+          "tablet": "001_slider1_3_tablet.webp",
+          "mobile": "001_slider1_3_phone.webp"
+        },
         "caption": {
           "ua": "220V джерело живлення в багажнику",
           "en": "220V power supply in trunk"
         }
       },
       {
-        "image": "001_slider1_4.webp",
+        "image": {
+          "desktop": "001_slider1_4.webp",
+          "tablet": "001_slider1_4_tablet.webp",
+          "mobile": "001_slider1_4_phone.webp"
+        },
         "caption": {
           "ua": "Подвійна бездротова зарядка телефонів 50 Вт",
           "en": "Dual 50-watt mobile phone wireless charging"
         }
       },
       {
-        "image": "001_slider1_5.webp",
+        "image": {
+          "desktop": "001_slider1_5.webp",
+          "tablet": "001_slider1_5_tablet.webp",
+          "mobile": "001_slider1_5_phone.webp"
+        },
         "caption": {
           "ua": "Тризонний автоматичний клімат-контроль з постійною температурою",
           "en": "Three-zone automatic constant temperature air conditioning"
         }
       },
       {
-        "image": "001_slider1_6.webp",
+        "image": {
+          "desktop": "001_slider1_6.webp",
+          "tablet": "001_slider1_6_tablet.webp",
+          "mobile": "001_slider1_6_phone.webp"
+        },
         "caption": {
           "ua": "Вентиляція та підігрів сидінь переднього та заднього рядів",
           "en": "Front and rear seat ventilation and heating"
@@ -958,7 +1058,11 @@
     }
   },
   "batteryImageBlock": {
-    "image": "001_battery_1.webp",
+    "image": {
+      "desktop": "001_battery_1.webp",
+      "tablet": "001_battery_1_tablet.webp",
+      "mobile": "001_battery_1_phone.webp"
+    },
     "title": {
       "ua": "Всі моделі стандартно оснащені 900V повноцінною високовольтною архітектурою",
       "en": "All Series Standard with 900V Full-Stack High-Voltage Architecture"
@@ -977,7 +1081,11 @@
   "batteryBlock": {
     "batteries": [
       {
-        "image": "001_battery_2.webp",
+        "image": {
+          "desktop": "001_battery_2.webp",
+          "tablet": "001_battery_2_tablet.webp",
+          "mobile": "001_battery_2_phone.webp"
+        },
         "name": {
           "ua": "103 кВт·год Батарея Kirin",
           "en": "103 kWh Kirin Battery"
@@ -1014,7 +1122,11 @@
         ]
       },
       {
-        "image": "001_battery_3.webp",
+        "image": {
+          "desktop": "001_battery_3.webp",
+          "tablet": "001_battery_3_tablet.webp",
+          "mobile": "001_battery_3_phone.webp"
+        },
         "name": {
           "ua": "95 кВт·год Батарея Aegis Golden Brick",
           "en": "95 kWh Aegis Golden Brick Battery"
@@ -1063,7 +1175,11 @@
     ]
   },
   "batteryFastChargeBlock": {
-    "image": "001_battery_4.webp",
+    "image": {
+      "desktop": "001_battery_4.webp",
+      "tablet": "001_battery_4_tablet.webp",
+      "mobile": "001_battery_4_phone.webp"
+    },
     "title": {
       "ua": "Ера надшвидкої зарядки за 7 хвилин",
       "en": "The Era of 7-Minute Ultra-Fast Charging"
@@ -1238,8 +1354,16 @@
     }
   },
   "performanceBlock": {
-    "image1": "001_desert_1.webp",
-    "image2": "001_desert_2.webp",
+    "image1": {
+      "desktop": "001_desert_1.webp",
+      "tablet": "001_desert_1_tablet.webp",
+      "mobile": "001_desert_1_phone.webp"
+    },
+    "image2": {
+      "desktop": "001_desert_2.webp",
+      "tablet": "001_desert_2_tablet.webp",
+      "mobile": "001_desert_2_phone.webp"
+    },
     "version1": {
       "title": {
         "ua": "Повний привід",
@@ -1309,8 +1433,16 @@
   },
   "chassisBlock": {
     "media": [
-      "001_chassis_1.webp",
-      "001_chassis_2.webp",
+      {
+        "desktop": "001_chassis_1.webp",
+        "tablet": "001_chassis_1_tablet.webp",
+        "mobile": "001_chassis_1_phone.webp"
+      },
+      {
+        "desktop": "001_chassis_2.webp",
+        "tablet": "001_chassis_2_tablet.webp",
+        "mobile": "001_chassis_2_phone.webp"
+      },
       "001_chassis_3.mp4"
     ],
     "items": [
@@ -1358,7 +1490,11 @@
       "en": "Vast AI Digital Chassis"
     },
     "media": [
-      "001_ai_1.webp",
+      {
+        "desktop": "001_ai_1.webp",
+        "tablet": "001_ai_1_tablet.webp",
+        "mobile": "001_ai_1_phone.webp"
+      },
       "001_ai_2.webp",
       "001_ai_3.mp4"
     ],
@@ -1396,7 +1532,11 @@
     ]
   },
   "energyBlock": {
-    "image": "001_energy.webp",
+    "image": {
+      "desktop": "001_energy.webp",
+      "tablet": "001_energy_tablet.webp",
+      "mobile": "001_energy_phone.webp"
+    },
     "title": {
       "ua": "Енергоефективність всього автомобіля повністю підвищена",
       "en": "Overall Vehicle Energy Efficiency Comprehensively Improved"
@@ -1525,21 +1665,33 @@
   "securityLuxuryBlock": {
     "items": [
       {
-        "image": "001_security_4.webp",
+        "image": {
+          "desktop": "001_security_4.webp",
+          "tablet": "001_security_4_tablet.webp",
+          "mobile": "001_security_4_phone.webp"
+        },
         "title": {
           "ua": "Всі моделі стандартно оснащені лазерним радаром, 31 одиниця сприйняття",
           "en": "All series standard with lidar, 31 sensing units"
         }
       },
       {
-        "image": "001_security_5.webp",
+        "image": {
+          "desktop": "001_security_5.webp",
+          "tablet": "001_security_5_tablet.webp",
+          "mobile": "001_security_5_phone.webp"
+        },
         "title": {
           "ua": "Всі моделі стандартно оснащені чипом NVIDIA DRIVE Thor-U, обчислювальна потужність 700TOPS",
           "en": "All series standard with NVIDIA DRIVE Thor-U chip, 700TOPS computing power"
         }
       },
       {
-        "image": "001_security_6.webp",
+        "image": {
+          "desktop": "001_security_6.webp",
+          "tablet": "001_security_6_tablet.webp",
+          "mobile": "001_security_6_phone.webp"
+        },
         "title": {
           "ua": "«Маленький синій світло» індикатор стану допомоги водію",
           "en": "\"Small blue light\" assisted driving status indicator light"
@@ -1551,7 +1703,11 @@
     "background": "rgb(235, 232, 227)",
     "images": [
       {
-        "image": "001_security_7.webp",
+        "image": {
+          "desktop": "001_security_7.webp",
+          "tablet": "001_security_7_tablet.webp",
+          "mobile": "001_security_7_phone.webp"
+        },
         "title": {
           "ua": "NZP навігаційна допомога по маршруту",
           "en": "NZP Navigation Pilot"
@@ -1562,7 +1718,11 @@
         }
       },
       {
-        "image": "001_security_8.webp",
+        "image": {
+          "desktop": "001_security_8.webp",
+          "tablet": "001_security_8_tablet.webp",
+          "mobile": "001_security_8_phone.webp"
+        },
         "title": {
           "ua": "Навігація «від паркування до паркування»",
           "en": "\"Parking-to-Parking\" Navigation Assist"
@@ -1591,35 +1751,55 @@
     },
     "slides": [
       {
-        "image": "001_slider2_1.webp",
+        "image": {
+          "desktop": "001_slider2_1.webp",
+          "tablet": "001_slider2_1_tablet.webp",
+          "mobile": "001_slider2_1_phone.webp"
+        },
         "caption": {
           "ua": "",
           "en": ""
         }
       },
       {
-        "image": "001_slider2_2.webp",
+        "image": {
+          "desktop": "001_slider2_2.webp",
+          "tablet": "001_slider2_2_tablet.webp",
+          "mobile": "001_slider2_2_phone.webp"
+        },
         "caption": {
           "ua": "",
           "en": ""
         }
       },
       {
-        "image": "001_slider2_3.webp",
+        "image": {
+          "desktop": "001_slider2_3.webp",
+          "tablet": "001_slider2_3_tablet.webp",
+          "mobile": "001_slider2_3_phone.webp"
+        },
         "caption": {
           "ua": "",
           "en": ""
         }
       },
       {
-        "image": "001_slider2_4.webp",
+        "image": {
+          "desktop": "001_slider2_4.webp",
+          "tablet": "001_slider2_4_tablet.webp",
+          "mobile": "001_slider2_4_phone.webp"
+        },
         "caption": {
           "ua": "",
           "en": ""
         }
       },
       {
-        "image": "001_slider2_5.webp",
+        "image": {
+          "desktop": "001_slider2_5.webp",
+          "tablet": "001_slider2_5_tablet.webp",
+          "mobile": "001_slider2_5_phone.webp"
+        },
         "caption": {
           "ua": "",
           "en": ""
@@ -1641,7 +1821,11 @@
     "background": "rgb(245, 246, 247)",
     "materials": [
       {
-        "image": "001_passiveSecurity_1.webp",
+        "image": {
+          "desktop": "001_passiveSecurity_1.webp",
+          "tablet": "001_passiveSecurity_1_tablet.webp",
+          "mobile": "001_passiveSecurity_1_phone.webp"
+        },
         "title": {
           "ua": "Високоміцний сталево-алюмінієвий гібридний кузов",
           "en": "High-strength steel-aluminum hybrid body"
@@ -1652,7 +1836,11 @@
         }
       },
       {
-        "image": "001_passiveSecurity_2.webp",
+        "image": {
+          "desktop": "001_passiveSecurity_2.webp",
+          "tablet": "001_passiveSecurity_2_tablet.webp",
+          "mobile": "001_passiveSecurity_2_phone.webp"
+        },
         "title": {
           "ua": "Ціліснолита задня частина кузова з алюмінію",
           "en": "One-piece die-cast rear aluminum body"
@@ -1663,7 +1851,11 @@
         }
       },
       {
-        "image": "001_passiveSecurity_3.webp",
+        "image": {
+          "desktop": "001_passiveSecurity_3.webp",
+          "tablet": "001_passiveSecurity_3_tablet.webp",
+          "mobile": "001_passiveSecurity_3_phone.webp"
+        },
         "title": {
           "ua": "Захисна конструкція батареї з 10-секційним каркасом",
           "en": "10-cell battery crash protection structure"
@@ -1674,7 +1866,11 @@
         }
       },
       {
-        "image": "001_passiveSecurity_4.webp",
+        "image": {
+          "desktop": "001_passiveSecurity_4.webp",
+          "tablet": "001_passiveSecurity_4_tablet.webp",
+          "mobile": "001_passiveSecurity_4_phone.webp"
+        },
         "title": {
           "ua": "CBS високоміцний композитний матеріал",
           "en": "CBS high-strength composite material"
@@ -1685,7 +1881,11 @@
         }
       },
       {
-        "image": "001_passiveSecurity_5.webp",
+        "image": {
+          "desktop": "001_passiveSecurity_5.webp",
+          "tablet": "001_passiveSecurity_5_tablet.webp",
+          "mobile": "001_passiveSecurity_5_phone.webp"
+        },
         "title": {
           "ua": "Дальні подушки безпеки",
           "en": "Far-side airbags"
@@ -1713,7 +1913,11 @@
     "background": "#fff",
     "images": [
       {
-        "image": "001_intelligentSafety_1.webp",
+        "image": {
+          "desktop": "001_intelligentSafety_1.webp",
+          "tablet": "001_intelligentSafety_1_tablet.webp",
+          "mobile": "001_intelligentSafety_1_phone.webp"
+        },
         "title": {
           "ua": "G-AES: безперервне автоматичне уникнення перешкод",
           "en": "G-AES: Continuous Automatic Obstacle Avoidance"
@@ -1742,7 +1946,11 @@
       "ua": "Безпека батареї",
       "en": "Battery Safety"
     },
-    "image": "001_battery_last.webp",
+    "image": {
+      "desktop": "001_battery_last.webp",
+      "tablet": "001_battery_last_tablet.webp",
+      "mobile": "001_battery_last_phone.webp"
+    },
     "stats": [
       {
         "value": "6",

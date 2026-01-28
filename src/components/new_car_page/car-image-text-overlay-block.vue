@@ -53,6 +53,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -82,17 +83,11 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
-const isVideo = (path) => {
-  if (!path) return false
+const isVideo = (media) => {
+  const path = pickResponsivePath(media)
+  if (!path || typeof path !== 'string') return false
   return path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov')
 }
 </script>

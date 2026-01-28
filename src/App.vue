@@ -29,7 +29,6 @@ let route = useRoute()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
 watch(() => route.fullPath, () => {
-  console.log(route.fullPath)
   nextTick(() => {
     setTimeout(() => {
       scrollTo(0,0)

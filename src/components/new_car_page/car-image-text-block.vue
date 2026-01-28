@@ -38,6 +38,7 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -67,23 +68,17 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/cards/${imagePath}`
-  }
-  return `/pages/${props.carId}/cards/${imagePath}`
-}
+const resolveImage = (image) =>
+  resolveMediaPath(image, { carId: props.carId, subfolder: 'cards' })
 
 // Preload image
 const preloadImage = () => {
-  const imagePath = blockData.value.image
-  if (!imagePath) return
-  
-  const imgSrc = resolveImage(imagePath)
+  const image = blockData.value.image
+  if (!image) return
+
+  const imgSrc = resolveImage(image)
   if (!imgSrc) return
-  
+
   const img = new Image()
   img.onerror = () => {
     console.warn(`Failed to preload image-text image: ${imgSrc}`)
@@ -92,11 +87,15 @@ const preloadImage = () => {
 }
 
 // Watch blockData to preload when image changes
-watch(() => blockData.value.image, (newImage) => {
-  if (newImage) {
-    preloadImage()
-  }
-}, { immediate: true })
+watch(
+  () => blockData.value.image,
+  (newImage) => {
+    if (newImage) {
+      preloadImage()
+    }
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
   preloadImage()
@@ -189,7 +188,7 @@ onMounted(() => {
   .car-image-text-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       padding: 0 16px;

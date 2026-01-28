@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
@@ -61,10 +61,60 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const isVideo = computed(() => {
-  const mediaPath = blockData.value.video || blockData.value.image
-  return mediaPath && (mediaPath.endsWith('.mp4') || mediaPath.endsWith('.webm'))
+// Track viewport width to pick desktop/tablet/mobile
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+let resizeHandler = null
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    resizeHandler = () => {
+      windowWidth.value = window.innerWidth
+    }
+    window.addEventListener('resize', resizeHandler)
+  }
 })
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined' && resizeHandler) {
+    window.removeEventListener('resize', resizeHandler)
+  }
+})
+
+const getMediaPath = (mediaObj) => {
+  if (!mediaObj) return ''
+  if (typeof mediaObj === 'string') return mediaObj
+  if (typeof mediaObj === 'object' && mediaObj !== null) {
+    const isMobile = windowWidth.value <= 876
+    const isTablet = windowWidth.value > 876 && windowWidth.value <= 1200
+
+    if (isMobile && mediaObj.mobile) return mediaObj.mobile
+    if (isTablet && mediaObj.tablet) return mediaObj.tablet
+    if (mediaObj.desktop) return mediaObj.desktop
+
+    return mediaObj.mobile || mediaObj.tablet || mediaObj.desktop || ''
+  }
+  return ''
+}
+
+const isVideo = computed(() => {
+  const mediaObj = blockData.value.video || blockData.value.image
+  const mediaPath = getMediaPath(mediaObj)
+  return (
+    mediaPath &&
+    typeof mediaPath === 'string' &&
+    (mediaPath.endsWith('.mp4') || mediaPath.endsWith('.webm') || mediaPath.endsWith('.mov'))
+  )
+})
+
+const resolveImage = (imagePath) => {
+  const path = getMediaPath(imagePath)
+  if (!path) return ''
+  if (typeof path === 'string' && path.startsWith('/')) return path
+  if (import.meta.env.DEV) {
+    return `/src/assets/pages/${props.carId}/${path}`
+  }
+  return `/pages/${props.carId}/${path}`
+}
 
 const imageSrc = computed(() => {
   if (blockData.value.video && !isVideo.value) {
@@ -101,18 +151,6 @@ const getText = (textObj) => {
     return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
   }
   return ''
-}
-
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  // If path starts with /, return as is (absolute path from public or external)
-  if (imagePath.startsWith('/')) return imagePath
-  // In dev mode, use /src/assets/pages/... (Vite dev server serves from src)
-  // In production, use /pages/... (files should be in public/pages/)
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
 }
 </script>
 
@@ -229,7 +267,7 @@ const resolveImage = (imagePath) => {
     }
 
     &__content {
-      padding: 28px 16px;
+      padding: 40px 16px;
     }
 
     &__title {

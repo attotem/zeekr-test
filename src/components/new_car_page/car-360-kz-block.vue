@@ -133,7 +133,6 @@ const preloadImages = (images, colorId) => {
     if (errorCount > 0) {
       console.warn(`Color ${colorId}: ${errorCount} images failed to load out of ${images.length}`)
     } else if (loadedCount === images.length) {
-      console.log(`Color ${colorId}: All ${images.length} images preloaded successfully`)
     }
   }, 1000)
 }

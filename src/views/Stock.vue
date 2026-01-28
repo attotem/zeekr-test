@@ -319,7 +319,6 @@ let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
 const applyFilter = (categoryId, optionId) => {
-	console.log(categoryId, optionId)
 	if(chosenFilters.value[categoryId]) {
 		if(chosenFilters.value[categoryId].includes(optionId)) {
 			chosenFilters.value[categoryId] = chosenFilters.value[categoryId].filter(el => el !== optionId)
@@ -330,13 +329,11 @@ const applyFilter = (categoryId, optionId) => {
 	else {
 		chosenFilters.value[categoryId] = [optionId]
 	}
-	console.log(chosenFilters.value)
 }
 
 const transformFilters = () => Object.entries(chosenFilters.value).map(el => `${el[0]}=${el[1]}`).join("&")
 
 const search = async () => {
-	console.log(chosenFilters.value, transformFilters())
   data.value = await API.CarsInStock.get(transformFilters())
 }
 
@@ -350,7 +347,6 @@ onMounted(async () => {
 	data.value = await API.CarsInStock.get();
 	maxCarPrice.value = Math.max(...data.value.map(el => el.price_uah))
 	price.value.range = [0, maxCarPrice.value];
-	console.log(data.value, maxCarPrice.value)
   useLoaderStore().isLoading = false
 	nextTick(() => {
 		addDropdown("sort", false, false);

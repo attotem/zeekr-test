@@ -248,7 +248,7 @@ const rightCards = computed(() => {
   .car-cards-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       padding: 0 16px;
@@ -273,11 +273,11 @@ const rightCards = computed(() => {
     }
 
     &__card--large &__card-image-wrap {
-      min-height: auto;
+      min-height: 40vh;
     }
 
     &__card--small &__card-image-wrap {
-      min-height: auto;
+      min-height: 25vh;
     }
 
     &__card-content {

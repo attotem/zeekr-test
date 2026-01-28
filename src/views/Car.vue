@@ -352,7 +352,6 @@ async function loadModelData() {
 
 		modelData.value = data;
 		activeCategoryIndex.value = 0;
-		console.log("Updated modelData:", modelData.value);
 	} catch (error) {
 		console.error("Failed to load model:", error);
 		router.push("/404");

@@ -52,7 +52,6 @@ watch(() => langStore.activeLang, async () => {
 onMounted(async () => {
   useLoaderStore().isLoading = true
   modelsData.value = await API.Models.get()
-  console.log(modelsData.value)
   useLoaderStore().isLoading = false
 })
 </script>

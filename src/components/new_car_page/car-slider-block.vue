@@ -71,6 +71,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 import swiperLeftPng from '@/assets/swiper_left.png'
 import swiperRightPng from '@/assets/swiper_right.png'
 
@@ -104,19 +105,13 @@ const getText = (textObj) => {
   return ''
 }
 
-const isVideo = (imagePath) => {
-  if (!imagePath) return false
-  return imagePath.endsWith('.mp4') || imagePath.endsWith('.webm')
+const isVideo = (image) => {
+  const path = pickResponsivePath(image)
+  if (!path || typeof path !== 'string') return false
+  return path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov')
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
-}
+const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
 // Track loaded images
 const loadedImages = new Set()
@@ -533,9 +528,6 @@ const next = async () => {
     margin: 0 0 44px;
     color: #111;
     text-align: center;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
   }
 
   &__slider {
@@ -615,10 +607,6 @@ const next = async () => {
     font-size: 16px;
     line-height: 1.4;
     color: rgba(17, 17, 17, 0.75);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
-    overflow: hidden;
   }
 
   .is-active {
@@ -692,64 +680,39 @@ const next = async () => {
   .car-slider-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 28px 0 36px;
-    box-sizing: border-box;
-    overflow-x: hidden;
+    padding: 44px 0 52px;
 
     &__inner {
       padding: 0 16px;
-      box-sizing: border-box;
-      max-width: 100%;
-      overflow-x: hidden;
     }
 
     &__title {
       font-size: 28px;
       margin-bottom: 28px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      max-width: 100%;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    &__viewport {
-      max-width: 100%;
-      overflow-x: hidden;
-      box-sizing: border-box;
     }
 
     &__track {
       gap: 18px;
       transform: translateX(0px);
-      max-width: 100%;
-      box-sizing: border-box;
     }
 
     &__slide {
       flex: 0 0 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-      overflow-x: hidden;
-    }
-
-    &__image-wrap {
-      max-width: 100%;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-
-    &__caption {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      max-width: 100%;
-      overflow: hidden;
-      padding: 0;
-      box-sizing: border-box;
     }
 
     &__track {
       padding-left: 0;
+    }
+
+    .car-slider-block__caption {
+      font-size: 14px;
+      line-height: 1.4;
+      padding: 8px 8px 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      box-sizing: border-box;
+      width: 100%;
     }
 
     .is-left,

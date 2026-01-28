@@ -42,6 +42,7 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -71,17 +72,11 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveMedia = (mediaPath) => {
-  if (!mediaPath) return ''
-  if (mediaPath.startsWith('/')) return mediaPath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${mediaPath}`
-  }
-  return `/pages/${props.carId}/${mediaPath}`
-}
+const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
-const isVideo = (path) => {
-  if (!path) return false
+const isVideo = (media) => {
+  const path = pickResponsivePath(media)
+  if (!path || typeof path !== 'string') return false
   return path.endsWith('.mp4') || path.endsWith('.webm') || path.endsWith('.mov')
 }
 
@@ -99,10 +94,10 @@ const preloadAllImages = () => {
   items.value.forEach(item => {
     if (!item) return
     
-    const mediaPath = item.image || item.video
-    if (!mediaPath || isVideo(mediaPath)) return
+    const media = item.image || item.video
+    if (!media || isVideo(media)) return
     
-    const imgSrc = resolveMedia(mediaPath)
+    const imgSrc = resolveMedia(media)
     if (!imgSrc) return
     
     const img = new Image()
@@ -114,11 +109,15 @@ const preloadAllImages = () => {
 }
 
 // Watch items to preload when they change
-watch(items, (newItems) => {
-  if (newItems && newItems.length > 0) {
-    preloadAllImages()
-  }
-}, { immediate: true })
+watch(
+  items,
+  (newItems) => {
+    if (newItems && newItems.length > 0) {
+      preloadAllImages()
+    }
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
   preloadAllImages()
@@ -200,7 +199,7 @@ onMounted(() => {
 
 @media screen and (max-width: 876px) {
   .car-cabin-functions-block {
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       width: calc(100% - 32px);

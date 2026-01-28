@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
@@ -50,6 +50,25 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
+// Track viewport width for responsive images
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+let resizeHandler = null
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    resizeHandler = () => {
+      windowWidth.value = window.innerWidth
+    }
+    window.addEventListener('resize', resizeHandler)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined' && resizeHandler) {
+    window.removeEventListener('resize', resizeHandler)
+  }
+})
+
 const getText = (textObj) => {
   if (!textObj) return ''
   if (typeof textObj === 'string') return textObj
@@ -64,13 +83,33 @@ const getText = (textObj) => {
   return ''
 }
 
-const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
+// Normalize image (string or { desktop, tablet, mobile }) to file name
+const getImagePath = (imageObj) => {
+  if (!imageObj) return ''
+  if (typeof imageObj === 'string') return imageObj
+
+  if (typeof imageObj === 'object' && imageObj !== null) {
+    const isMobile = windowWidth.value <= 876
+    const isTablet = windowWidth.value > 876 && windowWidth.value <= 1200
+
+    if (isMobile && imageObj.mobile) return imageObj.mobile
+    if (isTablet && imageObj.tablet) return imageObj.tablet
+    if (imageObj.desktop) return imageObj.desktop
+
+    return imageObj.mobile || imageObj.tablet || imageObj.desktop || ''
   }
-  return `/pages/${props.carId}/${imagePath}`
+
+  return ''
+}
+
+const resolveImage = (imagePath) => {
+  const path = getImagePath(imagePath)
+  if (!path) return ''
+  if (typeof path === 'string' && path.startsWith('/')) return path
+  if (import.meta.env.DEV) {
+    return `/src/assets/pages/${props.carId}/${path}`
+  }
+  return `/pages/${props.carId}/${path}`
 }
 
 const screens = computed(() => {
@@ -163,7 +202,7 @@ const screens = computed(() => {
   .car-screens-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 28px 0;
+    padding: 44px 0;
 
     &__inner {
       padding: 0 16px;
