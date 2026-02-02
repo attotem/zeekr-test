@@ -44,8 +44,9 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -61,44 +62,9 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-// Track viewport width to pick desktop/tablet/mobile
-const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
-let resizeHandler = null
-
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    resizeHandler = () => {
-      windowWidth.value = window.innerWidth
-    }
-    window.addEventListener('resize', resizeHandler)
-  }
-})
-
-onBeforeUnmount(() => {
-  if (typeof window !== 'undefined' && resizeHandler) {
-    window.removeEventListener('resize', resizeHandler)
-  }
-})
-
-const getMediaPath = (mediaObj) => {
-  if (!mediaObj) return ''
-  if (typeof mediaObj === 'string') return mediaObj
-  if (typeof mediaObj === 'object' && mediaObj !== null) {
-    const isMobile = windowWidth.value <= 876
-    const isTablet = windowWidth.value > 876 && windowWidth.value <= 1200
-
-    if (isMobile && mediaObj.mobile) return mediaObj.mobile
-    if (isTablet && mediaObj.tablet) return mediaObj.tablet
-    if (mediaObj.desktop) return mediaObj.desktop
-
-    return mediaObj.mobile || mediaObj.tablet || mediaObj.desktop || ''
-  }
-  return ''
-}
-
 const isVideo = computed(() => {
   const mediaObj = blockData.value.video || blockData.value.image
-  const mediaPath = getMediaPath(mediaObj)
+  const mediaPath = pickResponsivePath(mediaObj)
   return (
     mediaPath &&
     typeof mediaPath === 'string' &&
@@ -107,13 +73,7 @@ const isVideo = computed(() => {
 })
 
 const resolveImage = (imagePath) => {
-  const path = getMediaPath(imagePath)
-  if (!path) return ''
-  if (typeof path === 'string' && path.startsWith('/')) return path
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${path}`
-  }
-  return `/pages/${props.carId}/${path}`
+  return resolveMediaPath(imagePath, { carId: props.carId })
 }
 
 const imageSrc = computed(() => {
