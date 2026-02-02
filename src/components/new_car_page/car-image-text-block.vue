@@ -69,7 +69,7 @@ const getText = (textObj) => {
 }
 
 const resolveImage = (image) =>
-  resolveMediaPath(image, { carId: props.carId, subfolder: 'cards' })
+  resolveMediaPath(image, { carId: props.carId })
 
 // Preload image
 const preloadImage = () => {
