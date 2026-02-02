@@ -71,7 +71,6 @@ const getText = (textObj) => {
 const resolveImage = (image) =>
   resolveMediaPath(image, { carId: props.carId })
 
-// Preload image
 const preloadImage = () => {
   const image = blockData.value.image
   if (!image) return
