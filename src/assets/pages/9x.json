@@ -575,9 +575,9 @@
     "screens": [
       {
         "image": {
-          "desktop": "9x_screen_1.webp",
-          "tablet": "9x_screen_1_tablet.webp",
-          "mobile": "9x_screen_1.webp"
+          "desktop": "9x_light_1.webp",
+          "tablet": "9x_light_1_tablet.webp",
+          "mobile": "9x_light_1.webp"
         },
         "title": {
           "en": "Advanced Display System",
@@ -590,9 +590,9 @@
       },
       {
         "image": {
-          "desktop": "9x_screen_2.webp",
-          "tablet": "9x_screen_2_tablet.webp",
-          "mobile": "9x_screen_2.webp"
+          "desktop": "9x_light_2.webp",
+          "tablet": "9x_light_2_tablet.webp",
+          "mobile": "9x_light_2.webp"
         },
         "title": {
           "en": "Interactive Control Screen",
@@ -797,7 +797,7 @@
         "image": {
           "desktop": "9x_space_2.webp",
           "tablet": "9x_space_2_tablet.webp",
-          "mobile": "9x_space_2_phone.webp"
+          "mobile": "9x_space_2_tablet.webp"
         },
         "title": {
           "en": "Business Reception",
@@ -808,7 +808,7 @@
         "image": {
           "desktop": "9x_space_3.webp",
           "tablet": "9x_space_3_tablet.webp",
-          "mobile": "9x_space_3_phone.webp"
+          "mobile": "9x_space_3_tablet.webp"
         },
         "title": {
           "en": "Family Gathering",
@@ -819,7 +819,7 @@
         "image": {
           "desktop": "9x_space_4.webp",
           "tablet": "9x_space_4_tablet.webp",
-          "mobile": "9x_space_4_phone.webp"
+          "mobile": "9x_space_4_tablet.webp"
         },
         "title": {
           "en": "Travel Residence Large Bed",
@@ -951,7 +951,7 @@
     "image": {
       "desktop": "9x_light_5.webp",
       "tablet": "9x_light_5_tablet.webp",
-      "mobile": "9x_light_5_phone.webp"
+      "mobile": "9x_light_5_tablet.webp"
     },
     "title": {
       "en": "16.8 Million Colors Flowing Ambient Light",
@@ -977,8 +977,8 @@
       {
         "image": {
           "desktop": "9x_slider5_1.webp",
-          "tablet": "9x_slider5_1_tablet.webp",
-          "mobile": "9x_slider5_1_phone.webp"
+          "tablet": "9x_slider5_1.webp",
+          "mobile": "9x_slider5_1.webp"
         },
         "caption": {
           "en": "16-inch 3.5K OLED Central Control and Passenger Dual Screens - Global connected screens, clear at a glance",
@@ -988,8 +988,8 @@
       {
         "image": {
           "desktop": "9x_slider5_2.webp",
-          "tablet": "9x_slider5_2_tablet.webp",
-          "mobile": "9x_slider5_2_phone.webp"
+          "tablet": "9x_slider5_2.webp",
+          "mobile": "9x_slider5_2.webp"
         },
         "caption": {
           "en": "6.3-inch OLED Magic Control Screen - Streamlined control screen, mastered in one hand",
@@ -999,8 +999,8 @@
       {
         "image": {
           "desktop": "9x_slider5_3.webp",
-          "tablet": "9x_slider5_3_tablet.webp",
-          "mobile": "9x_slider5_3_phone.webp"
+          "tablet": "9x_slider5_3.webp",
+          "mobile": "9x_slider5_3.webp"
         },
         "caption": {
           "en": "47-inch AR-HUD Head-up Display - Maximum brightness 20000nit, clear display in all scenarios",
@@ -1010,8 +1010,8 @@
       {
         "image": {
           "desktop": "9x_slider5_4.webp",
-          "tablet": "9x_slider5_4_tablet.webp",
-          "mobile": "9x_slider5_4_phone.webp"
+          "tablet": "9x_slider5_4.webp",
+          "mobile": "9x_slider5_4.webp"
         },
         "caption": {
           "en": "Dual 8295 Intelligent Cockpit Computing Platform - Top-tier dual computing power, ultimate smooth experience",
@@ -1049,7 +1049,7 @@
         "image": {
           "desktop": "9x_luxury_1.webp",
           "tablet": "9x_luxury_1_tablet.webp",
-          "mobile": "9x_luxury_1_phone.webp"
+          "mobile": "9x_luxury_1_tablet.webp"
         },
         "title": {
           "en": "Crystal Rotary Knob",
@@ -1064,7 +1064,7 @@
         "image": {
           "desktop": "9x_luxury_2.webp",
           "tablet": "9x_luxury_2_tablet.webp",
-          "mobile": "9x_luxury_2_phone.webp"
+          "mobile": "9x_luxury_2_tablet.webp"
         },
         "title": {
           "en": "Physical Button Components",
@@ -1079,7 +1079,7 @@
         "image": {
           "desktop": "9x_luxury_3.webp",
           "tablet": "9x_luxury_3_tablet.webp",
-          "mobile": "9x_luxury_3_phone.webp"
+          "mobile": "9x_luxury_3_tablet.webp"
         },
         "title": {
           "en": "Nordic Natural Wood Trim",
@@ -1098,7 +1098,7 @@
         "image": {
           "desktop": "9x_luxury_4.webp",
           "tablet": "9x_luxury_4_tablet.webp",
-          "mobile": "9x_luxury_4_phone.webp"
+          "mobile": "9x_luxury_4_tablet.webp"
         },
         "title": {
           "en": "Fast Charging Retractable Cable",
@@ -1113,7 +1113,7 @@
         "image": {
           "desktop": "9x_luxury_5.webp",
           "tablet": "9x_luxury_5_tablet.webp",
-          "mobile": "9x_luxury_5_phone.webp"
+          "mobile": "9x_luxury_5_tablet.webp"
         },
         "title": {
           "en": "Full Vehicle Privacy Sunshades",
@@ -1235,9 +1235,9 @@
   },
   "suspensionBlock": {
     "image": {
-      "desktop": "9x_wheels_1.webp",
-      "tablet": "9x_wheels_1_tablet.webp",
-      "mobile": "9x_wheels_1_phone.webp"
+      "desktop": "9x_terrain.webp",
+      "tablet": "9x_terrain_tablet.webp",
+      "mobile": "9x_terrain_phone.webp"
     },
     "title": {
       "en": "Closed Dual-Chamber Dual-Valve Air Suspension Kit",
@@ -1264,9 +1264,9 @@
   },
   "stabilizerBlock": {
     "image": {
-      "desktop": "9x_wheels_2.webp",
-      "tablet": "9x_wheels_2_tablet.webp",
-      "mobile": "9x_wheels_2_phone.webp"
+      "desktop": "9x_strength.webp",
+      "tablet": "9x_strength_tablet.webp",
+      "mobile": "9x_strength_phone.webp"
     },
     "textRight": true,
     "title": {
@@ -1462,7 +1462,7 @@
         "image": {
           "desktop": "9x_safety_1.webp",
           "tablet": "9x_safety_1_tablet.webp",
-          "mobile": "9x_safety_1_phone.webp"
+          "mobile": "9x_safety_1_tablet.webp"
         },
         "title": {
           "en": "Third Energy Absorption Box",
@@ -1492,7 +1492,7 @@
         "image": {
           "desktop": "9x_safety_3.webp",
           "tablet": "9x_safety_3_tablet.webp",
-          "mobile": "9x_safety_3_phone.webp"
+          "mobile": "9x_safety_3_tablet.webp"
         },
         "title": {
           "en": "Anti-Collision Stopper Block",
@@ -1507,7 +1507,7 @@
         "image": {
           "desktop": "9x_safety_4.webp",
           "tablet": "9x_safety_4_tablet.webp",
-          "mobile": "9x_safety_4_phone.webp"
+          "mobile": "9x_safety_4_tablet.webp"
         },
         "title": {
           "en": "High-Voltage Distribution Box Active Flip Technology",

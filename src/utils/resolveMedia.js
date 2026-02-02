@@ -17,11 +17,10 @@ export const pickResponsivePath = (media) => {
     const isMobile = width <= 876
     const isTablet = width > 876 && width <= 1200
 
-    if (isMobile && media.mobile) return media.mobile
-    if (isTablet && media.tablet) return media.tablet
-    if (media.desktop) return media.desktop
-
-    return media.mobile || media.tablet || media.desktop || ''
+    // Fallback: mobile → tablet → desktop (если нет mobile — показываем tablet и т.д.)
+    if (isMobile) return media.mobile || media.tablet || media.desktop || ''
+    if (isTablet) return media.tablet || media.desktop || ''
+    return media.desktop || ''
   }
 
   return ''

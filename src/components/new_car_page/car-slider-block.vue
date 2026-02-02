@@ -698,6 +698,7 @@ const next = async () => {
 
     &__slide {
       flex: 0 0 100%;
+      min-width: 0;
     }
 
     &__track {
@@ -713,6 +714,8 @@ const next = async () => {
       white-space: normal;
       box-sizing: border-box;
       width: 100%;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .is-left,

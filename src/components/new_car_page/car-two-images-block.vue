@@ -97,7 +97,8 @@ const getText = (textObj) => {
   return ''
 }
 
-// Normalize image value (string or { desktop, tablet, mobile }) to a path string
+// Normalize image value (string or { desktop, tablet, mobile }) to a path string.
+// Fallback: если нет mobile — показываем tablet, если нет tablet — desktop.
 const getImagePath = (imageObj) => {
   if (!imageObj) return ''
   if (typeof imageObj === 'string') return imageObj
@@ -105,11 +106,9 @@ const getImagePath = (imageObj) => {
     const isMobile = windowWidth.value <= 876
     const isTablet = windowWidth.value > 876 && windowWidth.value <= 1200
 
-    if (isMobile && imageObj.mobile) return imageObj.mobile
-    if (isTablet && imageObj.tablet) return imageObj.tablet
-    if (imageObj.desktop) return imageObj.desktop
-
-    return imageObj.mobile || imageObj.tablet || imageObj.desktop || ''
+    if (isMobile) return imageObj.mobile || imageObj.tablet || imageObj.desktop || ''
+    if (isTablet) return imageObj.tablet || imageObj.desktop || ''
+    return imageObj.desktop || ''
   }
   return ''
 }
