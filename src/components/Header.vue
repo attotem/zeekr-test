@@ -226,15 +226,15 @@ const getModelLink = (model) => {
   const modelName = model.name?.toLowerCase() || ''
   
   if (modelId === '001' || modelId === 'car-001' || modelName === '001' || modelName.includes('001')) {
-    return '/car/001'
+    return '/zeekr-001'
   }
   
   if (modelId === '7x' || modelId === 'car-7x' || modelName === '7x' || modelName.includes('7x')) {
-    return '/car/7x'
+    return '/zeekr-7x'
   }
   
   if (modelId === '9x' || modelId === 'car-9x' || modelName === '9x' || modelName.includes('9x')) {
-    return '/car/9x'
+    return '/zeekr-9x'
   }
   
   return `/${model.model_page.url.child}`
