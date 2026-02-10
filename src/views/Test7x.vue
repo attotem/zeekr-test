@@ -35,19 +35,38 @@
           class="block-appear"
           v-appear
         >
+          <!-- Hero блок: добавляем обработчик кнопок и ссылку на прайс-лист -->
           <component
+            v-if="block.type === 'hero'"
+            :is="block.component"
+            :data="block.data"
+            :car-id="carId"
+            :price-list-url="priceListUrl"
+            @buttonClick="handleHeroButtonClick"
+          />
+          <!-- Все остальные блоки -->
+          <component
+            v-else
             :is="block.component"
             :data="block.data"
             :car-id="carId"
           />
         </div>
       </template>
+
+      <!-- Модалка консультации / заказа -->
+      <ModalContact
+        :heading="i18n.modal?.[modalType]"
+        :is-opened="isModalOpened !== false"
+        :mailObj="mailObj"
+        @close="isModalOpened = false"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, ref, onMounted, watch } from 'vue'
+import { computed, ref, onMounted, watch, getCurrentInstance } from 'vue'
 import { useRoute } from 'vue-router'
 import Logo from '@/components/icons/logo.vue'
 import CarHero from '@/components/new_car_page/car-hero.vue'
@@ -95,6 +114,12 @@ import CarTerrainBlock from '@/components/new_car_page/car-terrain-block.vue'
 import CarStrengthBlock from '@/components/new_car_page/car-strength-block.vue'
 import CarDetectBlock from '@/components/new_car_page/car-detect-block.vue'
 import pageDataJson from '@/assets/pages/7x.json'
+import ModalContact from '@/components/ModalContact.vue'
+import API from '@/composables/API'
+import { useLangStore } from '@/stores/lang'
+
+// i18n загружен как globalProperties в main.js
+const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
 
 const props = defineProps({
   pageData: {
@@ -108,12 +133,19 @@ const props = defineProps({
 })
 
 const route = useRoute()
+const langStore = useLangStore()
 const pageData = ref(null)
 const isLoading = ref(true)
 const selected360Version = ref('standard') // 'standard' or 'kz'
+const priceListUrl = ref('')
+
+// Состояние модалки (консультация / заказ)
+const isModalOpened = ref(false)
+const modalType = ref(null)
+const mailObj = ref({})
 
 const carId = computed(() => {
-  return props.carId || route.params.carId || '7x'
+  return props.carId || route.params.carId || route.meta.carId || '7x'
 })
 
 const carDataModules = import.meta.glob('@/assets/pages/*.json', { eager: false })
@@ -142,8 +174,22 @@ const loadCarData = async (id) => {
   }
 }
 
+// Подтягиваем price_list из бекенда (как на старой странице Car.vue)
+const loadPriceList = async (id) => {
+  try {
+    // Для 7x бекенд-URL выглядит как "zeekr-7x"
+    const slug = id === '7x' ? 'zeekr-7x' : `zeekr-${id}`
+    const data = await API.Models.getByURL(slug)
+    priceListUrl.value = data?.price_list || ''
+  } catch (e) {
+    console.error('Failed to load price list for car', id, e)
+    priceListUrl.value = ''
+  }
+}
+
 onMounted(() => {
   loadCarData(carId.value)
+  loadPriceList(carId.value)
   window.scrollTo(0, 0)
 })
 
@@ -151,6 +197,7 @@ watch(() => carId.value, (newId) => {
   if (!props.pageData) {
     loadCarData(newId)
   }
+  loadPriceList(newId)
   window.scrollTo(0, 0)
 })
 
@@ -328,6 +375,21 @@ const visibleBlocks = computed(() => {
     }
   })
 })
+
+// Обработка кликов по кнопкам в hero-блоке (консультация / заказ / прайс-лист)
+const handleHeroButtonClick = (type) => {
+  if (type === 'test_drive') {
+    isModalOpened.value = i18n.modal.testDrive
+    modalType.value = 'testDrive'
+    mailObj.value = { type: 'test_drive', page: 'test_drive' }
+  } else if (type === 'order') {
+    isModalOpened.value = i18n.modal.car
+    modalType.value = 'car'
+    mailObj.value = { type: 'order', page: 'order' }
+  } else if (type === 'price_list' && priceListUrl.value) {
+    window.open(priceListUrl.value, '_blank')
+  }
+}
 </script>
 
 <style lang="scss" scoped>

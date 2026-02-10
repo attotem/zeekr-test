@@ -76,14 +76,6 @@
           "en": "Book a Test Drive"
         },
         "type": "test_drive",
-        "style": "transparent"
-      },
-      {
-        "text": {
-          "ua": "Замовити зараз",
-          "en": "Order Now"
-        },
-        "type": "order",
         "style": "white"
       }
     ],

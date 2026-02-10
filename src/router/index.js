@@ -41,6 +41,24 @@ const router = createRouter({
 			component: Models,
 		},
 		{
+			path: "/zeekr-7x",
+			name: "zeekr-7x",
+			component: Test7x,
+			meta: { carId: '7x' },
+		},
+		{
+			path: "/zeekr-001",
+			name: "zeekr-001",
+			component: Test7x,
+			meta: { carId: '001' },
+		},
+		{
+			path: "/zeekr-9x",
+			name: "zeekr-9x",
+			component: Test7x,
+			meta: { carId: '9x' },
+		},
+		{
 			path: "/:childId",
 			name: "car",
 			component: Car,

@@ -86,12 +86,23 @@
           class="btn"
           :class="{
             'btn--transparent': button.style === 'transparent',
-            'btn--white': button.style === 'white'
+            'btn--white': button.style === 'white',
+            'btn--orange': button.style === 'orange'
           }"
           @click="handleButtonClick(button.type)"
         >
           {{ getText(button.text) }}
         </button>
+
+        <a
+          v-if="priceListUrl"
+          :href="priceListUrl"
+          class="btn btn--transparent btn--white car-hero__price-list"
+          target="_blank"
+          rel="noopener"
+        >
+          {{ i18n?.pages?.car?.priceList?.[langStore.activeLang] || 'Прайс-лист' }}
+        </a>
       </div>
       </div>
 
@@ -111,8 +122,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, nextTick, watch } from 'vue'
+import { ref, onMounted, computed, nextTick, watch, getCurrentInstance } from 'vue'
 import { useLangStore } from '@/stores/lang'
+
+const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
 
 const props = defineProps({
   data: {
@@ -122,8 +135,15 @@ const props = defineProps({
   carId: {
     type: String,
     default: '7x'
+  },
+  // Optional direct link to PDF price list (from backend modelData.price_list)
+  priceListUrl: {
+    type: String,
+    default: ''
   }
 })
+
+const emit = defineEmits(['buttonClick'])
 
 const langStore = useLangStore()
 const heroData = computed(() => {
@@ -201,8 +221,7 @@ const getText = (textObj) => {
 }
 
 const handleButtonClick = (type) => {
-  // Обработка клика по кнопке
-  // Здесь можно открыть модальное окно или выполнить другое действие
+  emit('buttonClick', type)
 }
 
 const onPlaceholderLoaded = () => {

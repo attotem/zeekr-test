@@ -289,16 +289,7 @@ let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
 const mainSliderSlides = [
-  {
-    pc: showroomPc,
-    tablet: showroomTablet,
-    mobile: showroomMb,
-    title: "Відкриття шоуруму у Львові",
-    titleHighlight: "Львові",
-    address: "с. Малехів, вул. Київська 8Б",
-    date: "24-25 січня",
-    isShowroom: true
-  },
+
   {
     pc: slide001Pc,
     tablet: slide001Tablet,
