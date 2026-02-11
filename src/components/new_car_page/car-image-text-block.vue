@@ -21,7 +21,6 @@
           </div>
         </div>
 
-        <!-- Image section -->
         <div class="car-image-text-block__image-wrap">
           <img
             :src="resolveImage(blockData.image)"
@@ -85,7 +84,6 @@ const preloadImage = () => {
   img.src = imgSrc
 }
 
-// Watch blockData to preload when image changes
 watch(
   () => blockData.value.image,
   (newImage) => {

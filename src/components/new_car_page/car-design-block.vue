@@ -1,7 +1,7 @@
 <template>
   <section class="car-design-block">
     <h2 v-if="getText(blockData.topTitle)" class="car-design-block__top-title">{{ getText(blockData.topTitle) }}</h2>
-    <div class="car-design-block__image-wrap">
+    <div ref="imageWrapEl" class="car-design-block__image-wrap">
       <div
         v-for="(media, index) in mediaItems"
         :key="index"
@@ -82,6 +82,7 @@ const langStore = useLangStore()
 
 const blockData = computed(() => props.data || {})
 const currentIndex = ref(0)
+const imageWrapEl = ref(null)
 
 const getText = (textObj) => {
   if (!textObj) return ''
@@ -136,9 +137,30 @@ const mediaItems = computed(() => {
   return []
 })
 
+// Find all layer <div> children inside the ref container
+const getLayerVideos = () => {
+  if (!imageWrapEl.value) return []
+  const layers = imageWrapEl.value.children
+  return Array.from(layers).map(layer => layer.querySelector('video'))
+}
+
+const playVideoAtIndex = (index) => {
+  const videos = getLayerVideos()
+  videos.forEach((video, idx) => {
+    if (!video) return
+    if (idx === index) {
+      video.play().catch(() => {})
+    } else {
+      video.pause()
+    }
+  })
+}
+
 const handleVideoLoaded = (event) => {
   const video = event.target
-  const videoIndex = mediaItems.value.findIndex(m => m.src === video.src)
+  // Find which index this video belongs to
+  const videos = getLayerVideos()
+  const videoIndex = videos.indexOf(video)
   if (currentIndex.value === videoIndex) {
     video.play().catch(() => {})
   } else {
@@ -148,31 +170,20 @@ const handleVideoLoaded = (event) => {
 
 watch(currentIndex, async (newIndex) => {
   await nextTick()
-  // Pause all videos
-  const allVideos = document.querySelectorAll('.car-design-block__video')
-  allVideos.forEach(video => {
-    if (video && video.pause) {
-      video.pause()
-    }
-  })
-  // Play current video if it's a video
-  const currentMedia = mediaItems.value[newIndex]
-  if (currentMedia && currentMedia.type === 'video') {
-    const videoEl = document.querySelector(`.car-design-block__video[src="${currentMedia.src}"]`)
-    if (videoEl) {
-      videoEl.play().catch(() => {})
-    }
-  }
+  playVideoAtIndex(newIndex)
 })
 
-// Preload images
-onMounted(() => {
+// Preload images & autoplay first video
+onMounted(async () => {
   mediaItems.value.forEach(media => {
     if (media.type === 'image') {
       const img = new Image()
       img.src = media.src
     }
   })
+  // Ensure the first video starts playing
+  await nextTick()
+  playVideoAtIndex(0)
 })
 
 const items = computed(() => {

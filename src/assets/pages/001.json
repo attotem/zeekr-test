@@ -79,16 +79,9 @@
           "en": "Book a Test Drive"
         },
         "type": "test_drive",
-        "style": "transparent"
-      },
-      {
-        "text": {
-          "ua": "Замовити зараз",
-          "en": "Order Now"
-        },
-        "type": "order",
         "style": "white"
       }
+      
     ]
     
   },
@@ -990,7 +983,7 @@
           "mobile": "001_slider1_1_phone.webp"
         },
         "caption": {
-          "ua": "Чотиридверне подвійне скло з шумоізоляцією",
+          "ua": "Подвійне скло на всіх чотирьох дверях",
           "en": "Four-door double-layer laminated soundproof glass"
         }
       },

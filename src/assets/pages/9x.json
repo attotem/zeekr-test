@@ -76,7 +76,7 @@
           "en": "Book a Test Drive"
         },
         "type": "test_drive",
-        "style": "white"
+        "style": "transparent"
       }
     ],
     "specs": []
@@ -248,8 +248,8 @@
       "ua": "Зоряна галактика говорить, серце відображає"
     },
     "images": [
-      "9x_slider2_1.mp4",
-      "9x_slider2_2.mp4"
+      "9x_slider2_1_v.mp4",
+      "9x_slider2_2_v.mp4"
     ],
     "items": [
       {

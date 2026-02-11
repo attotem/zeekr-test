@@ -852,7 +852,7 @@
     ]
   },
   "refrigeratorBlock": {
-    "image": "7x_card_5.webp",
+    "image": "cards/7x_card_5.webp",
     "title": {
       "uk": "Розумний холодильник з постійною температурою",
       "en": "Smart Hot and Cold Constant Temperature Refrigerator",
@@ -877,7 +877,7 @@
     ]
   },
   "roofRackBlock": {
-    "image": "7x_card_6.webp",
+    "image": "cards/7x_card_6.webp",
     "textRight": true,
     "title": {
       "uk": "Багажник на даху",

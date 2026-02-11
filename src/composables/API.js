@@ -6,9 +6,12 @@ let ngrokHeader = {
 	"ngrok-skip-browser-warning": "69420",
 };
 
+
 export function addRegionParam(url) {
+	const region = import.meta.env.VITE_REGION_PARAM;
+	if (!region) return url;
 	const separator = url.includes('?') ? '&' : '?';
-	return `${url}${separator}region_param=dnipro`;
+	return `${url}${separator}region_param=${region}`;
 }
 
 function getHeaders(additionalHeaders = {}) {
