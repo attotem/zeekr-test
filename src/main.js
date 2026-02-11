@@ -21,7 +21,7 @@ import "fullpage.js/dist/fullpage.min.css";
 		localStorage.setItem('bpmHref', firstUrl);
 	}
 
-	const app = createApp(App)
+	const app = createApp(App) 
 		.use(router)
 		.use(createPinia())
 		.use(VueGoogleMaps, {
