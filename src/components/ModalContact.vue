@@ -14,7 +14,7 @@
 					{{ i18n.modal.fillInYourInfo?.[langStore.activeLang] }}
 				</div>
 
-				<div class="modal__inputs">
+      <div class="modal__inputs">
 					<Input
 						:name="langStore.activeLang == 'en' ? 'Your name' : 'Ваше ім\'я'"
 						:isRequired="true"
@@ -35,14 +35,15 @@
 						ref="phone"
 						:type="'tel'"
 					/>
-				</div>
+        </div>
 
-				<div
-					class="btn btn--orange"
-					@click="send"
-				>
-					Відправити
-				</div>
+        <div
+          class="btn btn--orange"
+          :class="{ 'btn--disabled': isSending }"
+          @click="!isSending && send()"
+        >
+          Відправити
+        </div>
 			</template>
 			<template v-else>
 				<div class="modal__h">
@@ -72,6 +73,7 @@ import API from '@/composables/API';
 const router = useRouter();
 let langStore = useLangStore()
 let isSent = ref(false)
+let isSending = ref(false)
 let phone = ref(),
   name = ref(),
   city = ref()
@@ -80,20 +82,28 @@ let props = defineProps(['heading', 'isOpened', 'mailObj'])
 let emits = defineEmits(['close'])
 
 const send = async () => {
+  if (isSending.value) return
+
   const nameOk = name.value?.content?.length > 0
   const cityOk = city.value?.content?.length > 0
   const phoneOk = !!phone.value?.content && !phone.value?.isError
   if (!(nameOk && cityOk && phoneOk)) return;
-  let res = await API.Mail.send({
-    type: props.mailObj.type,
-    page: props.mailObj.page,
-    name: name.value.content,
-    phone: phone.value.content,
-    city: city.value.content
-  })
-  isSent.value = true
-  emits('close')
-  router.push('/thank-you-page')
+
+  try {
+    isSending.value = true
+    await API.Mail.send({
+      type: props.mailObj.type,
+      page: props.mailObj.page,
+      name: name.value.content,
+      phone: phone.value.content,
+      city: city.value.content
+    })
+    isSent.value = true
+    emits('close')
+    router.push('/thank-you-page')
+  } finally {
+    isSending.value = false
+  }
 }
 
 watch(() => props.isOpened, () => {
@@ -174,6 +184,11 @@ watch(() => name.value?.content, (val) => {
   .btn {
     width: 198px;
     align-self: center;
+  }
+
+  .btn--disabled {
+    opacity: 0.6;
+    pointer-events: none;
   }
 }
 
