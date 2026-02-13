@@ -54,6 +54,16 @@
         </div>
       </template>
 
+      <!-- Блок версий (как на старой странице Car.vue) -->
+      <CarVersionsCards
+        v-if="modelBackendData?.car_versions"
+        :title="modelBackendData?.car_versions_title"
+        :versions="modelBackendData?.car_versions"
+        :icons="modelBackendData?.car_versions_tab_icons"
+        :version-images="pageData?.versionsImages || {}"
+        :car-id="carId"
+      />
+
       <!-- Модалка консультации / заказа -->
       <ModalContact
         :heading="i18n.modal?.[modalType]"
@@ -113,6 +123,7 @@ import CarVideoTextBlock from '@/components/new_car_page/car-video-text-block.vu
 import CarTerrainBlock from '@/components/new_car_page/car-terrain-block.vue'
 import CarStrengthBlock from '@/components/new_car_page/car-strength-block.vue'
 import CarDetectBlock from '@/components/new_car_page/car-detect-block.vue'
+import CarVersionsCards from '@/components/new_car_page/car-versions-cards.vue'
 import pageDataJson from '@/assets/pages/7x.json'
 import ModalContact from '@/components/ModalContact.vue'
 import API from '@/composables/API'
@@ -138,6 +149,7 @@ const pageData = ref(null)
 const isLoading = ref(true)
 const selected360Version = ref('standard') // 'standard' or 'kz'
 const priceListUrl = ref('')
+const modelBackendData = ref(null)
 
 // Состояние модалки (консультация / заказ)
 const isModalOpened = ref(false)
@@ -180,9 +192,11 @@ const loadPriceList = async (id) => {
     // Для 7x бекенд-URL выглядит как "zeekr-7x"
     const slug = id === '7x' ? 'zeekr-7x' : `zeekr-${id}`
     const data = await API.Models.getByURL(slug)
+    modelBackendData.value = data
     priceListUrl.value = data?.price_list || ''
   } catch (e) {
-    console.error('Failed to load price list for car', id, e)
+    console.error('Failed to load model data for car', id, e)
+    modelBackendData.value = null
     priceListUrl.value = ''
   }
 }

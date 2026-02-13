@@ -89,6 +89,11 @@
       }
     ]
   },
+  "versionsImages": {
+    "2WD Inteligent": "7x_standart.avif",
+    "2WD Long Range Smart": "7x_longRange.avif",
+    "4WD Smart": "7x_perfomace.avif"
+  },
   "navigationBlock": {
     "title": {
       "ua": "Оновлений ZEEKR 7X",
