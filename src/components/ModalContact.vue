@@ -83,31 +83,60 @@ let props = defineProps(['heading', 'isOpened', 'mailObj'])
 let emits = defineEmits(['close'])
 
 const send = async () => {
-  if (isSending.value) return
+  if (isSending.value) {
+    console.log('[ModalContact] Click on send ignored: already sending')
+    return
+  }
+
+  console.log('[ModalContact] Click on send', {
+    name: name.value?.content,
+    city: city.value?.content,
+    phone: phone.value?.content,
+    mailObj: props.mailObj
+  })
 
   const nameOk = name.value?.content?.length > 0
   const cityOk = city.value?.content?.length > 0
   const phoneOk = !!phone.value?.content && !phone.value?.isError
-  if (!(nameOk && cityOk && phoneOk)) return
+  if (!(nameOk && cityOk && phoneOk)) {
+    console.warn('[ModalContact] Validation failed', {
+      nameOk,
+      cityOk,
+      phoneOk,
+      name: name.value?.content,
+      city: city.value?.content,
+      phone: phone.value?.content,
+      phoneIsError: phone.value?.isError
+    })
+    return
+  }
 
   try {
     isSending.value = true
-
-    await API.Mail.send({
+    const payload = {
       type: props.mailObj.type,
       page: props.mailObj.page,
       name: name.value.content,
       phone: phone.value.content,
       city: city.value.content
-    })
+    }
+
+    console.log('[ModalContact] Sending payload to API.Mail.send', payload)
+
+    API.Mail.send(payload)
 
     isSent.value = true
+    console.log('[ModalContact] Request sent successfully')
     emits('close')       
 
     router.push('/thank-you-page')
+    console.log('[ModalContact] Navigated to /thank-you-page')
 
+  } catch (error) {
+    console.error('[ModalContact] Error while sending request', error)
   } finally {
     isSending.value = false
+    console.log('[ModalContact] isSending reset to false')
   }
 }
 
