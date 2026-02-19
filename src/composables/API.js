@@ -578,7 +578,9 @@ class Mail {
 		};
 
 		const currentUrl = window.location.href;
-		const bpmHref = localStorage.getItem('bpmHref');
+		const storedBpmHref = localStorage.getItem('bpmHref');
+		const bpmHref = storedBpmHref || currentUrl;
+
 		const formattedPhone = phone ? phone.replace(/\s/g, '') : '';
 
 		let body = {

@@ -111,11 +111,15 @@ const send = async () => {
     return
   }
 
+  // Закрываем модалку сразу после успешной валидации (до ответа бэкенда)
+  console.log('[ModalContact] Closing modal before API request')
+  emits('close')
+
   try {
     isSending.value = true
     const payload = {
-      type: props.mailObj.type,
-      page: props.mailObj.page,
+      type: props.mailObj?.type,
+      page: props.mailObj?.page,
       name: name.value.content,
       phone: phone.value.content,
       city: city.value.content
@@ -123,11 +127,10 @@ const send = async () => {
 
     console.log('[ModalContact] Sending payload to API.Mail.send', payload)
 
-    API.Mail.send(payload)
+    await API.Mail.send(payload)
 
     isSent.value = true
     console.log('[ModalContact] Request sent successfully')
-    emits('close')       
 
     router.push('/thank-you-page')
     console.log('[ModalContact] Navigated to /thank-you-page')
