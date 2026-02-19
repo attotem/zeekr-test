@@ -37,13 +37,14 @@
 					/>
         </div>
 
-        <div
+        <button
+          type="button"
           class="btn btn--orange"
           :class="{ 'btn--disabled': isSending }"
           @click="!isSending && send()"
         >
           Відправити
-        </div>
+        </button>
 			</template>
 			<template v-else>
 				<div class="modal__h">
@@ -87,14 +88,11 @@ const send = async () => {
   const nameOk = name.value?.content?.length > 0
   const cityOk = city.value?.content?.length > 0
   const phoneOk = !!phone.value?.content && !phone.value?.isError
-  if (!(nameOk && cityOk && phoneOk)) return;
-
-  // Закрываем модалку сразу после валидации,
-  // до ожидания ответа от бэкенда
-  emits('close')
+  if (!(nameOk && cityOk && phoneOk)) return
 
   try {
     isSending.value = true
+
     await API.Mail.send({
       type: props.mailObj.type,
       page: props.mailObj.page,
@@ -102,13 +100,17 @@ const send = async () => {
       phone: phone.value.content,
       city: city.value.content
     })
+
     isSent.value = true
+    emits('close')       
+
+    router.push('/thank-you-page')
+
   } finally {
     isSending.value = false
   }
-  router.push('/thank-you-page')
-
 }
+
 
 watch(() => props.isOpened, () => {
   isSent.value = false;
