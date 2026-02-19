@@ -89,6 +89,10 @@ const send = async () => {
   const phoneOk = !!phone.value?.content && !phone.value?.isError
   if (!(nameOk && cityOk && phoneOk)) return;
 
+  // Закрываем модалку сразу после валидации,
+  // до ожидания ответа от бэкенда
+  emits('close')
+
   try {
     isSending.value = true
     await API.Mail.send({
@@ -99,11 +103,11 @@ const send = async () => {
       city: city.value.content
     })
     isSent.value = true
-    emits('close')
-    router.push('/thank-you-page')
   } finally {
     isSending.value = false
   }
+  router.push('/thank-you-page')
+
 }
 
 watch(() => props.isOpened, () => {

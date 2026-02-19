@@ -35,7 +35,6 @@
           class="block-appear"
           v-appear
         >
-          <!-- Hero блок: добавляем обработчик кнопок и ссылку на прайс-лист -->
           <component
             v-if="block.type === 'hero'"
             :is="block.component"
@@ -54,7 +53,7 @@
         </div>
       </template>
 
-      <!-- Блок версий (как на старой странице Car.vue) -->
+      <!-- Блок версий (как на старой странице Car.vue)
       <CarVersionsCards
         v-if="modelBackendData?.car_versions"
         :title="modelBackendData?.car_versions_title"
@@ -62,9 +61,8 @@
         :icons="modelBackendData?.car_versions_tab_icons"
         :version-images="pageData?.versionsImages || {}"
         :car-id="carId"
-      />
+      /> -->
 
-      <!-- Модалка консультации / заказа -->
       <ModalContact
         :heading="i18n.modal?.[modalType]"
         :is-opened="isModalOpened !== false"

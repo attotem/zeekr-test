@@ -1,5 +1,6 @@
 <template>
 	<div
+  style="z-index: 1000000000;"
 		class="btn btn--orange"
 		@click="isModalOpened = true"
 	>

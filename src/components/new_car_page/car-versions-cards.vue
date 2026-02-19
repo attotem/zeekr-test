@@ -77,27 +77,22 @@ import { computed, ref, watch } from 'vue'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
-  // Объект car_versions из бекенда (modelData.car_versions)
   versions: {
     type: Object,
     required: true
   },
-  // Заголовок блока (modelData.car_versions_title)
   title: {
     type: String,
     default: ''
   },
-  // Иконки табов (car_versions_tab_icons)
   icons: {
     type: Object,
     default: () => ({})
   },
-  // Карты изображений версий (например, из 7x.json: versionsImages)
-  versionImages: {
+    versionImages: {
     type: Object,
     default: () => ({})
   },
-  // carId для резолва путей картинок
   carId: {
     type: String,
     default: '7x'
