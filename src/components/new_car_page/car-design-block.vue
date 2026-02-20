@@ -305,19 +305,22 @@ const currentItemDescription = computed(() => {
 
   &__switcher-item {
     flex: 0 0 auto;
-    padding: 20px 0;
+    padding: 18px 0;
     border: none;
     background: transparent;
     cursor: pointer;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     position: relative;
 
     &:hover {
       background: transparent;
-    }
 
-    
+      .car-design-block__switcher-title::after {
+        opacity: 0.4;
+        transform: scaleX(1);
+      }
+    }
   }
 
   &__switcher-title {

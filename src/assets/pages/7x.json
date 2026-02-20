@@ -39,7 +39,7 @@
       "en": "Renewed ZEEKR 7X"
     },
     "subtitle": {
-      "ua": "Розкішний SUV, який задовольняє всю сім'ю",
+      "ua": "Розкішний SUV, який ідеально підходить для великої сім'ї",
       "en": "A luxury SUV that satisfies the whole family"
     },
     "video": "hero.mp4",
@@ -534,12 +534,12 @@
   },
   "spaceTextBlock": {
     "title": {
-      "uk": "Насолода простором преміум‑класу",
+      "uk": "Відчуйте комфорт простору преміального рівня",
       "en": "Enjoy premium-class space",
       "zh": "纯享越级空间"
     },
     "subtitle": {
-      "uk": "Кожному — місце першого класу",
+      "uk": "Першокласний кофморт для кожного пасажира",
       "en": "First-class seating for everyone",
       "zh": "全家都是座上宾"
     }
@@ -792,7 +792,7 @@
   },
   "cardsBlock": {
     "title": {
-      "uk": "Чарівний багажник для подорожей",
+      "uk": "Багажник, у який поміщаються всі пригоди",
       "en": "Traveler Magic Trunk",
       "zh": "Traveler Magic Trunk"
     },
@@ -901,7 +901,7 @@
         "zh": "最大承重75kg"
       },
       {
-        "uk": "Чи то кемпінг, серфінг чи лижі, покладіть свою пристрасть на дах",
+        "uk": "Вирушайте назустріч пригодам: кемпінг, серфінг чи лижі — все поміститься на даху",
         "en": "Whether for camping, surfing or skiing, put your passion on the roof",
         "zh": "无论露营、冲浪或滑雪,把热爱都装上车顶"
       }
@@ -925,7 +925,7 @@
       {
         "image": "7x_details_1.webp",
         "title": {
-          "uk": "Оббивка стелі з алькантари",
+          "uk": "Оздоблення стелі з алькантари",
           "en": "Suede-wrapped ceiling",
           "zh": "麂皮绒包覆顶棚"
         },
@@ -1005,7 +1005,7 @@
   "mvpBlock": {
     "image": "7x_mvp.webp",
     "title": {
-      "uk": "Розкішний досвід задніх сидінь рівня MPV",
+      "uk": "Преміальний комфорт на задніх сидіннях",
       "en": "Luxury MPV-level rear row experience",
       "zh": "豪华MPV级的后排体验"
     },
@@ -1047,12 +1047,12 @@
       {
         "image": "7x_slider_1.webp",
         "title": {
-          "uk": "Графеновий нагрів",
+          "uk": "Підігрів сидінь",
           "en": "Graphene heating",
           "zh": "后排座椅石墨烯加热"
         },
         "description": {
-          "uk": "Від холоду до тепла — всього за 5 хвилин. Графеновий нагрів працює швидше та рівномірніше за традиційний, а в поєднанні з функцією масажу перетворює задні сидіння на справжній SPA-відпочинок з ефектом «гарячого каміння",
+          "uk": "Від холоду до тепла — всього за 5 хвилин. Графеновий нагрів працює швидше та рівномірніше за традиційний, а в поєднанні з функцією масажу перетворює задні сидіння на справжній SPA-відпочинок з ефектом «гарячого каміння»",
           "en": "5 minutes from cold to warm, faster and more even than traditional heating, graphene heating + massage linkage, the rear can also relax like a hot stone SPA",
           "zh": "5分钟从冷到暖,比传统加热更快、更均匀,石墨烯加热+按摩联动,后排也能像做热石SPA一样放松"
         }
@@ -1092,7 +1092,7 @@
       "zh": "极致驾控性能"
     },
     "subtitle": {
-      "uk": "Чиста електромобільна SUV також може бути поетичною та далекою",
+      "uk": "Електричний SUV здатен бути водночас поетичним і створеним для далеких подорожей",
       "en": "Pure electric SUV can also be poetic and distant",
       "zh": "纯电SUV也能诗和远方"
     }
@@ -1117,7 +1117,7 @@
       "zh": "长续航，超快充"
     },
     "subtitle": {
-      "uk": "Більш далекий світ - це світогляд дитини",
+      "uk": "Більш далекі подорожі стають ще швидше",
       "en": "A farther world is a child's vision",
       "zh": "更远的世界，是孩子的眼界"
     }
@@ -1127,7 +1127,7 @@
       {
         "image": "battery/7x_battery_1.webp",
         "name": {
-          "uk": "Батарея 75 кВт·год Щит Золота Цегла",
+          "uk": "Батарея 75 кВт·год Shield Golden Brick",
           "en": "75 kWh Aegis Golden Brick Battery",
           "zh": "75度神盾金砖电池"
         },
@@ -1169,7 +1169,7 @@
       {
         "image": "battery/7x_battery_2.webp",
         "name": {
-          "uk": "Батарея 103 кВт·год Кілін",
+          "uk": "Батарея 103 кВт·год Kirin",
           "en": "103 kWh Kirin Battery",
           "zh": "103度麒麟电池"
         },
@@ -1240,8 +1240,8 @@
         },
         "value": "#ffffff",
         "description": {
-          "ua": "",
-          "en": ""
+          "ua": "Чистий білий колір для сучасного вигляду",
+          "en": "Pure white color for a modern look"
         }
       },
       {
@@ -1252,8 +1252,8 @@
         },
         "value": "#4CAF50",
         "description": {
-          "ua": "",
-          "en": ""
+          "ua": "Природний зелений колір",
+          "en": "Natural green color"
         }
       },
       {
@@ -1264,8 +1264,8 @@
         },
         "value": "#9e9e9e",
         "description": {
-          "ua": "",
-          "en": ""
+          "ua": "Стриманий сірий металевий відтінок",
+          "en": "Subtle metallic gray shade"
         }
       },
       {
@@ -1276,8 +1276,8 @@
         },
         "value": "#4A90E2",
         "description": {
-          "ua": "",
-          "en": ""
+          "ua": "Глибокий синій, спокійний, як плин води",
+          "en": "Deep blue, calm, like the flow of water"
         }
       },
       {
@@ -1288,8 +1288,8 @@
         },
         "value": "#1a1a1a",
         "description": {
-          "ua": "",
-          "en": ""
+          "ua": "Класичний чорний колір для елегантного вигляду",
+          "en": "Classic black color for an elegant look"
         }
       }
     ],

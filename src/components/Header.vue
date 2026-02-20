@@ -17,7 +17,6 @@
 					:key="item.name"
 					:id="item.name"
 				>
-					<!-- "Моделі" — без перехода, только открытие меню -->
 					<button
 						v-if="item.name === 'models'"
 						type="button"
