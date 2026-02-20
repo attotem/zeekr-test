@@ -184,6 +184,47 @@ onMounted(async () => {
     }
   }
 
+  &__developer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(17, 17, 17, 0.5);
+      font-size: 12px;
+      font-weight: 400;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      span:first-child {
+        font-weight: 300;
+      }
+      
+      span:last-child {
+        font-weight: 400;
+      }
+    }
+
+    a:hover {
+      color: rgba(17, 17, 17, 0.8);
+    }
+
+    &-logo {
+      height: 14px;
+      width: auto;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+      filter: brightness(0);
+    }
+
+    a:hover &-logo {
+      opacity: 0.9;
+    }
+  }
+
   .developer {
     margin-top: 12px;
     font-size: 14px;
@@ -235,19 +276,21 @@ onMounted(async () => {
   &__second {
     display: flex;
     flex-direction: row;
-    gap: 64px;
+    gap: 80px;
   }
 
   .category {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
 
     &__heading {
       font-weight: 600;
       font-size: 18px;
-      line-height: 1.25;
-      margin-bottom: 2px;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      color: #111;
+      letter-spacing: -0.01em;
 
       .dropdown-icon {
         display: none;
@@ -257,12 +300,21 @@ onMounted(async () => {
     &__dropdown {
       display: inherit;
       flex-direction: inherit;
-      gap: inherit;
+      gap: 12px;
     }
 
     &__item {
       font-size: 16px;
-      line-height: 1.25;
+      line-height: 1.5;
+      color: rgba(17, 17, 17, 0.7);
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+      
+      &:hover {
+        color: #111;
+        transform: translateX(4px);
+      }
     }
   }
 }
@@ -270,28 +322,52 @@ onMounted(async () => {
 @media screen and (max-width: 876px) {
   .footer {
     flex-direction: column;
-    gap: 32px;
-    padding: 40px 16px;
+    gap: 40px;
+    padding: 48px 20px;
+    background: linear-gradient(180deg, #f5f5f5 0%, #EAE8E2 100%);
 
     &__first {
-      gap: 16px;
+      gap: 24px;
     }
 
     &__logo {
-      height: 20px;
+      height: 24px;
     }
 
     .text {
       max-width: unset;
 
       &__heading {
-        font-size: 16px;
-        line-height: 1.25;
+        font-size: 18px;
+        line-height: 1.4;
       }
 
       &__text {
-        font-size: 14px;
-        line-height: 1.25;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+    }
+    
+    .social {
+      width: 36px;
+      height: 36px;
+      
+      &s {
+        gap: 10px;
+      }
+    }
+
+    &__developer {
+      margin-top: 24px;
+      padding-top: 20px;
+      
+      a {
+        font-size: 11px;
+        gap: 6px;
+      }
+      
+      &-logo {
+        height: 12px;
       }
     }
 
@@ -302,26 +378,28 @@ onMounted(async () => {
 
     &__second {
       flex-direction: column;
-      gap: 12px;
+      gap: 0;
     }
 
     .category {
-      gap: unset;
+      gap: 0;
 
       &:has(+.category) {
-        padding-bottom: 12px;
-        border-bottom: 1px solid #000;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
 
       &__heading {
         display: flex;
         flex-direction: row;
-        gap: 6px;
+        gap: 8px;
         justify-content: space-between;
         align-items: center;
-
-        font-size: 16px;
-        line-height: 1.25;
+        font-size: 17px;
+        line-height: 1.3;
+        margin-bottom: 0;
+        padding: 12px 0;
 
         .dropdown-icon {
           display: block;
@@ -331,17 +409,18 @@ onMounted(async () => {
       &__dropdown {
         max-height: 0;
         overflow: hidden;
-        transition: .3s ease-in-out;
-        gap: 8px;
+        transition: max-height 0.3s ease-in-out;
+        gap: 10px;
       }
 
       &__item {
         &:nth-of-type(1) {
-          margin-top: 12px;
+          margin-top: 8px;
         }
 
-        font-size: 14px;
-        line-height: 1.25;
+        font-size: 15px;
+        line-height: 1.5;
+        padding: 6px 0;
       }
     }
   }

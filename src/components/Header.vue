@@ -110,7 +110,7 @@
 				class="lang"
 				id="langs"
 			>
-				{{ langStore.activeLang }}
+				{{ langStore.activeLang === 'uk' ? 'UA' : (langStore.activeLang || 'EN').toUpperCase() }}
 				<Dropdown />
 
 				<div
@@ -122,9 +122,9 @@
 							v-for="lang in langStore.langs"
 							class="dropdown__item"
 							:class="{ 'dropdown__item--active': lang == langStore.activeLang }"
-							@click="langStore.changeLang(lang); sessionStorage.setItem('lang', lang);"
+							@click="changeLanguage(lang)"
 						>
-							{{ lang }}
+							{{ lang === 'uk' ? 'UA' : (lang || 'EN').toUpperCase() }}
 						</div>
 					</div>
 				</div>
@@ -193,9 +193,9 @@
 					class="lang"
 					v-for="lang in langStore.langs"
 					:class="{ 'lang--active': lang == langStore.activeLang }"
-					@click="langStore.changeLang(lang); sessionStorage.setItem('lang', lang);"
+					@click="changeLanguage(lang)"
 				>
-					{{ lang }}
+					{{ lang === 'uk' ? 'UA' : (lang || 'EN').toUpperCase() }}
 				</div>
 			</div>
 		</div>
@@ -206,7 +206,7 @@
 import Logo from "@/components/icons/logo.vue"
 import LogoIcon from "@/components/icons/logoIcon.vue"
 import LogoWord from "@/components/icons/logoWord.vue"
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import Dropdown from "./icons/dropdown.vue";
 import { useLangStore } from "@/stores/lang";
 import { nextTick, onMounted, ref, watch } from "vue";
@@ -217,6 +217,16 @@ import addDropdown from "@/composables/dropdown";
 import Phone from "./icons/phone.vue";
 
 let langStore = useLangStore()
+const router = useRouter()
+
+const changeLanguage = (lang) => {
+  langStore.changeLang(lang)
+  sessionStorage.setItem('lang', lang)
+  // Используем setTimeout чтобы убедиться, что sessionStorage сохранился
+  setTimeout(() => {
+    window.location.reload()
+  }, 100)
+}
 
 const getModelLink = (model) => {
   if (!model.model_page?.url?.child) return ''
@@ -308,8 +318,10 @@ onMounted(async () => {
     const header = document.querySelector('.header--desktop');
     if (!header) return;
     
-    // Если меню моделей открыто (есть класс header--black), не меняем фон при скролле
+    // Для страниц с header--black (contacts, models, stock и т.д.) всегда белый фон
     if (header.classList.contains('header--black')) {
+      header.classList.add('header--desktop-bg');
+      header.classList.remove('header--desktop-transparent');
       return;
     }
     

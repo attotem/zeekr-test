@@ -8,6 +8,14 @@
 			class="modal__inner"
 			@click.stop
 		>
+      <button
+        type="button"
+        class="modal__close"
+        aria-label="Close"
+        @click="emits('close')"
+      >
+        ×
+      </button>
 			<template v-if="!isSent">
 				<div class="modal__h">{{ props.heading?.[langStore.activeLang] }}</div>
 				<div class="modal__underh">
@@ -83,36 +91,14 @@ let props = defineProps(['heading', 'isOpened', 'mailObj'])
 let emits = defineEmits(['close'])
 
 const send = async () => {
-  if (isSending.value) {
-    console.log('[ModalContact] Click on send ignored: already sending')
-    return
-  }
-
-  console.log('[ModalContact] Click on send', {
-    name: name.value?.content,
-    city: city.value?.content,
-    phone: phone.value?.content,
-    mailObj: props.mailObj
-  })
+  if (isSending.value) return
 
   const nameOk = name.value?.content?.length > 0
   const cityOk = city.value?.content?.length > 0
   const phoneOk = !!phone.value?.content && !phone.value?.isError
-  if (!(nameOk && cityOk && phoneOk)) {
-    console.warn('[ModalContact] Validation failed', {
-      nameOk,
-      cityOk,
-      phoneOk,
-      name: name.value?.content,
-      city: city.value?.content,
-      phone: phone.value?.content,
-      phoneIsError: phone.value?.isError
-    })
-    return
-  }
+  if (!(nameOk && cityOk && phoneOk)) return
 
   // Закрываем модалку сразу после успешной валидации (до ответа бэкенда)
-  console.log('[ModalContact] Closing modal before API request')
   emits('close')
 
   try {
@@ -125,21 +111,14 @@ const send = async () => {
       city: city.value.content
     }
 
-    console.log('[ModalContact] Sending payload to API.Mail.send', payload)
-
     await API.Mail.send(payload)
 
     isSent.value = true
-    console.log('[ModalContact] Request sent successfully')
-
     router.push('/thank-you-page')
-    console.log('[ModalContact] Navigated to /thank-you-page')
-
   } catch (error) {
-    console.error('[ModalContact] Error while sending request', error)
+    // Ошибку можно обработать при необходимости (например, показать тост)
   } finally {
     isSending.value = false
-    console.log('[ModalContact] isSending reset to false')
   }
 }
 
@@ -185,6 +164,7 @@ watch(() => name.value?.content, (val) => {
   }
 
   &__inner {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 540px;
@@ -192,6 +172,35 @@ watch(() => name.value?.content, (val) => {
     border-radius: 12px;
     background-color: #fff;
     cursor: auto;
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #000;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    z-index: 10;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #111;
+    }
+
+    &:active {
+      background: rgba(0, 0, 0, 0.15);
+    }
   }
 
 
@@ -222,6 +231,7 @@ watch(() => name.value?.content, (val) => {
   .btn {
     width: 198px;
     align-self: center;
+    border: none;
   }
 
   .btn--disabled {
@@ -235,6 +245,14 @@ watch(() => name.value?.content, (val) => {
     &__inner {
       width: calc(100dvw - (16px * 2));
       padding: 16px;
+    }
+
+    &__close {
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      font-size: 20px;
     }
 
     &__h {

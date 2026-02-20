@@ -107,7 +107,13 @@ const coordinatesMap = {
 			lng: 35.043929, 
 			name: 'Автосалон+Zeekr+Дніпро', 
 			link: 'https://maps.app.goo.gl/e6zKAFixSckortbp7' 
-		}
+		},
+		"9a38f161-49cd-4a2f-8396-c99bc960ce28": { 
+			lat: 49.8817087, 
+			lng: 24.0736147, 
+			name: 'Автосалон+Zeekr+Львів', 
+			link: 'https://www.google.com/maps/place/%D0%90%D0%B2%D1%82%D0%BE%D1%81%D0%B0%D0%BB%D0%BE%D0%BD+Zeekr+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2/@49.8817087,24.0736147,837m/data=!3m2!1e3!4b1!4m6!3m5!1s0x473addacef7288bb:0x961afef3dd1df0f7!8m2!3d49.8817087!4d24.0736147!16s%2Fg%2F11n3xpvl4r!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D' 
+		},
 
 		};
 watch(() => useLangStore().activeLang, async () => {
