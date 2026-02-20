@@ -15,9 +15,12 @@
               class="car-passive-security-block__image"
               loading="lazy"
             />
-            <div v-if="getText(item.title)" class="car-passive-security-block__label">
-              {{ getText(item.title) }}
-            </div>
+          </div>
+          <div
+            v-if="getText(item.title)"
+            class="car-passive-security-block__label"
+          >
+            {{ getText(item.title) }}
           </div>
         </div>
       </div>
@@ -128,16 +131,13 @@ const items = computed(() => {
   }
 
   &__label {
-    position: absolute;
-    left: 18px;
-    bottom: 16px;
+    margin-top: 12px;
     font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.4;
     color: rgba(17, 17, 17, 0.92);
     font-weight: 600;
-    max-width: calc(100% - 36px);
-    pointer-events: none;
+    max-width: 100%;
   }
 }
 
@@ -169,8 +169,7 @@ const items = computed(() => {
     }
 
     &__label {
-      left: 14px;
-      bottom: 12px;
+      margin-top: 10px;
       font-size: 14px;
     }
   }

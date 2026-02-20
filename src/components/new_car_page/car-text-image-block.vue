@@ -94,11 +94,18 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__text {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 60px 20px 40px;
-    width: 100%;
     max-width: 1320px;
     margin: 0 auto;
   }
@@ -116,9 +123,8 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 20px;
     line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
+    color: #111111;
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -128,20 +134,44 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     margin: 0 16px;
 
     &__image-wrap {
-      min-height: 40vh;
+      min-height: auto;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: stretch;
+      justify-content: flex-start;
     }
 
     &__text {
-      padding: 32px 16px;
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      padding: 24px 0 16px;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
     }
 
     &__title {
-      font-size: 32px;
-      margin-bottom: 12px;
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: #000000;
     }
 
     &__subtitle {
-      font-size: 16px;
+      font-size: 14px;
+      color: #333333;
+    }
+
+    &__image {
+      position: relative;
+      top: auto;
+      left: auto;
+      height: auto;
+    }
+
+    &__overlay {
+      display: none;
     }
   }
 }

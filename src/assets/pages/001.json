@@ -32,7 +32,6 @@
     { "type": "sliderBlock", "dataKey": "standardSliderBlock" },
     { "type": "textBlock", "dataKey": "textBlockPerformance" },
     { "type": "textImageBlock", "dataKey": "batteryImageBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockBattery" },
     { "type": "batteryBlock", "dataKey": "batteryBlock" },
     { "type": "titleTwoSubtitlesBlock", "dataKey": "batteryFastChargeBlock" },
     { "type": "textSimpleBlock", "dataKey": "textBlockDriveSystem" },
@@ -367,7 +366,7 @@
   },
   "textBlockStargateMusic": {
     "title": {
-      "ua": "Концертный зал «Старлайт»",
+      "ua": "Концертний зал «Старлайт»",
       "en": "Starlight Concert Hall"
     },
     "subtitle": {
@@ -542,7 +541,7 @@
   },
   "textBlockMassage": {
     "title": {
-      "ua": "3D масаж глибоких тканин",
+      "ua": "3D масаж тканин",
       "en": "3D Deep Tissue Massage"
     },
     "subtitle": {
@@ -628,7 +627,7 @@
       },
       {
         "title": {
-          "ua": "Багаті функції масажу",
+          "ua": "Функції масажу",
           "en": "Rich Massage Functions"
         },
         "items": [
@@ -754,11 +753,11 @@
           "mobile": "001_material_2_phone.webp"
         },
         "title": {
-          "ua": "Рулеве колесо з обробкою NAPPA",
+          "ua": "Кермо з обробкою NAPPA",
           "en": "NAPPA Leather-Wrapped Steering Wheel"
         },
         "description": {
-          "ua": "Рулеве колесо обтягнуте шкірою NAPPA для максимального комфорту",
+          "ua": "Кермо обтягнуте шкірою NAPPA для максимального комфорту",
           "en": "Steering wheel wrapped in NAPPA leather for maximum comfort"
         }
       },
@@ -769,7 +768,7 @@
           "mobile": "001_material_3_phone.webp"
         },
         "title": {
-          "ua": "Покриття стелі з алькантари",
+          "ua": "Оздоблення стелі з алькантари",
           "en": "Suede Headliner Covering"
         },
         "description": {
@@ -882,7 +881,7 @@
           "mobile": "001_screen_3_phone.webp"
         },
         "title": {
-          "ua": "13.02-дюймовий високоточний екран приладів капітана",
+          "ua": "13.02-дюймовий високоточний екран приладів водія",
           "en": "13.02-inch High-Definition Captain's Instrument Screen"
         },
         "description": {
@@ -1065,12 +1064,7 @@
       "en": ""
     }
   },
-  "textBlockBattery": {
-    "title": {
-      "ua": "Всі моделі стандартно оснащені 900V надшвидкою зарядкою та великою батареєю",
-      "en": "All Series Standard with 900V Ultra-Fast Charging Large Battery"
-    }
-  },
+ 
   "batteryBlock": {
     "batteries": [
       {
@@ -1307,7 +1301,7 @@
     },
     "text2": {
       "title": {
-        "ua": "Акриловий LV зонований затемнюючий дах",
+        "ua": "Акриловий LV зонований затемнений дах",
           "en": "Ink-wash LV Zoned Dimming Canopy"
         },
       "items": [
@@ -1386,7 +1380,7 @@
         }
       ],
       "note": {
-        "ua": "*Дані з інженерних вимірювань, час розгону не включає перший фут старту",
+        "ua": "*Дані з інженерних вимірювань, час розгону не включає перший км старту",
         "en": "*Data from engineering tests, acceleration time does not include the first foot of rollout"
       }
     },
@@ -1686,7 +1680,7 @@
           "mobile": "001_security_6_phone.webp"
         },
         "title": {
-          "ua": "«Маленький синій світло» індикатор стану допомоги водію",
+          "ua": "«Маленький синій індикатор стану допомоги водію»",
           "en": "\"Small blue light\" assisted driving status indicator light"
         }
       }
@@ -1927,8 +1921,8 @@
           "en": "All-Scenario Tire Blowout Control"
         },
         "description": {
-          "ua": "120 км/год: контроль під час проколу без втрати керованості\n50 км/год: контроль під час повторних проколів без втрати керованості",
-          "en": "120 km/h: blowout control without loss of stability\n50 km/h: continuous blowout control without loss of stability"
+          "ua": "120 км/год — контроль під час проколу без втрати керованості.\n50 км/год — контроль під час повторних проколів без втрати керованості.",
+          "en": "120 km/h — blowout control without loss of stability.\n50 km/h — continuous blowout control without loss of stability."
         }
       }
     ]
