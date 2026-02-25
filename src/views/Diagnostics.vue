@@ -54,24 +54,30 @@
 
 			<Map :chosenCenterId="chosenCenterId"></Map>
 
-			<div class="centers">
-				<div
-					class="center"
-					v-for="center in centers?.center_contacts"
-					:key="center.id"
-					@click="chosenCenterId = center.id"
-				>
-					<h3 class="center__name">
-						{{ center.value.center_name }}
-					</h3>
-					<div class="center__item">
-						<Phone />
-						<a
-							:href="`tel:${center.value.center_phone}`"
-							style="text-decoration: underline;"
-							>{{ center.value.center_phone }}</a
-						>
-					</div>
+				<div class="centers">
+					<div
+						class="center"
+						v-for="center in centers?.center_contacts"
+						:key="center.id"
+						@click="chosenCenterId = center.id"
+					>
+						<h3 class="center__name">
+							{{ center.value.center_name }}
+						</h3>
+						<div class="center__item center__item--phones">
+							<Phone />
+							<div class="center__phones">
+								<a
+									v-for="(phone, idx) in splitPhones(center.value.center_phone)"
+									:key="idx"
+									:href="phone.href"
+									style="text-decoration: underline;"
+									class="center__phone"
+								>
+									{{ phone.display }}
+								</a>
+							</div>
+						</div>
 					<div class="center__item">
 						<Geo />
 						{{ center.value.center_address }}
@@ -109,6 +115,22 @@ let isModalOpened = ref(false),
 let isLoading = computed(() => useLoaderStore().isLoading)
 let chosenCenterId = ref()
 
+const splitPhones = (raw) => {
+  if (!raw) return []
+  return raw
+    .split(/[,;]+/)
+    .map(p => p.trim())
+    .filter(Boolean)
+    .map(p => {
+      const match = p.match(/[+0-9\s]+/)
+      const phoneForTel = (match ? match[0] : p).replace(/\s+/g, '')
+      return {
+        display: p,
+        href: `tel:${phoneForTel}`
+      }
+    })
+}
+
 watch(() => langStore.activeLang, async () => {
   data.value = await API.DiagnosticsPage.get();
   centers.value = await API.ContactsPage.get();
@@ -123,6 +145,20 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" scoped>
+.center__item--phones {
+  align-items: flex-start;
+}
+
+.center__phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.center__phone {
+  font-size: 14px;
+}
+
 @media screen and (max-width: 876px) {
   .article {
     &-1 {

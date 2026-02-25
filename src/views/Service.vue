@@ -131,13 +131,19 @@
 					<h3 class="center__name">
 						{{ center.value.center_name }}
 					</h3>
-					<div class="center__item">
+					<div class="center__item center__item--phones">
 						<Phone />
-						<a
-							:href="`tel:${center.value.center_phone}`"
-							style="text-decoration: underline;"
-							>{{ center.value.center_phone }}</a
-						>
+						<div class="center__phones">
+							<a
+								v-for="(phone, idx) in splitPhones(center.value.center_phone)"
+								:key="idx"
+								:href="phone.href"
+								style="text-decoration: underline;"
+								class="center__phone"
+							>
+								{{ phone.display }}
+							</a>
+						</div>
 					</div>
 					<div class="center__item">
 						<Geo />
@@ -184,6 +190,22 @@ let isLoading = computed(() => useLoaderStore().isLoading)
 let chosenCenterId = ref()
 
 const isMobile = computed(() => isMobileFn())
+
+const splitPhones = (raw) => {
+  if (!raw) return []
+  return raw
+    .split(/[,;]+/)
+    .map(p => p.trim())
+    .filter(Boolean)
+    .map(p => {
+      const match = p.match(/[+0-9\s]+/)
+      const phoneForTel = (match ? match[0] : p).replace(/\s+/g, '')
+      return {
+        display: p,
+        href: `tel:${phoneForTel}`
+      }
+    })
+}
 
 watch(() => langStore.activeLang, async () => {
   serviceData.value = await API.ServicePage.get()
@@ -284,6 +306,20 @@ onMounted(async () => {
       }
     }
   }
+}
+
+.center__item--phones {
+  align-items: flex-start;
+}
+
+.center__phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.center__phone {
+  font-size: 14px;
 }
 
 .enjoy {
