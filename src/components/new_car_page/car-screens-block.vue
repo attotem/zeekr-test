@@ -33,8 +33,9 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
+import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -50,25 +51,6 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-// Track viewport width for responsive images
-const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
-let resizeHandler = null
-
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    resizeHandler = () => {
-      windowWidth.value = window.innerWidth
-    }
-    window.addEventListener('resize', resizeHandler)
-  }
-})
-
-onBeforeUnmount(() => {
-  if (typeof window !== 'undefined' && resizeHandler) {
-    window.removeEventListener('resize', resizeHandler)
-  }
-})
-
 const getText = (textObj) => {
   if (!textObj) return ''
   if (typeof textObj === 'string') return textObj
@@ -83,34 +65,7 @@ const getText = (textObj) => {
   return ''
 }
 
-// Normalize image (string or { desktop, tablet, mobile }) to file name
-const getImagePath = (imageObj) => {
-  if (!imageObj) return ''
-  if (typeof imageObj === 'string') return imageObj
-
-  if (typeof imageObj === 'object' && imageObj !== null) {
-    const isMobile = windowWidth.value <= 876
-    const isTablet = windowWidth.value > 876 && windowWidth.value <= 1200
-
-    if (isMobile && imageObj.mobile) return imageObj.mobile
-    if (isTablet && imageObj.tablet) return imageObj.tablet
-    if (imageObj.desktop) return imageObj.desktop
-
-    return imageObj.mobile || imageObj.tablet || imageObj.desktop || ''
-  }
-
-  return ''
-}
-
-const resolveImage = (imagePath) => {
-  const path = getImagePath(imagePath)
-  if (!path) return ''
-  if (typeof path === 'string' && path.startsWith('/')) return path
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${path}`
-  }
-  return `/pages/${props.carId}/${path}`
-}
+const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
 
 const screens = computed(() => {
   if (blockData.value.screens && Array.isArray(blockData.value.screens)) {

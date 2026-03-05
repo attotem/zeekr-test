@@ -5,10 +5,10 @@
 
 			<div class="text">
 				<div class="text__heading">
-					{{ first.heading[langStore.activeLang] }}
+					{{ getFirstText(first.heading) }}
 				</div>
 				<div class="text__text">
-					{{ first.text[langStore.activeLang] }}
+					{{ getFirstText(first.text) }}
 				</div>
 			</div>
 
@@ -74,12 +74,27 @@ const langStore = useLangStore()
 
 let first = ref({
   heading: {
-    en: "Innovation, convenience, profitability - Zeekr"
+    en: "Innovation, convenience, profitability - Zeekr",
+    ua: "Інновації, комфорт, вигода — Zeekr"
   },
   text: {
-    en: "Official importer and distributor of Zeekr electric vehicles in Ukraine"
+    en: "Official importer and distributor of Zeekr electric vehicles in Ukraine",
+    ua: "Офіційний імпортер та дистриб’ютор електромобілів Zeekr в Україні"
   }
 })
+
+const getFirstText = (field) => {
+  if (!field) return ''
+  const lang = langStore.activeLang || 'en'
+
+  if ((lang === 'uk' || lang === 'ua') && (field.ua || field.uk)) {
+    return field.ua || field.uk
+  }
+
+  if (field[lang]) return field[lang]
+
+  return field.ua || field.uk || field.en || Object.values(field)[0] || ''
+}
 
 let socials = ref([])
 

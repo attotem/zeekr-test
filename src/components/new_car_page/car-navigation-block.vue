@@ -27,8 +27,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -44,32 +45,8 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const resolveImagePath = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
-}
-
 const getImageSrc = computed(() => {
-  // Use image from data if available
-  if (blockData.value.image?.desktop) {
-    return resolveImagePath(blockData.value.image.desktop)
-  }
-  if (blockData.value.image?.tablet) {
-    return resolveImagePath(blockData.value.image.tablet)
-  }
-  if (blockData.value.image?.mobile) {
-    return resolveImagePath(blockData.value.image.mobile)
-  }
-  // If image is a string, resolve it
-  if (typeof blockData.value.image === 'string') {
-    return resolveImagePath(blockData.value.image)
-  }
-  // Fallback - return empty string if no image specified
-  return ''
+  return resolveMediaPath(blockData.value.image, { carId: props.carId })
 })
 
 // Функция для получения текста в зависимости от языка

@@ -84,11 +84,11 @@
   "textBlock": {
     "title": {
       "en": "Powerful Elegance",
-      "ua": "Потужна елегантність"
+      "ua": "Потужність, втілена в елегантності"
     },
     "subtitle": {
       "en": "Original Flagship Aesthetics",
-      "ua": "Оригінальна флагманська естетика"
+      "ua": "Вишукана флагманська естетика"
     }
   },
   "navigationBlock": {
@@ -99,7 +99,7 @@
     "image": {
       "desktop": "9x_specs.webp",
       "tablet": "9x_specs_tablet.webp",
-      "mobile": "9x_specs.webp"
+      "mobile": "9x_specs_phone.webp"
     },
     "navigation": [
       {
@@ -213,7 +213,7 @@
       {
         "title": {
           "en": "Yacht-Style Flybridge Roof",
-          "ua": "Яхтовий дах у стилі flybridge"
+          "ua": "Дах у стилі flybridge"
         },
         "description": {
           "en": "Features an integrated C-ring design, seamlessly connecting the roof and body like a luxury yacht's flybridge",
@@ -430,7 +430,7 @@
         },
         "description": {
           "en": "Under the night sky, starlight touches the brilliant moment of golden ore veins. Night conceals its edge, while gold illuminates all things",
-          "ua": "Під зоряним небом зоряне світло торкається блискучої миті золотих жил руди. Ніч приховує свою гострий край, поки золото освітлює всі речі"
+          "ua": "Під зоряним небом зоряне світло торкається блискучої миті золотих жил руди. Ніч приховує свій гострий край, поки золото освітлює всі речі"
         }
       }
     ],
@@ -600,7 +600,7 @@
   "textBlockCloud": {
     "title": {
       "en": "Sit and Watch the Clouds Rise, Heart Relaxed and Spirit Free",
-      "ua": "Сидячи й спостерігаючи за хмарами, серце розслаблюється, а дух стає вільним."
+      "ua": "Сидячи, спостерігаючи за хмарами, серце розслаблене, дух вільний."
   }
   },
   "skyVideosBlock": {
@@ -618,7 +618,7 @@
       "text1": {
         "title": {
           "en": "Soft NAPPA Full-Grain Top-Layer Leather",
-          "ua": "М’яка шкіра NAPPA верхнього зернистого шару"
+          "ua": "М'яка NAPPA - повнозерниста верхня шкіра"
         },
         "items": [
           {
@@ -638,7 +638,7 @@
         ],
         "note": {
           "en": "* Soft NAPPA full-grain top-layer leather covers all car seats, human contact areas, central armrests, partial door panels, and other areas",
-          "ua": "* М’яка шкіра NAPPA верхнього зернистого шару використовується для всіх сидінь, зон контакту з пасажирами, центральних підлокітників, частин дверних панелей та інших елементів салону."
+          "ua": "* М'яка NAPPA — повнозерниста верхня шкіра, що покриває всі сидіння автомобіля, зони контакту з людиною, центральні підлокітники, часткові панелі дверей та інші зони"
         }
       },
     
@@ -1397,7 +1397,7 @@
   "textBlockSafety": {
     "title": {
       "en": "Vast Safety Armor",
-      "ua": "Vast безпечна броня"
+      "ua": "безпечна броня"
     },
     "subtitle": {
       "en": "Steel Bones and Iron Frame, Complete Protection",

@@ -1,5 +1,5 @@
 <template>
-	<div class="map-wrapper article-2">
+	<div class="map-wrapper">
 		<GMapMap
 			ref="mapRef"
 			:center="mapCenter"

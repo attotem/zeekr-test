@@ -42,6 +42,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: { type: Object, required: true },
@@ -70,23 +71,26 @@ const getText = (textObj) => {
 }
 
 const getInsideImage = (id) => {
-  // Try both formats: inside/inside_${id}.webp and ${carId}_inside_${id}.webp
-  const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
-  const path1 = `${basePath}/${props.carId}/inside/inside_${id}.webp`
-  const path2 = `${basePath}/${props.carId}/${props.carId}_inside_${id}.webp`
-  // For now, return path2 for 001 and 9x, path1 for others
-  if (props.carId === '001' || props.carId === '9x') {
-    return path2
+  if (props.carId === '7x') {
+    const media = {
+      desktop: `inside_${id}.webp`,
+      tablet: `inside_${id}_tablet.webp`,
+      mobile: `inside_${id}.webp`
+    }
+    return resolveMediaPath(media, { carId: props.carId, subfolder: 'inside' })
   }
-  return path1
+
+  if (props.carId === '001' || props.carId === '9x') {
+    return resolveMediaPath(`${props.carId}_inside_${id}.webp`, { carId: props.carId })
+  }
+
+  return resolveMediaPath(`inside/inside_${id}.webp`, { carId: props.carId })
 }
 const getColorIcon = (id) => {
-  // Map biege to beige for icon
   const iconId = id === 'biege' ? 'beige' : id
   return `/src/assets/colors/${iconId}.webp`
 }
 
-// Preload images
 onMounted(() => {
   options.value.forEach(o => {
     const img = new Image()
@@ -220,7 +224,12 @@ onMounted(() => {
   .car-inside-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    height: 100vh;
+    height: 60vh;
+
+    &__image {
+      background-size: contain;
+      background-position: top center;
+    }
 
     &__bottom {
       padding: 24px 16px;

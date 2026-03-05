@@ -101,8 +101,8 @@
     },
     "image": {
       "desktop": "7x-second.webp",
-      "tablet": "7x-second.webp",
-      "mobile": "7x-second.webp"
+      "tablet": "7x-second_phone.webp",
+      "mobile": "7x-second_phone.webp"
     },
     "navigation": [
       {
@@ -786,7 +786,7 @@
           "uk": "Зручний відсік у передніх дверах",
           "en": "Convenient compartment in front doors",
           "zh": "前排门板扶手储物盒"
-        }
+        } 
       }
     ]
   },

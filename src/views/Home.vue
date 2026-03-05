@@ -35,18 +35,18 @@
 							/>
 							<img
 								:src="slide.pc || slide.tablet || slide.mobile"
-								:alt="slide.title || 'Zeekr'"
+								:alt="getSlideText(slide.title) || 'Zeekr'"
 								loading="eager"
 							/>
 						</picture>
 						<template v-if="slide.isShowroom">
-							<div class="article-1__showroom-content">
-								<div v-if="slide.title" class="article-1__h article-1__h--1 article-1__h--showroom">
+								<div class="article-1__showroom-content">
+								<div v-if="getSlideText(slide.title)" class="article-1__h article-1__h--1 article-1__h--showroom">
 									<span v-if="slide.titleHighlight">
-										{{ slide.title.replace(slide.titleHighlight, '') }}
+										{{ getSlideText(slide.title).replace(slide.titleHighlight, '') }}
 										<span class="article-1__h-highlight">{{ slide.titleHighlight }}</span>
 									</span>
-									<span v-else>{{ slide.title }}</span>
+									<span v-else>{{ getSlideText(slide.title) }}</span>
 								</div>
 								<div class="article-1__info">
 									<div v-if="slide.address" class="article-1__info-item">
@@ -61,16 +61,24 @@
 						<template v-else>
 							<div class="article-1__slide-content">
 								<div class="article-1__slide-text">
-									<div v-if="slide.title" class="article-1__h article-1__h--1 article-1__h--top">
-										{{ slide.title }}
+									<div v-if="getSlideText(slide.title)" class="article-1__h article-1__h--1 article-1__h--top">
+										{{ getSlideText(slide.title) }}
 									</div>
-									<div v-if="slide.subtitle" class="article-1__h article-1__h--2 article-1__h--top">
-										{{ slide.subtitle }}
+									<div v-if="getSlideText(slide.subtitle)" class="article-1__h article-1__h--2 article-1__h--top">
+										{{ getSlideText(slide.subtitle) }}
 									</div>
-									<div v-if="slide.variants" class="article-1__h article-1__h--variants article-1__h--top">
-										<template v-for="(variant, index) in slide.variants.split(' ')" :key="index">
+									<div v-if="getSlideText(slide.variants)" class="article-1__h article-1__h--variants article-1__h--top">
+										<template
+											v-for="(variant, index) in getSlideText(slide.variants).split(' ')"
+											:key="index"
+										>
 											<span>{{ variant }}</span>
-											<span v-if="index < slide.variants.split(' ').length - 1" class="article-1__h-separator">|</span>
+											<span
+												v-if="index < getSlideText(slide.variants).split(' ').length - 1"
+												class="article-1__h-separator"
+											>
+												|
+											</span>
 										</template>
 									</div>
 								</div>
@@ -93,7 +101,9 @@
 				</Transition>
 
         <div>
-          <h2 class="carousel__title">Модельний ряд</h2>
+          <h2 class="carousel__title">
+            {{ getSlideText({ ua: 'Модельний ряд', en: 'Model range' }) }}
+          </h2>
 
         <div class="carousel__tabs">
           <template v-for="(item, index) in carouselModels" :key="item.id">
@@ -145,7 +155,7 @@
 						:to="getCarDetailLink()"
 						class="btn btn--orange carousel__more"
 					>
-						Детальніше
+						{{ getSlideText({ ua: 'Детальніше', en: 'Learn more' }) }}
 					</RouterLink>
 				</div>
 			</section>
@@ -289,32 +299,76 @@ let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
 const mainSliderSlides = [
-
   {
     pc: slide001Pc,
     tablet: slide001Tablet,
     mobile: slide001Mb,
-    title: "001 NEW",
-    subtitle: "Оновлена модель 2026 MY",
-    variants: "MAX ULTRA ULTRA+"
+    title: {
+      ua: '001 NEW',
+      en: '001 NEW'
+    },
+    subtitle: {
+      ua: 'Оновлена модель 2026',
+      en: 'Updated 2026 model'
+    },
+    variants: {
+      ua: 'MAX ULTRA ULTRA+',
+      en: 'MAX ULTRA ULTRA+'
+    }
   },
   {
     pc: slide7xPc,
     tablet: slide7xTablet,
     mobile: slide7xMb,
-    title: "7X New",
-    subtitle: "Оновлена модель 2026MY",
-    variants: "MAX ULTRA"
+    title: {
+      ua: '7X New',
+      en: '7X New'
+    },
+    subtitle: {
+      ua: 'Оновлена модель 2026',
+      en: 'Updated 2026 model'
+    },
+    variants: {
+      ua: 'MAX ULTRA',
+      en: 'MAX ULTRA'
+    }
   },
   {
     pc: slide9xPc,
     tablet: slide9xTablet,
     mobile: slide9xMb,
-    title: "9X NEW",
-    subtitle: "Ультралюксовий SUV нового покоління",
-    variants: "MAX ULTRA HYPER"
+    title: {
+      ua: '9X NEW',
+      en: '9X NEW'
+    },
+    subtitle: {
+      ua: 'Ультралюксовий SUV нового покоління',
+      en: 'Ultra-luxury next-generation SUV'
+    },
+    variants: {
+      ua: 'MAX ULTRA HYPER',
+      en: 'MAX ULTRA HYPER'
+    }
   }
 ]
+
+const getSlideText = (field) => {
+  if (!field) return ''
+  if (typeof field === 'string') return field
+  if (typeof field === 'object' && field !== null) {
+    const lang = langStore.activeLang || 'en'
+
+    // Українська може бути як 'uk' або 'ua'
+    if ((lang === 'uk' || lang === 'ua') && (field.ua || field.uk)) {
+      return field.ua || field.uk
+    }
+
+    if (field[lang]) return field[lang]
+
+    return field.ua || field.uk || field.en || Object.values(field)[0] || ''
+  }
+  return ''
+}
 
 const carouselModels = ref([
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },

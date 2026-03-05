@@ -387,8 +387,8 @@
   },
   "textBlockAudio": {
     "title": {
-      "ua": "Аудіосистема Dolphin Sound театрального рівня",
-      "en": "Dolphin Sound Theater-Grade Audio System"
+      "ua": "Аудіосистема Zeekr Sound Max театрального рівня",
+      "en": "Zeekr Sound Max Theater-Grade Audio System"
     },
     "subtitle": {
       "ua": "",
@@ -426,7 +426,7 @@
           "en": "0.025 mm"
         },
         "label": {
-          "ua": "Графенова діафрагма твітера",
+          "ua": "Діафрагма",
           "en": "Graphene Tweeter Diaphragm"
         }
       },
@@ -436,7 +436,7 @@
           "en": "7.1.4.8"
         },
         "label": {
-          "ua": "Компоновка об'ємного звуку",
+          "ua": "Компонування об'ємного звуку",
           "en": "Surround Sound Field Layout"
         }
       },
@@ -541,7 +541,7 @@
   },
   "textBlockMassage": {
     "title": {
-      "ua": "3D масаж тканин",
+      "ua": "Покращений 3D масаж",
       "en": "3D Deep Tissue Massage"
     },
     "subtitle": {
@@ -1723,7 +1723,7 @@
   },
   "textBlockParkingKing": {
     "title": {
-      "ua": "Всесильний майстер паркування",
+      "ua": "Покращений асистент паркування",
       "en": "All‑Round Parking King"
     },
     "subtitle": {

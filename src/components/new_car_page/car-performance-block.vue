@@ -266,7 +266,7 @@ onMounted(() => {
     margin: 0 16px;
 
     &__inner {
-      padding: 0 16px;
+      padding: 0;
     }
 
     &__row {

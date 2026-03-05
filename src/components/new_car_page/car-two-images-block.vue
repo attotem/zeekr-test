@@ -46,8 +46,9 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onBeforeUnmount, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -63,26 +64,6 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-// Track window width for responsive image selection
-const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
-
-let resizeHandler = null
-
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    resizeHandler = () => {
-      windowWidth.value = window.innerWidth
-    }
-    window.addEventListener('resize', resizeHandler)
-  }
-})
-
-onBeforeUnmount(() => {
-  if (typeof window !== 'undefined' && resizeHandler) {
-    window.removeEventListener('resize', resizeHandler)
-  }
-})
-
 const getText = (textObj) => {
   if (!textObj) return ''
   if (typeof textObj === 'string') return textObj
@@ -97,37 +78,12 @@ const getText = (textObj) => {
   return ''
 }
 
-// Normalize image value (string or { desktop, tablet, mobile }) to a path string.
-// Fallback: если нет mobile — показываем tablet, если нет tablet — desktop.
-const getImagePath = (imageObj) => {
-  if (!imageObj) return ''
-  if (typeof imageObj === 'string') return imageObj
-  if (typeof imageObj === 'object' && imageObj !== null) {
-    const isMobile = windowWidth.value <= 876
-    const isTablet = windowWidth.value > 876 && windowWidth.value <= 1200
+const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
 
-    if (isMobile) return imageObj.mobile || imageObj.tablet || imageObj.desktop || ''
-    if (isTablet) return imageObj.tablet || imageObj.desktop || ''
-    return imageObj.desktop || ''
-  }
-  return ''
-}
-
-const resolveImage = (imagePath) => {
-  const path = getImagePath(imagePath)
-  if (!path) return ''
-  if (typeof path === 'string' && path.startsWith('/')) return path
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${path}`
-  }
-  return `/pages/${props.carId}/${path}`
-}
-
-const isVideo = (path) => {
-  if (!path) return false
-  const imagePath = getImagePath(path)
-  if (!imagePath || typeof imagePath !== 'string') return false
-  return imagePath.endsWith('.mp4') || imagePath.endsWith('.webm') || imagePath.endsWith('.mov')
+const isVideo = (media) => {
+  const fileName = pickResponsivePath(media)
+  if (!fileName || typeof fileName !== 'string') return false
+  return fileName.endsWith('.mp4') || fileName.endsWith('.webm') || fileName.endsWith('.mov')
 }
 
 const images = computed(() => {

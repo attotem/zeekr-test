@@ -153,10 +153,10 @@ const videoSrc = computed(() => {
   .car-video-with-text-overlay {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 44px 0;
+    padding: 0;
 
     &__inner {
-      padding: 0 16px;
+      padding: 0;
     }
 
     &__video-wrap {

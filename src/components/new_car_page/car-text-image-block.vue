@@ -115,7 +115,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     font-size: 48px;
     line-height: 1.3;
     font-weight: 400;
-    color: #000000;
+    color: #ffffff;
     margin: 0 0 16px 0;
   }
 
@@ -123,7 +123,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 20px;
     line-height: 1.5;
-    color: #111111;
+    color: rgba(255, 255, 255, 0.9);
     margin: 0;
   }
 }

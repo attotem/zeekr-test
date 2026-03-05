@@ -680,7 +680,7 @@ const next = async () => {
   .car-slider-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    padding: 44px 0 52px;
+    padding: 0 0 52px;
 
     &__inner {
       padding: 0 16px;

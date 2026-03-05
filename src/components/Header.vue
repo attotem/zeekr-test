@@ -23,7 +23,7 @@
 						class="menu__item"
 						:class="{ 'menu__item--dropdown': Object.hasOwn(item, 'children') }"
 					>
-						{{ item.label.ua }}
+						{{ getNavLabel(item.label) }}
 						<template v-if="Object.hasOwn(item, 'children')">
 							<Dropdown />
 
@@ -85,7 +85,7 @@
 						:class="{ 'menu__item--dropdown': Object.hasOwn(item, 'children'), 'btn btn--transparent btn--transparent-white': item.isConfigurator }"
 						:to="item.name ? `/${item.name}` : ''"
 					>
-						{{ item.label.ua }}
+						{{ getNavLabel(item.label) }}
 					</RouterLink>
 				</div>
 			</div>
@@ -157,7 +157,7 @@
 					:id="`${item.name}-mobile`"
 				>
 					<RouterLink :to="item.name ? item.name : ''">
-						{{ item.label.ua }}
+						{{ getNavLabel(item.label) }}
 					</RouterLink>
 					<template v-if="Object.hasOwn(item, 'children')">
 						<div class="dropdown-icon--outer">
@@ -218,6 +218,22 @@ import Phone from "./icons/phone.vue";
 
 let langStore = useLangStore()
 const router = useRouter()
+
+const getNavLabel = (label) => {
+  if (!label) return ''
+  const lang = langStore.activeLang || 'en'
+
+  // Украинский может быть как 'uk' в сторе, а в данных как 'ua'
+  if ((lang === 'uk' || lang === 'ua') && (label.ua || label.uk)) {
+    return label.ua || label.uk
+  }
+
+  // Пытаемся взять точное совпадение по ключу языка
+  if (label[lang]) return label[lang]
+
+  // Фоллбеки
+  return label.ua || label.uk || label.en || Object.values(label)[0] || ''
+}
 
 const changeLanguage = (lang) => {
   langStore.changeLang(lang)

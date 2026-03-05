@@ -355,6 +355,15 @@ function getAccordionBody(html) {
   color: #fff;
   overflow: hidden;
 
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .picture {
     position: absolute;
     top: 0;
