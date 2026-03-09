@@ -66,6 +66,8 @@ import { useLangStore } from '@/stores/lang';
 import Instagram from './icons/socials/instagram.vue';
 import Facebook from './icons/socials/facebook.vue';
 import XTwitter from './icons/socials/xtwitter.vue';
+import TikTok from './icons/socials/tiktok.vue';
+import YouTube from './icons/socials/youtube.vue';
 import Dropdown from './icons/dropdown.vue';
 import addDropdown from '@/composables/dropdown';
 import API from '@/composables/API';
@@ -113,15 +115,33 @@ const updateSocials = (contacts) => {
     'twitter': { component: markRaw(XTwitter) },
     'xtwitter': { component: markRaw(XTwitter) },
     'facebook': { component: markRaw(Facebook) },
-    'fb': { component: markRaw(Facebook) }
+    'fb': { component: markRaw(Facebook) },
+    'tiktok': { component: markRaw(TikTok) },
+    'tt': { component: markRaw(TikTok) },
+    'youtube': { component: markRaw(YouTube) },
+    'yt': { component: markRaw(YouTube) }
   };
   
   contacts.forEach(contact => {
-    const shortName = contact.short_name?.toLowerCase();
-    if (socialMap[shortName]) {
+    const raw = contact.short_name?.toLowerCase() || '';
+    let key = raw.replace(/[^a-z0-9]+/g, '');
+
+    if (!socialMap[key] && contact.url) {
+      const url = String(contact.url).toLowerCase();
+
+      if (url.includes('instagram.com')) key = 'instagram';
+      else if (url.includes('tiktok.com')) key = 'tiktok';
+      else if (url.includes('facebook.com')) key = 'facebook';
+      else if (url.includes('youtube.com') || url.includes('youtu.be')) key = 'youtube';
+      else if (url.includes('x.com') || url.includes('twitter.com')) key = 'x';
+    }
+
+    if (socialMap[key]) {
+      console.log(key);
       socials.value.push({
         href: contact.url,
-        component: socialMap[shortName].component
+        component: socialMap[key].component
+
       });
     }
   });

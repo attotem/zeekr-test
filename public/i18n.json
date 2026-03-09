@@ -238,8 +238,8 @@
   },
   "legal": {
     "copy": {
-      "en": "© 2025 LLC \"SKM-1\".",
-      "uk": "© 2025 ТОВ \"СКМ-1\"."
+      "en": "© {year} LLC \"SKM-1\".",
+      "uk": "© {year} ТОВ \"СКМ-1\"."
     },
     "info": {
       "en": "Legal information",

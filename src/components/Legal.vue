@@ -1,7 +1,7 @@
 <template>
 	<div class="legal">
 		<div class="legal__text">
-			{{ i18n.legal.copy?.[langStore.activeLang] }}
+			{{ i18n.legal.copy?.[langStore.activeLang]?.replace('{year}', new Date().getFullYear()) }}
 			<span class="legal__text--pale">
 				{{ i18n.legal.info?.[langStore.activeLang] }}
 			</span>
