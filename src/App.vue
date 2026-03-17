@@ -6,13 +6,7 @@
 	<Footer />
 	<Legal />
 
-	<div class="developer-global">
-		<a href="https://leetsoft.dev?utm_source=zeekr" target="_blank" rel="noopener noreferrer">
-      <span>Developed by </span>
-			<img src="@/assets/img/leetsoft_logo.svg" alt="LeetSoft logo" class="developer-global__logo" />
-			<span>LeetSoft</span>
-		</a>
-	</div>
+	
 </template>
 
 <script setup>

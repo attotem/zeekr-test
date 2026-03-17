@@ -7,9 +7,19 @@
 				<div class="text__heading">
 					{{ getFirstText(first.heading) }}
 				</div>
+        
 				<div class="text__text">
 					{{ getFirstText(first.text) }}
 				</div>
+        <div class="footer__developer">
+				<a
+					href="https://leetsoft.dev?utm_source=zeekr"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<span class="text__text">{{ getFirstText(developerText) }}</span>
+				</a>
+			</div>
 			</div>
 
 			<div
@@ -26,10 +36,11 @@
 					<component :is="item.component" />
 				</a>
 			</div>
+			
 
 
 		</div>
-
+   
 		<div
 			class="footer__second"
 			v-if="data"
@@ -56,6 +67,7 @@
 				</div>
 			</div>
 		</div>
+   
 	</footer>
 </template>
 
@@ -84,6 +96,11 @@ let first = ref({
     ua: "Офіційний імпортер та дистриб’ютор електромобілів Zeekr в Україні"
   }
 })
+
+const developerText = {
+  ua: 'Розробка сайту LeetSoft',
+  en: 'Site developed by LeetSoft',
+}
 
 const getFirstText = (field) => {
   if (!field) return ''
@@ -220,31 +237,21 @@ onMounted(async () => {
   }
 
   &__developer {
-    margin-top: 32px;
-    padding-top: 24px;
+    margin-top: auto;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
 
     a {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: rgba(17, 17, 17, 0.5);
-      font-size: 12px;
-      font-weight: 400;
+      color: inherit;
+      opacity: 0.3;
       text-decoration: none;
-      transition: color 0.2s ease;
-      
-      span:first-child {
-        font-weight: 300;
-      }
-      
-      span:last-child {
-        font-weight: 400;
-      }
+      transition: opacity 0.2s ease, color 0.2s ease;
     }
 
     a:hover {
-      color: rgba(17, 17, 17, 0.8);
+      color: #111;
+      opacity: 1;
     }
 
     &-logo {

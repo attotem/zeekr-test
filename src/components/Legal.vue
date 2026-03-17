@@ -11,6 +11,7 @@
 			{{ (new Date()).toLocaleDateString() }}
 			{{ i18n.legal.text2?.[langStore.activeLang] }}
 		</div>
+    
 	</div>
 </template>
 
