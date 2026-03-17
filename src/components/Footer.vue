@@ -11,15 +11,15 @@
 				<div class="text__text">
 					{{ getFirstText(first.text) }}
 				</div>
-        <div class="footer__developer">
-				<a
-					href="https://leetsoft.dev?utm_source=zeekr"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<span class="text__text">{{ getFirstText(developerText) }}</span>
-				</a>
-			</div>
+        <!-- <div class="footer__developer">
+          <a
+            href="https://leetsoft.dev?utm_source=zeekr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="text__text">{{ getFirstText(developerText) }}</span>
+          </a>
+        </div> -->
 			</div>
 
 			<div
