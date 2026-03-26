@@ -35,6 +35,7 @@
           class="block-appear"
           v-appear
         >
+         
           <component
             v-if="block.type === 'hero'"
             :is="block.component"
@@ -383,7 +384,7 @@ const handleHeroButtonClick = (type) => {
   } else if (type === 'price_list' && priceListUrl.value) {
     window.open(priceListUrl.value, '_blank')
   }
-}
+}  
 </script>
 
 <style lang="scss" scoped>
