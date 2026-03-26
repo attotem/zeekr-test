@@ -48,6 +48,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -64,19 +65,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
 
@@ -93,14 +82,14 @@ const images = computed(() => {
   return []
 })
 
-// Preload all images (not videos)
+
 const preloadAllImages = () => {
   if (!images.value || images.value.length === 0) return
   
   images.value.forEach(item => {
     if (!item) return
     
-    // item can be a string, an object with image property, or directly an image object
+    
     const imagePath = typeof item === 'string' ? item : (item.image || item)
     if (!imagePath || isVideo(imagePath)) return
     
@@ -115,7 +104,7 @@ const preloadAllImages = () => {
   })
 }
 
-// Watch images to preload when they change
+
 watch(images, (newImages) => {
   if (newImages && newImages.length > 0) {
     preloadAllImages()

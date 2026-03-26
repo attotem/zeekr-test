@@ -55,6 +55,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -123,7 +124,7 @@ const preloadImages = (images, colorId) => {
   
   preloadedImageObjects.value[colorId] = imageObjects
   
-  // Log summary after a delay
+  
   setTimeout(() => {
     if (errorCount > 0) {
       console.warn(`Color ${colorId}: ${errorCount} images failed to load out of ${images.length}`)
@@ -145,7 +146,7 @@ const reloadImages = () => {
   const activeColorObj = colors.value.find(c => c.id === activeColorId)
   const otherColors = colors.value.filter(c => c.id !== activeColorId)
   
-  // First, preload active color
+  
   if (activeColorObj) {
     const activeImages = []
     for (let i = 0; i < totalFrames; i++) {
@@ -156,7 +157,7 @@ const reloadImages = () => {
     preloadImages(activeImages, activeColorObj.id)
   }
   
-  // Then preload other colors
+  
   otherColors.forEach(color => {
     const images = []
     for (let i = 0; i < totalFrames; i++) {
@@ -168,13 +169,13 @@ const reloadImages = () => {
   })
 }
 
-// Initialize activeColor when colors are available
+
 watch(colors, (newColors, oldColors) => {
   if (newColors.length > 0) {
     if (!activeColor.value) {
       activeColor.value = newColors[0].id
     }
-    // Reload images when colors are loaded/updated
+    
     const colorsChanged = !oldColors || 
       newColors.length !== oldColors.length || 
       newColors.some((c, i) => !oldColors[i] || c.id !== oldColors[i].id)
@@ -189,8 +190,8 @@ onMounted(() => {
     if (!activeColor.value) {
       activeColor.value = colors.value[0].id
     }
-    // Initial load only if colors are already available
-    // Otherwise, watch(colors) will trigger reloadImages when colors are loaded
+    
+    
     reloadImages()
   }
 })
@@ -356,16 +357,7 @@ const handleTouchMove = (e) => {
   }
 }
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') {
-    return textObj
-  }
-  if (typeof textObj === 'object' && textObj !== null) {
-    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 </script>
 

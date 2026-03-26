@@ -28,6 +28,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -44,18 +45,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const hasSubtitles = computed(() => {
   return !!(getText(blockData.value.subtitleLeft) || getText(blockData.value.subtitleRight))

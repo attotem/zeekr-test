@@ -1,6 +1,5 @@
 <template>
   <section class="car-360-block">
-    <!-- 360 Image Viewer -->
     <div
       ref="viewerElement"
       class="car-360-block__viewer"
@@ -42,7 +41,6 @@
         </button>
       </div>
 
-      <!-- Color Description -->
       <div
         v-if="activeColorData.description"
         class="car-360-block__description"
@@ -57,6 +55,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import isMobile from '@/composables/isMobile'
 
 const props = defineProps({
@@ -73,7 +72,6 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-// Colors configuration
 const colors = computed(() => blockData.value.colors || [])
 
 const activeColor = ref('')
@@ -159,72 +157,52 @@ watch(colors, (newColors, oldColors) => {
 }, { immediate: true })
 
 const colorNameMapping = {
-  // Desktop name -> Mobile name
   'interstellarViolet': 'purple',
   'grey': 'gray',
   'darkPurple': 'deepPurple',
-  // Colors that are the same in both
   'white': 'white',
   'black': 'black',
   'green': 'green',
   'beige': 'beige'
 }
 
-// Mapping for folder names (handles typos in folder names)
-// For 9x: folder is "silver" but files are named "sliver_X.webp"
 const folderNameMapping = {
-  'silver': 'silver' // Keep folder name as "silver"
+  'silver': 'silver'
 }
 
-// Mapping for file names (handles typos in file names)
-// Only for 9x: files are named "sliver" but color id is "silver"
 const fileNameMapping = {
-  'silver': 'sliver' // Only applies to 9x
+  'silver': 'sliver'
 }
 
-// Get mobile color name from desktop color name
 const getMobileColorName = (colorId) => {
   return colorNameMapping[colorId] || colorId
 }
 
-// Get folder name for color (handles typos in folder names)
 const getFolderColorName = (colorId) => {
   return folderNameMapping[colorId] || colorId
 }
 
-// Get file name for color (handles typos in file names)
 const getFileName = (colorId) => {
   return fileNameMapping[colorId] || colorId
 }
 
-// Get image path helper using Vite's asset handling
-// In Vite dev mode, assets in src/assets are served at /src/assets/...
 const getImagePath = (colorId, frame) => {
-  // Direct path - Vite dev server serves files from src/assets
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
-  // Use 360_mobile folder for mobile devices, 360 for desktop
   const folderName = isMobileDevice.value ? '360_mobile' : '360'
-  // Map color name for mobile if needed
   const mappedColorId = isMobileDevice.value ? getMobileColorName(colorId) : colorId
-  // Get folder name (handles typos in folder names - only for desktop 360 folder)
   const folderColorName = (!isMobileDevice.value && folderNameMapping[mappedColorId]) 
     ? folderNameMapping[mappedColorId] 
     : mappedColorId
-  // Get file name (handles typos in file names - only for desktop 360 folder and only for 9x)
-  // For 7x, files are correctly named "silver", so don't apply mapping
   const fileColorName = (!isMobileDevice.value && props.carId === '9x' && fileNameMapping[mappedColorId]) 
     ? fileNameMapping[mappedColorId] 
     : mappedColorId
   return `${basePath}/${props.carId}/${folderName}/${folderColorName}/${fileColorName}_${frame}.webp`
 }
 
-// Get color image path for color selector
 const getColorImagePath = (colorId) => {
   return `/src/assets/colors/${colorId}.webp`
 }
 
-// Preload images and keep Image objects in memory to prevent garbage collection
-// This ensures browser keeps images cached
 const preloadImages = (images, colorId) => {
   const imageObjects = []
   let loadedCount = 0
@@ -235,26 +213,21 @@ const preloadImages = (images, colorId) => {
     
     img.onload = () => {
       loadedCount++
-      // Log progress for first color only to avoid spam
       if (colorId === (activeColor.value || colors.value[0]?.id) && index % 6 === 0) {
       }
     }
     
-    // Add error handling
     img.onerror = () => {
       errorCount++
       console.warn(`Failed to load image: ${imagePath}`)
     }
     
-    // Start loading immediately - browser will cache it
     img.src = imagePath
-    imageObjects.push(img) // Keep reference to prevent GC
+    imageObjects.push(img)
   })
   
-  // Store Image objects to keep them in memory
   preloadedImageObjects.value[colorId] = imageObjects
   
-  // Log summary after a short delay
   setTimeout(() => {
     if (errorCount > 0) {
       console.warn(`Color ${colorId}: ${errorCount} images failed to load out of ${images.length}`)
@@ -263,24 +236,18 @@ const preloadImages = (images, colorId) => {
   }, 1000)
 }
 
-// Initialize images for each color and preload all images once
 onMounted(() => {
-  // Set initial color if available
   if (colors.value.length > 0 && !activeColor.value) {
     activeColor.value = colors.value[0].id
   }
   
-  // Initial load only if colors are already available
-  // Otherwise, watch(colors) will trigger reloadImages when colors are loaded
   if (colors.value.length > 0) {
     reloadImages()
   }
   
-  // Listen for window resize to update mobile state
   window.addEventListener('resize', updateMobileState)
 })
 
-// Cleanup on unmount
 onUnmounted(() => {
   window.removeEventListener('resize', updateMobileState)
   if (colorsWatchTimeout) {
@@ -296,40 +263,31 @@ const currentImage = computed(() => {
   if (!activeColor.value || !colorImages.value[activeColor.value] || colorImages.value[activeColor.value].length === 0) {
     return ''
   }
-  // Round frame index for image selection with cyclic wrapping
   let frameIndex = Math.round(currentFrame.value)
   
-  // Cyclic wrapping: ensure frameIndex is always 0-35
   frameIndex = ((frameIndex % 36) + 36) % 36
   
-  // Get preloaded image path
   const images = colorImages.value[activeColor.value]
   return images[frameIndex] || images[0] || ''
 })
 
-// Computed property for CSS background-image with proper URL format
 const currentImageUrl = computed(() => {
   const imagePath = currentImage.value
   if (!imagePath) {
     return 'none'
   }
-  // Use preloaded Image object if available to ensure browser uses cached version
   if (preloadedImageObjects.value[activeColor.value]) {
     const frameIndex = ((Math.round(currentFrame.value) % 36) + 36) % 36
     const preloadedImg = preloadedImageObjects.value[activeColor.value][frameIndex]
     if (preloadedImg && preloadedImg.complete) {
-      // Image is loaded, use its src (browser will use cached version)
       return `url(${preloadedImg.src})`
     }
   }
-  // Fallback to path - browser should use cached version from preload
   return `url(${imagePath})`
 })
 
 const selectColor = (colorId) => {
-  // Keep current frame when changing color
   activeColor.value = colorId
-  // Don't reset frame - keep the current position
 }
 
 const updateFrame = (x) => {
@@ -340,7 +298,6 @@ const updateFrame = (x) => {
   const percentage = Math.max(0, Math.min(1, relativeX / rect.width))
   const targetFrame = percentage * 35
   
-  // Плавная интерполяция
   const diff = targetFrame - currentFrame.value
   currentFrame.value += diff * 0.5
   currentFrame.value = Math.max(0, Math.min(35, currentFrame.value))
@@ -348,7 +305,6 @@ const updateFrame = (x) => {
 
 let animationFrameId = null
 
-// Global mouse handlers for smooth dragging
 const handleGlobalMouseMove = (e) => {
   if (!isDragging.value) {
     return
@@ -361,7 +317,7 @@ const handleGlobalMouseMove = (e) => {
   lastX.value = e.clientX
   
   if (Math.abs(deltaX) < 0.1) {
-    return // Ignore tiny movements
+    return
   }
   
   if (animationFrameId) {
@@ -384,7 +340,6 @@ const handleGlobalMouseMove = (e) => {
       
       currentFrame.value += frameDelta
       
-      // When we go past 35, wrap to 0, and when we go below 0, wrap to 35
       currentFrame.value = ((currentFrame.value % 36) + 36) % 36
     })
 }
@@ -395,7 +350,6 @@ const handleGlobalMouseUp = () => {
     cancelAnimationFrame(animationFrameId)
     animationFrameId = null
   }
-  // Remove global listeners
   document.removeEventListener('mousemove', handleGlobalMouseMove)
   document.removeEventListener('mouseup', handleGlobalMouseUp)
 }
@@ -410,14 +364,11 @@ const handleMouseDown = (e) => {
     cancelAnimationFrame(animationFrameId)
     animationFrameId = null
   }
-  // Add global listeners for smooth dragging
   document.addEventListener('mousemove', handleGlobalMouseMove, { passive: false })
   document.addEventListener('mouseup', handleGlobalMouseUp, { passive: false })
 }
 
 const handleMouseMove = (e) => {
-  // This is called when mouse moves over the element
-  // But we use global handler for dragging
   if (isDragging.value) {
     handleGlobalMouseMove(e)
   }
@@ -443,7 +394,7 @@ const handleTouchStart = (e) => {
 
 const handleTouchMove = (e) => {
   if (isDragging.value && e.touches[0]) {
-    e.preventDefault() // Prevent scrolling
+    e.preventDefault()
     const deltaX = e.touches[0].clientX - lastX.value
     lastX.value = e.touches[0].clientX
     
@@ -454,31 +405,18 @@ const handleTouchMove = (e) => {
     animationFrameId = requestAnimationFrame(() => {
       if (!viewerElement.value) return
       
-      // Use delta-based rotation for touch, same as mouse
-      const sensitivity = 1.2 // Increased sensitivity for better responsiveness
+      const sensitivity = 1.2
       const width = viewerElement.value.getBoundingClientRect().width
-      // Invert deltaX for reverse rotation direction
       const frameDelta = (-deltaX / width) * 36 * sensitivity
       
       currentFrame.value += frameDelta
       
-      // Cyclic wrapping: 0-35, seamless loop
       currentFrame.value = ((currentFrame.value % 36) + 36) % 36
     })
   }
 }
 
-// Function to get text based on language
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') {
-    return textObj
-  }
-  if (typeof textObj === 'object' && textObj !== null) {
-    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 </script>
 
@@ -502,13 +440,10 @@ const getText = (textObj) => {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    // Remove transition to prevent flickering
-    // transition: background-image 0.1s ease;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    // Prevent image flickering
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     backface-visibility: hidden;

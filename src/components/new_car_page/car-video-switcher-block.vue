@@ -48,6 +48,7 @@
 <script setup>
 import { computed, ref, watch, nextTick, onMounted } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -65,19 +66,7 @@ const blockData = computed(() => props.data || {})
 const currentIndex = ref(0)
 const videoRefs = ref({})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveVideo = (videoPath) => {
   if (!videoPath) return ''
@@ -107,7 +96,7 @@ const currentItemDescription = computed(() => {
 })
 
 const setIndex = async (index) => {
-  // Pause all videos
+  
   Object.values(videoRefs.value).forEach(video => {
     if (video && video.pause) {
       video.pause()
@@ -116,13 +105,13 @@ const setIndex = async (index) => {
   
   currentIndex.value = index
   
-  // Play the selected video
+  
   await nextTick()
   const currentVideo = videoRefs.value[index]
   if (currentVideo) {
     currentVideo.currentTime = 0
     currentVideo.play().catch(() => {
-      // Ignore autoplay errors
+      
     })
   }
 }
@@ -131,43 +120,43 @@ const handleVideoLoaded = (index) => {
   const video = videoRefs.value[index]
   if (video && currentIndex.value === index) {
     video.play().catch(() => {
-      // Ignore autoplay errors
+      
     })
   }
 }
 
-// Watch for index changes to play/pause videos
+
 watch(currentIndex, async (newIndex) => {
   await nextTick()
-  // Pause all videos
+  
   Object.values(videoRefs.value).forEach(video => {
     if (video && video.pause) {
       video.pause()
     }
   })
-  // Play current video
+  
   const currentVideo = videoRefs.value[newIndex]
   if (currentVideo) {
     currentVideo.currentTime = 0
     currentVideo.play().catch(() => {
-      // Ignore autoplay errors
+      
     })
   }
 })
 
-// Play first video on mount
+
 onMounted(async () => {
   await nextTick()
   const firstVideo = videoRefs.value[0]
   if (firstVideo) {
     firstVideo.play().catch(() => {
-      // Ignore autoplay errors
+      
     })
   }
 })
 
 watch(() => langStore.activeLang, () => {
-  // Re-render when language changes
+  
 })
 </script>
 

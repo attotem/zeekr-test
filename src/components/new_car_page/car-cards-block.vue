@@ -5,7 +5,6 @@
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-cards-block__grid">
-        <!-- Large card (top) -->
         <div v-if="cards[0]" class="car-cards-block__card car-cards-block__card--large">
           <div class="car-cards-block__card-image-wrap">
             <img
@@ -29,7 +28,6 @@
         </div>
 
         <div class="car-cards-block__small-cards">
-          <!-- Second card (left) -->
           <div v-if="cards[1]" class="car-cards-block__card car-cards-block__card--small">
             <div class="car-cards-block__card-image-wrap">
               <img
@@ -52,7 +50,6 @@
             </div>
           </div>
 
-          <!-- Third and fourth cards (right, stacked) -->
           <div class="car-cards-block__right-cards">
             <div
               v-for="(card, index) in rightCards"
@@ -86,6 +83,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -101,19 +99,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveImage = (imagePath) => {
   if (!imagePath) return ''

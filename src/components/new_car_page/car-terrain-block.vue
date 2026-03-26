@@ -2,7 +2,6 @@
   <section class="car-terrain-block">
     <div class="car-terrain-block__inner">
       <div class="car-terrain-block__content">
-        <!-- Text section -->
         <div class="car-terrain-block__text">
           <h2 v-if="getText(blockData.title)" class="car-terrain-block__title">
             {{ getText(blockData.title) }}
@@ -11,7 +10,6 @@
             {{ getText(blockData.subtitle) }}
           </p>
           
-          <!-- Standard modes -->
           <div v-if="blockData.standardModes" class="car-terrain-block__modes">
             <h3 class="car-terrain-block__modes-title">{{ getText(blockData.standardModes.title) }}</h3>
             <div class="car-terrain-block__modes-grid">
@@ -30,7 +28,6 @@
             </div>
           </div>
           
-          <!-- Adaptive modes -->
           <div v-if="blockData.adaptiveModes" class="car-terrain-block__modes">
             <h3 class="car-terrain-block__modes-title">{{ getText(blockData.adaptiveModes.title) }}</h3>
             <div class="car-terrain-block__modes-grid car-terrain-block__modes-grid--adaptive">
@@ -50,7 +47,6 @@
           </div>
         </div>
 
-        <!-- Image section -->
         <div class="car-terrain-block__image-wrap">
           <img
             :src="resolveImage(blockData.image)"
@@ -67,6 +63,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -83,19 +80,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 

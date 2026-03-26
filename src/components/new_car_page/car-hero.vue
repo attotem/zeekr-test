@@ -1,6 +1,5 @@
 <template>
   <section class="car-hero">
-    <!-- Placeholder image -->
     <picture
       v-if="placeholderImage"
       class="car-hero__placeholder"
@@ -68,16 +67,13 @@
       />
     </picture>
 
-    <!-- Dark overlay -->
     <div class="car-hero__overlay"></div>
 
-    <!-- Hero content -->
     <div class="car-hero__content">
       <div>
         <h1 class="car-hero__title">{{ getText(heroData.title) }}</h1>
       <h2 class="car-hero__subtitle">{{ getText(heroData.subtitle) }}</h2>
 
-      <!-- Buttons -->
       <div class="car-hero__buttons">
         <button
           v-for="(button, index) in heroData.buttons"
@@ -106,7 +102,6 @@
       </div>
       </div>
 
-      <!-- Specs -->
       <div class="car-hero__specs">
         <div
           v-for="(spec, index) in heroData.specs"
@@ -124,6 +119,7 @@
 <script setup>
 import { ref, onMounted, computed, nextTick, watch, getCurrentInstance } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
 
@@ -136,7 +132,6 @@ const props = defineProps({
     type: String,
     default: '7x'
   },
-  // Optional direct link to PDF price list (from backend modelData.price_list)
   priceListUrl: {
     type: String,
     default: ''
@@ -161,7 +156,6 @@ const isContentLoaded = computed(() => {
   if (heroImage.value) {
     return isImageLoaded.value
   }
-  // If no video or image, keep placeholder visible
   return false
 })
 
@@ -206,19 +200,7 @@ const placeholderImage = computed(() => {
   }
 })
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const handleButtonClick = (type) => {
   emit('buttonClick', type)
@@ -233,13 +215,11 @@ const onImageLoaded = () => {
 }
 
 const onImageError = () => {
-  // Mark as loaded even on error to hide placeholder
   isImageLoaded.value = true
 }
 
 const onVideoLoaded = () => {
   isVideoLoaded.value = true
-  // Попытка воспроизвести видео
   if (videoElement.value) {
     videoElement.value.play().catch(err => {
       console.error('Error playing video:', err)
@@ -249,7 +229,7 @@ const onVideoLoaded = () => {
 
 const onVideoError = (error) => {
   console.error('Video loading error:', error)
-  isVideoLoaded.value = true // Mark as loaded even on error to hide placeholder
+  isVideoLoaded.value = true
 }
 
 onMounted(async () => {

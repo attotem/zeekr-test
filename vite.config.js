@@ -2,9 +2,8 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueDevTools from "vite-plugin-vue-devtools";
-import vike from "vike/plugin";
-import { copyFileSync, mkdirSync, readdirSync, statSync, existsSync, readFileSync } from "fs";
-import { join, dirname, relative } from "path";
+import {  readdirSync, statSync, existsSync, readFileSync } from "fs";
+import { join, relative } from "path";
 
 function copyPagesPlugin() {
 	return {
@@ -34,14 +33,12 @@ function copyPagesPlugin() {
 				}
 			}
 			
-			// Copy pages directory
 			if (existsSync(pagesDir)) {
 				copyRecursive(pagesDir, pagesDir, "pages");
 			} else {
 				console.warn("⚠️ src/assets/pages directory not found");
 			}
 			
-			// Copy colors directory to dist/src/assets/colors to match dev paths
 			if (existsSync(colorsDir)) {
 				copyRecursive(colorsDir, colorsDir, "src/assets/colors");
 			} else {

@@ -11,6 +11,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -40,27 +41,13 @@ const getBackgroundImage = computed(() => {
   if (blockData.value.image) {
     return resolveImage(blockData.value.image)
   }
-  // Fallback to default
+  
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   return `${basePath}/${props.carId}/7x-second.webp`
 })
 
-// Функция для получения текста в зависимости от языка
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') {
-    return textObj
-  }
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 </script>
 
 <style lang="scss" scoped>

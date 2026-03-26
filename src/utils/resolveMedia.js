@@ -1,14 +1,9 @@
-// Utility helpers for resolving responsive media paths (images/videos)
-// Supports:
-// - string paths: "image.webp"
-// - responsive objects: { desktop, tablet, mobile }
 
 export const pickResponsivePath = (media) => {
   if (!media) return ''
   if (typeof media === 'string') return media
 
   if (typeof media === 'object' && media !== null) {
-    // Fallback width for SSR / non-browser
     let width = 1920
     if (typeof window !== 'undefined' && typeof window.innerWidth === 'number') {
       width = window.innerWidth
@@ -17,7 +12,6 @@ export const pickResponsivePath = (media) => {
     const isMobile = width <= 876
     const isTablet = width > 876 && width <= 1200
 
-    // Fallback: mobile → tablet → desktop (если нет mobile — показываем tablet и т.д.)
     if (isMobile) return media.mobile || media.tablet || media.desktop || ''
     if (isTablet) return media.tablet || media.desktop || ''
     return media.desktop || ''
@@ -30,7 +24,6 @@ export const resolveMediaPath = (media, { carId = '7x', subfolder = '' } = {}) =
   const fileName = pickResponsivePath(media)
   if (!fileName) return ''
 
-  // Absolute / external URL
   if (typeof fileName === 'string' && fileName.startsWith('/')) {
     return fileName
   }
@@ -40,4 +33,8 @@ export const resolveMediaPath = (media, { carId = '7x', subfolder = '' } = {}) =
 
   return `${base}/${carId}${folder}/${fileName}`
 }
+
+export const resolveImage = (media, opts = {}) => resolveMediaPath(media, opts)
+export const resolveVideo = (media, opts = {}) => resolveMediaPath(media, opts)
+export const resolveMedia = (media, opts = {}) => resolveMediaPath(media, opts)
 

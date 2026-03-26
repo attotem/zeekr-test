@@ -42,16 +42,6 @@
     </div>
     <div class="car-design-block__content">
       <h2 v-if="getText(blockData.title)" class="car-design-block__title">{{ getText(blockData.title) }}</h2>
-      <!-- <div v-if="currentItemFeatures.length > 0" class="car-design-block__features">
-        <div
-          v-for="(feature, index) in currentItemFeatures"
-          :key="index"
-          class="car-design-block__feature"
-        >
-          <div class="car-design-block__feature-label">{{ getText(feature.label) }}</div>
-          <div class="car-design-block__feature-value">{{ getText(feature.value) }}</div>
-        </div>
-      </div> -->
       <p v-if="getText(currentItemDescription)" class="car-design-block__description">
         {{ getText(currentItemDescription) }}
       </p>
@@ -65,6 +55,7 @@
 <script setup>
 import { computed, ref, onMounted, watch, nextTick } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -84,21 +75,7 @@ const blockData = computed(() => props.data || {})
 const currentIndex = ref(0)
 const imageWrapEl = ref(null)
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    // app uses "uk" / "en"; keep compatibility with ua/ru/zh fields in JSON content
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'ru' && textObj.ua) return textObj.ua
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
@@ -121,7 +98,6 @@ const mediaItems = computed(() => {
       }
     })
   }
-  // Fallback to single image
   const imagePath = blockData.value.image
   if (imagePath) {
     const path = pickResponsivePath(imagePath)
@@ -137,7 +113,6 @@ const mediaItems = computed(() => {
   return []
 })
 
-// Find all layer <div> children inside the ref container
 const getLayerVideos = () => {
   if (!imageWrapEl.value) return []
   const layers = imageWrapEl.value.children
@@ -158,7 +133,6 @@ const playVideoAtIndex = (index) => {
 
 const handleVideoLoaded = (event) => {
   const video = event.target
-  // Find which index this video belongs to
   const videos = getLayerVideos()
   const videoIndex = videos.indexOf(video)
   if (currentIndex.value === videoIndex) {
@@ -173,7 +147,6 @@ watch(currentIndex, async (newIndex) => {
   playVideoAtIndex(newIndex)
 })
 
-// Preload images & autoplay first video
 onMounted(async () => {
   mediaItems.value.forEach(media => {
     if (media.type === 'image') {
@@ -181,7 +154,6 @@ onMounted(async () => {
       img.src = media.src
     }
   })
-  // Ensure the first video starts playing
   await nextTick()
   playVideoAtIndex(0)
 })
@@ -220,7 +192,6 @@ const currentItemDescription = computed(() => {
 
 <style lang="scss" scoped>
 .car-design-block {
-  // Keep the same side gutters as other blocks (360/inside/navigation)
   width: calc(100% - 40px);
   margin: 0 20px;
   display: flex;
@@ -286,7 +257,6 @@ const currentItemDescription = computed(() => {
 
   &__switcher-content {
     width: 100%;
-    // The parent already has side gutters; keep it flush
     max-width: 100%;
     margin: 0;
     padding: 0;

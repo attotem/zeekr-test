@@ -24,6 +24,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   modelValue: {
@@ -59,16 +60,7 @@ const selectVersion = (newVersion) => {
   emit('update:modelValue', newVersion)
 }
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') {
-    return textObj
-  }
-  if (typeof textObj === 'object' && textObj !== null) {
-    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 </script>
 
 <style lang="scss" scoped>

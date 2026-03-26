@@ -113,7 +113,7 @@ const categories = computed(() =>
 
 const activeCategoryKey = ref('')
 
-// Следим за изменением версий и сбрасываем выбранную категорию
+
 watch(
   () => rawCategories.value,
   (keys) => {
@@ -128,7 +128,7 @@ watch(
   { immediate: true }
 )
 
-// Преобразуем структуру car_versions для выбранной категории в массив карточек
+
 const cards = computed(() => {
   const versions = props.versions || {}
   const categoryKey = activeCategoryKey.value || rawCategories.value[0]
@@ -142,15 +142,15 @@ const cards = computed(() => {
 
   const versionCount = headerRow.length - 1
 
-  // rows: каждая строка — массив вида [label, valueForV1, valueForV2, ...]
-  // Первая колонка считаем заголовком характеристики
+  
+  
   const rowLabels = rows.map(r => r[0])
 
   const cards = []
   for (let i = 0; i < versionCount; i++) {
     const name = headerRow[i + 1] || ''
 
-    // Пытаемся подобрать изображение для этой версии
+    
     const imageFile = props.versionImages?.[name]
     const image =
       imageFile && typeof imageFile === 'string'
@@ -166,7 +166,7 @@ const cards = computed(() => {
     cards.push({
       name,
       image,
-      // Цена, если содержится в отдельной строке (сейчас не используется)
+      
       price: null,
       specs
     })

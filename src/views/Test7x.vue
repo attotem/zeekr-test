@@ -43,7 +43,6 @@
             :price-list-url="priceListUrl"
             @buttonClick="handleHeroButtonClick"
           />
-          <!-- Все остальные блоки -->
           <component
             v-else
             :is="block.component"
@@ -53,7 +52,7 @@
         </div>
       </template>
 
-      <!-- Блок версий (как на старой странице Car.vue)
+      
       <CarVersionsCards
         v-if="modelBackendData?.car_versions"
         :title="modelBackendData?.car_versions_title"
@@ -61,7 +60,7 @@
         :icons="modelBackendData?.car_versions_tab_icons"
         :version-images="pageData?.versionsImages || {}"
         :car-id="carId"
-      /> -->
+      />
 
       <ModalContact
         :heading="i18n.modal?.[modalType]"
@@ -127,7 +126,6 @@ import ModalContact from '@/components/ModalContact.vue'
 import API from '@/composables/API'
 import { useLangStore } from '@/stores/lang'
 
-// i18n загружен как globalProperties в main.js
 const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
 
 const props = defineProps({
@@ -145,11 +143,10 @@ const route = useRoute()
 const langStore = useLangStore()
 const pageData = ref(null)
 const isLoading = ref(true)
-const selected360Version = ref('standard') // 'standard' or 'kz'
+const selected360Version = ref('standard')
 const priceListUrl = ref('')
 const modelBackendData = ref(null)
 
-// Состояние модалки (консультация / заказ)
 const isModalOpened = ref(false)
 const modalType = ref(null)
 const mailObj = ref({})
@@ -184,10 +181,8 @@ const loadCarData = async (id) => {
   }
 }
 
-// Подтягиваем price_list из бекенда (как на старой странице Car.vue)
 const loadPriceList = async (id) => {
   try {
-    // Для 7x бекенд-URL выглядит как "zeekr-7x"
     const slug = id === '7x' ? 'zeekr-7x' : `zeekr-${id}`
     const data = await API.Models.getByURL(slug)
     modelBackendData.value = data
@@ -310,21 +305,15 @@ const layoutBlocks = computed(() => {
         return null
       }
       const data = pageData.value[blockConfig.dataKey]
-      
-      // Check if this is textBlock360 - switcher should appear after it
       const isTextBlock360 = blockConfig.type === 'textSimpleBlock' && blockConfig.dataKey === 'textBlock360'
       if (isTextBlock360) {
         textBlock360Found = true
       }
-      
-      // Show switcher after textBlock360, before first color360Block
       const showSwitcherAfter = textBlock360Found && blockConfig.type === 'color360Block' && blockConfig.dataKey === 'color360Block'
       if (showSwitcherAfter) {
-        textBlock360Found = false // Reset to prevent showing switcher multiple times
+        textBlock360Found = false
       }
-      
       const component = getComponent(blockConfig.type)
-      
       if (!component && blockConfig.type !== 'color360Block') {
         return null
       }
@@ -340,7 +329,6 @@ const layoutBlocks = computed(() => {
     })
     .filter(block => {
       if (!block) return false
-      // Always include color360Block blocks (we'll handle rendering conditionally in template)
       if (block.type === 'color360Block') {
         return block.data !== null
       }
@@ -354,27 +342,22 @@ const visibleBlocks = computed(() => {
     let shouldRender = true
     let showSwitcher = false
     let component = block.component
-    
-    // Show switcher after textBlock360, before first 360 block - only for 7x page
+
     if (block.showSwitcherAfter && carId.value === '7x') {
       showSwitcher = true
     }
-    
-    // Handle 360 blocks based on selected version - only for 7x page
+
     if (block.type === 'color360Block' && carId.value === '7x') {
       if (block.dataKey === 'color360Block') {
-        // Standard version block - show only if standard is selected
         shouldRender = selected360Version.value === 'standard'
       } else if (block.dataKey === 'color360BlockKz') {
-        // KZ version block - show only if KZ is selected, use KZ component
         shouldRender = selected360Version.value === 'kz'
         if (shouldRender) {
           component = getComponent('color360KzBlock')
         }
       }
     }
-    
-    // Hide textBlock360Kz when standard version is selected - only for 7x page
+
     if (block.type === 'textSimpleBlock' && block.dataKey === 'textBlock360Kz' && carId.value === '7x') {
       shouldRender = selected360Version.value === 'kz'
     }
@@ -388,7 +371,6 @@ const visibleBlocks = computed(() => {
   })
 })
 
-// Обработка кликов по кнопкам в hero-блоке (консультация / заказ / прайс-лист)
 const handleHeroButtonClick = (type) => {
   if (type === 'test_drive') {
     isModalOpened.value = i18n.modal.testDrive

@@ -2,7 +2,6 @@
   <section class="car-video-text-block">
     <div class="car-video-text-block__inner">
       <div class="car-video-text-block__grid">
-        <!-- Top Left: Video 1 or Image 1 -->
         <div class="car-video-text-block__video-wrap car-video-text-block__video-wrap--top-left">
           <video
             v-if="blockData.video1 && !blockData.image1"
@@ -22,7 +21,6 @@
           />
         </div>
 
-        <!-- Top Right: Text Block 1 -->
         <div class="car-video-text-block__text-block car-video-text-block__text-block--top-right">
           <div class="car-video-text-block__text-title">{{ getText(blockData.text1?.title) }}</div>
           <div v-if="blockData.text1?.items" class="car-video-text-block__text-items">
@@ -40,7 +38,6 @@
           </div>
         </div>
 
-        <!-- Bottom Left: Text Block 2 -->
         <div class="car-video-text-block__text-block car-video-text-block__text-block--bottom-left">
           <div class="car-video-text-block__text-title">{{ getText(blockData.text2?.title) }}</div>
           <div v-if="blockData.text2?.items" class="car-video-text-block__text-items">
@@ -58,7 +55,6 @@
           </div>
         </div>
 
-        <!-- Bottom Right: Video 2 or Image 2 -->
         <div class="car-video-text-block__video-wrap car-video-text-block__video-wrap--bottom-right">
           <video
             v-if="blockData.video2 && !blockData.image2"
@@ -85,6 +81,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -101,19 +98,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveVideo = (videoPath) => {
   if (!videoPath) return ''

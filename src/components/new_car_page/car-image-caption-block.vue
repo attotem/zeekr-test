@@ -19,6 +19,8 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
+import { preloadImage as preloadImageUtil } from '@/utils/preloadImage'
 
 const props = defineProps({
   data: {
@@ -34,19 +36,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveImage = (imagePath) => {
   if (!imagePath) return ''
@@ -57,22 +47,17 @@ const resolveImage = (imagePath) => {
   return `/pages/${props.carId}/${imagePath}`
 }
 
-// Preload image
 const preloadImage = () => {
   const imagePath = blockData.value.image
   if (!imagePath) return
   
   const imgSrc = resolveImage(imagePath)
   if (!imgSrc) return
-  
-  const img = new Image()
-  img.onerror = () => {
-    console.warn(`Failed to preload image: ${imgSrc}`)
-  }
-  img.src = imgSrc
+
+  preloadImageUtil(imgSrc)
 }
 
-// Watch blockData to preload when image changes
+
 watch(() => blockData.value.image, (newImage) => {
   if (newImage) {
     preloadImage()

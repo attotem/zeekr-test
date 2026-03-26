@@ -2,7 +2,6 @@
   <section class="car-space-block">
     <div class="car-space-block__inner">
       <div class="car-space-block__grid">
-        <!-- Top Left: Image 1 -->
         <div class="car-space-block__image-wrap car-space-block__image-wrap--top-left">
           <img
             :src="resolveImage(blockData.image1)"
@@ -12,7 +11,6 @@
           />
         </div>
 
-        <!-- Top Right: Text Block 1 -->
         <div class="car-space-block__text-block car-space-block__text-block--top-right">
           <div class="car-space-block__text-title">{{ getText(blockData.text1?.title) }}</div>
           <div class="car-space-block__text-body">{{ getText(blockData.text1?.body) }}</div>
@@ -21,7 +19,6 @@
           </div>
         </div>
 
-        <!-- Bottom Left: Text Block 2 -->
         <div class="car-space-block__text-block car-space-block__text-block--bottom-left">
           <div class="car-space-block__text-title">{{ getText(blockData.text2?.title) }}</div>
           
@@ -40,7 +37,6 @@
           </div>
         </div>
 
-        <!-- Bottom Right: Image 2 -->
         <div class="car-space-block__image-wrap car-space-block__image-wrap--bottom-right">
           <img
             :src="resolveImage(blockData.image2)"
@@ -57,6 +53,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -72,19 +69,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveImage = (imagePath) => {
   if (!imagePath) {

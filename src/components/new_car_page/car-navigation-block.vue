@@ -1,17 +1,13 @@
 <template>
   <section class="car-navigation-block">
-    <!-- Background image -->
     <div
       class="car-navigation-block__image"
       :style="{ backgroundImage: `url(${getImageSrc})` }"
     ></div>
 
-    <!-- Dark overlay -->
     <div class="car-navigation-block__overlay"></div>
 
-    <!-- Content -->
     <div class="car-navigation-block__content">
-      <!-- Bottom section: Specs -->
       <div class="car-navigation-block__specs">
         <div
           v-for="(spec, index) in blockData.specs"
@@ -29,6 +25,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -49,17 +46,7 @@ const getImageSrc = computed(() => {
   return resolveMediaPath(blockData.value.image, { carId: props.carId })
 })
 
-// Функция для получения текста в зависимости от языка
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') {
-    return textObj
-  }
-  if (typeof textObj === 'object' && textObj !== null) {
-    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 </script>
 
 <style lang="scss" scoped>

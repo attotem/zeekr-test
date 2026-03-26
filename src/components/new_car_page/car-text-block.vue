@@ -8,6 +8,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -20,17 +21,8 @@ const langStore = useLangStore()
 
 const blockData = computed(() => props.data || {})
 
-// Функция для получения текста в зависимости от языка
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') {
-    return textObj
-  }
-  if (typeof textObj === 'object' && textObj !== null) {
-    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
-  }
-  return ''
-}
+
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 </script>
 
 <style lang="scss" scoped>
@@ -70,7 +62,7 @@ const getText = (textObj) => {
   }
 }
 
-/* Default: visible (so content never disappears if wrapper classes fail) */
+
 .car-text-block__title,
 .car-text-block__subtitle {
   opacity: 1;
@@ -78,7 +70,7 @@ const getText = (textObj) => {
   filter: blur(0);
 }
 
-/* When wrapper is hidden (before entering viewport) */
+
 :deep(.block-appear.is-hidden) .car-text-block__title,
 :deep(.block-appear.is-hidden) .car-text-block__subtitle {
   opacity: 0;
@@ -86,7 +78,7 @@ const getText = (textObj) => {
   filter: blur(6px);
 }
 
-/* Extra staggered text reveal when the block wrapper becomes visible */
+
 :deep(.block-appear.is-visible) .car-text-block__title,
 :deep(.block-appear.is-visible) .car-text-block__subtitle {
   opacity: 1;
@@ -100,7 +92,7 @@ const getText = (textObj) => {
   transition-delay: 120ms;
 }
 
-/* Subtle gradient shimmer for golden text (only when visible) */
+
 :deep(.block-appear.is-visible) .car-text-block__title,
 :deep(.block-appear.is-visible) .car-text-block__subtitle {
   background-size: 220% 100%;

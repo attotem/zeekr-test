@@ -71,7 +71,9 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
+import { preloadImage } from '@/utils/preloadImage'
 import swiperLeftPng from '@/assets/swiper_left.png'
 import swiperRightPng from '@/assets/swiper_right.png'
 
@@ -91,19 +93,7 @@ watch(slides, (s) => {
   else if (active.value > s.length - 1) active.value = 0
 }, { immediate: true })
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const isVideo = (image) => {
   const path = pickResponsivePath(image)
@@ -113,35 +103,13 @@ const isVideo = (image) => {
 
 const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
-// Track loaded images
-const loadedImages = new Set()
-
-// Preload image and wait for it to load
-function preloadImage(src) {
-  if (!src || loadedImages.has(src)) return Promise.resolve()
-  
-  return new Promise((resolve) => {
-    const img = new Image()
-    img.onload = () => {
-      loadedImages.add(src)
-      resolve()
-    }
-    img.onerror = () => {
-      loadedImages.add(src) // Mark as attempted even on error
-      resolve()
-    }
-    img.src = src
-  })
-}
-
-// Preload all images immediately for smooth transitions (non-blocking)
 onMounted(() => {
-  // Preload all images in parallel without blocking rendering
+  
   slides.value.forEach((s) => {
     const src = resolveImage(s.image)
     if (!src) return
     
-    // Use link preload for better browser optimization
+    
     const link = document.createElement('link')
     link.rel = 'preload'
     link.as = 'image'
@@ -149,9 +117,9 @@ onMounted(() => {
     link.fetchPriority = 'high'
     document.head.appendChild(link)
     
-    // Preload in background without blocking
+    
     preloadImage(src).finally(() => {
-      // Remove link after image is loaded
+      
       if (document.head.contains(link)) {
         document.head.removeChild(link)
       }
@@ -163,7 +131,7 @@ watch([active, slides], ([newActive, newSlides]) => {
   const len = newSlides.length
   if (!len) return
   
-  // Preload visible and adjacent slides
+  
   const imagesToPreload = []
   
   if (newActive > 0) {
@@ -174,7 +142,7 @@ watch([active, slides], ([newActive, newSlides]) => {
     imagesToPreload.push(resolveImage(newSlides[newActive + 1].image))
   }
   
-  // Preload one more ahead/behind
+  
   if (newActive > 1) {
     imagesToPreload.push(resolveImage(newSlides[newActive - 2].image))
   }
@@ -182,7 +150,7 @@ watch([active, slides], ([newActive, newSlides]) => {
     imagesToPreload.push(resolveImage(newSlides[newActive + 2].image))
   }
   
-  // Preload all images
+  
   imagesToPreload.forEach(src => {
     if (src) preloadImage(src)
   })
@@ -192,7 +160,7 @@ const canPrev = computed(() => active.value > 0)
 const canNext = computed(() => active.value < slides.value.length - 1)
 
 const isAnimating = ref(false)
-const pendingDir = ref(null) // 'prev' | 'next' | null
+const pendingDir = ref(null) 
 const trackTranslatePx = ref(0)
 
 const viewportEl = ref(null)
@@ -223,7 +191,7 @@ function getViewportWidthPx() {
 }
 
 function translateToCenterSlot(slotIndex) {
-  // slotIndex: 0=left, 1=center(active), 2=right, 3=right-right
+  
   const vw = getViewportWidthPx()
   const sw = getSlideWidthPx()
   const gap = getGapPx()
@@ -234,7 +202,7 @@ function translateToCenterSlot(slotIndex) {
 }
 
 function translateToActiveSlide() {
-  // For mobile: center the active slide directly
+  
   const vw = getViewportWidthPx()
   const sw = getSlideWidthPx()
   const gap = getGapPx()
@@ -245,19 +213,19 @@ function translateToActiveSlide() {
 }
 
 function recenterTrack(skipAnimation = false) {
-  // If skipAnimation is true, we're recentering after transition
-  // so isAnimating should already be false
+  
+  
   if (isMobile.value) {
-    // On mobile, center the active slide directly
+    
     trackTranslatePx.value = translateToActiveSlide()
   } else {
-    // On desktop, keep the active slide (middle slot) centered inside viewport
+    
     trackTranslatePx.value = translateToCenterSlot(1)
   }
 }
 
 function scheduleRecenter() {
-  // Don't recenter during animation
+  
   if (isAnimating.value) return
   
   cancelAnimationFrame(rafId)
@@ -280,7 +248,7 @@ function handleTransitionEnd(e) {
     return
   }
 
-  // On mobile, update active and recenter
+  
   if (isMobile.value) {
     const dir = pendingDir.value
     if (dir === 'next') active.value = Math.min(len - 1, active.value + 1)
@@ -292,17 +260,17 @@ function handleTransitionEnd(e) {
     return
   }
 
-  // Desktop: Update active index first
+  
   const dir = pendingDir.value
   if (dir === 'next') active.value = Math.min(len - 1, active.value + 1)
   if (dir === 'prev') active.value = Math.max(0, active.value - 1)
 
-  // Wait for DOM to update with new slots, then recenter
+  
   nextTick(() => {
     isAnimating.value = false
     pendingDir.value = null
     
-    // Recenter without animation to keep 3 images visible
+    
     recenterTrack(true)
   })
 }
@@ -333,7 +301,7 @@ onMounted(() => {
 })
 
 const visibleSlots = computed(() => {
-  // On mobile, show all slides for proper sliding
+  
   if (isMobile.value) {
     return slides.value.map((slide, index) => ({
       key: `slide-${index}-${active.value}`,
@@ -342,10 +310,10 @@ const visibleSlots = computed(() => {
     }))
   }
   
-  // On desktop, show 3 slots (left, active, right) - always show 3
+  
   const slots = []
   
-  // Left slot
+  
   if (leftIndex.value !== null) {
     slots.push({ 
       key: `left-${leftIndex.value}-${active.value}`, 
@@ -360,14 +328,14 @@ const visibleSlots = computed(() => {
     })
   }
   
-  // Active slot
+  
   slots.push({ 
     key: `active-${active.value}`, 
     role: 'is-active', 
     slide: activeSlide.value 
   })
   
-  // Right slot
+  
   if (rightIndex.value !== null) {
     slots.push({ 
       key: `right-${rightIndex.value}-${active.value}`, 
@@ -386,17 +354,17 @@ const visibleSlots = computed(() => {
 })
 
 watch([slides, active], () => {
-  // Only recenter if not animating (will be handled by transitionend)
+  
   if (!isAnimating.value && slides.value.length > 0) {
     scheduleRecenter()
   }
 }, { immediate: true })
 
 onMounted(() => {
-  // center on first render immediately
+  
   nextTick(() => {
     recenterTrack()
-    // keep centered on resizes
+    
     resizeObserver = new ResizeObserver(() => scheduleRecenter())
     if (viewportEl.value) resizeObserver.observe(viewportEl.value)
   })
@@ -407,21 +375,12 @@ onBeforeUnmount(() => {
   if (resizeObserver) resizeObserver.disconnect()
 })
 
-// Preload image before animation and ensure it's ready
+
 async function preloadImageForIndex(index) {
   if (index < 0 || index >= slides.value.length) return
   const src = resolveImage(slides.value[index].image)
   if (!src) return
-  
-  // Check if already loaded
-  if (loadedImages.has(src)) {
-    // Double check by verifying image is in cache
-    const img = new Image()
-    img.src = src
-    if (img.complete) return
-  }
-  
-  // Use link preload for immediate browser action
+
   const link = document.createElement('link')
   link.rel = 'preload'
   link.as = 'image'
@@ -435,22 +394,22 @@ async function preloadImageForIndex(index) {
     }
   })
   
-  // Additional check - ensure image is really loaded
+  
   return new Promise((resolve) => {
     const img = new Image()
     img.onload = () => resolve()
-    img.onerror = () => resolve() // Continue even on error
+    img.onerror = () => resolve() 
     img.src = src
-    // Timeout after 100ms to not block too long
+    
     setTimeout(resolve, 100)
   })
 }
 
-// override prev/next to use pixel animation targets
+
 const prev = async () => {
   if (!canPrev.value || isAnimating.value) return
   
-  // Preload image before animation
+  
   const targetIndex = active.value - 1
   await preloadImageForIndex(targetIndex)
   
@@ -458,7 +417,7 @@ const prev = async () => {
   isAnimating.value = true
   
   if (isMobile.value) {
-    // On mobile, calculate target position for previous slide
+    
     const vw = getViewportWidthPx()
     const sw = getSlideWidthPx()
     const gap = getGapPx()
@@ -468,7 +427,7 @@ const prev = async () => {
       trackTranslatePx.value = xCenter - targetSlideCenter
     }
   } else {
-    // On desktop, animate so left slot moves into center
+    
     trackTranslatePx.value = translateToCenterSlot(0)
   }
 }
@@ -476,7 +435,7 @@ const prev = async () => {
 const next = async () => {
   if (!canNext.value || isAnimating.value) return
   
-  // Preload image before animation
+  
   const targetIndex = active.value + 1
   await preloadImageForIndex(targetIndex)
   
@@ -484,7 +443,7 @@ const next = async () => {
   isAnimating.value = true
   
   if (isMobile.value) {
-    // On mobile, calculate target position for next slide
+    
     const vw = getViewportWidthPx()
     const sw = getSlideWidthPx()
     const gap = getGapPx()
@@ -494,13 +453,13 @@ const next = async () => {
       trackTranslatePx.value = xCenter - targetSlideCenter
     }
   } else {
-    // Wait for DOM to update with new slide data
+    
     await nextTick()
     
-    // Small delay to ensure image is rendered
+    
     await new Promise(resolve => requestAnimationFrame(resolve))
     
-    // animate so right slot moves into center
+    
     trackTranslatePx.value = translateToCenterSlot(2)
   }
 }

@@ -6,7 +6,6 @@
       </h2>
       <div class="car-details-block__grid">
         <template v-for="(group, groupIndex) in groupedItems" :key="groupIndex">
-          <!-- Large card -->
           <div v-if="group.large" class="car-details-block__card car-details-block__card--large">
             <div class="car-details-block__card-image-wrap">
               <img
@@ -26,7 +25,6 @@
             </div>
           </div>
 
-          <!-- Small cards wrapper -->
           <div v-if="group.small && group.small.length > 0" class="car-details-block__small-cards-wrapper">
             <div
               v-for="(item, itemIndex) in group.small"
@@ -60,6 +58,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -75,19 +74,7 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveImage = (imagePath) => {
   if (!imagePath) return ''
@@ -111,8 +98,7 @@ const groupedItems = computed(() => {
       large: itemsList[i] || null,
       small: []
     }
-    
-    // Add next 2 items as small cards
+
     if (itemsList[i + 1]) group.small.push(itemsList[i + 1])
     if (itemsList[i + 2]) group.small.push(itemsList[i + 2])
     

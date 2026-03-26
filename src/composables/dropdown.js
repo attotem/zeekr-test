@@ -17,9 +17,7 @@ export default function addDropdown(id, isLangs = false, isQuestion = false) {
 
 		if (!isQuestion) {
 			if (isLangs || !isMobile()) {
-				// Desktop / langs behaviour
 				if (id === "models" && !isLangs && !isMobile()) {
-					// For "Models" on desktop: open/close on click, stay open until click outside header + dropdown
 					let isOpen = false;
 
 					const open = () => {
@@ -53,7 +51,6 @@ export default function addDropdown(id, isLangs = false, isQuestion = false) {
 						}
 					});
 
-					// Кнопка закрытия внутри выпадающего меню
 					const closeButton = dropdown.querySelector(".dropdown__close");
 					if (closeButton) {
 						closeButton.addEventListener("click", (e) => {
@@ -75,7 +72,6 @@ export default function addDropdown(id, isLangs = false, isQuestion = false) {
 						}
 					});
 				} else {
-					// Default behaviour: open on hover
 					parent.addEventListener("mouseenter", () => {
 						dropdown.style.maxHeight = dropdown.scrollHeight + "px";
 						if (id === "models") {

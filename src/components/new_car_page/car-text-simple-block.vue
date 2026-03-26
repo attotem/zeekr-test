@@ -9,6 +9,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -21,16 +22,7 @@ const langStore = useLangStore()
 
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') {
-    return textObj
-  }
-  if (typeof textObj === 'object' && textObj !== null) {
-    return textObj[langStore.activeLang] || textObj.ua || textObj.en || textObj.zh || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 </script>
 
 <style lang="scss" scoped>
@@ -89,7 +81,7 @@ const getText = (textObj) => {
   }
 }
 
-/* Default: visible (so content never disappears if wrapper classes fail) */
+
 .car-text-simple-block__title,
 .car-text-simple-block__subtitle,
 .car-text-simple-block__note {
@@ -98,7 +90,7 @@ const getText = (textObj) => {
   filter: blur(0);
 }
 
-/* When wrapper is hidden (before entering viewport) */
+
 :deep(.block-appear.is-hidden) .car-text-simple-block__title,
 :deep(.block-appear.is-hidden) .car-text-simple-block__subtitle,
 :deep(.block-appear.is-hidden) .car-text-simple-block__note {
@@ -107,7 +99,7 @@ const getText = (textObj) => {
   filter: blur(6px);
 }
 
-/* Extra staggered text reveal when the block wrapper becomes visible */
+
 :deep(.block-appear.is-visible) .car-text-simple-block__title,
 :deep(.block-appear.is-visible) .car-text-simple-block__subtitle,
 :deep(.block-appear.is-visible) .car-text-simple-block__note {
@@ -126,7 +118,7 @@ const getText = (textObj) => {
   transition-delay: 220ms;
 }
 
-/* Underline draw effect for simple title (only when visible) */
+
 :deep(.block-appear.is-visible) .car-text-simple-block__title::after {
   opacity: 1;
   transform: scaleX(1);

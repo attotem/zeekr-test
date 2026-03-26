@@ -252,8 +252,7 @@
         },
         "description": {
           "ua": "Світло світанку виривається з небес, наповнюючи технології сліпучим життям",
-          "en": "Dawn light leaps out of the sky, injecting dazzling vitality into technology",
-          "zh": "破晓之光跃出苍穹，为科技注入耀眼活力"
+          "en": "Dawn light leaps out of the sky, injecting dazzling vitality into technology"
         }
       },
       {
@@ -264,8 +263,7 @@
         },
         "description": {
           "ua": "Північне сяйво тече в нічному небі, повністю розкриваючи глибину та загадковість технологій",
-          "en": "Aurora flows in the night sky, fully revealing the depth and mystery of technology",
-          "zh": "夜幕之中极光流动，尽显科技的深邃与神秘"
+          "en": "Aurora flows in the night sky, fully revealing the depth and mystery of technology"
         }
       },
       {
@@ -276,8 +274,7 @@
         },
         "description": {
           "ua": "Безмежна тиша, де елегантність та спокій природно поєднані",
-          "en": "A vast and boundless realm of tranquility, where elegance and serenity are naturally integrated",
-          "zh": "广袤无垠的静谧之境，优雅与宁静浑然天成"
+          "en": "A vast and boundless realm of tranquility, where elegance and serenity are naturally integrated"
         }
       }
     ],
@@ -289,8 +286,7 @@
   "textBlock360": {
     "title": {
       "ua": "6 варіантів зовнішнього вигляду",
-      "en": "6 exterior options",
-      "zh": "6款外观选择"
+      "en": "6 exterior options"
     },
     "subtitle": {
       "ua": "",
@@ -300,8 +296,7 @@
   "textBlockInside": {
     "title": {
       "ua": "4 варіанти інтер'єру",
-      "en": "4 interior options",
-      "zh": "4款内饰搭配"
+      "en": "4 interior options"
     },
     "subtitle": {
       "ua": "",
@@ -417,40 +412,35 @@
   "sliderBlock": {
     "title": {
       "uk": "Спортивна елегантність — у деталях",
-      "en": "Sporty elegance is in the details",
-      "zh": "运动优雅尽在细节"
+      "en": "Sporty elegance is in the details"
     },
     "slides": [
       {
         "image": "slider/7x_slider_1.webp",
-        "caption": {
+        "caption": {    
           "uk": "Динамічний дизайн передньої частини",
-          "en": "Dynamic front design",
-          "zh": "动感前脸设计"
+          "en": "Dynamic front design"
         }
       },
       {
         "image": "slider/7x_slider_2.webp",
         "caption": {
           "uk": "Бічний вигляд з плаваючим дахом",
-          "en": "Side view with floating roof",
-          "zh": "悬浮车顶侧视图"
+          "en": "Side view with floating roof"
         }
       },
       {
         "image": "slider/7x_slider_3.webp",
         "caption": {
           "uk": "Динамічний дизайн задньої частини",
-          "en": "Dynamic rear design",
-          "zh": "动感尾部设计"
+          "en": "Dynamic rear design"
         }
       },
       {
         "image": "slider/7x_slider_4.webp",
         "caption": {
           "uk": "Бічний вигляд",
-          "en": "Side view",
-          "zh": "侧视图"
+          "en": "Side view"
         }
       }
     ]
@@ -458,8 +448,7 @@
   "textBlockStargate": {
     "title": {
       "uk": "ZEEKR Stargate — інтегрована інтелектуальна світлова панель",
-      "en": "ZEEKR Stargate integrated intelligent light curtain",
-      "zh": "ZEEKR Stargate 一体式智慧灯幕"
+      "en": "ZEEKR Stargate integrated intelligent light curtain"
     },
     "subtitle": {
       "uk": "",
@@ -477,32 +466,28 @@
         "value": "93″",
         "label": {
           "uk": "Розмір світлової панелі",
-          "en": "Light screen size",
-          "zh": "灯幕尺寸"
+          "en": "Light screen size"
         }
       },
       {
         "value": "1831",
         "label": {
           "uk": "Високопотужні LED-лампочки",
-          "en": "High-power LED beads",
-          "zh": "高功率LED灯珠"
+          "en": "High-power LED beads"
         }
       },
       {
         "value": "13",
         "label": {
           "uk": "Привітальні світлові повідомлення",
-          "en": "Welcome light messages",
-          "zh": "迎宾灯语"
-        }
+          "en": "Welcome light messages"
+        } 
       },
       {
         "value": "Canvas",
         "label": {
           "uk": "Світлова панель в реальному часі",
-          "en": "Real-time light screen",
-          "zh": "实时灯幕"
+          "en": "Real-time light screen"
         }
       }
     ]
@@ -510,24 +495,21 @@
   "doorSliderBlock": {
     "title": {
       "uk": "Повністю чутливі безрамкові автоматичні двері",
-      "en": "Full-vehicle frameless automatic doors",
-      "zh": "全车感应式无框自动门"
+      "en": "Full-vehicle frameless automatic doors"
     },
     "slides": [
       {
         "image": "slider2/7x_slider_1.webp",
         "caption": {
           "uk": "Одне натискання — легше сісти. Двері автоматично відкриваються та закриваються одним натисканням, дозволяючи зручно увійти в автомобіль і елегантно зачинити двері.",
-          "en": "One-touch operation, easier access. Doors automatically open and close with one touch, allowing you to enter the car comfortably and close the door elegantly.",
-          "zh": "一键操作，更便利。车门一键自动开启/关闭，手提重物也能轻松开启车门进入驾驭位后，轻踩刹车即可优雅关门。"
+          "en": "One-touch operation, easier access. Doors automatically open and close with one touch, allowing you to enter the car comfortably and close the door elegantly."
         }
       },
       {
         "image": "slider2/7x_slider_2.webp",
         "caption": {
           "uk": "Максимальний кут відкриття дверей — більше спокою. Задні двері відкриваються майже на 90°, що полегшує встановлення дитячих крісел та посадку і висадку дітей.",
-          "en": "Maximum door opening angle for peace of mind. Rear doors open close to 90°, making it easier to install child seats and help children get in and out.",
-          "zh": "最大开门角度，更省心。后排车门近90°开角，拆装儿童座椅、抱孩子上下车更方便。"
+          "en": "Maximum door opening angle for peace of mind. Rear doors open close to 90°, making it easier to install child seats and help children get in and out."
         }
       }
     ]
@@ -535,33 +517,28 @@
   "spaceTextBlock": {
     "title": {
       "uk": "Відчуйте комфорт простору преміального рівня",
-      "en": "Enjoy premium-class space",
-      "zh": "纯享越级空间"
+      "en": "Enjoy premium-class space"
     },
     "subtitle": {
       "uk": "Першокласний кофморт для кожного пасажира",
-      "en": "First-class seating for everyone",
-      "zh": "全家都是座上宾"
+      "en": "First-class seating for everyone"
     }
   },
   "spaceVideoBlock": {
     "title": {
       "uk": "Простір, що наповнює кожну мить",
-      "en": "Space that fulfils every moment",
-      "zh": "大空间 大满足"
+      "en": "Space that fulfils every moment"
     },
     "subtitle": {
       "uk": "Кожен сантиметр простору продуманий до дрібниць, максимально використаний, щоб вмістити все, що любить уся родина.",
-      "en": "Every inch of space is thoughtfully designed and used to the fullest, to hold everything your whole family loves.",
-      "zh": "每一寸空间都经过巧思，极致的利用，装下一家人所爱"
+      "en": "Every inch of space is thoughtfully designed and used to the fullest, to hold everything your whole family loves."
     },
     "video": "7x_video2.mp4"
   },
   "spaceComfortTextBlock": {
     "title": {
       "uk": "Розкішний, комфортний та гнучкий простір",
-      "en": "Luxurious, comfortable and flexible space",
-      "zh": "奢舒灵动大空间"
+      "en": "Luxurious, comfortable and flexible space"
     },
     "subtitle": {
       "uk": "",
@@ -571,8 +548,7 @@
   "textBlock2": {   
     "title": {
       "ua": "Елегантний силует кузова",
-      "en": "Elegant car body contour",
-      "zh": "优雅车身轮廓"
+      "en": "Elegant car body contour"
     },
     "subtitle": {
       "ua": "",
@@ -676,51 +652,43 @@
     "text1": {
       "title": {
         "uk": "83.34% — провідний показник використання простору в класі",
-        "en": "83.34% class-leading space utilization rate",
-        "zh": "83.34%同级领先得房率"
+        "en": "83.34% class-leading space utilization rate"
       },
       "body": {
         "uk": "Надзвичайно великий внутрішній простір надає кожному пасажиру максимальну свободу, забезпечуючи комфортний та розкішний досвід у будь-яких сценаріях",
-        "en": "Super large interior space gives every occupant maximum freedom, achieving a comfortable and luxurious experience in all scenarios",
-        "zh": "超大的内部空间给予每一位座舱乘员最大的自由,实现全场景舒适豪华体验"
+        "en": "Super large interior space gives every occupant maximum freedom, achieving a comfortable and luxurious experience in all scenarios"
       },
       "note": {
         "uk": "*Показник використання простору = довжина від найпереднішої точки простору для ніг передніх сидінь до заднього підголівника / колісна база",
-        "en": "*Space utilization rate = length from the frontmost point of the front footwell to the rear headrest / wheelbase",
-        "zh": "*得房率=前排脚部空间最前端至后排头枕长度/轴距"
+        "en": "*Space utilization rate = length from the frontmost point of the front footwell to the rear headrest / wheelbase"
       }
     },
     "text2": {
       "title": {
         "uk": "Величезний простір на задньому сидінні",
-        "en": "Huge space on the rear seat",
-        "zh": "超大后排空间"
+      "en": "Huge space on the rear seat"
       },
       "items": [
         {
           "value": "1021mm",
           "label": {
             "uk": "Простір над головою",
-            "en": "Headroom",
-            "zh": "头部空间"
+            "en": "Headroom"
           },
           "description": {
             "uk": "Максимальний простір над головою — 1021 мм. Форма кузова не типу купе забезпечує достатній простір для задніх пасажирів, покращений огляд та комфорт під час тривалих поїздок.",
-            "en": "Maximum headroom 1021mm. Non-fastback design brings ample headroom to the rear, wider field of vision, comfortable for long sits",
-            "zh": "头部空间最大1021mm。不溜背造型为后排带来充足头部空间,视野更开阔,久坐不压抑"
+            "en": "Maximum headroom 1021mm. Non-fastback design brings ample headroom to the rear, wider field of vision, comfortable for long sits"
           }
         },
         {
           "value": "1187mm",
           "label": {
             "uk": "Простір для ніг",
-            "en": "Legroom",
-            "zh": "腿部空间"
+            "en": "Legroom"
           },
           "description": {
             "uk": "Максимальний простір для ніг — 1187 мм. Сімейні поїздки тепер проходять без тісноти: можна розслабитися та почуватися комфортно навіть у тривалих мандрівках.",
-            "en": "Maximum legroom 1187mm. Family travel bids farewell to cramped spaces, long-distance rides can also be relaxed and comfortable",
-            "zh": "腿部空间最大1187mm。全家出行从此告别局促,长途乘坐也能舒展自在"
+            "en": "Maximum legroom 1187mm. Family travel bids farewell to cramped spaces, long-distance rides can also be relaxed and comfortable"
           }
         }
       ]
@@ -729,8 +697,7 @@
   "storageTextBlock": {
     "title": {
       "uk": "40 місць для зберігання по всьому автомобілю",
-      "en": "40 storage spaces throughout the vehicle",
-      "zh": "全车40处储物空间"
+      "en": "40 storage spaces throughout the vehicle"
     },
     "subtitle": {
       "uk": "",
@@ -741,8 +708,7 @@
     "image": "storage/7x_space_3.webp",
     "caption": {
       "uk": "*Простір для зберігання може відрізнятися залежно від конфігурації та моделі, конкретні характеристики залежать від фактичного автомобіля",
-      "en": "*Storage space may vary depending on the configuration and model, subject to the actual vehicle",
-      "zh": "*不同配置版型储物空间或有差异，具体以实车为准"
+      "en": "*Storage space may vary depending on the configuration and model, subject to the actual vehicle"
     }
   },
   "storageBlock": {
@@ -755,37 +721,31 @@
       {
         "title": {
           "uk": "Відкритий відсік",
-          "en": "Open storage",
-          "zh": "前排通道开放式储物空间"
+          "en": "Open storage"
         },
         "description": {
           "uk": "Зручний простір під центральною консоллю",
-          "en": "Convenient space under center console",
-          "zh": "开口更大,妈妈的手包好放好拿"
+          "en": "Convenient space under center console"
         }
       },
       {
         "title": {
           "uk": "Перчатковий ящик",
-          "en": "Glove box",
-          "zh": "电控密码手套箱"
+          "en": "Glove box"
         },
         "description": {
           "uk": "Електронне управління з паролем",
-          "en": "Electronic control with password",
-          "zh": "电控密码手套箱"
+          "en": "Electronic control with password"
         }
       },
       {
         "title": {
           "uk": "Відсік у підлокітнику",
-          "en": "Armrest storage",
-          "zh": "前排门板扶手储物盒"
+          "en": "Armrest storage"
         },
         "description": {
           "uk": "Зручний відсік у передніх дверах",
-          "en": "Convenient compartment in front doors",
-          "zh": "前排门板扶手储物盒"
+          "en": "Convenient compartment in front doors"
         } 
       }
     ]
@@ -793,65 +753,55 @@
   "cardsBlock": {
     "title": {
       "uk": "Багажник, у який поміщаються всі пригоди",
-      "en": "Traveler Magic Trunk",
-      "zh": "Traveler Magic Trunk"
+      "en": "Traveler Magic Trunk"
     },
     "cards": [
       {
         "image": "7x_card_1.webp",
         "title": {
           "uk": "Надзвичайно великий об'єм багажника",
-          "en": "Super large trunk volume",
-          "zh": "超大后备厢容积"
+          "en": "Super large trunk volume"
         },
         "description": {
           "uk": "905L об'єм багажника, задовольняє потреби щодо завантаження предметів для повсякденного використання та подорожей*",
-          "en": "905L trunk volume, meeting daily and travel needs for item loading*",
-          "zh": "905L后备厢容积,满足日常与出行对于后备厢的物品装载需求*"
+          "en": "905L trunk volume, meeting daily and travel needs for item loading*"
         }
       },
       {
         "image": "7x_card_2.webp",
         "title": {
           "uk": "Другий ряд складено, більше простору",
-          "en": "Second row folded down, more space",
-          "zh": "二排放倒,空间更大"
+          "en": "Second row folded down, more space"
         },
         "description": {
           "uk": "Об'єм можна розширити до 1978L, можна перетворити на ліжко одним натисканням, великі предмети також легко завантажити",
-          "en": "Volume expandable to 1978L, can be converted into a bed with one click, large items can also be easily loaded",
-          "zh": "容积可拓展至1978L,可一键成床,大件物品也可轻松装载"
+          "en": "Volume expandable to 1978L, can be converted into a bed with one click, large items can also be easily loaded"
         },
         "note": {
           "uk": "*Задні сидіння переміщені вперед на 145мм, використовуючи алгоритм об'єму води, не впливаючи на комфорт сидіння дорослих",
-          "en": "*Rear seats moved forward 145mm, using water volume calculation method without affecting adult seating comfort",
-          "zh": "*后排座椅前移145mm,在不影响成年人舒适乘坐的前提下,采用水容积算法"
+          "en": "*Rear seats moved forward 145mm, using water volume calculation method without affecting adult seating comfort"
         }
       },
       {
         "image": "7x_card_3.webp",
         "title": {
           "uk": "Трисекційна складена кришка",
-          "en": "Three-stage foldable cover",
-          "zh": "三段式可折叠盖板设计"
+          "en": "Three-stage foldable cover"
         },
         "description": {
           "uk": "Завантаження стає більш гнучким, з великими можливостями",
-          "en": "Making loading more flexible, with great possibilities",
-          "zh": "让装载更随心,大有可能"
+          "en": "Making loading more flexible, with great possibilities"
         }
       },
       {
         "image": "7x_card_4.webp",
         "title": {
           "uk": "220V змінний струм, зарядка в дорозі",
-          "en": "220V AC power, charge as you go",
-          "zh": "220V交流电源,一路随心充"
+          "en": "220V AC power, charge as you go"
         },
         "description": {
           "uk": "Максимальна вихідна потужність 2.2кВт, може задовольнити використання звичайного високопотужного електрообладнання, роблячи кемпінг на відкритому повітрі більш приємним",
-          "en": "Maximum output power 2.2kW, can meet the use of common high-power electrical equipment, making outdoor camping more enjoyable",
-          "zh": "最大输出功率2.2kW,可满足常用大功率电器设备使用,让户外露营更具乐趣"
+          "en": "Maximum output power 2.2kW, can meet the use of common high-power electrical equipment, making outdoor camping more enjoyable"
         }
       }
     ]
@@ -860,24 +810,20 @@
     "image": "cards/7x_card_5.webp",
     "title": {
       "uk": "Розумний холодильник з постійною температурою",
-      "en": "Smart Hot and Cold Constant Temperature Refrigerator",
-      "zh": "智能冷暖恒温冰箱"
+      "en": "Smart Hot and Cold Constant Temperature Refrigerator"
     },
     "features": [
       {
         "uk": "5.3L надзвичайно великий об'єм",
-        "en": "5.3L super large capacity",
-        "zh": "5.3L超大容积"
+        "en": "5.3L super large capacity"
       },
       {
         "uk": "Діапазон регулювання температури від -6°C до 50°C",
-        "en": "Adjustable temperature range from -6°C to 50°C",
-        "zh": "温度可调区间-6°C至50°C"
+        "en": "Adjustable temperature range from -6°C to 50°C"
       },
       {
         "uk": "Підтримує два режими: охолодження та підігрів",
-        "en": "Supports two modes: cooling and warming",
-        "zh": "支持制冷、保温两种模式"
+        "en": "Supports two modes: cooling and warming"
       }
     ]
   },
@@ -886,24 +832,20 @@
     "textRight": true,
     "title": {
       "uk": "Багажник на даху",
-      "en": "Roof Rack",
-      "zh": "车顶行李架"
+      "en": "Roof Rack"
     },
     "features": [
       {
         "uk": "Оригінальна конструкція багажника, легке встановлення аксесуарів",
-        "en": "Original roof rack design, easy to install accessories",
-        "zh": "原生行李架设计,轻松加装配件"
+        "en": "Original roof rack design, easy to install accessories"
       },
       {
         "uk": "Максимальне навантаження 75кг",
-        "en": "Maximum load capacity 75kg",
-        "zh": "最大承重75kg"
+        "en": "Maximum load capacity 75kg"
       },
       {
         "uk": "Вирушайте назустріч пригодам: кемпінг, серфінг чи лижі — все поміститься на даху",
-        "en": "Whether for camping, surfing or skiing, put your passion on the roof",
-        "zh": "无论露营、冲浪或滑雪,把热爱都装上车顶"
+        "en": "Whether for camping, surfing or skiing, put your passion on the roof"
       }
     ]
   },
@@ -911,93 +853,79 @@
     "video": "7x_video3.mp4",
     "title": {
       "uk": "Кожен пасажир насолоджується з першої хвилини",
-      "en": "Everyone seated, enjoy as soon as you sit down",
-      "zh": "在座的每一位，坐下就享受"
+      "en": "Everyone seated, enjoy as soon as you sit down"
     }
   },
   "detailsBlock": {
     "title": {
       "uk": "Чим більше деталей, тим більше розкоші",
-      "en": "The more the details, the more the luxury",
-      "zh": "越是细节,越见豪华"
+      "en": "The more the details, the more the luxury"
     },
     "items": [
       {
         "image": "7x_details_1.webp",
         "title": {
           "uk": "Оздоблення стелі з алькантари",
-          "en": "Suede-wrapped ceiling",
-          "zh": "麂皮绒包覆顶棚"
+          "en": "Suede-wrapped ceiling"
         },
         "description": {
           "uk": "Стеля салону та стійки оббиті алькантарою, яка ніжна на дотик, як високогірний кашемір, і це підвищує розкішний вигляд інтер'єру",
-          "en": "The cabin ceiling and pillars are covered in suede, with a delicate and skin-friendly feel like high-mountain cashmere, enhancing the luxurious texture of the interior",
-          "zh": "座舱顶棚和立柱采用麂皮绒包覆,如高山羊绒般触感细腻亲肤,提升内饰豪华质感"  
+          "en": "The cabin ceiling and pillars are covered in suede, with a delicate and skin-friendly feel like high-mountain cashmere, enhancing the luxurious texture of the interior"  
         }
       },
       {
         "image": "7x_details_2.webp",
         "title": {
           "uk": "Електрична сонцезахисна штора",
-          "en": "Electric sunshade",
-          "zh": "物理防晒电动遮阳帘"
+          "en": "Electric sunshade"
         },
         "description": {
           "uk": "Площа шторки 1.35㎡, електричне відкриття/закриття одним натисканням, 100% захист від сонця",
-          "en": "The sunshade has an area of 1.35㎡, opens and closes electrically with one touch, provides 100% sun protection",
-          "zh": "遮阳帘面积1.35㎡,一键电动开合,100%防晒,让夏季出行无惧骄阳"
+          "en": "The sunshade has an area of 1.35㎡, opens and closes electrically with one touch, provides 100% sun protection"
         }
       },
       {
         "image": "7x_details_3.webp",
         "title": {
           "uk": "Monaco NAPPA шкіра",
-          "en": "Monaco NAPPA leather",
-          "zh": "Monaco NAPPA全粒面头层真皮座椅"
+            "en": "Monaco NAPPA leather"
         },
         "description": {
           "uk": "Комфортність збільшена на 20%, приємна на дотик та стійка до забруднень",
-          "en": "Comfort increased by 20%, skin-friendly and more stain-resistant",
-          "zh": "舒适度提升20%,亲肤更抗污"
+          "en": "Comfort increased by 20%, skin-friendly and more stain-resistant"
         }
       },
       {
         "image": "7x_details_4.webp",
         "title": {
           "uk": "Кнопки управління у стилі піаніно",
-          "en": "Piano-key style controls",
-          "zh": "琴键式中控按键"
+          "en": "Piano-key style controls"
         },
         "description": {
           "uk": "Часто використовувані функції під рукою, з можливістю налаштування кнопок",
-          "en": "Allows frequently used functions to be within reach, while retaining custom buttons",
-          "zh": "让高频使用的功能出现在触手可及的地方,同时保留自定义按键"
+          "en": "Allows frequently used functions to be within reach, while retaining custom buttons"
         }
       },
       {
         "image": "7x_details_6.webp",
         "title": {
           "uk": "Підсвічування інтер'єру",
-          "en": "Ambient lighting",
-          "zh": "浮光涟漪氛围灯"
+          "en": "Ambient lighting"
         },
         "description": {
           "uk": "Світлова смуга 4673мм навколо салону, 11 зон підсвічування",
-          "en": "4673mm ultra-long light strip surrounds the cabin, with 11 ambient light zones",
-          "zh": "环舱4673mm超长灯带环绕,以11处氛围光韵,辉映水波纹镭射面板"
+          "en": "4673mm ultra-long light strip surrounds the cabin, with 11 ambient light zones"
         }
       },
       {
         "image": "7x_details_7.webp",
         "title": {
           "uk": "Задні бічні електричні шторки",
-          "en": "Rear side electric sunshades",
-          "zh": "后排双侧电动遮阳帘"
+          "en": "Rear side electric sunshades"
         },
         "description": {
           "uk": "Безрамкові двері та приватність для другого ряду, рівень затемнення 85%",
-          "en": "Frameless doors and privacy for the second row, achieving 85% shading rate",
-          "zh": "既要无框车门的高级感,也要二排亲子空间的隐私和隔热防晒,达到85%遮蔽率"
+          "en": "Frameless doors and privacy for the second row, achieving 85% shading rate"
         }
       }
     ]
@@ -1006,32 +934,28 @@
     "image": "7x_mvp.webp",
     "title": {
       "uk": "Преміальний комфорт на задніх сидіннях",
-      "en": "Luxury MPV-level rear row experience",
-      "zh": "豪华MPV级的后排体验"
+      "en": "Luxury MPV-level rear row experience"
     },
     "features": [
       {
         "value": "15°~134°",
         "label": {
           "uk": "Діапазон регулювання безступеневої фіксації",
-          "en": "Stepless suspension within adjustment range",
-          "zh": "调节范围内无级悬停"
+          "en": "Stepless suspension within adjustment range"
         }
       },
       {
         "value": "355mm",
         "label": {
           "uk": "Інтегрований електричний підніжок",
-          "en": "Integrated electric leg rest",
-          "zh": "连体式电动腿托"
+          "en": "Integrated electric leg rest"
         }
       },
       {
         "value": "215mm",
         "label": {
           "uk": "Максимальний хід задніх сидінь",
-          "en": "Maximum sliding range of rear seat",
-          "zh": "后排座椅最大滑程"
+          "en": "Maximum sliding range of rear seat"
         }
       }
     ]
@@ -1048,39 +972,33 @@
         "image": "7x_slider_1.webp",
         "title": {
           "uk": "Підігрів сидінь",
-          "en": "Graphene heating",
-          "zh": "后排座椅石墨烯加热"
+          "en": "Graphene heating"
         },
         "description": {
           "uk": "Від холоду до тепла — всього за 5 хвилин. Графеновий нагрів працює швидше та рівномірніше за традиційний, а в поєднанні з функцією масажу перетворює задні сидіння на справжній SPA-відпочинок з ефектом «гарячого каміння»",
-          "en": "5 minutes from cold to warm, faster and more even than traditional heating, graphene heating + massage linkage, the rear can also relax like a hot stone SPA",
-          "zh": "5分钟从冷到暖,比传统加热更快、更均匀,石墨烯加热+按摩联动,后排也能像做热石SPA一样放松"
+          "en": "5 minutes from cold to warm, faster and more even than traditional heating, graphene heating + massage linkage, the rear can also relax like a hot stone SPA"
         }
       },
       {
         "image": "7x_slider_2.webp",
         "title": {
           "uk": "Вентиляція та масаж",
-          "en": "Ventilation and massage",
-          "zh": "后排座椅通风/按摩/记忆"
+          "en": "Ventilation and massage"
         },
         "description": {
           "uk": "Задні сидіння з функціями вентиляції, масажу та пам'яті позицій",
-          "en": "Rear seats with ventilation, massage and memory functions",
-          "zh": "后排座椅通风/按摩/记忆"
+          "en": "Rear seats with ventilation, massage and memory functions"
         }
       },
       {
         "image": "7x_slider_3.webp",
         "title": {
           "uk": "Широкий центральний підлокітник",
-          "en": "Wide central armrest",
-          "zh": "后排中央宽奢扶手"
+          "en": "Wide central armrest"
         },
         "description": {
           "uk": "Розкішний широкий центральний підлокітник для задніх пасажирів",
-          "en": "Luxurious wide central armrest for rear passengers",
-          "zh": "后排中央宽奢扶手"
+          "en": "Luxurious wide central armrest for rear passengers"
         }
       }
     ]
@@ -1088,38 +1006,32 @@
   "performanceTextBlock": {
     "title": {
       "uk": "Максимальна продуктивність керування",
-      "en": "Ultimate driving performance",
-      "zh": "极致驾控性能"
+      "en": "Ultimate driving performance"
     },
     "subtitle": {
       "uk": "Електричний SUV здатен бути водночас поетичним і створеним для далеких подорожей",
-      "en": "Pure electric SUV can also be poetic and distant",
-      "zh": "纯电SUV也能诗和远方"
+      "en": "Pure electric SUV can also be poetic and distant"
     }
   },
   "performanceVideoBlock": {
     "video": "7x_video4.mp4",
     "title": {
       "uk": "900V високовольтна архітектура",
-      "en": "900V high-voltage architecture",
-      "zh": "900V高压架构"
+      "en": "900V high-voltage architecture"
     },
     "subtitle": {
       "uk": "Вся серія оснащена 900V двигуном, електронним управлінням та термокеруванням",
-      "en": "The entire series is equipped with 900V motor, electronic control, and thermal management",
-      "zh": "全系搭载900V电机、电控、热管理"
+      "en": "The entire series is equipped with 900V motor, electronic control, and thermal management"
     }
   },
   "rangeTextBlock": {
     "title": {
       "uk": "Великий запас ходу, надшвидке заряджання ",
-      "en": "Long range, ultra-fast charging",
-      "zh": "长续航，超快充"
+      "en": "Long range, ultra-fast charging"
     },
     "subtitle": {
       "uk": "Більш далекі подорожі стають ще швидше",
-      "en": "A farther world is a child's vision",
-      "zh": "更远的世界，是孩子的眼界"
+      "en": "A farther world is a child's vision"
     }
   },
   "batteryBlock": {
@@ -1128,40 +1040,35 @@
         "image": "battery/7x_battery_1.webp",
         "name": {
           "uk": "Батарея 75 кВт·год Shield Golden Brick",
-          "en": "75 kWh Aegis Golden Brick Battery",
-          "zh": "75度神盾金砖电池"
+          "en": "75 kWh Aegis Golden Brick Battery"
         },
         "specs": [
           {
             "value": "620 км",
             "label": {
               "uk": "Запас ходу CLTC¹ (найдовший)",
-              "en": "CLTC range¹ (longest)",
-              "zh": "CLTC综合工况续航最长¹"
+              "en": "CLTC range¹ (longest)"
             }
           },
           {
             "value": "5.5C",
             "label": {
               "uk": "Надшвидка зарядка",
-              "en": "Ultra-fast charging",
-              "zh": "超快充"
+              "en": "Ultra-fast charging"
             }
           },
           {
             "value": "10.5 хв",
             "label": {
               "uk": "Час зарядки 10%-80%²",
-              "en": "Charging time 10%-80%²",
-              "zh": "充电时间（SoC 10%-80%²）"
+              "en": "Charging time 10%-80%²"  
             }
           },
           {
             "value": "425 км",
             "label": {
               "uk": "Запас ходу за 10 хвилин²",
-              "en": "Range added in 10 minutes²",
-              "zh": "10分钟充电，续航增加²"
+              "en": "Range added in 10 minutes²"
             }
           }
         ]
@@ -1170,40 +1077,35 @@
         "image": "battery/7x_battery_2.webp",
         "name": {
           "uk": "Батарея 103 кВт·год Kirin",
-          "en": "103 kWh Kirin Battery",
-          "zh": "103度麒麟电池"
+          "en": "103 kWh Kirin Battery"
         },
         "specs": [
           {
             "value": "802 км",
             "label": {
               "uk": "Запас ходу CLTC¹ (найдовший)",
-              "en": "CLTC range¹ (longest)",
-              "zh": "CLTC综合工况续航最长¹"
+              "en": "CLTC range¹ (longest)"
             }
           },
           {
             "value": "6C",
             "label": {
               "uk": "Надшвидка зарядка",
-              "en": "Ultra-fast charging",
-              "zh": "超快充"
+              "en": "Ultra-fast charging"
             }
           },
           {
             "value": "10 хв",
             "label": {
               "uk": "Час зарядки 10%-80%³",
-              "en": "Charging time 10%-80%³",
-              "zh": "充电时间（SoC 10%-80%³）"
+              "en": "Charging time 10%-80%³"
             }
           },
           {
             "value": "570 км",
             "label": {
               "uk": "Запас ходу за 10 хвилин³",
-              "en": "Range added in 10 minutes³",
-              "zh": "10分钟充电，续航增加³"
+              "en": "Range added in 10 minutes³"
             }
           }
         ]
@@ -1212,18 +1114,15 @@
     "footnotes": [
       {
         "uk": "Дані отримано з інженерних вимірювань, можуть відрізнятися через погодні умови, стан дороги, рівень заряду, навантаження, шини та інші тестові фактори",
-        "en": "Data sourced from engineering actual measurement data, or may vary due to on-site weather, road conditions, power level, load, tire, and other testing factors",
-        "zh": "数据源自工程实测数据,或因现场天气、路况、电量、载重、轮胎等测试因素不同有所差异"
+        "en": "Data sourced from engineering actual measurement data, or may vary due to on-site weather, road conditions, power level, load, tire, and other testing factors"
       },
       {
         "uk": "Дані про зарядку для оновленої батареї ZEEKR 7X літій-залізо-фосфатної (LFP) базуються на найшвидшому часі зарядки при нормальній температурі з використанням V3 рідинно-охолоджуваної надшвидкої зарядної станції",
-        "en": "Charging data for the refreshed Zeekr 7X lithium iron phosphate battery pack is based on the fastest charging time at room temperature using a V3 liquid-cooled ultra-fast charging pile",
-        "zh": "充电数据为焕新极氪7X磷酸铁锂电池包基于V3液冷极充桩于常温下最快充电时间"
+        "en": "Charging data for the refreshed Zeekr 7X lithium iron phosphate battery pack is based on the fastest charging time at room temperature using a V3 liquid-cooled ultra-fast charging pile"
       },
       {
         "uk": "Дані про зарядку для оновленої батареї ZEEKR 7X трійчастої літій-іонної базуються на найшвидшому часі зарядки при нормальній температурі з використанням V3 рідинно-охолоджуваної надшвидкої зарядної станції",
-        "en": "Charging data for the refreshed Zeekr 7X ternary lithium battery pack is based on the fastest charging time at room temperature using a V3 liquid-cooled ultra-fast charging pile",
-        "zh": "充电数据为焕新极氪7X三元锂电池包基于V3液冷极充桩于常温下最快充电时间"
+        "en": "Charging data for the refreshed Zeekr 7X ternary lithium battery pack is based on the fastest charging time at room temperature using a V3 liquid-cooled ultra-fast charging pile"
       }
     ]
   },

@@ -42,6 +42,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -61,14 +62,7 @@ watch(options, (opts) => {
 
 const activeOption = computed(() => options.value.find(o => o.id === activeId.value) || options.value[0])
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const getInsideImage = (id) => {
   if (props.carId === '7x') {

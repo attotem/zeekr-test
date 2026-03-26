@@ -1,7 +1,6 @@
 <template>
   <section class="car-performance-block">
     <div class="car-performance-block__inner">
-      <!-- Row 1: Image Left, Text Right -->
       <div class="car-performance-block__row car-performance-block__row--image-left">
         <div class="car-performance-block__image-wrap">
           <img
@@ -32,7 +31,6 @@
         </div>
       </div>
 
-      <!-- Row 2: Text Left, Image Right -->
       <div class="car-performance-block__row car-performance-block__row--text-left">
         <div class="car-performance-block__content">
           <h3 v-if="getText(blockData.version2?.title)" class="car-performance-block__title">
@@ -69,6 +67,7 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -85,24 +84,10 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => {
-  if (!textObj) return ''
-  if (typeof textObj === 'string') return textObj
-  if (typeof textObj === 'object' && textObj !== null) {
-    const lang = langStore.activeLang
-    if (lang && textObj[lang]) return textObj[lang]
-    if (lang === 'uk' && textObj.ua) return textObj.ua
-    if (lang === 'ua' && textObj.uk) return textObj.uk
-    if (lang === 'ru' && textObj.ua) return textObj.ua
-    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
-    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
-  }
-  return ''
-}
+const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
-// Preload images
 const preloadAllImages = () => {
   const images = [blockData.value.image1, blockData.value.image2].filter(Boolean)
   
@@ -120,7 +105,6 @@ const preloadAllImages = () => {
   })
 }
 
-// Watch blockData to preload when images change
 watch(() => [blockData.value.image1, blockData.value.image2], ([img1, img2]) => {
   if (img1 || img2) {
     preloadAllImages()
