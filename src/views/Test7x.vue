@@ -44,6 +44,7 @@
             :price-list-url="priceListUrl"
             @buttonClick="handleHeroButtonClick"
           />
+          
           <component
             v-else
             :is="block.component"
