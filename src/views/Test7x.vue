@@ -44,7 +44,7 @@
             :price-list-url="priceListUrl"
             @buttonClick="handleHeroButtonClick"
           />
-          
+
           <component
             v-else
             :is="block.component"
@@ -122,11 +122,11 @@ import CarVideoTextBlock from '@/components/new_car_page/car-video-text-block.vu
 import CarTerrainBlock from '@/components/new_car_page/car-terrain-block.vue'
 import CarStrengthBlock from '@/components/new_car_page/car-strength-block.vue'
 import CarDetectBlock from '@/components/new_car_page/car-detect-block.vue'
-import CarVersionsCards from '@/components/new_car_page/car-versions-cards.vue'
 import pageDataJson from '@/assets/pages/7x.json'
 import ModalContact from '@/components/ModalContact.vue'
 import API from '@/composables/API'
 import { useLangStore } from '@/stores/lang'
+import CarVersionsCards from '@/components/new_car_page/car-versions-cards.vue'
 
 const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
 
