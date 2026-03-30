@@ -60,8 +60,8 @@
       "en": "ZEEKR 9X"
     },
     "subtitle": {
-      "ua": "Глобальний надрозкішний SUV новий флагман",
-      "en": "Global Ultra-Luxury SUV New Flagship"
+      "ua": "Новий розкішний флагманський SUV",
+      "en": "New luxury flagship SUV"
     },
     "video": "9x_hero.mp4",
     "image": {
@@ -190,7 +190,7 @@
   "designBlock": {
     "topTitle": {
       "en": "Boundless Horizon, Complete Serenity",
-      "ua": "Безмежний горизонт, повна впевненість"
+      "ua": "Відкритий горизонт. Безперечна впевненість"
     },
     "images": [
       {
@@ -217,7 +217,7 @@
         },
         "description": {
           "en": "Features an integrated C-ring design, seamlessly connecting the roof and body like a luxury yacht's flybridge",
-          "ua": "Відрізняється інтегрованим дизайном C-кільця, який плавно з'єднує дах і кузов, наче flybridge розкішної яхти"
+          "ua": "Інтегрована C-стійка створює гармонійний силует, що нагадує обриси сучасної яхти, надаючи силуету автомобіля особливої грації."
         }
       },
       {
@@ -227,7 +227,7 @@
         },
         "description": {
           "en": "Following the golden ratio, achieving an elegant side profile and spacious entry/exit areas, perfectly balancing grandeur and comfort",
-          "ua": "Дотримуючись золотого перерізу, досягаючи елегантного бічного профілю та просторних зон входу/виходу, ідеально поєднуючи велич та комфорт"
+          "ua": "Завдяки принципу золотого перетину, ми досягли ідеального балансу між динамічним силуетом та зручністю посадки. Це новий стандарт естетики та функціональності."
         }
       },
       {
@@ -245,7 +245,7 @@
   "designBlock2": {
     "topTitle": {
       "en": "Starry Galaxy Speaks, Heart Reflects",
-      "ua": "Зоряна галактика говорить, серце відображає"
+      "ua": "Інтелектуальна система освітлення салону створює атмосферу далекої галактики"
     },
     "images": [
       "9x_slider2_1_v.mp4",
@@ -259,7 +259,7 @@
         },
         "description": {
           "en": "Light as language, illuminating the path ahead",
-          "ua": "Світло як мова, освітлюючи шлях вперед"
+          "ua": "Бездоганна видимість у кожній подорожі"
         }
       },
       {
@@ -278,6 +278,10 @@
     "title": {
       "en": "Observe Heaven and Earth, Reveal True Nature",
       "ua": "Спостерігаючи небо і землю, відкриваючи справжню сутність"
+    },
+    "subtitle": {
+      "en": "A color that not only catches the eye, but tells a story.",
+      "ua": "Колір, який не просто привертає погляди, а розповідає історію"
     }
   },
   "color360Block": {
@@ -381,6 +385,10 @@
     "title": {
       "en": "Embrace Nature, Nurture the Soul",
       "ua": "Охоплюючи суть неба, плекаючи глибини серця"
+    },
+    "subtitle": {
+      "en": "A flawless blend of shades that emphasizes the architectural perfection of the interior.",
+      "ua": "Бездоганне поєднання відтінків, що підкреслює архітектурну досконалість інтер’єру."
     }
   },
   "insideBlock": {
@@ -486,7 +494,7 @@
         },
         "caption": {
           "en": "Convenient Access to the Third Row - Seamless entry, shared luxury",
-          "ua": "Зручний доступ до третього ряду - Безшовний вхід, спільна розкіш"
+          "ua": "зручний доступ до третього ряду, завдяки пересувним сидінням"
         }
       }
     ]
@@ -494,7 +502,7 @@
   "lightBlock": {
     "title": {
       "en": "Heaven and Earth Delight the Eyes and Mind",
-      "ua": "Небо і земля радують очі та розум"
+      "ua": "Максимум світла та простору для вашого задоволення"
     },
     "screens": [
       {
@@ -505,11 +513,11 @@
         },
         "title": {
           "en": "Three-Row Six-Seat Layout, Theatre-Style Cabin",
-          "ua": "Трирядний шестимісний салон, театральний стиль салону"
+          "ua": "Центральний прохід"
         },
         "description": {
           "en": "Seats elevated, suitable for all rows",
-          "ua": "Сидіння підняті вгору ярусами, зручні для всіх рядів"
+          "ua": "170мм простір між сидіннями збільшує простір та додає комфорту пасажирам"
         }
       },
       {
@@ -539,8 +547,8 @@
         },
         "description": {
           "en": "Third-row exclusive independent panoramic roof, third-row starry sky, sharing daylight",
-          "ua": "Ексклюзивний незалежний панорамний дах для третього ряду, зоряне небо третього ряду, спільне денне світло"
-        }
+          "ua": "Власне небо для кожного: окремий панорамний дах третього ряду для незабутніх краєвидів та затишку"
+                }
       },
       {
         "image": {
@@ -550,7 +558,7 @@
         },
           "title": {
             "en": "1.03m² Large-Area Openable Panoramic Sunroof",
-            "ua": "Великий панорамний люк даху площею 1,03 м², що відкривається"
+            "ua": "Динаміка руху під відкритим небом"
           },
           "description": {
             "en": "Wind follows movement, transparent vision",
@@ -601,7 +609,11 @@
     "title": {
       "en": "Sit and Watch the Clouds Rise, Heart Relaxed and Spirit Free",
       "ua": "Сидячи, спостерігаючи за хмарами, серце розслаблене, дух вільний."
-  }
+    },
+    "subtitle": {
+      "en": "Dynamics of movement under the open sky",
+      "ua": ""
+    }
   },
   "skyVideosBlock": {
     "image1": {
@@ -662,13 +674,25 @@
             "ua": "Максимальний кут відкидання"
           }
         }
-      ]
+      ],
+      "note": {
+        "en": "Luxury for everyone: reclining third-row seats offer the same level of comfort as the front rows.",
+        "ua": "Розкіш, доступна кожному: сидіння третього ряду з регулюванням нахилу пропонують такий самий рівень комфорту, як і перші ряди"
+      }
     }
   },
   "textBlockChair": {
     "title": {
       "en": "Globally Original Flowing Cloud Seat",
-      "ua": "Унікальне у світі крісло «Пливуча хмара»"    
+      "ua": "Відпочивайте, спостерігаючи за хмарами: ваш персональний оазис комфорту"
+    },
+    "subtitle": {
+      "en": "Material excellence: natural Nappa leather",
+      "ua": "Досконалість матеріалів: натуральна шкіра Nappa"
+    },
+    "note": {
+      "en": "We took care of your comfort by finishing all key cabin elements - from seats to armrests and door cards - with natural full-grain Nappa leather. Feel premium quality in every detail.",
+      "ua": "Ми подбали про ваш комфорт, оздобивши всі ключові елементи салону — від крісел до підлокітників та дверних карт — натуральною цільнозернистою шкірою Nappa. Відчуйте преміальну якість у кожній деталі."
     }
   },
   "chairVideoBlock": {
@@ -692,11 +716,11 @@
         },
         "title": {
           "en": "12-Layer Seat Structure",
-          "ua": "12-шарова структура сидіння"
+          "ua": "Інноваційна 12-шарова архітектура сидінь"
         },
         "description": {
           "en": "10mm dreamy rebound sponge, soft and comfortable, all-round support, not tired after long sitting",
-          "ua": "10мм губка з відскоком, м'яка та комфортна, всебічна підтримка, не втомлюється після тривалого сидіння"
+          "ua": "Завдяки 10-міліметровій губці з ефектом пам’яті та багатошаровій структурі, крісла забезпечують ідеальну підтримку тіла. Навіть найдовші подорожі не викликають втоми, даруючи відчуття м'якості та легкості."
         }
       },
       {
@@ -707,11 +731,11 @@
         },
         "title": {
           "en": "Globally Pioneering Four-Way Adaptive Lumbar Support",
-          "ua": "Глобальна піонерська чотиристороння адаптивна підтримка попереку"
+          "ua": "Інтелектуальна підтримка спини та розвантаження хребта"
         },
         "description": {
           "en": "Spine-friendly ergonomic seat, relieves whole-body pressure",
-          "ua": "Ергономічне сидіння для хребта, що знімає тиск з усього тіла"
+          "ua": "Чотиристороння адаптивна система підтримки попереку та ергономічна форма сидінь мінімізують тиск на тіло, гарантуючи легкість навіть у тривалих подорожах."
       }
       }
     ]
@@ -719,7 +743,7 @@
   "chairSwitcherBlock": {
     "title": {
       "en": "Four Postures, Physical and Mental Relaxation",
-      "ua": "Чотири позиції, фізичне та психологічне розслаблення"
+      "ua": "Чотири режими комфорту для повного відновлення: гармонія тіла та спокій думок"
     },
     "videos": [
       "9x_chair_6.mp4",
@@ -735,7 +759,7 @@
         },
         "description": {
           "en": "As if in outer space, the whole body and mind can be deeply relaxed",
-          "ua": "Ніби в космосі, все тіло та розум можуть глибоко розслабитися"
+          "ua": "Чотири режими комфорту для повного відновлення: гармонія тіла та спокій думок"
         }
       },
       {
@@ -745,7 +769,7 @@
         },
         "description": {
           "en": "Legs can be fully stretched, freely enjoy leisure time",
-          "ua": "Ноги можуть бути повністю розтягнуті, і ви можете вільно насолоджуватися вільним часом"
+          "ua": "Максимальний запас простору: ергономіка салону дозволяє прийняти ідеальне положення для глибокої релаксації"
         }
       },
       {
@@ -755,7 +779,7 @@
         },
         "description": {
           "en": "It is a place for leisure and entertainment, and also a place for making tea and discussing business",
-          "ua": "Це місце для відпочинку та розваг, а також місце для чаювання та обговорення бізнесу"
+          "ua": "Простір, що підходить як для відпочинку, так і для ділових зустрічей"
         }
       },
       {
@@ -784,7 +808,7 @@
         },
         "title": {
           "en": "Up and Down Freedom",
-          "ua": "Вільність руху вгору і вниз"
+          "ua": "Регулювання кута повороту дозволяє налаштувати ідеальну точку огляду та рівень комфорту"
         }
       },
       {
@@ -829,8 +853,9 @@
   "audioVideoCaptionBlock": {
     "title": {
       "en": "Global Audio-Visual, Sensory Feast",
-      "ua": "Глобальний аудіовізуальний бенкет для всіх відчуттів"
-        }
+      "ua": "Інтелектуальна система розваг: досконалість звуку та бездоганна картинка"
+      }
+   
   },
   
     "textBlockAudio": {
@@ -842,7 +867,7 @@
     "audioSwitcherBlock": {
       "title": {
         "en": "",
-        "ua": ""
+        "ua": "Кришталево чисті високі частоти завдяки інноваційним титановим компонентам аудіосистеми"
       },
       "videos": [
         "9x_slider3_1.mp4",
@@ -888,7 +913,7 @@
           },
           "description": {
             "en": "Titanium tweeter unit, greatly enhances high-frequency resolution",
-            "ua": "Титановий твітер значно підвищує деталізацію високих частот"
+            "ua": "Кришталево чисті високі частоти завдяки інноваційним титановим компонентам аудіосистеми"
           }
         }
       ]
@@ -955,6 +980,10 @@
     "title": {
       "en": "Heart's Desire, Ultimate Intelligent Control",
       "ua": "Бажання серця, найвищий інтелектуальний контроль"
+    },
+    "subtitle": {
+      "en": "Perfect control. Endless possibilities",
+      "ua": "Досконалий контроль. Безмежні можливості"
     }
   },
   "sliderBlock5": {
@@ -982,7 +1011,7 @@
         },
         "caption": {
           "en": "6.3-inch OLED Magic Control Screen - Streamlined control screen, mastered in one hand",
-          "ua": "6,3-дюймовий OLED екран магічного керування — оптимізоване управління, контроль однією рукою"
+          "ua": "6,3-дюймовий OLED-дисплей інтелектуального керування: досконала ергономіка та контроль одним дотиком"
         }
       },
       {
@@ -1012,7 +1041,7 @@
   "textBlockAIOS7": {
     "title": {
       "en": "Zeekr AI OS7 Intelligent Cockpit System",
-      "ua": "Zeekr AI OS7 Система інтелектуального салону "
+      "ua": "Інтелектуальна операційна система Zeekr AI OS7 — новий вимір цифрового комфорту "
     }
   },
   "aiOS7Block": {
@@ -1207,11 +1236,11 @@
   "textBlockChassis": {
     "title": {
       "en": "Vast AI Digital Chassis",
-      "ua": "Vast AI цифрове шасі"
+      "ua": "Інтелектуальна платформа Vast AI: цифрове шасі нового покоління. Долайте будь-які відстані з легкістю"
     },
     "subtitle": {
       "en": "Traverse Heaven and Earth, Travel Far with Ease",
-      "ua": "Перетинаючи небо і землю, подорожуючи далеко з легкістю"
+      "ua": "Долайте будь-які відстані з легкістю"
     }
   },
   "chassisVideoBlock": {
@@ -1288,7 +1317,7 @@
         "value": "",
         "label": {
           "en": "Real-time calling of intelligent driving assistance computing power and perception capabilities, coordinating chassis, powertrain, cabin and other multi-domain actuators",
-          "ua": "Виклик у реальному часі обчислювальної потужності інтелектуальної допомоги водію та можливостей сприйняття, координуючи шасі, силову установку, салон та інші багатодоменні виконавчі механізми"
+          "ua": "Максимальна обчислювальна потужність дозволяє системі допомоги водію діяти на випередження. Інтелектуальна координація шасі та двигуна забезпечує миттєву реакцію автомобіля на будь-яку дорожню ситуацію."
         }
       }
     ]
@@ -1397,11 +1426,11 @@
   "textBlockSafety": {
     "title": {
       "en": "Vast Safety Armor",
-      "ua": "безпечна броня"
+      "ua": "Безпечна броня"
     },
     "subtitle": {
       "en": "Steel Bones and Iron Frame, Complete Protection",
-      "ua": "Сталевий каркас, повний захист"
+      "ua": "Сталева міцність. Абсолютний захист"
     }
   },
   "strengthBlock": {
@@ -1441,7 +1470,7 @@
   "textBlockHybridSafety": {
     "title": {
       "en": "Hybrid Professional Protection, Original Safety Design",
-      "ua": "Професійний захист гібрида, оригінальний дизайн безпеки"
+      "ua": "Спеціалізована архітектура безпеки для гібридних систем"
     }
   },
   "safetyFunctionsBlock": {
@@ -1574,7 +1603,7 @@
     "video": "9x_video_5.mp4",
     "title": {
       "en": "Full-Link Dual Backup with 8 Major Safety Redundancies",
-      "ua": "Повне резервування з 8 основними системами безпеки"
+      "ua": "Надійна архітектура з повним резервуванням функцій у 8 основних модулях захисту"
     },
     "features": []
   }

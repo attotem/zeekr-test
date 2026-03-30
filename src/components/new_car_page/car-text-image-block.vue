@@ -50,6 +50,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   width: calc(100% - 40px);
   margin: 0 20px;
   position: relative;
+  padding-bottom: 60px;
 
   &__image-wrap {
     width: 100%;
@@ -95,7 +96,6 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     justify-content: center;
     text-align: center;
     padding: 60px 20px 40px;
-    max-width: 1320px;
     margin: 0 auto;
   }
 

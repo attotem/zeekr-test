@@ -86,7 +86,7 @@
   },
   "textBlock": {
     "title": {
-      "ua": "Класичний мисливський автомобіль",
+      "ua": "Елегантне поєднання стилю та потужності",
       "en": "Classic shooting brake"
     },
     "subtitle": {
@@ -229,8 +229,8 @@
 
   "textBlock360": {
     "title": {
-      "ua": "7 варіантів зовнішнього вигляду",
-      "en": "7 exterior options"
+      "ua": "7 фірмових кольорів екстер’єру",
+      "en": "7 brand exterior colors"
     },
     "subtitle": {
       "ua": "",
@@ -331,7 +331,7 @@
   },
   "textBlockCargo": {
     "title": {
-      "ua": "Перевершує завантажувальний простір SUV того ж класу",
+      "ua": "Максимум корисного простору: перевершує навіть SUV",
       "en": "Exceeds the loading space of same-class SUVs"
     },
     "subtitle": {
@@ -658,8 +658,8 @@
   },
   "textBlockLight": {
     "title": {
-      "ua": "Панорамне оточення світла «Гармонія світлових потоків»",
-      "en": "「Flowing Light Harmony」Panoramic Ambient Lighting"
+      "ua": "Амбієнтна підсвітка салону «Гармонія світла»",
+      "en": "「Flowing Light Harmony」Ambient Lighting"
     },
     "subtitle": {
       "ua": "",
@@ -738,12 +738,12 @@
           "mobile": "001_material_1_phone.webp"
         },
         "title": {
-          "ua": "Сидіння з повношкірної шкіри Monaco NAPPA",
-          "en": "Monaco NAPPA Full-Grain Top-Layer Leather Seats"
+          "ua": "Оздоблення сидінь преміальною шкірою Monaco Nappa",
+          "en": "Premium Leather Nappa Monaco Seat Covering"
         },
         "description": {
-          "ua": "Розкішні сидіння з повношкірної шкіри NAPPA найвищої якості",
-          "en": "Luxurious seats made from premium full-grain NAPPA leather"
+          "ua": "Найвищий рівень комфорту для кожної подорожі",
+          "en": "Highest comfort level for every journey"
         }
       },
       {
@@ -753,7 +753,7 @@
           "mobile": "001_material_2_phone.webp"
         },
         "title": {
-          "ua": "Кермо з обробкою NAPPA",
+          "ua": "ККермо з оздобленням шкірою NAPPA",
           "en": "NAPPA Leather-Wrapped Steering Wheel"
         },
         "description": {
@@ -813,12 +813,12 @@
           "mobile": "001_material_6_phone.webp"
         },
         "title": {
-          "ua": "Паризькі декоративні елементи",
-          "en": "Parisian Studs"
+          "ua": "Декоративні елементи з візерунком «Clous de Paris»",
+          "en": "Clous de Paris Decorative Elements"
         },
         "description": {
-          "ua": "Декоративні елементи в паризькому стилі для вишуканості інтер'єру",
-          "en": "Parisian-style decorative elements for interior elegance"
+          "ua": "Витончені акценти з класичною вишуканою текстурою ",
+          "en": "Fine accents with classic refined texture"
         }
       },
       {
@@ -840,8 +840,8 @@
   },
   "screensBlock": {
     "title": {
-      "ua": "Високоякісна чотириекранна панорамна взаємодія",
-      "en": "High-Definition Four-Screen Panoramic Interaction"
+      "ua": "Єдиний цифровий простір: взаємодія чотирьох екранів",
+      "en": "Single digital space: interaction of four screens"
     },
     "screens": [
       {
@@ -934,7 +934,7 @@
           "mobile": "001_luxury_2_phone.webp"
         },
         "title": {
-          "ua": "D-подібне спортивне рульове колесо",
+          "ua": "D-подібне спортивне рульове кермо",
           "en": "D-Shaped Sports Steering Wheel"
         },
         "description": {
@@ -1182,8 +1182,8 @@
   },
   "textBlockInside": {
     "title": {
-      "ua": "4 варіанти інтер'єру",
-      "en": "4 interior options"
+      "ua": "4 стилістичні рішення інтер’єру",
+      "en": "4 stylish interior solutions"
     },
     "subtitle": {
       "ua": "",
@@ -1261,8 +1261,8 @@
     "video2": "001_sky_2.mp4",
     "text1": {
       "title": {
-        "ua": "Технологія зоряного неба з провідною плівкою",
-          "en": "Starlight Film Conductive Technology"
+        "ua": "Інтерактивна стеля «зоряне небо»",
+          "en": "Interactive Starlight Ceiling"
         },
       "items": [
         {
@@ -1413,8 +1413,8 @@
         }
       ],
       "note": {
-        "ua": "*Дані з інженерних вимірювань, час розгону не включає перший фут старту",
-        "en": "*Data from engineering tests, acceleration time does not include the first foot of rollout"
+        "ua": "*Дані з інженерних вимірювань, час розгону не включає перший метру старту",
+        "en": "*Data from engineering tests, acceleration time does not include the first meter of rollout"
       }
     }
   },
@@ -1568,23 +1568,23 @@
       {
         "image": "001_cabin_2.webp",
         "title": {
-          "ua": "Кабіна здоров'я та релаксації",
+          "ua": "Простір для релаксації та відновлення",
           "en": "Health Decompression Cabin"
         },
         "description": {
-          "ua": "Соматосенсорна вібраційна музична терапія, ефективне розслаблення",
-          "en": "Somatosensory vibration music therapy, effective relaxation"
+          "ua": "Акустичний комфорт із функцією соматосенсорного відгуку",
+          "en": "Acoustic comfort with somatosensory feedback function"
         }
       },
       {
         "image": "001_cabin_3.webp",
         "title": {
-          "ua": "Zeekr Кінотеатр",
-          "en": "ZEEKR Cinema"
+          "ua": "Кінотеатр Zeekr",
+          "en": "Zeekr Cinema"
         },
         "description": {
-          "ua": "Зв'язок салону, занурювальний 5D кіноперегляд",
-          "en": "Cabin linkage, immersive 5D viewing experience"
+          "ua": "Повне занурення у форматі 5D",
+          "en": "Full immersion in 5D format"
         }
       },
       {
@@ -1609,8 +1609,8 @@
     "items": [
       {
         "title": {
-          "ua": "Zeekr AI OS7 Система розумного салону",
-          "en": "Zeekr AI OS7 Smart Cockpit System"
+          "ua": "Zeekr AI OS7: Операційна система майбутнього",
+          "en": "Zeekr AI OS7: Future Operating System"
         },
         "description": {
           "ua": "",
@@ -1619,8 +1619,8 @@
       },
       {
         "title": {
-          "ua": "AI Eva Еволюція великої моделі",
-          "en": "AI Eva Large Model Capability Evolution"
+          "ua": "AI Eva: Еволюція інтелекту",
+          "en": "AI Eva: Evolution of Intelligence"
         },
         "description": {
           "ua": "",
@@ -1629,8 +1629,8 @@
       },
       {
         "title": {
-          "ua": "Обчислювальна платформа розумного салону",
-          "en": "Smart Cockpit Computing Platform"
+          "ua": "Процесор Snapdragon: інтелект у кожному дотику.",
+          "en": "Snapdragon Processor: Intelligence in Every Touch."
         },
         "description": {
           "ua": "",

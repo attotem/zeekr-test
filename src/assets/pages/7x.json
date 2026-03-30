@@ -208,22 +208,22 @@
   },
   "textBlock": {
     "title": {
-      "ua": "Прихована енергія",
-      "en": "Hidden Energy"
+      "ua": "Нове бачення преміального SUV",
+      "en": "New vision of premium SUV"
     },
     "subtitle": {
-      "ua": "Чистий SUV дизайн, що переосмислює розкіш для сім'ї",
-      "en": "Pure SUV design, redefining luxury for the family"
+      "ua": "Прихована сила вашого ідеального сімейного авто",
+      "en": "Hidden power of your perfect family car"
     }
   },
   "imageBlock": {
     "title": {
-      "ua": "Прихована енергія",
-      "en": "Hidden Energy"
+      "ua": "Нове бачення преміального SUV",
+      "en": "New vision of premium SUV"
     },
     "subtitle": {
-      "ua": "Чистий SUV дизайн, що переосмислює розкіш для сім'ї",
-      "en": "Pure SUV design, redefining luxury for the family"
+      "ua": "Прихована сила вашого ідеального сімейного авто",
+      "en": "Hidden power of your perfect family car"
     }
   },
   "insideBlock": {
@@ -285,8 +285,8 @@
   },
   "textBlock360": {
     "title": {
-      "ua": "6 варіантів зовнішнього вигляду",
-      "en": "6 exterior options"
+      "ua": "6 фірмових кольорів екстер’єру",
+      "en": "6 brand exterior colors"
     },
     "subtitle": {
       "ua": "",
@@ -295,8 +295,8 @@
   },
   "textBlockInside": {
     "title": {
-      "ua": "4 варіанти інтер'єру",
-      "en": "4 interior options"
+      "ua": "4 ексклюзивні поєднання кольорів салону",
+      "en": "4 exclusive color combinations"
     },
     "subtitle": {
       "ua": "",
@@ -501,8 +501,8 @@
       {
         "image": "slider2/7x_slider_1.webp",
         "caption": {
-          "uk": "Одне натискання — легше сісти. Двері автоматично відкриваються та закриваються одним натисканням, дозволяючи зручно увійти в автомобіль і елегантно зачинити двері.",
-          "en": "One-touch operation, easier access. Doors automatically open and close with one touch, allowing you to enter the car comfortably and close the door elegantly."
+          "uk": "Автоматичне керування дверима робить посадку максимально легкою, а зачинення — безшумним та елегантним",
+          "en": "Automatic door operation makes entry easy, and closing quiet and elegant"
         }
       },
       {
@@ -730,8 +730,8 @@
       },
       {
         "title": {
-          "uk": "Перчатковий ящик",
-          "en": "Glove box"
+          "uk": "Закритий відсік",
+          "en": "Closed storage"
         },
         "description": {
           "uk": "Електронне управління з паролем",
@@ -752,8 +752,8 @@
   },
   "cardsBlock": {
     "title": {
-      "uk": "Багажник, у який поміщаються всі пригоди",
-      "en": "Traveler Magic Trunk"
+      "uk": " Багажник, де вистачить місця для всього необхідного",
+      "en": "Trunk, enough space for everything you need"
     },
     "cards": [
       {
@@ -770,8 +770,8 @@
       {
         "image": "7x_card_2.webp",
         "title": {
-          "uk": "Другий ряд складено, більше простору",
-          "en": "Second row folded down, more space"
+          "uk": "Складений другий ряд — максимальний об'єм за лічені секунди",
+          "en": "Folded second row — maximum volume in seconds"
         },
         "description": {
           "uk": "Об'єм можна розширити до 1978L, можна перетворити на ліжко одним натисканням, великі предмети також легко завантажити",
@@ -785,12 +785,12 @@
       {
         "image": "7x_card_3.webp",
         "title": {
-          "uk": "Трисекційна складена кришка",
-          "en": "Three-stage foldable cover"
+          "uk": "Розумне зонування",
+          "en": "Smart zoning"
         },
         "description": {
-          "uk": "Завантаження стає більш гнучким, з великими можливостями",
-          "en": "Making loading more flexible, with great possibilities"
+          "uk": "Керуйте простором багажника за допомогою багатофункціональної трисекційної панелі",
+          "en": "Manage trunk space with a multifunctional three-stage panel"
         }
       },
       {
@@ -1009,7 +1009,7 @@
       "en": "Ultimate driving performance"
     },
     "subtitle": {
-      "uk": "Електричний SUV здатен бути водночас поетичним і створеним для далеких подорожей",
+      "uk": "Електричний SUV, у якому витончена естетика поєднується з витривалістю для великих подорожей",
       "en": "Pure electric SUV can also be poetic and distant"
     }
   },
