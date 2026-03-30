@@ -1578,6 +1578,7 @@
       },
       {
         "image": "001_cabin_3.webp",
+        
         "title": {
           "ua": "Кінотеатр Zeekr",
           "en": "Zeekr Cinema"
@@ -1600,7 +1601,7 @@
       }
     ]
 
-    
+
   },
   "securityBlock": {
     "media": [
