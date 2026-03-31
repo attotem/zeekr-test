@@ -348,10 +348,6 @@
     "title": {
       "en": "Wide Enjoyment, Global Cabin",
       "ua": "Світовий стандарт комфорту: простір, що надихає"
-    },
-    "subtitle": {
-      "en": "Heart with Structure, Ambition in the World",
-      "ua": "Серце зі структурою, амбіції в усьому світі"
     }
   },
   "luxuryVideoBlock": {
@@ -509,7 +505,7 @@
         },
         "description": {
           "en": "Seats elevated, suitable for all rows",
-          "ua": "170мм простір між сидіннями збільшує простір та додає комфорту пасажирам"
+          "ua": "Комфорт без компромісів: завдяки ярусному розташуванню крісел, подорож буде однаково приємною і для водія, і для пасажирів третього ряду"
         }
       },
       {
@@ -601,10 +597,6 @@
     "title": {
       "en": "Sit and Watch the Clouds Rise, Heart Relaxed and Spirit Free",
       "ua": "Відпочивайте, спостерігаючи за хмарами: ваш персональний оазис комфорту"
-    },
-    "subtitle": {
-      "en": "Dynamics of movement under the open sky",
-      "ua": ""
     }
   },
   "skyVideosBlock": {
@@ -679,12 +671,9 @@
       "ua": "Відпочивайте, спостерігаючи за хмарами: ваш персональний оазис комфорту"
     },
     "subtitle": {
-      "en": "Material excellence: natural Nappa leather",
-      "ua": "Досконалість матеріалів: натуральна шкіра Nappa"
-    },
-    "note": {
       "en": "We took care of your comfort by finishing all key cabin elements - from seats to armrests and door cards - with natural full-grain Nappa leather. Feel premium quality in every detail.",
       "ua": "Ми подбали про ваш комфорт, оздобивши всі ключові елементи салону — від крісел до підлокітників та дверних карт — натуральною цільнозернистою шкірою Nappa. Відчуйте преміальну якість у кожній деталі."
+   
     }
   },
   "chairVideoBlock": {
@@ -1544,7 +1533,7 @@
     },
     "title": {
       "en": "Hardcore Dual-Core Computing Power",
-      "ua": "Хардкорна двоядерна обчислювальна потужність"
+      "ua": "Потужна двочипова обчислювальна система"
     },
     "subtitles": [
       {
