@@ -501,11 +501,11 @@
         },
         "title": {
           "en": "Three-Row Six-Seat Layout, Theatre-Style Cabin",
-          "ua": "Центральний прохід"
+          "ua": "Комфорт без компромісів"
         },
         "description": {
           "en": "Seats elevated, suitable for all rows",
-          "ua": "Комфорт без компромісів: завдяки ярусному розташуванню крісел, подорож буде однаково приємною і для водія, і для пасажирів третього ряду"
+          "ua": "Завдяки ярусному розташуванню крісел, подорож буде однаково приємною і для водія, і для пасажирів третього ряду"
         }
       },
       {
@@ -669,11 +669,6 @@
     "title": {
       "en": "Globally Original Flowing Cloud Seat",
       "ua": "Відпочивайте, спостерігаючи за хмарами: ваш персональний оазис комфорту"
-    },
-    "subtitle": {
-      "en": "We took care of your comfort by finishing all key cabin elements - from seats to armrests and door cards - with natural full-grain Nappa leather. Feel premium quality in every detail.",
-      "ua": "Ми подбали про ваш комфорт, оздобивши всі ключові елементи салону — від крісел до підлокітників та дверних карт — натуральною цільнозернистою шкірою Nappa. Відчуйте преміальну якість у кожній деталі."
-   
     }
   },
   "chairVideoBlock": {
