@@ -277,10 +277,6 @@
   "textBlock360": {
     "title": {
       "en": "Observe Heaven and Earth, Reveal True Nature",
-      "ua": "Спостерігаючи небо і землю, відкриваючи справжню сутність"
-    },
-    "subtitle": {
-      "en": "A color that not only catches the eye, but tells a story.",
       "ua": "Колір, який не просто привертає погляди, а розповідає історію"
     }
   },
@@ -351,7 +347,7 @@
   "textBlockSpace": {
     "title": {
       "en": "Wide Enjoyment, Global Cabin",
-      "ua": "Широкий простір, світовий салон"
+      "ua": "Світовий стандарт комфорту: простір, що надихає"
     },
     "subtitle": {
       "en": "Heart with Structure, Ambition in the World",
@@ -362,7 +358,7 @@
     "video": "9x_luxury.mp4",
     "title": {
       "en": "Outstanding World, Luxurious Spacious Realm",
-      "ua": "Винятковий світ, розкішна просторова сфера"
+      "ua": "Салон автомобіля — це простір, де панує абсолютна гармонія та комфорт"
     },
     "features": [
       {
@@ -384,10 +380,6 @@
   "textBlockInside": {
     "title": {
       "en": "Embrace Nature, Nurture the Soul",
-      "ua": "Охоплюючи суть неба, плекаючи глибини серця"
-    },
-    "subtitle": {
-      "en": "A flawless blend of shades that emphasizes the architectural perfection of the interior.",
       "ua": "Бездоганне поєднання відтінків, що підкреслює архітектурну досконалість інтер’єру."
     }
   },
@@ -450,7 +442,7 @@
   "sliderBlock2": {
     "title": {
       "en": "Inherit Full-Seat Hospitality",
-      "ua": "Успадковувати гостинність повного салону"
+      "ua": "Салон, який вражає комфортом"
     },
     "slides": [
       {
@@ -461,7 +453,7 @@
         },
         "caption": {
           "en": "Electric Running Board - The posture of arrival, respectful welcome",
-          "ua": "Електрична підножка - поза прибуття, шанобливе привітання"
+          "ua": "Електрична підніжка для зручної посадки"
         }
       },
       {
@@ -483,7 +475,7 @@
         },
         "caption": {
           "en": "170mm Wide Central Aisle - Hallway aisle, easy to pass through",
-          "ua": "170мм широкий центральний прохід - коридорний простір, легко проходити"
+          "ua": "Центральний прохід 170мм — простір між сидіннями збільшує простір та додає комфорту пасажирам"
         }
       },
       {
@@ -494,7 +486,7 @@
         },
         "caption": {
           "en": "Convenient Access to the Third Row - Seamless entry, shared luxury",
-          "ua": "зручний доступ до третього ряду, завдяки пересувним сидінням"
+          "ua": "Зручний доступ до третього ряду, завдяки пересувним сидінням"
         }
       }
     ]
@@ -608,7 +600,7 @@
   "textBlockCloud": {
     "title": {
       "en": "Sit and Watch the Clouds Rise, Heart Relaxed and Spirit Free",
-      "ua": "Сидячи, спостерігаючи за хмарами, серце розслаблене, дух вільний."
+      "ua": "Відпочивайте, спостерігаючи за хмарами: ваш персональний оазис комфорту"
     },
     "subtitle": {
       "en": "Dynamics of movement under the open sky",
@@ -630,7 +622,7 @@
       "text1": {
         "title": {
           "en": "Soft NAPPA Full-Grain Top-Layer Leather",
-          "ua": "М'яка NAPPA - повнозерниста верхня шкіра"
+          "ua": "Досконалість матеріалів: натуральна шкіра Nappa"
         },
         "items": [
           {
@@ -650,14 +642,14 @@
         ],
         "note": {
           "en": "* Soft NAPPA full-grain top-layer leather covers all car seats, human contact areas, central armrests, partial door panels, and other areas",
-          "ua": "* М'яка NAPPA — повнозерниста верхня шкіра, що покриває всі сидіння автомобіля, зони контакту з людиною, центральні підлокітники, часткові панелі дверей та інші зони"
+          "ua": "* Ми подбали про ваш комфорт, оздобивши всі ключові елементи салону — від крісел до підлокітників та дверних карт — натуральною цільнозернистою шкірою Nappa. Відчуйте преміальну якість у кожній деталі"
         }
       },
     
     "text2": {
       "title": {
         "en": "Third Row Can Sit or Recline, Every Seat Ultra-Luxurious",
-        "ua": "Третій ряд може сидіти або відкидатися, кожне місце надзвичайно розкішне"
+        "ua": "Розкіш, доступна кожному: сидіння третього ряду з регулюванням нахилу пропонують такий самий рівень комфорту, як і перші ряди"
       },
       "items": [
         {
@@ -759,7 +751,7 @@
         },
         "description": {
           "en": "As if in outer space, the whole body and mind can be deeply relaxed",
-          "ua": "Чотири режими комфорту для повного відновлення: гармонія тіла та спокій думок"
+          "ua": "Ефект невагомості для повного розслаблення душі та тіла"
         }
       },
       {
@@ -979,10 +971,6 @@
   "textBlockIntelligentControl": {
     "title": {
       "en": "Heart's Desire, Ultimate Intelligent Control",
-      "ua": "Бажання серця, найвищий інтелектуальний контроль"
-    },
-    "subtitle": {
-      "en": "Perfect control. Endless possibilities",
       "ua": "Досконалий контроль. Безмежні можливості"
     }
   },
