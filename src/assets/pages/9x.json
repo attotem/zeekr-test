@@ -665,21 +665,12 @@
       }
     }
   },
-  "textBlockChair": {
-    "title": {
-      "en": "Globally Original Flowing Cloud Seat",
-      "ua": "Відпочивайте, спостерігаючи за хмарами: ваш персональний оазис комфорту"
-    }
-  },
+  
   "chairVideoBlock": {
     "video": "9x_chair_3.mp4",
     "title": {
       "en": "Cloud support, never tired from sitting for a long time",
       "ua": "Підтримка, немов на хмарі — навіть тривале сидіння не викликає втоми"    
-    },
-    "subtitle": {
-      "en": "",
-      "ua": ""
     }
   },
   "chairImagesBlock": {
