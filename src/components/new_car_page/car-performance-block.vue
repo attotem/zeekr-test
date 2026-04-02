@@ -118,15 +118,15 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-performance-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   background: #fff;
 
   &__inner {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: var(--car-inner-padding-x);
   }
 
   &__row {
@@ -180,11 +180,11 @@ onMounted(() => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 28px;
     line-height: 1.3;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0;
   }
 
@@ -201,25 +201,25 @@ onMounted(() => {
   }
 
   &__spec-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 40px;
     line-height: 1.2;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
   }
 
   &__spec-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.5;
-    color: #666;
+    color: var(--car-text-muted);
   }
 
   &__note {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 11px;
     line-height: 1.6;
-    color: #666;
+    color: var(--car-text-muted);
     margin: 0;
   }
 
@@ -244,10 +244,10 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-performance-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
 
     &__inner {
       padding: 0;

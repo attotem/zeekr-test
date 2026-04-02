@@ -1,7 +1,7 @@
 <template>
   <section class="car-details-block">
     <div class="car-details-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-details-block__title">
+      <h2 v-if="getText(blockData.title)" class="car-details-block__title car-section-title car-section-title--center">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-details-block__grid">
@@ -111,47 +111,43 @@ const groupedItems = computed(() => {
 
 <style lang="scss" scoped>
 .car-details-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   padding: 64px 0;
   background: #fff;
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
-    font-weight: 400;
-    color: #111;
+        color: var(--car-title-color);
     margin: 0 0 48px;
     text-align: center;
   }
 
   &__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
+    gap: var(--car-stack-gap-lg);
   }
 
   &__card {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
+    overflow: var(--car-card-overflow);
     background: #fff;
   }
 
   &__card--large {
-    width: 100%;
+    width: var(--car-card-width);
   }
 
   &__card--small {
-    width: 100%;
+    width: var(--car-card-width);
   }
 
   &__small-cards-wrapper {
@@ -161,10 +157,10 @@ const groupedItems = computed(() => {
   }
 
   &__card-image-wrap {
-    width: 100%;
+    width: var(--car-card-width);
     position: relative;
-    overflow: hidden;
-    background: #f5f5f5;
+    overflow: var(--car-card-overflow);
+    background: var(--car-card-media-bg);
     min-height: 300px;
   }
 
@@ -181,45 +177,43 @@ const groupedItems = computed(() => {
   }
 
   &__card-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 20px;
+        font-size: 20px;
     line-height: 1.3;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0 0 12px;
   }
 
   &__card-description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.6;
-    color: #666;
+    color: var(--car-text-muted);
     margin: 0;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-details-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {
-      font-size: 32px;
       margin-bottom: 32px;
     }
 
     &__grid {
-      gap: 16px;
+      gap: var(--car-stack-gap-sm);
     }
 
     &__small-cards-wrapper {
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: var(--car-stack-gap-sm);
     }
 
     &__card-image-wrap {

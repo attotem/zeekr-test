@@ -114,8 +114,8 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
 <style lang="scss" scoped>
 .car-video-text-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   background: rgb(245, 246, 247);
 
   &__inner {
@@ -182,11 +182,11 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__text-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 32px;
     line-height: 1.3;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin-bottom: 24px;
   }
 
@@ -203,33 +203,33 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__text-item-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 28px;
     line-height: 1.2;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
   }
 
   &__text-item-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.5;
-    color: #666;
+    color: var(--car-text-muted);
   }
 
   &__text-note {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.5;
-    color: #666;
+    color: var(--car-text-muted);
     margin-top: 16px;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-video-text-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
 
     &__grid {
       grid-template-columns: 1fr;

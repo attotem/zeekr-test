@@ -67,15 +67,15 @@ const videoSrc = computed(() => {
 
 <style lang="scss" scoped>
 .car-video-with-text-overlay {
-  width: calc(100% - 40px);
-  margin: 0 20px;
-  padding: 60px 0;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
+  padding: var(--car-section-padding-y);
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__video-wrap {
@@ -122,8 +122,8 @@ const videoSrc = computed(() => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.3;
     font-weight: 400;
     color: #fff;
@@ -137,10 +137,10 @@ const videoSrc = computed(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-video-with-text-overlay {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
     padding: 0;
 
     &__inner {
@@ -162,11 +162,11 @@ const videoSrc = computed(() => {
     }
 
     &__title-mobile {
-      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+      font-family: var(--car-font-heading);
       font-size: 24px;
       line-height: 1.3;
       font-weight: 400;
-      color: #111;
+      color: var(--car-text-primary);
       margin: 0;
       text-align: left;
     }

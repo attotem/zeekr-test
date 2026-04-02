@@ -47,8 +47,8 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
 <style lang="scss" scoped>
 .car-text-image-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   position: relative;
   padding-bottom: 60px;
 
@@ -100,8 +100,8 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.3;
     font-weight: 400;
     color: #ffffff;
@@ -109,7 +109,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 20px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.9);
@@ -117,10 +117,10 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-text-image-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
 
     &__image-wrap {
       min-height: auto;
@@ -149,7 +149,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
     &__subtitle {
       font-size: 14px;
-      color: #333333;
+      color: var(--car-text-secondary);
     }
 
     &__image {

@@ -178,28 +178,28 @@ const cards = computed(() => {
 
 <style scoped lang="scss">
 .car-versions-cards {
-  width: calc(100% - 40px);
+  width: var(--car-section-width);
   max-width: 100%;
-  margin: 0 20px;
-  padding: 60px 0;
+  margin: var(--car-section-margin);
+  padding: var(--car-section-padding-y);
   background: #f4f4f5;
-  color: #111;
+  color: var(--car-text-primary);
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading-simple);
     font-size: 40px;
     line-height: 1.3;
     font-weight: 400;
     text-align: left;
     margin: 0 0 32px;
-    color: #111;
+    color: var(--car-text-primary);
   }
 
   &__layout {
@@ -224,7 +224,7 @@ const cards = computed(() => {
     border: 1px solid rgba(0, 0, 0, 0.08);
     background: #ffffff;
     color: rgba(17, 17, 17, 0.75);
-    font-family: ZeekrText-Regular, "FixelText", sans-serif;
+    font-family: var(--car-font-body-simple);
     font-size: 14px;
     line-height: 1.4;
     cursor: pointer;
@@ -245,7 +245,7 @@ const cards = computed(() => {
   &__category--active {
     background: #111;
     color: #ffffff;
-    border-color: #111;
+    border-color: var(--car-text-primary);
 
     .car-versions-cards__category-icon {
       filter: invert(1);
@@ -291,14 +291,14 @@ const cards = computed(() => {
   }
 
   &__card-name {
-    font-family: ZeekrText-Regular, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading-simple);
     font-size: 18px;
     line-height: 1.3;
     font-weight: 400;
   }
 
   &__card-price {
-    font-family: ZeekrText-Regular, "FixelText", sans-serif;
+    font-family: var(--car-font-body-simple);
     font-size: 14px;
     line-height: 1.4;
     color: #ff5c1a;
@@ -319,7 +319,7 @@ const cards = computed(() => {
   }
 
   &__spec-label {
-    font-family: ZeekrText-Regular, "FixelText", sans-serif;
+    font-family: var(--car-font-body-simple);
     font-size: 11px;
     line-height: 1.4;
     color: rgba(17, 17, 17, 0.55);
@@ -327,14 +327,14 @@ const cards = computed(() => {
   }
 
   &__spec-value {
-    font-family: ZeekrText-Regular, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading-simple);
     font-size: 14px;
     line-height: 1.5;
-    color: #111;
+    color: var(--car-text-primary);
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-versions-cards {
     width: 100%;
     max-width: 100%;
@@ -349,7 +349,7 @@ const cards = computed(() => {
     &__title {
       font-size: 28px;
       margin-bottom: 24px;
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__layout {
@@ -392,7 +392,7 @@ const cards = computed(() => {
       overflow-y: hidden;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
       max-width: 100%;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;

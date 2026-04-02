@@ -117,13 +117,13 @@ onMounted(() => {
 .car-cabin-functions-block {
   width: 100%;
   margin: 0;
-  padding: 60px 0;
+  padding: var(--car-section-padding-y);
 
   &__inner {
-    width: calc(100% - 40px);
-    max-width: 1320px;
+    width: var(--car-section-width);
+    max-width: var(--car-inner-max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: var(--car-inner-padding-x);
   }
 
   &__grid {
@@ -133,9 +133,9 @@ onMounted(() => {
   }
 
   &__item {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
+    overflow: var(--car-card-overflow);
   }
 
   &__media-wrap {
@@ -169,30 +169,30 @@ onMounted(() => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 20px;
     line-height: 1.4;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0 0 12px 0;
   }
 
   &__description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.6;
-    color: #666;
+    color: var(--car-text-muted);
     margin: 0;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-cabin-functions-block {
-    padding: 44px 0;
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      width: calc(100% - 32px);
-      padding: 0 16px;
+      width: var(--car-section-width-sm);
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__grid {

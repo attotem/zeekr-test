@@ -75,7 +75,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 24px;
     line-height: 1.4;
     margin: 0;
@@ -85,7 +85,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-image-block {
     min-height: 40vh;
     padding: 30px 16px;

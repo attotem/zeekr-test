@@ -56,8 +56,8 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
 
 <style lang="scss" scoped>
 .car-image-text-bottom-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   position: relative;
 
   &__image-wrap {
@@ -94,19 +94,19 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   &__text {
     position: relative;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
+    gap: var(--car-stack-gap-lg);
     padding: 40px;
-    max-width: 1320px;
+    max-width: var(--car-inner-max-width);
     margin: 0 auto;
     width: 100%;
     text-align: center;
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.3;
     font-weight: 400;
     color: #fff;
@@ -114,7 +114,7 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: #fff;
@@ -125,7 +125,7 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   &__features {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--car-stack-gap-sm);
     align-items: center;
   }
 
@@ -135,17 +135,17 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   }
 
   &__feature-text {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: #fff;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-image-text-bottom-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
 
     &__image-wrap {
       min-height: 40vh;

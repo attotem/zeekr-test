@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="car-design-block__content">
-      <h2 v-if="getText(blockData.title)" class="car-design-block__title">{{ getText(blockData.title) }}</h2>
+      <h2 v-if="getText(blockData.title)" class="car-design-block__title car-section-title car-section-title--center">{{ getText(blockData.title) }}</h2>
       <p v-if="getText(currentItemDescription)" class="car-design-block__description">
         {{ getText(currentItemDescription) }}
       </p>
@@ -192,21 +192,19 @@ const currentItemDescription = computed(() => {
 
 <style lang="scss" scoped>
 .car-design-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   display: flex;
   flex-direction: column;
   background: #fff;
   overflow: hidden;
 
   &__top-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
+        line-height: 1.3;
     margin: 0;
     padding: 60px 20px 40px;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     text-align: center;
   }
 
@@ -294,10 +292,9 @@ const currentItemDescription = computed(() => {
   }
 
   &__switcher-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 18px;
+        font-size: 18px;
     line-height: 1.3;
-    color: #111;
+    color: var(--car-text-primary);
     font-weight: 400;
     letter-spacing: 0.01em;
     display: inline-block;
@@ -336,13 +333,9 @@ const currentItemDescription = computed(() => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
-    margin: 0;
-    font-weight: 400;
-    color: #111;
-    text-align: center;
+        margin: var(--car-title-margin);
+    color: var(--car-title-color);
+    text-align: var(--car-title-align);
   }
 
   &__features {
@@ -362,23 +355,22 @@ const currentItemDescription = computed(() => {
   }
 
   &__feature-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.4;
-    color: #666;
+    color: var(--car-text-muted);
     font-weight: 400;
   }
 
   &__feature-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 20px;
+        font-size: 20px;
     line-height: 1.3;
-    color: #111;
+    color: var(--car-text-primary);
     font-weight: 400;
   }
 
   &__description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.7;
     color: rgba(17, 17, 17, 0.78);
@@ -388,7 +380,7 @@ const currentItemDescription = computed(() => {
   }
 
   &__details {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.7;
     color: rgba(17, 17, 17, 0.58);
@@ -399,10 +391,10 @@ const currentItemDescription = computed(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-design-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
 
     &__top-title {
       font-size: 32px;
@@ -437,10 +429,7 @@ const currentItemDescription = computed(() => {
       gap: 22px;
     }
 
-    &__title {
-      font-size: 32px;
-    }
-
+   
     &__features {
       grid-template-columns: 1fr;
       gap: 16px;
@@ -464,3 +453,5 @@ const currentItemDescription = computed(() => {
   }
 }
 </style>
+ &__title {
+    }

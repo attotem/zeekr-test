@@ -1,7 +1,7 @@
 <template>
   <section class="car-two-images-block" :style="{ background: blockData.background || '#fff' }">
     <div class="car-two-images-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-two-images-block__title">
+      <h2 v-if="getText(blockData.title)" class="car-two-images-block__title car-section-title car-section-title--center">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-two-images-block__grid">
@@ -118,24 +118,20 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-two-images-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
-  padding: 60px 0;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
+  padding: var(--car-section-padding-y);
   animation: fadeUp 0.6s ease 0.05s both;
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
-    font-weight: 400;
-    color: #111;
+        color: var(--car-title-color);
     margin: 0 0 60px 0;
     text-align: center;
   }
@@ -152,10 +148,10 @@ onMounted(() => {
   }
 
   &__image-wrap {
-    width: 100%;
+    width: var(--car-card-width);
     position: relative;
-    overflow: hidden;
-    background: #f5f5f5;
+    overflow: var(--car-card-overflow);
+    background: var(--car-card-media-bg);
     min-height: 400px;
     display: flex;
     align-items: center;
@@ -179,16 +175,15 @@ onMounted(() => {
   }
 
   &__caption {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     margin-top: 20px;
     text-align: left;
   }
 
   &__caption-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 18px;
+        font-size: 18px;
     line-height: 1.4;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0 0 8px 0;
     font-weight: 400;
   }
@@ -196,7 +191,7 @@ onMounted(() => {
   &__caption-text {
     font-size: 14px;
     line-height: 1.6;
-    color: rgba(17, 17, 17, 0.7);
+    color: var(--car-text-muted-07);
   }
 }
 
@@ -211,18 +206,17 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-two-images-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {
-      font-size: 32px;
       margin-bottom: 44px;
     }
 

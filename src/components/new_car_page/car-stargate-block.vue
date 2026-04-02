@@ -105,13 +105,13 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 <style lang="scss" scoped>
 .car-stargate-block {
   position: relative;
-  width: calc(100% - 40px);
+  width: var(--car-section-width);
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin: 0 20px;
+  margin: var(--car-section-margin);
 
   &__image {
     position: absolute;
@@ -156,7 +156,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
     flex-direction: column;
     justify-content: flex-end;
     padding: 50px 40px;
-    max-width: 1320px;
+    max-width: var(--car-inner-max-width);
     margin: 0 auto;
   }
 
@@ -201,10 +201,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-stargate-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
     min-height: 50vh;
 
     &__content {

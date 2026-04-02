@@ -37,12 +37,12 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   background: #fff;
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.3;
     margin: 0;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     text-align: center;
   }
 
@@ -59,23 +59,23 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 20px;
     line-height: 1.5;
     margin: 16px 0 0;
     font-weight: 400;
-    color: #666;
+    color: var(--car-text-muted);
     text-align: center;
     max-width: 800px;
   }
 
   &__note {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.6;
     margin: 16px 0 0;
     font-weight: 400;
-    color: #666;
+    color: var(--car-text-muted);
     text-align: center;
     max-width: 800px;
   }
@@ -142,10 +142,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-text-simple-block {
     min-height: 10vh;
-    padding: 40px 16px;
+    padding: var(--car-block-padding-y);
 
     &__title {
       font-size: 32px;

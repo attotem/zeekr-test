@@ -1,7 +1,7 @@
 <template>
   <section class="car-cards-block">
     <div class="car-cards-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-cards-block__title">
+      <h2 v-if="getText(blockData.title)" class="car-cards-block__title car-section-title car-section-title--center">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-cards-block__grid">
@@ -129,36 +129,32 @@ const rightCards = computed(() => {
   background: rgb(245, 246, 247);
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
-    font-weight: 400;
-    color: #111;
-    margin: 0 0 48px;
-    text-align: center;
+        color: var(--car-title-color);
+    margin: var(--car-title-margin-lg);
+    text-align: var(--car-title-align);
   }
 
   &__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
+    gap: var(--car-stack-gap-lg);
   }
 
   &__card {
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    overflow: var(--car-card-overflow);
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
   }
 
   &__card--large {
-    width: 100%;
+    width: var(--car-card-width);
   }
 
   &__small-cards {
@@ -168,20 +164,20 @@ const rightCards = computed(() => {
   }
 
   &__right-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
+    gap: var(--car-stack-gap-lg);
   }
 
   &__card--small {
-    width: 100%;
+    width: var(--car-card-width);
   }
 
   &__card-image-wrap {
-    width: 100%;
+    width: var(--car-card-width);
     position: relative;
-    overflow: hidden;
-    background: #f5f5f5;
+    overflow: var(--car-card-overflow);
+    background: var(--car-card-media-bg);
   }
 
   &__card--large &__card-image-wrap {
@@ -201,61 +197,59 @@ const rightCards = computed(() => {
   }
 
   &__card-content {
-    padding-top: 12px;
+    padding-top: var(--car-card-content-padding-top);
   }
 
   &__card-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 24px;
+        font-size: 24px;
     line-height: 1.3;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0 0 12px;
   }
 
   &__card-description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.6;
-    color: #333;
+    color: var(--car-text-secondary);
     margin: 0;
   }
 
   &__card-note {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.5;
-    color: #666;
+    color: var(--car-text-muted);
     margin: 12px 0 0;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-cards-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {
-      font-size: 32px;
-      margin-bottom: 32px;
+      margin: var(--car-title-margin-md);
     }
 
     &__grid {
-      gap: 16px;
+      gap: var(--car-stack-gap-sm);
     }
 
     &__small-cards {
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: var(--car-stack-gap-sm);
     }
 
     &__right-cards {
-      gap: 16px;
+      gap: var(--car-stack-gap-sm);
     }
 
     &__card--large &__card-image-wrap {

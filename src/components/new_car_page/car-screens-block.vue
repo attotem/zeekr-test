@@ -1,7 +1,7 @@
 <template>
   <section class="car-screens-block">
     <div class="car-screens-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-screens-block__title">
+      <h2 v-if="getText(blockData.title)" class="car-screens-block__title car-section-title car-section-title--center">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-screens-block__grid">
@@ -66,24 +66,20 @@ const screens = computed(() => {
 
 <style lang="scss" scoped>
 .car-screens-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   background: rgb(245, 246, 247);
-  padding: 60px 0;
+  padding: var(--car-section-padding-y);
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
-    font-weight: 400;
-    color: #111;
+        color: var(--car-title-color);
     text-align: center;
     margin: 0 0 48px 0;
   }
@@ -102,10 +98,10 @@ const screens = computed(() => {
   }
 
   &__image-wrap {
-    width: 100%;
+    width: var(--car-card-width);
     position: relative;
-    overflow: hidden;
-    background: #f5f5f5;
+    overflow: var(--car-card-overflow);
+    background: var(--car-card-media-bg);
     aspect-ratio: 4 / 3;
     display: flex;
     align-items: center;
@@ -125,35 +121,33 @@ const screens = computed(() => {
   }
 
   &__screen-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 20px;
+        font-size: 20px;
     line-height: 1.4;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0 0 6px 0;
   }
 
   &__description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.6;
-    color: #666;
+    color: var(--car-text-muted);
     margin: 0;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-screens-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {
-      font-size: 32px;
       margin-bottom: 32px;
     }
 

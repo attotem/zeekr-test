@@ -135,8 +135,8 @@ const currentItemDescription = computed(() => {
 
 <style lang="scss" scoped>
 .car-storage-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   padding: 64px 0 0 ;
   display: flex;
   flex-direction: column;
@@ -144,10 +144,10 @@ const currentItemDescription = computed(() => {
   overflow: hidden;
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__image-wrap {
@@ -238,14 +238,14 @@ const currentItemDescription = computed(() => {
   }
 
   &__switcher-item--active &__switcher-preview {
-    border-color: #111;
+    border-color: var(--car-text-primary);
   }
 
   &__switcher-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 18px;
     line-height: 1.3;
-    color: #111;
+    color: var(--car-text-primary);
     font-weight: 400;
     letter-spacing: 0.01em;
     display: inline-block;
@@ -283,7 +283,7 @@ const currentItemDescription = computed(() => {
   }
 
   &__description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.7;
     color: rgba(17, 17, 17, 0.78);
@@ -293,14 +293,14 @@ const currentItemDescription = computed(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-storage-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__image-wrap {

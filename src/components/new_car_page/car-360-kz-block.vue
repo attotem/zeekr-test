@@ -363,9 +363,9 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
 <style lang="scss" scoped>
 .car-360-kz-block {
-  width: calc(100% - 40px);
+  width: var(--car-section-width);
   height: 100vh;
-  margin: 0 20px;
+  margin: var(--car-section-margin);
   padding: 0 150px 150px 150px;
   position: relative;
   background: #fff;
@@ -425,7 +425,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 
   &__colors {
     display: flex;
-    gap: 16px;
+    gap: var(--car-stack-gap-sm);
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
@@ -477,10 +477,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__description-text {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 18px;
     line-height: 1.6;
-    color: #333;
+    color: var(--car-text-secondary);
     margin: 0 0 12px;
     font-weight: 400;
   }
@@ -493,10 +493,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-360-kz-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
     height: 55vh;
     padding: 0;
 

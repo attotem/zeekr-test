@@ -59,9 +59,9 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
 <style lang="scss" scoped>
 .car-detect-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
-  padding: 60px 0;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
+  padding: var(--car-section-padding-y);
   position: relative;
 
   &__image-wrap {
@@ -98,11 +98,11 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 36px;
     line-height: 1.3;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0;
   }
 
@@ -114,10 +114,10 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
+    color: var(--car-text-secondary);
   }
 
   &__specs {
@@ -133,26 +133,26 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__spec-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 32px;
     line-height: 1.2;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
   }
 
   &__spec-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 12px;
     line-height: 1.5;
-    color: #666;
+    color: var(--car-text-muted);
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-detect-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__overlay {
       width: 100%;

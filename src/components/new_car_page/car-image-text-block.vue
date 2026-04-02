@@ -6,7 +6,7 @@
         :class="{ 'car-image-text-block__content--reverse': blockData.textRight }"
       >
         <div class="car-image-text-block__text">
-          <h2 v-if="getText(blockData.title)" class="car-image-text-block__title">
+          <h2 v-if="getText(blockData.title)" class="car-image-text-block__title car-section-title car-section-title--center">
             {{ getText(blockData.title) }}
           </h2>
           <div v-if="blockData.features" class="car-image-text-block__features">
@@ -86,16 +86,16 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-image-text-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   padding: 32px 0;
   background: #fff;
 
   &__inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: var(--car-inner-width);
+    max-width: var(--car-inner-max-width);
+    margin: var(--car-inner-margin);
+    padding: var(--car-inner-padding-x);
   }
 
   &__content {
@@ -124,18 +124,14 @@ onMounted(() => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
-    font-weight: 400;
-    color: #111;
+        color: var(--car-title-color);
     margin: 0;
   }
 
   &__features {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--car-stack-gap-sm);
   }
 
   &__feature {
@@ -144,17 +140,17 @@ onMounted(() => {
   }
 
   &__feature-text {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 18px;
     line-height: 1.6;
-    color: #333;
+    color: var(--car-text-secondary);
   }
 
   &__image-wrap {
-    width: 100%;
+    width: var(--car-card-width);
     position: relative;
-    overflow: hidden;
-    background: #f5f5f5;
+    overflow: var(--car-card-overflow);
+    background: var(--car-card-media-bg);
   }
 
   &__image {
@@ -166,14 +162,14 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-image-text-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__content {
@@ -186,7 +182,6 @@ onMounted(() => {
     }
 
     &__title {
-      font-size: 32px;
     }
 
     &__feature-text {

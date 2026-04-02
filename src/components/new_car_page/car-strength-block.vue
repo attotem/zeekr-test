@@ -56,8 +56,8 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
 <style lang="scss" scoped>
 .car-strength-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   position: relative;
 
   &__image-wrap {
@@ -87,14 +87,14 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    display: var(--car-stack-column);
+    flex-direction: var(--car-stack-direction);
+    gap: var(--car-stack-gap-lg);
     max-width: 400px;
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 36px;
     line-height: 1.3;
     font-weight: 400;
@@ -121,7 +121,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__spec-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 42px;
     line-height: 1.2;
     font-weight: 400;
@@ -129,17 +129,17 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__spec-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.7);
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-strength-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
 
     &__overlay {
       width: 100%;
@@ -148,7 +148,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     }
 
     &__content {
-      gap: 16px;
+      gap: var(--car-stack-gap-sm);
     }
 
     &__title {

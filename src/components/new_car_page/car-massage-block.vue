@@ -64,14 +64,14 @@ const sections = computed(() => {
 
 <style lang="scss" scoped>
 .car-massage-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   background: #fff;
 
   &__inner {
     width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: var(--car-inner-padding-x);
     max-width: 1600px;
   }
 
@@ -104,11 +104,11 @@ const sections = computed(() => {
   }
 
   &__section-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 16px;
     line-height: 1.4;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin: 0 0 20px 0;
   }
 
@@ -128,22 +128,22 @@ const sections = computed(() => {
   }
 
   &__item-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 22px;
     line-height: 1.2;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
   }
 
   &__item-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 13px;
     line-height: 1.5;
-    color: #666;
+    color: var(--car-text-muted);
   }
 
   &__item-description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 11px;
     line-height: 1.4;
     color: #999;
@@ -196,14 +196,14 @@ const sections = computed(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-massage-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__sections {

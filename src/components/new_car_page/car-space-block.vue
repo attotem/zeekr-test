@@ -86,8 +86,8 @@ const resolveImage = (imagePath) => {
 
 <style lang="scss" scoped>
 .car-space-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
   background: rgb(245, 246, 247);
 
   &__inner {
@@ -146,27 +146,27 @@ const resolveImage = (imagePath) => {
   }
 
   &__text-title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 32px;
     line-height: 1.3;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin-bottom: 24px;
   }
 
   &__text-body {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 18px;
     line-height: 1.6;
-    color: #333;
+    color: var(--car-text-secondary);
     margin-bottom: 16px;
   }
 
   &__text-note {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.5;
-    color: #666;
+    color: var(--car-text-muted);
     margin-top: 16px;
   }
 
@@ -183,39 +183,39 @@ const resolveImage = (imagePath) => {
   }
 
   &__text-item-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 28px;
     line-height: 1.2;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
   }
 
   &__text-item-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 18px;
     line-height: 1.4;
     font-weight: 500;
-    color: #111;
+    color: var(--car-text-primary);
     margin-top: 4px;
   }
 
   &__text-item-description {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.6;
-    color: #666;
+    color: var(--car-text-muted);
     margin-top: 4px;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-space-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 44px 0;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__grid {

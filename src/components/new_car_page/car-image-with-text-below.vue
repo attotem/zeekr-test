@@ -155,8 +155,8 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.3;
     font-weight: 400;
     color: #fff;
@@ -164,7 +164,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 18px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
@@ -177,7 +177,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
     justify-content: center;
     gap: 40px;
     margin-top: 40px;
-    max-width: 1320px;
+    max-width: var(--car-inner-max-width);
     margin-left: auto;
     margin-right: auto;
   }
@@ -191,7 +191,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__feature-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 36px;
     line-height: 1.2;
     font-weight: 400;
@@ -201,7 +201,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__feature-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.9);
@@ -209,14 +209,14 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-image-with-text-below {
     &__inner {
       min-height: 100vh;
     }
 
     &__content {
-      padding: 40px 16px;
+      padding: var(--car-block-padding-y);
     }
 
     &__title {

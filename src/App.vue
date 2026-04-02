@@ -32,6 +32,68 @@ watch(() => route.fullPath, () => {
 </script>
 
 <style lang="scss">
+:root {
+  --car-font-heading: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+  --car-font-body: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+  --car-font-heading-simple: ZeekrText-Regular, "Tenor Sans", sans-serif;
+  --car-font-body-simple: ZeekrText-Regular, "FixelText", sans-serif;
+
+  --car-bp-sm: 876px;
+
+  --car-section-width: calc(100% - 40px);
+  --car-section-margin: 0 20px;
+  --car-section-padding-y: 60px 0;
+  --car-section-width-sm: calc(100% - 32px);
+  --car-section-margin-sm: 0 16px;
+  --car-section-padding-y-sm: 44px 0;
+
+  --car-inner-width: 100%;
+  --car-inner-max-width: 1320px;
+  --car-inner-margin: 0 auto;
+  --car-inner-padding-x: 0 20px;
+  --car-inner-padding-x-sm: 0 16px;
+  --car-block-padding-y: 40px 16px;
+
+  --car-title-size-xl: 48px;
+  --car-title-size-md: 32px;
+  --car-title-size-lg: 64px;
+  --car-title-line-height: 1.3;
+  --car-title-line-height-tight: 1.2;
+  --car-title-weight: 400;
+  --car-title-color: #111;
+  --car-title-align: center;
+  --car-title-margin: 0;
+  --car-title-margin-lg: 0 0 48px;
+  --car-title-margin-md: 0 0 32px;
+
+  --car-text-primary: #111;
+  --car-text-secondary: #333;
+  --car-text-muted: #666;
+  --car-text-muted-05: rgba(17, 17, 17, 0.5);
+  --car-text-muted-06: rgba(17, 17, 17, 0.6);
+  --car-text-muted-07: rgba(17, 17, 17, 0.7);
+  --car-text-muted-092: rgba(17, 17, 17, 0.92);
+
+  --car-body-size-xl: 20px;
+  --car-body-size-lg: 18px;
+  --car-body-size-md: 16px;
+  --car-body-size-sm: 14px;
+  --car-body-size-xs: 12px;
+  --car-body-line-height: 1.5;
+  --car-body-line-height-loose: 1.6;
+  --car-body-line-height-tight: 1.4;
+
+  --car-stack-column: flex;
+  --car-stack-direction: column;
+  --car-stack-gap-lg: 24px;
+  --car-stack-gap-sm: 16px;
+  --car-card-overflow: hidden;
+  --car-card-width: 100%;
+  --car-card-media-bg: #f5f5f5;
+  --car-card-content-padding-top: 12px;
+}
+
+
 * {
   font-family: "FixelText";
   box-sizing: border-box;
@@ -83,6 +145,23 @@ body {
   overflow-x: hidden;
   width: 100%;
   height: 100%;
+}
+
+.car-section-title {
+  font-family: var(--car-font-heading);
+  font-size: var(--car-title-size-xl);
+  line-height: var(--car-title-line-height);
+  font-weight: var(--car-title-weight);
+}
+
+.car-section-title--center {
+  text-align: var(--car-title-align);
+}
+
+@media screen and (max-width: var(--car-bp-sm)) {
+  .car-section-title {
+    font-size: var(--car-title-size-md);
+  }
 }
 
 .developer-global {
@@ -808,17 +887,7 @@ ul {
   }
 }
 
-.sort {
-  &__inner {}
-
-  &__active {}
-
-  &__item {
-    &--active {}
-  }
-}
-
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
 
 ul {
   grid-template-columns: 1fr;

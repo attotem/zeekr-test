@@ -58,14 +58,14 @@ const items = computed(() => {
 .car-passive-security-block {
   width: 100%;
   margin: 0;
-  padding: 60px 0;
+  padding: var(--car-section-padding-y);
   background: rgb(245, 246, 247);
 
   &__inner {
-    width: calc(100% - 40px);
-    max-width: 1320px;
+    width: var(--car-section-width);
+    max-width: var(--car-inner-max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: var(--car-inner-padding-x);
   }
 
   &__grid {
@@ -121,22 +121,22 @@ const items = computed(() => {
 
   &__label {
     margin-top: 12px;
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.4;
-    color: rgba(17, 17, 17, 0.92);
+    color: var(--car-text-muted-092);
     font-weight: 600;
     max-width: 100%;
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-passive-security-block {
-    padding: 44px 0;
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      width: calc(100% - 32px);
-      padding: 0 16px;
+      width: var(--car-section-width-sm);
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__grid {

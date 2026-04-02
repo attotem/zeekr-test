@@ -1,7 +1,7 @@
 <template>
   <section class="car-battery-safety-block" :style="{ background: blockData.background || '#fff' }">
     <div class="car-battery-safety-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-battery-safety-block__title">
+      <h2 v-if="getText(blockData.title)" class="car-battery-safety-block__title car-section-title car-section-title--center">
         {{ getText(blockData.title) }}
       </h2>
 
@@ -68,22 +68,18 @@ const stats = computed(() => {
 .car-battery-safety-block {
   width: 100%;
   margin: 0;
-  padding: 60px 0;
+  padding: var(--car-section-padding-y);
   background: #fff;
 
   &__inner {
-    width: calc(100% - 40px);
-    max-width: 1320px;
+    width: var(--car-section-width);
+    max-width: var(--car-inner-max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: var(--car-inner-padding-x);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
-    line-height: 1.3;
-    font-weight: 400;
-    color: #111;
+        color: var(--car-title-color);
     text-align: center;
     margin: 0 0 36px 0;
   }
@@ -115,33 +111,31 @@ const stats = computed(() => {
   }
 
   &__value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 44px;
+        font-size: 44px;
     line-height: 1.1;
     font-weight: 400;
-    color: #111;
+    color: var(--car-text-primary);
     margin-bottom: 8px;
   }
 
   &__label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.4;
-    color: rgba(17, 17, 17, 0.6);
+    color: var(--car-text-muted-06);
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-battery-safety-block {
-    padding: 44px 0;
+    padding: var(--car-section-padding-y-sm);
 
     &__inner {
-      width: calc(100% - 32px);
-      padding: 0 16px;
+      width: var(--car-section-width-sm);
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {
-      font-size: 32px;
       margin-bottom: 26px;
     }
 

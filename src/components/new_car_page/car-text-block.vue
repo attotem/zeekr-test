@@ -36,7 +36,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   background: #fff;
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 64px;
     line-height: 1.2;
     margin: 0 0 24px;
@@ -49,7 +49,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 24px;
     line-height: 1.4;
     margin: 0;
@@ -115,7 +115,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-text-block {
     padding: 30px 16px;
 

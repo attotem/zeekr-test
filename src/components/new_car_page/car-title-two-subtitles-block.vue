@@ -85,14 +85,14 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     top: 64px;
     left: 0;
     width: 100%;
-    padding: 0 20px;
+    padding: var(--car-inner-padding-x);
     text-align: center;
     z-index: 2;
-    color: #111;
+    color: var(--car-text-primary);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 44px;
     line-height: 1.25;
     font-weight: 400;
@@ -103,7 +103,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     display: inline-flex;
     align-items: center;
     gap: 18px;
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.5;
     color: rgba(17, 17, 17, 0.9);
@@ -116,7 +116,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-title-two-subtitles-block {
     &__wrap {
       min-height: 48vh;
@@ -124,7 +124,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
     &__content {
       top: 36px;
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {

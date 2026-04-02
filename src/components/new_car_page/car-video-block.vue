@@ -62,8 +62,8 @@ const videoSrc = computed(() => {
 
 <style lang="scss" scoped>
 .car-video-block {
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: var(--car-section-width);
+  margin: var(--car-section-margin);
 
   &__inner {
     width: 100%;
@@ -105,7 +105,7 @@ const videoSrc = computed(() => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 40px;
     line-height: 1.2;
     font-weight: 400;
@@ -113,7 +113,7 @@ const videoSrc = computed(() => {
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
@@ -121,10 +121,10 @@ const videoSrc = computed(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-video-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
     padding: 48px 0 56px;
 
     &__inner {
@@ -135,7 +135,7 @@ const videoSrc = computed(() => {
 
     &__text {
       top: 10%;
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {

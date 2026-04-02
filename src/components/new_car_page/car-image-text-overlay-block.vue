@@ -135,13 +135,13 @@ const isVideo = (media) => {
     text-align: center;
     padding: 60px 20px 40px;
     width: 100%;
-    max-width: 1320px;
+    max-width: var(--car-inner-max-width);
     margin: 0 auto;
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.3;
     font-weight: 400;
     color: #000;
@@ -158,12 +158,12 @@ const isVideo = (media) => {
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.5;
     color: #000;
     margin: 0;
-    padding: 0 16px;
+    padding: var(--car-inner-padding-x-sm);
     position: relative;
 
     &:not(:last-child)::after {
@@ -194,7 +194,7 @@ const isVideo = (media) => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-image-text-overlay-block {
     width: 100%;
     margin: 0;
@@ -217,11 +217,11 @@ const isVideo = (media) => {
     }
 
     &__title-mobile {
-      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+      font-family: var(--car-font-heading);
       font-size: 20px;
       line-height: 1.3;
       font-weight: 400;
-      color: #111;
+      color: var(--car-text-primary);
       margin: 0 0 12px 0;
       text-align: left;
     }
@@ -235,10 +235,10 @@ const isVideo = (media) => {
     }
 
     &__subtitle-mobile {
-      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+      font-family: var(--car-font-body);
       font-size: 14px;
       line-height: 1.5;
-      color: #666;
+      color: var(--car-text-muted);
       margin: 0;
       padding: 0;
       position: relative;

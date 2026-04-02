@@ -319,7 +319,7 @@ onMounted(async () => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 64px;
     line-height: 1.2;
     margin: 0 0 16px;
@@ -327,7 +327,7 @@ onMounted(async () => {
   }
 
   &__subtitle {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 24px;
     line-height: 1.4;
     margin: 0 0 40px;
@@ -407,7 +407,7 @@ onMounted(async () => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-hero {
     &__content {
       padding: 80px 16px 40px;

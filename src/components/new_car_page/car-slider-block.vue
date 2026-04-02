@@ -476,16 +476,16 @@ const next = async () => {
   &__inner {
     width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: var(--car-inner-padding-x);
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.2;
     font-weight: 400;
     margin: 0 0 44px;
-    color: #111;
+    color: var(--car-text-primary);
     text-align: center;
   }
 
@@ -562,7 +562,7 @@ const next = async () => {
   }
 
   &__caption {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 16px;
     line-height: 1.4;
     color: rgba(17, 17, 17, 0.75);
@@ -635,14 +635,14 @@ const next = async () => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-slider-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
     padding: 0 0 52px;
 
     &__inner {
-      padding: 0 16px;
+      padding: var(--car-inner-padding-x-sm);
     }
 
     &__title {

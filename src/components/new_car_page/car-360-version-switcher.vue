@@ -86,14 +86,14 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     font-weight: 400;
-    color: #666;
+    color: var(--car-text-muted);
     white-space: nowrap;
 
     &:hover {
-      color: #333;
+      color: var(--car-text-secondary);
     }
 
     &--active {
@@ -109,7 +109,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-360-version-switcher {
     padding: 16px;
 

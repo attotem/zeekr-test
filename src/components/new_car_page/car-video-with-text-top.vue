@@ -133,8 +133,8 @@ const videoSrc = computed(() => {
   }
 
   &__title {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 48px;
+    font-family: var(--car-font-heading);
+    font-size: var(--car-title-size-xl);
     line-height: 1.3;
     font-weight: 400;
     color: #fff;
@@ -157,7 +157,7 @@ const videoSrc = computed(() => {
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
-    max-width: 1320px;
+    max-width: var(--car-inner-max-width);
     margin: 0 auto;
   }
 
@@ -170,7 +170,7 @@ const videoSrc = computed(() => {
   }
 
   &__feature-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-family: var(--car-font-heading);
     font-size: 36px;
     line-height: 1.2;
     font-weight: 400;
@@ -181,7 +181,7 @@ const videoSrc = computed(() => {
   }
 
   &__feature-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-family: var(--car-font-body);
     font-size: 14px;
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.95);
@@ -206,7 +206,7 @@ const videoSrc = computed(() => {
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-video-with-text-top {
     &__title-wrap {
       padding: 40px 16px 32px;

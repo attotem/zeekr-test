@@ -52,13 +52,13 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
 <style lang="scss" scoped>
 .car-navigation-block {
   position: relative;
-  width: calc(100% - 40px);
+  width: var(--car-section-width);
   min-height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin: 0 20px;
+  margin: var(--car-section-margin);
 
   &__image {
     position: absolute;
@@ -137,10 +137,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: var(--car-bp-sm)) {
   .car-navigation-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: var(--car-section-width-sm);
+    margin: var(--car-section-margin-sm);
 
     &__content {
       padding: 40px 20px;
