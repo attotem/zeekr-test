@@ -54,6 +54,11 @@
     { "type": "detectBlock", "dataKey": "detectBlock" },
     { "type": "videoWithTextTop", "dataKey": "redundancyVideoBlock" }
   ],
+  "versionsImages": {
+    "Zeekr 9X Ultra": "9x_ultra.webp",
+    "Zeekr 9X Hyper": "9x_hyper.webp",
+    "Zeekr 9X Hyper BB": "9x_hyper_bb.webp"
+  },
   "hero": {
     "title": {
       "ua": "ZEEKR 9X",

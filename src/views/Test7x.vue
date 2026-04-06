@@ -56,10 +56,10 @@
 
       
       <CarVersionsCards
-        v-if="modelBackendData?.car_versions"
-        :title="modelBackendData?.car_versions_title"
-        :versions="modelBackendData?.car_versions"
-        :icons="modelBackendData?.car_versions_tab_icons"
+        v-if="displayCarVersions"
+        :title="displayCarVersionsTitle"
+        :versions="displayCarVersions"
+        :icons="displayCarVersionsIcons"
         :version-images="pageData?.versionsImages || {}"
         :car-id="carId"
       />
@@ -159,6 +159,39 @@ const carId = computed(() => {
 })
 
 const carDataModules = import.meta.glob('@/assets/pages/*.json', { eager: false })
+const localCarVersionPacks = import.meta.glob('@/assets/car-versions/*.json', { eager: true })
+
+function getLocalCarVersionPack(id) {
+  if (!id) return null
+  const suffix = `/car-versions/${id}.json`
+  const path = Object.keys(localCarVersionPacks).find((k) => k.endsWith(suffix))
+  if (!path) return null
+  const mod = localCarVersionPacks[path]
+  return mod?.default ?? mod
+}
+
+const localCarVersionPack = computed(() => getLocalCarVersionPack(carId.value))
+
+const displayCarVersions = computed(() => {
+  const localCv = localCarVersionPack.value?.car_versions
+  if (localCv && typeof localCv === 'object' && Object.keys(localCv).length > 0) {
+    return localCv
+  }
+  return modelBackendData.value?.car_versions ?? null
+})
+
+const displayCarVersionsTitle = computed(() => {
+  return (
+    localCarVersionPack.value?.car_versions_title ||
+    modelBackendData.value?.car_versions_title ||
+    ''
+  )
+})
+
+const displayCarVersionsIcons = computed(() => ({
+  ...(modelBackendData.value?.car_versions_tab_icons || {}),
+  ...(localCarVersionPack.value?.car_versions_tab_icons || {}),
+}))
 
 const loadCarData = async (id) => {
   try {

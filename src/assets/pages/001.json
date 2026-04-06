@@ -56,6 +56,10 @@
     { "type": "twoImagesBlock", "dataKey": "activeIntelligentSafetyBlock" },
     { "type": "batterySafetyBlock", "dataKey": "batterySafetyBlock" }
   ],
+  "versionsImages": {
+    "Ultra": "001_ultra.webp",
+    "Ultra Plus": "001_ultra_plus.webp"
+  },
   "hero": {
     "title": {
       "ua": "Оновлений ZEEKR 001",

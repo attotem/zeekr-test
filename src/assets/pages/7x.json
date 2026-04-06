@@ -90,9 +90,9 @@
     ]
   },
   "versionsImages": {
-    "2WD Inteligent": "7x_standart.avif",
-    "2WD Long Range Smart": "7x_longRange.avif",
-    "4WD Smart": "7x_perfomace.avif"
+    "Ultra": "7x_ultra.webp",
+    "Performance EU": "7x_perfomance_eu.webp",
+    "Standard EU": "7x_standard_eu.webp"
   },
   "navigationBlock": {
     "title": {
