@@ -8,9 +8,11 @@ function backendOrigin() {
 	}
 }
 
+
 function shouldRewriteToCurrentOrigin() {
 	if (import.meta.env.DEV) return true;
-	return import.meta.env.VITE_MEDIA_SAME_ORIGIN === "true";
+	if (import.meta.env.VITE_MEDIA_SAME_ORIGIN === "false") return false;
+	return true;
 }
 
 export function sameOriginMediaUrl(url) {

@@ -1,3 +1,7 @@
+/**
+ * Cloudflare Pages: /media/* → MEDIA_PROXY_ORIGIN (за замовчуванням zeekr-back.xyz).
+ * Змінна MEDIA_PROXY_ORIGIN у Pages → Settings → Environment variables (опційно).
+ */
 
 export async function onRequest(context) {
 	const { request, env } = context;
