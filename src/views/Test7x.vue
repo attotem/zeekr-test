@@ -125,6 +125,7 @@ import CarDetectBlock from '@/components/new_car_page/car-detect-block.vue'
 import pageDataJson from '@/assets/pages/7x.json'
 import ModalContact from '@/components/ModalContact.vue'
 import API from '@/composables/API'
+import { sameOriginMediaUrl } from '@/utils/sameOriginMediaUrl'
 import { useLangStore } from '@/stores/lang'
 import CarVersionsCards from '@/components/new_car_page/car-versions-cards.vue'
 
@@ -383,7 +384,7 @@ const handleHeroButtonClick = (type) => {
     modalType.value = 'car'
     mailObj.value = { type: 'order', page: 'order' }
   } else if (type === 'price_list' && priceListUrl.value) {
-    window.open(priceListUrl.value, '_blank')
+    window.open(sameOriginMediaUrl(priceListUrl.value), '_blank', 'noopener,noreferrer')
   }
 }  
 </script>

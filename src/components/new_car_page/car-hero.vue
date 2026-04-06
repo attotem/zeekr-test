@@ -91,11 +91,11 @@
         </button>
 
         <a
-          v-if="priceListUrl"
-          :href="priceListUrl"
+          v-if="resolvedPriceListUrl"
+          :href="resolvedPriceListUrl"
           class="btn btn--transparent btn--white car-hero__price-list"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           {{ i18n?.pages?.car?.priceList?.[langStore.activeLang] || 'Прайс-лист' }}
         </a>
@@ -120,6 +120,7 @@
 import { ref, onMounted, computed, nextTick, watch, getCurrentInstance } from 'vue'
 import { useLangStore } from '@/stores/lang'
 import { getTextByLang } from '@/utils/getText'
+import { sameOriginMediaUrl } from '@/utils/sameOriginMediaUrl'
 
 const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
 
@@ -141,6 +142,7 @@ const props = defineProps({
 const emit = defineEmits(['buttonClick'])
 
 const langStore = useLangStore()
+const resolvedPriceListUrl = computed(() => sameOriginMediaUrl(props.priceListUrl))
 const heroData = computed(() => {
   return props.data?.hero || props.data || {}
 })

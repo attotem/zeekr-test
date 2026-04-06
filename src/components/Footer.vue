@@ -154,7 +154,6 @@ const updateSocials = (contacts) => {
     }
 
     if (socialMap[key]) {
-      console.log(key);
       socials.value.push({
         href: contact.url,
         component: socialMap[key].component

@@ -177,6 +177,7 @@
 <script setup>
 import Logo from "@/components/icons/logo.vue";
 import API from "@/composables/API";
+import { sortCarModelsForHeader } from "@/composables/sortCarModelsForHeader";
 import { useLangStore } from "@/stores/lang";
 import { useLoaderStore } from "@/stores/loader";
 import { computed, onMounted, ref, watch } from "vue";
@@ -191,7 +192,7 @@ let isLoading = computed(() => useLoaderStore().isLoading)
 
 watch(() => langStore.activeLang, async () => {
   data.value = await API.GuaranteePage.get();
-  models.value = (await API.Models.get()).car_models;
+  models.value = sortCarModelsForHeader((await API.Models.get()).car_models || []);
 })
 
 const showPdf = ref(false)
@@ -253,7 +254,7 @@ function getFileNameFromUrl(url) {
 onMounted(async () => {
   useLoaderStore().isLoading = true
   data.value = await API.GuaranteePage.get();
-  models.value = (await API.Models.get()).car_models;
+  models.value = sortCarModelsForHeader((await API.Models.get()).car_models || []);
   useLoaderStore().isLoading = false
 });
 

@@ -11,6 +11,7 @@
   "dependencies": {
     "@fawmi/vue-google-maps": "^0.9.79",
     "fullpage.js": "^4.0.37",
+    "imask": "^7.6.1",
     "pinia": "^2.3.1",
     "sass": "^1.83.4",
     "swiper": "^11.2.6",
@@ -19,7 +20,8 @@
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue3-google-map": "^0.21.1",
-    "vue3-pdfjs": "^0.1.6"
+    "vue3-pdfjs": "^0.1.6",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",

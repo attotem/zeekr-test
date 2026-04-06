@@ -245,13 +245,13 @@
       "en": "Legal information",
       "uk": "Юридична інформація"
     },
-    "text1": {
-      "en": "*The cost of the car is indicated for the basic configuration without taking into account the cost of additional equipment. The cost is calculated as of",
-      "uk": "*Вартість автомобіля вказана для базової комплектації без урахування вартості додаткового обладнання. Вартість розрахована станом на"
+    "text1Before": {
+      "en": "*The vehicle price is stated without taking into account the cost of additional equipment. The price is calculated on the day of payment at PrivatBank's commercial exchange rate published at ",
+      "uk": "*Вартість автомобіля вказана без урахування вартості додаткового обладнання. Вартість розраховується на день оплати за комерційним курсом Приват Банк, опублікованим на сайті "
     },
-    "text2": {
-      "en": "at the exchange rate posted on the website zeekr.com.ua. The calculation provided is preliminary and requires clarification from official Zeekr dealers in Ukraine. The final cost of the car is indicated in the purchase agreement on the date of signing the car purchase agreement.",
-      "uk": "за курсом, опублікованим на сайті zeekr.com.ua Наведений розрахунок є попереднім і потребує уточнення у офіційних дилерів Zeekr в Україні. Остаточна вартість автомобіля вказується в договорі купівлі-продажу на дату підписання договору."
+    "text1After": {
+      "en": ". The calculation provided is preliminary and must be confirmed with official Zeekr dealers in Ukraine. The final vehicle price is stated in the purchase agreement on the date the agreement is signed.",
+      "uk": " Наведений розрахунок є попереднім і потребує уточнення у офіційних дилерів Zeekr в Україні. Остаточна вартість автомобіля вказується в договорі купівлі-продажу на дату підписання договору."
     }
   },
   "modal": {
@@ -290,6 +290,14 @@
     "OK": {
       "en": "Ok",
       "uk": "Гаразд"
+    },
+    "submit": {
+      "en": "Send",
+      "uk": "Відправити"
+    },
+    "emailOptional": {
+      "en": "Email (optional)",
+      "uk": "Електронна пошта (необов’язково)"
     },
     "thankYouTitle": {
       "en": "Thank you for registration!",

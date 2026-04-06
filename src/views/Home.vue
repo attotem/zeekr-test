@@ -248,6 +248,7 @@ import Slider from "@/components/Slider.vue";
 import { computed, onMounted, ref, watch } from "vue";
 import { RouterLink } from "vue-router";
 import API from "@/composables/API";
+import { sortCarModelsForHeader } from "@/composables/sortCarModelsForHeader";
 import { useLangStore } from "@/stores/lang";
 import isMobile from "@/composables/isMobile";
 import { useLoaderStore } from "@/stores/loader";
@@ -342,8 +343,8 @@ const mainSliderSlides = [
       en: '9X NEW'
     },
     subtitle: {
-      ua: 'Ультралюксовий SUV нового покоління',
-      en: 'Ultra-luxury next-generation SUV'
+      ua: 'Новий розкішний флагманський SUV',
+      en: 'New luxury flagship SUV'
     },
     variants: {
       ua: 'MAX ULTRA HYPER',
@@ -427,8 +428,7 @@ watch(() => langStore.activeLang, async () => {
 
   sliderData.value = await API.HomePage.get();
   document.title = sliderData.value.title;
-  models.value = sliderData.value.car_models;
-  console.log(models.value)
+  models.value = sortCarModelsForHeader(sliderData.value.car_models || []);
 })
 
 onMounted(async () => {
@@ -437,8 +437,7 @@ onMounted(async () => {
 
   sliderData.value = await API.HomePage.get();
   document.title = sliderData.value.title;
-  models.value = sliderData.value.car_models;
-  console.log(models.value)
+  models.value = sortCarModelsForHeader(sliderData.value.car_models || []);
   useLoaderStore().isLoading = false
   news.value = await API.News.get();
 })

@@ -53,8 +53,9 @@
 					<a
 						v-if="modelData.price_list"
 						class="btn btn--transparent btn--transparent-white"
-						:href="modelData.price_list"
+						:href="sameOriginMediaUrl(modelData.price_list)"
 						target="_blank"
+						rel="noopener noreferrer"
 					>
 						{{ i18n.pages.car.priceList?.[langStore.activeLang] }}
 					</a>
@@ -260,6 +261,7 @@ import { watch } from 'vue'
 import { useLoaderStore } from "@/stores/loader";
 import { ref as vueRef } from 'vue';
 import ModalContact from "@/components/ModalContact.vue";
+import { sameOriginMediaUrl } from "@/utils/sameOriginMediaUrl";
 
 const router = useRouter();
 let isLoading = computed(() => useLoaderStore().isLoading)

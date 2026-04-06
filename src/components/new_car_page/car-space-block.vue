@@ -79,7 +79,6 @@ const resolveImage = (imagePath) => {
   if (imagePath.startsWith('/')) return imagePath
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   const resolvedPath = `${basePath}/${props.carId}/storage/${imagePath}`
-  console.log('🖼️ Space block resolving image:', imagePath, '->', resolvedPath)
   return resolvedPath
 }
 </script>

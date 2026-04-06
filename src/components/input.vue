@@ -1,95 +1,196 @@
 <template>
-  <label class="input" :class="{ 'input--error': isError }">
+  <label class="input" :class="{ 'input--error': hasDisplayError }">
     <div class="input__name" :class="{ 'input__name--required': isRequired }">
       {{ name }}
     </div>
 
     <input
+      v-if="type === 'tel'"
+      ref="inputRef"
       class="input__inner"
-      :type="type === 'tel' ? 'tel' : type"
+      type="tel"
       :placeholder="placeholder"
       :required="isRequired"
-      :inputmode="type === 'tel' ? 'numeric' : undefined"
-      :autocomplete="type === 'tel' ? 'tel' : undefined"
-      :value="content"
-      @input="onInput"
-      @blur="validate"
+      inputmode="tel"
+      autocomplete="tel"
+      @blur="onBlur"
     />
 
-    <Wrong v-if="isError && isRequired" class="input__icon" />
-    <Ok v-else-if="!isError && content && isRequired" class="input__icon" />
+    <input
+      v-else
+      ref="inputRef"
+      class="input__inner"
+      :type="type === 'email' ? 'email' : type"
+      :placeholder="placeholder"
+      :required="isRequired"
+      :inputmode="type === 'email' ? 'email' : undefined"
+      :autocomplete="type === 'email' ? 'email' : undefined"
+      :value="content"
+      @input="onTextInput"
+      @blur="onBlur"
+    />
+
+    <Wrong v-if="hasDisplayError && showStatusIcon" class="input__icon" />
+    <Ok v-else-if="showOkIcon" class="input__icon" />
   </label>
 
-  <div class="input__error" v-if="isError && isRequired">
+  <div class="input__error" v-if="displayErrorText">
+    {{ displayErrorText }}
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import IMask from 'imask'
 import Wrong from './icons/wrong.vue'
 import Ok from './icons/ok.vue'
 
 const props = defineProps({
   name: String,
   isRequired: Boolean,
-  type: { type: String, default: 'text' }
+  type: { type: String, default: 'text' },
+  /** Якщо false — помилки лише через errorMessage (наприклад Zod) */
+  useInternalValidation: { type: Boolean, default: true },
+  /** Показувати стан помилки та текст (після першого submit у модалці — true) */
+  errorsVisible: { type: Boolean, default: true },
+  /** Текст помилки зі схеми (Zod) */
+  errorMessage: { type: String, default: '' },
 })
 
 const content = ref('')
 const isError = ref(false)
+const inputRef = ref(null)
+let maskInstance = null
 
 const placeholder = computed(() => {
-  if (props.type === 'tel') return '+380 XX XXX XX XX'
+  if (props.type === 'tel') return '+380 __ ___ __ __'
   return props.name
 })
 
-const formatPhone = (value) => {
-  let digits = value.replace(/\D/g, '')
+const hasDisplayError = computed(() => {
+  if (!props.errorsVisible) return false
+  if (props.errorMessage && String(props.errorMessage).trim() !== '') return true
+  if (props.useInternalValidation && props.isRequired && isError.value) return true
+  return false
+})
 
-  if (digits.startsWith('0')) digits = digits.slice(1)
-  if (digits.startsWith('380')) digits = digits.slice(3)
+const displayErrorText = computed(() => {
+  if (!props.errorsVisible) return ''
+  if (props.errorMessage && String(props.errorMessage).trim() !== '') return props.errorMessage
+  return ''
+})
 
-  const d = digits.slice(0, 9)
+const showStatusIcon = computed(() => {
+  if (props.errorMessage && String(props.errorMessage).trim() !== '') return true
+  return props.isRequired
+})
 
-  const i1 = d.slice(0, 2)
-  const i2 = d.slice(2, 5)
-  const i3 = d.slice(5, 7)
-  const i4 = d.slice(7, 9)
+const showOkIcon = computed(() => {
+  if (hasDisplayError.value) return false
+  const v = String(content.value ?? '').trim()
+  if (!v) return false
+  if (props.isRequired) return true
+  if (props.type === 'email') return true
+  return false
+})
 
-  return `+380${i1 ? ' ' + i1 : ''}${i2 ? ' ' + i2 : ''}${i3 ? ' ' + i3 : ''}${i4 ? ' ' + i4 : ''}`.trim()
-}
-
-const onInput = (e) => {
-  let val = e.target.value
-
-  if (props.type === 'tel') {
-    val = formatPhone(val)
-  }
-
-  content.value = val
-  validate()
-}
-
-const validate = () => {
-  if (!props.isRequired) {
+function validateInternal() {
+  if (!props.useInternalValidation) {
     isError.value = false
     return
   }
 
+  if (!props.isRequired) {
+    if (props.type === 'email' && String(content.value).trim() !== '') {
+      const t = String(content.value).trim()
+      isError.value = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)
+    } else {
+      isError.value = false
+    }
+    return
+  }
+
   if (props.type === 'tel') {
-    const digits = content.value.replace(/\D/g, '')
-    isError.value = digits.length !== 12
+    const digits = String(content.value).replace(/\D/g, '')
+    isError.value = digits.length !== 12 || !digits.startsWith('380')
+  } else if (props.type === 'email') {
+    const t = String(content.value).trim()
+    isError.value = t.length === 0 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)
   } else {
-    isError.value = content.value.trim().length === 0
+    isError.value = String(content.value).trim().length === 0
+  }
+}
+
+function onBlur() {
+  if (props.useInternalValidation && props.errorsVisible) validateInternal()
+}
+
+function onTextInput(e) {
+  let val = e.target.value
+  content.value = val
+  if (props.useInternalValidation && props.errorsVisible) validateInternal()
+}
+
+function initPhoneMask() {
+  if (props.type !== 'tel' || !inputRef.value) return
+  maskInstance?.destroy()
+  maskInstance = IMask(inputRef.value, {
+    mask: '+{380} 00 000 00 00',
+    lazy: false,
+  })
+  maskInstance.on('accept', () => {
+    content.value = maskInstance.value
+    /* Помилку телефону показуємо після blur, а не на кожній цифрі */
+  })
+}
+
+onMounted(() => {
+  nextTick(() => {
+    if (props.type === 'tel') initPhoneMask()
+  })
+})
+
+onUnmounted(() => {
+  maskInstance?.destroy()
+  maskInstance = null
+})
+
+watch(
+  () => props.type,
+  () => {
+    nextTick(() => {
+      if (props.type === 'tel') initPhoneMask()
+      else {
+        maskInstance?.destroy()
+        maskInstance = null
+      }
+    })
+  },
+)
+
+watch(
+  () => props.errorsVisible,
+  (visible) => {
+    if (visible && props.useInternalValidation) validateInternal()
+  },
+)
+
+function clearField() {
+  isError.value = false
+  content.value = ''
+  if (maskInstance) {
+    maskInstance.value = ''
+  } else if (inputRef.value) {
+    inputRef.value.value = ''
   }
 }
 
 defineExpose({
   content,
-  isError
+  isError,
+  clear: clearField,
 })
 </script>
-
 
 <style lang="scss" scoped>
 .input {
@@ -145,7 +246,7 @@ defineExpose({
     color: #000;
 
     &::placeholder {
-      color: #000;
+      color: #9DA2A5;
     }
   }
 
@@ -173,24 +274,24 @@ defineExpose({
     }
   }
 
-  &__error {
-    position: relative;
-    left: 16px;
-    bottom: 2px;
-    color: #F75400;
-    opacity: 0;
-    transition: .3s ease-in-out;
-
-    font-size: 12px;
-    line-height: 1.4;
-  }
-
   &__icon {
     width: 16px;
     aspect-ratio: 1/1;
     opacity: 0;
     transition: .3s ease-in-out;
   }
+}
+
+.input__error {
+  position: relative;
+  left: 16px;
+  bottom: 2px;
+  margin-top: 2px;
+  color: #F75400;
+  opacity: 0;
+  transition: .3s ease-in-out;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 @media screen and (max-width: 876px) {
@@ -201,10 +302,10 @@ defineExpose({
       left: 12px;
       padding: 0 2px;
     }
+  }
 
-    &__error {
-      left: 12px;
-    }
+  .input__error {
+    left: 12px;
   }
 }
 </style>

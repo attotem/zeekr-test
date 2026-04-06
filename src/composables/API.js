@@ -135,7 +135,6 @@ class HomePage {
 		);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = currentLang;
 		}
 		return this.data;
@@ -157,7 +156,6 @@ class ServicePage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -179,7 +177,6 @@ class ContactsPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -203,7 +200,6 @@ class FinancialServicesPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -225,7 +221,6 @@ class GuaranteePage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -249,7 +244,6 @@ class AboutTOVPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -273,7 +267,6 @@ class PrivacyPolicyPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -295,7 +288,6 @@ class DiagnosticsPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -317,7 +309,6 @@ class LeasingPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -339,7 +330,6 @@ class LendingPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -363,7 +353,6 @@ class AboutCompanyPage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -385,7 +374,6 @@ class InsurancePage {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -407,7 +395,6 @@ class Footer {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -449,7 +436,6 @@ class BecomeADealer {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -471,7 +457,6 @@ class BecomeAPartner {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -493,7 +478,6 @@ class Accessories {
 			);
 			let body = await resp.json();
 			this.data = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.data;
@@ -518,7 +502,6 @@ class CarsInStock {
 		);
 		let body = await resp.json();
 		this.data = body;
-		console.log(body);
 		lastLang = useLangStore().activeLang;
 		return this.data;
 	}
@@ -535,7 +518,6 @@ class CarsInStock {
 			);
 			let body = await resp.json();
 			this.filters = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.filters;
@@ -555,7 +537,6 @@ class CarsInStock {
 			);
 			let body = await resp.json();
 			this.id = body;
-			console.log(body);
 			lastLang = useLangStore().activeLang;
 		}
 		return this.id;
@@ -583,13 +564,17 @@ class Mail {
 
 		const formattedPhone = phone ? phone.replace(/\s/g, '') : '';
 
+		const emailStr = email != null ? String(email).trim() : '';
+
 		let body = {
 			Contact: name || '',
 			CityStr: city || '',
 			MobilePhone: formattedPhone,
 			Commentary: currentUrl,
 			RegisterMethodId: registerMethodMap[type] || 'service',
-			BpmHref: bpmHref
+			BpmHref: bpmHref,
+			email: emailStr,
+			...(emailStr ? { Email: emailStr } : {}),
 		};
 
 		let resp = await fetch(addRegionParam(`${path}/send_email/`), {

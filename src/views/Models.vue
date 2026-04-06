@@ -37,6 +37,7 @@
 <script setup>
 import Logo from '@/components/icons/logo.vue';
 import API from '@/composables/API';
+import { sortCarModelsForHeader } from '@/composables/sortCarModelsForHeader';
 import { useLangStore } from '@/stores/lang';
 import { useLoaderStore } from '@/stores/loader';
 import { computed, onMounted, ref, watch } from 'vue';
@@ -45,13 +46,18 @@ let modelsData = ref({})
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
 
+function applyModelsOrder(data) {
+  if (!data?.car_models) return data
+  return { ...data, car_models: sortCarModelsForHeader(data.car_models) }
+}
+
 watch(() => langStore.activeLang, async () => {
-  modelsData.value = await API.Models.get()
+  modelsData.value = applyModelsOrder(await API.Models.get())
 })
 
 onMounted(async () => {
   useLoaderStore().isLoading = true
-  modelsData.value = await API.Models.get()
+  modelsData.value = applyModelsOrder(await API.Models.get())
   useLoaderStore().isLoading = false
 })
 </script>

@@ -8,51 +8,70 @@
 			class="modal__inner"
 			@click.stop
 		>
-      <button
-        type="button"
-        class="modal__close"
-        aria-label="Close"
-        @click="emits('close')"
-      >
-        ×
-      </button>
+			<button
+				type="button"
+				class="modal__close"
+				aria-label="Close"
+				@click="emits('close')"
+			>
+				×
+			</button>
 			<template v-if="!isSent">
 				<div class="modal__h">{{ props.heading?.[langStore.activeLang] }}</div>
 				<div class="modal__underh">
 					{{ i18n.modal.fillInYourInfo?.[langStore.activeLang] }}
 				</div>
 
-      <div class="modal__inputs">
+				<div class="modal__inputs">
 					<Input
 						:name="langStore.activeLang == 'en' ? 'Your name' : 'Ваше ім\'я'"
-						:isRequired="true"
-						ref="name"
-						:type="'text'"
+						:is-required="true"
+						:use-internal-validation="false"
+						:errors-visible="submitAttempted"
+						:error-message="fieldErrors.name"
+						ref="nameRef"
+						type="text"
 					/>
 
 					<Input
 						:name="langStore.activeLang == 'en' ? 'City' : 'Місто'"
-						:isRequired="true"
-						ref="city"
-						:type="'text'"
+						:is-required="true"
+						:use-internal-validation="false"
+						:errors-visible="submitAttempted"
+						:error-message="fieldErrors.city"
+						ref="cityRef"
+						type="text"
 					/>
 
 					<Input
 						:name="langStore.activeLang == 'en' ? 'Your phone number' : 'Ваш телефон'"
-						:isRequired="true"
-						ref="phone"
-						:type="'tel'"
+						:is-required="true"
+						:use-internal-validation="false"
+						:errors-visible="submitAttempted"
+						:error-message="fieldErrors.phone"
+						ref="phoneRef"
+						type="tel"
 					/>
-        </div>
 
-        <button
-          type="button"
-          class="btn btn--orange"
-          :class="{ 'btn--disabled': isSending }"
-          @click="!isSending && send()"
-        >
-          Відправити
-        </button>
+					<Input
+						:name="i18n.modal.emailOptional?.[langStore.activeLang]"
+						:is-required="false"
+						:use-internal-validation="false"
+						:errors-visible="submitAttempted"
+						:error-message="fieldErrors.email"
+						ref="emailRef"
+						type="email"
+					/>
+				</div>
+
+				<button
+					type="button"
+					class="btn btn--orange"
+					:class="{ 'btn--disabled': isSending }"
+					@click="!isSending && send()"
+				>
+					{{ i18n.modal.submit?.[langStore.activeLang] }}
+				</button>
 			</template>
 			<template v-else>
 				<div class="modal__h">
@@ -73,71 +92,146 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { nextTick, reactive, ref, watch, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import Input from './input.vue';
 import { useLangStore } from '@/stores/lang';
 import API from '@/composables/API';
+import { createContactFormSchema } from '@/schemas/contactFormSchema';
 
 const router = useRouter();
-let langStore = useLangStore()
-let isSent = ref(false)
-let isSending = ref(false)
-let phone = ref(),
-  name = ref(),
-  city = ref()
+const langStore = useLangStore();
+const isSent = ref(false);
+const isSending = ref(false);
+const submitAttempted = ref(false);
 
-let props = defineProps(['heading', 'isOpened', 'mailObj'])
-let emits = defineEmits(['close'])
+const nameRef = ref();
+const cityRef = ref();
+const phoneRef = ref();
+const emailRef = ref();
 
-const send = async () => {
-  if (isSending.value) return
+const fieldErrors = reactive({
+	name: '',
+	city: '',
+	phone: '',
+	email: '',
+});
 
-  const nameOk = name.value?.content?.length > 0
-  const cityOk = city.value?.content?.length > 0
-  const phoneOk = !!phone.value?.content && !phone.value?.isError
-  if (!(nameOk && cityOk && phoneOk)) return
+const props = defineProps(['heading', 'isOpened', 'mailObj']);
+const emits = defineEmits(['close']);
 
-  // Закрываем модалку сразу после успешной валидации (до ответа бэкенда)
-  emits('close')
-
-  try {
-    isSending.value = true
-    const payload = {
-      type: props.mailObj?.type,
-      page: props.mailObj?.page,
-      name: name.value.content,
-      phone: phone.value.content,
-      city: city.value.content
-    }
-
-    await API.Mail.send(payload)
-
-    isSent.value = true
-    router.push('/thank-you-page')
-  } catch (error) {
-    // Ошибку можно обработать при необходимости (например, показать тост)
-  } finally {
-    isSending.value = false
-  }
+function unwrapFieldContent(comp) {
+	if (!comp) return '';
+	const c = comp.content;
+	if (c && typeof c === 'object' && 'value' in c) return String(c.value ?? '');
+	return String(c ?? '');
 }
 
+function getFormValues() {
+	return {
+		name: unwrapFieldContent(nameRef.value),
+		city: unwrapFieldContent(cityRef.value),
+		phone: unwrapFieldContent(phoneRef.value),
+		email: unwrapFieldContent(emailRef.value),
+	};
+}
 
-watch(() => props.isOpened, () => {
-  isSent.value = false;
-})
+function runValidation() {
+	const schema = createContactFormSchema(langStore.activeLang);
+	const parsed = schema.safeParse(getFormValues());
+	fieldErrors.name = '';
+	fieldErrors.city = '';
+	fieldErrors.phone = '';
+	fieldErrors.email = '';
+	if (!parsed.success) {
+		const fe = parsed.error.flatten().fieldErrors;
+		if (fe.name?.[0]) fieldErrors.name = fe.name[0];
+		if (fe.city?.[0]) fieldErrors.city = fe.city[0];
+		if (fe.phone?.[0]) fieldErrors.phone = fe.phone[0];
+		if (fe.email?.[0]) fieldErrors.email = fe.email[0];
+		return false;
+	}
+	return true;
+}
 
-watch(() => city.value?.content, (val) => {
-  if (val == null) return
-  const cleaned = val.replace(/[^A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s-]/g, '')
-  if (cleaned !== val) city.value.content = cleaned
-})
+const send = async () => {
+	if (isSending.value) return;
 
-watch(() => name.value?.content, (val) => {
-  if (val == null) return
-  const cleaned = val.replace(/[^A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s-]/g, '')
-  if (cleaned !== val) name.value.content = cleaned
-})
+	submitAttempted.value = true;
+	if (!runValidation()) return;
+
+	try {
+		isSending.value = true;
+		const values = getFormValues();
+		const payload = {
+			type: props.mailObj?.type,
+			page: props.mailObj?.page,
+			name: values.name,
+			phone: values.phone,
+			city: values.city,
+			email: values.email.trim() || undefined,
+		};
+
+		await API.Mail.send(payload);
+
+		isSent.value = true;
+		emits('close');
+		router.push('/thank-you-page');
+	} catch {
+		/* залишаємо форму відкритою для повтору */
+	} finally {
+		isSending.value = false;
+	}
+};
+
+function clearFormUi() {
+	submitAttempted.value = false;
+	fieldErrors.name = '';
+	fieldErrors.city = '';
+	fieldErrors.phone = '';
+	fieldErrors.email = '';
+	nameRef.value?.clear?.();
+	cityRef.value?.clear?.();
+	phoneRef.value?.clear?.();
+	emailRef.value?.clear?.();
+}
+
+watch(() => props.isOpened, (open) => {
+	isSent.value = false;
+	if (open) nextTick(() => clearFormUi());
+});
+
+watchEffect(() => {
+	if (!submitAttempted.value) return;
+	unwrapFieldContent(nameRef.value);
+	unwrapFieldContent(cityRef.value);
+	unwrapFieldContent(phoneRef.value);
+	unwrapFieldContent(emailRef.value);
+	langStore.activeLang;
+	runValidation();
+});
+
+watch(
+	() => unwrapFieldContent(cityRef.value),
+	(val) => {
+		if (val == null || !cityRef.value?.content) return;
+		const cleaned = val.replace(/[^A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s'-]/g, '');
+		if (cleaned !== val && cityRef.value.content && 'value' in cityRef.value.content) {
+			cityRef.value.content.value = cleaned;
+		}
+	},
+);
+
+watch(
+	() => unwrapFieldContent(nameRef.value),
+	(val) => {
+		if (val == null || !nameRef.value?.content) return;
+		const cleaned = val.replace(/[^A-Za-zА-Яа-яЁёІіЇїЄєҐґ\s'-]/g, '');
+		if (cleaned !== val && nameRef.value.content && 'value' in nameRef.value.content) {
+			nameRef.value.content.value = cleaned;
+		}
+	},
+);
 </script>
 
 <style lang="scss" scoped>

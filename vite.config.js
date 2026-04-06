@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from "node:url";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueDevTools from "vite-plugin-vue-devtools";
 import {  readdirSync, statSync, existsSync, readFileSync } from "fs";
@@ -48,16 +48,27 @@ function copyPagesPlugin() {
 	};
 }
 
-export default defineConfig({
-	base: "/",
-	plugins: [vue(), vueDevTools(), copyPagesPlugin()],
-	resolve: {
-		alias: {
-			"@": fileURLToPath(new URL("./src", import.meta.url)),
-			"fast-deep-equal": "fast-deep-equal/es6",
+export default defineConfig(({ mode }) => {
+	const env = loadEnv(mode, process.cwd(), "");
+	const mediaProxyTarget = env.VITE_API_ORIGIN || "https://zeekr-back.xyz";
+
+	return {
+		base: "/",
+		plugins: [vue(), vueDevTools(), copyPagesPlugin()],
+		resolve: {
+			alias: {
+				"@": fileURLToPath(new URL("./src", import.meta.url)),
+				"fast-deep-equal": "fast-deep-equal/es6",
+			},
 		},
-	},
-	server: {
-		historyApiFallback: true,
-	},
+		server: {
+			historyApiFallback: true,
+			proxy: {
+				"/media": {
+					target: mediaProxyTarget.replace(/\/$/, ""),
+					changeOrigin: true,
+				},
+			},
+		},
+	};
 });

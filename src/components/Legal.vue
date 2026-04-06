@@ -7,9 +7,14 @@
 			</span>
 		</div>
 		<div class="legal__text legal__text--big">
-			{{ i18n.legal.text1?.[langStore.activeLang] }}
-			{{ (new Date()).toLocaleDateString() }}
-			{{ i18n.legal.text2?.[langStore.activeLang] }}
+			{{ i18n.legal.text1Before?.[langStore.activeLang] }}
+			<a
+				class="legal__link"
+				:href="privatRateUrl"
+				target="_blank"
+				rel="noopener noreferrer"
+			>{{ privatRateUrl }}</a>
+			{{ i18n.legal.text1After?.[langStore.activeLang] }}
 		</div>
     
 	</div>
@@ -18,7 +23,8 @@
 <script setup>
 import { useLangStore } from '@/stores/lang';
 
-let langStore = useLangStore()
+const langStore = useLangStore();
+const privatRateUrl = 'https://privatbank.ua/obmin-valiut';
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +45,12 @@ let langStore = useLangStore()
     &--big {
       margin-top: 8px;
     }
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: underline;
+    word-break: break-all;
   }
 }
 
