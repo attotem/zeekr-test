@@ -1,8 +1,3 @@
-/**
- * PDF/медіа з бекенду відкриваються як URL поточного сайту (наприклад zeekr.com.ua/media/...),
- * щоб у браузері не показувався хост zeekr-back.xyz. У проді nginx має проксувати /media на бекенд.
- * Локально — proxy у vite.config.js.
- */
 function backendOrigin() {
 	const raw = import.meta.env.VITE_API_ORIGIN || "https://zeekr-back.xyz";
 	const normalized = raw.replace(/\/$/, "");
@@ -13,6 +8,11 @@ function backendOrigin() {
 	}
 }
 
+function shouldRewriteToCurrentOrigin() {
+	if (import.meta.env.DEV) return true;
+	return import.meta.env.VITE_MEDIA_SAME_ORIGIN === "true";
+}
+
 export function sameOriginMediaUrl(url) {
 	if (typeof window === "undefined" || url == null || String(url).trim() === "") {
 		return url ?? "";
@@ -21,6 +21,7 @@ export function sameOriginMediaUrl(url) {
 	try {
 		const parsed = new URL(str);
 		if (parsed.origin !== backendOrigin()) return str;
+		if (!shouldRewriteToCurrentOrigin()) return str;
 		return `${window.location.origin}${parsed.pathname}${parsed.search}${parsed.hash}`;
 	} catch {
 		return str;
