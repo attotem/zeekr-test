@@ -1,11 +1,12 @@
 <template>
   <section class="car-details-block">
     <div class="car-details-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-details-block__title car-section-title car-section-title--center">
+      <h2 v-if="getText(blockData.title)" class="car-details-block__title">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-details-block__grid">
         <template v-for="(group, groupIndex) in groupedItems" :key="groupIndex">
+          <!-- Large card -->
           <div v-if="group.large" class="car-details-block__card car-details-block__card--large">
             <div class="car-details-block__card-image-wrap">
               <img
@@ -25,6 +26,7 @@
             </div>
           </div>
 
+          <!-- Small cards wrapper -->
           <div v-if="group.small && group.small.length > 0" class="car-details-block__small-cards-wrapper">
             <div
               v-for="(item, itemIndex) in group.small"
@@ -58,7 +60,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -74,7 +75,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (imagePath) => {
   if (!imagePath) return ''
@@ -98,7 +111,8 @@ const groupedItems = computed(() => {
       large: itemsList[i] || null,
       small: []
     }
-
+    
+    // Add next 2 items as small cards
     if (itemsList[i + 1]) group.small.push(itemsList[i + 1])
     if (itemsList[i + 2]) group.small.push(itemsList[i + 2])
     
@@ -111,43 +125,47 @@ const groupedItems = computed(() => {
 
 <style lang="scss" scoped>
 .car-details-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   padding: 64px 0;
   background: #fff;
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__title {
-        color: var(--car-title-color);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #111;
     margin: 0 0 48px;
     text-align: center;
   }
 
   &__grid {
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
-    gap: var(--car-stack-gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__card {
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
-    overflow: var(--car-card-overflow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     background: #fff;
   }
 
   &__card--large {
-    width: var(--car-card-width);
+    width: 100%;
   }
 
   &__card--small {
-    width: var(--car-card-width);
+    width: 100%;
   }
 
   &__small-cards-wrapper {
@@ -157,10 +175,10 @@ const groupedItems = computed(() => {
   }
 
   &__card-image-wrap {
-    width: var(--car-card-width);
+    width: 100%;
     position: relative;
-    overflow: var(--car-card-overflow);
-    background: var(--car-card-media-bg);
+    overflow: hidden;
+    background: #f5f5f5;
     min-height: 300px;
   }
 
@@ -177,43 +195,45 @@ const groupedItems = computed(() => {
   }
 
   &__card-title {
-        font-size: 20px;
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 20px;
     line-height: 1.3;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0 0 12px;
   }
 
   &__card-description {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.6;
-    color: var(--car-text-muted);
+    color: #666;
     margin: 0;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-details-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__title {
+      font-size: 32px;
       margin-bottom: 32px;
     }
 
     &__grid {
-      gap: var(--car-stack-gap-sm);
+      gap: 16px;
     }
 
     &__small-cards-wrapper {
       grid-template-columns: 1fr;
-      gap: var(--car-stack-gap-sm);
+      gap: 16px;
     }
 
     &__card-image-wrap {

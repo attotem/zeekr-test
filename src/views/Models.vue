@@ -131,6 +131,7 @@ onMounted(async () => {
   .article-2 {
     &__h {
       margin-bottom: 0;
+      margin: 0 16px;
     }
 
     &__underh {
@@ -150,6 +151,7 @@ onMounted(async () => {
     &s {
       margin-top: 114px;
       gap: 24px;
+      margin: 0 16px;
     }
 
     &__image {

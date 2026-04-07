@@ -24,7 +24,6 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   modelValue: {
@@ -60,7 +59,16 @@ const selectVersion = (newVersion) => {
   emit('update:modelValue', newVersion)
 }
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') {
+    return textObj
+  }
+  if (typeof textObj === 'object' && textObj !== null) {
+    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
+  }
+  return ''
+}
 </script>
 
 <style lang="scss" scoped>
@@ -86,14 +94,14 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     font-weight: 400;
-    color: var(--car-text-muted);
+    color: #666;
     white-space: nowrap;
 
     &:hover {
-      color: var(--car-text-secondary);
+      color: #333;
     }
 
     &--active {
@@ -109,7 +117,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-360-version-switcher {
     padding: 16px;
 

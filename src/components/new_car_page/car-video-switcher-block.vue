@@ -1,7 +1,7 @@
 <template>
   <section class="car-video-switcher-block">
     <div class="car-video-switcher-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-video-switcher-block__title car-section-title car-section-title--center">
+      <h2 v-if="getText(blockData.title)" class="car-video-switcher-block__title">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-video-switcher-block__video-wrap">
@@ -48,7 +48,6 @@
 <script setup>
 import { computed, ref, watch, nextTick, onMounted } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -66,7 +65,19 @@ const blockData = computed(() => props.data || {})
 const currentIndex = ref(0)
 const videoRefs = ref({})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveVideo = (videoPath) => {
   if (!videoPath) return ''
@@ -96,7 +107,7 @@ const currentItemDescription = computed(() => {
 })
 
 const setIndex = async (index) => {
-  
+  // Pause all videos
   Object.values(videoRefs.value).forEach(video => {
     if (video && video.pause) {
       video.pause()
@@ -105,13 +116,13 @@ const setIndex = async (index) => {
   
   currentIndex.value = index
   
-  
+  // Play the selected video
   await nextTick()
   const currentVideo = videoRefs.value[index]
   if (currentVideo) {
     currentVideo.currentTime = 0
     currentVideo.play().catch(() => {
-      
+      // Ignore autoplay errors
     })
   }
 }
@@ -120,43 +131,43 @@ const handleVideoLoaded = (index) => {
   const video = videoRefs.value[index]
   if (video && currentIndex.value === index) {
     video.play().catch(() => {
-      
+      // Ignore autoplay errors
     })
   }
 }
 
-
+// Watch for index changes to play/pause videos
 watch(currentIndex, async (newIndex) => {
   await nextTick()
-  
+  // Pause all videos
   Object.values(videoRefs.value).forEach(video => {
     if (video && video.pause) {
       video.pause()
     }
   })
-  
+  // Play current video
   const currentVideo = videoRefs.value[newIndex]
   if (currentVideo) {
     currentVideo.currentTime = 0
     currentVideo.play().catch(() => {
-      
+      // Ignore autoplay errors
     })
   }
 })
 
-
+// Play first video on mount
 onMounted(async () => {
   await nextTick()
   const firstVideo = videoRefs.value[0]
   if (firstVideo) {
     firstVideo.play().catch(() => {
-      
+      // Ignore autoplay errors
     })
   }
 })
 
 watch(() => langStore.activeLang, () => {
-  
+  // Re-render when language changes
 })
 </script>
 
@@ -164,18 +175,22 @@ watch(() => langStore.activeLang, () => {
 .car-video-switcher-block {
   width: 100%;
   margin: 0;
-  padding: var(--car-section-padding-y);
+  padding: 60px 0;
   background: rgb(245, 246, 247);
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__title {
-        color: var(--car-title-color);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #111;
     text-align: center;
     margin: 0 0 48px 0;
   }
@@ -236,10 +251,10 @@ watch(() => langStore.activeLang, () => {
     border: none;
     padding: 12px 24px;
     cursor: pointer;
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    color: var(--car-text-muted-05);
+    color: rgba(17, 17, 17, 0.5);
     transition: color 0.3s ease;
     position: relative;
     margin: 0 8px;
@@ -249,7 +264,7 @@ watch(() => langStore.activeLang, () => {
     }
 
     &--active {
-      color: var(--car-text-primary);
+      color: #111;
       
       &::after {
         content: '';
@@ -275,23 +290,24 @@ watch(() => langStore.activeLang, () => {
   }
 
   &__description-text {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-video-switcher-block {
-    padding: var(--car-section-padding-y-sm);
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__title {
+      font-size: 32px;
       margin-bottom: 32px;
     }
 

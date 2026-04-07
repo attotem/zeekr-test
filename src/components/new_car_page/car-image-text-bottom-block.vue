@@ -32,7 +32,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -49,15 +48,27 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
 </script>
 
 <style lang="scss" scoped>
 .car-image-text-bottom-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   position: relative;
 
   &__image-wrap {
@@ -94,19 +105,19 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   &__text {
     position: relative;
     z-index: 2;
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
-    gap: var(--car-stack-gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     padding: 40px;
-    max-width: var(--car-inner-max-width);
+    max-width: 1320px;
     margin: 0 auto;
     width: 100%;
     text-align: center;
   }
 
   &__title {
-    font-family: var(--car-font-heading);
-    font-size: var(--car-title-size-xl);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
     line-height: 1.3;
     font-weight: 400;
     color: #fff;
@@ -114,7 +125,7 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   }
 
   &__subtitle {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 18px;
     line-height: 1.6;
     color: #fff;
@@ -125,7 +136,7 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   &__features {
     display: flex;
     flex-direction: column;
-    gap: var(--car-stack-gap-sm);
+    gap: 16px;
     align-items: center;
   }
 
@@ -135,17 +146,17 @@ const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
   }
 
   &__feature-text {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 18px;
     line-height: 1.6;
     color: #fff;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-image-text-bottom-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
 
     &__image-wrap {
       min-height: 40vh;

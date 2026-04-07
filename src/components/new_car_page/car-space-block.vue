@@ -2,6 +2,7 @@
   <section class="car-space-block">
     <div class="car-space-block__inner">
       <div class="car-space-block__grid">
+        <!-- Top Left: Image 1 -->
         <div class="car-space-block__image-wrap car-space-block__image-wrap--top-left">
           <img
             :src="resolveImage(blockData.image1)"
@@ -11,6 +12,7 @@
           />
         </div>
 
+        <!-- Top Right: Text Block 1 -->
         <div class="car-space-block__text-block car-space-block__text-block--top-right">
           <div class="car-space-block__text-title">{{ getText(blockData.text1?.title) }}</div>
           <div class="car-space-block__text-body">{{ getText(blockData.text1?.body) }}</div>
@@ -19,6 +21,7 @@
           </div>
         </div>
 
+        <!-- Bottom Left: Text Block 2 -->
         <div class="car-space-block__text-block car-space-block__text-block--bottom-left">
           <div class="car-space-block__text-title">{{ getText(blockData.text2?.title) }}</div>
           
@@ -37,6 +40,7 @@
           </div>
         </div>
 
+        <!-- Bottom Right: Image 2 -->
         <div class="car-space-block__image-wrap car-space-block__image-wrap--bottom-right">
           <img
             :src="resolveImage(blockData.image2)"
@@ -53,7 +57,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -69,7 +72,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (imagePath) => {
   if (!imagePath) {
@@ -79,14 +94,15 @@ const resolveImage = (imagePath) => {
   if (imagePath.startsWith('/')) return imagePath
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   const resolvedPath = `${basePath}/${props.carId}/storage/${imagePath}`
+  console.log('🖼️ Space block resolving image:', imagePath, '->', resolvedPath)
   return resolvedPath
 }
 </script>
 
 <style lang="scss" scoped>
 .car-space-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   background: rgb(245, 246, 247);
 
   &__inner {
@@ -145,27 +161,27 @@ const resolveImage = (imagePath) => {
   }
 
   &__text-title {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 32px;
     line-height: 1.3;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     margin-bottom: 24px;
   }
 
   &__text-body {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color: var(--car-text-secondary);
+    color: #333;
     margin-bottom: 16px;
   }
 
   &__text-note {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--car-text-muted);
+    color: #666;
     margin-top: 16px;
   }
 
@@ -182,39 +198,39 @@ const resolveImage = (imagePath) => {
   }
 
   &__text-item-value {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 28px;
     line-height: 1.2;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
   }
 
   &__text-item-label {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 18px;
     line-height: 1.4;
     font-weight: 500;
-    color: var(--car-text-primary);
+    color: #111;
     margin-top: 4px;
   }
 
   &__text-item-description {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: var(--car-text-muted);
+    color: #666;
     margin-top: 4px;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-space-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__grid {

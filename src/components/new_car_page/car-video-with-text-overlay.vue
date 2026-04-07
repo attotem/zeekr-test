@@ -21,6 +21,7 @@
         </div>
       </div>
 
+      <!-- Текст под видео для мобильных -->
       <div class="car-video-with-text-overlay__text-mobile">
         <h2 v-if="getText(blockData.title)" class="car-video-with-text-overlay__title-mobile">
           {{ getText(blockData.title) }}
@@ -33,7 +34,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -49,7 +49,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveVideo = (videoPath) => {
   if (!videoPath) return ''
@@ -67,15 +79,15 @@ const videoSrc = computed(() => {
 
 <style lang="scss" scoped>
 .car-video-with-text-overlay {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
-  padding: var(--car-section-padding-y);
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  padding: 60px 0;
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__video-wrap {
@@ -122,8 +134,8 @@ const videoSrc = computed(() => {
   }
 
   &__title {
-    font-family: var(--car-font-heading);
-    font-size: var(--car-title-size-xl);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
     line-height: 1.3;
     font-weight: 400;
     color: #fff;
@@ -137,10 +149,10 @@ const videoSrc = computed(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-video-with-text-overlay {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
     padding: 0;
 
     &__inner {
@@ -162,11 +174,11 @@ const videoSrc = computed(() => {
     }
 
     &__title-mobile {
-      font-family: var(--car-font-heading);
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
       font-size: 24px;
       line-height: 1.3;
       font-weight: 400;
-      color: var(--car-text-primary);
+      color: #111;
       margin: 0;
       text-align: left;
     }

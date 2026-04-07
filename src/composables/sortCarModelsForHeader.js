@@ -1,7 +1,4 @@
-/**
- * Сортує `car_models` з `get_car_models_page` за порядком китайського сайту.
- * Кожен елемент має `model_page.url.child` на кшталт `zeekr-7x`, `zeekr-001`, `zeekr-007gt` тощо.
- */
+
 const HEADER_MODEL_ORDER = [
 	"8x",
 	"7x",

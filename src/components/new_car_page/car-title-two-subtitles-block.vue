@@ -28,7 +28,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -45,7 +44,18 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || ''
+  }
+  return ''
+}
 
 const hasSubtitles = computed(() => {
   return !!(getText(blockData.value.subtitleLeft) || getText(blockData.value.subtitleRight))
@@ -85,14 +95,14 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     top: 64px;
     left: 0;
     width: 100%;
-    padding: var(--car-inner-padding-x);
+    padding: 0 20px;
     text-align: center;
     z-index: 2;
-    color: var(--car-text-primary);
+    color: #111;
   }
 
   &__title {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 44px;
     line-height: 1.25;
     font-weight: 400;
@@ -103,7 +113,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     display: inline-flex;
     align-items: center;
     gap: 18px;
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.5;
     color: rgba(17, 17, 17, 0.9);
@@ -116,7 +126,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-title-two-subtitles-block {
     &__wrap {
       min-height: 48vh;
@@ -124,7 +134,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
     &__content {
       top: 36px;
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__title {

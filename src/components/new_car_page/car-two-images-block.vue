@@ -1,7 +1,7 @@
 <template>
   <section class="car-two-images-block" :style="{ background: blockData.background || '#fff' }">
     <div class="car-two-images-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-two-images-block__title car-section-title car-section-title--center">
+      <h2 v-if="getText(blockData.title)" class="car-two-images-block__title">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-two-images-block__grid">
@@ -48,7 +48,6 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -65,7 +64,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (media) => resolveMediaPath(media, { carId: props.carId })
 
@@ -82,14 +93,14 @@ const images = computed(() => {
   return []
 })
 
-
+// Preload all images (not videos)
 const preloadAllImages = () => {
   if (!images.value || images.value.length === 0) return
   
   images.value.forEach(item => {
     if (!item) return
     
-    
+    // item can be a string, an object with image property, or directly an image object
     const imagePath = typeof item === 'string' ? item : (item.image || item)
     if (!imagePath || isVideo(imagePath)) return
     
@@ -104,7 +115,7 @@ const preloadAllImages = () => {
   })
 }
 
-
+// Watch images to preload when they change
 watch(images, (newImages) => {
   if (newImages && newImages.length > 0) {
     preloadAllImages()
@@ -118,20 +129,24 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-two-images-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
-  padding: var(--car-section-padding-y);
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  padding: 60px 0;
   animation: fadeUp 0.6s ease 0.05s both;
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__title {
-        color: var(--car-title-color);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #111;
     margin: 0 0 60px 0;
     text-align: center;
   }
@@ -148,10 +163,10 @@ onMounted(() => {
   }
 
   &__image-wrap {
-    width: var(--car-card-width);
+    width: 100%;
     position: relative;
-    overflow: var(--car-card-overflow);
-    background: var(--car-card-media-bg);
+    overflow: hidden;
+    background: #f5f5f5;
     min-height: 400px;
     display: flex;
     align-items: center;
@@ -175,15 +190,16 @@ onMounted(() => {
   }
 
   &__caption {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     margin-top: 20px;
     text-align: left;
   }
 
   &__caption-title {
-        font-size: 18px;
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 18px;
     line-height: 1.4;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0 0 8px 0;
     font-weight: 400;
   }
@@ -191,7 +207,7 @@ onMounted(() => {
   &__caption-text {
     font-size: 14px;
     line-height: 1.6;
-    color: var(--car-text-muted-07);
+    color: rgba(17, 17, 17, 0.7);
   }
 }
 
@@ -206,17 +222,18 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-two-images-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__title {
+      font-size: 32px;
       margin-bottom: 44px;
     }
 

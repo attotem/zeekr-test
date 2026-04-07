@@ -1,13 +1,17 @@
 <template>
   <section class="car-navigation-block">
+    <!-- Background image -->
     <div
       class="car-navigation-block__image"
       :style="{ backgroundImage: `url(${getImageSrc})` }"
     ></div>
 
+    <!-- Dark overlay -->
     <div class="car-navigation-block__overlay"></div>
 
+    <!-- Content -->
     <div class="car-navigation-block__content">
+      <!-- Bottom section: Specs -->
       <div class="car-navigation-block__specs">
         <div
           v-for="(spec, index) in blockData.specs"
@@ -25,7 +29,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -46,19 +49,29 @@ const getImageSrc = computed(() => {
   return resolveMediaPath(blockData.value.image, { carId: props.carId })
 })
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+// Функция для получения текста в зависимости от языка
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') {
+    return textObj
+  }
+  if (typeof textObj === 'object' && textObj !== null) {
+    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
+  }
+  return ''
+}
 </script>
 
 <style lang="scss" scoped>
 .car-navigation-block {
   position: relative;
-  width: var(--car-section-width);
+  width: calc(100% - 40px);
   min-height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin: var(--car-section-margin);
+  margin: 0 20px;
 
   &__image {
     position: absolute;
@@ -137,10 +150,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-navigation-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
 
     &__content {
       padding: 40px 20px;

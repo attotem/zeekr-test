@@ -42,7 +42,6 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -62,7 +61,14 @@ watch(options, (opts) => {
 
 const activeOption = computed(() => options.value.find(o => o.id === activeId.value) || options.value[0])
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
+  }
+  return ''
+}
 
 const getInsideImage = (id) => {
   if (props.carId === '7x') {
@@ -95,8 +101,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-inside-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -192,18 +198,18 @@ onMounted(() => {
   }
 
   &__title {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 18px;
     line-height: 1.3;
-    color: var(--car-text-primary);
+    color: #111;
     margin-bottom: 8px;
   }
 
   &__subtitle {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--car-text-secondary);
+    color: #333;
     margin-bottom: 6px;
   }
 
@@ -214,10 +220,10 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-inside-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
     height: 60vh;
 
     &__image {

@@ -49,7 +49,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -66,7 +65,20 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'ru' && textObj.ua) return textObj.ua
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
@@ -77,15 +89,15 @@ const batteries = computed(() => {
 
 <style lang="scss" scoped>
 .car-battery-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   background: #fff;
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__grid {
@@ -101,10 +113,10 @@ const batteries = computed(() => {
   }
 
   &__battery-image-wrap {
-    width: var(--car-card-width);
+    width: 100%;
     position: relative;
-    overflow: var(--car-card-overflow);
-    background: var(--car-card-media-bg);
+    overflow: hidden;
+    background: #f5f5f5;
     min-height: 300px;
     display: flex;
     align-items: center;
@@ -121,17 +133,17 @@ const batteries = computed(() => {
 
   &__battery-content {
     padding: 32px 0 0;
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
-    gap: var(--car-stack-gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__battery-name {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 24px;
     line-height: 1.3;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0;
   }
 
@@ -147,18 +159,18 @@ const batteries = computed(() => {
   }
 
   &__battery-spec-value {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 20px;
     line-height: 1.2;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
   }
 
   &__battery-spec-label {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--car-text-muted);
+    color: #666;
   }
 
   &__footnotes {
@@ -173,10 +185,10 @@ const batteries = computed(() => {
   &__footnote {
     display: flex;
     gap: 8px;
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 12px;
     line-height: 1.6;
-    color: var(--car-text-muted);
+    color: #666;
   }
 
   &__footnote-number {
@@ -188,14 +200,14 @@ const batteries = computed(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-battery-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__grid {
@@ -218,7 +230,7 @@ const batteries = computed(() => {
 
     &__battery-specs {
       grid-template-columns: 1fr;
-      gap: var(--car-stack-gap-sm);
+      gap: 16px;
     }
 
     &__battery-spec-value {

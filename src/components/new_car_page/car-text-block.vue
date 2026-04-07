@@ -8,7 +8,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -21,8 +20,17 @@ const langStore = useLangStore()
 
 const blockData = computed(() => props.data || {})
 
-
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+// Функция для получения текста в зависимости от языка
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') {
+    return textObj
+  }
+  if (typeof textObj === 'object' && textObj !== null) {
+    return textObj[langStore.activeLang] || textObj.ua || textObj.en || ''
+  }
+  return ''
+}
 </script>
 
 <style lang="scss" scoped>
@@ -36,7 +44,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   background: #fff;
 
   &__title {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 64px;
     line-height: 1.2;
     margin: 0 0 24px;
@@ -49,7 +57,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__subtitle {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 24px;
     line-height: 1.4;
     margin: 0;
@@ -62,7 +70,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-
+/* Default: visible (so content never disappears if wrapper classes fail) */
 .car-text-block__title,
 .car-text-block__subtitle {
   opacity: 1;
@@ -70,7 +78,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   filter: blur(0);
 }
 
-
+/* When wrapper is hidden (before entering viewport) */
 :deep(.block-appear.is-hidden) .car-text-block__title,
 :deep(.block-appear.is-hidden) .car-text-block__subtitle {
   opacity: 0;
@@ -78,7 +86,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   filter: blur(6px);
 }
 
-
+/* Extra staggered text reveal when the block wrapper becomes visible */
 :deep(.block-appear.is-visible) .car-text-block__title,
 :deep(.block-appear.is-visible) .car-text-block__subtitle {
   opacity: 1;
@@ -92,7 +100,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   transition-delay: 120ms;
 }
 
-
+/* Subtle gradient shimmer for golden text (only when visible) */
 :deep(.block-appear.is-visible) .car-text-block__title,
 :deep(.block-appear.is-visible) .car-text-block__subtitle {
   background-size: 220% 100%;
@@ -115,7 +123,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-text-block {
     padding: 30px 16px;
 

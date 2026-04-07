@@ -9,7 +9,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -22,7 +21,16 @@ const langStore = useLangStore()
 
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') {
+    return textObj
+  }
+  if (typeof textObj === 'object' && textObj !== null) {
+    return textObj[langStore.activeLang] || textObj.ua || textObj.en || textObj.zh || ''
+  }
+  return ''
+}
 </script>
 
 <style lang="scss" scoped>
@@ -37,12 +45,12 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   background: #fff;
 
   &__title {
-    font-family: var(--car-font-heading);
-    font-size: var(--car-title-size-xl);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
     line-height: 1.3;
     margin: 0;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     text-align: center;
   }
 
@@ -59,29 +67,29 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__subtitle {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 20px;
     line-height: 1.5;
     margin: 16px 0 0;
     font-weight: 400;
-    color: var(--car-text-muted);
+    color: #666;
     text-align: center;
     max-width: 800px;
   }
 
   &__note {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.6;
     margin: 16px 0 0;
     font-weight: 400;
-    color: var(--car-text-muted);
+    color: #666;
     text-align: center;
     max-width: 800px;
   }
 }
 
-
+/* Default: visible (so content never disappears if wrapper classes fail) */
 .car-text-simple-block__title,
 .car-text-simple-block__subtitle,
 .car-text-simple-block__note {
@@ -90,7 +98,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   filter: blur(0);
 }
 
-
+/* When wrapper is hidden (before entering viewport) */
 :deep(.block-appear.is-hidden) .car-text-simple-block__title,
 :deep(.block-appear.is-hidden) .car-text-simple-block__subtitle,
 :deep(.block-appear.is-hidden) .car-text-simple-block__note {
@@ -99,7 +107,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   filter: blur(6px);
 }
 
-
+/* Extra staggered text reveal when the block wrapper becomes visible */
 :deep(.block-appear.is-visible) .car-text-simple-block__title,
 :deep(.block-appear.is-visible) .car-text-simple-block__subtitle,
 :deep(.block-appear.is-visible) .car-text-simple-block__note {
@@ -118,7 +126,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   transition-delay: 220ms;
 }
 
-
+/* Underline draw effect for simple title (only when visible) */
 :deep(.block-appear.is-visible) .car-text-simple-block__title::after {
   opacity: 1;
   transform: scaleX(1);
@@ -142,10 +150,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-text-simple-block {
     min-height: 10vh;
-    padding: var(--car-block-padding-y);
+    padding: 40px 16px;
 
     &__title {
       font-size: 32px;

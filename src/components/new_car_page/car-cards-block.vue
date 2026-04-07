@@ -1,10 +1,11 @@
 <template>
   <section class="car-cards-block">
     <div class="car-cards-block__inner">
-      <h2 v-if="getText(blockData.title)" class="car-cards-block__title car-section-title car-section-title--center">
+      <h2 v-if="getText(blockData.title)" class="car-cards-block__title">
         {{ getText(blockData.title) }}
       </h2>
       <div class="car-cards-block__grid">
+        <!-- Large card (top) -->
         <div v-if="cards[0]" class="car-cards-block__card car-cards-block__card--large">
           <div class="car-cards-block__card-image-wrap">
             <img
@@ -28,6 +29,7 @@
         </div>
 
         <div class="car-cards-block__small-cards">
+          <!-- Second card (left) -->
           <div v-if="cards[1]" class="car-cards-block__card car-cards-block__card--small">
             <div class="car-cards-block__card-image-wrap">
               <img
@@ -50,6 +52,7 @@
             </div>
           </div>
 
+          <!-- Third and fourth cards (right, stacked) -->
           <div class="car-cards-block__right-cards">
             <div
               v-for="(card, index) in rightCards"
@@ -83,7 +86,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -99,7 +101,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (imagePath) => {
   if (!imagePath) return ''
@@ -129,32 +143,36 @@ const rightCards = computed(() => {
   background: rgb(245, 246, 247);
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__title {
-        color: var(--car-title-color);
-    margin: var(--car-title-margin-lg);
-    text-align: var(--car-title-align);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #111;
+    margin: 0 0 48px;
+    text-align: center;
   }
 
   &__grid {
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
-    gap: var(--car-stack-gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__card {
-    overflow: var(--car-card-overflow);
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   &__card--large {
-    width: var(--car-card-width);
+    width: 100%;
   }
 
   &__small-cards {
@@ -164,20 +182,20 @@ const rightCards = computed(() => {
   }
 
   &__right-cards {
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
-    gap: var(--car-stack-gap-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__card--small {
-    width: var(--car-card-width);
+    width: 100%;
   }
 
   &__card-image-wrap {
-    width: var(--car-card-width);
+    width: 100%;
     position: relative;
-    overflow: var(--car-card-overflow);
-    background: var(--car-card-media-bg);
+    overflow: hidden;
+    background: #f5f5f5;
   }
 
   &__card--large &__card-image-wrap {
@@ -197,59 +215,61 @@ const rightCards = computed(() => {
   }
 
   &__card-content {
-    padding-top: var(--car-card-content-padding-top);
+    padding-top: 12px;
   }
 
   &__card-title {
-        font-size: 24px;
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 24px;
     line-height: 1.3;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0 0 12px;
   }
 
   &__card-description {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: var(--car-text-secondary);
+    color: #333;
     margin: 0;
   }
 
   &__card-note {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--car-text-muted);
+    color: #666;
     margin: 12px 0 0;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-cards-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__title {
-      margin: var(--car-title-margin-md);
+      font-size: 32px;
+      margin-bottom: 32px;
     }
 
     &__grid {
-      gap: var(--car-stack-gap-sm);
+      gap: 16px;
     }
 
     &__small-cards {
       grid-template-columns: 1fr;
-      gap: var(--car-stack-gap-sm);
+      gap: 16px;
     }
 
     &__right-cards {
-      gap: var(--car-stack-gap-sm);
+      gap: 16px;
     }
 
     &__card--large &__card-image-wrap {

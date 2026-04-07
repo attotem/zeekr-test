@@ -113,7 +113,7 @@ const categories = computed(() =>
 
 const activeCategoryKey = ref('')
 
-
+// Следим за изменением версий и сбрасываем выбранную категорию
 watch(
   () => rawCategories.value,
   (keys) => {
@@ -128,7 +128,7 @@ watch(
   { immediate: true }
 )
 
-
+// Преобразуем структуру car_versions для выбранной категории в массив карточек
 const cards = computed(() => {
   const versions = props.versions || {}
   const categoryKey = activeCategoryKey.value || rawCategories.value[0]
@@ -142,15 +142,15 @@ const cards = computed(() => {
 
   const versionCount = headerRow.length - 1
 
-  
-  
+  // rows: каждая строка — массив вида [label, valueForV1, valueForV2, ...]
+  // Первая колонка считаем заголовком характеристики
   const rowLabels = rows.map(r => r[0])
 
   const cards = []
   for (let i = 0; i < versionCount; i++) {
     const name = headerRow[i + 1] || ''
 
-    
+    // Пытаемся подобрать изображение для этой версии
     const imageFile = props.versionImages?.[name]
     const image =
       imageFile && typeof imageFile === 'string'
@@ -166,7 +166,7 @@ const cards = computed(() => {
     cards.push({
       name,
       image,
-      
+      // Цена, если содержится в отдельной строке (сейчас не используется)
       price: null,
       specs
     })
@@ -178,28 +178,28 @@ const cards = computed(() => {
 
 <style scoped lang="scss">
 .car-versions-cards {
-  width: var(--car-section-width);
+  width: calc(100% - 40px);
   max-width: 100%;
-  margin: var(--car-section-margin);
-  padding: var(--car-section-padding-y);
+  margin: 0 20px;
+  padding: 60px 0;
   background: #f4f4f5;
-  color: var(--car-text-primary);
+  color: #111;
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__title {
-    font-family: var(--car-font-heading-simple);
+    font-family: ZeekrText-Regular, "Tenor Sans", sans-serif;
     font-size: 40px;
     line-height: 1.3;
     font-weight: 400;
     text-align: left;
     margin: 0 0 32px;
-    color: var(--car-text-primary);
+    color: #111;
   }
 
   &__layout {
@@ -224,7 +224,7 @@ const cards = computed(() => {
     border: 1px solid rgba(0, 0, 0, 0.08);
     background: #ffffff;
     color: rgba(17, 17, 17, 0.75);
-    font-family: var(--car-font-body-simple);
+    font-family: ZeekrText-Regular, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.4;
     cursor: pointer;
@@ -245,7 +245,7 @@ const cards = computed(() => {
   &__category--active {
     background: #111;
     color: #ffffff;
-    border-color: var(--car-text-primary);
+    border-color: #111;
 
     .car-versions-cards__category-icon {
       filter: invert(1);
@@ -291,14 +291,14 @@ const cards = computed(() => {
   }
 
   &__card-name {
-    font-family: var(--car-font-heading-simple);
+    font-family: ZeekrText-Regular, "Tenor Sans", sans-serif;
     font-size: 18px;
     line-height: 1.3;
     font-weight: 400;
   }
 
   &__card-price {
-    font-family: var(--car-font-body-simple);
+    font-family: ZeekrText-Regular, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.4;
     color: #ff5c1a;
@@ -319,7 +319,7 @@ const cards = computed(() => {
   }
 
   &__spec-label {
-    font-family: var(--car-font-body-simple);
+    font-family: ZeekrText-Regular, "FixelText", sans-serif;
     font-size: 11px;
     line-height: 1.4;
     color: rgba(17, 17, 17, 0.55);
@@ -327,14 +327,14 @@ const cards = computed(() => {
   }
 
   &__spec-value {
-    font-family: var(--car-font-heading-simple);
+    font-family: ZeekrText-Regular, "Tenor Sans", sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--car-text-primary);
+    color: #111;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-versions-cards {
     width: 100%;
     max-width: 100%;
@@ -349,7 +349,7 @@ const cards = computed(() => {
     &__title {
       font-size: 28px;
       margin-bottom: 24px;
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__layout {
@@ -392,7 +392,7 @@ const cards = computed(() => {
       overflow-y: hidden;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
       max-width: 100%;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;

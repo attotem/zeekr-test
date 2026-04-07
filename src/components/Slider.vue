@@ -98,7 +98,6 @@ const goToSlide = (index) => {
 
 const touchStart = (e) => {
   if (props.sliderType !== 1) return;
-  console.log(e.touches[0].pageX)
   touch.value = e.touches[0].pageX;
 }
 

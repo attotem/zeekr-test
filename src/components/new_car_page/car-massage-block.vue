@@ -36,7 +36,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -52,7 +51,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const sections = computed(() => {
   if (blockData.value.sections && Array.isArray(blockData.value.sections)) {
@@ -64,14 +75,14 @@ const sections = computed(() => {
 
 <style lang="scss" scoped>
 .car-massage-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   background: #fff;
 
   &__inner {
     width: 100%;
     margin: 0 auto;
-    padding: var(--car-inner-padding-x);
+    padding: 0 20px;
     max-width: 1600px;
   }
 
@@ -104,11 +115,11 @@ const sections = computed(() => {
   }
 
   &__section-title {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 16px;
     line-height: 1.4;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0 0 20px 0;
   }
 
@@ -128,22 +139,22 @@ const sections = computed(() => {
   }
 
   &__item-value {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 22px;
     line-height: 1.2;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
   }
 
   &__item-label {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 13px;
     line-height: 1.5;
-    color: var(--car-text-muted);
+    color: #666;
   }
 
   &__item-description {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 11px;
     line-height: 1.4;
     color: #999;
@@ -196,14 +207,14 @@ const sections = computed(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-massage-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__sections {

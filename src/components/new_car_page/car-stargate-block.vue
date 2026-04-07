@@ -1,5 +1,6 @@
 <template>
   <section class="car-stargate-block">
+    <!-- Background video or image -->
     <video
       v-if="videoSrc"
       class="car-stargate-block__video"
@@ -15,9 +16,12 @@
       :style="{ backgroundImage: `url(${getImageSrc})` }"
     ></div>
 
+    <!-- Dark overlay -->
     <div class="car-stargate-block__overlay"></div>
 
+    <!-- Content -->
     <div class="car-stargate-block__content">
+      <!-- Bottom section: Specs -->
       <div class="car-stargate-block__specs">
         <div
           v-for="(spec, index) in specs"
@@ -35,7 +39,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -77,6 +80,7 @@ const videoSrc = computed(() => {
 })
 
 const getImageSrc = computed(() => {
+  // Use image from data if available
   if (blockData.value.image?.desktop) {
     return resolveImagePath(blockData.value.image.desktop)
   }
@@ -86,10 +90,12 @@ const getImageSrc = computed(() => {
   if (blockData.value.image?.mobile) {
     return resolveImagePath(blockData.value.image.mobile)
   }
+  // Fallback to stargate.webp
   return resolveImagePath('stargate.webp')
 })
 
 const specs = computed(() => {
+  // Support both specs (for image blocks) and features (for video blocks)
   if (blockData.value.specs && Array.isArray(blockData.value.specs)) {
     return blockData.value.specs
   }
@@ -99,19 +105,34 @@ const specs = computed(() => {
   return []
 })
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+// Функция для получения текста в зависимости от языка
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') {
+    return textObj
+  }
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 </script>
 
 <style lang="scss" scoped>
 .car-stargate-block {
   position: relative;
-  width: var(--car-section-width);
+  width: calc(100% - 40px);
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin: var(--car-section-margin);
+  margin: 0 20px;
 
   &__image {
     position: absolute;
@@ -156,7 +177,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
     flex-direction: column;
     justify-content: flex-end;
     padding: 50px 40px;
-    max-width: var(--car-inner-max-width);
+    max-width: 1320px;
     margin: 0 auto;
   }
 
@@ -201,10 +222,10 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-stargate-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
     min-height: 50vh;
 
     &__content {

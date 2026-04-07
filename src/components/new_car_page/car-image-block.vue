@@ -11,7 +11,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -41,13 +40,27 @@ const getBackgroundImage = computed(() => {
   if (blockData.value.image) {
     return resolveImage(blockData.value.image)
   }
-  
+  // Fallback to default
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   return `${basePath}/${props.carId}/7x-second.webp`
 })
 
-
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+// Функция для получения текста в зависимости от языка
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') {
+    return textObj
+  }
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 </script>
 
 <style lang="scss" scoped>
@@ -75,7 +88,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 
   &__subtitle {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 24px;
     line-height: 1.4;
     margin: 0;
@@ -85,7 +98,7 @@ const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-image-block {
     min-height: 40vh;
     padding: 30px 16px;

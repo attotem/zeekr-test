@@ -1,6 +1,7 @@
 <template>
   <section class="car-performance-block">
     <div class="car-performance-block__inner">
+      <!-- Row 1: Image Left, Text Right -->
       <div class="car-performance-block__row car-performance-block__row--image-left">
         <div class="car-performance-block__image-wrap">
           <img
@@ -31,6 +32,7 @@
         </div>
       </div>
 
+      <!-- Row 2: Text Left, Image Right -->
       <div class="car-performance-block__row car-performance-block__row--text-left">
         <div class="car-performance-block__content">
           <h3 v-if="getText(blockData.version2?.title)" class="car-performance-block__title">
@@ -67,7 +69,6 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -84,10 +85,24 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'ru' && textObj.ua) return textObj.ua
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
+// Preload images
 const preloadAllImages = () => {
   const images = [blockData.value.image1, blockData.value.image2].filter(Boolean)
   
@@ -105,6 +120,7 @@ const preloadAllImages = () => {
   })
 }
 
+// Watch blockData to preload when images change
 watch(() => [blockData.value.image1, blockData.value.image2], ([img1, img2]) => {
   if (img1 || img2) {
     preloadAllImages()
@@ -118,15 +134,15 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-performance-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   background: #fff;
 
   &__inner {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
-    padding: var(--car-inner-padding-x);
+    padding: 0 20px;
   }
 
   &__row {
@@ -180,11 +196,11 @@ onMounted(() => {
   }
 
   &__title {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 28px;
     line-height: 1.3;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0;
   }
 
@@ -201,25 +217,25 @@ onMounted(() => {
   }
 
   &__spec-value {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 40px;
     line-height: 1.2;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
   }
 
   &__spec-label {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    color: var(--car-text-muted);
+    color: #666;
   }
 
   &__note {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 11px;
     line-height: 1.6;
-    color: var(--car-text-muted);
+    color: #666;
     margin: 0;
   }
 
@@ -244,10 +260,10 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-performance-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
 
     &__inner {
       padding: 0;

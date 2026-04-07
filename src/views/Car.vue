@@ -503,6 +503,12 @@ function initSwipers() {
       gap: 16px;
     }
   }
+  .article-2 {
+    &__h {
+      margin-bottom: 0;
+      margin: 0 16px;
+    }
+  }
 
   .specifications {
     &__inner {

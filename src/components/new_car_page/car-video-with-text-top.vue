@@ -41,7 +41,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -57,7 +56,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveVideo = (videoPath) => {
   if (!videoPath) return ''
@@ -133,8 +144,8 @@ const videoSrc = computed(() => {
   }
 
   &__title {
-    font-family: var(--car-font-heading);
-    font-size: var(--car-title-size-xl);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
     line-height: 1.3;
     font-weight: 400;
     color: #fff;
@@ -157,7 +168,7 @@ const videoSrc = computed(() => {
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
-    max-width: var(--car-inner-max-width);
+    max-width: 1320px;
     margin: 0 auto;
   }
 
@@ -170,7 +181,7 @@ const videoSrc = computed(() => {
   }
 
   &__feature-value {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 36px;
     line-height: 1.2;
     font-weight: 400;
@@ -181,7 +192,7 @@ const videoSrc = computed(() => {
   }
 
   &__feature-label {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.95);
@@ -206,7 +217,7 @@ const videoSrc = computed(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-video-with-text-top {
     &__title-wrap {
       padding: 40px 16px 32px;

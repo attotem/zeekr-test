@@ -32,6 +32,7 @@
         </div>
       </div>
     </div>
+    <!-- Псевдоблок для мобільних - текст під фото -->
     <div class="car-image-text-overlay-block__text-mobile">
       <h2 v-if="getText(blockData.title)" class="car-image-text-overlay-block__title-mobile">
         {{ getText(blockData.title) }}
@@ -52,7 +53,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -69,7 +69,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
@@ -135,13 +147,13 @@ const isVideo = (media) => {
     text-align: center;
     padding: 60px 20px 40px;
     width: 100%;
-    max-width: var(--car-inner-max-width);
+    max-width: 1320px;
     margin: 0 auto;
   }
 
   &__title {
-    font-family: var(--car-font-heading);
-    font-size: var(--car-title-size-xl);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
     line-height: 1.3;
     font-weight: 400;
     color: #000;
@@ -158,12 +170,12 @@ const isVideo = (media) => {
   }
 
   &__subtitle {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.5;
     color: #000;
     margin: 0;
-    padding: var(--car-inner-padding-x-sm);
+    padding: 0 16px;
     position: relative;
 
     &:not(:last-child)::after {
@@ -194,7 +206,7 @@ const isVideo = (media) => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-image-text-overlay-block {
     width: 100%;
     margin: 0;
@@ -217,11 +229,11 @@ const isVideo = (media) => {
     }
 
     &__title-mobile {
-      font-family: var(--car-font-heading);
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
       font-size: 20px;
       line-height: 1.3;
       font-weight: 400;
-      color: var(--car-text-primary);
+      color: #111;
       margin: 0 0 12px 0;
       text-align: left;
     }
@@ -235,10 +247,10 @@ const isVideo = (media) => {
     }
 
     &__subtitle-mobile {
-      font-family: var(--car-font-body);
+      font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
       font-size: 14px;
       line-height: 1.5;
-      color: var(--car-text-muted);
+      color: #666;
       margin: 0;
       padding: 0;
       position: relative;

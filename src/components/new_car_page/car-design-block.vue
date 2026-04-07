@@ -41,7 +41,17 @@
       </div>
     </div>
     <div class="car-design-block__content">
-      <h2 v-if="getText(blockData.title)" class="car-design-block__title car-section-title car-section-title--center">{{ getText(blockData.title) }}</h2>
+      <h2 v-if="getText(blockData.title)" class="car-design-block__title">{{ getText(blockData.title) }}</h2>
+      <!-- <div v-if="currentItemFeatures.length > 0" class="car-design-block__features">
+        <div
+          v-for="(feature, index) in currentItemFeatures"
+          :key="index"
+          class="car-design-block__feature"
+        >
+          <div class="car-design-block__feature-label">{{ getText(feature.label) }}</div>
+          <div class="car-design-block__feature-value">{{ getText(feature.value) }}</div>
+        </div>
+      </div> -->
       <p v-if="getText(currentItemDescription)" class="car-design-block__description">
         {{ getText(currentItemDescription) }}
       </p>
@@ -55,7 +65,6 @@
 <script setup>
 import { computed, ref, onMounted, watch, nextTick } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -75,7 +84,21 @@ const blockData = computed(() => props.data || {})
 const currentIndex = ref(0)
 const imageWrapEl = ref(null)
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    // app uses "uk" / "en"; keep compatibility with ua/ru/zh fields in JSON content
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'ru' && textObj.ua) return textObj.ua
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
@@ -98,6 +121,7 @@ const mediaItems = computed(() => {
       }
     })
   }
+  // Fallback to single image
   const imagePath = blockData.value.image
   if (imagePath) {
     const path = pickResponsivePath(imagePath)
@@ -113,6 +137,7 @@ const mediaItems = computed(() => {
   return []
 })
 
+// Find all layer <div> children inside the ref container
 const getLayerVideos = () => {
   if (!imageWrapEl.value) return []
   const layers = imageWrapEl.value.children
@@ -133,6 +158,7 @@ const playVideoAtIndex = (index) => {
 
 const handleVideoLoaded = (event) => {
   const video = event.target
+  // Find which index this video belongs to
   const videos = getLayerVideos()
   const videoIndex = videos.indexOf(video)
   if (currentIndex.value === videoIndex) {
@@ -147,6 +173,7 @@ watch(currentIndex, async (newIndex) => {
   playVideoAtIndex(newIndex)
 })
 
+// Preload images & autoplay first video
 onMounted(async () => {
   mediaItems.value.forEach(media => {
     if (media.type === 'image') {
@@ -154,6 +181,7 @@ onMounted(async () => {
       img.src = media.src
     }
   })
+  // Ensure the first video starts playing
   await nextTick()
   playVideoAtIndex(0)
 })
@@ -192,19 +220,22 @@ const currentItemDescription = computed(() => {
 
 <style lang="scss" scoped>
 .car-design-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  // Keep the same side gutters as other blocks (360/inside/navigation)
+  width: calc(100% - 40px);
+  margin: 0 20px;
   display: flex;
   flex-direction: column;
   background: #fff;
   overflow: hidden;
 
   &__top-title {
-        line-height: 1.3;
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
     margin: 0;
     padding: 60px 20px 40px;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     text-align: center;
   }
 
@@ -255,6 +286,7 @@ const currentItemDescription = computed(() => {
 
   &__switcher-content {
     width: 100%;
+    // The parent already has side gutters; keep it flush
     max-width: 100%;
     margin: 0;
     padding: 0;
@@ -292,9 +324,10 @@ const currentItemDescription = computed(() => {
   }
 
   &__switcher-title {
-        font-size: 18px;
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 18px;
     line-height: 1.3;
-    color: var(--car-text-primary);
+    color: #111;
     font-weight: 400;
     letter-spacing: 0.01em;
     display: inline-block;
@@ -333,9 +366,13 @@ const currentItemDescription = computed(() => {
   }
 
   &__title {
-        margin: var(--car-title-margin);
-    color: var(--car-title-color);
-    text-align: var(--car-title-align);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
+    margin: 0;
+    font-weight: 400;
+    color: #111;
+    text-align: center;
   }
 
   &__features {
@@ -355,22 +392,23 @@ const currentItemDescription = computed(() => {
   }
 
   &__feature-label {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.4;
-    color: var(--car-text-muted);
+    color: #666;
     font-weight: 400;
   }
 
   &__feature-value {
-        font-size: 20px;
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 20px;
     line-height: 1.3;
-    color: var(--car-text-primary);
+    color: #111;
     font-weight: 400;
   }
 
   &__description {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.7;
     color: rgba(17, 17, 17, 0.78);
@@ -380,7 +418,7 @@ const currentItemDescription = computed(() => {
   }
 
   &__details {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: rgba(17, 17, 17, 0.58);
@@ -391,10 +429,10 @@ const currentItemDescription = computed(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-design-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
 
     &__top-title {
       font-size: 32px;
@@ -429,7 +467,10 @@ const currentItemDescription = computed(() => {
       gap: 22px;
     }
 
-   
+    &__title {
+      font-size: 32px;
+    }
+
     &__features {
       grid-template-columns: 1fr;
       gap: 16px;
@@ -453,5 +494,3 @@ const currentItemDescription = computed(() => {
   }
 }
 </style>
- &__title {
-    }

@@ -19,8 +19,6 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
-import { preloadImage as preloadImageUtil } from '@/utils/preloadImage'
 
 const props = defineProps({
   data: {
@@ -36,7 +34,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (imagePath) => {
   if (!imagePath) return ''
@@ -47,17 +57,22 @@ const resolveImage = (imagePath) => {
   return `/pages/${props.carId}/${imagePath}`
 }
 
+// Preload image
 const preloadImage = () => {
   const imagePath = blockData.value.image
   if (!imagePath) return
   
   const imgSrc = resolveImage(imagePath)
   if (!imgSrc) return
-
-  preloadImageUtil(imgSrc)
+  
+  const img = new Image()
+  img.onerror = () => {
+    console.warn(`Failed to preload image: ${imgSrc}`)
+  }
+  img.src = imgSrc
 }
 
-
+// Watch blockData to preload when image changes
 watch(() => blockData.value.image, (newImage) => {
   if (newImage) {
     preloadImage()
@@ -71,8 +86,8 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-image-caption-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   background: #fff;
 
   &__inner {
@@ -81,10 +96,10 @@ onMounted(() => {
   }
 
   &__image-wrap {
-    width: var(--car-card-width);
+    width: 100%;
     position: relative;
-    overflow: var(--car-card-overflow);
-    background: var(--car-card-media-bg);
+    overflow: hidden;
+    background: #f5f5f5;
   }
 
   &__image {
@@ -96,23 +111,23 @@ onMounted(() => {
   }
 
   &__caption {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.6;
-    color: var(--car-text-muted);
+    color: #666;
     margin-top: 10px;
     text-align: left;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-image-caption-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__caption {

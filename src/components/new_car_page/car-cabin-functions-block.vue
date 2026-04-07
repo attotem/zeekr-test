@@ -42,7 +42,6 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath, pickResponsivePath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -59,7 +58,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
@@ -76,7 +87,7 @@ const items = computed(() => {
   return []
 })
 
-
+// Preload all images (not videos)
 const preloadAllImages = () => {
   if (!items.value || items.value.length === 0) return
   
@@ -97,7 +108,7 @@ const preloadAllImages = () => {
   })
 }
 
-
+// Watch items to preload when they change
 watch(
   items,
   (newItems) => {
@@ -117,13 +128,13 @@ onMounted(() => {
 .car-cabin-functions-block {
   width: 100%;
   margin: 0;
-  padding: var(--car-section-padding-y);
+  padding: 60px 0;
 
   &__inner {
-    width: var(--car-section-width);
-    max-width: var(--car-inner-max-width);
+    width: calc(100% - 40px);
+    max-width: 1320px;
     margin: 0 auto;
-    padding: var(--car-inner-padding-x);
+    padding: 0 20px;
   }
 
   &__grid {
@@ -133,9 +144,9 @@ onMounted(() => {
   }
 
   &__item {
-    display: var(--car-stack-column);
-    flex-direction: var(--car-stack-direction);
-    overflow: var(--car-card-overflow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
   &__media-wrap {
@@ -169,30 +180,30 @@ onMounted(() => {
   }
 
   &__title {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 20px;
     line-height: 1.4;
     font-weight: 400;
-    color: var(--car-text-primary);
+    color: #111;
     margin: 0 0 12px 0;
   }
 
   &__description {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 14px;
     line-height: 1.6;
-    color: var(--car-text-muted);
+    color: #666;
     margin: 0;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-cabin-functions-block {
-    padding: var(--car-section-padding-y-sm);
+    padding: 44px 0;
 
     &__inner {
-      width: var(--car-section-width-sm);
-      padding: var(--car-inner-padding-x-sm);
+      width: calc(100% - 32px);
+      padding: 0 16px;
     }
 
     &__grid {

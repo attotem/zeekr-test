@@ -25,7 +25,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 
 const props = defineProps({
   data: {
@@ -41,7 +40,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const videoSrc = computed(() => {
   if (!blockData.value.video) {
@@ -49,7 +60,7 @@ const videoSrc = computed(() => {
     return `${basePath}/${props.carId}/7x_video2.mp4`
   }
   const videoPath = blockData.value.video
-  
+  // If path starts with /, use it as is, otherwise resolve relative to carId folder
   if (videoPath.startsWith('/')) {
     return videoPath
   }
@@ -62,8 +73,8 @@ const videoSrc = computed(() => {
 
 <style lang="scss" scoped>
 .car-video-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
 
   &__inner {
     width: 100%;
@@ -105,7 +116,7 @@ const videoSrc = computed(() => {
   }
 
   &__title {
-    font-family: var(--car-font-heading);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
     font-size: 40px;
     line-height: 1.2;
     font-weight: 400;
@@ -113,7 +124,7 @@ const videoSrc = computed(() => {
   }
 
   &__subtitle {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
@@ -121,10 +132,10 @@ const videoSrc = computed(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-video-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
     padding: 48px 0 56px;
 
     &__inner {
@@ -135,7 +146,7 @@ const videoSrc = computed(() => {
 
     &__text {
       top: 10%;
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__title {

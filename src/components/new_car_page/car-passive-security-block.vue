@@ -31,7 +31,6 @@
 <script setup>
 import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
@@ -42,12 +41,24 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveMedia = (media) => resolveMediaPath(media, { carId: props.carId })
 
 const items = computed(() => {
-  
+  // Backward compatible: allow `materials` or `items`
   if (Array.isArray(blockData.value.items)) return blockData.value.items
   if (Array.isArray(blockData.value.materials)) return blockData.value.materials
   return []
@@ -58,14 +69,14 @@ const items = computed(() => {
 .car-passive-security-block {
   width: 100%;
   margin: 0;
-  padding: var(--car-section-padding-y);
+  padding: 60px 0;
   background: rgb(245, 246, 247);
 
   &__inner {
-    width: var(--car-section-width);
-    max-width: var(--car-inner-max-width);
+    width: calc(100% - 40px);
+    max-width: 1320px;
     margin: 0 auto;
-    padding: var(--car-inner-padding-x);
+    padding: 0 20px;
   }
 
   &__grid {
@@ -121,22 +132,22 @@ const items = computed(() => {
 
   &__label {
     margin-top: 12px;
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.4;
-    color: var(--car-text-muted-092);
+    color: rgba(17, 17, 17, 0.92);
     font-weight: 600;
     max-width: 100%;
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-passive-security-block {
-    padding: var(--car-section-padding-y-sm);
+    padding: 44px 0;
 
     &__inner {
-      width: var(--car-section-width-sm);
-      padding: var(--car-inner-padding-x-sm);
+      width: calc(100% - 32px);
+      padding: 0 16px;
     }
 
     &__grid {

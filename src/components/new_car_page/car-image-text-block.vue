@@ -5,8 +5,9 @@
         class="car-image-text-block__content"
         :class="{ 'car-image-text-block__content--reverse': blockData.textRight }"
       >
+        <!-- Text section -->
         <div class="car-image-text-block__text">
-          <h2 v-if="getText(blockData.title)" class="car-image-text-block__title car-section-title car-section-title--center">
+          <h2 v-if="getText(blockData.title)" class="car-image-text-block__title">
             {{ getText(blockData.title) }}
           </h2>
           <div v-if="blockData.features" class="car-image-text-block__features">
@@ -36,9 +37,7 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
-import { getTextByLang } from '@/utils/getText'
 import { resolveMediaPath } from '@/utils/resolveMedia'
-import { preloadImage as preloadImageUtil } from '@/utils/preloadImage'
 
 const props = defineProps({
   data: {
@@ -54,7 +53,19 @@ const props = defineProps({
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
-const getText = (textObj) => getTextByLang(textObj, langStore.activeLang)
+const getText = (textObj) => {
+  if (!textObj) return ''
+  if (typeof textObj === 'string') return textObj
+  if (typeof textObj === 'object' && textObj !== null) {
+    const lang = langStore.activeLang
+    if (lang && textObj[lang]) return textObj[lang]
+    if (lang === 'uk' && textObj.ua) return textObj.ua
+    if (lang === 'ua' && textObj.uk) return textObj.uk
+    if (lang === 'zh' && (textObj.zh || textObj.cn)) return textObj.zh || textObj.cn
+    return textObj.uk || textObj.ua || textObj.en || textObj.ru || textObj.zh || textObj.cn || ''
+  }
+  return ''
+}
 
 const resolveImage = (image) =>
   resolveMediaPath(image, { carId: props.carId })
@@ -66,7 +77,11 @@ const preloadImage = () => {
   const imgSrc = resolveImage(image)
   if (!imgSrc) return
 
-  preloadImageUtil(imgSrc)
+  const img = new Image()
+  img.onerror = () => {
+    console.warn(`Failed to preload image-text image: ${imgSrc}`)
+  }
+  img.src = imgSrc
 }
 
 watch(
@@ -86,16 +101,16 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-image-text-block {
-  width: var(--car-section-width);
-  margin: var(--car-section-margin);
+  width: calc(100% - 40px);
+  margin: 0 20px;
   padding: 32px 0;
   background: #fff;
 
   &__inner {
-    width: var(--car-inner-width);
-    max-width: var(--car-inner-max-width);
-    margin: var(--car-inner-margin);
-    padding: var(--car-inner-padding-x);
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
   &__content {
@@ -124,14 +139,18 @@ onMounted(() => {
   }
 
   &__title {
-        color: var(--car-title-color);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: #111;
     margin: 0;
   }
 
   &__features {
     display: flex;
     flex-direction: column;
-    gap: var(--car-stack-gap-sm);
+    gap: 16px;
   }
 
   &__feature {
@@ -140,17 +159,17 @@ onMounted(() => {
   }
 
   &__feature-text {
-    font-family: var(--car-font-body);
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color: var(--car-text-secondary);
+    color: #333;
   }
 
   &__image-wrap {
-    width: var(--car-card-width);
+    width: 100%;
     position: relative;
-    overflow: var(--car-card-overflow);
-    background: var(--car-card-media-bg);
+    overflow: hidden;
+    background: #f5f5f5;
   }
 
   &__image {
@@ -162,14 +181,14 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: var(--car-bp-sm)) {
+@media screen and (max-width: 876px) {
   .car-image-text-block {
-    width: var(--car-section-width-sm);
-    margin: var(--car-section-margin-sm);
-    padding: var(--car-section-padding-y-sm);
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 44px 0;
 
     &__inner {
-      padding: var(--car-inner-padding-x-sm);
+      padding: 0 16px;
     }
 
     &__content {
@@ -182,6 +201,7 @@ onMounted(() => {
     }
 
     &__title {
+      font-size: 32px;
     }
 
     &__feature-text {
