@@ -1,0 +1,690 @@
+{
+  "layout": [
+    { "type": "hero", "dataKey": "hero" },
+    { "type": "frLineBlock", "dataKey": "frLineHero" },
+    { "type": "textSimpleBlock", "dataKey": "textBlock360" },
+    { "type": "color360Block", "dataKey": "color360Block" },
+    { "type": "sliderBlock", "dataKey": "wheelSliderBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockInside" },
+    { "type": "insideBlock", "dataKey": "insideBlock" },
+    { "type": "textBlock", "dataKey": "textBlockVersatility" },
+    { "type": "navigationBlock", "dataKey": "aestheticNavigationBlock" },
+    { "type": "infoGridBlock", "dataKey": "aestheticInfoGridBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockStargate" },
+    { "type": "stargateBlock", "dataKey": "stargateBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockLuxuryInside" },
+    { "type": "imageCaptionBlock", "dataKey": "luxuryInsideImageBlock" },
+    { "type": "infoGridBlock", "dataKey": "luxuryDetailsGridBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockEcRoof" },
+    { "type": "navigationBlock", "dataKey": "panoramicRoofBlock" }
+  ],
+  "hero": {
+    "title": {
+      "ua": "Оновлений ZEEKR 007GT",
+      "en": "Refreshed ZEEKR 007GT"
+    },
+    "subtitle": {
+      "ua": "Технологічний шутінг-брейк",
+      "en": "Technology-driven shooting brake"
+    },
+    "image": {
+      "desktop": "007gt_hero.webp",
+      "tablet": "007gt_hero.webp",
+      "mobile": "007gt_hero_mobile.webp"
+    },
+    "buttons": [
+      {
+        "text": {
+          "ua": "Записатися на тест-драйв",
+          "en": "Book a Test Drive"
+        },
+        "type": "test_drive",
+        "style": "transparent"
+      },
+      {
+        "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      }
+    ],
+    "specs": [
+      {
+        "value": "900 V",
+        "label": {
+          "ua": "Високовольтна система",
+          "en": "High-voltage system"
+        }
+      },
+      {
+        "value": "880 km",
+        "label": {
+          "ua": "Максимальний запас ходу (CLTC)",
+          "en": "Maximum range (CLTC)"
+        }
+      },
+      {
+        "value": "2.85 s",
+        "label": {
+          "ua": "Розгін 0-100 км/год",
+          "en": "0-100 km/h acceleration"
+        }
+      },
+      {
+        "value": "Thor-U",
+        "label": {
+          "ua": "Чип із продуктивністю до 700 TOPS",
+          "en": "Chip with up to 700 TOPS computing power"
+        }
+      }
+    ]
+  },
+  "frLineHero": {
+    "title": {
+      "ua": "Пакет продуктивності FR-LINE",
+      "en": "FR-LINE Performance Package"
+    },
+    "subtitle": {
+      "ua": "Створений для справжнього задоволення від кермування",
+      "en": "Built for pure driving pleasure"
+    },
+    "image": {
+      "desktop": "fr_line.webp",
+      "tablet": "fr_line.webp",
+      "mobile": "fr_line_mobile.webp"
+    },
+    "button": {
+      "text": {
+        "ua": "Дізнатися більше",
+        "en": "Learn More"
+      },
+      "type": "scroll_down"
+    },
+    "specs": [
+      {
+        "value": "20 in",
+        "label": {
+          "ua": "Ковані колісні диски",
+          "en": "Forged wheels"
+        }
+      },
+      {
+        "value": "4-piston",
+        "label": {
+          "ua": "Помаранчеві гальмівні супорти",
+          "en": "Orange brake calipers"
+        }
+      },
+      {
+        "value": "Racing Yellow",
+        "label": {
+          "ua": "Спортивний інтер'єр",
+          "en": "Performance interior"
+        }
+      },
+      {
+        "value": "Dinamica",
+        "label": {
+          "ua": "Оздоблення замшею",
+          "en": "Suede trim"
+        }
+      },
+      {
+        "value": "Active Side Support",
+        "label": {
+          "ua": "Активна бічна підтримка сидіння водія",
+          "en": "Active side support for the driver's seat"
+        }
+      }
+    ]
+  },
+  "textBlockVersatility": {
+    "title": {
+      "ua": "Оригінальна естетика shooting brake",
+      "en": "Original shooting brake aesthetics"
+    },
+    "subtitle": {
+      "ua": "Ще вищий рівень преміальності",
+      "en": "A higher level of refinement"
+    }
+  },
+  "textBlock360": {
+    "title": {
+      "ua": "Вісім технологічних кольорів кузова",
+      "en": "Eight technology-inspired body colors"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "color360Block": {
+    "colors": [
+      {
+        "id": "beige",
+        "name": {
+          "ua": "Бежевий",
+          "en": "Beige"
+        },
+        "value": "#D5C4A1",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "black",
+        "name": {
+          "ua": "Чорний",
+          "en": "Black"
+        },
+        "value": "#1A1A1A",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "blue",
+        "name": {
+          "ua": "Синій",
+          "en": "Blue"
+        },
+        "value": "#3E5F88",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "green",
+        "name": {
+          "ua": "Зелений",
+          "en": "Green"
+        },
+        "value": "#4A5F45",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "nightPurple",
+        "name": {
+          "ua": "Нічний фіолетовий",
+          "en": "Night Purple"
+        },
+        "value": "#4A3B66",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "pink",
+        "name": {
+          "ua": "Рожевий",
+          "en": "Pink"
+        },
+        "value": "#B77D90",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "red",
+        "name": {
+          "ua": "Червоний",
+          "en": "Red"
+        },
+        "value": "#8E3D3D",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "silver",
+        "name": {
+          "ua": "Сріблястий",
+          "en": "Silver"
+        },
+        "value": "#A8ACB2",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ],
+    "note": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "wheelSliderBlock": {
+    "desktopStatic": true,
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "slides": [
+      {
+        "image": {
+          "desktop": "wheel1.webp",
+          "tablet": "wheel1.webp",
+          "mobile": "wheel1.webp"
+        },
+        "caption": {
+          "ua": "20-дюймові ковані диски",
+          "en": "20-inch premium forged wheels"
+        }
+      },
+      {
+        "image": {
+          "desktop": "wheel2.webp",
+          "tablet": "wheel2.webp",
+          "mobile": "wheel2.webp"
+        },
+        "caption": {
+          "ua": "19-дюймові спортивні диски",
+          "en": "19-inch sport wheels"
+        }
+      },
+      {
+        "image": {
+          "desktop": "wheel3.webp",
+          "tablet": "wheel3.webp",
+          "mobile": "wheel3.webp"
+        },
+        "caption": {
+          "ua": "19-дюймові багатоспицеві диски",
+          "en": "19-inch multi-spoke wheels"
+        }
+      },
+      {
+        "image": {
+          "desktop": "wheel4.webp",
+          "tablet": "wheel4.webp",
+          "mobile": "wheel4.webp"
+        },
+        "caption": {
+          "ua": "19-дюймові динамічні диски",
+          "en": "19-inch dynamic wheels"
+        }
+      }
+    ]
+  },
+  "textBlockInside": {
+    "title": {
+      "ua": "Чотири теми оздоблення інтер’єру",
+      "en": "Four interior themes"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "insideBlock": {
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "options": [
+      {
+        "id": "white_inside",
+        "name": {
+          "ua": "Світлий",
+          "en": "White"
+        },
+        "image": {
+          "desktop": "white_inside.webp",
+          "tablet": "white_inside.webp",
+          "mobile": "white_inside_mobile.webp"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "red_inside",
+        "name": {
+          "ua": "Червоний",
+          "en": "Red"
+        },
+        "image": {
+          "desktop": "red_inside.webp",
+          "tablet": "red_inside.webp",
+          "mobile": "red_inside_mobile.webp"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "purple_inisde",
+        "name": {
+          "ua": "Фіолетовий",
+          "en": "Purple"
+        },
+        "image": {
+          "desktop": "purple_inside.webp",
+          "tablet": "purple_inside.webp",
+          "mobile": "purple_inside_mobile.webp"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "gray_inisde",
+        "name": {
+          "ua": "Сірий",
+          "en": "Grey"
+        },
+        "image": {
+          "desktop": "grey_inisde.webp",
+          "tablet": "grey_inisde.webp",
+          "mobile": "grey_inside_mobile.webp"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ],
+    "note": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "aestheticNavigationBlock": {
+    "title": {
+      "ua": "ZEEKR 007GT",
+      "en": "ZEEKR 007GT"
+    },
+    "image": {
+      "desktop": "aestetic.webp",
+      "tablet": "aestetic.webp",
+      "mobile": "aestetic_mobile.webp"
+    },
+    "navigation": [],
+    "buttons": [],
+    "specs": [
+      {
+        "value": "4858 mm",
+        "label": {
+          "ua": "Довжина кузова",
+          "en": "Body Length"
+        }
+      },
+      {
+        "value": "1900 mm",
+        "label": {
+          "ua": "Ширина кузова",
+          "en": "Body Width"
+        }
+      },
+      {
+        "value": "1460 mm",
+        "label": {
+          "ua": "Висота кузова",
+          "en": "Body Height"
+        }
+      },
+      {
+        "value": "2925 mm",
+        "label": {
+          "ua": "Колісна база",
+          "en": "Wheelbase"
+        }
+      }
+    ]
+  },
+  "aestheticInfoGridBlock": {
+    "items": [
+      {
+        "image": {
+          "desktop": "info1.webp",
+          "tablet": "info1.webp",
+          "mobile": "info1.webp"
+        },
+        "caption": {
+          "ua": "Лінія shooting brake",
+          "en": "Shooting brake line"
+        }
+      },
+      {
+        "image": {
+          "desktop": "info2.webp",
+          "tablet": "info2.webp",
+          "mobile": "info2.webp"
+        },
+        "caption": {
+          "ua": "Подвійні лінії капота",
+          "en": "Dual hood lines"
+        }
+      },
+      {
+        "image": {
+          "desktop": "info3.webp",
+          "tablet": "info3.webp",
+          "mobile": "info3.webp"
+        },
+        "caption": {
+          "ua": "Активна решітка AGS",
+          "en": "Active AGS grille"
+        }
+      },
+      {
+        "image": {
+          "desktop": "info4.webp",
+          "tablet": "info4.webp",
+          "mobile": "info4.webp"
+        },
+        "caption": {
+          "ua": "Подвійні повітроводи бампера",
+          "en": "Dual bumper air ducts"
+        }
+      },
+      {
+        "image": {
+          "desktop": "info5.webp",
+          "tablet": "info5.webp",
+          "mobile": "info5.webp"
+        },
+        "caption": {
+          "ua": "Подвійний плаваючий спойлер",
+          "en": "Floating dual spoiler"
+        }
+      },
+      {
+        "image": {
+          "desktop": "info6.webp",
+          "tablet": "info6.webp",
+          "mobile": "info6.webp"
+        },
+        "caption": {
+          "ua": "Даховий багажник",
+          "en": "Roof rack"
+        }
+      }
+    ]
+  },
+  "textBlockStargate": {
+    "title": {
+      "ua": "ZEEKR Stargate - інтегрована інтелектуальна світлова панель",
+      "en": "ZEEKR Stargate integrated intelligent light curtain"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "stargateBlock": {
+    "image": {
+      "desktop": "stargete.webp",
+      "tablet": "stargete.webp",
+      "mobile": "stargete.webp"
+    },
+    "specs": [
+      {
+        "value": "90 in",
+        "label": {
+          "ua": "Розмір",
+          "en": "Size"
+        }
+      },
+      {
+        "value": "2.34 m",
+        "label": {
+          "ua": "Довжина світлової лінії",
+          "en": "Light strip length"
+        }
+      },
+      {
+        "value": "1711",
+        "label": {
+          "ua": "LED-елементів",
+          "en": "LED beads"
+        }
+      },
+      {
+        "value": "10000 nits",
+        "label": {
+          "ua": "Максимальна яскравість",
+          "en": "Maximum brightness"
+        }
+      }
+    ]
+  },
+  "textBlockLuxuryInside": {
+    "title": {
+      "ua": "Розкіш всередині",
+      "en": "Luxury Within"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "luxuryInsideImageBlock": {
+    "image": {
+      "desktop": "luxery.webp",
+      "tablet": "luxery.webp",
+      "mobile": "luxery_mobile.webp"
+    },
+    "caption": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "luxuryDetailsGridBlock": {
+    "layout": "featureSplit",
+    "items": [
+      {
+        "image": {
+          "desktop": "luxery1.webp",
+          "tablet": "luxery1.webp",
+          "mobile": "luxery1.webp"
+        },
+        "caption": {
+          "ua": "Триспицеве спортивне кермо зі шкіри",
+          "en": "Three-spoke leather sport steering wheel"
+        }
+      },
+      {
+        "image": {
+          "desktop": "luxery2.webp",
+          "tablet": "luxery2.webp",
+          "mobile": "luxery2.webp"
+        },
+        "caption": {
+          "ua": "Центральний підлокітник TOSA",
+          "en": "TOSA center armrest"
+        }
+      },
+      {
+        "image": {
+          "desktop": "luxery3.webp",
+          "tablet": "luxery3.webp",
+          "mobile": "luxery3.webp"
+        },
+        "caption": {
+          "ua": "Фізичні клавіші центральної консолі",
+          "en": "Physical center console keys"
+        }
+      },
+      {
+        "image": {
+          "desktop": "luxery4.webp",
+          "tablet": "luxery4.webp",
+          "mobile": "luxery4.webp"
+        },
+        "caption": {
+          "ua": "Фірмовий декоративний ремінець",
+          "en": "Signature decorative strap"
+        }
+      }
+    ]
+  },
+  "textBlockEcRoof": {
+    "title": {
+      "ua": "Панорамний дах нового покоління з EC-світлочутливим затемненням",
+      "en": "Next-generation EC light-sensitive dimming panoramic roof"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "panoramicRoofBlock": {
+    "title": {
+      "ua": "Панорамний дах",
+      "en": "Panoramic Roof"
+    },
+    "mobileTextBelow": true,
+    "image": {
+      "desktop": "panoram.webp",
+      "tablet": "panoram.webp",
+      "mobile": "panoram.webp"
+    },
+    "navigation": [],
+    "buttons": [],
+    "specs": [
+      {
+        "value": "1.73 m²",
+        "label": {
+          "ua": "Наскрізний панорамний дах",
+          "en": "Full-length panoramic roof"
+        }
+      },
+      {
+        "value": "10 levels",
+        "label": {
+          "ua": "Регулювання світлопроникності",
+          "en": "Adjustable tint levels"
+        }
+      },
+      {
+        "value": "99.99%",
+        "label": {
+          "ua": "Блокування УФ-випромінювання",
+          "en": "UV blocking rate"
+        }
+      },
+      {
+        "value": "0.15%",
+        "label": {
+          "ua": "Наднизька світлопроникність",
+          "en": "Ultra-low light transmittance"
+        }
+      }
+    ]
+  }
+}

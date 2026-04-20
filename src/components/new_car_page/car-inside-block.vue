@@ -7,7 +7,7 @@
         class="car-inside-block__image"
         :class="{ 'active': activeId === opt.id }"
         :style="{ 
-          backgroundImage: `url(${getInsideImage(opt.id)})`
+          backgroundImage: `url(${getInsideImage(opt)})`
         }"
       ></div>
     </div>
@@ -70,7 +70,12 @@ const getText = (textObj) => {
   return ''
 }
 
-const getInsideImage = (id) => {
+const getInsideImage = (option) => {
+  const id = option?.id
+  if (option?.image) {
+    return resolveMediaPath(option.image, { carId: props.carId })
+  }
+
   if (props.carId === '7x') {
     const media = {
       desktop: `inside_${id}.webp`,
@@ -94,7 +99,7 @@ const getColorIcon = (id) => {
 onMounted(() => {
   options.value.forEach(o => {
     const img = new Image()
-    img.src = getInsideImage(o.id)
+    img.src = getInsideImage(o)
   })
 })
 </script>

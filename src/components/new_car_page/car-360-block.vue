@@ -159,63 +159,49 @@ watch(colors, (newColors, oldColors) => {
 }, { immediate: true })
 
 const colorNameMapping = {
-  // Desktop name -> Mobile name
   'interstellarViolet': 'purple',
+  'nightPurple': 'purple',
   'grey': 'gray',
   'darkPurple': 'deepPurple',
-  // Colors that are the same in both
   'white': 'white',
   'black': 'black',
   'green': 'green',
   'beige': 'beige'
 }
 
-// Mapping for folder names (handles typos in folder names)
-// For 9x: folder is "silver" but files are named "sliver_X.webp"
+
 const folderNameMapping = {
-  'silver': 'silver' // Keep folder name as "silver"
+  'silver': 'silver'
 }
 
-// Mapping for file names (handles typos in file names)
-// Only for 9x: files are named "sliver" but color id is "silver"
 const fileNameMapping = {
-  'silver': 'sliver' // Only applies to 9x
+  'silver': 'sliver'
 }
 
-// Get mobile color name from desktop color name
 const getMobileColorName = (colorId) => {
   return colorNameMapping[colorId] || colorId
 }
 
-// Get folder name for color (handles typos in folder names)
 const getFolderColorName = (colorId) => {
   return folderNameMapping[colorId] || colorId
 }
 
-// Get file name for color (handles typos in file names)
 const getFileName = (colorId) => {
   return fileNameMapping[colorId] || colorId
 }
 
-// Get image path helper using Vite's asset handling
-// In Vite dev mode, assets in src/assets are served at /src/assets/...
 const getImagePath = (colorId, frame) => {
-  // Direct path - Vite dev server serves files from src/assets
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
-  // Use 360_mobile folder for mobile devices, 360 for desktop
   const folderName = isMobileDevice.value ? '360_mobile' : '360'
-  // Map color name for mobile if needed
   const mappedColorId = isMobileDevice.value ? getMobileColorName(colorId) : colorId
-  // Get folder name (handles typos in folder names - only for desktop 360 folder)
   const folderColorName = (!isMobileDevice.value && folderNameMapping[mappedColorId]) 
     ? folderNameMapping[mappedColorId] 
     : mappedColorId
-  // Get file name (handles typos in file names - only for desktop 360 folder and only for 9x)
-  // For 7x, files are correctly named "silver", so don't apply mapping
   const fileColorName = (!isMobileDevice.value && props.carId === '9x' && fileNameMapping[mappedColorId]) 
     ? fileNameMapping[mappedColorId] 
     : mappedColorId
-  return `${basePath}/${props.carId}/${folderName}/${folderColorName}/${fileColorName}_${frame}.webp`
+  const extension = props.carId === '007gt' ? 'jpg' : 'webp'
+  return `${basePath}/${props.carId}/${folderName}/${folderColorName}/${fileColorName}_${frame}.${extension}`
 }
 
 // Get color image path for color selector

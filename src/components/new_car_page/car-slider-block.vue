@@ -1,5 +1,8 @@
 <template>
-  <section class="car-slider-block">
+  <section
+    class="car-slider-block"
+    :class="{ 'car-slider-block--desktop-static': isDesktopStaticMode }"
+  >
     <div class="car-slider-block__inner">
       <h2 class="car-slider-block__title">{{ getText(blockData.title) }}</h2>
 
@@ -18,8 +21,8 @@
           <div
             ref="trackEl"
             class="car-slider-block__track"
-            :class="{ 'is-animating': isAnimating }"
-            :style="{ transform: `translateX(${trackTranslatePx}px)` }"
+            :class="{ 'is-animating': isAnimating && !isDesktopStaticMode }"
+            :style="{ transform: `translateX(${effectiveTrackTranslatePx}px)` }"
             @transitionend="handleTransitionEnd"
           >
             <div
@@ -85,6 +88,9 @@ const blockData = computed(() => props.data || {})
 const slides = computed(() => blockData.value.slides || [])
 
 const active = ref(0)
+const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
+const isMobile = computed(() => windowWidth.value <= 876)
+const isDesktopStaticMode = computed(() => !isMobile.value && blockData.value.desktopStatic === true)
 
 watch(slides, (s) => {
   if (!s?.length) active.value = 0
@@ -188,12 +194,13 @@ watch([active, slides], ([newActive, newSlides]) => {
   })
 }, { immediate: true })
 
-const canPrev = computed(() => active.value > 0)
-const canNext = computed(() => active.value < slides.value.length - 1)
+const canPrev = computed(() => !isDesktopStaticMode.value && active.value > 0)
+const canNext = computed(() => !isDesktopStaticMode.value && active.value < slides.value.length - 1)
 
 const isAnimating = ref(false)
 const pendingDir = ref(null) // 'prev' | 'next' | null
 const trackTranslatePx = ref(0)
+const effectiveTrackTranslatePx = computed(() => (isDesktopStaticMode.value ? 0 : trackTranslatePx.value))
 
 const viewportEl = ref(null)
 const trackEl = ref(null)
@@ -245,6 +252,11 @@ function translateToActiveSlide() {
 }
 
 function recenterTrack(skipAnimation = false) {
+  if (isDesktopStaticMode.value) {
+    trackTranslatePx.value = 0
+    return
+  }
+
   // If skipAnimation is true, we're recentering after transition
   // so isAnimating should already be false
   if (isMobile.value) {
@@ -316,10 +328,6 @@ const activeSlide = computed(() => (slides.value.length ? slides.value[active.va
 const rightSlide = computed(() => (rightIndex.value === null ? null : slides.value[rightIndex.value]))
 const rightRightSlide = computed(() => (rightRightIndex.value === null ? null : slides.value[rightRightIndex.value]))
 
-const windowWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1920)
-
-const isMobile = computed(() => windowWidth.value <= 876)
-
 onMounted(() => {
   if (typeof window !== 'undefined') {
     const handleResize = () => {
@@ -339,6 +347,15 @@ const visibleSlots = computed(() => {
       key: `slide-${index}-${active.value}`,
       role: index === active.value ? 'is-active' : 'is-hidden',
       slide: slide
+    }))
+  }
+
+  // Static desktop mode: render all slides in one row
+  if (isDesktopStaticMode.value) {
+    return slides.value.map((slide, index) => ({
+      key: `static-${index}`,
+      role: 'is-static',
+      slide
     }))
   }
   
@@ -448,7 +465,7 @@ async function preloadImageForIndex(index) {
 
 // override prev/next to use pixel animation targets
 const prev = async () => {
-  if (!canPrev.value || isAnimating.value) return
+  if (!canPrev.value || isAnimating.value || isDesktopStaticMode.value) return
   
   // Preload image before animation
   const targetIndex = active.value - 1
@@ -474,7 +491,7 @@ const prev = async () => {
 }
 
 const next = async () => {
-  if (!canNext.value || isAnimating.value) return
+  if (!canNext.value || isAnimating.value || isDesktopStaticMode.value) return
   
   // Preload image before animation
   const targetIndex = active.value + 1
@@ -517,7 +534,7 @@ const next = async () => {
   &__inner {
     width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 200px;
   }
 
   &__title {
@@ -673,6 +690,49 @@ const next = async () => {
 
   &__arrow--right {
     right: calc(50% - 540px);
+  }
+
+  &--desktop-static {
+    .car-slider-block__viewport {
+      min-height: 0;
+      overflow: visible;
+    }
+
+    .car-slider-block__track {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      padding-left: 0;
+      gap: 22px;
+      transform: none !important;
+    }
+
+    .car-slider-block__slide {
+      flex: initial;
+      opacity: 1;
+      transform: none;
+    }
+
+    .car-slider-block__image-wrap {
+      aspect-ratio: auto;
+      background: transparent;
+      overflow: visible;
+      min-height: 0;
+    }
+
+    .car-slider-block__image {
+      width: 102%;
+      height: auto;
+      image-rendering: crisp-edges;
+    }
+
+    .car-slider-block__caption {
+      color: rgba(17, 17, 17, 0.95);
+      font-size: 18px;
+    }
+
+    .car-slider-block__arrow {
+      display: none;
+    }
   }
 }
 

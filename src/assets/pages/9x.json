@@ -57,7 +57,7 @@
   "versionsImages": {
     "Zeekr 9X Ultra": "9x_ultra.webp",
     "Zeekr 9X Hyper": "9x_hyper.webp",
-    "Zeekr 9X Hyper BB": "9x_hyper_bb.webp"
+    "Zeekr 9X Hyper Obsidian Black": "9x_hyper_bb.webp"
   },
   "hero": {
     "title": {
@@ -1130,7 +1130,7 @@
  "textBlockHybrid": {
     "title": {
       "en": "Vast Super Electric Hybrid",
-      "ua": "Супергібрид Vast із електричним приводом"
+      "ua": "Потужність всередині — повний контроль назовні"
     },
     "subtitle": {
       "en": "Heart of Vastness, Calmly Reaching Far",
@@ -1509,11 +1509,11 @@
   "textBlockDrivingAssist": {
     "title": {
       "en": "Vast H9 Driving Assistance System",
-      "ua": "Система допомоги водію Vast H9"
+      "ua": "Система допомоги водінню H9 “Тисячі кілометрів”"
     },
     "subtitle": {
       "en": "Perceive All Things, Act with Wisdom",
-      "ua": "Сприймати все, діяти з мудрістю"
+      "ua": "Бачить усе. Рухається з розумом далеко вперед."
     }
   },
   "powerBlock": {

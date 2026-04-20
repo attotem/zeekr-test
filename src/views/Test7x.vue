@@ -50,6 +50,7 @@
             :is="block.component"
             :data="block.data"
             :car-id="carId"
+            @buttonClick="handleHeroButtonClick"
           />
         </div>
       </template>
@@ -122,6 +123,8 @@ import CarVideoTextBlock from '@/components/new_car_page/car-video-text-block.vu
 import CarTerrainBlock from '@/components/new_car_page/car-terrain-block.vue'
 import CarStrengthBlock from '@/components/new_car_page/car-strength-block.vue'
 import CarDetectBlock from '@/components/new_car_page/car-detect-block.vue'
+import CarFrLineBlock from '@/components/new_car_page/car-fr-line-block.vue'
+import CarInfoGridBlock from '@/components/new_car_page/car-info-grid-block.vue'
 import pageDataJson from '@/assets/pages/7x.json'
 import ModalContact from '@/components/ModalContact.vue'
 import API from '@/composables/API'
@@ -159,38 +162,17 @@ const carId = computed(() => {
 })
 
 const carDataModules = import.meta.glob('@/assets/pages/*.json', { eager: false })
-const localCarVersionPacks = import.meta.glob('@/assets/car-versions/*.json', { eager: true })
-
-function getLocalCarVersionPack(id) {
-  if (!id) return null
-  const suffix = `/car-versions/${id}.json`
-  const path = Object.keys(localCarVersionPacks).find((k) => k.endsWith(suffix))
-  if (!path) return null
-  const mod = localCarVersionPacks[path]
-  return mod?.default ?? mod
-}
-
-const localCarVersionPack = computed(() => getLocalCarVersionPack(carId.value))
 
 const displayCarVersions = computed(() => {
-  const localCv = localCarVersionPack.value?.car_versions
-  if (localCv && typeof localCv === 'object' && Object.keys(localCv).length > 0) {
-    return localCv
-  }
   return modelBackendData.value?.car_versions ?? null
 })
 
 const displayCarVersionsTitle = computed(() => {
-  return (
-    localCarVersionPack.value?.car_versions_title ||
-    modelBackendData.value?.car_versions_title ||
-    ''
-  )
+  return modelBackendData.value?.car_versions_title || ''
 })
 
 const displayCarVersionsIcons = computed(() => ({
-  ...(modelBackendData.value?.car_versions_tab_icons || {}),
-  ...(localCarVersionPack.value?.car_versions_tab_icons || {}),
+  ...(modelBackendData.value?.car_versions_tab_icons || {})
 }))
 
 const loadCarData = async (id) => {
@@ -294,7 +276,9 @@ const componentMap = {
   videoTextBlock: CarVideoTextBlock,
   terrainBlock: CarTerrainBlock,
   strengthBlock: CarStrengthBlock,
-  detectBlock: CarDetectBlock
+  detectBlock: CarDetectBlock,
+  frLineBlock: CarFrLineBlock,
+  infoGridBlock: CarInfoGridBlock
 }
 
 const getComponent = (type) => {
@@ -418,6 +402,8 @@ const handleHeroButtonClick = (type) => {
     mailObj.value = { type: 'order', page: 'order' }
   } else if (type === 'price_list' && priceListUrl.value) {
     window.open(sameOriginMediaUrl(priceListUrl.value), '_blank', 'noopener,noreferrer')
+  } else if (type === 'scroll_down') {
+    window.scrollBy({ top: Math.round(window.innerHeight * 0.85), behavior: 'smooth' })
   }
 }  
 </script>

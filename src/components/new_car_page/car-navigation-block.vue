@@ -7,15 +7,37 @@
     ></div>
 
     <!-- Dark overlay -->
-    <div class="car-navigation-block__overlay"></div>
+    <div
+      class="car-navigation-block__overlay"
+      :class="{ 'car-navigation-block__overlay--hidden-mobile': mobileTextBelow }"
+    ></div>
 
     <!-- Content -->
-    <div class="car-navigation-block__content">
+    <div
+      class="car-navigation-block__content"
+      :class="{ 'car-navigation-block__content--mobile-below': mobileTextBelow }"
+    >
       <!-- Bottom section: Specs -->
       <div class="car-navigation-block__specs">
         <div
           v-for="(spec, index) in blockData.specs"
           :key="index"
+          class="car-navigation-block__spec"
+        >
+          <div class="car-navigation-block__spec-value">{{ spec.value }}</div>
+          <div class="car-navigation-block__spec-label">{{ getText(spec.label) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      v-if="mobileTextBelow"
+      class="car-navigation-block__mobile-bottom"
+    >
+      <div class="car-navigation-block__specs car-navigation-block__specs--mobile-below">
+        <div
+          v-for="(spec, index) in blockData.specs"
+          :key="`mobile-${index}`"
           class="car-navigation-block__spec"
         >
           <div class="car-navigation-block__spec-value">{{ spec.value }}</div>
@@ -44,6 +66,7 @@ const props = defineProps({
 
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
+const mobileTextBelow = computed(() => blockData.value.mobileTextBelow === true)
 
 const getImageSrc = computed(() => {
   return resolveMediaPath(blockData.value.image, { carId: props.carId })
@@ -93,6 +116,10 @@ const getText = (textObj) => {
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
     z-index: -1;
+  }
+
+  &__mobile-bottom {
+    display: none;
   }
 
   &__content {
@@ -154,10 +181,28 @@ const getText = (textObj) => {
   .car-navigation-block {
     width: calc(100% - 32px);
     margin: 0 16px;
+    min-height: 80vh;
+
 
     &__content {
       padding: 40px 20px;
-      min-height: 95vh;
+      min-height: 80vh;
+    }
+
+    &__content--mobile-below {
+      min-height: 80vh;
+      justify-content: flex-end;
+      padding-bottom: 0;
+    }
+
+    &__overlay--hidden-mobile {
+      display: none;
+    }
+
+    &__mobile-bottom {
+      display: block;
+      background: #efefee;
+      padding: 18px 16px 24px;
     }
 
     &__specs {
@@ -165,18 +210,30 @@ const getText = (textObj) => {
       flex-wrap: wrap;
     }
 
+    &__specs--mobile-below {
+      justify-content: flex-start;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 16px;
+    }
+
     &__spec {
       &:not(:last-child)::after {
         display: none;
       }
+      text-align: left;
     }
 
     &__spec-value {
-      font-size: 18px;
+      font-size: 34px;
+      color: #111;
+      margin-bottom: 6px;
     }
 
     &__spec-label {
-      font-size: 12px;
+      font-size: 16px;
+      color: #4a4a4a;
+      opacity: 1;
     }
   }
 }

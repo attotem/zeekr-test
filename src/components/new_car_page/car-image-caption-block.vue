@@ -19,6 +19,7 @@
 <script setup>
 import { computed, onMounted, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
+import { resolveMediaPath } from '@/utils/resolveMedia'
 
 const props = defineProps({
   data: {
@@ -49,12 +50,7 @@ const getText = (textObj) => {
 }
 
 const resolveImage = (imagePath) => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('/')) return imagePath
-  if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/${imagePath}`
-  }
-  return `/pages/${props.carId}/${imagePath}`
+  return resolveMediaPath(imagePath, { carId: props.carId })
 }
 
 // Preload image
