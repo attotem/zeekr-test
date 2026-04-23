@@ -142,11 +142,11 @@
     },
     {
       "type": "textSimpleBlock",
-      "dataKey": "textBlockOsDisplay"
+      "dataKey": "textBlockStorage"
     },
     {
-      "type": "navigationBlock",
-      "dataKey": "osDisplayBlock"
+      "type": "storageBlock",
+      "dataKey": "storageSpaceBlock"
     },
     {
       "type": "textSimpleBlock",
@@ -156,14 +156,17 @@
       "type": "storageBlock",
       "dataKey": "cabinBlock"
     },
+   
+
     {
       "type": "textSimpleBlock",
-      "dataKey": "textBlockStorage"
+      "dataKey": "textBlockOsDisplay"
     },
     {
-      "type": "storageBlock",
-      "dataKey": "storageSpaceBlock"
+      "type": "navigationBlock",
+      "dataKey": "osDisplayBlock"
     },
+    
     {
       "type": "textBlock",
       "dataKey": "textBlockSafety"
@@ -172,14 +175,7 @@
       "type": "stargateBlock",
       "dataKey": "safetyChipBlock"
     },
-    {
-      "type": "textSimpleBlock",
-      "dataKey": "textBlockBlueLamp"
-    },
-    {
-      "type": "imageCaptionBlock",
-      "dataKey": "blueLampImageBlock"
-    },
+
     {
       "type": "textSimpleBlock",
       "dataKey": "textBlockParking"
@@ -256,21 +252,21 @@
     ],
     "specs": [
       {
-        "value": "900 V",
+        "value": "800 V",
         "label": {
           "ua": "Високовольтна система",
           "en": "High-voltage system"
         }
       },
       {
-        "value": "880 km",
+        "value": "825 km",
         "label": {
           "ua": "Максимальний запас ходу (CLTC)",
           "en": "Maximum range (CLTC)"
         }
       },
       {
-        "value": "2.85 s",
+        "value": "2.95 s",
         "label": {
           "ua": "Розгін 0-100 км/год",
           "en": "0-100 km/h acceleration"
@@ -309,17 +305,17 @@
     },
     "specs": [
       {
-        "value": "20 in",
+        "value": "20-дюймові",
         "label": {
-          "ua": "Ковані колісні диски",
-          "en": "Forged wheels"
+          "ua": "ковані диски «Thunder»",
+          "en": "20-inch forged wheels «Thunder»"
         }
       },
       {
-        "value": "4-piston",
+        "value": "4-поршневі",
         "label": {
-          "ua": "Помаранчеві гальмівні супорти",
-          "en": "Orange brake calipers"
+          "ua": "4 гальмівні супорти",
+          "en": "4-piston brake calipers"
         }
       },
       {
@@ -376,18 +372,18 @@
   },
   "textBlockVersatility": {
     "title": {
-      "ua": "Оригінальна естетика shooting brake",
-      "en": "Original shooting brake aesthetics"
+      "ua": "Справжня естетика shooting brake",
+      "en": "True shooting brake aesthetics"
     },
     "subtitle": {
-      "ua": "Ще вищий рівень преміальності",
-      "en": "A higher level of refinement"
+      "ua": "Новий рівень преміальності та комфорту",
+      "en": "A new level of refinement and comfort"
     }
   },
   "textBlock360": {
     "title": {
-      "ua": "Вісім технологічних кольорів кузова",
-      "en": "Eight technology-inspired body colors"
+      "ua": "8 фірмових кольорів екстер'єру",
+      "en": "8 brand exterior colors"
     },
     "subtitle": {
       "ua": "",
@@ -553,8 +549,8 @@
   },
   "textBlockInside": {
     "title": {
-      "ua": "Чотири теми оздоблення інтер’єру",
-      "en": "Four interior themes"
+      "ua": "4 стилістичні рішення інтер’єру",
+      "en": "4 interior styling solutions"
     },
     "subtitle": {
       "ua": "",
@@ -689,8 +685,8 @@
           "mobile": "info1.webp"
         },
         "caption": {
-          "ua": "Лінія shooting brake",
-          "en": "Shooting brake line"
+          "ua": "Фірмова лінія кузова shooting brake",
+          "en": "Signature shooting brake body line"
         }
       },
       {
@@ -700,8 +696,8 @@
           "mobile": "info2.webp"
         },
         "caption": {
-          "ua": "Подвійні лінії капота",
-          "en": "Dual hood lines"
+          "ua": "Подвійні рельєфні лінії на капоті",
+          "en": "Dual relief lines on the hood"
         }
       },
       {
@@ -711,8 +707,8 @@
           "mobile": "info3.webp"
         },
         "caption": {
-          "ua": "Активна решітка AGS",
-          "en": "Active AGS grille"
+          "ua": "Активна решітка повітрозабору (AGS)",
+          "en": "Active air intake grille (AGS)"
         }
       },
       {
@@ -722,8 +718,8 @@
           "mobile": "info4.webp"
         },
         "caption": {
-          "ua": "Подвійні повітроводи бампера",
-          "en": "Dual bumper air ducts"
+          "ua": "Подвійні повітряні канали в передньому бампері",
+          "en": "Dual air channels in the front bumper"
         }
       },
       {
@@ -733,8 +729,8 @@
           "mobile": "info5.webp"
         },
         "caption": {
-          "ua": "Подвійний плаваючий спойлер",
-          "en": "Floating dual spoiler"
+          "ua": "Подвійний «плаваючий» спойлер",
+          "en": "Dual \"floating\" spoiler"
         }
       },
       {
@@ -744,8 +740,8 @@
           "mobile": "info6.webp"
         },
         "caption": {
-          "ua": "Даховий багажник",
-          "en": "Roof rack"
+          "ua": "Багажник на даху",
+          "en": "Roof luggage rack"
         }
       }
     ]
@@ -768,9 +764,9 @@
     },
     "specs": [
       {
-        "value": "90 in",
+        "value": "90 дюймів",
         "label": {
-          "ua": "Розмір",
+          "ua": "Розмір", 
           "en": "Size"
         }
       },
@@ -828,8 +824,8 @@
           "mobile": "luxery1.webp"
         },
         "caption": {
-          "ua": "Триспицеве спортивне кермо зі шкіри",
-          "en": "Three-spoke leather sport steering wheel"
+          "ua": "Триспицеве спортивне кермо зі шкіряним оздобленням",
+          "en": "Three-spoke sport steering wheel with leather trim"
         }
       },
       {
@@ -850,8 +846,8 @@
           "mobile": "luxery3.webp"
         },
         "caption": {
-          "ua": "Фізичні клавіші центральної консолі",
-          "en": "Physical center console keys"
+          "ua": "Фізичні кнопки центральної консолі",
+          "en": "Physical center console buttons"
         }
       },
       {
@@ -976,8 +972,8 @@
           "en": "FR-LINE performance steering wheel"
         },
         "description": {
-          "ua": "З подвійними гоночними регуляторами — динамічне налаштування прямо під рукою",
-          "en": "Dual racing control knobs for dynamic adjustments at your fingertips"
+          "ua": "З подвійною контрастною строчкою та чутливими елементами керування для динамічного водіння.",
+          "en": "With dual contrast stitching and responsive control elements for dynamic driving."
         }
       },
       {
@@ -991,8 +987,8 @@
           "en": "FR-LINE performance metal pedals"
         },
         "description": {
-          "ua": "Протиковзні та зносостійкі, з перфорованою тактильною зворотністю для точного керування педаллю газу",
-          "en": "Non-slip and wear-resistant with perforated feedback for precise throttle control"
+          "ua": "Протиковзке покриття та точний зворотний зв'язок для кращого контролю під час кожного натискання.",
+          "en": "Non-slip coating and precise tactile feedback for better control with every press."
         }
       }
     ]
@@ -1032,7 +1028,7 @@
       },
       {
         "title": {
-          "ua": "Чотирипоршневі гальмівні супорти помаранчевого кольору + перфоровані передні гальмівні диски",
+          "ua": "Швидка реакція на гальмування, стабільна ефективність навіть при тривалих навантаженнях.",
           "en": "Four-piston orange brake calipers + front perforated brake discs"
         },
         "description": {
@@ -1057,16 +1053,16 @@
     "buttons": [],
     "specs": [
       {
-        "value": "1.73 m²",
+        "value": "1.73 м²",
         "label": {
-          "ua": "Наскрізний панорамний дах",
+          "ua": "панорамний дах із повним оглядом",
           "en": "Full-length panoramic roof"
         }
       },
       {
-        "value": "10 levels",
+        "value": "10 рівнів",
         "label": {
-          "ua": "Регулювання світлопроникності",
+          "ua": "Регулювання затемнення",
           "en": "Adjustable tint levels"
         }
       },
@@ -1098,8 +1094,8 @@
   },
   "textBlockDrive": {
     "title": {
-      "ua": "900V високопродуктивний карбід-кремнієвий електропривід",
-      "en": "900V high-performance silicon carbide electric drive"
+      "ua": "800V високопродуктивний карбід-кремнієвий електропривід",
+      "en": "800V high-performance silicon carbide electric drive"
     },
     "subtitle": {
       "ua": "",
@@ -1116,28 +1112,28 @@
       },
       "specs": [
         {
-          "value": "2.85 с",
+          "value": "2.95 с",
           "label": {
             "ua": "Найшвидший розгін 0–100 км/год*",
             "en": "Fastest 0–100 km/h acceleration*"
           }
         },
         {
-          "value": "585 кВт",
+          "value": "475 кВт",
           "label": {
             "ua": "Пікова потужність",
             "en": "Peak power"
           }
         },
         {
-          "value": "796 к.с.",
+          "value": "646 к.с.",
           "label": {
             "ua": "Максимальна потужність",
             "en": "Maximum horsepower"
           }
         },
         {
-          "value": "812 Нм",
+          "value": "710 Нм",
           "label": {
             "ua": "Піковий крутний момент",
             "en": "Peak torque"
@@ -1156,28 +1152,28 @@
       },
       "specs": [
         {
-          "value": "4.8 с",
+          "value": "5.2 с",
           "label": {
             "ua": "Найшвидший розгін 0–100 км/год*",
             "en": "Fastest 0–100 km/h acceleration*"
           }
         },
         {
-          "value": "370 кВт",
+          "value": "310 кВт",
           "label": {
             "ua": "Пікова потужність",
             "en": "Peak power"
           }
         },
         {
-          "value": "503 к.с.",
+          "value": "422 к.с.",
           "label": {
             "ua": "Максимальна потужність",
             "en": "Maximum horsepower"
           }
         },
         {
-          "value": "535 Нм",
+          "value": "440 Нм",
           "label": {
             "ua": "Піковий крутний момент",
             "en": "Peak torque"
@@ -1195,36 +1191,36 @@
       {
         "image": "battery_2.webp",
         "name": {
-          "ua": "Акумулятор 103 кВт·год Kirin",
-          "en": "103 kWh Kirin Battery"
+          "ua": "Акумулятор 103 кВт·год",
+          "en": "103 kWh Battery"
         },
         "specs": [
           {
-            "value": "880 км",
+            "value": "825 км",
             "label": {
-              "ua": "Максимальний запас ходу CLTC¹",
-              "en": "Max CLTC range¹"
+              "ua": "Максимальний запас ходу",
+              "en": "Maximum range"
             }
           },
           {
-            "value": "6C",
+            "value": "4C",
             "label": {
-              "ua": "Пікова швидкість зарядки²",
-              "en": "Peak charging rate²"
+              "ua": "Пікова швидкість зарядки",
+              "en": "Peak charging rate"
             }
           },
           {
-            "value": "10 хв",
+            "value": "15 хв",
             "label": {
-              "ua": "Час зарядки 10%-80%²",
-              "en": "Charging time 10%-80%²"
+              "ua": "Час зарядки 10-80%",
+              "en": "Charging time 10-80%"
             }
           },
           {
             "value": "620 км",
             "label": {
-              "ua": "Запас ходу за 10 хвилин зарядки²",
-              "en": "Range added in 10 min charge²"
+              "ua": "Запас ходу за 10 хвилин зарядки",
+              "en": "Range added in 10 min charge"
             }
           }
         ]
@@ -1237,10 +1233,10 @@
         },
         "specs": [
           {
-            "value": "702 км",
+            "value": "650 км",
             "label": {
-              "ua": "Максимальний запас ходу CLTC¹",
-              "en": "Max CLTC range¹"
+              "ua": "Максимальний запас ходу",
+              "en": "Maximum range"
             }
           },
           {
@@ -1282,7 +1278,7 @@
     "layout": "centered-specs",
     "theme": "light",
     "title": {
-      "ua": "Високовольтна архітектура 900V",
+      "ua": "Високовольтна архітектура 800V",
       "en": "900V high-voltage architecture"
     },
     "subtitle": {
@@ -1296,46 +1292,46 @@
     "specs": [
       {
         "category": {
-          "ua": "Максимальна потужність зарядки",
-          "en": "Peak charging power"
+          "ua": "Найкраща продуктивність",
+          "en": "Best performance"
         },
-        "value": "500",
+        "value": "2,95 с",
         "label": {
-          "ua": "кВт",
-          "en": "kW"
+          "ua": "Розгін 0–100 км/год (найшвидший показник)",
+          "en": "0–100 km/h acceleration (fastest figure)"
         }
       },
       {
         "category": {
-          "ua": "Заряд за 15 хвилин",
-          "en": "Charged in 15 min"
+          "ua": "Більший запас ходу",
+          "en": "Greater range"
         },
-        "value": "300",
+        "value": "825 км",
         "label": {
-          "ua": "км",
-          "en": "km"
+          "ua": "Максимальний запас ходу за циклом CLTC",
+          "en": "Maximum CLTC range"
         }
       },
       {
         "category": {
-          "ua": "Напруга системи",
-          "en": "System voltage"
+          "ua": "Швидша зарядка",
+          "en": "Faster charging"
         },
-        "value": "900",
+        "value": "10 хв",
         "label": {
-          "ua": "В",
-          "en": "V"
+          "ua": "Час заряджання з 10% до 80%",
+          "en": "Charging time from 10% to 80%"
         }
       },
       {
         "category": {
-          "ua": "Максимальний струм зарядки",
-          "en": "Max charging current"
+          "ua": "Низьке енергоспоживання",
+          "en": "Low energy consumption"
         },
-        "value": "600",
+        "value": "12,8 кВт·год/100 км",
         "label": {
-          "ua": "А",
-          "en": "A"
+          "ua": "Мінімальне споживання за циклом CLTC",
+          "en": "Minimum consumption per CLTC cycle"
         }
       }
     ],
@@ -1381,27 +1377,8 @@
           "ua": "Підтримує 6 режимів регулювання. Діапазон регулювання ходу — 55 мм, максимальний кліренс збільшено на 169 мм",
           "en": "Supports 6 adjustment modes. Travel adjustment range of 55 mm, maximum ground clearance increased by 169 mm"
         }
-      },
-      {
-        "title": {
-          "ua": "Система електромагнітного демпфування CCD",
-          "en": "CCD electromagnetic damping system"
-        },
-        "description": {
-          "ua": "Регулює рівень демпфування в режимі реального часу через електромагнітний клапан. Швидкість реакції — мілісекунди, що забезпечує баланс між керованістю та комфортом",
-          "en": "Regulates damping level in real time via electromagnetic valve. Millisecond response speed balances handling and comfort"
-        }
-      },
-      {
-        "title": {
-          "ua": "Функція інтелектуального Magic Carpet",
-          "en": "Smart Magic Carpet function"
-        },
-        "description": {
-          "ua": "Зчитує нерівності дороги попереду та за мілісекунди змінює стан підвіски, забезпечуючи рівний і комфортний проїзд",
-          "en": "Reads road humps ahead and adjusts suspension state in milliseconds, ensuring smooth and comfortable passage"
-        }
       }
+      
     ]
   },
   "spaceNavigationBlock": {
@@ -1446,7 +1423,7 @@
   },
   "drivingAssistBlock": {
     "title": {
-      "ua": "Їздить скрізь. Доступно будь-куди",
+      "ua": "Легко подорожувати — куди завгодно",
       "en": "Drives Great Everywhere. Gets You Anywhere"
     },
     "images": [
@@ -1530,7 +1507,7 @@
       "en": "Highway Confidence"
     },
     "subtitle": {
-      "ua": "Ще безпечніше",
+      "ua": "І все інше",
       "en": "Even Safer"
     }
   },
@@ -1629,7 +1606,7 @@
           "mobile": "salon_1_mb.webp"
         },
         "title": {
-          "ua": "Оббивка стелі мікрофіброю",
+          "ua": "Оздоблення стелі мікрофіброю (Microfiber)",
           "en": "Microfiber Headliner Covering"
         },
         "description": {
@@ -1639,7 +1616,7 @@
       },
       {
         "image": {
-          "desktop": "salon_2_mb.webp",
+          "desktop": "salon_2_pc.webp",
           "mobile": "salon_2_mb.webp"
         },
         "title": {
@@ -1799,7 +1776,7 @@
   },
   "safetyDnaBlock": {
     "title": {
-      "ua": "Генетика безпеки — невпинна еволюція",
+      "ua": "Безпека, що постійно еволюціонує",
       "en": "Safety DNA, Continuously Evolving"
     },
     "images": [
@@ -1864,42 +1841,32 @@
     "stats": [
       {
         "value": {
-          "ua": "8+9",
-          "en": "8+9"
+          "ua": "Десятисекційна структура",
+          "en": "Ten-section structure"
         },
         "label": {
-          "ua": "Конструкція безпеки кузова",
-          "en": "Body Safety Structure"
+          "ua": "Бокові підсилювачі дверей",
+          "en": "Door side reinforcements"
         }
       },
       {
         "value": {
-          "ua": "«Мотузка»",
-          "en": "«Clothesline»"
+          "ua": "Цільнолитий кузов (гігакастинг)",
+          "en": "One-piece body (gigacasting)"
         },
         "label": {
-          "ua": "Гнучка алюмінієва екструзійна конструкція",
-          "en": "Flexible Extruded Aluminum Structure"
+          "ua": "Задня частина з литого алюмінію",
+          "en": "Rear section in cast aluminium"
         }
       },
       {
         "value": {
-          "ua": "Монолітне лиття",
-          "en": "Integrated Die-Casting"
+          "ua": "8 поперечних + 9 поздовжніх",
+          "en": "8 transverse + 9 longitudinal"
         },
         "label": {
-          "ua": "Алюмінієвий задній кузов",
-          "en": "Rear Aluminum Body"
-        }
-      },
-      {
-        "value": {
-          "ua": "«Десять клітинок»",
-          "en": "«Ten-Grid»"
-        },
-        "label": {
-          "ua": "Антиударні балки порогів",
-          "en": "Sill Anti-Collision Beams"
+          "ua": "Безпекова структура кузова",
+          "en": "Body safety structure"
         }
       }
     ]
