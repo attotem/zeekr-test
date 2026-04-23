@@ -59,6 +59,12 @@ const router = createRouter({
 			meta: { carId: '9x' },
 		},
 		{
+			path: "/zeekr-007gt",
+			name: "zeekr-007gt",
+			component: Test7x,
+			meta: { carId: '007gt' },
+		},
+		{
 			path: "/:childId",
 			name: "car",
 			component: Car,

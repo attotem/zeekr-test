@@ -113,7 +113,7 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     font-size: 36px;
     line-height: 1.3;
     font-weight: 400;
-    color: #111;
+    color: #fff;
     margin: 0;
   }
 
@@ -121,14 +121,14 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     width: 100%;
     max-width: 300px;
     height: 1px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.4);
   }
 
   &__subtitle {
     font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
+    color: rgba(255, 255, 255, 0.85);
   }
 
   &__specs {
@@ -177,10 +177,16 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
 
     &__title {
       font-size: 22px;
+      color: #111;
+    }
+
+    &__divider {
+      background: rgba(0, 0, 0, 0.2);
     }
 
     &__subtitle {
       font-size: 13px;
+      color: #333;
     }
 
     &__specs {

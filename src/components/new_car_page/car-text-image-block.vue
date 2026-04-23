@@ -94,7 +94,6 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
   }
 
   &__text {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

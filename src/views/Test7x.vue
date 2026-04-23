@@ -125,6 +125,8 @@ import CarStrengthBlock from '@/components/new_car_page/car-strength-block.vue'
 import CarDetectBlock from '@/components/new_car_page/car-detect-block.vue'
 import CarFrLineBlock from '@/components/new_car_page/car-fr-line-block.vue'
 import CarInfoGridBlock from '@/components/new_car_page/car-info-grid-block.vue'
+import CarFrLineSliderBlock from '@/components/new_car_page/car-fr-line-slider-block.vue'
+import CarFrFeatureBlock from '@/components/new_car_page/car-fr-feature-block.vue'
 import pageDataJson from '@/assets/pages/7x.json'
 import ModalContact from '@/components/ModalContact.vue'
 import API from '@/composables/API'
@@ -278,7 +280,9 @@ const componentMap = {
   strengthBlock: CarStrengthBlock,
   detectBlock: CarDetectBlock,
   frLineBlock: CarFrLineBlock,
-  infoGridBlock: CarInfoGridBlock
+  infoGridBlock: CarInfoGridBlock,
+  frLineSliderBlock: CarFrLineSliderBlock,
+  frFeatureBlock: CarFrFeatureBlock
 }
 
 const getComponent = (type) => {

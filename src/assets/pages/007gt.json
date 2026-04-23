@@ -16,7 +16,44 @@
     { "type": "imageCaptionBlock", "dataKey": "luxuryInsideImageBlock" },
     { "type": "infoGridBlock", "dataKey": "luxuryDetailsGridBlock" },
     { "type": "textSimpleBlock", "dataKey": "textBlockEcRoof" },
-    { "type": "navigationBlock", "dataKey": "panoramicRoofBlock" }
+    { "type": "navigationBlock", "dataKey": "panoramicRoofBlock" },
+    { "type": "frLineSliderBlock", "dataKey": "frLineSliderBlock" },
+    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock1" },
+    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock2" },
+    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock3" },
+    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock4" },
+    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock5" },
+    { "type": "textBlock", "dataKey": "textBlockPerformance" },
+    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock6" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockBattery" },
+    { "type": "batteryBlock", "dataKey": "batteryBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockDrive" },
+    { "type": "performanceBlock", "dataKey": "performanceBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockSuspension" },
+    { "type": "storageBlock", "dataKey": "suspensionBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockAiChassis" },
+    { "type": "storageBlock", "dataKey": "aiChassisBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockSpace" },
+    { "type": "navigationBlock", "dataKey": "spaceNavigationBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockOsDisplay" },
+    { "type": "navigationBlock", "dataKey": "osDisplayBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockCabin" },
+    { "type": "storageBlock", "dataKey": "cabinBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockStorage" },
+    { "type": "storageBlock", "dataKey": "storageSpaceBlock" },
+    { "type": "textBlock", "dataKey": "textBlockSafety" },
+    { "type": "stargateBlock", "dataKey": "safetyChipBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockBlueLamp" },
+    { "type": "imageCaptionBlock", "dataKey": "blueLampImageBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockParking" },
+    { "type": "imageCaptionBlock", "dataKey": "parkingImageBlock" },
+    { "type": "twoImagesBlock", "dataKey": "drivingAssistBlock" },
+    { "type": "textSimpleBlock", "dataKey": "textBlockActiveSafety" },
+    { "type": "detectBlock", "dataKey": "gAesDetectBlock" },
+    { "type": "batterySafetyBlock", "dataKey": "haohanArmorBlock" },
+    { "type": "twoImagesBlock", "dataKey": "safetyDnaBlock" },
+    { "type": "storageBlock", "dataKey": "crashSafetyBlock" }
+
   ],
   "hero": {
     "title": {
@@ -136,6 +173,35 @@
         "label": {
           "ua": "Активна бічна підтримка сидіння водія",
           "en": "Active side support for the driver's seat"
+        }
+      }
+    ]
+  },
+  "frLineSliderBlock": {
+    "title": {
+      "ua": "Пакет продуктивності FR-LINE",
+      "en": "FR-LINE Performance Package"
+    },
+    "slides": [
+      {
+        "image": {
+          "desktop": "pc_fr_1.webp",
+          "tablet": "pc_fr_1.webp",
+          "mobile": "mb_fr_1.webp"
+        }
+      },
+      {
+        "image": {
+          "desktop": "pc_fr_2.webp",
+          "tablet": "pc_fr_2.webp",
+          "mobile": "mb_fr_2.webp"
+        }
+      },
+      {
+        "image": {
+          "desktop": "pc_fr_3.webp",
+          "tablet": "pc_fr_3.webp",
+          "mobile": "mb_fr_3.webp"
         }
       }
     ]
@@ -643,6 +709,171 @@
       "en": ""
     }
   },
+  "textBlockPerformance": {
+    "title": {
+      "ua": "Суперкарова продуктивність. Ще досконаліша",
+      "en": "Supercar performance. Even more advanced"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "frFeatureBlock5": {
+    "layout": "video",
+    "title": {
+      "ua": "Активна бічна підтримка спинки водійського сидіння",
+      "en": "Active side support for the driver's seat backrest"
+    },
+    "subtitle": {
+      "ua": "Автоматичне налаштування в поворотах для стабілізації тіла",
+      "en": "Automatically adjusts in corners to keep your body stable"
+    },
+    "video": {
+      "desktop": "fr_block_5_pc_video.mp4",
+      "tablet": "fr_block_5_pc_video.mp4",
+      "mobile": "fr_block_5_mb_video.mp4"
+    },
+    "poster": "fr_block_5_mb_poster.jpeg"
+  },
+  "frFeatureBlock4": {
+    "layout": "centered-specs",
+    "title": {
+      "ua": "FR-LINE Dinamica® сидіння з замшевим оздобленням",
+      "en": "FR-LINE Dinamica® suede performance seats"
+    },
+    "image": {
+      "desktop": "fr_block_4_pc.webp",
+      "tablet": "fr_block_4_pc.webp",
+      "mobile": "fr_block_4_mb.webp"
+    },
+    "specs": [
+      {
+        "value": {
+          "ua": "Активна бічна підтримка",
+          "en": "Active Side Support"
+        },
+        "label": {
+          "ua": "спинка водійського сидіння",
+          "en": "driver's seat backrest"
+        }
+      },
+      {
+        "value": {
+          "ua": "16 напрямків",
+          "en": "16-way"
+        },
+        "label": {
+          "ua": "електроналаштування водійського сидіння",
+          "en": "electric adjustment for driver's seat"
+        }
+      },
+      {
+        "value": {
+          "ua": "Підігрів / Вентиляція* / Пам'ять",
+          "en": "Heat / Ventilation* / Memory"
+        },
+        "label": {
+          "ua": "функції комфорту передніх сидінь",
+          "en": "front seat comfort functions"
+        }
+      },
+      {
+        "value": {
+          "ua": "Підігрів",
+          "en": "Heat"
+        },
+        "label": {
+          "ua": "функції комфорту задніх сидінь",
+          "en": "rear seat comfort functions"
+        }
+      }
+    ],
+    "note": {
+      "ua": "* вентиляція передніх сидінь — керована фазована вентиляція",
+      "en": "* front seat ventilation uses phased seat ventilation control"
+    }
+  },
+  "frFeatureBlock3": {
+    "layout": "two-images",
+    "images": [
+      {
+        "image": {
+          "desktop": "fr_block_3_pc_1.webp",
+          "tablet": "fr_block_3_pc_1.webp",
+          "mobile": "fr_block_3_pc_1.webp"
+        },
+        "title": {
+          "ua": "FR-LINE спортивне кермо",
+          "en": "FR-LINE performance steering wheel"
+        },
+        "description": {
+          "ua": "З подвійними гоночними регуляторами — динамічне налаштування прямо під рукою",
+          "en": "Dual racing control knobs for dynamic adjustments at your fingertips"
+        }
+      },
+      {
+        "image": {
+          "desktop": "fr_block_3_pc_2.webp",
+          "tablet": "fr_block_3_pc_2.webp",
+          "mobile": "fr_block_3_pc_2.webp"
+        },
+        "title": {
+          "ua": "FR-LINE металеві спортивні педалі",
+          "en": "FR-LINE performance metal pedals"
+        },
+        "description": {
+          "ua": "Протиковзні та зносостійкі, з перфорованою тактильною зворотністю для точного керування педаллю газу",
+          "en": "Non-slip and wear-resistant with perforated feedback for precise throttle control"
+        }
+      }
+    ]
+  },
+  "frFeatureBlock2": {
+    "layout": "centered",
+    "title": {
+      "ua": "FR-LINE інтер'єр Racing Yellow",
+      "en": "FR-LINE Racing Yellow performance interior"
+    },
+    "image": {
+      "desktop": "fr_block_2_pc.webp",
+      "tablet": "fr_block_2_pc.webp",
+      "mobile": "fr_block_2_mb.webp"
+    }
+  },
+  "frFeatureBlock1": {
+    "title": {
+      "ua": "Ексклюзивно створено для задоволення від водіння",
+      "en": "Exclusively crafted for driving pleasure"
+    },
+    "image": {
+      "desktop": "fr_block_1_pc.webp",
+      "tablet": "fr_block_1_pc.webp",
+      "mobile": "fr_block_1_mb.webp"
+    },
+    "items": [
+      {
+        "title": {
+          "ua": "20-дюймові ковані диски Thunder",
+          "en": "20-inch Thunder forged wheels"
+        },
+        "description": {
+          "ua": "Виготовлені методом кування з античного бронзового металу — підвищена міцність дисків і керованість",
+          "en": "Forged from ancient bronze metal, effectively improving wheel strength and handling performance"
+        }
+      },
+      {
+        "title": {
+          "ua": "Чотирипоршневі гальмівні супорти помаранчевого кольору + перфоровані передні гальмівні диски",
+          "en": "Four-piston orange brake calipers + front perforated brake discs"
+        },
+        "description": {
+          "ua": "Чутливе гальмування без теплового спаду при повторних гальмуваннях",
+          "en": "Responsive braking with no significant heat fade during repeated braking"
+        }
+      }
+    ]
+  },
   "panoramicRoofBlock": {
     "title": {
       "ua": "Панорамний дах",
@@ -683,6 +914,892 @@
         "label": {
           "ua": "Наднизька світлопроникність",
           "en": "Ultra-low light transmittance"
+        }
+      }
+    ]
+  },
+  "textBlockBattery": {
+    "title": {
+      "ua": "Довга автономність. Надшвидка зарядка",
+      "en": "Long range. Ultra-fast charging"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockDrive": {
+    "title": {
+      "ua": "900V високопродуктивний карбід-кремнієвий електропривід",
+      "en": "900V high-performance silicon carbide electric drive"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "performanceBlock": {
+    "image1": "900v_mb_1.webp",
+    "image2": "900v_mb_2.webp",
+    "version1": {
+      "title": {
+        "ua": "Повний привід (AWD)",
+        "en": "All-Wheel Drive (AWD)"
+      },
+      "specs": [
+        {
+          "value": "2.85 с",
+          "label": {
+            "ua": "Найшвидший розгін 0–100 км/год*",
+            "en": "Fastest 0–100 km/h acceleration*"
+          }
+        },
+        {
+          "value": "585 кВт",
+          "label": {
+            "ua": "Пікова потужність",
+            "en": "Peak power"
+          }
+        },
+        {
+          "value": "796 к.с.",
+          "label": {
+            "ua": "Максимальна потужність",
+            "en": "Maximum horsepower"
+          }
+        },
+        {
+          "value": "812 Нм",
+          "label": {
+            "ua": "Піковий крутний момент",
+            "en": "Peak torque"
+          }
+        }
+      ],
+      "note": {
+        "ua": "* В стандартних умовах, без урахування першого метра старту",
+        "en": "* Under standard conditions, excluding the first metre of launch"
+      }
+    },
+    "version2": {
+      "title": {
+        "ua": "Задній привід (RWD)",
+        "en": "Rear-Wheel Drive (RWD)"
+      },
+      "specs": [
+        {
+          "value": "4.8 с",
+          "label": {
+            "ua": "Найшвидший розгін 0–100 км/год*",
+            "en": "Fastest 0–100 km/h acceleration*"
+          }
+        },
+        {
+          "value": "370 кВт",
+          "label": {
+            "ua": "Пікова потужність",
+            "en": "Peak power"
+          }
+        },
+        {
+          "value": "503 к.с.",
+          "label": {
+            "ua": "Максимальна потужність",
+            "en": "Maximum horsepower"
+          }
+        },
+        {
+          "value": "535 Нм",
+          "label": {
+            "ua": "Піковий крутний момент",
+            "en": "Peak torque"
+          }
+        }
+      ],
+      "note": {
+        "ua": "* В стандартних умовах, без урахування першого метра старту",
+        "en": "* Under standard conditions, excluding the first metre of launch"
+      }
+    }
+  },
+  "batteryBlock": {
+    "batteries": [
+      {
+        "image": "battery_2.webp",
+        "name": {
+          "ua": "Акумулятор 103 кВт·год Kirin",
+          "en": "103 kWh Kirin Battery"
+        },
+        "specs": [
+          {
+            "value": "880 км",
+            "label": {
+              "ua": "Максимальний запас ходу CLTC¹",
+              "en": "Max CLTC range¹"
+            }
+          },
+          {
+            "value": "6C",
+            "label": {
+              "ua": "Пікова швидкість зарядки²",
+              "en": "Peak charging rate²"
+            }
+          },
+          {
+            "value": "10 хв",
+            "label": {
+              "ua": "Час зарядки 10%-80%²",
+              "en": "Charging time 10%-80%²"
+            }
+          },
+          {
+            "value": "620 км",
+            "label": {
+              "ua": "Запас ходу за 10 хвилин зарядки²",
+              "en": "Range added in 10 min charge²"
+            }
+          }
+        ]
+      },
+      {
+        "image": "battery_1.webp",
+        "name": {
+          "ua": "Акумулятор 75 кВт·год Golden Brick Shield",
+          "en": "75 kWh Golden Brick Shield Battery"
+        },
+        "specs": [
+          {
+            "value": "702 км",
+            "label": {
+              "ua": "Максимальний запас ходу CLTC¹",
+              "en": "Max CLTC range¹"
+            }
+          },
+          {
+            "value": "5.5C",
+            "label": {
+              "ua": "Пікова швидкість зарядки²",
+              "en": "Peak charging rate²"
+            }
+          },
+          {
+            "value": "10.5 хв",
+            "label": {
+              "ua": "Час зарядки 10%-80%²",
+              "en": "Charging time 10%-80%²"
+            }
+          },
+          {
+            "value": "475 км",
+            "label": {
+              "ua": "Запас ходу за 10 хвилин зарядки²",
+              "en": "Range added in 10 min charge²"
+            }
+          }
+        ]
+      }
+    ],
+    "footnotes": [
+      {
+        "ua": "Дані отримані в умовах лабораторних випробувань. Фактичні показники залежать від погоди, температури, заряду, маси, дорожніх умов та стилю керування.",
+        "en": "Data obtained under laboratory test conditions. Actual results vary depending on weather, temperature, charge level, weight, road conditions, and driving style."
+      },
+      {
+        "ua": "Показники зарядки базуються на використанні зарядної станції V3 або вище при низькій температурі охолодження.",
+        "en": "Charging figures are based on use of a V3 or higher charging station under low battery temperature conditions."
+      }
+    ]
+  },
+  "frFeatureBlock6": {
+    "layout": "centered-specs",
+    "theme": "light",
+    "title": {
+      "ua": "Високовольтна архітектура 900V",
+      "en": "900V high-voltage architecture"
+    },
+    "subtitle": {
+      "ua": "Перевага швидкої зарядки нового покоління",
+      "en": "Next-generation fast charging advantage"
+    },
+    "image": {
+      "desktop": "900v_pc.webp",
+      "mobile": "900v_mb.webp"
+    },
+    "specs": [
+      {
+        "category": {
+          "ua": "Максимальна потужність зарядки",
+          "en": "Peak charging power"
+        },
+        "value": "500",
+        "label": {
+          "ua": "кВт",
+          "en": "kW"
+        }
+      },
+      {
+        "category": {
+          "ua": "Заряд за 15 хвилин",
+          "en": "Charged in 15 min"
+        },
+        "value": "300",
+        "label": {
+          "ua": "км",
+          "en": "km"
+        }
+      },
+      {
+        "category": {
+          "ua": "Напруга системи",
+          "en": "System voltage"
+        },
+        "value": "900",
+        "label": {
+          "ua": "В",
+          "en": "V"
+        }
+      },
+      {
+        "category": {
+          "ua": "Максимальний струм зарядки",
+          "en": "Max charging current"
+        },
+        "value": "600",
+        "label": {
+          "ua": "А",
+          "en": "A"
+        }
+      }
+    ],
+    "notes": [
+      {
+        "ua": "* Дані отримані в умовах лабораторних випробувань. Реальні результати можуть відрізнятись залежно від умов експлуатації.",
+        "en": "* Data obtained under laboratory test conditions. Actual results may vary depending on usage conditions."
+      },
+      {
+        "ua": "** Показник дальності при зарядці за 15 хв базується на стандарті CLTC.",
+        "en": "** Range figure for 15-minute charge is based on the CLTC standard."
+      },
+      {
+        "ua": "*** Максимальні значення можуть бути досягнуті лише при використанні сумісної зарядної інфраструктури.",
+        "en": "*** Maximum values can only be achieved with compatible charging infrastructure."
+      }
+    ]
+  },
+  "textBlockSuspension": {
+    "title": {
+      "ua": "Прохідність SUV. Ще легше керувати",
+      "en": "SUV passability. Even better to drive"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "suspensionBlock": {
+    "images": ["battery_3.webp", "battery_3.webp", "battery_3.webp"],
+    "folder": ".",
+    "items": [
+      {
+        "title": {
+          "ua": "Замкнена система пневматичної підвіски",
+          "en": "Closed air suspension system"
+        },
+        "description": {
+          "ua": "Підтримує 6 режимів регулювання. Діапазон регулювання ходу — 55 мм, максимальний кліренс збільшено на 169 мм",
+          "en": "Supports 6 adjustment modes. Travel adjustment range of 55 mm, maximum ground clearance increased by 169 mm"
+        }
+      },
+      {
+        "title": {
+          "ua": "Система електромагнітного демпфування CCD",
+          "en": "CCD electromagnetic damping system"
+        },
+        "description": {
+          "ua": "Регулює рівень демпфування в режимі реального часу через електромагнітний клапан. Швидкість реакції — мілісекунди, що забезпечує баланс між керованістю та комфортом",
+          "en": "Regulates damping level in real time via electromagnetic valve. Millisecond response speed balances handling and comfort"
+        }
+      },
+      {
+        "title": {
+          "ua": "Функція інтелектуального Magic Carpet",
+          "en": "Smart Magic Carpet function"
+        },
+        "description": {
+          "ua": "Зчитує нерівності дороги попереду та за мілісекунди змінює стан підвіски, забезпечуючи рівний і комфортний проїзд",
+          "en": "Reads road humps ahead and adjusts suspension state in milliseconds, ensuring smooth and comfortable passage"
+        }
+      }
+    ]
+  },
+  "spaceNavigationBlock": {
+    "image": {
+      "desktop": "space_1_pc.webp",
+      "mobile": "space_1_mb.webp"
+    },
+    "mobileTextBelow": true,
+    "specs": [
+      {
+        "value": "83.5%",
+        "label": {
+          "ua": "Надвеликий коефіцієнт простору",
+          "en": "Ultra-high space utilization rate"
+        }
+      },
+      {
+        "value": "2925 мм",
+        "label": {
+          "ua": "Наддовга колісна база",
+          "en": "Ultra-long wheelbase"
+        }
+      },
+      {
+        "value": "953 мм",
+        "label": {
+          "ua": "Простір для ніг задніх пасажирів",
+          "en": "Rear legroom"
+        }
+      }
+    ]
+  },
+  "textBlockSpace": {
+    "title": {
+      "ua": "Великий простір універсалу. Ще комфортніше",
+      "en": "Estate wagon's great space. Even more comfortable"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "drivingAssistBlock": {
+    "title": {
+      "ua": "Їздить скрізь. Доступно будь-куди",
+      "en": "Drives Great Everywhere. Gets You Anywhere"
+    },
+    "images": [
+      {
+        "image": {
+          "desktop": "detector_3_pc.webp",
+          "tablet": "detector_3_pc.webp",
+          "mobile": "detector_3_mb.webp"
+        },
+        "title": {
+          "ua": "Навігаційний асистент D2D «від місця до місця»",
+          "en": "D2D Spot-to-Spot Navigation Assistance"
+        },
+        "description": {
+          "ua": "Розворот у три точки, запуск одним дотиком при зупинці вздовж дороги, екстрена зупинка SOS та розпізнавання спеціальних смуг",
+          "en": "Three-point U-turns, one-touch activation when pulling over, SOS emergency stop assist and special lane recognition"
+        }
+      },
+      {
+        "image": {
+          "desktop": "detector_4_pc.webp",
+          "tablet": "detector_4_pc.webp",
+          "mobile": "detector_4_mb.webp"
+        },
+        "title": {
+          "ua": "NZP навігаційний асистент повного охоплення",
+          "en": "NZP Full-Scene Navigation Pilot"
+        },
+        "description": {
+          "ua": "На міських дорогах: автостарт/стоп на світлофорах, автоматичне слідування та обгін, об'їзд перешкод, кільцеві розв'язки та ETC. На магістралях: автоматичний в'їзд/виїзд на трасу, круїз-контроль та зміна смуг за маршрутом",
+          "en": "Urban roads: traffic light auto stop/start, auto-following and overtaking, obstacle bypass, roundabouts and ETC. Highways: automatic on/off ramps, cruising and lane changes based on navigation route"
+        }
+      }
+    ]
+  },
+  "textBlockParking": {
+    "title": {
+      "ua": "Асистент паркування в усіх сценаріях",
+      "en": "All-Scenario Parking Assistance"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "parkingImageBlock": {
+    "image": {
+      "desktop": "detector_2_pc.webp",
+      "tablet": "detector_2_pc.webp",
+      "mobile": "detector_2_mb.webp"
+    },
+    "caption": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockBlueLamp": {
+    "title": {
+      "ua": "«Маленький синій індикатор»",
+      "en": "\"Little Blue Light\""
+    },
+    "subtitle": {
+      "ua": "Сигнальний ліхтар стану системи допоміжного водіння",
+      "en": "Driver Assistance Status Indicator"
+    }
+  },
+  "blueLampImageBlock": {
+    "image": {
+      "desktop": "detector_1_pc.webp",
+      "tablet": "detector_1_pc.webp",
+      "mobile": "detector_1_mb.webp"
+    },
+    "caption": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockSafety": {
+    "title": {
+      "ua": "Впевненість на дорозі",
+      "en": "Highway Confidence"
+    },
+    "subtitle": {
+      "ua": "Ще безпечніше",
+      "en": "Even Safer"
+    }
+  },
+  "safetyChipBlock": {
+    "image": {
+      "desktop": "plata_pc.webp",
+      "tablet": "plata_pc.webp",
+      "mobile": "plara_mb.webp"
+    },
+    "specs": [
+      {
+        "value": "Thor-U",
+        "label": {
+          "ua": "Чіп з обчислювальною потужністю 700 TOPS",
+          "en": "Chip with 700 TOPS computing power"
+        }
+      },
+      {
+        "value": {
+          "ua": "Лідар",
+          "en": "LiDAR"
+        },
+        "label": {
+          "ua": "31 сенсор системи допоміжного водіння",
+          "en": "31 advanced driving perception sensors"
+        }
+      }
+    ]
+  },
+  "textBlockOsDisplay": {
+    "title": {
+      "ua": "Zeekr AI OS7",
+      "en": "Zeekr AI OS7"
+    },
+    "subtitle": {
+      "ua": "Нативна AI операційна система розумного салону",
+      "en": "Native AI Smart Cockpit Operating System"
+    }
+  },
+  "osDisplayBlock": {
+    "image": {
+      "desktop": "display_pc.webp",
+      "tablet": "display_pc.webp",
+      "mobile": "display_mb.webp"
+    },
+    "navigation": [],
+    "buttons": [],
+    "specs": [
+      {
+        "value": {
+          "ua": "Нова естетика",
+          "en": "New Aesthetics"
+        },
+        "label": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "value": {
+          "ua": "Нова взаємодія",
+          "en": "New Interaction"
+        },
+        "label": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "value": {
+          "ua": "Новий інтелект",
+          "en": "New Intelligence"
+        },
+        "label": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockCabin": {
+    "title": {
+      "ua": "Розкішний комфортний салон",
+      "en": "Luxury Comfortable Cabin"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "cabinBlock": {
+    "items": [
+      {
+        "image": {
+          "desktop": "salon_1_pc.webp",
+          "mobile": "salon_1_mb.webp"
+        },
+        "title": {
+          "ua": "Оббивка стелі мікрофіброю",
+          "en": "Microfiber Headliner Covering"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": {
+          "desktop": "salon_2_mb.webp",
+          "mobile": "salon_2_mb.webp"
+        },
+        "title": {
+          "ua": "Сидіння з повнозернистої шкіри Monaco NAPPA",
+          "en": "Monaco NAPPA Full-Grain Leather Seats"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": {
+          "desktop": "salon_3_pc.webp",
+          "mobile": "salon_3_mb.webp"
+        },
+        "title": {
+          "ua": "Режим ліжка для переднього пасажира",
+          "en": "Co-Pilot Single-Bed Mode"
+        },
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockStorage": {
+    "title": {
+      "ua": "Простір для зберігання по всьому автомобілю",
+      "en": "Full-Vehicle Storage Space"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "storageSpaceBlock": {
+    "items": [
+      {
+        "image": {
+          "desktop": "storage_1_pc.webp",
+          "mobile": "storage_1_mb.webp"
+        },
+        "title": {
+          "ua": "Простір багажника",
+          "en": "Rear Trunk Space"
+        },
+        "description": {
+          "ua": "Електричний підйомний люк з максимальним кутом відкриття 69°. Максимальний розширений об'єм багажника — 1 737 л. Подвійні гачки кришки для підвішування проекційного екрана, кемпінгових ліхтарів, вішалки для одягу тощо",
+          "en": "Electric liftback with maximum 69° opening angle. Maximum expanded trunk volume of 1,737 L. Dual liftgate hooks for hanging projection screens, camping lights, clothes hangers and more"
+        }
+      },
+      {
+        "image": {
+          "desktop": "storage_2_pc.webp",
+          "mobile": "storage_2_mb.webp"
+        },
+        "title": {
+          "ua": "Ексклюзивний дизайн shooting brake",
+          "en": "Shooting Brake Exclusive Design"
+        },
+        "description": {
+          "ua": "Ексклюзивні місця для зберігання у стилі shooting brake — зокрема спеціальні отвори для лиж у задніх сидіннях",
+          "en": "Exclusive shooting brake storage spaces including ski-through holes in the rear seats"
+        }
+      },
+      {
+        "image": {
+          "desktop": "storage_3_pc.webp",
+          "mobile": "storage_3_mb.webp"
+        },
+        "title": {
+          "ua": "35 місць для зберігання",
+          "en": "35 Storage Spaces"
+        },
+        "description": {
+          "ua": "Включаючи електронний бардачок об'ємом 6,1 л, двоярусні відсіки центрального підлокітника та інше",
+          "en": "Including a 6.1 L electronic glove box, dual-layer center armrest storage compartments and more"
+        }
+      },
+      {
+        "image": {
+          "desktop": "storage_4_pc.webp",
+          "mobile": "storage_4_mb.webp"
+        },
+        "title": {
+          "ua": "Розумний електричний фаркоп",
+          "en": "Smart Electric Tow Hitch"
+        },
+        "description": {
+          "ua": "Горизонтальна вантажопідйомність — 1,6 т. Оснащений роз'ємами для живлення та передачі даних. Спеціальний режим буксирування: при аномальному розгойдуванні система стабілізації автоматично вмикається та вирівнює кузов",
+          "en": "Horizontal towing capacity of 1.6 t with power and data ports. Dedicated towing mode: when abnormal swaying occurs, the stability system automatically intervenes to stabilise the vehicle body"
+        }
+      }
+    ]
+  },
+  "textBlockAiChassis": {
+    "title": {
+      "ua": "Цифрове AI-шасі Haohan",
+      "en": "Haohan AI Digital Chassis"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "crashSafetyBlock": {
+    "mobileStack": true,
+    "background": "rgb(245, 246, 247)",
+    "items": [
+      {
+        "video": {
+          "desktop": "safety_1_video_pc.mp4",
+          "mobile": "safety_1_video_mb.mp4"
+        },
+        "poster": "safety_1_video_mb_placeholder.jpeg",
+        "title": {
+          "ua": "Активний захист блока розподілу від зсуву",
+          "en": "Active HV Box Drop Protection"
+        },
+        "description": {
+          "ua": "При сильному ударі ззаду блок розподілу високої напруги за мілісекунди відключає живлення та зміщується вниз, запобігаючи займанню від стиснення",
+          "en": "During a severe rear impact, the HV distribution box cuts power in milliseconds and slides downward to prevent compression-induced ignition"
+        }
+      },
+      {
+        "video": {
+          "desktop": "safety_2_video_mb.mp4",
+          "mobile": "safety_2_video_mb.mp4"
+        },
+        "poster": "safety_2_video_mb_placeholder.jpeg",
+        "title": {
+          "ua": "Технологія інвертованого поглинального резервуара",
+          "en": "Inverted Energy-Absorbing Reservoir Technology"
+        },
+        "description": {
+          "ua": "Виконує функцію «поглинача енергії», зменшує деформацію салону при зіткненні на 13%. Після зіткнення стиснений газ виводиться назовні, запобігаючи задусі та займанню в салоні",
+          "en": "Acts as a crumple zone, reducing cabin intrusion by 13%. After impact, pressurised gas is released outward to prevent suffocation and fire inside the cabin"
+        }
+      },
+      {
+        "image": {
+          "desktop": "safety_5_pc.webp",
+          "mobile": "safety_5_mb.webp"
+        },
+        "title": {
+          "ua": "Опускання електромотора",
+          "en": "Motor Submersion"
+        },
+        "description": {
+          "ua": "При фронтальному ударі електромотор захисно опускається вниз, зміщуючись від пасажирського відсіку та знижуючи ризик вторгнення для передніх пасажирів",
+          "en": "During a frontal impact, the motor drops down protectively, moving away from the passenger compartment to reduce intrusion risk for front-row occupants"
+        }
+      }
+    ]
+  },
+  "safetyDnaBlock": {
+    "title": {
+      "ua": "Генетика безпеки — невпинна еволюція",
+      "en": "Safety DNA, Continuously Evolving"
+    },
+    "images": [
+      {
+        "image": {
+          "desktop": "safety_1_pc.webp",
+          "tablet": "safety_1_pc.webp",
+          "mobile": "safety_1_mb.webp"
+        },
+        "title": {
+          "ua": "Контроль проколу в будь-яких умовах",
+          "en": "All-Scenario Blowout Control"
+        },
+        "description": {
+          "ua": "Стабільне керування при проколі на швидкості до 120 км/год",
+          "en": "Maintains control during blowouts at speeds up to 120 km/h"
+        }
+      },
+      {
+        "image": {
+          "desktop": "safety_2_pc.webp",
+          "tablet": "safety_2_pc.webp",
+          "mobile": "safety_2_mb.webp"
+        },
+        "title": {
+          "ua": "Дистанційні подушки безпеки",
+          "en": "Far-Mounted Safety Airbags"
+        },
+        "description": {
+          "ua": "39 л наддовгого об'єму надування — ефективно захищають пасажирів переднього ряду від удару об центральний підлокітник та оббивку при перекиданні та бокових зіткненнях",
+          "en": "39-litre ultra-large inflation volume effectively reduces front-row occupant contact with the centre armrest and interior trim during rollover and side-impact accidents"
+        }
+      },
+      {
+        "image": {
+          "desktop": "safety_3_pc.webp",
+          "tablet": "safety_3_pc.webp",
+          "mobile": "safety_3_mb.webp"
+        },
+        "title": {
+          "ua": "Чотириступеневий захист дверей",
+          "en": "Four-Layer Door Safety Protection"
+        },
+        "description": {
+          "ua": "Безпека конструкції кузова / Безпека низьковольтного живлення / Безпека розблокування дверей / Механічне резервне копіювання",
+          "en": "Body structure safety / Low-voltage power safety / Door unlock safety / Mechanical backup safety"
+        }
+      }
+    ]
+  },
+  "haohanArmorBlock": {
+    "background": "rgb(245, 246, 247)",
+    "title": {
+      "ua": "Броня безпеки Haohan",
+      "en": "Haohan Safety Armor"
+    },
+    "image": {
+      "desktop": "carcas_pc.webp",
+      "tablet": "carcas_pc.webp",
+      "mobile": "carcas_mb.webp"
+    },
+    "stats": [
+      {
+        "value": {
+          "ua": "8+9",
+          "en": "8+9"
+        },
+        "label": {
+          "ua": "Конструкція безпеки кузова",
+          "en": "Body Safety Structure"
+        }
+      },
+      {
+        "value": {
+          "ua": "«Мотузка»",
+          "en": "«Clothesline»"
+        },
+        "label": {
+          "ua": "Гнучка алюмінієва екструзійна конструкція",
+          "en": "Flexible Extruded Aluminum Structure"
+        }
+      },
+      {
+        "value": {
+          "ua": "Монолітне лиття",
+          "en": "Integrated Die-Casting"
+        },
+        "label": {
+          "ua": "Алюмінієвий задній кузов",
+          "en": "Rear Aluminum Body"
+        }
+      },
+      {
+        "value": {
+          "ua": "«Десять клітинок»",
+          "en": "«Ten-Grid»"
+        },
+        "label": {
+          "ua": "Антиударні балки порогів",
+          "en": "Sill Anti-Collision Beams"
+        }
+      }
+    ]
+  },
+  "textBlockActiveSafety": {
+    "title": {
+      "ua": "Активна безпека",
+      "en": "Active Safety"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "gAesDetectBlock": {
+    "image": {
+      "desktop": "detector_5_pc.webp",
+      "tablet": "detector_5_pc.webp",
+      "mobile": "detector_5_mb.webp"
+    },
+    "title": {
+      "ua": "G-AES — автоматичне аварійне рульове управління при виявленні перешкод",
+      "en": "G-AES General Obstacle Automatic Emergency Steering"
+    },
+    "subtitle": {
+      "ua": "Безперервне автоматичне розпізнавання та об'їзд перешкод на швидкості до 130 км/год",
+      "en": "Continuously identifies and avoids obstacles at speeds up to 130 km/h"
+    }
+  },
+  "aiChassisBlock": {
+    "background": "rgb(235, 232, 227)",
+    "items": [
+      {
+        "image": {
+          "desktop": "ai_1_pc.webp",
+          "mobile": "ai_1_mb.webp"
+        },
+        "title": {
+          "ua": "Інтелектуальний центр Dinghai",
+          "en": "Dinghai Smart Core"
+        },
+        "description": {
+          "ua": "У режимі реального часу регулює обчислювальні можливості та сенсорне сприйняття, через власний AI-алгоритм шасі координує роботу підвіски, трансмісії, кабіни та інших виконавчих пристроїв",
+          "en": "Real-time regulation of computing and perception capabilities, using proprietary chassis AI algorithm to coordinate suspension, powertrain, cabin and other actuators"
+        }
+      },
+      {
+        "image": {
+          "desktop": "ai_2_pc.webp",
+          "mobile": "ai_2_mb.webp"
+        },
+        "title": {
+          "ua": "6 режимів керування",
+          "en": "6 driving modes"
+        },
+        "description": {
+          "ua": "Комфортний, економічний, спортивний, снігова дорога, персональний, Sport+",
+          "en": "Comfort, Economy, Sport, Snow, Custom, Sport+"
+        }
+      },
+      {
+        "image": {
+          "desktop": "ai_3_pc.webp",
+          "mobile": "ai_3_mb.webp"
+        },
+        "title": {
+          "ua": "Різноманітні сценарні режими",
+          "en": "Multiple scenario modes"
+        },
+        "description": {
+          "ua": "Режим суперощадливого споживання, дрейф одним дотиком, занос одним дотиком, гонки на льоду тощо",
+          "en": "Super energy-saving mode, one-touch drift, one-touch slide, ice racing and more"
         }
       }
     ]

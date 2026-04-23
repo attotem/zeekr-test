@@ -26,7 +26,7 @@
 
       <div v-if="stats.length" class="car-battery-safety-block__stats">
         <div v-for="(s, idx) in stats" :key="idx" class="car-battery-safety-block__stat">
-          <div class="car-battery-safety-block__value">{{ s.value }}</div>
+          <div class="car-battery-safety-block__value">{{ getText(s.value) }}</div>
           <div class="car-battery-safety-block__label">{{ getText(s.label) }}</div>
         </div>
       </div>

@@ -4,7 +4,7 @@
       <h2 v-if="getText(blockData.title)" class="car-two-images-block__title">
         {{ getText(blockData.title) }}
       </h2>
-      <div class="car-two-images-block__grid">
+      <div class="car-two-images-block__grid" :class="`car-two-images-block__grid--cols-${images.length}`">
         <div
           v-for="(item, index) in images"
           :key="index"
@@ -155,6 +155,10 @@ onMounted(() => {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+
+    &--cols-1 { grid-template-columns: 1fr; }
+    &--cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    &--cols-4 { grid-template-columns: repeat(4, 1fr); }
   }
 
   &__item {

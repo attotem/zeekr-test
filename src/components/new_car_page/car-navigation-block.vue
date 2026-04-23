@@ -24,28 +24,28 @@
           :key="index"
           class="car-navigation-block__spec"
         >
-          <div class="car-navigation-block__spec-value">{{ spec.value }}</div>
+          <div class="car-navigation-block__spec-value">{{ getText(spec.value) }}</div>
           <div class="car-navigation-block__spec-label">{{ getText(spec.label) }}</div>
         </div>
       </div>
     </div>
 
-    <div
+
+  </section>
+
+  <div
       v-if="mobileTextBelow"
       class="car-navigation-block__mobile-bottom"
     >
-      <div class="car-navigation-block__specs car-navigation-block__specs--mobile-below">
         <div
           v-for="(spec, index) in blockData.specs"
           :key="`mobile-${index}`"
           class="car-navigation-block__spec"
         >
-          <div class="car-navigation-block__spec-value">{{ spec.value }}</div>
+          <div class="car-navigation-block__spec-value">{{ getText(spec.value) }}</div>
           <div class="car-navigation-block__spec-label">{{ getText(spec.label) }}</div>
-        </div>
       </div>
     </div>
-  </section>
 </template>
 
 <script setup>
@@ -208,6 +208,7 @@ const getText = (textObj) => {
     &__specs {
       gap: 16px;
       flex-wrap: wrap;
+      display: none;
     }
 
     &__specs--mobile-below {
@@ -225,9 +226,10 @@ const getText = (textObj) => {
     }
 
     &__spec-value {
-      font-size: 34px;
+      font-size: 24px;
       color: #111;
       margin-bottom: 6px;
+      font-weight: 400;
     }
 
     &__spec-label {

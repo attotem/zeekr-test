@@ -17,13 +17,18 @@
         >
         </button>
 
-        <div ref="viewportEl" class="car-slider-block__viewport">
+        <div
+          ref="viewportEl"
+          class="car-slider-block__viewport"
+          @touchstart.passive="onTouchStart"
+          @touchmove.prevent="onTouchMove"
+          @touchend="onTouchEnd"
+        >
           <div
             ref="trackEl"
             class="car-slider-block__track"
-            :class="{ 'is-animating': isAnimating && !isDesktopStaticMode }"
+            :class="{ 'is-animating': isAnimating && !isDesktopStaticMode && !isTouching }"
             :style="{ transform: `translateX(${effectiveTrackTranslatePx}px)` }"
-            @transitionend="handleTransitionEnd"
           >
             <div
               v-for="slot in visibleSlots"
@@ -67,6 +72,18 @@
         >
         </button>
       </div>
+
+      <!-- Mobile dots -->
+      <div v-if="isMobile && slides.length > 1" class="car-slider-block__dots">
+        <button
+          v-for="(_, i) in slides"
+          :key="i"
+          type="button"
+          class="car-slider-block__dot"
+          :class="{ 'car-slider-block__dot--active': active === i }"
+          @click="setActiveIndex(i)"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -96,6 +113,8 @@ watch(slides, (s) => {
   if (!s?.length) active.value = 0
   else if (active.value > s.length - 1) active.value = 0
 }, { immediate: true })
+
+
 
 const getText = (textObj) => {
   if (!textObj) return ''
@@ -140,7 +159,6 @@ function preloadImage(src) {
   })
 }
 
-// Preload all images immediately for smooth transitions (non-blocking)
 onMounted(() => {
   // Preload all images in parallel without blocking rendering
   slides.value.forEach((s) => {
@@ -198,7 +216,6 @@ const canPrev = computed(() => !isDesktopStaticMode.value && active.value > 0)
 const canNext = computed(() => !isDesktopStaticMode.value && active.value < slides.value.length - 1)
 
 const isAnimating = ref(false)
-const pendingDir = ref(null) // 'prev' | 'next' | null
 const trackTranslatePx = ref(0)
 const effectiveTrackTranslatePx = computed(() => (isDesktopStaticMode.value ? 0 : trackTranslatePx.value))
 
@@ -229,16 +246,6 @@ function getViewportWidthPx() {
   return el.getBoundingClientRect().width || 0
 }
 
-function translateToCenterSlot(slotIndex) {
-  // slotIndex: 0=left, 1=center(active), 2=right, 3=right-right
-  const vw = getViewportWidthPx()
-  const sw = getSlideWidthPx()
-  const gap = getGapPx()
-  if (!vw || !sw) return 0
-  const xCenter = vw / 2
-  const slotCenter = slotIndex * (sw + gap) + sw / 2
-  return xCenter - slotCenter
-}
 
 function translateToActiveSlide() {
   // For mobile: center the active slide directly
@@ -251,21 +258,12 @@ function translateToActiveSlide() {
   return xCenter - slideCenter
 }
 
-function recenterTrack(skipAnimation = false) {
+function recenterTrack() {
   if (isDesktopStaticMode.value) {
     trackTranslatePx.value = 0
     return
   }
-
-  // If skipAnimation is true, we're recentering after transition
-  // so isAnimating should already be false
-  if (isMobile.value) {
-    // On mobile, center the active slide directly
-    trackTranslatePx.value = translateToActiveSlide()
-  } else {
-    // On desktop, keep the active slide (middle slot) centered inside viewport
-    trackTranslatePx.value = translateToCenterSlot(1)
-  }
+  trackTranslatePx.value = translateToActiveSlide()
 }
 
 function scheduleRecenter() {
@@ -280,53 +278,7 @@ function scheduleRecenter() {
   })
 }
 
-function handleTransitionEnd(e) {
-  if (!isAnimating.value) return
-  if (e.propertyName !== 'transform') return
 
-  const len = slides.value.length
-  if (!len) {
-    isAnimating.value = false
-    pendingDir.value = null
-    recenterTrack()
-    return
-  }
-
-  // On mobile, update active and recenter
-  if (isMobile.value) {
-    const dir = pendingDir.value
-    if (dir === 'next') active.value = Math.min(len - 1, active.value + 1)
-    if (dir === 'prev') active.value = Math.max(0, active.value - 1)
-    
-    isAnimating.value = false
-    pendingDir.value = null
-    recenterTrack(true)
-    return
-  }
-
-  // Desktop: Update active index first
-  const dir = pendingDir.value
-  if (dir === 'next') active.value = Math.min(len - 1, active.value + 1)
-  if (dir === 'prev') active.value = Math.max(0, active.value - 1)
-
-  // Wait for DOM to update with new slots, then recenter
-  nextTick(() => {
-    isAnimating.value = false
-    pendingDir.value = null
-    
-    // Recenter without animation to keep 3 images visible
-    recenterTrack(true)
-  })
-}
-
-const leftIndex = computed(() => (active.value > 0 ? active.value - 1 : null))
-const rightIndex = computed(() => (active.value < slides.value.length - 1 ? active.value + 1 : null))
-const rightRightIndex = computed(() => (active.value < slides.value.length - 2 ? active.value + 2 : null))
-
-const leftSlide = computed(() => (leftIndex.value === null ? null : slides.value[leftIndex.value]))
-const activeSlide = computed(() => (slides.value.length ? slides.value[active.value] : null))
-const rightSlide = computed(() => (rightIndex.value === null ? null : slides.value[rightIndex.value]))
-const rightRightSlide = computed(() => (rightRightIndex.value === null ? null : slides.value[rightRightIndex.value]))
 
 onMounted(() => {
   if (typeof window !== 'undefined') {
@@ -341,15 +293,6 @@ onMounted(() => {
 })
 
 const visibleSlots = computed(() => {
-  // On mobile, show all slides for proper sliding
-  if (isMobile.value) {
-    return slides.value.map((slide, index) => ({
-      key: `slide-${index}-${active.value}`,
-      role: index === active.value ? 'is-active' : 'is-hidden',
-      slide: slide
-    }))
-  }
-
   // Static desktop mode: render all slides in one row
   if (isDesktopStaticMode.value) {
     return slides.value.map((slide, index) => ({
@@ -358,48 +301,16 @@ const visibleSlots = computed(() => {
       slide
     }))
   }
-  
-  // On desktop, show 3 slots (left, active, right) - always show 3
-  const slots = []
-  
-  // Left slot
-  if (leftIndex.value !== null) {
-    slots.push({ 
-      key: `left-${leftIndex.value}-${active.value}`, 
-      role: 'is-left', 
-      slide: leftSlide.value 
-    })
-  } else {
-    slots.push({ 
-      key: `left-empty-${active.value}`, 
-      role: 'is-empty', 
-      slide: null 
-    })
-  }
-  
-  // Active slot
-  slots.push({ 
-    key: `active-${active.value}`, 
-    role: 'is-active', 
-    slide: activeSlide.value 
-  })
-  
-  // Right slot
-  if (rightIndex.value !== null) {
-    slots.push({ 
-      key: `right-${rightIndex.value}-${active.value}`, 
-      role: 'is-right', 
-      slide: rightSlide.value 
-    })
-  } else {
-    slots.push({ 
-      key: `right-empty-${active.value}`, 
-      role: 'is-empty', 
-      slide: null 
-    })
-  }
-  
-  return slots
+
+  // Mobile and normal desktop: all slides always rendered with stable keys
+  return slides.value.map((slide, index) => ({
+    key: `slide-${index}`,
+    role: index === active.value ? 'is-active'
+        : index === active.value - 1 ? 'is-left'
+        : index === active.value + 1 ? 'is-right'
+        : 'is-far',
+    slide
+  }))
 })
 
 watch([slides, active], () => {
@@ -424,102 +335,83 @@ onBeforeUnmount(() => {
   if (resizeObserver) resizeObserver.disconnect()
 })
 
-// Preload image before animation and ensure it's ready
-async function preloadImageForIndex(index) {
-  if (index < 0 || index >= slides.value.length) return
-  const src = resolveImage(slides.value[index].image)
-  if (!src) return
-  
-  // Check if already loaded
-  if (loadedImages.has(src)) {
-    // Double check by verifying image is in cache
-    const img = new Image()
-    img.src = src
-    if (img.complete) return
-  }
-  
-  // Use link preload for immediate browser action
-  const link = document.createElement('link')
-  link.rel = 'preload'
-  link.as = 'image'
-  link.href = src
-  link.fetchPriority = 'high'
-  document.head.appendChild(link)
-  
-  await preloadImage(src).finally(() => {
-    if (document.head.contains(link)) {
-      document.head.removeChild(link)
-    }
-  })
-  
-  // Additional check - ensure image is really loaded
-  return new Promise((resolve) => {
-    const img = new Image()
-    img.onload = () => resolve()
-    img.onerror = () => resolve() // Continue even on error
-    img.src = src
-    // Timeout after 100ms to not block too long
-    setTimeout(resolve, 100)
-  })
+
+// Touch / swipe support
+const touchStartX = ref(0)
+const touchStartY = ref(0)
+const touchCurrentX = ref(0)
+const isTouching = ref(false)
+const touchLocked = ref(false) // locked to vertical scroll — don't intercept
+
+function onTouchStart(e) {
+  if (isDesktopStaticMode.value || isAnimating.value) return
+  touchStartX.value = e.touches[0].clientX
+  touchStartY.value = e.touches[0].clientY
+  touchCurrentX.value = e.touches[0].clientX
+  isTouching.value = true
+  touchLocked.value = false
 }
 
-// override prev/next to use pixel animation targets
-const prev = async () => {
-  if (!canPrev.value || isAnimating.value || isDesktopStaticMode.value) return
-  
-  // Preload image before animation
-  const targetIndex = active.value - 1
-  await preloadImageForIndex(targetIndex)
-  
-  pendingDir.value = 'prev'
-  isAnimating.value = true
-  
+function onTouchMove(e) {
+  if (!isTouching.value || isDesktopStaticMode.value) return
+  const dx = e.touches[0].clientX - touchStartX.value
+  const dy = e.touches[0].clientY - touchStartY.value
+
+  // If first significant movement is vertical — let page scroll
+  if (!touchLocked.value && Math.abs(dy) > Math.abs(dx) + 4) {
+    isTouching.value = false
+    return
+  }
+  touchLocked.value = true
+  touchCurrentX.value = e.touches[0].clientX
+
   if (isMobile.value) {
-    // On mobile, calculate target position for previous slide
-    const vw = getViewportWidthPx()
-    const sw = getSlideWidthPx()
-    const gap = getGapPx()
-    if (vw && sw) {
-      const xCenter = vw / 2
-      const targetSlideCenter = targetIndex * (sw + gap) + sw / 2
-      trackTranslatePx.value = xCenter - targetSlideCenter
-    }
-  } else {
-    // On desktop, animate so left slot moves into center
-    trackTranslatePx.value = translateToCenterSlot(0)
+    const resistance = (dx > 0 && active.value === 0) || (dx < 0 && active.value === slides.value.length - 1) ? 0.25 : 1
+    trackTranslatePx.value = translateToActiveSlide() + dx * resistance
   }
 }
 
-const next = async () => {
-  if (!canNext.value || isAnimating.value || isDesktopStaticMode.value) return
-  
-  // Preload image before animation
-  const targetIndex = active.value + 1
-  await preloadImageForIndex(targetIndex)
-  
-  pendingDir.value = 'next'
+function onTouchEnd() {
+  if (!isTouching.value) return
+  isTouching.value = false
+  touchLocked.value = false
+
+  const delta = touchCurrentX.value - touchStartX.value
+  const threshold = 48
+
+  if (delta < -threshold && canNext.value) animateTo(active.value + 1)
+  else if (delta > threshold && canPrev.value) animateTo(active.value - 1)
+  else recenterTrack()
+}
+
+function setActiveIndex(index) {
+  const clamped = Math.max(0, Math.min(index, slides.value.length - 1))
+  animateTo(clamped)
+}
+
+function animateTo(targetIndex) {
+  if (isAnimating.value) return
   isAnimating.value = true
-  
-  if (isMobile.value) {
-    // On mobile, calculate target position for next slide
-    const vw = getViewportWidthPx()
-    const sw = getSlideWidthPx()
-    const gap = getGapPx()
-    if (vw && sw) {
-      const xCenter = vw / 2
-      const targetSlideCenter = targetIndex * (sw + gap) + sw / 2
-      trackTranslatePx.value = xCenter - targetSlideCenter
-    }
-  } else {
-    // Wait for DOM to update with new slide data
-    await nextTick()
-    
-    // Small delay to ensure image is rendered
-    await new Promise(resolve => requestAnimationFrame(resolve))
-    
-    // animate so right slot moves into center
-    trackTranslatePx.value = translateToCenterSlot(2)
-  }
+  active.value = targetIndex
+
+  // Wait for Vue to flush DOM (active change → role classes update),
+  // then wait one paint frame before changing transform so CSS transition fires
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      recenterTrack()
+      setTimeout(() => { isAnimating.value = false }, 420)
+    })
+  })
+}
+
+const prev = () => {
+  if (!canPrev.value || isAnimating.value) return
+  animateTo(active.value - 1)
+}
+
+const next = () => {
+  if (!canNext.value || isAnimating.value) return
+  animateTo(active.value + 1)
 }
 </script>
 
@@ -566,12 +458,13 @@ const next = async () => {
     padding-left: calc((100% - (4 * calc((100% - 66px) / 4) + 3 * 22px)) / 2);
   }
   
-  &__track:has(.is-hidden) {
-    padding-left: 0;
-  }
 
   &__track.is-animating {
-    transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 380ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  &__dots {
+    display: none;
   }
 
   &__slide {
@@ -611,11 +504,7 @@ const next = async () => {
     display: block;
   }
 
-  &__slide.is-empty &__image {
-    opacity: 0;
-  }
-
-  &__image-wrap {
+&__image-wrap {
     will-change: contents;
   }
 
@@ -647,13 +536,7 @@ const next = async () => {
     transform: scale(1);
   }
 
-  .is-empty {
-    opacity: 0;
-    transform: scale(1);
-    pointer-events: none;
-  }
-
-  .is-hidden {
+  .is-far {
     opacity: 0;
     pointer-events: none;
   }
@@ -754,15 +637,12 @@ const next = async () => {
     &__track {
       gap: 18px;
       transform: translateX(0px);
+      padding-left: 0;
     }
 
     &__slide {
-      flex: 0 0 100%;
+      flex: 0 0 calc(100% - 32px);
       min-width: 0;
-    }
-
-    &__track {
-      padding-left: 0;
     }
 
     .car-slider-block__caption {
@@ -778,19 +658,14 @@ const next = async () => {
       max-width: 100%;
     }
 
-    .is-left,
-    .is-right,
-    .is-empty {
-      display: none;
-    }
-    
-    .is-hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    
     .is-active {
       opacity: 1;
+    }
+
+    .is-left,
+    .is-right,
+    .is-far {
+      opacity: 0.4;
     }
 
     &__arrow--left {
@@ -799,6 +674,31 @@ const next = async () => {
 
     &__arrow--right {
       right: 8px;
+    }
+
+    &__dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    &__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(17, 17, 17, 0.2);
+      padding: 0;
+      cursor: pointer;
+      transition: background 250ms ease, transform 250ms ease, width 250ms ease;
+
+      &--active {
+        background: #111;
+        width: 18px;
+        border-radius: 3px;
+      }
     }
   }
 }
