@@ -34,6 +34,7 @@
           v-if="block.shouldRender"
           class="block-appear"
           v-appear
+          :data-block-key="block.dataKey"
         >
          
           <component
@@ -56,14 +57,16 @@
       </template>
 
       
-      <CarVersionsCards
-        v-if="displayCarVersions"
-        :title="displayCarVersionsTitle"
-        :versions="displayCarVersions"
-        :icons="displayCarVersionsIcons"
-        :version-images="pageData?.versionsImages || {}"
-        :car-id="carId"
-      />
+      <div data-block-key="techSpecsBlock">
+        <CarVersionsCards
+          v-if="displayCarVersions"
+          :title="displayCarVersionsTitle"
+          :versions="displayCarVersions"
+          :icons="displayCarVersionsIcons"
+          :version-images="pageData?.versionsImages || {}"
+          :car-id="carId"
+        />
+      </div>
 
       <ModalContact
         :heading="i18n.modal?.[modalType]"
@@ -395,7 +398,10 @@ const visibleBlocks = computed(() => {
   })
 })
 
-const handleHeroButtonClick = (type) => {
+const handleHeroButtonClick = (btn) => {
+  const type = typeof btn === 'string' ? btn : btn?.type
+  const target = typeof btn === 'object' ? btn?.target : null
+
   if (type === 'test_drive') {
     isModalOpened.value = i18n.modal.testDrive
     modalType.value = 'testDrive'
@@ -406,6 +412,9 @@ const handleHeroButtonClick = (type) => {
     mailObj.value = { type: 'order', page: 'order' }
   } else if (type === 'price_list' && priceListUrl.value) {
     window.open(sameOriginMediaUrl(priceListUrl.value), '_blank', 'noopener,noreferrer')
+  } else if (type === 'scroll_to' && target) {
+    const el = document.querySelector(`[data-block-key="${target}"]`)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   } else if (type === 'scroll_down') {
     window.scrollBy({ top: Math.round(window.innerHeight * 0.85), behavior: 'smooth' })
   }

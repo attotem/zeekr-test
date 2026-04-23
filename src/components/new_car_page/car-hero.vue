@@ -89,7 +89,7 @@
             'btn--white': button.style === 'white',
             'btn--orange': button.style === 'orange'
           }"
-          @click="handleButtonClick(button.type)"
+          @click="handleButtonClick(button)"
         >
           {{ getText(button.text) }}
         </button>
@@ -222,8 +222,8 @@ const getText = (textObj) => {
   return ''
 }
 
-const handleButtonClick = (type) => {
-  emit('buttonClick', type)
+const handleButtonClick = (button) => {
+  emit('buttonClick', button)
 }
 
 const onPlaceholderLoaded = () => {

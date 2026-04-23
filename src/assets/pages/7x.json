@@ -1,37 +1,133 @@
 {
   "layout": [
-    { "type": "hero", "dataKey": "hero" },
-    { "type": "textBlock", "dataKey": "textBlock" },
-    { "type": "navigationBlock", "dataKey": "navigationBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlock360" },
-    { "type": "color360Block", "dataKey": "color360Block" },
-    { "type": "color360Block", "dataKey": "color360BlockKz" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockInside" },
-    { "type": "insideBlock", "dataKey": "insideBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlock2" },
-    { "type": "designBlock", "dataKey": "designBlock" },
-    { "type": "sliderBlock", "dataKey": "sliderBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockStargate" },
-    { "type": "stargateBlock", "dataKey": "stargateBlock" },
-    { "type": "sliderBlock", "dataKey": "doorSliderBlock" },
-    { "type": "textBlock", "dataKey": "spaceTextBlock" },
-    { "type": "videoBlock", "dataKey": "spaceVideoBlock" },
-    { "type": "textSimpleBlock", "dataKey": "spaceComfortTextBlock" },
-    { "type": "spaceBlock", "dataKey": "spaceBlock" },
-    { "type": "textSimpleBlock", "dataKey": "storageTextBlock" },
-    { "type": "imageCaptionBlock", "dataKey": "storageImageBlock" },
-    { "type": "storageBlock", "dataKey": "storageBlock" },
-    { "type": "cardsBlock", "dataKey": "cardsBlock" },
-    { "type": "imageTextBlock", "dataKey": "refrigeratorBlock" },
-    { "type": "imageTextBlock", "dataKey": "roofRackBlock" },
-    { "type": "videoBlock", "dataKey": "comfortVideoBlock" },
-    { "type": "detailsBlock", "dataKey": "detailsBlock" },
-    { "type": "mvpBlock", "dataKey": "mvpBlock" },
-    { "type": "storageBlock", "dataKey": "seatsSliderBlock" },
-    { "type": "textBlock", "dataKey": "performanceTextBlock" },
-    { "type": "videoBlock", "dataKey": "performanceVideoBlock" },
-    { "type": "textSimpleBlock", "dataKey": "rangeTextBlock" },
-    { "type": "batteryBlock", "dataKey": "batteryBlock" }
+    {
+      "type": "hero",
+      "dataKey": "hero"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlock"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "navigationBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlock360"
+    },
+    {
+      "type": "color360Block",
+      "dataKey": "color360Block"
+    },
+    {
+      "type": "color360Block",
+      "dataKey": "color360BlockKz"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockInside"
+    },
+    {
+      "type": "insideBlock",
+      "dataKey": "insideBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlock2"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "designBlock"
+    },
+    {
+      "type": "sliderBlock",
+      "dataKey": "sliderBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockStargate"
+    },
+    {
+      "type": "stargateBlock",
+      "dataKey": "stargateBlock"
+    },
+    {
+      "type": "sliderBlock",
+      "dataKey": "doorSliderBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "spaceTextBlock"
+    },
+    {
+      "type": "videoBlock",
+      "dataKey": "spaceVideoBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "spaceComfortTextBlock"
+    },
+    {
+      "type": "spaceBlock",
+      "dataKey": "spaceBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "storageTextBlock"
+    },
+    {
+      "type": "imageCaptionBlock",
+      "dataKey": "storageImageBlock"
+    },
+    {
+      "type": "storageBlock",
+      "dataKey": "storageBlock"
+    },
+    {
+      "type": "cardsBlock",
+      "dataKey": "cardsBlock"
+    },
+    {
+      "type": "imageTextBlock",
+      "dataKey": "refrigeratorBlock"
+    },
+    {
+      "type": "imageTextBlock",
+      "dataKey": "roofRackBlock"
+    },
+    {
+      "type": "videoBlock",
+      "dataKey": "comfortVideoBlock"
+    },
+    {
+      "type": "detailsBlock",
+      "dataKey": "detailsBlock"
+    },
+    {
+      "type": "mvpBlock",
+      "dataKey": "mvpBlock"
+    },
+    {
+      "type": "storageBlock",
+      "dataKey": "seatsSliderBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "performanceTextBlock"
+    },
+    {
+      "type": "videoBlock",
+      "dataKey": "performanceVideoBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "rangeTextBlock"
+    },
+    {
+      "type": "batteryBlock",
+      "dataKey": "batteryBlock"
+    }
   ],
   "hero": {
     "title": {
@@ -55,6 +151,15 @@
           "en": "Book a Test Drive"
         },
         "type": "test_drive",
+        "style": "white"
+      },
+      {
+        "text": {
+          "ua": "Технічні характеристики",
+          "en": "Technical Specifications"
+        },
+        "type": "scroll_to",
+        "target": "techSpecsBlock",
         "style": "white"
       }
     ],
@@ -417,7 +522,7 @@
     "slides": [
       {
         "image": "slider/7x_slider_1.webp",
-        "caption": {    
+        "caption": {
           "uk": "Динамічний дизайн передньої частини",
           "en": "Dynamic front design"
         }
@@ -481,7 +586,7 @@
         "label": {
           "uk": "Привітальні світлові повідомлення",
           "en": "Welcome light messages"
-        } 
+        }
       },
       {
         "value": "Canvas",
@@ -545,7 +650,7 @@
       "en": ""
     }
   },
-  "textBlock2": {   
+  "textBlock2": {
     "title": {
       "ua": "Елегантний силует кузова",
       "en": "Elegant car body contour"
@@ -666,7 +771,7 @@
     "text2": {
       "title": {
         "uk": "Величезний простір на задньому сидінні",
-      "en": "Huge space on the rear seat"
+        "en": "Huge space on the rear seat"
       },
       "items": [
         {
@@ -746,7 +851,7 @@
         "description": {
           "uk": "Зручний відсік у передніх дверах",
           "en": "Convenient compartment in front doors"
-        } 
+        }
       }
     ]
   },
@@ -870,7 +975,7 @@
         },
         "description": {
           "uk": "Стеля салону та стійки оббиті алькантарою, яка ніжна на дотик, як високогірний кашемір, і це підвищує розкішний вигляд інтер'єру",
-          "en": "The cabin ceiling and pillars are covered in suede, with a delicate and skin-friendly feel like high-mountain cashmere, enhancing the luxurious texture of the interior"  
+          "en": "The cabin ceiling and pillars are covered in suede, with a delicate and skin-friendly feel like high-mountain cashmere, enhancing the luxurious texture of the interior"
         }
       },
       {
@@ -888,7 +993,7 @@
         "image": "7x_details_4.webp",
         "title": {
           "uk": "Monaco NAPPA шкіра",
-            "en": "Monaco NAPPA leather"
+          "en": "Monaco NAPPA leather"
         },
         "description": {
           "uk": "Комфортність збільшена на 20%, приємна на дотик та стійка до забруднень",
@@ -1012,8 +1117,6 @@
       "uk": "Електричний SUV, у якому витончена естетика поєднується з витривалістю для великих подорожей",
       "en": "Pure electric SUV can also be poetic and distant"
     }
-
-    
   },
   "performanceVideoBlock": {
     "video": "7x_video4.mp4",
@@ -1063,7 +1166,7 @@
             "value": "10.5 хв",
             "label": {
               "uk": "Час зарядки 10%-80%²",
-              "en": "Charging time 10%-80%²"  
+              "en": "Charging time 10%-80%²"
             }
           },
           {
@@ -1128,7 +1231,6 @@
       }
     ]
   },
-  
   "color360BlockKz": {
     "folderName": "360_kz",
     "folderMobile": "360_kz",

@@ -115,7 +115,7 @@ const getText = (textObj) => {
 }
 
 const onButtonClick = () => {
-  emit('buttonClick', blockData.value.button?.type || 'scroll_down')
+  emit('buttonClick', blockData.value.button || { type: 'scroll_down' })
 }
 </script>
 

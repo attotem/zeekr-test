@@ -1,60 +1,221 @@
 {
   "layout": [
-    { "type": "hero", "dataKey": "hero" },
-    { "type": "textBlock", "dataKey": "textBlock" },
-    { "type": "navigationBlock", "dataKey": "navigationBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlock360" },
-    { "type": "color360Block", "dataKey": "color360Block" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockCarbon" },
-    { "type": "twoImagesBlock", "dataKey": "carbonImagesBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockCargo" },
-    { "type": "imageTextBottomBlock", "dataKey": "cargoBlock" },
-    { "type": "textBlock", "dataKey": "textBlockStargateMusic" },
-    { "type": "videoBlock", "dataKey": "cealingVideoBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockInside" },
-    { "type": "insideBlock", "dataKey": "insideBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockSky" },
-    { "type": "videoTextBlock", "dataKey": "skyVideosBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockAudio" },
-    { "type": "imageWithTextBelow", "dataKey": "audioBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockChair" },
-    { "type": "imageWithTextBelow", "dataKey": "chairBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockMassage" },
-    { "type": "massageBlock", "dataKey": "massageBlock" },
-    { "type": "videoBlock", "dataKey": "massageVideoBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockLight" },
-    { "type": "stargateBlock", "dataKey": "lightVideoBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockMaterials" },
-    { "type": "materialsBlock", "dataKey": "materialsBlock" },
-    { "type": "screensBlock", "dataKey": "screensBlock" },
-    { "type": "luxuryBlock", "dataKey": "luxuryBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockStandard" },
-    { "type": "sliderBlock", "dataKey": "standardSliderBlock" },
-    { "type": "textBlock", "dataKey": "textBlockPerformance" },
-    { "type": "textImageBlock", "dataKey": "batteryImageBlock" },
-    { "type": "batteryBlock", "dataKey": "batteryBlock" },
-    { "type": "titleTwoSubtitlesBlock", "dataKey": "batteryFastChargeBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockDriveSystem" },
-
-    { "type": "performanceBlock", "dataKey": "performanceBlock" },
-    { "type": "textBlock", "dataKey": "textBlockChassis" },
-    { "type": "designBlock", "dataKey": "chassisBlock" },
-    { "type": "designBlock", "dataKey": "aiChassisBlock" },
-    { "type": "imageTextOverlayBlock", "dataKey": "energyBlock" },
-    { "type": "textBlock", "dataKey": "textBlockIntelligenceSafety" },
-    { "type": "designBlock", "dataKey": "securityBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockCabin" },
-    { "type": "cabinFunctionsBlock", "dataKey": "cabinBlock" },
-    { "type": "textBlock", "dataKey": "textBlockSafetySystem" },
-    { "type": "luxuryBlock", "dataKey": "securityLuxuryBlock" },
-    { "type": "twoImagesBlock", "dataKey": "securityTwoImagesBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockParkingKing" },
-    { "type": "sliderBlock", "dataKey": "parkingSliderBlock" },
-    { "type": "textBlock", "dataKey": "textBlockHighwayTank" },
-    { "type": "passiveSecurityBlock", "dataKey": "passiveSecurityBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockActiveIntelligentSafety" },
-    { "type": "twoImagesBlock", "dataKey": "activeIntelligentSafetyBlock" },
-    { "type": "batterySafetyBlock", "dataKey": "batterySafetyBlock" }
+    {
+      "type": "hero",
+      "dataKey": "hero"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlock"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "navigationBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlock360"
+    },
+    {
+      "type": "color360Block",
+      "dataKey": "color360Block"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockCarbon"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "carbonImagesBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockCargo"
+    },
+    {
+      "type": "imageTextBottomBlock",
+      "dataKey": "cargoBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockStargateMusic"
+    },
+    {
+      "type": "videoBlock",
+      "dataKey": "cealingVideoBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockInside"
+    },
+    {
+      "type": "insideBlock",
+      "dataKey": "insideBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockSky"
+    },
+    {
+      "type": "videoTextBlock",
+      "dataKey": "skyVideosBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockAudio"
+    },
+    {
+      "type": "imageWithTextBelow",
+      "dataKey": "audioBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockChair"
+    },
+    {
+      "type": "imageWithTextBelow",
+      "dataKey": "chairBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockMassage"
+    },
+    {
+      "type": "massageBlock",
+      "dataKey": "massageBlock"
+    },
+    {
+      "type": "videoBlock",
+      "dataKey": "massageVideoBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockLight"
+    },
+    {
+      "type": "stargateBlock",
+      "dataKey": "lightVideoBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockMaterials"
+    },
+    {
+      "type": "materialsBlock",
+      "dataKey": "materialsBlock"
+    },
+    {
+      "type": "screensBlock",
+      "dataKey": "screensBlock"
+    },
+    {
+      "type": "luxuryBlock",
+      "dataKey": "luxuryBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockStandard"
+    },
+    {
+      "type": "sliderBlock",
+      "dataKey": "standardSliderBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockPerformance"
+    },
+    {
+      "type": "textImageBlock",
+      "dataKey": "batteryImageBlock"
+    },
+    {
+      "type": "batteryBlock",
+      "dataKey": "batteryBlock"
+    },
+    {
+      "type": "titleTwoSubtitlesBlock",
+      "dataKey": "batteryFastChargeBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockDriveSystem"
+    },
+    {
+      "type": "performanceBlock",
+      "dataKey": "performanceBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockChassis"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "chassisBlock"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "aiChassisBlock"
+    },
+    {
+      "type": "imageTextOverlayBlock",
+      "dataKey": "energyBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockIntelligenceSafety"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "securityBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockCabin"
+    },
+    {
+      "type": "cabinFunctionsBlock",
+      "dataKey": "cabinBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockSafetySystem"
+    },
+    {
+      "type": "luxuryBlock",
+      "dataKey": "securityLuxuryBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "securityTwoImagesBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockParkingKing"
+    },
+    {
+      "type": "sliderBlock",
+      "dataKey": "parkingSliderBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockHighwayTank"
+    },
+    {
+      "type": "passiveSecurityBlock",
+      "dataKey": "passiveSecurityBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockActiveIntelligentSafety"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "activeIntelligentSafetyBlock"
+    },
+    {
+      "type": "batterySafetyBlock",
+      "dataKey": "batterySafetyBlock"
+    }
   ],
   "versionsImages": {
     "Ultra": "001_ultra.webp",
@@ -83,10 +244,17 @@
         },
         "type": "test_drive",
         "style": "white"
+      },
+      {
+        "text": {
+          "ua": "Технічні характеристики",
+          "en": "Technical Specifications"
+        },
+        "type": "scroll_to",
+        "target": "techSpecsBlock",
+        "style": "white"
       }
-      
     ]
-    
   },
   "textBlock": {
     "title": {
@@ -230,7 +398,6 @@
       }
     ]
   },
-
   "textBlock360": {
     "title": {
       "ua": "7 фірмових кольорів екстер’єру",
@@ -1068,7 +1235,6 @@
       "en": ""
     }
   },
- 
   "batteryBlock": {
     "batteries": [
       {
@@ -1266,8 +1432,8 @@
     "text1": {
       "title": {
         "ua": "Інтерактивна стеля «зоряне небо»",
-          "en": "Interactive Starlight Ceiling"
-        },
+        "en": "Interactive Starlight Ceiling"
+      },
       "items": [
         {
           "value": "500",
@@ -1306,8 +1472,8 @@
     "text2": {
       "title": {
         "ua": "Акриловий LV зонований затемнений дах",
-          "en": "Ink-wash LV Zoned Dimming Canopy"
-        },
+        "en": "Ink-wash LV Zoned Dimming Canopy"
+      },
       "items": [
         {
           "value": "10 зон, 10 рівнів",
@@ -1582,7 +1748,6 @@
       },
       {
         "image": "001_cabin_3.webp",
-        
         "title": {
           "ua": "Кінотеатр Zeekr",
           "en": "Zeekr Cinema"
@@ -1604,8 +1769,6 @@
         }
       }
     ]
-
-
   },
   "securityBlock": {
     "media": [

@@ -1,58 +1,217 @@
 {
   "layout": [
-    { "type": "hero", "dataKey": "hero" },
-    { "type": "textBlock", "dataKey": "textBlock" },
-    { "type": "navigationBlock", "dataKey": "navigationBlock" },
-    { "type": "designBlock", "dataKey": "designBlock" },
-    { "type": "designBlock", "dataKey": "designBlock2" },
-    { "type": "textSimpleBlock", "dataKey": "textBlock360" },
-    { "type": "color360Block", "dataKey": "color360Block" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockInside" },
-    { "type": "insideBlock", "dataKey": "insideBlock" },
-    { "type": "textBlock", "dataKey": "textBlockSpace" },
-    { "type": "videoWithTextTop", "dataKey": "luxuryVideoBlock" },
-    { "type": "sliderBlock", "dataKey": "sliderBlock2" },
-    { "type": "screensBlock", "dataKey": "lightBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockCloud" },
-    { "type": "videoTextBlock", "dataKey": "skyVideosBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockChair" },
-    { "type": "videoWithTextOverlay", "dataKey": "chairVideoBlock" },
-    { "type": "twoImagesBlock", "dataKey": "chairImagesBlock" },
-    { "type": "videoSwitcherBlock", "dataKey": "chairSwitcherBlock" },
-    { "type": "twoImagesBlock", "dataKey": "spaceBlock" },
-    { "type": "twoImagesBlock", "dataKey": "luxuryBlock" },
-    { "type": "textBlock", "dataKey": "textBlockSafetySystem" },
-    { "type": "luxuryBlock", "dataKey": "securityLuxuryBlock" },
-    { "type": "textSimpleBlock", "dataKey": "audioVideoCaptionBlock" },
-    { "type": "imageWithTextBelow", "dataKey": "audioVideoBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockAudio" },
-    { "type": "videoSwitcherBlock", "dataKey": "audioSwitcherBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockNoiseReduction" },
-    { "type": "videoSwitcherBlock", "dataKey": "noiseReductionBlock" },
-    { "type": "imageWithTextBelow", "dataKey": "ambientLightBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockIntelligentControl" },
-    { "type": "sliderBlock", "dataKey": "sliderBlock5" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockAIOS7" },
-    { "type": "videoBlock", "dataKey": "aiOS7Block" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockLuxury" },
-    { "type": "luxuryBlock", "dataKey": "luxuryBlock1" },
-    { "type": "luxuryBlock", "dataKey": "luxuryBlock2" },
-    { "type": "textBlock", "dataKey": "textBlockHybrid" },
-    { "type": "performanceBlock", "dataKey": "performanceBlock" },
-    { "type": "textBlock", "dataKey": "textBlockChassis" },
-    { "type": "videoWithTextTop", "dataKey": "chassisVideoBlock" },
-    { "type": "imageTextBlock", "dataKey": "suspensionBlock" },
-    { "type": "imageTextBlock", "dataKey": "stabilizerBlock" },
-    { "type": "videoWithTextTop", "dataKey": "intelligentHubBlock" },
-    { "type": "terrainBlock", "dataKey": "terrainBlock" },
-    { "type": "textBlock", "dataKey": "textBlockSafety" },
-    { "type": "strengthBlock", "dataKey": "strengthBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockHybridSafety" },
-    { "type": "cabinFunctionsBlock", "dataKey": "safetyFunctionsBlock" },
-    { "type": "textBlock", "dataKey": "textBlockDrivingAssist" },
-    { "type": "imageTextOverlayBlock", "dataKey": "powerBlock" },
-    { "type": "detectBlock", "dataKey": "detectBlock" },
-    { "type": "videoWithTextTop", "dataKey": "redundancyVideoBlock" }
+    {
+      "type": "hero",
+      "dataKey": "hero"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlock"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "navigationBlock"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "designBlock"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "designBlock2"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlock360"
+    },
+    {
+      "type": "color360Block",
+      "dataKey": "color360Block"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockInside"
+    },
+    {
+      "type": "insideBlock",
+      "dataKey": "insideBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockSpace"
+    },
+    {
+      "type": "videoWithTextTop",
+      "dataKey": "luxuryVideoBlock"
+    },
+    {
+      "type": "sliderBlock",
+      "dataKey": "sliderBlock2"
+    },
+    {
+      "type": "screensBlock",
+      "dataKey": "lightBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockCloud"
+    },
+    {
+      "type": "videoTextBlock",
+      "dataKey": "skyVideosBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockChair"
+    },
+    {
+      "type": "videoWithTextOverlay",
+      "dataKey": "chairVideoBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "chairImagesBlock"
+    },
+    {
+      "type": "videoSwitcherBlock",
+      "dataKey": "chairSwitcherBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "spaceBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "luxuryBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockSafetySystem"
+    },
+    {
+      "type": "luxuryBlock",
+      "dataKey": "securityLuxuryBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "audioVideoCaptionBlock"
+    },
+    {
+      "type": "imageWithTextBelow",
+      "dataKey": "audioVideoBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockAudio"
+    },
+    {
+      "type": "videoSwitcherBlock",
+      "dataKey": "audioSwitcherBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockNoiseReduction"
+    },
+    {
+      "type": "videoSwitcherBlock",
+      "dataKey": "noiseReductionBlock"
+    },
+    {
+      "type": "imageWithTextBelow",
+      "dataKey": "ambientLightBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockIntelligentControl"
+    },
+    {
+      "type": "sliderBlock",
+      "dataKey": "sliderBlock5"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockAIOS7"
+    },
+    {
+      "type": "videoBlock",
+      "dataKey": "aiOS7Block"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockLuxury"
+    },
+    {
+      "type": "luxuryBlock",
+      "dataKey": "luxuryBlock1"
+    },
+    {
+      "type": "luxuryBlock",
+      "dataKey": "luxuryBlock2"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockHybrid"
+    },
+    {
+      "type": "performanceBlock",
+      "dataKey": "performanceBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockChassis"
+    },
+    {
+      "type": "videoWithTextTop",
+      "dataKey": "chassisVideoBlock"
+    },
+    {
+      "type": "imageTextBlock",
+      "dataKey": "suspensionBlock"
+    },
+    {
+      "type": "imageTextBlock",
+      "dataKey": "stabilizerBlock"
+    },
+    {
+      "type": "videoWithTextTop",
+      "dataKey": "intelligentHubBlock"
+    },
+    {
+      "type": "terrainBlock",
+      "dataKey": "terrainBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockSafety"
+    },
+    {
+      "type": "strengthBlock",
+      "dataKey": "strengthBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockHybridSafety"
+    },
+    {
+      "type": "cabinFunctionsBlock",
+      "dataKey": "safetyFunctionsBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockDrivingAssist"
+    },
+    {
+      "type": "imageTextOverlayBlock",
+      "dataKey": "powerBlock"
+    },
+    {
+      "type": "detectBlock",
+      "dataKey": "detectBlock"
+    },
+    {
+      "type": "videoWithTextTop",
+      "dataKey": "redundancyVideoBlock"
+    }
   ],
   "versionsImages": {
     "Zeekr 9X Ultra": "9x_ultra.webp",
@@ -81,6 +240,15 @@
           "en": "Book a Test Drive"
         },
         "type": "test_drive",
+        "style": "transparent"
+      },
+      {
+        "text": {
+          "ua": "Технічні характеристики",
+          "en": "Technical Specifications"
+        },
+        "type": "scroll_to",
+        "target": "techSpecsBlock",
         "style": "transparent"
       }
     ],
@@ -389,7 +557,7 @@
       "en": "",
       "ua": ""
     },
-    "options": [ 
+    "options": [
       {
         "id": "biege",
         "name": {
@@ -541,7 +709,7 @@
         "description": {
           "en": "Third-row exclusive independent panoramic roof, third-row starry sky, sharing daylight",
           "ua": "Власне небо для кожного: окремий панорамний дах третього ряду для незабутніх краєвидів та затишку"
-                }
+        }
       },
       {
         "image": {
@@ -549,14 +717,14 @@
           "tablet": "9x_light_4_tablet.webp",
           "mobile": "9x_light_4.webp"
         },
-          "title": {
-            "en": "1.03m² Large-Area Openable Panoramic Sunroof",
-            "ua": "Динаміка руху під відкритим небом"
-          },
-          "description": {
-            "en": "Wind follows movement, transparent vision",
-            "ua": "Вітер супроводжує рух, забезпечуючи панорамний прозорий огляд"
-          }
+        "title": {
+          "en": "1.03m² Large-Area Openable Panoramic Sunroof",
+          "ua": "Динаміка руху під відкритим небом"
+        },
+        "description": {
+          "en": "Wind follows movement, transparent vision",
+          "ua": "Вітер супроводжує рух, забезпечуючи панорамний прозорий огляд"
+        }
       }
     ]
   },
@@ -615,34 +783,32 @@
       "tablet": "9x_chair_2_tablet.webp",
       "mobile": "9x_chair_2_phone.webp"
     },
-    
-      "text1": {
-        "title": {
-          "en": "Soft NAPPA Full-Grain Top-Layer Leather",
-          "ua": "Досконалість матеріалів: натуральна шкіра Nappa"
-        },
-        "items": [
-          {
-            "value": "5.5 m²",
-            "label": {
-              "en": "Total car coverage area",
-              "ua": "Загальна площа покриття салону"
-            }
-          },
-          {
-            "value": "40%+",
-            "label": {
-              "en": "Comfort improvement",
-              "ua": "Покращення комфорту"
-            }
-          }
-        ],
-        "note": {
-          "en": "* Soft NAPPA full-grain top-layer leather covers all car seats, human contact areas, central armrests, partial door panels, and other areas",
-          "ua": "* Ми подбали про ваш комфорт, оздобивши всі ключові елементи салону — від крісел до підлокітників та дверних карт — натуральною цільнозернистою шкірою Nappa. Відчуйте преміальну якість у кожній деталі"
-        }
+    "text1": {
+      "title": {
+        "en": "Soft NAPPA Full-Grain Top-Layer Leather",
+        "ua": "Досконалість матеріалів: натуральна шкіра Nappa"
       },
-    
+      "items": [
+        {
+          "value": "5.5 m²",
+          "label": {
+            "en": "Total car coverage area",
+            "ua": "Загальна площа покриття салону"
+          }
+        },
+        {
+          "value": "40%+",
+          "label": {
+            "en": "Comfort improvement",
+            "ua": "Покращення комфорту"
+          }
+        }
+      ],
+      "note": {
+        "en": "* Soft NAPPA full-grain top-layer leather covers all car seats, human contact areas, central armrests, partial door panels, and other areas",
+        "ua": "* Ми подбали про ваш комфорт, оздобивши всі ключові елементи салону — від крісел до підлокітників та дверних карт — натуральною цільнозернистою шкірою Nappa. Відчуйте преміальну якість у кожній деталі"
+      }
+    },
     "text2": {
       "title": {
         "en": "Third Row Can Sit or Recline, Every Seat Ultra-Luxurious",
@@ -670,12 +836,11 @@
       }
     }
   },
-  
   "chairVideoBlock": {
     "video": "9x_chair_3.mp4",
     "title": {
       "en": "Cloud support, never tired from sitting for a long time",
-      "ua": "Підтримка, немов на хмарі — навіть тривале сидіння не викликає втоми"    
+      "ua": "Підтримка, немов на хмарі — навіть тривале сидіння не викликає втоми"
     }
   },
   "chairImagesBlock": {
@@ -708,7 +873,7 @@
         "description": {
           "en": "Spine-friendly ergonomic seat, relieves whole-body pressure",
           "ua": "Чотиристороння адаптивна система підтримки попереку та ергономічна форма сидінь мінімізують тиск на тіло, гарантуючи легкість навіть у тривалих подорожах."
-      }
+        }
       }
     ]
   },
@@ -770,7 +935,7 @@
     "title": {
       "en": "Stepless Rotation, Free Scene",
       "ua": "Плавне обертання без ступенів — повна свобода простору"
-        },
+    },
     "images": [
       {
         "image": {
@@ -826,113 +991,113 @@
     "title": {
       "en": "Global Audio-Visual, Sensory Feast",
       "ua": "Інтелектуальна система розваг: досконалість звуку та бездоганна картинка"
-      }
-   
+    }
   },
-  
-    "textBlockAudio": {
-      "title": {
-        "en": "Naim Hall of Sound Audio System",
-        "ua": "Аудіосистема Naim Hall of Sound"
-      }
+  "textBlockAudio": {
+    "title": {
+      "en": "Naim Hall of Sound Audio System",
+      "ua": "Аудіосистема Naim Hall of Sound"
+    }
+  },
+  "audioSwitcherBlock": {
+    "title": {
+      "en": "",
+      "ua": "Кришталево чисті високі частоти завдяки інноваційним титановим компонентам аудіосистеми"
     },
-    "audioSwitcherBlock": {
-      "title": {
-        "en": "",
-        "ua": "Кришталево чисті високі частоти завдяки інноваційним титановим компонентам аудіосистеми"
-      },
-      "videos": [
-        "9x_slider3_1.mp4",
-        "9x_slider3_2.mp4",
-        "9x_slider3_3.mp4",
-        "9x_slider3_4.mp4"
-      ],
-      "items": [
-        {
-          "title": {
-            "en": "Peak",
-            "ua": "Пікова потужність"
-          },
-          "description": {
-            "en": "Peak power 3868W",
-            "ua": "Пікова потужність 3868 Вт"
-          }
+    "videos": [
+      "9x_slider3_1.mp4",
+      "9x_slider3_2.mp4",
+      "9x_slider3_3.mp4",
+      "9x_slider3_4.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "en": "Peak",
+          "ua": "Пікова потужність"
         },
-        {
-          "title": {
-            "en": "Restore",
-            "ua": "Відтворення"
-          },
-          "description": {
-            "en": "20-40000Hz Ultra-wide Frequency Coverage",
-            "ua": "Надширокий частотний діапазон 20–40 000 Гц"
-          }
-        },
-        {
-          "title": {
-            "en": "Immersive",
-            "ua": "Імерсивний звук"
-          },
-          "description": {
-            "en": "9.2.4.8 Full-Dimensional Immersive Sound Field Layout, 32 Top-Level Speakers",
-            "ua": "Повнодіапазонна імерсивна конфігурація звукового поля 9.2.4.8 із 32 висококласними динаміками"
-          }
-        },
-        {
-          "title": {
-            "en": "M-Shaped Patented Structure",
-            "ua": "Патентована M-подібна конструкція"
-          },
-          "description": {
-            "en": "Titanium tweeter unit, greatly enhances high-frequency resolution",
-            "ua": "Кришталево чисті високі частоти завдяки інноваційним титановим компонентам аудіосистеми"
-          }
+        "description": {
+          "en": "Peak power 3868W",
+          "ua": "Пікова потужність 3868 Вт"
         }
-      ]
-    },
+      },
+      {
+        "title": {
+          "en": "Restore",
+          "ua": "Відтворення"
+        },
+        "description": {
+          "en": "20-40000Hz Ultra-wide Frequency Coverage",
+          "ua": "Надширокий частотний діапазон 20–40 000 Гц"
+        }
+      },
+      {
+        "title": {
+          "en": "Immersive",
+          "ua": "Імерсивний звук"
+        },
+        "description": {
+          "en": "9.2.4.8 Full-Dimensional Immersive Sound Field Layout, 32 Top-Level Speakers",
+          "ua": "Повнодіапазонна імерсивна конфігурація звукового поля 9.2.4.8 із 32 висококласними динаміками"
+        }
+      },
+      {
+        "title": {
+          "en": "M-Shaped Patented Structure",
+          "ua": "Патентована M-подібна конструкція"
+        },
+        "description": {
+          "en": "Titanium tweeter unit, greatly enhances high-frequency resolution",
+          "ua": "Кришталево чисті високі частоти завдяки інноваційним титановим компонентам аудіосистеми"
+        }
+      }
+    ]
+  },
   "textBlockNoiseReduction": {
     "title": {
       "en": "Active Noise Reduction, Luxurious Quiet Realm",
       "ua": "Активне зниження шуму, розкішна тиха сфера"
     }
   },
-  
-    "noiseReductionBlock": {
-      "videos": [ "9x_slider4_1.mp4", "9x_slider4_1.mp4", "9x_slider4_1.mp4" ],
-      "items": [
-        {
-          "title": {
-            "en": "Active Noise Reduction",
-            "ua": "Активне шумозаглушення"
-          },
-          "description": {
-            "en": "Advanced noise cancellation technology for a quiet cabin experience",
-            "ua": "Передова система активного шумозаглушення створює винятково тиху атмосферу в салоні"
-          }
+  "noiseReductionBlock": {
+    "videos": [
+      "9x_slider4_1.mp4",
+      "9x_slider4_1.mp4",
+      "9x_slider4_1.mp4"
+    ],
+    "items": [
+      {
+        "title": {
+          "en": "Active Noise Reduction",
+          "ua": "Активне шумозаглушення"
         },
-        {
-          "title": {
-            "en": "Multi-Layer Acoustic Insulation",
-            "ua": "Багатошарова акустична ізоляція"
-          },
-          "description": {
-            "en": "Multi-layer soundproof materials reduce road and wind noise for a refined ride",
-            "ua": "Багатошарові шумоізоляційні матеріали зменшують шум дороги та вітру, забезпечуючи плавну й тиху поїздку"
-          }
-        },
-        {
-          "title": {
-            "en": "Silent Cabin Engineering",
-            "ua": "Інженерія тихого салону"
-          },
-          "description": {
-            "en": "Optimized body structure and sealing design create a serene interior environment",
-            "ua": "Оптимізована конструкція кузова та система ущільнень формують спокійний, ізольований від зовнішніх шумів простір"
-          }
+        "description": {
+          "en": "Advanced noise cancellation technology for a quiet cabin experience",
+          "ua": "Передова система активного шумозаглушення створює винятково тиху атмосферу в салоні"
         }
-      ]
-    },
-  
+      },
+      {
+        "title": {
+          "en": "Multi-Layer Acoustic Insulation",
+          "ua": "Багатошарова акустична ізоляція"
+        },
+        "description": {
+          "en": "Multi-layer soundproof materials reduce road and wind noise for a refined ride",
+          "ua": "Багатошарові шумоізоляційні матеріали зменшують шум дороги та вітру, забезпечуючи плавну й тиху поїздку"
+        }
+      },
+      {
+        "title": {
+          "en": "Silent Cabin Engineering",
+          "ua": "Інженерія тихого салону"
+        },
+        "description": {
+          "en": "Optimized body structure and sealing design create a serene interior environment",
+          "ua": "Оптимізована конструкція кузова та система ущільнень формують спокійний, ізольований від зовнішніх шумів простір"
+        }
+      }
+    ]
+  },
   "ambientLightBlock": {
     "image": {
       "desktop": "9x_light_5.webp",
@@ -1127,7 +1292,7 @@
       }
     ]
   },
- "textBlockHybrid": {
+  "textBlockHybrid": {
     "title": {
       "en": "Vast Super Electric Hybrid",
       "ua": "Потужність всередині — повний контроль назовні"
@@ -1237,7 +1402,7 @@
       {
         "en": "Closed dual-chamber air suspension: Lower noise, faster lift, no fear of altitude sickness",
         "ua": "Закрита двокамерна пневмопідвіска: менше шуму, швидший підйом кузова та стабільна робота на будь-якій висоті"
-            },
+      },
       {
         "en": "110 mm maximum adjustment travel",
         "ua": "110 мм — максимальний хід регулювання"
@@ -1545,7 +1710,8 @@
     },
     "title": {
       "en": "Full-Domain, Omni-Directional, All-Time\nPerception Without Blind Spots",
-      "ua": "Повне бачення навколо автомобіля 24/7 без сліпих зон"    },
+      "ua": "Повне бачення навколо автомобіля 24/7 без сліпих зон"
+    },
     "subtitle": {
       "en": "5 LiDAR Perception Solution",
       "ua": "5 лідарів для системи сприйняття"
@@ -1576,5 +1742,3 @@
     "features": []
   }
 }
-
-

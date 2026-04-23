@@ -1,59 +1,217 @@
 {
   "layout": [
-    { "type": "hero", "dataKey": "hero" },
-    { "type": "frLineBlock", "dataKey": "frLineHero" },
-    { "type": "textSimpleBlock", "dataKey": "textBlock360" },
-    { "type": "color360Block", "dataKey": "color360Block" },
-    { "type": "sliderBlock", "dataKey": "wheelSliderBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockInside" },
-    { "type": "insideBlock", "dataKey": "insideBlock" },
-    { "type": "textBlock", "dataKey": "textBlockVersatility" },
-    { "type": "navigationBlock", "dataKey": "aestheticNavigationBlock" },
-    { "type": "infoGridBlock", "dataKey": "aestheticInfoGridBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockStargate" },
-    { "type": "stargateBlock", "dataKey": "stargateBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockLuxuryInside" },
-    { "type": "imageCaptionBlock", "dataKey": "luxuryInsideImageBlock" },
-    { "type": "infoGridBlock", "dataKey": "luxuryDetailsGridBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockEcRoof" },
-    { "type": "navigationBlock", "dataKey": "panoramicRoofBlock" },
-    { "type": "frLineSliderBlock", "dataKey": "frLineSliderBlock" },
-    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock1" },
-    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock2" },
-    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock3" },
-    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock4" },
-    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock5" },
-    { "type": "textBlock", "dataKey": "textBlockPerformance" },
-    { "type": "frFeatureBlock", "dataKey": "frFeatureBlock6" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockBattery" },
-    { "type": "batteryBlock", "dataKey": "batteryBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockDrive" },
-    { "type": "performanceBlock", "dataKey": "performanceBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockSuspension" },
-    { "type": "storageBlock", "dataKey": "suspensionBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockAiChassis" },
-    { "type": "storageBlock", "dataKey": "aiChassisBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockSpace" },
-    { "type": "navigationBlock", "dataKey": "spaceNavigationBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockOsDisplay" },
-    { "type": "navigationBlock", "dataKey": "osDisplayBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockCabin" },
-    { "type": "storageBlock", "dataKey": "cabinBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockStorage" },
-    { "type": "storageBlock", "dataKey": "storageSpaceBlock" },
-    { "type": "textBlock", "dataKey": "textBlockSafety" },
-    { "type": "stargateBlock", "dataKey": "safetyChipBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockBlueLamp" },
-    { "type": "imageCaptionBlock", "dataKey": "blueLampImageBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockParking" },
-    { "type": "imageCaptionBlock", "dataKey": "parkingImageBlock" },
-    { "type": "twoImagesBlock", "dataKey": "drivingAssistBlock" },
-    { "type": "textSimpleBlock", "dataKey": "textBlockActiveSafety" },
-    { "type": "detectBlock", "dataKey": "gAesDetectBlock" },
-    { "type": "batterySafetyBlock", "dataKey": "haohanArmorBlock" },
-    { "type": "twoImagesBlock", "dataKey": "safetyDnaBlock" },
-    { "type": "storageBlock", "dataKey": "crashSafetyBlock" }
-
+    {
+      "type": "hero",
+      "dataKey": "hero"
+    },
+    {
+      "type": "frLineBlock",
+      "dataKey": "frLineHero"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlock360"
+    },
+    {
+      "type": "color360Block",
+      "dataKey": "color360Block"
+    },
+    {
+      "type": "sliderBlock",
+      "dataKey": "wheelSliderBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockInside"
+    },
+    {
+      "type": "insideBlock",
+      "dataKey": "insideBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockVersatility"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "aestheticNavigationBlock"
+    },
+    {
+      "type": "infoGridBlock",
+      "dataKey": "aestheticInfoGridBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockStargate"
+    },
+    {
+      "type": "stargateBlock",
+      "dataKey": "stargateBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockLuxuryInside"
+    },
+    {
+      "type": "imageCaptionBlock",
+      "dataKey": "luxuryInsideImageBlock"
+    },
+    {
+      "type": "infoGridBlock",
+      "dataKey": "luxuryDetailsGridBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockEcRoof"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "panoramicRoofBlock"
+    },
+    {
+      "type": "frLineSliderBlock",
+      "dataKey": "frLineSliderBlock"
+    },
+    {
+      "type": "frFeatureBlock",
+      "dataKey": "frFeatureBlock1"
+    },
+    {
+      "type": "frFeatureBlock",
+      "dataKey": "frFeatureBlock2"
+    },
+    {
+      "type": "frFeatureBlock",
+      "dataKey": "frFeatureBlock3"
+    },
+    {
+      "type": "frFeatureBlock",
+      "dataKey": "frFeatureBlock4"
+    },
+    {
+      "type": "frFeatureBlock",
+      "dataKey": "frFeatureBlock5"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockPerformance"
+    },
+    {
+      "type": "frFeatureBlock",
+      "dataKey": "frFeatureBlock6"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockBattery"
+    },
+    {
+      "type": "batteryBlock",
+      "dataKey": "batteryBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockDrive"
+    },
+    {
+      "type": "performanceBlock",
+      "dataKey": "performanceBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockSuspension"
+    },
+    {
+      "type": "storageBlock",
+      "dataKey": "suspensionBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockAiChassis"
+    },
+    {
+      "type": "storageBlock",
+      "dataKey": "aiChassisBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockSpace"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "spaceNavigationBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockOsDisplay"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "osDisplayBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockCabin"
+    },
+    {
+      "type": "storageBlock",
+      "dataKey": "cabinBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockStorage"
+    },
+    {
+      "type": "storageBlock",
+      "dataKey": "storageSpaceBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockSafety"
+    },
+    {
+      "type": "stargateBlock",
+      "dataKey": "safetyChipBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockBlueLamp"
+    },
+    {
+      "type": "imageCaptionBlock",
+      "dataKey": "blueLampImageBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockParking"
+    },
+    {
+      "type": "imageCaptionBlock",
+      "dataKey": "parkingImageBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "drivingAssistBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockActiveSafety"
+    },
+    {
+      "type": "detectBlock",
+      "dataKey": "gAesDetectBlock"
+    },
+    {
+      "type": "batterySafetyBlock",
+      "dataKey": "haohanArmorBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "safetyDnaBlock"
+    },
+    {
+      "type": "storageBlock",
+      "dataKey": "crashSafetyBlock"
+    }
   ],
   "hero": {
     "title": {
@@ -85,6 +243,15 @@
         },
         "type": "order",
         "style": "white"
+      },
+      {
+        "text": {
+          "ua": "Технічні характеристики",
+          "en": "Technical Specifications"
+        },
+        "type": "scroll_to",
+        "target": "techSpecsBlock",
+        "style": "transparent"
       }
     ],
     "specs": [
@@ -137,7 +304,8 @@
         "ua": "Дізнатися більше",
         "en": "Learn More"
       },
-      "type": "scroll_down"
+      "type": "scroll_to",
+      "target": "frLineSliderBlock"
     },
     "specs": [
       {
@@ -1197,7 +1365,11 @@
     }
   },
   "suspensionBlock": {
-    "images": ["battery_3.webp", "battery_3.webp", "battery_3.webp"],
+    "images": [
+      "battery_3.webp",
+      "battery_3.webp",
+      "battery_3.webp"
+    ],
     "folder": ".",
     "items": [
       {
