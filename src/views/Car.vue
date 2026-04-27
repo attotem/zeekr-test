@@ -67,9 +67,20 @@
 				v-if="modelData.car_versions"
 			>
 				<div class="specifications__inner">
-					<h3 class="specifications__h">
-						{{ modelData.car_versions_title }}
-					</h3>
+					<div class="specifications__header">
+						<h3 class="specifications__h">
+							{{ modelData.car_versions_title }}
+						</h3>
+						<a
+							v-if="specPdfUrl"
+							:href="specPdfUrl"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="specifications__spec-btn"
+						>
+							Специфікація
+						</a>
+					</div>
 					<div class="specifications__categories">
 						<div
 							class="category"
@@ -263,8 +274,22 @@ import { ref as vueRef } from 'vue';
 import ModalContact from "@/components/ModalContact.vue";
 import { sameOriginMediaUrl } from "@/utils/sameOriginMediaUrl";
 
+const specPdfs = import.meta.glob('@/assets/car-versions/*.pdf', { eager: true, query: '?url', import: 'default' })
+
+const specPdfMap = Object.fromEntries(
+  Object.entries({
+    'zeekr-x':    'spec_Х.pdf',
+    'zeekr-8x':   'spec_8Х.pdf',
+  }).map(([id, file]) => [
+    id,
+    specPdfs[`/src/assets/car-versions/${file}`] || ''
+  ])
+)
+
 const router = useRouter();
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+const specPdfUrl = computed(() => specPdfMap[route.params.childId] || '')
 
 let langStore = useLangStore(),
   route = useRoute()
@@ -426,6 +451,41 @@ function initSwipers() {
 }
 
 .specifications {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  &__h {
+    margin: 0;
+    text-align: left;
+    flex: 1 1 auto;
+  }
+
+  &__spec-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #111;
+    border-radius: 999px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #111;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: #111;
+      color: #fff;
+    }
+  }
+
   &__categories {
     .category {
       width: fit-content;
@@ -513,6 +573,12 @@ function initSwipers() {
   .specifications {
     &__inner {
       padding: 50px 16px;
+    }
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
     }
 
     &__h {
