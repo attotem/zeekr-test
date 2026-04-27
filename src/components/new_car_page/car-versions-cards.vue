@@ -1,9 +1,20 @@
 <template>
   <section class="car-versions-cards" v-if="cards.length">
     <div class="car-versions-cards__inner">
-      <h2 v-if="title" class="car-versions-cards__title">
-        {{ title }}
-      </h2>
+      <div class="car-versions-cards__header">
+        <h2 v-if="title" class="car-versions-cards__title">
+          {{ title }}
+        </h2>
+        <a
+          v-if="specUrl"
+          :href="specUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="car-versions-cards__spec-btn"
+        >
+          {{ specBtnLabel }}
+        </a>
+      </div>
 
       <div class="car-versions-cards__layout">
         <div class="car-versions-cards__categories">
@@ -96,6 +107,14 @@ const props = defineProps({
   carId: {
     type: String,
     default: '7x'
+  },
+  specUrl: {
+    type: String,
+    default: ''
+  },
+  specBtnLabel: {
+    type: String,
+    default: 'Специфікація'
   }
 })
 
@@ -192,14 +211,42 @@ const cards = computed(() => {
     padding: 0 20px;
   }
 
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
   &__title {
     font-family: ZeekrText-Regular, "Tenor Sans", sans-serif;
     font-size: 40px;
     line-height: 1.3;
     font-weight: 400;
     text-align: left;
-    margin: 0 0 32px;
+    margin: 0;
     color: #111;
+  }
+
+  &__spec-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #111;
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #111;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: #111;
+      color: #fff;
+    }
   }
 
   &__layout {

@@ -65,6 +65,7 @@
           :icons="displayCarVersionsIcons"
           :version-images="pageData?.versionsImages || {}"
           :car-id="carId"
+          :spec-url="specPdfUrl"
         />
       </div>
 
@@ -179,6 +180,24 @@ const displayCarVersionsTitle = computed(() => {
 const displayCarVersionsIcons = computed(() => ({
   ...(modelBackendData.value?.car_versions_tab_icons || {})
 }))
+
+const specPdfs = import.meta.glob('@/assets/car-versions/*.pdf', { eager: true, query: '?url', import: 'default' })
+
+const specPdfMap = Object.fromEntries(
+  Object.entries({
+    '007gt': 'spec_007GT.pdf',
+    '7x':    'spec_7Х.pdf',
+    '9x':    'spec_9Х.pdf',
+    '001':   'spec_001.pdf',
+    '8x':    'spec_8Х.pdf',
+    'x':     'spec_Х.pdf'
+  }).map(([id, file]) => [
+    id,
+    specPdfs[`/src/assets/car-versions/${file}`] || ''
+  ])
+)
+
+const specPdfUrl = computed(() => specPdfMap[carId.value] || '')
 
 const loadCarData = async (id) => {
   try {
