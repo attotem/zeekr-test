@@ -93,7 +93,7 @@
 									<button
 										v-if="slide.isTestDrive"
 										type="button"
-										class="btn btn--white article-1__testdrive-btn"
+										class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
 										@click="modalHeading = ''; isModalOpened = i18n.modal?.testDrive; modalType = 'testDrive'; mailObj = { type: 'test_drive', page: 'test_drive' }"
 									>
 										{{ getSlideText({ ua: 'Замовити тест-драйв', en: 'Book a test drive' }) }}
@@ -101,7 +101,7 @@
 									<button
 										v-if="slide.isConsultation"
 										type="button"
-										class="btn btn--white article-1__testdrive-btn"
+										class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
 										@click="modalHeading = getSlideText(slide.consultationHeading); isModalOpened = true; modalType = null; mailObj = { type: slide.consultationMailType, page: slide.consultationMailType }"
 									>
 										{{ getSlideText({ ua: 'Замовити консультацію', en: 'Book a consultation' }) }}
@@ -109,7 +109,7 @@
 									<RouterLink
 										v-if="slide.link"
 										:to="slide.link"
-										class="btn btn--white article-1__testdrive-btn"
+										class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
 									>
 										{{ getSlideText({ ua: 'Детальніше', en: 'Learn more' }) }}
 									</RouterLink>
