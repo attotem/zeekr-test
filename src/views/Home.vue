@@ -81,14 +81,38 @@
 											</span>
 										</template>
 									</div>
+									<ul v-if="slide.points?.length" class="article-1__points">
+										<li
+											v-for="(point, idx) in slide.points"
+											:key="idx"
+											class="article-1__point"
+										>
+											{{ getSlideText(point) }}
+										</li>
+									</ul>
 									<button
 										v-if="slide.isTestDrive"
 										type="button"
-										class="btn btn--orange article-1__testdrive-btn"
-										@click="isModalOpened = i18n.modal?.testDrive; modalType = 'testDrive'; mailObj = { type: 'test_drive', page: 'test_drive' }"
+										class="btn btn--white article-1__testdrive-btn"
+										@click="modalHeading = ''; isModalOpened = i18n.modal?.testDrive; modalType = 'testDrive'; mailObj = { type: 'test_drive', page: 'test_drive' }"
 									>
 										{{ getSlideText({ ua: 'Замовити тест-драйв', en: 'Book a test drive' }) }}
 									</button>
+									<button
+										v-if="slide.isConsultation"
+										type="button"
+										class="btn btn--white article-1__testdrive-btn"
+										@click="modalHeading = getSlideText(slide.consultationHeading); isModalOpened = true; modalType = null; mailObj = { type: slide.consultationMailType, page: slide.consultationMailType }"
+									>
+										{{ getSlideText({ ua: 'Замовити консультацію', en: 'Book a consultation' }) }}
+									</button>
+									<RouterLink
+										v-if="slide.link"
+										:to="slide.link"
+										class="btn btn--white article-1__testdrive-btn"
+									>
+										{{ getSlideText({ ua: 'Детальніше', en: 'Learn more' }) }}
+									</RouterLink>
 								</div>
 							</div>
 						</template>
@@ -248,10 +272,10 @@
 				</Slider>
 			</div>
 		<ModalContact
-			:heading="i18n.modal?.[modalType]"
+			:heading="modalHeading || i18n.modal?.[modalType]"
 			:is-opened="isModalOpened !== false"
 			:mailObj="mailObj"
-			@close="isModalOpened = false"
+			@close="isModalOpened = false; modalHeading = ''"
 		/>
 		</template>
 	</TransitionGroup>
@@ -312,6 +336,14 @@ import slideTdPc from "@/assets/slider/testdrive/testdrive_pc_site.png";
 import slideTdTablet from "@/assets/slider/testdrive/testdrive_tablet_site.png";
 import slideTdMb from "@/assets/slider/testdrive/testdrive_phone_site.png";
 
+import slideCreditPc from "@/assets/courusel/credit_pc_site.png";
+import slideCreditTablet from "@/assets/courusel/credit_tablet_site.png";
+import slideCreditMb from "@/assets/courusel/credit_phone_site.png";
+
+import slideTradeinPc from "@/assets/courusel/tradein_pc_site.png";
+import slideTradeinTablet from "@/assets/courusel/tradein_tablet_site.png";
+import slideTradeinMb from "@/assets/courusel/tradein_phone_site.png";
+
 let models = ref([]),
   news = ref([]), 
   sliderData = ref({})
@@ -321,6 +353,7 @@ let isLoading = computed(() => useLoaderStore().isLoading)
 const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
 const isModalOpened = ref(false)
 const modalType = ref()
+const modalHeading = ref('')
 const mailObj = ref({})
 
 const mainSliderSlides = [
@@ -328,6 +361,7 @@ const mainSliderSlides = [
     pc: slide001Pc,
     tablet: slide001Tablet,
     mobile: slide001Mb,
+    link: '/zeekr-001',
     title: {
       ua: '001 NEW',
       en: '001 NEW'
@@ -345,6 +379,7 @@ const mainSliderSlides = [
     pc: slide7xPc,
     tablet: slide7xTablet,
     mobile: slide7xMb,
+    link: '/zeekr-7x',
     title: {
       ua: '7X New',
       en: '7X New'
@@ -362,6 +397,7 @@ const mainSliderSlides = [
     pc: slide9xPc,
     tablet: slide9xTablet,
     mobile: slide9xMb,
+    link: '/zeekr-9x',
     title: {
       ua: '9X NEW',
       en: '9X NEW'
@@ -388,6 +424,50 @@ const mainSliderSlides = [
       ua: 'Оцініть технологічну перевагу та безкомпромісний комфорт преміальних електромобілів Zeekr',
       en: 'Experience the technological advantage and uncompromising comfort of premium Zeekr electric vehicles'
     }
+  },
+  {
+    pc: slideTradeinPc,
+    tablet: slideTradeinTablet,
+    mobile: slideTradeinMb,
+    isConsultation: true,
+    consultationMailType: 'order',
+    consultationHeading: {
+      ua: 'Trade-In Zeekr',
+      en: 'Zeekr Trade-In'
+    },
+    title: {
+      ua: 'Оновіть своє авто на новий Zeekr — легко та вигідно',
+      en: 'Upgrade your car to a new Zeekr — easy and advantageous'
+    },
+    subtitle: {
+      ua: 'Скористайтеся програмою Trade-In від Zeekr Ukraine та обміняйте свій автомобіль на новий рівень технологій і комфорту',
+      en: 'Use the Zeekr Ukraine Trade-In program and exchange your car for a new level of technology and comfort'
+    }
+  },
+  {
+    pc: slideCreditPc,
+    tablet: slideCreditTablet,
+    mobile: slideCreditMb,
+    isConsultation: true,
+    consultationMailType: 'financial_service',
+    consultationHeading: {
+      ua: 'Zeekr Finance',
+      en: 'Zeekr Finance'
+    },
+    title: {
+      ua: 'Zeekr Finance — фінансові рішення без компромісів',
+      en: 'Zeekr Finance — financial solutions without compromise'
+    },
+    subtitle: {
+      ua: 'Вигідні умови для фізичних та юридичних осіб',
+      en: 'Favorable terms for individuals and businesses'
+    },
+    points: [
+      { ua: 'Кредит на 5 років', en: 'Loan for 5 years' },
+      { ua: 'Відсоткова ставка 0,01% на перші 2 роки', en: '0.01% interest rate for the first 2 years' },
+      { ua: 'Разова комісія 0%', en: 'One-time commission 0%' },
+      { ua: 'КАСКО 5.99%', en: 'CASCO 5.99%' }
+    ]
   }
 ]
 
@@ -835,6 +915,32 @@ onMounted(async () => {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+  }
+
+  .article-1__points {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .article-1__point {
+    color: rgba(255, 244, 226, 0.9);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+
+    &::before {
+      content: '— ';
+      color: rgba(255, 244, 226, 0.6);
+    }
+
+    @media screen and (max-width: 876px) {
+      font-size: 14px;
+    }
   }
 
   .article-1__testdrive-btn {

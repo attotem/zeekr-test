@@ -215,8 +215,8 @@
   ],
   "hero": {
     "title": {
-      "ua": "Оновлений ZEEKR 007GT",
-      "en": "Refreshed ZEEKR 007GT"
+      "ua": "ZEEKR 007GT",
+      "en": "ZEEKR 007GT"
     },
     "subtitle": {
       "ua": "Технологічний шутінг-брейк",
@@ -228,14 +228,6 @@
       "mobile": "007gt_hero_mobile.webp"
     },
     "buttons": [
-      {
-        "text": {
-          "ua": "Записатися на тест-драйв",
-          "en": "Book a Test Drive"
-        },
-        "type": "test_drive",
-        "style": "transparent"
-      },
       {
         "text": {
           "ua": "Замовити зараз",

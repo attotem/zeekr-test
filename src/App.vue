@@ -149,6 +149,7 @@ body {
   &--white {
     background-color: #FFFBF3;
     color: #000;
+    border: none;
 
     &:hover {
       background-color: #FFF4E2;
@@ -158,6 +159,7 @@ body {
   &--orange {
     background-color: #F75400;
     color: #fff;
+    border: none;
 
     &:hover {
       background-color: #EA512A;

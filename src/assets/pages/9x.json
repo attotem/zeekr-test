@@ -236,11 +236,19 @@
     "buttons": [
       {
         "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      },
+      {
+        "text": {
           "ua": "Записатися на тест-драйв",
           "en": "Book a Test Drive"
         },
         "type": "test_drive",
-        "style": "transparent"
+        "style": "white"
       },
       {
         "text": {
