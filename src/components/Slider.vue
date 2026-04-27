@@ -38,7 +38,11 @@
 import { onMounted, onBeforeUnmount, ref, computed, nextTick } from 'vue';
 import Horizontal from './icons/horizontal.vue';
 
-let props = defineProps(['sliderType', 'count'])
+let props = defineProps({
+  sliderType: { type: [Number, String] },
+  count: { type: Number },
+  autoSlide: { type: Boolean, default: true }
+})
 let realIndex = ref(0) // Реальний індекс для безперервного перелистування
 let touch = ref()
 let autoSlideInterval = null
@@ -114,7 +118,7 @@ const touchEnd = (e) => {
 }
 
 const startAutoSlide = () => {
-  if (props.sliderType !== 1) return;
+  if (props.sliderType !== 1 || !props.autoSlide) return;
   
   autoSlideInterval = setInterval(() => {
     if (!isPaused.value) {
@@ -191,6 +195,7 @@ onBeforeUnmount(() => {
         opacity: 1;
         transition: .3s ease-in-out;
         cursor: pointer;
+        pointer-events: auto;
 
         &s {
           top: 0;
@@ -204,6 +209,7 @@ onBeforeUnmount(() => {
           justify-content: space-between;
           align-items: center;
           padding: 76px;
+          pointer-events: none;
         }
 
         &--inactive {

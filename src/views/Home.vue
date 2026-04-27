@@ -9,7 +9,7 @@
 		<template v-if="sliderData">
 			<div class="article-1">
 				<Slider
-					:count="mainSliderSlides.length"  
+					:count="mainSliderSlides.length"
 					:slider-type="1"
 				>
 					<article
@@ -81,6 +81,14 @@
 											</span>
 										</template>
 									</div>
+									<button
+										v-if="slide.isTestDrive"
+										type="button"
+										class="btn btn--orange article-1__testdrive-btn"
+										@click="isModalOpened = i18n.modal?.testDrive; modalType = 'testDrive'; mailObj = { type: 'test_drive', page: 'test_drive' }"
+									>
+										{{ getSlideText({ ua: 'Замовити тест-драйв', en: 'Book a test drive' }) }}
+									</button>
 								</div>
 							</div>
 						</template>
@@ -239,13 +247,19 @@
 					</RouterLink>
 				</Slider>
 			</div>
+		<ModalContact
+			:heading="i18n.modal?.[modalType]"
+			:is-opened="isModalOpened !== false"
+			:mailObj="mailObj"
+			@close="isModalOpened = false"
+		/>
 		</template>
 	</TransitionGroup>
 </template>
 
 <script setup>
 import Slider from "@/components/Slider.vue";
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, getCurrentInstance, onMounted, ref, watch } from "vue";
 import { RouterLink } from "vue-router";
 import API from "@/composables/API";
 import { sortCarModelsForHeader } from "@/composables/sortCarModelsForHeader";
@@ -253,6 +267,7 @@ import { useLangStore } from "@/stores/lang";
 import isMobile from "@/composables/isMobile";
 import { useLoaderStore } from "@/stores/loader";
 import Logo from "@/components/icons/logo.vue";
+import ModalContact from "@/components/ModalContact.vue";
 import img7x from "@/assets/courusel/7x.webp";
 import img7xEu from "@/assets/courusel/7x_eu.webp";
 import img001 from "@/assets/courusel/001.webp";
@@ -293,11 +308,20 @@ import slide9xPc from "@/assets/slider/9x/9X_pc.webp";
 import slide9xTablet from "@/assets/slider/9x/9X_tablet.webp";
 import slide9xMb from "@/assets/slider/9x/9X_mb.webp";
 
+import slideTdPc from "@/assets/slider/testdrive/testdrive_pc_site.png";
+import slideTdTablet from "@/assets/slider/testdrive/testdrive_tablet_site.png";
+import slideTdMb from "@/assets/slider/testdrive/testdrive_phone_site.png";
+
 let models = ref([]),
   news = ref([]), 
   sliderData = ref({})
 let langStore = useLangStore()
 let isLoading = computed(() => useLoaderStore().isLoading)
+
+const i18n = getCurrentInstance()?.appContext?.config?.globalProperties?.i18n || {}
+const isModalOpened = ref(false)
+const modalType = ref()
+const mailObj = ref({})
 
 const mainSliderSlides = [
   {
@@ -349,6 +373,20 @@ const mainSliderSlides = [
     variants: {
       ua: 'MAX ULTRA HYPER',
       en: 'MAX ULTRA HYPER'
+    }
+  },
+  {
+    pc: slideTdPc,
+    tablet: slideTdTablet,
+    mobile: slideTdMb,
+    isTestDrive: true,
+    title: {
+      ua: 'Тест-драйв Zeekr вже доступний в Україні!',
+      en: 'Zeekr test drive is now available in Ukraine!'
+    },
+    subtitle: {
+      ua: 'Оцініть технологічну перевагу та безкомпромісний комфорт преміальних електромобілів Zeekr',
+      en: 'Experience the technological advantage and uncompromising comfort of premium Zeekr electric vehicles'
     }
   }
 ]
@@ -797,6 +835,19 @@ onMounted(async () => {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+  }
+
+  .article-1__testdrive-btn {
+    position: relative;
+    z-index: 11;
+    margin-top: 8px;
+    min-width: 220px;
+    font-size: 16px;
+    
+    @media screen and (max-width: 876px) {
+      min-width: 180px;
+      font-size: 14px;
+    }
   }
 
   .article-1__h {
