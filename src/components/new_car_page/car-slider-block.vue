@@ -587,6 +587,7 @@ const next = () => {
       padding-left: 0;
       gap: 22px;
       transform: none !important;
+      align-items: start;
     }
 
     .car-slider-block__slide {
@@ -603,7 +604,7 @@ const next = () => {
     }
 
     .car-slider-block__image {
-      width: 102%;
+      width: 100%;
       height: auto;
       image-rendering: crisp-edges;
     }

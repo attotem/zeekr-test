@@ -301,7 +301,6 @@ const currentItemDescription = computed(() => {
     justify-content: center;
     align-items: center;
     gap: 56px;
-    overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
 

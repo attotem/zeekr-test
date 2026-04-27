@@ -148,6 +148,8 @@ const getText = (textObj) => {
   &__spec {
     text-align: center;
     position: relative;
+    max-width: 180px;
+    min-width: 0;
 
     &:not(:last-child)::after {
       content: '';
@@ -166,6 +168,7 @@ const getText = (textObj) => {
     font-weight: 600;
     color: #fff;
     margin-bottom: 8px;
+    word-break: break-word;
   }
 
   &__spec-label {
@@ -174,6 +177,7 @@ const getText = (textObj) => {
     opacity: 0.8;
     font-style: normal;
     font-weight: 400;
+    word-break: break-word;
   }
 }
 

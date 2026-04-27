@@ -197,6 +197,10 @@
       "dataKey": "gAesDetectBlock"
     },
     {
+      "type": "twoImagesBlock",
+      "dataKey": "aebAwwBlock"
+    },
+    {
       "type": "batterySafetyBlock",
       "dataKey": "haohanArmorBlock"
     },
@@ -918,7 +922,7 @@
           "en": "Active Side Support"
         },
         "label": {
-          "ua": "спинка водійського сидіння",
+          "ua": "Спинка передніх сидінь",
           "en": "driver's seat backrest"
         }
       },
@@ -928,17 +932,17 @@
           "en": "16-way"
         },
         "label": {
-          "ua": "електроналаштування водійського сидіння",
+          "ua": " Електричне регулювання передніх сидінь",
           "en": "electric adjustment for driver's seat"
         }
       },
       {
         "value": {
-          "ua": "Підігрів / Вентиляція* / Пам'ять",
+          "ua": "Підігрів / вентиляція / пам’ять*",
           "en": "Heat / Ventilation* / Memory"
         },
         "label": {
-          "ua": "функції комфорту передніх сидінь",
+          "ua": "Комфортні функції передніх сидінь",
           "en": "front seat comfort functions"
         }
       },
@@ -948,15 +952,17 @@
           "en": "Heat"
         },
         "label": {
-          "ua": "функції комфорту задніх сидінь",
+          "ua": "Комфорт для задніх сидінь",
           "en": "rear seat comfort functions"
         }
       }
     ],
-    "note": {
-      "ua": "* вентиляція передніх сидінь — керована фазована вентиляція",
-      "en": "* front seat ventilation uses phased seat ventilation control"
-    }
+    "notes": [
+      {
+        "ua": "* вентиляція залежить від комплектації",
+        "en": "* ventilation depends on the trim level"
+      }
+    ]
   },
   "frFeatureBlock3": {
     "layout": "two-images",
@@ -1191,8 +1197,8 @@
       {
         "image": "battery_2.webp",
         "name": {
-          "ua": "Акумулятор 103 кВт·год",
-          "en": "103 kWh Battery"
+          "ua": "Акумулятор 100 кВт·год",
+          "en": "100 kWh Battery"
         },
         "specs": [
           {
@@ -1503,11 +1509,11 @@
   },
   "textBlockSafety": {
     "title": {
-      "ua": "Впевненість на дорозі",
+      "ua": "Абсолютна впевненість на дорозі",
       "en": "Highway Confidence"
     },
     "subtitle": {
-      "ua": "І все інше",
+      "ua": "І навіть більше",
       "en": "Even Safer"
     }
   },
@@ -1823,6 +1829,40 @@
         "description": {
           "ua": "Безпека конструкції кузова / Безпека низьковольтного живлення / Безпека розблокування дверей / Механічне резервне копіювання",
           "en": "Body structure safety / Low-voltage power safety / Door unlock safety / Mechanical backup safety"
+        }
+      }
+    ]
+  },
+  "aebAwwBlock": {
+    "images": [
+      {
+        "image": {
+          "desktop": "detector_7_pc.webp",
+          "tablet": "detector_7_pc.webp",
+          "mobile": "detector_7_pc.webp"
+        },
+        "title": {
+          "ua": "AEB — аварійне гальмування перед перешкодою",
+          "en": "AEB Forward Emergency Braking"
+        },
+        "description": {
+          "ua": "Зупинка на швидкості до 130 км/год; до 40 км/год при повороті на перехресті",
+          "en": "Brakes to a stop at up to 130 km/h; up to 40 km/h at intersection turning scenarios"
+        }
+      },
+      {
+        "image": {
+          "desktop": "detector_6_pc.webp",
+          "tablet": "detector_6_pc.webp",
+          "mobile": "detector_6_pc.webp"
+        },
+        "title": {
+          "ua": "AWW — захист коліс від пошкоджень",
+          "en": "AWW Wheel Scrape Protection"
+        },
+        "description": {
+          "ua": "При паркуванні або повільному наближенні до бордюру чи сходів система виявляє ризик пошкодження коліс і позначає небезпечне місце",
+          "en": "When parking or slowly approaching a kerb or step, the system detects the risk of wheel damage and marks the hazard location"
         }
       }
     ]
