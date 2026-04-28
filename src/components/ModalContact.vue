@@ -17,7 +17,7 @@
 				×
 			</button>
 			<template v-if="!isSent">
-				<div class="modal__h">{{ props.heading?.[langStore.activeLang] }}</div>
+				<div class="modal__h">{{ typeof props.heading === 'string' ? props.heading : props.heading?.[langStore.activeLang] }}</div>
 				<div class="modal__underh">
 					{{ i18n.modal.fillInYourInfo?.[langStore.activeLang] }}
 				</div>
