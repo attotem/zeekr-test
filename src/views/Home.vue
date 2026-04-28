@@ -332,9 +332,9 @@ import slide9xPc from "@/assets/slider/9x/9X_pc.webp";
 import slide9xTablet from "@/assets/slider/9x/9X_tablet.webp";
 import slide9xMb from "@/assets/slider/9x/9X_mb.webp";
 
-import slideTdPc from "@/assets/slider/testdrive/testdrive_pc_site.png";
-import slideTdTablet from "@/assets/slider/testdrive/testdrive_tablet_site.png";
-import slideTdMb from "@/assets/slider/testdrive/testdrive_phone_site.png";
+import slideTdPc from "@/assets/courusel/testdrive_pc_tablet_site.webp";
+import slideTdTablet from "@/assets/courusel/testdrive_pc_tablet_site.webp";
+import slideTdMb from "@/assets/courusel/testdrive_phone_tablet_site.webp";
 
 import slideCreditPc from "@/assets/courusel/credit_pc_site.png";
 import slideCreditTablet from "@/assets/courusel/credit_tablet_site.png";
