@@ -217,10 +217,10 @@
       "dataKey": "batterySafetyBlock"
     }
   ],
-  "versionsImages": {
-    "Ultra": "001_ultra.webp",
-    "Ultra Plus": "001_ultra_plus.webp"
-  },
+  "versionsImages": [
+    "001_ultra.webp",
+    "001_ultra_plus.webp"
+  ],
   "hero": {
     "title": {
       "ua": "Оновлений ZEEKR 001",

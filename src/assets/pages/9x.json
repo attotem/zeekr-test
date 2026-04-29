@@ -213,11 +213,11 @@
       "dataKey": "redundancyVideoBlock"
     }
   ],
-  "versionsImages": {
-    "Zeekr 9X Ultra": "9x_ultra.webp",
-    "Zeekr 9X Hyper": "9x_hyper.webp",
-    "Zeekr 9X Hyper Obsidian Black": "9x_hyper_bb.webp"
-  },
+  "versionsImages": [
+    "9x_ultra.webp",
+    "9x_hyper.webp",
+    "9x_hyper_bb.webp"
+  ],
   "hero": {
     "title": {
       "ua": "ZEEKR 9X",

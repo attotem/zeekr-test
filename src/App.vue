@@ -363,12 +363,12 @@ svg {
 
       &--1 {
         font-family: "Tenor Sans";
-        font-size: 82px;
+        font-size: clamp(36px, 10.5vh, 82px);
         line-height: 1.2;
       }
 
       &--2 {
-        font-size: 30px;
+        font-size: clamp(16px, 3.8vh, 30px);
         line-height: 1.4;
         margin-top: 20px;
         margin-bottom: 50px;

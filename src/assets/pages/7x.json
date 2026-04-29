@@ -202,11 +202,11 @@
       }
     ]
   },
-  "versionsImages": {
-    "Ultra": "7x_ultra.webp",
-    "Performance EU": "7x_perfomance_eu.webp",
-    "Standard EU": "7x_standard_eu.webp"
-  },
+  "versionsImages": [
+    "7x_ultra.webp",
+    "7x_perfomance_eu.webp",
+    "7x_standard_eu.webp"
+  ],
   "navigationBlock": {
     "title": {
       "ua": "Оновлений ZEEKR 7X",

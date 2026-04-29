@@ -169,8 +169,10 @@ const cards = computed(() => {
   for (let i = 0; i < versionCount; i++) {
     const name = headerRow[i + 1] || ''
 
-    // Пытаемся подобрать изображение для этой версии
-    const imageFile = props.versionImages?.[name]
+    // Array → positional lookup (index); object → name-key lookup
+    const imageFile = Array.isArray(props.versionImages)
+      ? props.versionImages[i]
+      : props.versionImages?.[name]
     const image =
       imageFile && typeof imageFile === 'string'
         ? resolveMediaPath(imageFile, { carId: props.carId })
