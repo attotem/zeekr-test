@@ -884,7 +884,7 @@ onMounted(async () => {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 80px 20px 60px;
+    padding: 50px 20px 60px;
     z-index: 1;
     
     @media screen and (max-width: 876px) {
