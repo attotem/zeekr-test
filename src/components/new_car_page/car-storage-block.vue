@@ -403,6 +403,7 @@ const currentItemDescription = computed(() => {
       padding: 0;
       gap: 28px;
       justify-content: flex-start;
+      overflow-x: scroll;
     }
 
     &__switcher-item {
