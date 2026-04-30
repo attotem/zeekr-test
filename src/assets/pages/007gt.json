@@ -212,6 +212,12 @@
       "type": "storageBlock",
       "dataKey": "crashSafetyBlock"
     }
+    
+  ],
+  "versionsImages": [
+    "rwd.webp",
+    "long_range.webp",
+    "awd.webp"
   ],
   "hero": {
     "title": {
