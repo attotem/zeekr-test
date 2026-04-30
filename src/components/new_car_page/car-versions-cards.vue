@@ -235,6 +235,7 @@ const cards = computed(() => {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    margin-left: 20px;
     border: 1px solid #111;
     border-radius: 999px;
     padding: 8px 20px;
