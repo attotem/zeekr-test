@@ -365,7 +365,7 @@ onMounted(async () => {
     .btn {
       min-width: 110px;
       padding: 11px 24px;
-      transition: all .25s linear;
+      transition: background-color .3s, color .3s, border-color .3s;
       border: none;
       font-size: 14px;
       border-radius: 50px;
@@ -375,6 +375,10 @@ onMounted(async () => {
         background: #fff4e2;
         color: #000;
         border-radius: 50px;
+
+        &:hover {
+          background-color: #FFFBF3;
+        }
       }
 
       &--transparent {
@@ -383,6 +387,12 @@ onMounted(async () => {
         color: #fff4e2;
         padding: 10px 23px;
         border-radius: 50px;
+
+        &:hover {
+          background-color: #FFFBF3;
+          color: #000;
+          border-color: transparent;
+        }
       }
     }
   }
