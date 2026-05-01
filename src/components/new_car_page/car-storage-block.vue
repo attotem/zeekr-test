@@ -1,5 +1,5 @@
 <template>
-  <section class="car-storage-block" :class="{ 'car-storage-block--mobile-stack': mobileStack }" :style="blockData.background ? { background: blockData.background } : {}">
+  <section class="car-storage-block" :class="{ 'car-storage-block--mobile-stack': mobileStack, 'car-storage-block--single': isSingle }" :style="blockData.background ? { background: blockData.background } : {}">
     <div class="car-storage-block__inner">
 
       <!-- Desktop switcher view -->
@@ -210,6 +210,7 @@ onMounted(() => {
 })
 
 const items = computed(() => blockData.value.items || [])
+const isSingle = computed(() => items.value.length === 1)
 
 function setIndex(nextIndex) {
   const max = items.value.length - 1
@@ -382,6 +383,17 @@ const currentItemDescription = computed(() => {
   &__mobile-view {
     display: none;
   }
+
+  &--single {
+    .car-storage-block__switcher-item {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .car-storage-block__switcher-title::after {
+      display: none;
+    }
+  }
 }
 
 @media screen and (max-width: 876px) {
@@ -404,6 +416,11 @@ const currentItemDescription = computed(() => {
       gap: 28px;
       justify-content: flex-start;
       overflow-x: scroll;
+    }
+
+    &--single &__switcher-content {
+      justify-content: center;
+      overflow-x: visible;
     }
 
     &__switcher-item {

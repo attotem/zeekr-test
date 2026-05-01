@@ -35,13 +35,14 @@
 </template>
 
 <script setup>
-import { onMounted, onBeforeUnmount, ref, computed, nextTick } from 'vue';
+import { onMounted, onBeforeUnmount, ref, computed, nextTick, watch } from 'vue';
 import Horizontal from './icons/horizontal.vue';
 
 let props = defineProps({
   sliderType: { type: [Number, String] },
   count: { type: Number },
-  autoSlide: { type: Boolean, default: true }
+  autoSlide: { type: Boolean, default: true },
+  lockedIndex: { type: Number, default: null }
 })
 let realIndex = ref(0) // Реальний індекс для безперервного перелистування
 let touch = ref()
@@ -54,9 +55,25 @@ const activeBulletIndex = computed(() => {
   return realIndex.value % props.count;
 })
 
+watch(activeBulletIndex, (val) => {
+  console.log('[Slider] current slide:', val)
+})
+
+watch(() => props.lockedIndex, (val) => {
+  if (val !== null && val !== undefined) {
+    goToSlide(val, true)
+    pauseAutoSlide()
+  } else {
+    resumeAutoSlide()
+  }
+})
+
+const isLocked = () => props.lockedIndex !== null && props.lockedIndex !== undefined
+
 const next = () => {
+  if (isLocked()) return
   realIndex.value++;
-  
+
   // Пауза при ручному переключенні
   if (props.sliderType === 1) {
     pauseAutoSlide();
@@ -67,12 +84,13 @@ const next = () => {
 }
 
 const prev = () => {
+  if (isLocked()) return
   if (realIndex.value > 0) {
     realIndex.value--;
   } else {
     realIndex.value = props.count - 1;
   }
-  
+
   if (props.sliderType === 1) {
     pauseAutoSlide();
     setTimeout(() => {
@@ -81,9 +99,10 @@ const prev = () => {
   }
 }
 
-const goToSlide = (index) => {
+const goToSlide = (index, force = false) => {
+  if (!force && isLocked()) return
   const currentActive = realIndex.value % props.count;
-  
+
   if (index > currentActive) {
     realIndex.value = realIndex.value + (index - currentActive);
   } else if (index < currentActive) {
@@ -91,8 +110,8 @@ const goToSlide = (index) => {
   } else {
     realIndex.value = Math.floor(realIndex.value / props.count) * props.count + index;
   }
-  
-  if (props.sliderType === 1) {
+
+  if (!force && props.sliderType === 1) {
     pauseAutoSlide();
     setTimeout(() => {
       resumeAutoSlide();
@@ -107,6 +126,7 @@ const touchStart = (e) => {
 
 const touchEnd = (e) => {
   if (props.sliderType !== 1) return;
+  if (isLocked()) return;
   if (e.changedTouches[0].pageX > touch.value) prev()
   else next()
   touch.value = null;
@@ -121,7 +141,7 @@ const startAutoSlide = () => {
   if (props.sliderType !== 1 || !props.autoSlide) return;
   
   autoSlideInterval = setInterval(() => {
-    if (!isPaused.value) {
+    if (!isPaused.value && !isLocked()) {
       const currentActive = realIndex.value % props.count;
       realIndex.value++;
       const newActive = realIndex.value % props.count;
@@ -147,7 +167,7 @@ const startAutoSlide = () => {
         });
       }
     }
-  }, 3000);
+  }, 5000);
 }
 
 const pauseAutoSlide = () => {

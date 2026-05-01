@@ -11,6 +11,7 @@
 				<Slider
 					:count="mainSliderSlides.length"
 					:slider-type="1"
+					:locked-index="lockedSlideIndex"
 				>
 					<article
 						class="slide"
@@ -94,7 +95,7 @@
 										v-if="slide.isTestDrive"
 										type="button"
 										class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
-										@click="modalHeading = ''; isModalOpened = i18n.modal?.testDrive; modalType = 'testDrive'; mailObj = { type: 'test_drive', page: 'test_drive' }"
+										@click="lockedSlideIndex = index; modalHeading = ''; isModalOpened = i18n.modal?.testDrive; modalType = 'testDrive'; mailObj = { type: 'test_drive', page: 'test_drive' }"
 									>
 										{{ getSlideText({ ua: 'Замовити тест-драйв', en: 'Book a test drive' }) }}
 									</button>
@@ -102,7 +103,7 @@
 										v-if="slide.isConsultation"
 										type="button"
 										class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
-										@click="modalHeading = getSlideText(slide.consultationHeading); isModalOpened = true; modalType = null; mailObj = { type: slide.consultationMailType, page: slide.consultationMailType }"
+										@click="lockedSlideIndex = index; modalHeading = getSlideText(slide.consultationHeading); isModalOpened = true; modalType = null; mailObj = { type: slide.consultationMailType, page: slide.consultationMailType }"
 									>
 										{{ getSlideText({ ua: 'Замовити консультацію', en: 'Book a consultation' }) }}
 									</button>
@@ -275,7 +276,7 @@
 			:heading="modalHeading || i18n.modal?.[modalType]"
 			:is-opened="isModalOpened !== false"
 			:mailObj="mailObj"
-			@close="isModalOpened = false; modalHeading = ''"
+			@close="isModalOpened = false; modalHeading = ''; lockedSlideIndex = null"
 		/>
 		</template>
 	</TransitionGroup>
@@ -355,6 +356,16 @@ const isModalOpened = ref(false)
 const modalType = ref()
 const modalHeading = ref('')
 const mailObj = ref({})
+const lockedSlideIndex = ref(null)
+
+watch(lockedSlideIndex, (val) => {
+  console.log('[Home] locked slide:', val)
+})
+
+watch(isModalOpened, (val) => {
+  if (val !== false) console.log('[Home] popup opened:', val)
+  else console.log('[Home] popup closed')
+})
 
 const mainSliderSlides = [
   {
