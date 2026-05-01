@@ -565,8 +565,7 @@ function initSwipers() {
   }
   .article-2 {
     &__h {
-      margin-bottom: 0;
-      margin: 0 16px;
+      margin:  16px;
     }
   }
 
@@ -606,7 +605,7 @@ function initSwipers() {
     }
 
     .article-2__h {
-      margin-bottom: 16px;
+	  
     }
 
     .slide {

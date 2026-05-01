@@ -1007,6 +1007,8 @@ ul {
 
     .article-2__h {
       margin-bottom: 16px;
+      margin-bottom: 16px;
+
     }
 
     &__image {

@@ -1091,6 +1091,8 @@ onMounted(async () => {
     .article-2__h {
       color: #000;
       grid-column: 1 / span 2;
+      margin-bottom: 16px;
+
     }
   }
 
