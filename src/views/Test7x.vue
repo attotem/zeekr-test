@@ -43,7 +43,7 @@
             :data="block.data"
             :car-id="carId"
             :price-list-url="priceListUrl"
-            @buttonClick="handleHeroButtonClick"
+@buttonClick="handleHeroButtonClick"
           />
 
           <component
@@ -68,7 +68,7 @@
           :icons="displayCarVersionsIcons"
           :version-images="pageData?.versionsImages || {}"
           :car-id="carId"
-          :spec-url="specPdfUrl"
+          :spec-url="specsDocumentUrl"
         />
       </div>
 
@@ -160,6 +160,7 @@ const pageData = ref(null)
 const isLoading = ref(true)
 const selected360Version = ref('standard')
 const priceListUrl = ref('')
+const specsDocumentUrl = ref('')
 const modelBackendData = ref(null)
 
 const isModalOpened = ref(false)
@@ -232,10 +233,12 @@ const loadPriceList = async (id) => {
     const data = await API.Models.getByURL(slug)
     modelBackendData.value = data
     priceListUrl.value = data?.price_list || ''
+    specsDocumentUrl.value = data?.specs_document || ''
   } catch (e) {
     console.error('Failed to load model data for car', id, e)
     modelBackendData.value = null
     priceListUrl.value = ''
+    specsDocumentUrl.value = ''
   }
 }
 

@@ -68,16 +68,13 @@
       />
     </picture>
 
-    <!-- Dark overlay -->
     <div class="car-hero__overlay"></div>
 
-    <!-- Hero content -->
     <div class="car-hero__content">
       <div>
         <h1 class="car-hero__title">{{ getText(heroData.title) }}</h1>
       <h2 class="car-hero__subtitle">{{ getText(heroData.subtitle) }}</h2>
 
-      <!-- Buttons -->
       <div class="car-hero__buttons">
         <button
           v-for="(button, index) in heroData.buttons"
@@ -103,10 +100,10 @@
         >
           {{ i18n?.pages?.car?.priceList?.[langStore.activeLang] || 'Прайс-лист' }}
         </a>
+
       </div>
       </div>
 
-      <!-- Specs -->
       <div class="car-hero__specs">
         <div
           v-for="(spec, index) in heroData.specs"
@@ -141,7 +138,7 @@ const props = defineProps({
   priceListUrl: {
     type: String,
     default: ''
-  }
+  },
 })
 
 const emit = defineEmits(['buttonClick'])

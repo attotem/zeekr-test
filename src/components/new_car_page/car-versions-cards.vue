@@ -11,7 +11,7 @@
         </h2>
         <a
           v-if="specUrl"
-          :href="specUrl"
+          :href="sameOriginMediaUrl(specUrl)"
           target="_blank"
           rel="noopener noreferrer"
           class="car-versions-cards__spec-btn"
@@ -90,6 +90,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { resolveMediaPath } from '@/utils/resolveMedia'
+import { sameOriginMediaUrl } from '@/utils/sameOriginMediaUrl'
 
 const props = defineProps({
   versions: {

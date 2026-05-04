@@ -72,8 +72,8 @@
 							{{ modelData.car_versions_title }}
 						</h3>
 						<a
-							v-if="specPdfUrl"
-							:href="specPdfUrl"
+							v-if="modelData.specs_document"
+							:href="sameOriginMediaUrl(modelData.specs_document)"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="specifications__spec-btn"
@@ -274,22 +274,8 @@ import { ref as vueRef } from 'vue';
 import ModalContact from "@/components/ModalContact.vue";
 import { sameOriginMediaUrl } from "@/utils/sameOriginMediaUrl";
 
-const specPdfs = import.meta.glob('@/assets/car-versions/*.pdf', { eager: true, query: '?url', import: 'default' })
-
-const specPdfMap = Object.fromEntries(
-  Object.entries({
-    'zeekr-x':    'spec_Х.pdf',
-    'zeekr-8x':   'spec_8Х.pdf',
-  }).map(([id, file]) => [
-    id,
-    specPdfs[`/src/assets/car-versions/${file}`] || ''
-  ])
-)
-
 const router = useRouter();
 let isLoading = computed(() => useLoaderStore().isLoading)
-
-const specPdfUrl = computed(() => specPdfMap[route.params.childId] || '')
 
 let langStore = useLangStore(),
   route = useRoute()
