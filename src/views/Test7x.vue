@@ -57,7 +57,10 @@
       </template>
 
       
-      <div data-block-key="techSpecsBlock">
+      <div
+        data-block-key="techSpecsBlock"
+        class="test-7x-page__tech-specs-anchor"
+      >
         <CarVersionsCards
           v-if="displayCarVersions"
           :title="displayCarVersionsTitle"
@@ -80,7 +83,7 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, watch, getCurrentInstance } from 'vue'
+import { computed, ref, onMounted, watch, nextTick, getCurrentInstance } from 'vue'
 import { useRoute } from 'vue-router'
 import Logo from '@/components/icons/logo.vue'
 import CarHero from '@/components/new_car_page/car-hero.vue'
@@ -417,6 +420,98 @@ const visibleBlocks = computed(() => {
   })
 })
 
+const getFixedHeaderOffset = () => {
+  const nodes = document.querySelectorAll('.header.header--desktop, .header.header--mobile')
+  let best = 0
+  nodes.forEach((node) => {
+    const st = getComputedStyle(node)
+    if (st.display === 'none' || st.visibility === 'hidden') return
+    const h = node.getBoundingClientRect().height
+    if (h > best) best = h
+  })
+  return Math.ceil(best) || 88
+}
+
+const scrollWindowToYInstant = (y) => {
+  const html = document.documentElement
+  const body = document.body
+  const prevH = html.style.scrollBehavior
+  const prevB = body.style.scrollBehavior
+  html.style.scrollBehavior = 'auto'
+  body.style.scrollBehavior = 'auto'
+  window.scrollTo(0, Math.max(0, Math.round(y)))
+  requestAnimationFrame(() => {
+    html.style.scrollBehavior = prevH
+    body.style.scrollBehavior = prevB
+  })
+}
+
+const scrollElementWithHeader = (el) => {
+  if (!el) return
+  const pad = getFixedHeaderOffset() + 20
+  const top = el.getBoundingClientRect().top + window.scrollY - pad
+  scrollWindowToYInstant(top)
+}
+
+const scrollToDataBlockKey = (targetKey) => {
+  const queryAnchor = () => {
+    if (targetKey === 'techSpecsBlock') {
+      return (
+        document.querySelector('[data-car-tech-specs-anchor]') ||
+        document.querySelector(`[data-block-key="${targetKey}"]`)
+      )
+    }
+    return document.querySelector(`[data-block-key="${targetKey}"]`)
+  }
+
+  const scrollAfterPaint = () => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = queryAnchor()
+        scrollElementWithHeader(el)
+      })
+    })
+  }
+
+  if (targetKey !== 'techSpecsBlock') {
+    nextTick(scrollAfterPaint)
+    return
+  }
+
+  nextTick(() => {
+    let cancelled = false
+    let stopVersionsWatch = () => {}
+
+    const finish = () => {
+      if (cancelled) return
+      cancelled = true
+      stopVersionsWatch()
+      clearTimeout(fallbackTimer)
+      scrollAfterPaint()
+    }
+
+    const tick = () => {
+      if (cancelled) return
+      const el = queryAnchor()
+      if (el && el.offsetHeight >= 48) {
+        finish()
+        return
+      }
+      requestAnimationFrame(tick)
+    }
+
+    stopVersionsWatch = watch(
+      displayCarVersions,
+      () => requestAnimationFrame(tick),
+      { flush: 'post' }
+    )
+
+    const fallbackTimer = setTimeout(finish, 7500)
+
+    requestAnimationFrame(tick)
+  })
+}
+
 const handleHeroButtonClick = (btn) => {
   const type = typeof btn === 'string' ? btn : btn?.type
   const target = typeof btn === 'object' ? btn?.target : null
@@ -432,8 +527,7 @@ const handleHeroButtonClick = (btn) => {
   } else if (type === 'price_list' && priceListUrl.value) {
     window.open(sameOriginMediaUrl(priceListUrl.value), '_blank', 'noopener,noreferrer')
   } else if (type === 'scroll_to' && target) {
-    const el = document.querySelector(`[data-block-key="${target}"]`)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToDataBlockKey(target)
   } else if (type === 'scroll_down') {
     window.scrollBy({ top: Math.round(window.innerHeight * 0.85), behavior: 'smooth' })
   }
@@ -444,6 +538,10 @@ const handleHeroButtonClick = (btn) => {
 .test-7x-page {
   width: 100%;
   min-height: 100vh;
+
+  &__tech-specs-anchor {
+    scroll-margin-top: 120px;
+  }
 }
 
 .block-appear {

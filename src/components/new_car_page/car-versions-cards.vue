@@ -1,5 +1,9 @@
 <template>
-  <section class="car-versions-cards" v-if="cards.length">
+  <section
+    v-if="cards.length"
+    class="car-versions-cards"
+    data-car-tech-specs-anchor
+  >
     <div class="car-versions-cards__inner">
       <div class="car-versions-cards__header">
         <h2 v-if="title" class="car-versions-cards__title">
