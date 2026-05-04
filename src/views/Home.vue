@@ -341,7 +341,7 @@ import slideCreditPc from "@/assets/courusel/credit_pc_site.png";
 import slideCreditTablet from "@/assets/courusel/credit_tablet_site.png";
 import slideCreditMb from "@/assets/courusel/credit_phone_site.png";
 
-import slideTradeinPc from "@/assets/courusel/tradein_pc_site.png";
+import slideTradeinPc from "@/assets/courusel/tradein_pc_site.webp";
 import slideTradeinTablet from "@/assets/courusel/tradein_tablet_site.png";
 import slideTradeinMb from "@/assets/courusel/tradein_phone_site.png";
 
