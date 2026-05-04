@@ -998,6 +998,7 @@ ul {
     &__cell {
       padding: 12px 10px;
     }
+    
   }
 
   .swiper {
