@@ -92,10 +92,12 @@ const getText = (textObj) => {
 const resolveImage = (imagePath) => {
   if (!imagePath) return ''
   if (imagePath.startsWith('/')) return imagePath
+  const subdir = blockData.value.subdir !== undefined ? blockData.value.subdir : 'details'
+  const filePath = subdir ? `${subdir}/${imagePath}` : imagePath
   if (import.meta.env.DEV) {
-    return `/src/assets/pages/${props.carId}/details/${imagePath}`
+    return `/src/assets/pages/${props.carId}/${filePath}`
   }
-  return `/pages/${props.carId}/details/${imagePath}`
+  return `/pages/${props.carId}/${filePath}`
 }
 
 const items = computed(() => {

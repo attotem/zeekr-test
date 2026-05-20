@@ -1,5 +1,5 @@
 <template>
-  <section class="car-text-block">
+  <section class="car-text-block" :style="bgStyle">
     <h2 class="car-text-block__title">{{ getText(blockData.title) }}</h2>
     <p class="car-text-block__subtitle">{{ getText(blockData.subtitle) }}</p>
   </section>
@@ -10,15 +10,24 @@ import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
-  data: {
-    type: Object,
-    required: true
-  }
+  data: { type: Object, required: true },
+  carId: { type: String, default: '' }
 })
 
 const langStore = useLangStore()
 
 const blockData = computed(() => props.data || {})
+
+const bgStyle = computed(() => {
+  const img = blockData.value.image
+  if (!img) return {}
+  const src = img.startsWith('/')
+    ? img
+    : import.meta.env.DEV
+      ? `/src/assets/pages/${props.carId}/${img}`
+      : `/pages/${props.carId}/${img}`
+  return { backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+})
 
 // Функция для получения текста в зависимости от языка
 const getText = (textObj) => {
@@ -40,7 +49,7 @@ const getText = (textObj) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 80px 20px;
   background: #fff;
 
   &__title {

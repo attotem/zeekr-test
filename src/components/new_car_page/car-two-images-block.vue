@@ -1,23 +1,48 @@
 <template>
-  <section class="car-two-images-block" :style="{ background: blockData.background || '#fff' }">
+  <section class="car-two-images-block" :class="{ 'car-two-images-block--compact': blockData.compact }" :style="{ background: blockData.background || '#fff' }">
     <div class="car-two-images-block__inner">
       <h2 v-if="getText(blockData.title)" class="car-two-images-block__title">
         {{ getText(blockData.title) }}
       </h2>
-      <div class="car-two-images-block__grid" :class="`car-two-images-block__grid--cols-${images.length}`">
+      <div class="car-two-images-block__grid" :class="`car-two-images-block__grid--cols-${blockData.cols || images.length}`">
         <div
           v-for="(item, index) in images"
           :key="index"
           class="car-two-images-block__item"
         >
           <div class="car-two-images-block__image-wrap">
+            <!-- Poster + click-to-play video -->
+            <template v-if="item.poster">
+              <video
+                v-if="playingIndex === index"
+                :src="resolveImage(item.image)"
+                class="car-two-images-block__video"
+                autoplay
+                controls
+                playsinline
+              />
+              <template v-else>
+                <img
+                  :src="resolveImage(item.poster)"
+                  :alt="getText(item.title)"
+                  class="car-two-images-block__image"
+                  loading="lazy"
+                />
+                <button class="car-two-images-block__play-btn" @click="playingIndex = index" aria-label="Play video">
+                  <img :src="resolveImage(item.playIcon || 'play.png')" alt="Play" />
+                </button>
+              </template>
+            </template>
+            <!-- Regular image -->
             <img
-              v-if="!isVideo(item.image)"
+              v-else-if="!isVideo(item.image)"
               :src="resolveImage(item.image)"
               :alt="getText(item.title) || getText(item.caption)"
               class="car-two-images-block__image"
+              :style="blockData.objectFit ? { objectFit: blockData.objectFit } : {}"
               loading="lazy"
             />
+            <!-- Autoplay video -->
             <video
               v-else
               :src="resolveImage(item.image)"
@@ -41,6 +66,12 @@
           </div>
         </div>
       </div>
+      <p v-if="getText(blockData.subtitle)" class="car-two-images-block__subtitle">
+        {{ getText(blockData.subtitle) }}
+      </p>
+      <p v-if="getText(blockData.note)" class="car-two-images-block__note">
+        {{ getText(blockData.note) }}
+      </p>
     </div>
   </section>
 </template>
@@ -63,6 +94,7 @@ const props = defineProps({
 
 const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
+const playingIndex = ref(null)
 
 const getText = (textObj) => {
   if (!textObj) return ''
@@ -136,9 +168,7 @@ onMounted(() => {
 
   &__inner {
     width: 100%;
-    max-width: 1320px;
     margin: 0 auto;
-    padding: 0 20px;
   }
 
   &__title {
@@ -171,10 +201,34 @@ onMounted(() => {
     position: relative;
     overflow: hidden;
     background: #f5f5f5;
-    min-height: 400px;
+    min-height: v-bind("blockData.imageHeight ? blockData.imageHeight + 'px' : '400px'");
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__play-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
   }
 
   &__image {
@@ -213,6 +267,26 @@ onMounted(() => {
     line-height: 1.6;
     color: rgba(17, 17, 17, 0.7);
   }
+
+  &__subtitle {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-size: 14px;
+    color: rgba(17, 17, 17, 0.55);
+    text-align: center;
+    margin: 32px 0 0;
+  }
+
+  &__note {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-size: 11px;
+    color: rgba(17, 17, 17, 0.4);
+    text-align: center;
+    margin: 16px 0 0;
+  }
+}
+
+.car-two-images-block--compact {
+  padding: 20px 0 60px;
 }
 
 @keyframes fadeUp {

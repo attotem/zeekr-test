@@ -297,6 +297,7 @@ import img7x from "@/assets/courusel/7x.webp";
 import img7xEu from "@/assets/courusel/7x_eu.webp";
 import img001 from "@/assets/courusel/001.webp";
 import img9x from "@/assets/courusel/9x.webp";
+import img8x from "@/assets/courusel/8x.webp";
 import img007gt from "@/assets/courusel/007gt.webp";
 import img001fr from "@/assets/courusel/001fr.webp";
 import img009 from "@/assets/courusel/009.webp";
@@ -308,6 +309,7 @@ import imgX from "@/assets/courusel/x.webp";
 import img7xMb from "@/assets/courusel/7x_mb.webp";
 import img001Mb from "@/assets/courusel/001_mb.webp";
 import img9xMb from "@/assets/courusel/9x_mb.webp";
+import img8xMb from "@/assets/courusel/8x_mb.webp";
 import img007gtMb from "@/assets/courusel/007gt_mb.webp";
 import img001frMb from "@/assets/courusel/001fr_mb.webp";
 import img009Mb from "@/assets/courusel/009_mb.webp";
@@ -504,6 +506,7 @@ const carouselModels = ref([
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },
   { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/zeekr-001" },
   { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/zeekr-9x" },
+  { id: "8x", label: "8X", image: img8x, imageMobile: img8xMb, link: "/zeekr-8x" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
   { id: "001fr", label: "001 FR", image: img001fr, imageMobile: img001frMb, link: "/zeekr-001-fr" },
   { id: "009", label: "009", image: img009, imageMobile: img009Mb, link: "/zeekr-009" },

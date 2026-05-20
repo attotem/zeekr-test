@@ -1,0 +1,657 @@
+{
+  "layout": [
+    {
+      "type": "hero",
+      "dataKey": "hero"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockDesign"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "dimensionsBlock"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "exteriorDesignBlock"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "rearDesignBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockLights"
+    },
+    {
+      "type": "imageTextBlock",
+      "dataKey": "headlightBlock"
+    },
+    {
+      "type": "imageTextBlock",
+      "dataKey": "taillightBlock"
+    },
+    {
+      "type": "imageTextBlock",
+      "dataKey": "projectionHeadlightBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlock360"
+    },
+    {
+      "type": "color360Block",
+      "dataKey": "color360Block"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockInterior"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockCabinSpace"
+    },
+    {
+      "type": "stargateBlock",
+      "dataKey": "cabinSpaceBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockInsideTitle"
+    },
+    {
+      "type": "insideBlock",
+      "dataKey": "insideBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockStorage"
+    },
+    {
+      "type": "storageGridBlock",
+      "dataKey": "storageGridBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockCockpit"
+    },
+    {
+      "type": "performanceBlock",
+      "dataKey": "cockpitBlock"
+    }
+  ],
+  "versionsImages": [],
+  "hero": {
+    "title": {
+      "ua": "ZEEKR 8X",
+      "en": "ZEEKR 8X"
+    },
+    "subtitle": {
+      "ua": "Суперпотужний гібридний флагманський позашляховик",
+      "en": "Super Hybrid High-Performance Flagship SUV"
+    },
+    "video": "hero_8x.mp4",
+    "buttons": [
+      {
+        "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      },
+      {
+        "text": {
+          "ua": "Технічні характеристики",
+          "en": "Technical Specifications"
+        },
+        "type": "scroll_to",
+        "target": "techSpecsBlock",
+        "style": "transparent"
+      }
+    ]
+    
+  },
+  "dimensionsBlock": {
+    "image": {
+      "desktop": "size.webp",
+      "tablet": "size.webp",
+      "mobile": "size.webp"
+    },
+    "specs": [
+      {
+        "value": "0.618",
+        "label": {
+          "ua": "Золоте співвідношення пропорцій кузова",
+          "en": "Golden body proportion ratio"
+        }
+      },
+      {
+        "value": "1:4",
+        "label": {
+          "ua": "Співвідношення колеса до осі",
+          "en": "Wheel-to-axle ratio"
+        }
+      }
+    ]
+  },
+  "exteriorDesignBlock": {
+    "topTitle": {
+      "ua": "Безліч ліній — єдиний силует",
+      "en": "All Lines, One Silhouette"
+    },
+    "images": ["info1.webp", "info1.webp", "info1.webp", "info1.webp", "info1.webp"],
+    "items": [
+      {
+        "title": {
+          "ua": "Обтічна лінія даху",
+          "en": "Gulf Stream Roofline"
+        },
+        "description": {
+          "ua": "Від задньої частини до передньої, від широкої до стрункої — наче потужна течія Гольфстриму, що надає силуету плавності та динаміки",
+          "en": "Tapering from rear to front like a powerful Gulf Stream, sculpting a fluid and dynamic silhouette"
+        }
+      },
+      {
+        "title": {
+          "ua": "Плечова лінія-хвиля",
+          "en": "Surge Shoulder Line"
+        },
+        "description": {
+          "ua": "Від задніх ліхтарів вперед, ніжно обтікаючи стійку B, наче гребінь хвилі, — окреслює парящу красу вікон",
+          "en": "Flowing forward from the taillights, gently passing the B-pillar like a cresting wave, tracing the floating beauty of the windows"
+        }
+      },
+      {
+        "title": {
+          "ua": "Поясна лінія фіорду",
+          "en": "Fjord Surge Waistline"
+        },
+        "description": {
+          "ua": "Рельєфне ребро наче скандинавський фіорд — стрімке в русі, безтурботно гладке у спокої, розкриваючи красу силуету",
+          "en": "The bold ridge line evokes a Nordic fjord — poised to surge, yet serene as a calm lake, revealing the sculpted beauty of the profile"
+        }
+      },
+      {
+        "title": {
+          "ua": "Дзеркальні двері без зазорів",
+          "en": "Zero-Gap Mirror Door"
+        },
+        "description": {
+          "ua": "Скло врівень із дверною рамкою — як єдине дзеркало, де естетика поєднується з мінімальним аеродинамічним опором",
+          "en": "Glass flush with the door frame — like a seamless mirror, combining aesthetics with minimal aerodynamic drag"
+        }
+      },
+      {
+        "title": {
+          "ua": "Розумна ручка з подвійним захистом",
+          "en": "Smart Electric Dual-Safety Door Handle"
+        },
+        "description": {
+          "ua": "Інтелектуальне відкривання для зручності, механічний замок — для надійності",
+          "en": "Smart opening and closing for convenience, mechanical safety lock for reliability"
+        }
+      }
+    ]
+  },
+  "textBlockStorage": {
+    "title": {
+      "ua": "Великий і впорядкований — прихований, та завжди поруч",
+      "en": "Large and Orderly — Hidden Yet Always at Hand"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "storageGridBlock": {
+    "layout": "featureSplit",
+    "items": [
+      {
+        "image": {
+          "desktop": "storage_1.webp",
+          "tablet": "storage_1.webp",
+          "mobile": "storage_1.webp"
+        },
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": {
+          "desktop": "storage_2.webp",
+          "tablet": "storage_2.webp",
+          "mobile": "storage_2.webp"
+        },
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "image": {
+          "desktop": "storage_3.webp",
+          "tablet": "storage_3.webp",
+          "mobile": "storage_3.webp"
+        },
+        "caption": {
+          "ua": "",
+          "en": ""
+        }
+      }
+    ]
+  },
+  "textBlockInsideTitle": {
+    "title": {
+      "ua": "З першого погляду — й тепло від дотику",
+      "en": "Love at First Sight, Warmth at First Touch"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "insideBlock": {
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "options": [
+      {
+        "id": "white_inside",
+        "name": {
+          "ua": "Біло-чорний",
+          "en": "White & Black"
+        },
+        "image": {
+          "desktop": "white_inside.webp",
+          "tablet": "white_inside.webp",
+          "mobile": "white_inside.webp"
+        },
+        "description": {
+          "ua": "Розкіш, що вміє «дихати» — простір сповнений повітря і ритму",
+          "en": "Luxury that understands space — the interior breathes with rhythm"
+        }
+      },
+      {
+        "id": "brown_inside",
+        "name": {
+          "ua": "Коричнево-чорний",
+          "en": "Brown & Black"
+        },
+        "image": {
+          "desktop": "brown_inside.webp",
+          "tablet": "brown_inside.webp",
+          "mobile": "brown_inside.webp"
+        },
+        "description": {
+          "ua": "Як досвідчений джентльмен — наповнює простір відчутною, майже дотиковою довірою",
+          "en": "Like a seasoned gentleman — filling the space with a trust you can almost touch"
+        }
+      },
+      {
+        "id": "red_inside",
+        "name": {
+          "ua": "Червоний відблиск",
+          "en": "Red Shadow"
+        },
+        "image": {
+          "desktop": "red_inside.webp",
+          "tablet": "red_inside.webp",
+          "mobile": "red_inside.webp"
+        },
+        "description": {
+          "ua": "Пристрасний і глибокий — наче слід червоного скакуна, де тінь слідує за серцем",
+          "en": "Passionate and deep — like the trail of a galloping red steed, where shadow follows the heart"
+        }
+      },
+      {
+        "id": "gray_inisde",
+        "name": {
+          "ua": "Чистий чорний",
+          "en": "Pure Black"
+        },
+        "image": {
+          "desktop": "black_inside.webp",
+          "tablet": "black_inside.webp",
+          "mobile": "black_inside.webp"
+        },
+        "description": {
+          "ua": "Безвітряне море вночі — спокійне, але наповнене силою",
+          "en": "A windless sea at midnight — serene yet full of power"
+        }
+      }
+    ],
+    "note": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockCabinSpace": {
+    "title": {
+      "ua": "Небо й земля в обіймах — окреме царство",
+      "en": "Heaven and Earth Embraced — A World of Its Own"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "cabinSpaceBlock": {
+    "video": "video2.mp4",
+    "specs": [
+      {
+        "value": "5.93 м²",
+        "label": {
+          "ua": "Простір у салоні",
+          "en": "Interior cabin space"
+        }
+      },
+      {
+        "value": ">1.18 м²",
+        "label": {
+          "ua": "Простір на пасажира",
+          "en": "Per-person space"
+        }
+      },
+      {
+        "value": "0.91 м²",
+        "label": {
+          "ua": "Панорамний дах",
+          "en": "Panoramic roof"
+        }
+      }
+    ]
+  },
+  "textBlockInterior": {
+    "title": {
+      "ua": "Розкіш із людським теплом",
+      "en": "Human Touch"
+    },
+    "subtitle": {
+      "ua": "Human Touch",
+      "en": ""
+    }
+  },
+  "textBlock360": {
+    "title": {
+      "ua": "Безмежжя фарб — в одному кольорі",
+      "en": "A World of Colors, Captured in One"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "color360Block": {
+    "colors": [
+      {
+        "id": "red",
+        "name": {
+          "ua": "Бургундський червоний",
+          "en": "Burgundy Red"
+        },
+        "value": "#6B1B2E",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "darkGrey",
+        "name": {
+          "ua": "Темно-сірий",
+          "en": "Dark Grey"
+        },
+        "value": "#4A4A4A",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "lightGrey",
+        "name": {
+          "ua": "Світло-сірий",
+          "en": "Light Grey"
+        },
+        "value": "#C0C0C0",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "black",
+        "name": {
+          "ua": "Зоряний чорний",
+          "en": "Star Night Black"
+        },
+        "value": "#1A1A1A",
+        "description": {
+          "ua": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "white",
+        "name": {
+          "ua": "Полярний білий",
+          "en": "Arctic White"
+        },
+        "value": "#F0EFEC",
+        "description": {
+          "ua": "Захоплює світло полярного дня, втілюючи елегантний силует автомобіля",
+          "en": "Capturing the light of Arctic perpetual day, embodying the elegant form of the car"
+        }
+      }
+    ],
+    "note": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockLights": {
+    "title": {
+      "ua": "Ритм зірок, душа світла",
+      "en": "Star Rhythm, Spirit of Light"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "headlightBlock": {
+    "image": "info3.webp",
+    "title": {
+      "ua": "Зіркова діамантова матриця фар",
+      "en": "Star Diamond Matrix Headlights"
+    },
+    "features": [
+      {
+        "ua": "Широка смуга освітлення — горизонтальна естетика неба і землі",
+        "en": "Wide light strip — horizontal aesthetic of sky and earth"
+      },
+      {
+        "ua": "25 368 діамантових граней у відбивачі",
+        "en": "25,368 diamond-shaped facets in the reflector"
+      },
+      {
+        "ua": "Дифузне розсіювання у зустрічному світлі — наче сяюча Чумацька мить",
+        "en": "Diffuse reflection in light — like a brilliant starry galaxy"
+      }
+    ],
+    "textRight": false
+  },
+  "taillightBlock": {
+    "image": "info5.webp",
+    "title": {
+      "ua": "Задні ліхтарі — лінія узбережжя",
+      "en": "Coastline Running Tail Lights"
+    },
+    "features": [
+      {
+        "ua": "54 894 діамантові грані, що збираються у переливчасте узбережжя",
+        "en": "54,894 diamond facets forming a shimmering coastline"
+      },
+      {
+        "ua": "Технологія 630 нм надчервоного світла — чітко видима за будь-яких погодних умов",
+        "en": "630nm ultra-red technology — clearly visible in any weather"
+      }
+    ],
+    "textRight": true
+  },
+  "projectionHeadlightBlock": {
+    "image": "info4.webp",
+    "title": {
+      "ua": "Інтелектуальні HD-проекційні фари",
+      "en": "Intelligent HD Projection Headlights"
+    },
+    "features": [
+      {
+        "ua": "Не лише освітлюють дорогу, а й вміють «спілкуватися»",
+        "en": "Not only illuminates the road, but also communicates"
+      },
+      {
+        "ua": "Світловий килим 2,4 м охоплює навіть широкий кузов",
+        "en": "2.4m light carpet covers even the wide body"
+      }
+    ],
+    "textRight": false
+  },
+  "rearDesignBlock": {
+    "topTitle": {
+      "ua": "Потужний характер ззаду",
+      "en": "Powerful Character, Revealed at the Rear"
+    },
+    "images": ["info2.webp"],
+    "items": [
+      {
+        "title": {
+          "ua": "Широкий приземистий дизайн задньої частини",
+          "en": "Wide-Body Low-Profile Rear Design"
+        },
+        "description": {
+          "ua": "Співвідношення ширини до висоти 1:1,2 забезпечує приземисту поставу спортивного автомобіля — один лише силует ззаду вже передає стрімку енергію",
+          "en": "A 1:1.2 width-to-height ratio achieves the low-slung stance of a high-performance car — one rear silhouette alone radiates surging dynamism"
+        }
+      }
+    ]
+  },
+  "textBlockDesign": {
+    "title": {
+      "ua": "Пізнай безкраї простори. Живи вільно",
+      "en": "Powerful Elegance"
+    },
+    "subtitle": {
+      "ua": "Естетика флагмана продуктивності",
+      "en": "Performance Flagship Aesthetics"
+    }
+  },
+  "textBlockCockpit": {
+    "title": {
+      "ua": "За кермом і в салоні — кожному свій рай",
+      "en": "Drive in Pleasure, Ride in Bliss"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "cockpitBlock": {
+    "image1": "inside2.webp",
+    "image2": "inside1.webp",
+    "version1": {
+      "title": {
+        "ua": "Кокпіт-кабіна водія",
+        "en": "Cockpit Driver Front Row"
+      },
+      "specs": [
+        {
+          "value": {
+            "ua": "Обгортаюча кокпіт-кабіна",
+            "en": "Enveloping Cockpit"
+          },
+          "label": {
+            "ua": "Центрована на водії — обгортаюче компонування формує точний зв'язок між людиною та автомобілем",
+            "en": "Driver-centered design — the wraparound layout creates a precise connection between driver and vehicle"
+          }
+        },
+        {
+          "value": {
+            "ua": "Крісло-флагман з довгим ходом",
+            "en": "Long-Range Comfort Throne"
+          },
+          "label": {
+            "ua": "Активна поперекова підтримка, рідинна накачка за 0,1 с, повна накачка за 1,8 с, авторегулювання подушки та підставки для ніг, хід до 80 мм",
+            "en": "Active lumbar support, liquid inflation in 0.1s, full inflation in 1.8s, auto-adjusting cushion and leg rest with 80mm travel range"
+          }
+        },
+        {
+          "value": {
+            "ua": "Багаторівневе компонування кабіни",
+            "en": "Split-Level Cockpit Layout"
+          },
+          "label": {
+            "ua": "Платформа водія, приладова панель та центральна консоль утворюють єдину замкнену кабіну для зручного керування",
+            "en": "The driver's platform, instruments, and center console form a unified sealed cockpit for intuitive control"
+          }
+        }
+      ]
+    },
+    "version2": {
+      "title": {
+        "ua": "Розкішний задній ряд рівня MPV",
+        "en": "Luxury MPV-Class Second Row"
+      },
+      "note": {
+        "ua": "Ширше за аналоги — насолода простором без меж",
+        "en": "Wider than its class — unlimited freedom to stretch"
+      },
+      "specs": [
+        {
+          "value": {
+            "ua": "Вільно витягнутися — і ногам комфортно",
+            "en": "Stretch Freely — Legs Fully at Rest"
+          },
+          "label": {
+            "ua": "999 мм простору для ніг, 267 мм глибини підколінного простору",
+            "en": "999mm of leg space, 267mm of knee clearance"
+          }
+        },
+        {
+          "value": {
+            "ua": "Подвійний складний столик",
+            "en": "Dual Tray Table Design"
+          },
+          "label": {
+            "ua": "Компактна робоча поверхня, витримує до 15 кг",
+            "en": "Space-saving work surface, supports up to 15kg"
+          }
+        },
+        {
+          "value": {
+            "ua": "Хід ковзання до 150 мм",
+            "en": "150mm Maximum Slide Travel"
+          },
+          "label": {
+            "ua": "Все необхідне — під рукою, де б ви не знаходились",
+            "en": "Everything within reach, wherever you are"
+          }
+        },
+        {
+          "value": {
+            "ua": "Режим гостинності",
+            "en": "Welcome Mode"
+          },
+          "label": {
+            "ua": "Зручна посадка та висадка для задніх пасажирів",
+            "en": "Easy entry and exit for rear passengers"
+          }
+        }
+      ]
+    }
+  }
+}

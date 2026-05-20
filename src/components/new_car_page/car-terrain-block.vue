@@ -48,6 +48,7 @@
               </div>
             </div>
           </div>
+          <p v-if="getText(blockData.note)" class="car-terrain-block__note">{{ getText(blockData.note) }}</p>
         </div>
 
         <!-- Image section -->
@@ -200,6 +201,13 @@ const resolveIcon = (iconPath) => {
     line-height: 1.4;
     color: #666;
     text-align: center;
+  }
+
+  &__note {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-size: 11px;
+    color: rgba(17, 17, 17, 0.4);
+    margin: 8px 0 0;
   }
 
   &__image-wrap {

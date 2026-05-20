@@ -21,6 +21,12 @@
 
     <!-- Content -->
     <div class="car-stargate-block__content">
+      <!-- Top label -->
+      <div v-if="getText(blockData.label)" class="car-stargate-block__label">
+        <span class="car-stargate-block__label-title">{{ getText(blockData.label) }}</span>
+        <span v-if="getText(blockData.labelSubtitle)" class="car-stargate-block__label-subtitle">{{ getText(blockData.labelSubtitle) }}</span>
+      </div>
+
       <!-- Bottom section: Specs -->
       <div class="car-stargate-block__specs">
         <div
@@ -175,10 +181,35 @@ const getText = (textObj) => {
     min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 50px 40px;
     max-width: 1320px;
     margin: 0 auto;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  &__label-title {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  &__label-subtitle {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.04em;
   }
 
   &__specs {

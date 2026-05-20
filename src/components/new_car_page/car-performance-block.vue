@@ -22,7 +22,7 @@
               :key="index"
               class="car-performance-block__spec"
             >
-              <div class="car-performance-block__spec-value">{{ spec.value }}</div>
+              <div class="car-performance-block__spec-value">{{ getText(spec.value) }}</div>
               <div class="car-performance-block__spec-label">{{ getText(spec.label) }}</div>
             </div>
           </div>
@@ -45,7 +45,7 @@
               :key="index"
               class="car-performance-block__spec"
             >
-              <div class="car-performance-block__spec-value">{{ spec.value }}</div>
+              <div class="car-performance-block__spec-value">{{ getText(spec.value) }}</div>
               <div class="car-performance-block__spec-label">{{ getText(spec.label) }}</div>
             </div>
           </div>
@@ -134,49 +134,35 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .car-performance-block {
+  background: v-bind("blockData.background || 'rgb(245, 246, 247)'");
   width: calc(100% - 40px);
-  margin: 0 20px;
-  background: #fff;
+  margin: auto;
 
   &__inner {
     width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   &__row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    min-height: 500px;
 
     &--image-left {
-      .car-performance-block__image-wrap {
-        order: 1;
-      }
-      .car-performance-block__content {
-        order: 2;
-      }
+      .car-performance-block__image-wrap { order: 1; }
+      .car-performance-block__content { order: 2; }
     }
 
     &--text-left {
-      .car-performance-block__content {
-        order: 1;
-      }
-      .car-performance-block__image-wrap {
-        order: 2;
-      }
+      .car-performance-block__content { order: 1; }
+      .car-performance-block__image-wrap { order: 2; }
     }
   }
 
   &__image-wrap {
     width: 100%;
     height: 100%;
-    min-height: 500px;
-    position: relative;
     overflow: hidden;
-    background: #f5f5f5;
   }
 
   &__image {
@@ -188,134 +174,97 @@ onMounted(() => {
   }
 
   &__content {
-    padding: 40px;
+    padding: 40px 64px;
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    position: relative;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   &__title {
     font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 28px;
-    line-height: 1.3;
+    font-size: 18px;
+    line-height: 1.4;
     font-weight: 400;
     color: #111;
-    margin: 0;
-  }
-
-  &__specs {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  &__spec {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  &__spec-value {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
-    font-size: 40px;
-    line-height: 1.2;
-    font-weight: 400;
-    color: #111;
-  }
-
-  &__spec-label {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #666;
-  }
-
-  &__note {
-    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
-    font-size: 11px;
-    line-height: 1.6;
-    color: #666;
-    margin: 0;
+    margin: 0 0 16px;
   }
 
   &__divider {
     width: 100%;
     height: 1px;
-    background: rgba(17, 17, 17, 0.1);
-    margin: 0;
-    position: relative;
+    background: rgba(17, 17, 17, 0.15);
+    margin-bottom: 24px;
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 8px;
-      height: 8px;
-      background: rgba(17, 17, 17, 0.1);
-      border-radius: 50%;
-    }
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__spec {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__spec-value {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #111;
+  }
+
+  &__spec-label {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(17, 17, 17, 0.55);
+  }
+
+  &__note {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(17, 17, 17, 0.55);
+    margin: 16px 0 0;
   }
 }
 
 @media screen and (max-width: 876px) {
   .car-performance-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-
-    &__inner {
-      padding: 0;
-    }
-
     &__row {
       grid-template-columns: 1fr;
-      gap: 32px;
-      min-height: auto;
+      height: auto;
 
       &--image-left {
-        .car-performance-block__image-wrap {
-          order: 1;
-        }
-        .car-performance-block__content {
-          order: 2;
-        }
+        .car-performance-block__image-wrap { order: 1; }
+        .car-performance-block__content { order: 2; }
       }
 
       &--text-left {
-        .car-performance-block__content {
-          order: 1;
-        }
-        .car-performance-block__image-wrap {
-          order: 2;
-        }
+        .car-performance-block__content { order: 1; }
+        .car-performance-block__image-wrap { order: 2; }
       }
     }
 
     &__image-wrap {
-      min-height: 300px;
+      height: 280px;
     }
 
     &__content {
-      padding: 32px 0;
-      gap: 24px;
+      padding: 28px 20px;
     }
 
     &__title {
-      font-size: 22px;
+      font-size: 16px;
     }
 
     &__spec-value {
-      font-size: 32px;
-    }
-
-    &__spec-label {
-      font-size: 13px;
-    }
-
-    &__divider {
-      margin: 40px 0;
+      font-size: 15px;
     }
   }
 }

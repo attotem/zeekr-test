@@ -134,6 +134,12 @@ import CarFrLineBlock from '@/components/new_car_page/car-fr-line-block.vue'
 import CarInfoGridBlock from '@/components/new_car_page/car-info-grid-block.vue'
 import CarFrLineSliderBlock from '@/components/new_car_page/car-fr-line-slider-block.vue'
 import CarFrFeatureBlock from '@/components/new_car_page/car-fr-feature-block.vue'
+import CarStorageGridBlock from '@/components/new_car_page/car-storage-grid-block.vue'
+import CarFeaturesRowBlock from '@/components/new_car_page/car-features-row-block.vue'
+import CarDetailsFlexBlock from '@/components/new_car_page/car-details-flex-block.vue'
+import CarEngineSpecsBlock from '@/components/new_car_page/car-engine-specs-block.vue'
+import CarFullImageCaptionBlock from '@/components/new_car_page/car-full-image-caption-block.vue'
+import CarFullVideoTabsBlock from '@/components/new_car_page/car-full-video-tabs-block.vue'
 import pageDataJson from '@/assets/pages/7x.json'
 import ModalContact from '@/components/ModalContact.vue'
 import API from '@/composables/API'
@@ -310,7 +316,13 @@ const componentMap = {
   frLineBlock: CarFrLineBlock,
   infoGridBlock: CarInfoGridBlock,
   frLineSliderBlock: CarFrLineSliderBlock,
-  frFeatureBlock: CarFrFeatureBlock
+  frFeatureBlock: CarFrFeatureBlock,
+  storageGridBlock: CarStorageGridBlock,
+  featuresRowBlock: CarFeaturesRowBlock,
+  detailsFlexBlock: CarDetailsFlexBlock,
+  engineSpecsBlock: CarEngineSpecsBlock,
+  fullImageCaptionBlock: CarFullImageCaptionBlock,
+  fullVideoTabsBlock: CarFullVideoTabsBlock
 }
 
 const getComponent = (type) => {

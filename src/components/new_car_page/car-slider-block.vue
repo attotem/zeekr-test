@@ -2,9 +2,11 @@
   <section
     class="car-slider-block"
     :class="{ 'car-slider-block--desktop-static': isDesktopStaticMode }"
+    :style="blockData.background ? { background: blockData.background } : {}"
   >
     <div class="car-slider-block__inner">
       <h2 class="car-slider-block__title">{{ getText(blockData.title) }}</h2>
+      <p v-if="getText(blockData.subtitle)" class="car-slider-block__subtitle">{{ getText(blockData.subtitle) }}</p>
 
       <div class="car-slider-block__slider">
         <button
@@ -57,7 +59,8 @@
                   playsinline
                 ></video>
               </div>
-              <div class="car-slider-block__caption">{{ slot.slide ? getText(slot.slide.caption) : '' }}</div>
+              <div v-if="slot.slide && getText(slot.slide.title)" class="car-slider-block__slide-title">{{ getText(slot.slide.title) }}</div>
+              <div class="car-slider-block__caption">{{ slot.slide ? getText(slot.slide.description || slot.slide.caption) : '' }}</div>
             </div>
           </div>
         </div>
@@ -434,9 +437,27 @@ const next = () => {
     font-size: 48px;
     line-height: 1.2;
     font-weight: 400;
-    margin: 0 0 44px;
+    margin: 0 0 12px;
     color: #111;
     text-align: center;
+  }
+
+  &__subtitle {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "FixelText", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0 0 44px;
+    color: rgba(17, 17, 17, 0.6);
+    text-align: center;
+  }
+
+  &__slide-title {
+    font-family: ZeekrText-Regular, FZLanTingHeiS-R-GB, "Tenor Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #111;
+    margin: 0 0 8px;
   }
 
   &__slider {
@@ -632,6 +653,11 @@ const next = () => {
 
     &__title {
       font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
       margin-bottom: 28px;
     }
 

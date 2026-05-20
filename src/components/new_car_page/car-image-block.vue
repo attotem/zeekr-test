@@ -1,7 +1,7 @@
 <template>
   <section 
     class="car-image-block"
-    :style="{ backgroundImage: `url(${getBackgroundImage})` }"
+    :style="{ backgroundImage: `url(${getBackgroundImage})`, marginTop: blockData.marginTop ? blockData.marginTop + 'px' : undefined }"
   >
     <h2 class="car-image-block__title">{{ getText(blockData.title) }}</h2>
     <p class="car-image-block__subtitle">{{ getText(blockData.subtitle) }}</p>
@@ -65,8 +65,9 @@ const getText = (textObj) => {
 
 <style lang="scss" scoped>
 .car-image-block {
-  width: 100%;
-  min-height: 60vh;
+  width: calc(100% - 40px);
+  margin: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
