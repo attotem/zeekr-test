@@ -27,10 +27,11 @@
       </div>
     </div>
     <div class="car-design-block__switcher">
-      <div class="car-design-block__switcher-content">
+      <div ref="switcherContentEl" class="car-design-block__switcher-content">
         <button
           v-for="(item, index) in items"
           :key="index"
+          :ref="el => { if (el) tabEls[index] = el }"
           type="button"
           class="car-design-block__switcher-item"
           :class="{ 'car-design-block__switcher-item--active': currentIndex === index }"
@@ -83,6 +84,8 @@ const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 const currentIndex = ref(0)
 const imageWrapEl = ref(null)
+const switcherContentEl = ref(null)
+const tabEls = ref([])
 
 const getText = (textObj) => {
   if (!textObj) return ''
@@ -194,6 +197,15 @@ function setIndex(nextIndex) {
   const max = Math.min(mediaItems.value.length, items.value.length) - 1
   const clamped = Math.max(0, Math.min(nextIndex, max))
   currentIndex.value = clamped
+  nextTick(() => {
+    const btn = tabEls.value[clamped]
+    const container = switcherContentEl.value
+    if (!btn || !container) return
+    const btnLeft = btn.offsetLeft
+    const btnWidth = btn.offsetWidth
+    const containerWidth = container.offsetWidth
+    container.scrollLeft = btnLeft - containerWidth / 2 + btnWidth / 2
+  })
 }
 
 watch([mediaItems, items], ([medias, its]) => {
@@ -286,17 +298,17 @@ const currentItemDescription = computed(() => {
 
   &__switcher-content {
     width: 100%;
-    // The parent already has side gutters; keep it flush
     max-width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 32px;
     display: flex;
-    justify-content: center;
+    justify-content: safe center;
     align-items: center;
     gap: 56px;
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
       display: none;

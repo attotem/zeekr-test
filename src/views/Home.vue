@@ -127,7 +127,7 @@
 				<Transition name="carousel-fade">
 					<div
 						v-if="carouselModels[activeCarouselIndex]"
-						:key="`${carouselModels[activeCarouselIndex].id}-${selected7xVersion}-${isMobile()}`"
+						:key="`${carouselModels[activeCarouselIndex].id}-${selected7xVersion}-${selected8xVersion}-${isMobile()}`"
 						class="carousel__bg"
 						:style="{ backgroundImage: `url(${getCarouselImage(carouselModels[activeCarouselIndex])})` }"
 					></div>
@@ -141,9 +141,9 @@
         <div class="carousel__tabs">
           <template v-for="(item, index) in carouselModels" :key="item.id">
             <div v-if="item.id === '7x'" class="carousel__tab-wrapper">
-              <div 
+              <div
                 class="carousel__tab-switcher"
-                :class="{ 
+                :class="{
                   'carousel__tab-switcher--active': index === activeCarouselIndex,
                   'carousel__tab-switcher--right': selected7xVersion === '7x_eu' && index === activeCarouselIndex
                 }"
@@ -181,9 +181,35 @@
         </div>
 
         </div>
-				
+
+        <!-- Navigation arrows -->
+        <button class="carousel__arrow carousel__arrow--prev" type="button" @click="prevCarouselModel" aria-label="Previous model">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="carousel__arrow carousel__arrow--next" type="button" @click="nextCarouselModel" aria-label="Next model">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
 
 				<div class="carousel__actions">
+          <!-- 8X version pills -->
+          <div v-if="carouselModels[activeCarouselIndex]?.id === '8x'" class="carousel__version-pills">
+            <button
+              type="button"
+              class="carousel__version-pill"
+              :class="{ 'carousel__version-pill--active': selected8xVersion === '8x_shadow' }"
+              @click="selected8xVersion = '8x_shadow'"
+            >
+              8X Shadow
+            </button>
+            <button
+              type="button"
+              class="carousel__version-pill"
+              :class="{ 'carousel__version-pill--active': selected8xVersion === '8x' }"
+              @click="selected8xVersion = '8x'"
+            >
+              8X
+            </button>
+          </div>
 					<RouterLink
 						:to="getCarDetailLink()"
 						class="btn btn--orange carousel__more"
@@ -298,6 +324,7 @@ import img7xEu from "@/assets/courusel/7x_eu.webp";
 import img001 from "@/assets/courusel/001.webp";
 import img9x from "@/assets/courusel/9x.webp";
 import img8x from "@/assets/courusel/8x.webp";
+import img8xShadow from "@/assets/courusel/8x_shadow.webp";
 import img007gt from "@/assets/courusel/007gt.webp";
 import img001fr from "@/assets/courusel/001fr.webp";
 import img009 from "@/assets/courusel/009.webp";
@@ -310,6 +337,7 @@ import img7xMb from "@/assets/courusel/7x_mb.webp";
 import img001Mb from "@/assets/courusel/001_mb.webp";
 import img9xMb from "@/assets/courusel/9x_mb.webp";
 import img8xMb from "@/assets/courusel/8x_mb.webp";
+import img8xShadowMb from "@/assets/courusel/8x_shadow_mb.webp";
 import img007gtMb from "@/assets/courusel/007gt_mb.webp";
 import img001frMb from "@/assets/courusel/001fr_mb.webp";
 import img009Mb from "@/assets/courusel/009_mb.webp";
@@ -506,7 +534,7 @@ const carouselModels = ref([
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },
   { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/zeekr-001" },
   { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/zeekr-9x" },
-  { id: "8x", label: "8X", image: img8x, imageMobile: img8xMb, link: "/zeekr-8x" },
+  { id: "8x", label: "8X", image: img8x, imageMobile: img8xMb, imageShadow: img8xShadow, imageShadowMobile: img8xShadowMb, link: "/zeekr-8x", linkShadow: "/zeekr-8x-shadow" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
   { id: "001fr", label: "001 FR", image: img001fr, imageMobile: img001frMb, link: "/zeekr-001-fr" },
   { id: "009", label: "009", image: img009, imageMobile: img009Mb, link: "/zeekr-009" },
@@ -517,12 +545,19 @@ const carouselModels = ref([
 ])
 
 const selected7xVersion = ref('7x')
+const selected8xVersion = ref('8x')
 
 const getCarouselImage = (model) => {
   if (model.id === '7x') {
     const isEu = selected7xVersion.value === '7x_eu'
     const baseImage = isEu ? (model.imageEu || model.image) : model.image
     const baseMobileImage = isEu ? (model.imageEuMobile || model.imageMobile) : model.imageMobile
+    return isMobile() ? baseMobileImage : baseImage
+  }
+  if (model.id === '8x') {
+    const isShadow = selected8xVersion.value === '8x_shadow'
+    const baseImage = isShadow ? (model.imageShadow || model.image) : model.image
+    const baseMobileImage = isShadow ? (model.imageShadowMobile || model.imageMobile) : model.imageMobile
     return isMobile() ? baseMobileImage : baseImage
   }
   return isMobile() ? model.imageMobile : model.image
@@ -535,21 +570,43 @@ const handle7xVersionClick = (version, index) => {
   }
 }
 
+const handle8xVersionClick = (version, index) => {
+  selected8xVersion.value = version
+  if (activeCarouselIndex.value !== index) {
+    activeCarouselIndex.value = index
+  }
+}
+
+const prevCarouselModel = () => {
+  activeCarouselIndex.value = (activeCarouselIndex.value - 1 + carouselModels.value.length) % carouselModels.value.length
+}
+
+const nextCarouselModel = () => {
+  activeCarouselIndex.value = (activeCarouselIndex.value + 1) % carouselModels.value.length
+}
+
 const handleTabClick = (index, itemId) => {
   activeCarouselIndex.value = index
   if (itemId !== '7x') {
     selected7xVersion.value = '7x'
+  }
+  if (itemId !== '8x') {
+    selected8xVersion.value = '8x'
   }
 }
 
 const getCarDetailLink = () => {
   const currentModel = carouselModels.value[activeCarouselIndex.value]
   if (!currentModel) return ''
-  
+
+  if (currentModel.id === '8x' && selected8xVersion.value === '8x_shadow' && currentModel.linkShadow) {
+    return currentModel.linkShadow
+  }
+
   if (currentModel.link) {
     return currentModel.link
   }
-  
+
   return ''
 }
 
@@ -633,7 +690,7 @@ onMounted(async () => {
     &-bg {
       position: absolute;
       inset: 0;
-      background: #F75400;
+      background: #1a1a1a;
       border-radius: 20px;
       transform: scale(0);
       transform-origin: center;
@@ -648,7 +705,7 @@ onMounted(async () => {
 
     &--active {
       color: #fff;
-      border-color: #F75400;
+      border-color: #1a1a1a;
 
       .carousel__tab-bg {
         transform: scale(1);
@@ -656,7 +713,7 @@ onMounted(async () => {
     }
 
     &:hover:not(&--active) {
-      border-color: rgba(247, 84, 0, .5);
+      border-color: rgba(0, 0, 0, .4);
     }
   }
 
@@ -677,7 +734,7 @@ onMounted(async () => {
     transition: border-color .3s ease;
 
     &--active {
-      border-color: #F75400;
+      border-color: #1a1a1a;
     }
 
     &-slider {
@@ -686,11 +743,11 @@ onMounted(async () => {
       bottom: 4px;
       left: 4px;
       right: calc(50% + 4px);
-      background: #F75400;
+      background: #1a1a1a;
       border-radius: 20px;
       z-index: 0;
       opacity: 0;
-      transition: 
+      transition:
         left .35s cubic-bezier(0.4, 0, 0.2, 1),
         right .35s cubic-bezier(0.4, 0, 0.2, 1),
         opacity .2s ease;
@@ -739,14 +796,82 @@ onMounted(async () => {
     }
 
     &:hover:not(&--active) {
-      color: #F75400;
+      color: #1a1a1a;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    transition: background .2s ease, transform .2s ease;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+
+    &:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    &--prev { left: 24px; }
+    &--next { right: 24px; }
+  }
+
+  &__version-pills {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  &__version-pill {
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 0.7);
+    color: #333;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+    white-space: nowrap;
+
+    &--active {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+
+    &:hover:not(&--active) {
+      border-color: rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.9);
     }
   }
 
   &__actions {
     margin-top: 40px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__more.btn--orange {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+
+    &:hover {
+      background: #333;
+      border-color: #333;
+    }
   }
 
   &__more {
@@ -832,8 +957,24 @@ onMounted(async () => {
 
       &--first::after {
         right: -3px;
-        font-size: 12px;
       }
+    }
+
+    &__arrow {
+      width: 36px;
+      height: 36px;
+
+      &--prev { left: 12px; }
+      &--next { right: 12px; }
+    }
+
+    &__version-pills {
+      margin-bottom: 12px;
+    }
+
+    &__version-pill {
+      font-size: 12px;
+      padding: 6px 14px;
     }
 
     &__actions {
