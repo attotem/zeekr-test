@@ -111,6 +111,8 @@ import CarTwoImagesBlock from '@/components/new_car_page/car-two-images-block.vu
 import CarImageTextBottomBlock from '@/components/new_car_page/car-image-text-bottom-block.vue'
 import CarImageWithTextBelow from '@/components/new_car_page/car-image-with-text-below.vue'
 import CarVideoWithTextTop from '@/components/new_car_page/car-video-with-text-top.vue'
+import CarSpeedBlock from '@/components/new_car_page/car-speed-block.vue'
+import CarViewBlock from '@/components/new_car_page/car-view-block.vue'
 import CarVideoNotFullscreenWithTextTop from '@/components/new_car_page/car-video-not-fullscreen-with-text-top.vue'
 import CarVideoWithTextOverlay from '@/components/new_car_page/car-video-with-text-overlay.vue'
 import CarVideoSwitcherBlock from '@/components/new_car_page/car-video-switcher-block.vue'
@@ -294,6 +296,8 @@ const componentMap = {
       imageTextBottomBlock: CarImageTextBottomBlock,
       imageWithTextBelow: CarImageWithTextBelow,
       videoWithTextTop: CarVideoWithTextTop,
+      speedBlock: CarSpeedBlock,
+      viewBlock: CarViewBlock,
       videoNotFullscreenWithTextTop: CarVideoNotFullscreenWithTextTop,
       videoWithTextOverlay: CarVideoWithTextOverlay,
       videoSwitcherBlock: CarVideoSwitcherBlock,

@@ -5,7 +5,16 @@
         <video
           v-if="videoSrc"
           :src="videoSrc"
-          class="car-video-with-text-top__video"
+          class="car-video-with-text-top__video car-video-with-text-top__video--desktop"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+        <video
+          v-if="videoMobileSrc"
+          :src="videoMobileSrc"
+          class="car-video-with-text-top__video car-video-with-text-top__video--mobile"
           autoplay
           muted
           loop
@@ -79,9 +88,8 @@ const resolveVideo = (videoPath) => {
   return `/pages/${props.carId}/${videoPath}`
 }
 
-const videoSrc = computed(() => {
-  return resolveVideo(blockData.value.video)
-})
+const videoSrc = computed(() => resolveVideo(blockData.value.video))
+const videoMobileSrc = computed(() => resolveVideo(blockData.value.videoMobile))
 </script>
 
 <style lang="scss" scoped>
@@ -89,6 +97,7 @@ const videoSrc = computed(() => {
   width: 100%;
   margin: 0;
   position: relative;
+  padding: 60px 20px;
 
   &__inner {
     width: 100%;
@@ -109,6 +118,10 @@ const videoSrc = computed(() => {
     display: block;
     object-fit: cover;
     object-position: center;
+
+    &--mobile {
+      display: none;
+    }
   }
 
   &__overlay-top {
@@ -250,6 +263,16 @@ const videoSrc = computed(() => {
 
     &__video-wrap {
       min-height: 400px;
+    }
+
+    &__video {
+      &--desktop {
+        display: none;
+      }
+
+      &--mobile {
+        display: block;
+      }
     }
   }
 }

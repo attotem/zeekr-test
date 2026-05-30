@@ -19,6 +19,7 @@ const langStore = useLangStore()
 const blockData = computed(() => props.data || {})
 
 const bgStyle = computed(() => {
+  if (blockData.value.background) return { background: blockData.value.background }
   const img = blockData.value.image
   if (!img) return {}
   const src = img.startsWith('/')

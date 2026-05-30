@@ -114,7 +114,6 @@ const getText = (textObj) => {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
     z-index: -1;
   }
 
@@ -159,7 +158,6 @@ const getText = (textObj) => {
       transform: translateY(-50%);
       width: 1px;
       height: 40px;
-      background: rgba(255, 255, 255, 0.3);
     }
   }
 
@@ -185,12 +183,15 @@ const getText = (textObj) => {
   .car-navigation-block {
     width: calc(100% - 32px);
     margin: 0 16px;
-    min-height: 80vh;
+    min-height: 60vh;
 
+    &__image {
+      background-size: contain;
+    }
 
     &__content {
       padding: 40px 20px;
-      min-height: 80vh;
+      min-height: 50vh;
     }
 
     &__content--mobile-below {
@@ -205,7 +206,6 @@ const getText = (textObj) => {
 
     &__mobile-bottom {
       display: block;
-      background: #efefee;
       padding: 18px 16px 24px;
     }
 
