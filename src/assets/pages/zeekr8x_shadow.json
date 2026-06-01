@@ -130,7 +130,7 @@
       "dataKey": "textSimpleBlockEva"
     },
     {
-      "type": "designBlock",
+      "type": "fullVideoTabsBlock",
       "dataKey": "evaBlock"
     },
     {
@@ -148,11 +148,11 @@
   ],
   "hero": {
     "title": {
-      "ua": "ZEEKR 8X Shadow",
-      "en": "ZEEKR 8X Shadow"
+      "ua": "Zeekr 8X Dawn",
+      "en": "Zeekr 8X Dawn"
     },
     "subtitle": {
-      "ua": "Флагманський позашляховик із суперелектрогібридним приводом вершини продуктивності",
+      "ua": "Флагманський SUV із супергібридною силовою установкою та піковими характеристиками продуктивності",
       "en": "Flagship Super Hybrid Performance SUV"
     },
     "image": {
@@ -257,11 +257,11 @@
   },
   "textBlockRear": {
     "title": {
-      "ua": "Підкорення вітру нового рівня",
+      "ua": "Нове втілення швидкості та контролю",
       "en": "Wind Mastery Elevated"
     },
     "subtitle": {
-      "ua": "Зовнішність, що розкриває всю гостроту та потужність до останньої деталі",
+      "ua": "Емоційний дизайн, що підкреслює кожну грань характеру",
       "en": "Performance exterior, where every sharp edge is fully revealed"
     }
   },
@@ -283,7 +283,7 @@
     "items": [
       {
         "title": {
-          "ua": "Широкопрофільні шини 315",
+          "ua": "Шини шириною 315 мм",
           "en": "315 Wide-Profile Tires"
         },
         "description": {
@@ -293,7 +293,7 @@
       },
       {
         "title": {
-          "ua": "Задній дифузор",
+          "ua": "Задній спойлер",
           "en": "Rear Diffuser"
         },
         "description": {
@@ -303,7 +303,7 @@
       },
       {
         "title": {
-          "ua": "Ретрорефлектор «Мисливець за тінню»",
+          "ua": "Світловідбивачі серії \"Shadow Hunter\"",
           "en": "Shadow Hunter Retroreflector"
         },
         "description": {
@@ -328,7 +328,7 @@
       {
         "id": "grey",
         "name": {
-          "ua": "Матовий зоряний сірий",
+          "ua": "Матовий міжзоряний сірий",
           "en": "Matte Space Grey"
         },
         "value": "#5A5A5A",
@@ -340,7 +340,7 @@
       {
         "id": "blue",
         "name": {
-          "ua": "Мисливський небесний синій",
+          "ua": "Небесно синій",
           "en": "Hunter Sky Blue"
         },
         "value": "#2B6CB0",
@@ -352,7 +352,7 @@
       {
         "id": "black",
         "name": {
-          "ua": "Полярна ніч",
+          "ua": "Полярна ніч (чорний)",
           "en": "Midnight Black"
         },
         "value": "#111111",
@@ -395,7 +395,7 @@
           "mobile": "balckGold_inside_mb.webp"
         },
         "description": {
-          "ua": "Перший промінь, що розтинає нічне небо на світанку — пробуджує пристрасть до кермування.",
+          "ua": "Ексклюзивний чорно-помаранчевий інтер'єр ",
           "en": "The first ray of light breaking through the night sky at dawn — awakening your passion for driving."
         }
       }
@@ -403,7 +403,7 @@
   },
   "cockpitBlock": {
     "title": {
-      "ua": "Кабіна високої продуктивності",
+      "ua": "Кокпіт високої продуктивності",
       "en": "High-Performance Cockpit"
     },
     "rows": [
@@ -422,7 +422,7 @@
       {
         "image": "inside2.webp",
         "title": {
-          "ua": "Ексклюзивне спортивне кермо Shadow",
+          "ua": "Ексклюзивне спортивне кермо",
           "en": "Shadow Exclusive Sport Steering Wheel"
         },
         "description": {
@@ -438,7 +438,7 @@
           "en": "Carbon Fiber Trim Panel"
         },
         "description": {
-          "ua": "Миттєво підсилюють спортивну атмосферу салону — різкі, брутальні, з яскраво вираженим бойовим характером.",
+          "ua": "Преміальне карбонове оздоблення наповнює кокпіт спортивною енергією, підкреслюючи його технологічність, характер і безкомпромісну орієнтацію на продуктивність.",
           "en": "Instantly elevates the sporty atmosphere in the cabin — sharp, aggressive, and unmistakably combative."
         },
         "imageRight": false
@@ -447,7 +447,7 @@
   },
   "naimAudioBlock": {
     "topTitle": {
-      "ua": "Акустика концертного залу — резонанс під вашим контролем",
+      "ua": "Преміальна акустика. Резонанс із кожною поїздкою.",
       "en": "Concert Hall Acoustics — Resonance Under Your Command"
     },
     "images": [
@@ -485,7 +485,7 @@
   },
   "textBlockSEP": {
     "title": {
-      "ua": "SEP Haohao — суперелектрогібрид",
+      "ua": "SEP - суперелектрогібрид",
       "en": "SEP Haohao Super Hybrid"
     },
     "subtitle": {
@@ -497,18 +497,18 @@
     "video": "video1.mp4",
     "videoMobile": "video1_mb.mp4",
     "title": {
-      "ua": "Повноцінна 900-вольтна гібридна архітектура",
+      "ua": "Повноцінна 900-вольтна високовольтна гібридна архітектура. Висока потужність, надшвидка зарядка та низьке енергоспоживання.",
       "en": "Full-Stack 900V Hybrid High-Voltage Architecture"
     }
   },
   "textBlockCockpit": {
     "background": "linear-gradient(180deg, #f5efdf 0%, #ede5d0 50%, #f5efdf 100%)",
     "title": {
-      "ua": "AI Інтелектуальна занурювальна кабіна",
+      "ua": "AI-інтелектуальний простір повного занурення ",
       "en": "AI Immersive Intelligent Cockpit"
     },
     "subtitle": {
-      "ua": "Преміальне обладнання. Безмежна розумна насолода",
+      "ua": "Преміальне оснащення, безмежний інтелектуальний комфорт",
       "en": "Premium hardware. Limitless intelligent enjoyment"
     }
   },
@@ -518,7 +518,7 @@
       "mobile": "snap1_mb.webp"
     },
     "title": {
-      "ua": "Інтелектуальна інтерактивна кабіна",
+      "ua": "Інтелектуальний інтерактивний кокпіт ",
       "en": "Intelligent Interactive Cockpit"
     },
     "subtitle": {
@@ -542,45 +542,33 @@
   },
   "textSimpleBlockEva": {
     "title": {
-      "ua": "AI Інтелектуальна жива сутність",
+      "ua": "AI-інтелект нового покоління ",
       "en": "AI Intelligent Life Entity"
     },
     "subtitle": {
-      "ua": "Надпотужне сприйняття, надрозумна навігація",
+      "ua": "Надпотужне сприйняття. Надрозумне керування. ",
       "en": "Ultra-Strong Perception, Super-Intelligent Navigation"
     }
   },
   "evaBlock": {
     "topTitle": {
-      "ua": "Супер Eva — інтелектуальна жива сутність",
+      "ua": "Ваш інтелектуальний помічник - Eva",
       "en": "Super Eva Intelligent Life Entity"
     },
-    "images": [
-      { "desktop": "eva.webp", "mobile": "eva_mb.webp" },
-      { "desktop": "eva.webp", "mobile": "eva_mb.webp" },
-      { "desktop": "eva.webp", "mobile": "eva_mb.webp" }
-    ],
-    "items": [
+    "image": "eva.webp",
+    "tabs": [
       {
-        "title": { "ua": "Майстер спілкування", "en": "Master Communicator" },
-        "description": {
-          "ua": "Жива й природня компанія в розмові — розуміє настрій та підхоплює гумор",
-          "en": "A lively chat companion that understands your emotions and picks up on humor"
-        }
+        "label": { "ua": "Розмовляє", "en": "Conversationalist" },
+        "description": { "ua": "Живий співрозмовник: розуміє емоції та підхоплює жарти — спілкування за кермом стає природним і комфортним", "en": "A lively chat companion that understands emotions and keeps up with jokes — making in-car conversation natural and enjoyable" }
+
       },
       {
-        "title": { "ua": "Знавець дороги", "en": "Road Expert" },
-        "description": {
-          "ua": "Глибока навігація з пам'яттю та плануванням — особистий помічник у подорожах",
-          "en": "Deep navigation with memory and planning — your personal travel advisor"
-        }
+        "label": { "ua": "Орієнтується", "en": "Road Expert" },
+        "description": { "ua": "Глибока навігація: пам'ятає маршрути, планує поїздки та дає розумні поради — як персональний дорожній радник", "en": "Deep navigation: remembers routes, plans trips and gives smart suggestions — like a personal travel advisor" }
       },
       {
-        "title": { "ua": "Бачить усе", "en": "Sees Everything" },
-        "description": {
-          "ua": "«Розумне око» розпізнає людей, пейзажі та погоду за вікном, передбачаючи ситуацію на дорозі",
-          "en": "An intelligent eye that recognizes people, scenery, and weather outside the vehicle to anticipate road conditions"
-        }
+        "label": { "ua": "Бачить", "en": "Can See" },
+        "description": { "ua": "«Розумне око»: розпізнає людей, пейзажі та погоду за вікном — прогнозує поїздки, надійно та безпечно", "en": "\"Smart Eye\": recognizes people, scenery and weather outside — predicts your journey, reliably and safely" }
       }
     ]
   },
@@ -588,13 +576,13 @@
     "images": [
       {
         "image": "last_1.mp4",
-        "poster": "last_1_placeholder.webp",
+        "poster": "last_2_placeholder.webp",
         "title": { "ua": "Навігація по парковці без карти", "en": "Map-Free Parking Navigation" },
         "description": { "ua": "З першого відвідування — одразу знаходить виїзд та вільне місце без попереднього картографування", "en": "From first visit — instantly finds exits and parking spots without prior mapping" }
       },
       {
         "image": "last_2.mp4",
-        "poster": "last_2_placeholder.webp",
+        "poster": "last_1_placeholder.webp",
         "title": { "ua": "Виклик жестом у повітрі", "en": "Gesture Summon" },
         "description": { "ua": "Без телефону: помахайте рукою — і автомобіль самостійно виїде з місця у потрібному напрямку", "en": "No phone needed: wave your hand and the car drives out from its spot in your direction" }
       }
@@ -614,7 +602,7 @@
   },
   "textBlockPredictiveSafety": {
     "title": {
-      "ua": "Превентивна безпека. Непомітна охорона",
+      "ua": "Прогнозована безпека, непомітний захист",
       "en": "Predictive Safety. Invisible Protection"
     },
     "subtitle": {
@@ -627,21 +615,21 @@
     "image2": "road2.webp",
     "text1": {
       "title": {
-        "ua": "AEB Аварійне гальмування при зіткненні спереду",
+        "ua": "AEB Аварійне гальмування при фронтальному зіткненні",
         "en": "AEB Forward Collision Emergency Braking"
       },
       "note": {
-        "ua": "Надійні очі й рішуча рука — нейтралізує потенційну небезпеку ще до виникнення, надаючи більше впевненості за кермом",
+        "ua": "Надійні очі та рішучі руки — розпізнають потенційну небезпеку заздалегідь і нейтралізують її непомітно. Водіння стає спокійнішим",
         "en": "Reliable eyes and decisive hands — neutralize potential hazards before they form, delivering greater peace of mind while driving"
       }
     },
     "text2": {
       "title": {
-        "ua": "AES Автоматичне аварійне рульове управління",
+        "ua": "AES Автоматичний аварійний поворот",
         "en": "AES Automatic Emergency Steering"
       },
       "note": {
-        "ua": "Коли часу на гальмування вже не лишилось — система розумно об'їде небезпеку, перетворюючи можливу аварію на спокійне маневрування",
+        "ua": "Коли загальмувати вже не встигнути, система розумно допомагає «об'їхати» небезпеку — перетворюючи потенційний переляк на плавний та безпечний проїзд",
         "en": "When there's no time to brake, it intelligently steers around hazards, turning a potential scare into a smooth, safe pass"
       }
     }
@@ -652,42 +640,28 @@
     "images": [
       {
         "image": "battery1.webp",
-        "title": {
-          "ua": "«985» Фізичний захист",
-          "en": "'985' Physical Protection"
-        },
-        "description": {
-          "ua": "9 шарів бічного захисту + 8 шарів ізоляції + 6 шарів верхньої опори — тривимірна фортеця навколо кожного елемента. Щільне обгортання осердя забезпечує максимальний фізичний захист",
-          "en": "9 layers of side protection + 8 layers of insulation + 6 layers of top support — a 3D fortress around every cell. Dense core wrapping delivers maximum physical protection"
-        }
+        "title": { "ua": "«985» Фізичний захист", "en": "\"985\" Physical Protection" },
+
+        "description": { "ua": "«9 шарів захисту від бокового удару + 8 шарів захисту знизу + 5 шарів опори зверху» утворюють просторову фортецю — шар за шаром захищаючи елементи", "en": "9-layer side protection + 8-layer bottom protection + 5-layer top support form a three-dimensional fortress, layer by layer protecting every cell" }
+
       },
       {
         "image": "battery2.webp",
-        "title": {
-          "ua": "Технологія теплового та електричного розділення",
-          "en": "Same-Side Thermal-Electrical Separation"
-        },
-        "description": {
-          "ua": "Газовипускні канали та струмопровідні шини всередині елементів ізольовані одне від одного — усуває ланцюгову реакцію теплового збою на рівні джерела, ефективно захищаючи акумуляторний блок",
-          "en": "Internal exhaust channels and current-collecting busbars are isolated, cutting off any chain reaction from thermal runaway at the source to effectively protect battery safety"
-        }
+        "title": { "ua": "Технологія теплоелектричного розділення", "en": "Same-Side Thermal-Electric Separation" },
+        "description": { "ua": "Вентиляційні канали та провідні шини всередині елемента розділені — виключається ланцюгова реакція між перегрітим та іншими елементами", "en": "Exhaust channels and conductive busbars inside cells are separated, eliminating chain reaction between thermal runaway and other cells" }
+      
       },
       {
         "image": "battery3.webp",
-        "title": {
-          "ua": "Поріг-балка «Десять комірок»",
-          "en": "Ten-Cell Door Sill Impact Beam"
-        },
-        "description": {
-          "ua": "Решітчаста конструкція порогу з 10 секцій, натхненна водонепроникними переборками авіаносців — послідовно поглинає удар, знижуючи пряме навантаження на акумуляторний блок",
-          "en": "The ten-cell door sill structure, inspired by aircraft carrier watertight compartments, absorbs impact layer by layer to minimize direct force on the battery pack"
-        }
+        "title": { "ua": "Протиударний бар'єр з десятьма відсіками", "en": "Ten-Cell Door Sill Anti-Collision Beam" },
+        "description": { "ua": "Конструкція з десятьма відсіками в порозі, натхненна водонепроникними відсіками авіаносців — послідовно поглинає удар, захищаючи акумулятор", "en": "Ten-cell door sill design inspired by aircraft carrier watertight compartments — absorbs impact layer by layer, reducing direct force on the battery pack" }
+      
       }
     ]
   },
   "safetyArmorBlock": {
     "topTitle": {
-      "ua": "Броня безпеки Haohao",
+      "ua": "Безпека флагманського рівня. Максимальний захист.",
       "en": "Haohao Safety Armor"
     },
     "images": [
@@ -699,41 +673,41 @@
     "items": [
       {
         "title": {
-          "ua": "Цільнолита подвійна рамка дверей + подвійні золоті бруси",
+          "ua": "Цілісна подвійна кільцева структура дверей + подвійні силові балки безпеки",
           "en": "One-Piece Dual Door Ring + Dual Golden Bars"
         },
         "description": {
-          "ua": "Методом одноетапного лиття об'єднано стійки A і B з термоформованої сталі 2000 МПа разом із порогами та боковими балками даху в єдину кільцеву несучу структуру",
+          "ua": "Завдяки цілісному литтю 2000 МПа гарячеформована сталь стійок A та B інтегрована з порогами та боковими елементами даху в єдину кільцеву силову структуру кузова.",
           "en": "One-piece die-casting integrates 2000 MPa hot-formed steel A/B pillars with sill beams and roof side rails into a complete ring structure"
         }
       },
       {
         "title": {
-          "ua": "Xinjing 3-го покоління — цільнолитий задній алюмінієвий кузов",
+          "ua": "Алюмінієвий задній кузов третього покоління з цілісним литтям",
           "en": "3rd-Gen Crystal Fiber — One-Piece Rear Aluminum Body"
         },
         "description": {
-          "ua": "Формується на пресі 7200 тонн — вища інтеграція, менша маса, значно підвищена жорсткість кузова. Деформація зменшена на 16% для захисту пасажирів",
+          "ua": "Завдяки цілісному литтю на прес-машині зусиллям 7200 тонн досягнуто вищої інтеграції конструкції, зменшення ваги авто та суттєвого підвищення жорсткості кузова. Деформація кузова зменшена на 16%, що забезпечує вищий рівень безпеки пасажирів.",
           "en": "Formed on a 7200-ton press — higher integration, lighter weight, greatly improved body rigidity. Deformation reduced by 16% to protect occupants"
         }
       },
       {
         "title": {
-          "ua": "Третій блок поглинання енергії",
+          "ua": "Третій енергопоглинаючий модуль",
           "en": "Third Energy-Absorption Box"
         },
         "description": {
-          "ua": "Прецизійно спроєктований блок дозволяє знизити деформацію протипожежної перегородки при зіткненні більш ніж на 20%, зменшуючи вторгнення у підніжну зону на 40 мм",
+          "ua": "Третій енергопоглинаючий модуль розроблений із високою точністю, що дозволяє зменшити деформацію моторного щита під час зіткнення більш ніж на 20%. Ефективно скорочує проникнення передньої частини кузова на 40 мм, запобігаючи удару двигуна в пасажирський салон.",
           "en": "The engineered third energy-absorption box reduces firewall deformation by over 20% during impact, cutting intrusion into the footwell by 40 mm"
         }
       },
       {
         "title": {
-          "ua": "Протиударний блокуючий елемент",
+          "ua": "Блок захисту від зіткнення",
           "en": "Anti-Impact Blocker"
         },
         "description": {
-          "ua": "Після десятків тисяч симуляцій зіткнення спроєктовано траєкторію підрамника — блокуючий елемент утримує його від зміщення, запобігаючи здавленню паливного бака та ризику займання",
+          "ua": "Після десятків тисяч симуляцій прораховано траєкторію підрамника при ударі — блок жорстко утримує його на кузові, запобігаючи здавлюванню бака та ризику займання від витоку палива",
           "en": "After tens of thousands of crash simulations, the subframe trajectory was engineered — the blocker secures it, preventing fuel tank compression and reducing fire risk"
         }
       }
@@ -742,7 +716,7 @@
   "textBlockSafety": {
     "background": "linear-gradient(180deg, #f5efdf 0%, #ede5d0 50%, #f5efdf 100%)",
     "title": {
-      "ua": "ZEEKR Комплексна безпека",
+      "ua": "Комплексна безпека Zeekr у будь-яких умовах",
       "en": "ZEEKR All-Domain Safety"
     },
     "subtitle": {
@@ -845,11 +819,11 @@
   },
   "textBlockChassis": {
     "title": {
-      "ua": "Haohao AI Цифрове шасі",
+      "ua": "Інтелектуальна цифрова платформа шасі ",
       "en": "Haohao AI Digital Chassis"
     },
     "subtitle": {
-      "ua": "Підкори будь-який рельєф — усюди рівна дорога",
+      "ua": "Повний контроль на будь-якому маршруті",
       "en": "Conquer every terrain — every road becomes your highway"
     }
   },
@@ -1010,7 +984,7 @@
         }
       },
       {
-        "value": "1400+ Пс",
+        "value": "Понад 1400 к.с.",
         "label": {
           "ua": "Максимальна потужність",
           "en": "Maximum horsepower"
