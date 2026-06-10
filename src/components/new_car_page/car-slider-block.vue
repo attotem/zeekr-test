@@ -643,39 +643,46 @@ const next = () => {
 
 @media screen and (max-width: 876px) {
   .car-slider-block {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-    padding: 0 0 52px;
+    width: 100%;
+    margin: 0;
+    padding: 40px 0 52px;
 
     &__inner {
-      padding: 0 16px;
+      padding: 0;
     }
 
     &__title {
       font-size: 28px;
       margin-bottom: 8px;
+      padding: 0 16px;
     }
 
     &__subtitle {
       font-size: 14px;
       margin-bottom: 28px;
+      padding: 0 16px;
     }
 
     &__track {
-      gap: 18px;
+      gap: 0;
       transform: translateX(0px);
       padding-left: 0;
     }
 
     &__slide {
-      flex: 0 0 calc(100% - 32px);
+      flex: 0 0 100%;
       min-width: 0;
+    }
+
+    &__slide-title {
+      padding: 12px 16px 0;
+      font-size: 16px;
     }
 
     .car-slider-block__caption {
       font-size: 14px;
-      line-height: 1.4;
-      padding: 8px 8px 0;
+      line-height: 1.5;
+      padding: 6px 16px 0;
       word-wrap: break-word;
       overflow-wrap: break-word;
       white-space: normal;
@@ -683,6 +690,12 @@ const next = () => {
       width: 100%;
       min-width: 0;
       max-width: 100%;
+    }
+
+    .is-active {
+      .car-slider-block__caption {
+        font-size: 14px;
+      }
     }
 
     .is-active {
@@ -695,12 +708,21 @@ const next = () => {
       opacity: 0.4;
     }
 
+    &__arrow {
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14);
+    }
+
     &__arrow--left {
-      left: 8px;
+      left: 12px;
     }
 
     &__arrow--right {
-      right: 8px;
+      right: 12px;
     }
 
     &__dots {

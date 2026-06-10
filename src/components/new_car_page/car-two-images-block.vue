@@ -321,7 +321,7 @@ onMounted(() => {
     }
 
     &__image-wrap {
-      min-height: 300px;
+      min-height: 200px;
     }
 
     &__caption {

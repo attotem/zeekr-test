@@ -257,7 +257,6 @@ const currentItemDescription = computed(() => {
     min-height: 500px;
     overflow: hidden;
     position: relative;
-    background: #f5f5f5;
   }
 
   &__image-layer {
@@ -454,6 +453,7 @@ const currentItemDescription = computed(() => {
     &__image-wrap {
       height: 40vh;
       min-height: 300px;
+      background: none;
     }
 
     &__switcher-content {

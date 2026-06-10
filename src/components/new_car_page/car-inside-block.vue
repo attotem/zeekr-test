@@ -123,7 +123,7 @@ onMounted(() => {
   &__image {
     position: absolute;
     inset: 0px;
-    background-color: #f5f5f5;
+    background-color: transparent;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -232,8 +232,8 @@ onMounted(() => {
     height: 60vh;
 
     &__image {
-      background-size: contain;
-      background-position: top center;
+      background-size: cover;
+      background-position: center;
     }
 
     &__bottom {

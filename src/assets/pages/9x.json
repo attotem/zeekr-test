@@ -960,7 +960,7 @@
         "image": {
           "desktop": "9x_space_2.webp",
           "tablet": "9x_space_2_tablet.webp",
-          "mobile": "9x_space_2_tablet.webp"
+          "mobile": "9x_space_2_phone.webp"
         },
         "title": {
           "en": "Business Reception",
@@ -971,7 +971,7 @@
         "image": {
           "desktop": "9x_space_3.webp",
           "tablet": "9x_space_3_tablet.webp",
-          "mobile": "9x_space_3_tablet.webp"
+          "mobile": "9x_space_3_phone.webp"
         },
         "title": {
           "en": "Family Gathering",
