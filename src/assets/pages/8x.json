@@ -12,7 +12,11 @@
       "type": "navigationBlock",
       "dataKey": "dimensionsBlock"
     },
-    { 
+    {
+      "type": "designBlock",
+      "dataKey": "frontViewBlock"
+    },
+    {
       "type": "designBlock",
       "dataKey": "exteriorDesignBlock"
     },
@@ -229,6 +233,7 @@
     ]
   },
   "textBlockDesign": {
+    "image": "goldbadge.webp",
     "title": {
       "ua": "Пізнавай світ. Рухайся вільно, у гармонії з собою.",
       "en": "Powerful Elegance"
@@ -257,6 +262,58 @@
         "label": {
           "ua": "Співвідношення колісної бази до кузова",
           "en": "Wheel-to-axle ratio"
+        }
+      }
+    ]
+  },
+  "frontViewBlock": {
+    "topTitle": {
+      "ua": "Монументальна сила. Образ, що домінує.",
+      "en": "Monumental Power. A Presence That Dominates."
+    },
+    "images": [
+      {
+        "desktop": "8x_view_1.webp",
+        "mobile": "8x_view_1.webp"
+      },
+      {
+        "desktop": "8x_view_2.webp",
+        "mobile": "8x_view_2.webp"
+      },
+      {
+        "desktop": "8x_view_3.webp",
+        "mobile": "8x_view_3.webp"
+      }
+    ],
+    "items": [
+      {
+        "title": {
+          "ua": "Цільна вертикальна решітка радіатора",
+          "en": "Integrated Waterfall Grille"
+        },
+        "description": {
+          "ua": "Натхненна архітектурою палаців — монументальний фасад шириною 1345 мм і висотою 671 мм, що транслює магнетизм та велич.",
+          "en": "Inspired by palace architecture — a monumental 1345mm wide, 671mm tall facade radiating magnetism and grandeur."
+        }
+      },
+      {
+        "title": {
+          "ua": "Подвійне AGS із адаптацією до швидкості",
+          "en": "Dual-Core Speed-Adaptive AGS"
+        },
+        "description": {
+          "ua": "Інтелектуальна вентильована решітка площею 100 000 мм² — ефективне охолодження та мінімальний аеродинамічний опір на будь-якій швидкості.",
+          "en": "100,000mm² intelligent breathing grille for efficient heat dissipation and minimum aerodynamic drag at any speed."
+        }
+      },
+      {
+        "title": {
+          "ua": "Цільний аеродинамічний капот",
+          "en": "Integrated Wind-Mastery Hood"
+        },
+        "description": {
+          "ua": "Бічні аеродинамічні канали знижують опір повітря та зміщують візуальний центр ваги вниз — силует стає ще більш зібраним та виразним.",
+          "en": "Side air channels reduce drag and lower the visual center of gravity — creating a tighter, more dynamic profile."
         }
       }
     ]
@@ -509,6 +566,7 @@
     }
   },
   "textBlockInterior": {
+    "image": "goldbadge.webp",
     "title": {
       "ua": "Розкіш із людським теплом",
       "en": "Human Touch"
@@ -889,9 +947,9 @@
     "specs": []
   },
   "textBlockSEP": {
-    "title": {
-      "ua": "SEP Super Hybrid",
-      "en": "SEP Super Hybrid"
+   "title": {
+      "ua": "SEP - суперелектрогібрид",
+      "en": "SEP Haohao Super Hybrid"
     },
     "subtitle": {
       "ua": "Потужність і свобода подорожей без обмежень, навіть на великих відстанях.",
@@ -1433,7 +1491,7 @@
   },
   "engineSpecsBlock": {
     "title": {
-      "ua": "Три силові установки, одинадцять режимів руху",
+      "ua": "Три силові установки. Дванадцять режимів руху",
       "en": "Three Engines — Twelve Modes"
     },
     "subtitle": {

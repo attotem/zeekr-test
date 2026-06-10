@@ -452,20 +452,20 @@ const mainSliderSlides = [
       en: 'MAX ULTRA HYPER'
     }
   },
-  {
-    pc: slideTdPc,
-    tablet: slideTdTablet,
-    mobile: slideTdMb,
-    isTestDrive: true,
-    title: {
-      ua: 'Тест-драйв Zeekr вже доступний в Україні!',
-      en: 'Zeekr test drive is now available in Ukraine!'
-    },
-    subtitle: {
-      ua: 'Оцініть технологічну перевагу та безкомпромісний комфорт преміальних електромобілів Zeekr',
-      en: 'Experience the technological advantage and uncompromising comfort of premium Zeekr electric vehicles'
-    }
-  },
+  // {
+  //   pc: slideTdPc,
+  //   tablet: slideTdTablet,
+  //   mobile: slideTdMb,
+  //   isTestDrive: true,
+  //   title: {
+  //     ua: 'Тест-драйв Zeekr вже доступний в Україні!',
+  //     en: 'Zeekr test drive is now available in Ukraine!'
+  //   },
+  //   subtitle: {
+  //     ua: 'Оцініть технологічну перевагу та безкомпромісний комфорт преміальних електромобілів Zeekr',
+  //     en: 'Experience the technological advantage and uncompromising comfort of premium Zeekr electric vehicles'
+  //   }
+  // },
   {
     pc: slideTradeinPc,
     tablet: slideTradeinTablet,

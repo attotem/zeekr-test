@@ -98,7 +98,7 @@
       "dataKey": "textBlockSafety"
     },
     {
-      "type": "designBlock",
+      "type": "fullVideoTabsBlock",
       "dataKey": "safetyArmorBlock"
     },
     {
@@ -181,6 +181,7 @@
     ]
   },
   "textBlockDesign": {
+    "image": "goldbadge.webp",
     "title": {
       "ua": "Загострена продуктивність. Флагманський контроль.",
       "en": "Performance Edge. Flagship Control."
@@ -484,6 +485,7 @@
     ]
   },
   "textBlockSEP": {
+    "image": "goldbadge.webp",
     "title": {
       "ua": "SEP - суперелектрогібрид",
       "en": "SEP Haohao Super Hybrid"
@@ -497,12 +499,12 @@
     "video": "video1.mp4",
     "videoMobile": "video1_mb.mp4",
     "title": {
-      "ua": "Повноцінна 900-вольтна високовольтна гібридна архітектура. Висока потужність, надшвидка зарядка та низьке енергоспоживання.",
+      "ua": "Повноцінна 900-вольтна високовольтна гібридна архітектура",
       "en": "Full-Stack 900V Hybrid High-Voltage Architecture"
     }
   },
   "textBlockCockpit": {
-    "background": "linear-gradient(180deg, #f5efdf 0%, #ede5d0 50%, #f5efdf 100%)",
+    "image": "goldbadge.webp",
     "title": {
       "ua": "AI-інтелектуальний простір повного занурення ",
       "en": "AI Immersive Intelligent Cockpit"
@@ -541,6 +543,7 @@
     }
   },
   "textSimpleBlockEva": {
+    "image": "goldbadge.webp",
     "title": {
       "ua": "AI-інтелект нового покоління ",
       "en": "AI Intelligent Life Entity"
@@ -625,13 +628,13 @@
     },
     "text2": {
       "title": {
-        "ua": "AES Автоматичний аварійний поворот",
-        "en": "AES Automatic Emergency Steering"
+         "ua": "AEB Аварійне гальмування при фронтальному зіткненні",
+          "en": "AEB Forward Collision Emergency Braking"
       },
       "note": {
-        "ua": "Коли загальмувати вже не встигнути, система розумно допомагає «об'їхати» небезпеку — перетворюючи потенційний переляк на плавний та безпечний проїзд",
-        "en": "When there's no time to brake, it intelligently steers around hazards, turning a potential scare into a smooth, safe pass"
-      }
+        "ua": "Надійні очі та рішучі руки — розпізнають потенційну небезпеку заздалегідь і нейтралізують її непомітно. Водіння стає спокійнішим.",
+        "en": "Reliable eyes and decisive hands — detect potential hazards in advance and neutralize them invisibly. Driving becomes more peace of mind."
+     }
     }
   },
   "batteryBlock": {
@@ -660,69 +663,60 @@
     ]
   },
   "safetyArmorBlock": {
-    "topTitle": {
+    "title": {
       "ua": "Безпека флагманського рівня. Максимальний захист.",
       "en": "Haohao Safety Armor"
     },
-    "images": [
-      "video2.mov",
-      "video2.mov",
-      "video2.mov",
-      "video2.mov"
-    ],
-    "items": [
+    "video": "video2.mov",
+    "tabs": [
       {
-        "title": {
+        "label": {
           "ua": "Цілісна подвійна кільцева структура дверей + подвійні силові балки безпеки",
-          "en": "One-Piece Dual Door Ring + Dual Golden Bars"
+          "en": "Integrated Dual Ring + Dual Rod"
         },
         "description": {
           "ua": "Завдяки цілісному литтю 2000 МПа гарячеформована сталь стійок A та B інтегрована з порогами та боковими елементами даху в єдину кільцеву силову структуру кузова.",
-          "en": "One-piece die-casting integrates 2000 MPa hot-formed steel A/B pillars with sill beams and roof side rails into a complete ring structure"
+          "en": "Through integrated die-casting, the 2000 MPa hot-formed A and B pillars are united with sills and roof side beams into a complete ring structure"
         }
       },
       {
-        "title": {
+        "label": {
           "ua": "Алюмінієвий задній кузов третього покоління з цілісним литтям",
-          "en": "3rd-Gen Crystal Fiber — One-Piece Rear Aluminum Body"
+          "en": "3rd-Gen FiberCrystal Rear Aluminum Body"
         },
         "description": {
           "ua": "Завдяки цілісному литтю на прес-машині зусиллям 7200 тонн досягнуто вищої інтеграції конструкції, зменшення ваги авто та суттєвого підвищення жорсткості кузова. Деформація кузова зменшена на 16%, що забезпечує вищий рівень безпеки пасажирів.",
-          "en": "Formed on a 7200-ton press — higher integration, lighter weight, greatly improved body rigidity. Deformation reduced by 16% to protect occupants"
+          "en": "Formed in one shot on a 7200-ton press: higher integration, reduced weight, greatly improved body rigidity. Deformation reduced by 16% for occupant safety"
         }
       },
       {
-        "title": {
+        "label": {
           "ua": "Третій енергопоглинаючий модуль",
-          "en": "Third Energy-Absorption Box"
+          "en": "Third Energy Absorption Box"
         },
         "description": {
           "ua": "Третій енергопоглинаючий модуль розроблений із високою точністю, що дозволяє зменшити деформацію моторного щита під час зіткнення більш ніж на 20%. Ефективно скорочує проникнення передньої частини кузова на 40 мм, запобігаючи удару двигуна в пасажирський салон.",
-          "en": "The engineered third energy-absorption box reduces firewall deformation by over 20% during impact, cutting intrusion into the footwell by 40 mm"
+          "en": "The precisely engineered third crumple box reduces firewall deformation by over 20% in a crash, cutting front-end intrusion by 40 mm and keeping the engine out of the cabin"
         }
       },
       {
-        "title": {
+        "label": {
           "ua": "Блок захисту від зіткнення",
-          "en": "Anti-Impact Blocker"
+          "en": "Anti-Impact Stop Block"
         },
         "description": {
           "ua": "Після десятків тисяч симуляцій прораховано траєкторію підрамника при ударі — блок жорстко утримує його на кузові, запобігаючи здавлюванню бака та ризику займання від витоку палива",
-          "en": "After tens of thousands of crash simulations, the subframe trajectory was engineered — the blocker secures it, preventing fuel tank compression and reducing fire risk"
+          "en": "After tens of thousands of simulations, the subframe trajectory in a crash is predicted — the stop block locks it to the body, preventing fuel tank compression and fire risk from leaks"
         }
       }
     ]
   },
   "textBlockSafety": {
-    "background": "linear-gradient(180deg, #f5efdf 0%, #ede5d0 50%, #f5efdf 100%)",
     "title": {
       "ua": "Комплексна безпека Zeekr у будь-яких умовах",
-      "en": "ZEEKR All-Domain Safety"
+      "en": "ZEEKR — Safety Across Every Dimension"
     },
-    "subtitle": {
-      "ua": "",
-      "en": ""
-    }
+    "image": "goldbadge.webp"
   },
   "terrainBlock": {
     "image": {

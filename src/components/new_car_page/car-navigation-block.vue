@@ -130,7 +130,7 @@ const getText = (textObj) => {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 80px 76px;
+    padding: 20px 76px;
     max-width: 1920px;
     margin: 0 auto;
   }
