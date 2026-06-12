@@ -334,9 +334,8 @@
         },
         "value": "#5A5A5A",
         "description": {
-          "ua": "Немов зоряне світло, що занурюється в землю — у тиші накопичуючи силу для подорожі крізь всесвіт.",
-          "en": "Like starlight sinking into the earth — gathering in silence the strength to traverse the universe."
-        }
+         "ua": "Матовий міжзоряний сірий",
+          "en": "Matte Space Grey"}
       },
       {
         "id": "blue",
@@ -346,8 +345,8 @@
         },
         "value": "#2B6CB0",
         "description": {
-          "ua": "Над хмарами — переслідуючи промені горизонту, зливаючись із небесним зводом.",
-          "en": "Above the clouds — chasing the light along the horizon, merging with the color of the sky."
+          "ua": "Небесно синій",
+          "en": "Hunter Sky Blue"
         }
       },
       {
@@ -358,9 +357,8 @@
         },
         "value": "#111111",
         "description": {
-          "ua": "Черпаючи спокій Всесвіту — загартовує кузов елегантними відблисками та тінями.",
-          "en": "Drawing from the serenity of the cosmos — tempering the body with elegant light and shadow."
-        }
+          "ua": "Полярна ніч (чорний)",
+          "en": "Midnight Black"}
       }
     ],
     "note": {
@@ -369,6 +367,7 @@
     }
   },
   "textBlockInterior": {
+    "image": "goldbadge.webp",
     "title": {
       "ua": "Відчутний простір високої продуктивності",
       "en": "The Tangible High-Performance Space"
@@ -545,9 +544,9 @@
   "textSimpleBlockEva": {
     "image": "goldbadge.webp",
     "title": {
-      "ua": "AI-інтелект нового покоління ",
-      "en": "AI Intelligent Life Entity"
-    },
+      "ua": "Ваш інтелектуальний помічник - Eva", 
+    "en": "Super Eva — AI Intelligent Life Entity" 
+  },
     "subtitle": {
       "ua": "Надпотужне сприйняття. Надрозумне керування. ",
       "en": "Ultra-Strong Perception, Super-Intelligent Navigation"
@@ -628,13 +627,13 @@
     },
     "text2": {
       "title": {
-         "ua": "AEB Аварійне гальмування при фронтальному зіткненні",
-          "en": "AEB Forward Collision Emergency Braking"
+       "ua": "AES Автоматичний аварійний поворот",
+          "en": "AES Automatic Emergency Steering"
       },
       "note": {
-        "ua": "Надійні очі та рішучі руки — розпізнають потенційну небезпеку заздалегідь і нейтралізують її непомітно. Водіння стає спокійнішим.",
-        "en": "Reliable eyes and decisive hands — detect potential hazards in advance and neutralize them invisibly. Driving becomes more peace of mind."
-     }
+        "ua": "Коли загальмувати вже не встигнути, система розумно допомагає «об'їхати» небезпеку — перетворюючи потенційний переляк на плавний та безпечний проїзд.",
+        "en": "When there's no time to brake, it smartly steers you around danger — turning a potential scare into a smooth, safe pass."
+      } 
     }
   },
   "batteryBlock": {
@@ -813,13 +812,14 @@
   },
   "textBlockChassis": {
     "title": {
-      "ua": "Інтелектуальна цифрова платформа шасі ",
-      "en": "Haohao AI Digital Chassis"
+      "ua": "AI-цифрова платформа керування нового покоління",
+      "en": "Haohan AI Digital Chassis"
     },
     "subtitle": {
-      "ua": "Повний контроль на будь-якому маршруті",
-      "en": "Conquer every terrain — every road becomes your highway"
-    }
+      "ua": "Бездоганний комфорт і керованість — плавність руху на будь-якій дорозі",
+      "en": "Unmatched for driver and passenger — smooth road ahead"
+    },
+    "image": "goldbadge.webp"
   },
   "chassisAirSuspBlock": {
     "image": {

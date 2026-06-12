@@ -135,6 +135,11 @@ const activeDescription = computed(() => {
     gap: 48px;
     margin-bottom: 24px;
     flex-wrap: wrap;
+
+    &:has(> :only-child) {
+      gap: 0;
+      margin-bottom: 16px;
+    }
   }
 
   &__tab {
@@ -147,7 +152,6 @@ const activeDescription = computed(() => {
     padding: 0 0 8px;
     cursor: pointer;
     transition: color 0.2s, border-color 0.2s;
-    white-space: nowrap;
 
     &--active {
       color: #111;

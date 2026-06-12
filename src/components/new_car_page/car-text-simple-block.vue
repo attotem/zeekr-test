@@ -1,5 +1,5 @@
 <template>
-  <section class="car-text-simple-block">
+  <section class="car-text-simple-block" :style="bgStyle">
     <h2 class="car-text-simple-block__title">{{ getText(blockData.title) }}</h2>
     <p v-if="getText(blockData.subtitle)" class="car-text-simple-block__subtitle">{{ getText(blockData.subtitle) }}</p>
     <p v-if="getText(blockData.note)" class="car-text-simple-block__note">{{ getText(blockData.note) }}</p>
@@ -11,15 +11,25 @@ import { computed } from 'vue'
 import { useLangStore } from '@/stores/lang'
 
 const props = defineProps({
-  data: {
-    type: Object,
-    required: true
-  }
+  data: { type: Object, required: true },
+  carId: { type: String, default: '' }
 })
 
 const langStore = useLangStore()
 
 const blockData = computed(() => props.data || {})
+
+const bgStyle = computed(() => {
+  if (blockData.value.background) return { background: blockData.value.background }
+  const img = blockData.value.image
+  if (!img) return {}
+  const src = img.startsWith('/')
+    ? img
+    : import.meta.env.DEV
+      ? `/src/assets/pages/${props.carId}/${img}`
+      : `/pages/${props.carId}/${img}`
+  return { backgroundImage: `url(${src})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+})
 
 const getText = (textObj) => {
   if (!textObj) return ''

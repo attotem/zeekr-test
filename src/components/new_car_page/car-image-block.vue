@@ -1,8 +1,18 @@
 <template>
-  <section 
+  <section
     class="car-image-block"
-    :style="{ backgroundImage: `url(${getBackgroundImage})`, marginTop: blockData.marginTop ? blockData.marginTop + 'px' : undefined }"
+    :style="{
+      '--bg-desktop': `url(${getBackgroundImage})`,
+      marginTop: blockData.marginTop ? blockData.marginTop + 'px' : undefined
+    }"
   >
+    <img
+      v-if="getMobileBackgroundImage"
+      class="car-image-block__mobile-img"
+      :src="getMobileBackgroundImage"
+      alt=""
+      loading="lazy"
+    />
     <h2 class="car-image-block__title">{{ getText(blockData.title) }}</h2>
     <p class="car-image-block__subtitle">{{ getText(blockData.subtitle) }}</p>
   </section>
@@ -40,12 +50,15 @@ const getBackgroundImage = computed(() => {
   if (blockData.value.image) {
     return resolveImage(blockData.value.image)
   }
-  // Fallback to default
   const basePath = import.meta.env.DEV ? `/src/assets/pages` : `/pages`
   return `${basePath}/${props.carId}/7x-second.webp`
 })
 
-// Функция для получения текста в зависимости от языка
+const getMobileBackgroundImage = computed(() => {
+  const mob = blockData.value.imageMobile
+  return mob ? resolveImage(mob) : null
+})
+
 const getText = (textObj) => {
   if (!textObj) return ''
   if (typeof textObj === 'string') {
@@ -73,10 +86,15 @@ const getText = (textObj) => {
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
+  background-image: var(--bg-desktop);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+
+  &__mobile-img {
+    display: none;
+  }
 
   &__title {
     font-family: ZeekrLanTingHei-Regular, sans-serif;
@@ -101,16 +119,26 @@ const getText = (textObj) => {
 
 @media screen and (max-width: 876px) {
   .car-image-block {
-    min-height: 40vh;
-    padding: 30px 16px;
+    width: 100%;
+    min-height: unset;
+    padding: 0 0 40px;
+    background-image: none;
+
+    &__mobile-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
     &__title {
       font-size: 36px;
       margin-bottom: 16px;
+      padding: 0 20px;
     }
 
     &__subtitle {
       font-size: 18px;
+      padding: 0 20px;
     }
   }
 }

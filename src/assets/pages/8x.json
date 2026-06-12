@@ -1150,13 +1150,14 @@
   },
   "infoFullBlock": {
     "image": "info_full.webp",
+    "imageMobile": "info_full_mb.webp",
     "marginTop": 20
   },
   "detectBlock": {
-    "image": "detect.webp"
+    "image": "detect.webp",
+    "imageMobile": "detect_mb.webp"
   },
   "evaBlock": {
-    "title": { "ua": "Ваш інтелектуальний помічник - Eva", "en": "Super Eva — AI Intelligent Life Entity" },
     "image": "eva.webp",
     "tabs": [
       {
@@ -1174,7 +1175,8 @@
     ]
   },
   "textBlockAI": {
-    "title": { "ua": "AI-інтелект нового покоління", "en": "AI Intelligent Life Entity" },
+    "title": { "ua": "Ваш інтелектуальний помічник - Eva", "en": "Super Eva — AI Intelligent Life Entity" },
+
     "subtitle": { "ua": "Надпотужне сприйняття. Надрозумне керування.", "en": "Ultra-strong perception, ultra-smart navigation" },
     "image": "goldbadge.webp"
   },
