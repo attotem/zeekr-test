@@ -467,6 +467,11 @@ const currentItemDescription = computed(() => {
     &__switcher-content {
       gap: 28px;
       justify-content: flex-start;
+
+      &:has(> :only-child) {
+        gap: 0;
+        justify-content: center;
+      }
     }
 
     &__switcher-title {

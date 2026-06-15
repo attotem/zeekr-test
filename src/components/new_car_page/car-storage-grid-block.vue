@@ -89,7 +89,6 @@ const resolveImage = (image) => resolveMediaPath(image, { carId: props.carId })
     }
 
     &__right-item {
-      aspect-ratio: 16/9;
     }
 
     &__left {

@@ -199,7 +199,7 @@ const resolveImage = (imagePath) => {
     }
 
     &__card {
-      min-height: 220px;
+      // min-height: 220px;
     }
   }
 }
