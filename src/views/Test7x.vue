@@ -41,7 +41,7 @@
             v-if="block.type === 'hero'"
             :is="block.component"
             :data="block.data"
-            :car-id="carId"
+            :car-id="mediaCarId"
             :price-list-url="priceListUrl"
 @buttonClick="handleHeroButtonClick"
           />
@@ -50,7 +50,7 @@
             v-else
             :is="block.component"
             :data="block.data"
-            :car-id="carId"
+            :car-id="mediaCarId"
             @buttonClick="handleHeroButtonClick"
           />
         </div>
@@ -67,7 +67,7 @@
           :versions="displayCarVersions"
           :icons="displayCarVersionsIcons"
           :version-images="pageData?.versionsImages || {}"
-          :car-id="carId"
+          :car-id="mediaCarId"
           :spec-url="specsDocumentUrl"
         />
       </div>
@@ -178,6 +178,9 @@ const mailObj = ref({})
 const carId = computed(() => {
   return props.carId || route.params.carId || route.meta.carId || '7x'
 })
+
+const mediaFolderMap = { zeekr8x_dawn: 'zeekr8x_shadow' }
+const mediaCarId = computed(() => mediaFolderMap[carId.value] || carId.value)
 
 const carDataModules = import.meta.glob('@/assets/pages/*.json', { eager: false })
 
