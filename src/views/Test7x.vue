@@ -179,7 +179,7 @@ const carId = computed(() => {
   return props.carId || route.params.carId || route.meta.carId || '7x'
 })
 
-const mediaFolderMap = { zeekr8x_dawn: 'zeekr8x_shadow' }
+const mediaFolderMap = { zeekr8x_dawn: 'zeekr8x_dawn' }
 const mediaCarId = computed(() => mediaFolderMap[carId.value] || carId.value)
 
 const carDataModules = import.meta.glob('@/assets/pages/*.json', { eager: false })
@@ -240,7 +240,7 @@ const loadCarData = async (id) => {
 
 const loadPriceList = async (id) => {
   try {
-    const slugOverrides = { zeekr8x_dawn: 'zeekr-8x-dawn', zeekr8x_shadow: 'zeekr-8x-shadow' }
+    const slugOverrides = { zeekr8x_dawn: 'zeekr-8x-dawn' }
     const slug = slugOverrides[id] ?? (id === '7x' ? 'zeekr-7x' : `zeekr-${id}`)
     const data = await API.Models.getByURL(slug)
     modelBackendData.value = data
