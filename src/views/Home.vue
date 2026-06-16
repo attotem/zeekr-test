@@ -199,7 +199,7 @@
               :class="{ 'carousel__version-pill--active': selected8xVersion === '8x_shadow' }"
               @click="selected8xVersion = '8x_shadow'"
             >
-              8X Shadow
+              8X Dawn
             </button>
             <button
               type="button"
