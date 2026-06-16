@@ -1,0 +1,996 @@
+{
+  "layout": [
+    {
+      "type": "hero",
+      "dataKey": "hero"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockDesign"
+    },
+    {
+      "type": "navigationBlock",
+      "dataKey": "dimensionsBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockExterior"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "exteriorShadowBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockRear"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "rearShadowBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlock360"
+    },
+    {
+      "type": "color360Block",
+      "dataKey": "color360Block"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockInterior"
+    },
+    {
+      "type": "insideBlock",
+      "dataKey": "insideBlock"
+    },
+    {
+      "type": "engineSpecsBlock",
+      "dataKey": "cockpitBlock"
+    },
+    {
+      "type": "designBlock",
+      "dataKey": "naimAudioBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockSEP"
+    },
+   
+    {
+      "type": "navigationBlock",
+      "dataKey": "specsBlock"
+    },
+    {
+      "type": "videoWithTextTop",
+      "dataKey": "sepVideoBlock"
+    },
+    {
+      "type": "speedBlock",
+      "dataKey": "speedCardsBlock"
+    },
+    {
+      "type": "engineSpecsBlock",
+      "dataKey": "brakeBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockChassis"
+    },
+    {
+      "type": "imageWithTextBelow",
+      "dataKey": "chassisAirSuspBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "chassisDetailsBlock"
+    },
+    {
+      "type": "viewBlock",
+      "dataKey": "viewBlock1"
+    },
+    {
+      "type": "terrainBlock",
+      "dataKey": "terrainBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockSafety"
+    },
+    {
+      "type": "fullVideoTabsBlock",
+      "dataKey": "safetyArmorBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "batteryBlock"
+    },
+    {
+      "type": "textSimpleBlock",
+      "dataKey": "textBlockPredictiveSafety"
+    },
+    {
+      "type": "videoTextBlock",
+      "dataKey": "roadSafetyBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textBlockCockpit"
+    },
+    {
+      "type": "viewBlock",
+      "dataKey": "cockpitChipBlock"
+    },
+    {
+      "type": "viewBlock",
+      "dataKey": "faryBlock"
+    },
+    {
+      "type": "textBlock",
+      "dataKey": "textSimpleBlockEva"
+    },
+    {
+      "type": "fullVideoTabsBlock",
+      "dataKey": "evaBlock"
+    },
+    {
+      "type": "viewBlock",
+      "dataKey": "helpBlock"
+    },
+    {
+      "type": "viewBlock",
+      "dataKey": "allInfoBlock"
+    },
+    {
+      "type": "twoImagesBlock",
+      "dataKey": "parkingVideosBlock"
+    }
+  ],
+  "hero": {
+    "title": {
+      "ua": "Zeekr 8X Dawn",
+      "en": "Zeekr 8X Dawn"
+    },
+    "subtitle": {
+      "ua": "Флагманський SUV із супергібридною силовою установкою та піковими характеристиками продуктивності",
+      "en": "Flagship Super Hybrid Performance SUV"
+    },
+    "image": {
+      "desktop": "hero.webp",
+      "tablet": "hero.webp",
+      "mobile": "hero_mb.webp"
+    },
+    "buttons": [
+      {
+        "text": {
+          "ua": "Замовити зараз",
+          "en": "Order Now"
+        },
+        "type": "order",
+        "style": "white"
+      },
+      {
+        "text": {
+          "ua": "Технічні характеристики",
+          "en": "Technical Specifications"
+        },
+        "type": "scroll_to",
+        "target": "techSpecsBlock",
+        "style": "transparent"
+      }
+    ]
+  },
+  "textBlockDesign": {
+    "image": "goldbadge.webp",
+    "title": {
+      "ua": "Загострена продуктивність. Флагманський контроль.",
+      "en": "Performance Edge. Flagship Control."
+    },
+    "subtitle": {
+      "ua": "Естетика флагманського виконання",
+      "en": "Performance Flagship Aesthetics"
+    }
+  },
+  "dimensionsBlock": {
+    "image": {
+      "desktop": "size.webp",
+      "tablet": "size.webp",
+      "mobile": "size_mb.webp"
+    }
+  },
+  "textBlockExterior": {
+    "title": {
+      "ua": "Силует високої продуктивності",
+      "en": "High-Performance Stance"
+    },
+    "subtitle": {
+      "ua": "Тінь народжується зі швидкістю — стрімкий, невловимий, досконалий",
+      "en": "Shadow born of speed — swift, fleeting, and perfect"
+    }
+  },
+  "exteriorShadowBlock": {
+    "images": [
+      {
+        "desktop": "info_1.webp",
+        "mobile": "info_1_mb.webp"
+      },
+      {
+        "desktop": "info_2.webp",
+        "mobile": "info_2_mb.webp"
+      },
+      {
+        "desktop": "info_3.webp",
+        "mobile": "info_3_mb.webp"
+      }
+    ],
+    "items": [
+      {
+        "title": {
+          "ua": "Решітка Shadow",
+          "en": "Shadow Grille"
+        },
+        "description": {
+          "ua": "Переплетіння рядів ліній — у спокої приховує силу, у тиші пробуджує гострий спортивний характер.",
+          "en": "Interwoven grid lines conceal power in stillness and awaken fierce athletic spirit in silence."
+        }
+      },
+      {
+        "title": {
+          "ua": "Аеродинамічний комплект із карбону",
+          "en": "Carbon Fiber Aero Kit"
+        },
+        "description": {
+          "ua": "Вставки з карбонового волокна в передньому бампері та задній частині — аеродинамічний тотем, що підкорює вітер.",
+          "en": "Carbon fiber aerodynamic inserts at the front lip and rear — a performance totem that commands the wind."
+        }
+      },
+      {
+        "title": {
+          "ua": "Активний спойлер",
+          "en": "Active Spoiler"
+        },
+        "description": {
+          "ua": "Розкривається назустріч вітру, створюючи постійний притискний ефект — елегантний танець з повітряним потоком на великих швидкостях.",
+          "en": "Opens to meet the wind, generating continuous downforce — an elegant dance with airflow at high speed."
+        }
+      }
+    ]
+  },
+  "textBlockRear": {
+    "title": {
+      "ua": "Нове втілення швидкості та контролю",
+      "en": "Wind Mastery Elevated"
+    },
+    "subtitle": {
+      "ua": "Емоційний дизайн, що підкреслює кожну грань характеру",
+      "en": "Performance exterior, where every sharp edge is fully revealed"
+    }
+  },
+  "rearShadowBlock": {
+    "images": [
+      {
+        "desktop": "info_4.webp",
+        "mobile": "info_4_mb.webp"
+      },
+      {
+        "desktop": "info_4.webp",
+        "mobile": "info_4_mb.webp"
+      },
+      {
+        "desktop": "info_4.webp",
+        "mobile": "info_4_mb.webp"
+      }
+    ],
+    "items": [
+      {
+        "title": {
+          "ua": "Шини шириною 315 мм",
+          "en": "315 Wide-Profile Tires"
+        },
+        "description": {
+          "ua": "275 спереду та 315 ззаду — шини Pirelli з різними розмірами осей для максимального зчеплення з дорогою.",
+          "en": "275 front and 315 rear — Pirelli staggered tires providing maximum grip and traction."
+        }
+      },
+      {
+        "title": {
+          "ua": "Задній спойлер",
+          "en": "Rear Diffuser"
+        },
+        "description": {
+          "ua": "Агресивна форма, створена для продуктивності — підкреслює спортивний характер корми та генерує притискну силу для кращого зчеплення.",
+          "en": "A sharp form born for performance — maximizing the sporty rear character and generating downforce for enhanced grip."
+        }
+      },
+      {
+        "title": {
+          "ua": "Світловідбивачі серії \"Shadow Hunter\"",
+          "en": "Shadow Hunter Retroreflector"
+        },
+        "description": {
+          "ua": "Гострі лінії переломлюють світло, створюючи ефект «кігтів мисливця» — неповторний спортивний силует на великій швидкості.",
+          "en": "Sharp lines refract into a layered hunter-claw light effect, sketching an unmistakable sporty silhouette at speed."
+        }
+      }
+    ]
+  },
+  "textBlock360": {
+    "title": {
+      "ua": "Кольори справжньої продуктивності — сила у кожному відтінку",
+      "en": "True Performance Colors — Power in Every Shade"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "color360Block": {
+    "colors": [
+      {
+        "id": "grey",
+        "name": {
+          "ua": "Матовий міжзоряний сірий",
+          "en": "Matte Space Grey"
+        },
+        "value": "#5A5A5A",
+        "description": {
+         "ua": "Матовий міжзоряний сірий",
+          "en": "Matte Space Grey"}
+      },
+      {
+        "id": "blue",
+        "name": {
+          "ua": "Небесно синій",
+          "en": "Hunter Sky Blue"
+        },
+        "value": "#2B6CB0",
+        "description": {
+          "ua": "Небесно синій",
+          "en": "Hunter Sky Blue"
+        }
+      },
+      {
+        "id": "black",
+        "name": {
+          "ua": "Полярна ніч (чорний)",
+          "en": "Midnight Black"
+        },
+        "value": "#111111",
+        "description": {
+          "ua": "Полярна ніч (чорний)",
+          "en": "Midnight Black"}
+      }
+    ],
+    "note": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "textBlockInterior": {
+    "image": "goldbadge.webp",
+    "title": {
+      "ua": "Відчутний простір високої продуктивності",
+      "en": "The Tangible High-Performance Space"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "insideBlock": {
+    "title": {
+      "ua": "",
+      "en": ""
+    },
+    "options": [
+      {
+        "id": "blackGold",
+        "name": {
+          "ua": "Чорно-золотий",
+          "en": "Black Gold"
+        },
+        "image": {
+          "desktop": "blackGold_inside.webp",
+          "tablet": "blackGold_inside.webp",
+          "mobile": "balckGold_inside_mb.webp"
+        },
+        "description": {
+          "ua": "Ексклюзивний чорно-помаранчевий інтер'єр ",
+          "en": "The first ray of light breaking through the night sky at dawn — awakening your passion for driving."
+        }
+      }
+    ]
+  },
+  "cockpitBlock": {
+    "title": {
+      "ua": "Кокпіт високої продуктивності",
+      "en": "High-Performance Cockpit"
+    },
+    "rows": [
+      {
+        "image": "inside1.webp",
+        "title": {
+          "ua": "Цільнолите спортивне крісло",
+          "en": "Integrated Sport Seat"
+        },
+        "description": {
+          "ua": "Спортивні крісла переднього ряду з комбінацією Alcantara та NAPPA-шкіри й активними бічними підпорами для надійної підтримки під час динамічного водіння.",
+          "en": "Front-row integrated sport seats combining Alcantara and NAPPA leather with active bolster support for enhanced grip during dynamic driving."
+        },
+        "imageRight": false
+      },
+      {
+        "image": "inside2.webp",
+        "title": {
+          "ua": "Ексклюзивне спортивне кермо",
+          "en": "Shadow Exclusive Sport Steering Wheel"
+        },
+        "description": {
+          "ua": "Кермо оснащене кнопкою Boost — забезпечує безперервне підсилення продуктивності протягом 20 секунд для миттєвого переходу в режим гонкового треку.",
+          "en": "Steering wheel equipped with a Boost button — sustains peak performance boost for 20 seconds, instantly delivering a top-tier racetrack experience."
+        },
+        "imageRight": true
+      },
+      {
+        "image": "inisde3.webp",
+        "title": {
+          "ua": "Карбонові декоративні вставки",
+          "en": "Carbon Fiber Trim Panel"
+        },
+        "description": {
+          "ua": "Преміальне карбонове оздоблення наповнює кокпіт спортивною енергією, підкреслюючи його технологічність, характер і безкомпромісну орієнтацію на продуктивність.",
+          "en": "Instantly elevates the sporty atmosphere in the cabin — sharp, aggressive, and unmistakably combative."
+        },
+        "imageRight": false
+      }
+    ]
+  },
+  "naimAudioBlock": {
+    "topTitle": {
+      "ua": "Преміальна акустика. Резонанс із кожною поїздкою.",
+      "en": "Concert Hall Acoustics — Resonance Under Your Command"
+    },
+    "images": [
+      {
+        "desktop": "naim.webp",
+        "mobile": "naim_mb.webp"
+      },
+      {
+        "desktop": "naim.webp",
+        "mobile": "naim_mb.webp"
+      }
+    ],
+    "items": [
+      {
+        "title": {
+          "ua": "Аудіосистема Naim «Hall of Sound»",
+          "en": "Naim Hall of Sound Audio System"
+        },
+        "description": {
+          "ua": "Пікова потужність 3898 Вт, діапазон 20–40 000 Гц, схема 7.1.4, 25 динаміків преміального рівня, запатентована мембрана типу «М».",
+          "en": "Peak power 3898W, 20–40,000Hz ultra-wide frequency range, 7.1.4 immersive layout, 25 premium speakers, patented M-type electret diaphragm."
+        }
+      },
+      {
+        "title": {
+          "ua": "Активне шумозаглушення RNC",
+          "en": "RNC Active Noise Cancellation"
+        },
+        "description": {
+          "ua": "Моніторинг шуму в реальному часі — акустична система компенсує шумове навантаження та знижує рівень шуму в салоні.",
+          "en": "Real-time noise monitoring — the audio system compensates and actively reduces cabin noise levels."
+        }
+      }
+    ]
+  },
+  "textBlockSEP": {
+    "image": "goldbadge.webp",
+    "title": {
+      "ua": "SEP - суперелектрогібрид",
+      "en": "SEP Haohao Super Hybrid"
+    },
+    "subtitle": {
+      "ua": "Впевнений контроль на будь-якій швидкості",
+      "en": "Confident Control Across All Speed Ranges"
+    }
+  },
+  "sepVideoBlock": {
+    "video": "video1.mp4",
+    "videoMobile": "video1_mb.mp4",
+    "title": {
+      "ua": "Повноцінна 900-вольтна високовольтна гібридна архітектура",
+      "en": "Full-Stack 900V Hybrid High-Voltage Architecture"
+    }
+  },
+  "textBlockCockpit": {
+    "image": "goldbadge.webp",
+    "title": {
+      "ua": "AI-інтелектуальний простір повного занурення ",
+      "en": "AI Immersive Intelligent Cockpit"
+    },
+    "subtitle": {
+      "ua": "Преміальне оснащення, безмежний інтелектуальний комфорт",
+      "en": "Premium hardware. Limitless intelligent enjoyment"
+    }
+  },
+  "cockpitChipBlock": {
+    "image": {
+      "desktop": "snap1.webp",
+      "mobile": "snap1_mb.webp"
+    },
+    "title": {
+      "ua": "Інтелектуальний інтерактивний кокпіт ",
+      "en": "Intelligent Interactive Cockpit"
+    },
+    "subtitle": {
+      "ua": "Подвійний чіп Qualcomm Snapdragon 8295",
+      "en": "Dual Qualcomm Snapdragon 8295 Cockpit Chips"
+    }
+  },
+  "faryBlock": {
+    "image": {
+      "desktop": "fary.webp",
+      "mobile": "fary_mb.webp"
+    },
+    "title": {
+      "ua": "Інфрачервона система нічного бачення",
+      "en": "Infrared Night Vision System"
+    },
+    "subtitle": {
+      "ua": "Всепогодне розпізнавання | Іммерсивне відображення | ШІ-попередження",
+      "en": "All-Weather Sensing | Immersive Visual Display | AI Warning Assistance"
+    }
+  },
+  "textSimpleBlockEva": {
+    "image": "goldbadge.webp",
+    "title": {
+      "ua": "Ваш інтелектуальний помічник - Eva", 
+    "en": "Super Eva — AI Intelligent Life Entity" 
+  },
+    "subtitle": {
+      "ua": "Надпотужне сприйняття. Надрозумне керування. ",
+      "en": "Ultra-Strong Perception, Super-Intelligent Navigation"
+    }
+  },
+  "evaBlock": {
+    "topTitle": {
+      "ua": "Ваш інтелектуальний помічник - Eva",
+      "en": "Super Eva Intelligent Life Entity"
+    },
+    "image": "eva.webp",
+    "tabs": [
+      {
+        "label": { "ua": "Розмовляє", "en": "Conversationalist" },
+        "description": { "ua": "Живий співрозмовник: розуміє емоції та підхоплює жарти — спілкування за кермом стає природним і комфортним", "en": "A lively chat companion that understands emotions and keeps up with jokes — making in-car conversation natural and enjoyable" }
+
+      },
+      {
+        "label": { "ua": "Орієнтується", "en": "Road Expert" },
+        "description": { "ua": "Глибока навігація: пам'ятає маршрути, планує поїздки та дає розумні поради — як персональний дорожній радник", "en": "Deep navigation: remembers routes, plans trips and gives smart suggestions — like a personal travel advisor" }
+      },
+      {
+        "label": { "ua": "Бачить", "en": "Can See" },
+        "description": { "ua": "«Розумне око»: розпізнає людей, пейзажі та погоду за вікном — прогнозує поїздки, надійно та безпечно", "en": "\"Smart Eye\": recognizes people, scenery and weather outside — predicts your journey, reliably and safely" }
+      }
+    ]
+  },
+  "parkingVideosBlock": {
+    "images": [
+      {
+        "image": "last_1.mp4",
+        "poster": "last_2_placeholder.webp",
+        "title": { "ua": "Навігація по парковці без карти", "en": "Map-Free Parking Navigation" },
+        "description": { "ua": "З першого відвідування — одразу знаходить виїзд та вільне місце без попереднього картографування", "en": "From first visit — instantly finds exits and parking spots without prior mapping" }
+      },
+      {
+        "image": "last_2.mp4",
+        "poster": "last_1_placeholder.webp",
+        "title": { "ua": "Виклик жестом у повітрі", "en": "Gesture Summon" },
+        "description": { "ua": "Без телефону: помахайте рукою — і автомобіль самостійно виїде з місця у потрібному напрямку", "en": "No phone needed: wave your hand and the car drives out from its spot in your direction" }
+      }
+    ]
+  },
+  "helpBlock": {
+    "image": {
+      "desktop": "help.webp",
+      "mobile": "help_mb.webp"
+    }
+  },
+  "allInfoBlock": {
+    "image": {
+      "desktop": "all_info.webp",
+      "mobile": "all_info_mb.webp"
+    }
+  },
+  "textBlockPredictiveSafety": {
+    "title": {
+      "ua": "Прогнозована безпека, непомітний захист",
+      "en": "Predictive Safety. Invisible Protection"
+    },
+    "subtitle": {
+      "ua": "",
+      "en": ""
+    }
+  },
+  "roadSafetyBlock": {
+    "image1": "road1.webp",
+    "image2": "road2.webp",
+    "text1": {
+      "title": {
+        "ua": "AEB Аварійне гальмування при фронтальному зіткненні",
+        "en": "AEB Forward Collision Emergency Braking"
+      },
+      "note": {
+        "ua": "Надійні очі та рішучі руки — розпізнають потенційну небезпеку заздалегідь і нейтралізують її непомітно. Водіння стає спокійнішим",
+        "en": "Reliable eyes and decisive hands — neutralize potential hazards before they form, delivering greater peace of mind while driving"
+      }
+    },
+    "text2": {
+      "title": {
+       "ua": "AES Автоматичний аварійний поворот",
+          "en": "AES Automatic Emergency Steering"
+      },
+      "note": {
+        "ua": "Коли загальмувати вже не встигнути, система розумно допомагає «об'їхати» небезпеку — перетворюючи потенційний переляк на плавний та безпечний проїзд.",
+        "en": "When there's no time to brake, it smartly steers you around danger — turning a potential scare into a smooth, safe pass."
+      } 
+    }
+  },
+  "batteryBlock": {
+    "cols": 3,
+    "objectFit": "contain",
+    "images": [
+      {
+        "image": "battery1.webp",
+        "title": { "ua": "«985» Фізичний захист", "en": "\"985\" Physical Protection" },
+
+        "description": { "ua": "«9 шарів захисту від бокового удару + 8 шарів захисту знизу + 5 шарів опори зверху» утворюють просторову фортецю — шар за шаром захищаючи елементи", "en": "9-layer side protection + 8-layer bottom protection + 5-layer top support form a three-dimensional fortress, layer by layer protecting every cell" }
+
+      },
+      {
+        "image": "battery2.webp",
+        "title": { "ua": "Технологія теплоелектричного розділення", "en": "Same-Side Thermal-Electric Separation" },
+        "description": { "ua": "Вентиляційні канали та провідні шини всередині елемента розділені — виключається ланцюгова реакція між перегрітим та іншими елементами", "en": "Exhaust channels and conductive busbars inside cells are separated, eliminating chain reaction between thermal runaway and other cells" }
+      
+      },
+      {
+        "image": "battery3.webp",
+        "title": { "ua": "Протиударний бар'єр з десятьма відсіками", "en": "Ten-Cell Door Sill Anti-Collision Beam" },
+        "description": { "ua": "Конструкція з десятьма відсіками в порозі, натхненна водонепроникними відсіками авіаносців — послідовно поглинає удар, захищаючи акумулятор", "en": "Ten-cell door sill design inspired by aircraft carrier watertight compartments — absorbs impact layer by layer, reducing direct force on the battery pack" }
+      
+      }
+    ]
+  },
+  "safetyArmorBlock": {
+    "title": {
+      "ua": "Безпека флагманського рівня. Максимальний захист.",
+      "en": "Haohao Safety Armor"
+    },
+    "video": "video2.mov",
+    "tabs": [
+      {
+        "label": {
+          "ua": "Цілісна подвійна кільцева структура дверей + подвійні силові балки безпеки",
+          "en": "Integrated Dual Ring + Dual Rod"
+        },
+        "description": {
+          "ua": "Завдяки цілісному литтю 2000 МПа гарячеформована сталь стійок A та B інтегрована з порогами та боковими елементами даху в єдину кільцеву силову структуру кузова.",
+          "en": "Through integrated die-casting, the 2000 MPa hot-formed A and B pillars are united with sills and roof side beams into a complete ring structure"
+        }
+      },
+      {
+        "label": {
+          "ua": "Алюмінієвий задній кузов третього покоління з цілісним литтям",
+          "en": "3rd-Gen FiberCrystal Rear Aluminum Body"
+        },
+        "description": {
+          "ua": "Завдяки цілісному литтю на прес-машині зусиллям 7200 тонн досягнуто вищої інтеграції конструкції, зменшення ваги авто та суттєвого підвищення жорсткості кузова. Деформація кузова зменшена на 16%, що забезпечує вищий рівень безпеки пасажирів.",
+          "en": "Formed in one shot on a 7200-ton press: higher integration, reduced weight, greatly improved body rigidity. Deformation reduced by 16% for occupant safety"
+        }
+      },
+      {
+        "label": {
+          "ua": "Третій енергопоглинаючий модуль",
+          "en": "Third Energy Absorption Box"
+        },
+        "description": {
+          "ua": "Третій енергопоглинаючий модуль розроблений із високою точністю, що дозволяє зменшити деформацію моторного щита під час зіткнення більш ніж на 20%. Ефективно скорочує проникнення передньої частини кузова на 40 мм, запобігаючи удару двигуна в пасажирський салон.",
+          "en": "The precisely engineered third crumple box reduces firewall deformation by over 20% in a crash, cutting front-end intrusion by 40 mm and keeping the engine out of the cabin"
+        }
+      },
+      {
+        "label": {
+          "ua": "Блок захисту від зіткнення",
+          "en": "Anti-Impact Stop Block"
+        },
+        "description": {
+          "ua": "Після десятків тисяч симуляцій прораховано траєкторію підрамника при ударі — блок жорстко утримує його на кузові, запобігаючи здавлюванню бака та ризику займання від витоку палива",
+          "en": "After tens of thousands of simulations, the subframe trajectory in a crash is predicted — the stop block locks it to the body, preventing fuel tank compression and fire risk from leaks"
+        }
+      }
+    ]
+  },
+  "textBlockSafety": {
+    "title": {
+      "ua": "Комплексна безпека Zeekr у будь-яких умовах",
+      "en": "ZEEKR — Safety Across Every Dimension"
+    },
+    "image": "goldbadge.webp"
+  },
+  "terrainBlock": {
+    "image": {
+      "desktop": "offroad.webp",
+      "tablet": "offroad.webp",
+      "mobile": "offroad_mb.webp"
+    },
+    "title": {
+      "ua": "Режими руху по всіх видах покриття",
+      "en": "All-Terrain Driving Modes"
+    },
+    "subtitle": {
+      "ua": "Без турбот у будь-яку погоду, безстрашність на будь-якому рельєфі, впевненість у будь-якому сценарії",
+      "en": "All-weather worry-free, all-terrain fearless, all-scenario composed"
+    },
+    "standardModes": {
+      "title": {
+        "ua": "5 стандартних режимів",
+        "en": "5 Standard Modes"
+      },
+      "items": [
+        {
+          "icon": "icon_comfort.webp",
+          "label": { "ua": "Комфорт", "en": "Comfort" }
+        },
+        {
+          "icon": "icon_economy.webp",
+          "label": { "ua": "Економ", "en": "Eco" }
+        },
+        {
+          "icon": "icon_sport.webp",
+          "label": { "ua": "Спорт", "en": "Sport" }
+        },
+        {
+          "icon": "icon_sportPlus.webp",
+          "label": { "ua": "Спорт+", "en": "Sport+" }
+        },
+        {
+          "icon": "icon_custom.webp",
+          "label": { "ua": "Персоналізований", "en": "Personalized" }
+        }
+      ]
+    },
+    "adaptiveModes": {
+      "title": {
+        "ua": "8 спеціальних режимів покриття",
+        "en": "8 Special Terrain Modes"
+      },
+      "items": [
+        {
+          "icon": "icon_grass.webp",
+          "label": { "ua": "Трава/Гравій", "en": "Grass/Gravel" }
+        },
+        {
+          "icon": "icon_snow.webp",
+          "label": { "ua": "Легкий сніг", "en": "Shallow Snow" }
+        },
+        {
+          "icon": "icon_bigSnow.webp",
+          "label": { "ua": "Глибокий сніг", "en": "Deep Snow" }
+        },
+        {
+          "icon": "icon_mud.webp",
+          "label": { "ua": "Болото", "en": "Mud" }
+        },
+        {
+          "icon": "icon_dessert.webp",
+          "label": { "ua": "Пісок", "en": "Sand" }
+        },
+        {
+          "icon": "icon_rock.webp",
+          "label": { "ua": "Скелі", "en": "Rock Crawl" }
+        },
+        {
+          "icon": "icon_mountain.webp",
+          "label": { "ua": "Гірська дорога", "en": "Mountain Road" }
+        },
+        {
+          "icon": "icon_wading.webp",
+          "label": { "ua": "Водне бродіння", "en": "Wading" }
+        }
+      ]
+    }
+  },
+  "viewBlock1": {
+    "image": {
+      "desktop": "view_1.webp",
+      "mobile": "view_1_mb.webp"
+    },
+    "title": {
+      "ua": "Інтелектуальний центр стабільності",
+      "en": "Intelligent Stability Hub"
+    }
+  },
+  "textBlockChassis": {
+    "title": {
+      "ua": "AI-цифрова платформа керування нового покоління",
+      "en": "Haohan AI Digital Chassis"
+    },
+    "subtitle": {
+      "ua": "Бездоганний комфорт і керованість — плавність руху на будь-якій дорозі",
+      "en": "Unmatched for driver and passenger — smooth road ahead"
+    },
+    "image": "goldbadge.webp"
+  },
+  "chassisAirSuspBlock": {
+    "image": {
+      "desktop": "podves1.webp",
+      "mobile": "podves1_mb.webp"
+    },
+    "title": {
+      "ua": "Замкнена двокамерна пневматична підвіска",
+      "en": "Closed Dual-Chamber Air Suspension"
+    },
+    "subtitle": {
+      "ua": "80 мм максимальний хід регулювання",
+      "en": "80 mm maximum adjustment travel"
+    }
+  },
+  "chassisDetailsBlock": {
+    "images": [
+      {
+        "image": {
+          "desktop": "podves2.webp",
+          "mobile": "podves2_mb.webp"
+        },
+        "title": {
+          "ua": "Двоклапанний електромагнітний амортизатор CCD",
+          "en": "Dual-Valve CCD Electromagnetic Damper"
+        },
+        "description": {
+          "ua": "Незалежне керування стисненням і відбоєм — діапазон крутного моменту в 2–3 рази ширший, ніж у одноклапанних CCD",
+          "en": "Independent compression and rebound control — torque bandwidth 2–3× wider than single-valve CCD"
+        }
+      },
+      {
+        "image": {
+          "desktop": "podves3.webp",
+          "mobile": "podves3_mb.webp"
+        },
+        "title": {
+          "ua": "Активний стабілізатор поперечної стійкості",
+          "en": "Active Stabilizer Bar"
+        },
+        "description": {
+          "ua": "Час відклику 0,2 с, балансувальний момент 1400 Н·м — мінімальний крен у поворотах на великій швидкості",
+          "en": "0.2 s response time, 1400 N·m balancing torque — near-zero body roll at high-speed cornering"
+        }
+      }
+    ]
+  },
+  "brakeBlock": {
+    "title": {
+      "ua": "Флагман у русі та в спокої",
+      "en": "Flagship in Motion and at Rest"
+    },
+    "rows": [
+      {
+        "image": "brake1.webp",
+        "title": {
+          "ua": "Brembo® шестипоршневий помаранчевий супорт",
+          "en": "Brembo® Six-Piston Orange Caliper"
+        },
+        "description": {
+          "ua": "Гальмівний шлях 100–0 км/год: 34,4 м*\n\n*Дані отримані в ході інженерних випробувань і можуть варіюватись залежно від умов: місцевості, погоди, стану дороги, заряду батареї, розміру шин та навантаження.",
+          "en": "Braking distance 100–0 km/h: 34.4 m*\n\n*Data from engineering tests; may vary due to terrain, weather, road conditions, battery level, tire size, and load."
+        },
+        "imageRight": false
+      },
+      {
+        "image": "brake2.webp",
+        "title": {
+          "ua": "Надвеликі перфоровані вентильовані гальмівні диски",
+          "en": "Oversized Drilled Ventilated Brake Discs"
+        },
+        "description": {
+          "ua": "Передній: 41,2 см / задній: 36,4 см у діаметрі — постійне тепловідведення",
+          "en": "Front 41.2 cm / rear 36.4 cm diameter — continuous heat dissipation"
+        },
+        "imageRight": true
+      }
+    ]
+  },
+  "speedCardsBlock": {
+    "cards": [
+      {
+        "image": {
+          "desktop": "info_spec_1.webp",
+          "mobile": "info_spec_1_mb.webp"
+        },
+        "title": {
+          "ua": "Великий запас ходу",
+          "en": "Long Range"
+        },
+        "specs": [
+          {
+            "value": "70 kWh",
+            "label": {
+              "ua": "Гібридна батарея",
+              "en": "Hybrid Battery"
+            }
+          },
+          {
+            "value": "1210 km",
+            "label": {
+              "ua": "Комбінований запас ходу за CLTC*",
+              "en": "CLTC Combined Range*"
+            }
+          }
+        ],
+        "note": {
+          "ua": "*Дані отримані в ході інженерних випробувань і можуть варіюватись залежно від умов: місцевості, погоди, стану дороги, заряду батареї, розміру шин та навантаження.",
+          "en": "*Data from engineering tests; may vary due to terrain, weather, road conditions, battery level, tire size, and load."
+        }
+      },
+      {
+        "image": {
+          "desktop": "info_spec_2.webp",
+          "mobile": "info_spec_2_mb.webp"
+        },
+        "title": {
+          "ua": "Надшвидка зарядка",
+          "en": "Ultra-Fast Charging"
+        },
+        "specs": [
+          {
+            "value": "6C",
+            "label": {
+              "ua": "Максимальна швидкість зарядки",
+              "en": "Maximum Charging Rate"
+            }
+          },
+          {
+            "value": "9 хв",
+            "label": {
+              "ua": "SoC 20%–80%*",
+              "en": "SoC 20%–80%*"
+            }
+          }
+        ],
+        "note": {
+          "ua": "*Час зарядки вказано для рідинно-охолоджуваних зарядних станцій ZEEKR V2 та новіших при нормальній температурі.",
+          "en": "*Charging time based on ZEEKR V2 and above liquid-cooled chargers at ambient temperature."
+        }
+      }
+    ]
+  },
+  "specsBlock": {
+    "image": {
+      "desktop": "specs1.webp",
+      "tablet": "specs1.webp",
+      "mobile": "specs1_mb.webp"
+    },
+    "specs": [
+      {
+        "value": "2.96 с",
+        "label": {
+          "ua": "Розгін 0–100 км/год",
+          "en": "0-100 km/h acceleration"
+        }
+      },
+      {
+        "value": "Понад 1400 к.с.",
+        "label": {
+          "ua": "Максимальна потужність",
+          "en": "Maximum horsepower"
+        }
+      },
+      {
+        "value": "1030 кВт",
+        "label": {
+          "ua": "Пікова потужність",
+          "en": "Peak power"
+        }
+      }
+    ]
+  }
+}

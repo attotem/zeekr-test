@@ -71,10 +71,10 @@ const router = createRouter({
 			meta: { carId: '8x' },
 		},
 		{
-			path: "/zeekr-8x-shadow",
-			name: "zeekr-8x-shadow",
+			path: "/zeekr-8x-dawn",
+			name: "zeekr-8x-dawn",
 			component: Test7x,
-			meta: { carId: 'zeekr8x_shadow' },
+			meta: { carId: 'zeekr8x_dawn' },
 		},
 		{
 			path: "/:childId",

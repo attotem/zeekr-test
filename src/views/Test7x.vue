@@ -237,7 +237,8 @@ const loadCarData = async (id) => {
 
 const loadPriceList = async (id) => {
   try {
-    const slug = id === '7x' ? 'zeekr-7x' : `zeekr-${id}`
+    const slugOverrides = { zeekr8x_dawn: 'zeekr-8x-dawn', zeekr8x_shadow: 'zeekr-8x-shadow' }
+    const slug = slugOverrides[id] ?? (id === '7x' ? 'zeekr-7x' : `zeekr-${id}`)
     const data = await API.Models.getByURL(slug)
     modelBackendData.value = data
     priceListUrl.value = data?.price_list || ''
