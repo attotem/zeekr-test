@@ -201,7 +201,11 @@
       "dataKey": "parkingVideosBlock"
     }
   ],
-  "versionsImages": [],
+  "versionsImages": {
+    "Zeekr 8X Max": "Zeekr 8X Max.webp",
+    "Zeekr 8X Ultra": "Zeekr 8X Ultra.webp",
+    "Zeekr 8X Ultra Plus": "Zeekr 8X Ultra Plus.webp"
+  },
   "hero": {
     "title": {
       "ua": "ZEEKR 8X",

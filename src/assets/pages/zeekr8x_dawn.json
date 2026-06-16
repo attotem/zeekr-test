@@ -146,6 +146,9 @@
       "dataKey": "parkingVideosBlock"
     }
   ],
+  "versionsImages": {
+    "Zeekr 8X Dawn": "Zeekr 8X Dawn.webp"
+  },
   "hero": {
     "title": {
       "ua": "Zeekr 8X Dawn",
