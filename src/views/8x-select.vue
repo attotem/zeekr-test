@@ -7,21 +7,21 @@
 
     <div class="eight-x-select__panels">
       <RouterLink
-        to="/zeekr-8x"
-        class="eight-x-select__panel eight-x-select__panel--ultra"
-      >
-        <div class="eight-x-select__panel-inner">
-          <h1 class="eight-x-select__title">{{ getText(variants.ultra.title) }}</h1>
-          <span class="eight-x-select__btn">{{ getText(btnLabel) }}</span>
-        </div>
-      </RouterLink>
-
-      <RouterLink
         to="/zeekr-8x-dawn"
         class="eight-x-select__panel eight-x-select__panel--dawn"
       >
         <div class="eight-x-select__panel-inner">
           <h1 class="eight-x-select__title">{{ getText(variants.dawn.title) }}</h1>
+          <span class="eight-x-select__btn">{{ getText(btnLabel) }}</span>
+        </div>
+      </RouterLink>
+
+      <RouterLink
+        to="/zeekr-8x"
+        class="eight-x-select__panel eight-x-select__panel--ultra"
+      >
+        <div class="eight-x-select__panel-inner">
+          <h1 class="eight-x-select__title">{{ getText(variants.ultra.title) }}</h1>
           <span class="eight-x-select__btn">{{ getText(btnLabel) }}</span>
         </div>
       </RouterLink>
@@ -106,18 +106,19 @@ onUnmounted(() => {
     display: grid;
     width: 100%;
     height: 100%;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
   }
 
   &__panel {
     display: grid;
-    place-items: center;
+    align-items: start;
+    justify-items: center;
     width: 100%;
     height: 100%;
     text-decoration: none;
     color: #fff;
-    padding: 0 24px;
+    padding: 14vh 24px 0;
     box-sizing: border-box;
 
     &:hover {
@@ -129,14 +130,14 @@ onUnmounted(() => {
     }
   }
 
-  &__panel--ultra {
+  &__panel--dawn {
     grid-column: 1;
     grid-row: 1;
   }
 
-  &__panel--dawn {
-    grid-column: 1;
-    grid-row: 2;
+  &__panel--ultra {
+    grid-column: 2;
+    grid-row: 1;
   }
 
   &__panel-inner {
@@ -180,13 +181,25 @@ onUnmounted(() => {
     &__panels {
       height: auto;
       max-height: 50vh;
-      padding-top: 120px;
-      gap: 30px;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      padding-top: 96px;
+      gap: 24px;
     }
 
     &__panel {
       height: auto;
       padding: 0 20px;
+    }
+
+    &__panel--ultra {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    &__panel--dawn {
+      grid-column: 1;
+      grid-row: 2;
     }
 
     &__title {
