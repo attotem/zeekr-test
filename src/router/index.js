@@ -25,6 +25,7 @@ import StockId from "@/views/StockId.vue";
 import PresentationZeekr9x from "@/views/PresentationZeekr9x.vue";
 import ThankYou from "@/views/ThankYou.vue";
 import Test7x from "@/views/Test7x.vue";
+import EightXSelect from "@/views/8x-select.vue";
 import { useLoaderStore } from "@/stores/loader";
 
 const router = createRouter({
@@ -63,6 +64,11 @@ const router = createRouter({
 			name: "zeekr-007gt",
 			component: Test7x,
 			meta: { carId: '007gt' },
+		},
+		{
+			path: "/zeekr-8x-select",
+			name: "8x-select",
+			component: EightXSelect,
 		},
 		{
 			path: "/zeekr-8x",

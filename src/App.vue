@@ -3,8 +3,8 @@
 	<RouterView />
 	<Cookies />
 	<Chat />
-	<Footer />
-	<Legal />
+	<Footer v-if="route.name !== '8x-select'" />
+	<Legal v-if="route.name !== '8x-select'" />
 
 	
 </template>
@@ -77,6 +77,10 @@ body {
   padding: 0;
   background-color: #fff;
   overflow-x: hidden;
+}
+
+body.eight-x-select-page {
+  overflow: hidden;
 }
 
 #app {

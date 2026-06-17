@@ -107,8 +107,18 @@
 									>
 										{{ getSlideText({ ua: 'Замовити консультацію', en: 'Book a consultation' }) }}
 									</button>
+									<div v-if="slide.buttons?.length" class="article-1__slide-buttons">
+										<RouterLink
+											v-for="(button, btnIndex) in slide.buttons"
+											:key="btnIndex"
+											:to="button.link"
+											class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
+										>
+											{{ getSlideText(button.label) }}
+										</RouterLink>
+									</div>
 									<RouterLink
-										v-if="slide.link"
+										v-else-if="slide.link"
 										:to="slide.link"
 										class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
 									>
@@ -127,7 +137,7 @@
 				<Transition name="carousel-fade">
 					<div
 						v-if="carouselModels[activeCarouselIndex]"
-						:key="`${carouselModels[activeCarouselIndex].id}-${selected7xVersion}-${selected8xVersion}-${isMobile()}`"
+						:key="`${carouselModels[activeCarouselIndex].id}-${selected7xVersion}-${isMobile()}`"
 						class="carousel__bg"
 						:style="{ backgroundImage: `url(${getCarouselImage(carouselModels[activeCarouselIndex])})` }"
 					></div>
@@ -191,25 +201,6 @@
         </button>
 
 				<div class="carousel__actions">
-          <!-- 8X version pills -->
-          <div v-if="carouselModels[activeCarouselIndex]?.id === '8x'" class="carousel__version-pills">
-            <button
-              type="button"
-              class="carousel__version-pill"
-              :class="{ 'carousel__version-pill--active': selected8xVersion === '8x_shadow' }"
-              @click="selected8xVersion = '8x_shadow'"
-            >
-              8X Dawn
-            </button>
-            <button
-              type="button"
-              class="carousel__version-pill"
-              :class="{ 'carousel__version-pill--active': selected8xVersion === '8x' }"
-              @click="selected8xVersion = '8x'"
-            >
-              8X
-            </button>
-          </div>
 					<RouterLink
 						:to="getCarDetailLink()"
 						class="btn btn--orange carousel__more"
@@ -324,7 +315,6 @@ import img7xEu from "@/assets/courusel/7x_eu.webp";
 import img001 from "@/assets/courusel/001.webp";
 import img9x from "@/assets/courusel/9x.webp";
 import img8x from "@/assets/courusel/8x.webp";
-import img8xShadow from "@/assets/courusel/8x_shadow.webp";
 import img007gt from "@/assets/courusel/007gt.webp";
 import img001fr from "@/assets/courusel/001fr.webp";
 import img009 from "@/assets/courusel/009.webp";
@@ -337,7 +327,6 @@ import img7xMb from "@/assets/courusel/7x_mb.webp";
 import img001Mb from "@/assets/courusel/001_mb.webp";
 import img9xMb from "@/assets/courusel/9x_mb.webp";
 import img8xMb from "@/assets/courusel/8x_mb.webp";
-import img8xShadowMb from "@/assets/courusel/8x_shadow_mb.webp";
 import img007gtMb from "@/assets/courusel/007gt_mb.webp";
 import img001frMb from "@/assets/courusel/001fr_mb.webp";
 import img009Mb from "@/assets/courusel/009_mb.webp";
@@ -362,6 +351,9 @@ import slide7xMb from "@/assets/slider/7x/7X_mb.webp";
 import slide9xPc from "@/assets/slider/9x/9X_pc.webp";
 import slide9xTablet from "@/assets/slider/9x/9X_tablet.webp";
 import slide9xMb from "@/assets/slider/9x/9X_mb.webp";
+
+import banner8x from "@/assets/courusel/banner_8x.webp";
+import banner8xMb from "@/assets/courusel/banner_8x_mb.webp";
 
 import slideTdPc from "@/assets/courusel/testdrive_pc_tablet_site.webp";
 import slideTdTablet from "@/assets/courusel/testdrive_pc_tablet_site.webp";
@@ -398,6 +390,29 @@ watch(isModalOpened, (val) => {
 })
 
 const mainSliderSlides = [
+  {
+    pc: banner8x,
+    tablet: banner8x,
+    mobile: banner8xMb,
+    title: {
+      ua: 'Zeekr 8X',
+      en: 'Zeekr 8X'
+    },
+    subtitle: {
+      ua: 'Пізнавай світ. Рухайся вільно.',
+      en: 'Explore the world. Move freely.'
+    },
+    buttons: [
+      {
+        label: { ua: 'Zeekr 8X «Dawn»', en: 'Zeekr 8X Dawn' },
+        link: '/zeekr-8x-dawn'
+      },
+      {
+        label: { ua: 'Zeekr 8X', en: 'Zeekr 8X' },
+        link: '/zeekr-8x'
+      }
+    ]
+  },
   {
     pc: slide001Pc,
     tablet: slide001Tablet,
@@ -534,7 +549,7 @@ const carouselModels = ref([
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },
   { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/zeekr-001" },
   { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/zeekr-9x" },
-  { id: "8x", label: "8X", image: img8x, imageMobile: img8xMb, imageShadow: img8xShadow, imageShadowMobile: img8xShadowMb, link: "/zeekr-8x", linkShadow: "/zeekr-8x-dawn" },
+  { id: "8x", label: "8X", image: img8x, imageMobile: img8xMb, link: "/zeekr-8x-select" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
   { id: "001fr", label: "001 FR", image: img001fr, imageMobile: img001frMb, link: "/zeekr-001-fr" },
   { id: "009", label: "009", image: img009, imageMobile: img009Mb, link: "/zeekr-009" },
@@ -545,7 +560,6 @@ const carouselModels = ref([
 ])
 
 const selected7xVersion = ref('7x')
-const selected8xVersion = ref('8x')
 
 const getCarouselImage = (model) => {
   if (model.id === '7x') {
@@ -554,24 +568,11 @@ const getCarouselImage = (model) => {
     const baseMobileImage = isEu ? (model.imageEuMobile || model.imageMobile) : model.imageMobile
     return isMobile() ? baseMobileImage : baseImage
   }
-  if (model.id === '8x') {
-    const isShadow = selected8xVersion.value === '8x_shadow'
-    const baseImage = isShadow ? (model.imageShadow || model.image) : model.image
-    const baseMobileImage = isShadow ? (model.imageShadowMobile || model.imageMobile) : model.imageMobile
-    return isMobile() ? baseMobileImage : baseImage
-  }
   return isMobile() ? model.imageMobile : model.image
 }
 
 const handle7xVersionClick = (version, index) => {
   selected7xVersion.value = version
-  if (activeCarouselIndex.value !== index) {
-    activeCarouselIndex.value = index
-  }
-}
-
-const handle8xVersionClick = (version, index) => {
-  selected8xVersion.value = version
   if (activeCarouselIndex.value !== index) {
     activeCarouselIndex.value = index
   }
@@ -590,18 +591,11 @@ const handleTabClick = (index, itemId) => {
   if (itemId !== '7x') {
     selected7xVersion.value = '7x'
   }
-  if (itemId !== '8x') {
-    selected8xVersion.value = '8x'
-  }
 }
 
 const getCarDetailLink = () => {
   const currentModel = carouselModels.value[activeCarouselIndex.value]
   if (!currentModel) return ''
-
-  if (currentModel.id === '8x' && selected8xVersion.value === '8x_shadow' && currentModel.linkShadow) {
-    return currentModel.linkShadow
-  }
 
   if (currentModel.link) {
     return currentModel.link
@@ -827,36 +821,6 @@ onMounted(async () => {
     &--next { right: 24px; }
   }
 
-  &__version-pills {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 16px;
-  }
-
-  &__version-pill {
-    padding: 7px 18px;
-    border-radius: 20px;
-    font-size: 13px;
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.18);
-    background: rgba(255, 255, 255, 0.7);
-    color: #333;
-    transition: background .25s ease, color .25s ease, border-color .25s ease;
-    white-space: nowrap;
-
-    &--active {
-      background: #1a1a1a;
-      color: #fff;
-      border-color: #1a1a1a;
-    }
-
-    &:hover:not(&--active) {
-      border-color: rgba(0, 0, 0, 0.4);
-      background: rgba(255, 255, 255, 0.9);
-    }
-  }
-
   &__actions {
     margin-top: 40px;
     display: flex;
@@ -966,15 +930,6 @@ onMounted(async () => {
 
       &--prev { left: 12px; }
       &--next { right: 12px; }
-    }
-
-    &__version-pills {
-      margin-bottom: 12px;
-    }
-
-    &__version-pill {
-      font-size: 12px;
-      padding: 6px 14px;
     }
 
     &__actions {
@@ -1108,6 +1063,26 @@ onMounted(async () => {
     @media screen and (max-width: 876px) {
       min-width: 180px;
       font-size: 14px;
+    }
+  }
+
+  .article-1__slide-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+    z-index: 11;
+    position: relative;
+
+    .article-1__testdrive-btn {
+      margin-top: 0;
+    }
+
+    @media screen and (max-width: 876px) {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
   }
 
