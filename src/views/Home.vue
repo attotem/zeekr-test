@@ -546,17 +546,17 @@ const getSlideText = (field) => {
 }
 
 const carouselModels = ref([
-  { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },
-  { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/zeekr-001" },
   { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/zeekr-9x" },
   { id: "8x", label: "8X", image: img8x, imageMobile: img8xMb, link: "/zeekr-8x-select" },
+  { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },
+  { id: "x", label: "X", image: imgX, imageMobile: imgXMb, link: "/zeekr-x" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
+  { id: "001", label: "001 New", image: img001, imageMobile: img001Mb, link: "/zeekr-001" },
   { id: "001fr", label: "001 FR", image: img001fr, imageMobile: img001frMb, link: "/zeekr-001-fr" },
+  { id: "007", label: "007", image: img007, imageMobile: img007Mb, link: "/zeekr-007" },
   { id: "009", label: "009", image: img009, imageMobile: img009Mb, link: "/zeekr-009" },
   { id: "009x", label: "009 Grand", image: img009x, imageMobile: img009xMb, link: "/zeekr-009-grand" },
-  { id: "007", label: "007", image: img007, imageMobile: img007Mb, link: "/zeekr-007" },
-  { id: "mix", label: "MIX", image: imgMix, imageMobile: imgMixMb, link: "/zeekr-mix" },
-  { id: "x", label: "X", image: imgX, imageMobile: imgXMb, link: "/zeekr-x" }
+  { id: "mix", label: "MIX", image: imgMix, imageMobile: imgMixMb, link: "/zeekr-mix" }
 ])
 
 const selected7xVersion = ref('7x')
