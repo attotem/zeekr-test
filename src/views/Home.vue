@@ -35,6 +35,8 @@
 								:srcset="slide.mobile"
 								media="(max-width: 575px)"
 							/>
+
+              
 							<img
 								:src="slide.pc || slide.tablet || slide.mobile"
 								:alt="getSlideText(slide.title) || 'Zeekr'"
