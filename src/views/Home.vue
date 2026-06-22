@@ -15,6 +15,7 @@
 				>
 					<article
 						class="slide"
+						:class="{ 'slide--8x-banner': slide.is8xBanner }"
 						v-for="(slide, index) in mainSliderSlides"
 						:key="index"
 					>
@@ -112,7 +113,8 @@
 											v-for="(button, btnIndex) in slide.buttons"
 											:key="btnIndex"
 											:to="button.link"
-											class="btn btn--transparent btn--transparent-white article-1__testdrive-btn"
+											class="btn article-1__testdrive-btn"
+											:class="button.primary ? 'btn--white' : 'btn--transparent btn--transparent-white'"
 										>
 											{{ getSlideText(button.label) }}
 										</RouterLink>
@@ -201,7 +203,22 @@
         </button>
 
 				<div class="carousel__actions">
+					<div
+						v-if="carouselModels[activeCarouselIndex]?.id === '8x'"
+						class="carousel__version-pills"
+					>
+						<RouterLink
+							v-for="(button, btnIndex) in carouselModels[activeCarouselIndex].buttons"
+							:key="`8x-${btnIndex}`"
+							:to="button.link"
+							class="carousel__version-pill"
+							:class="{ 'carousel__version-pill--active': button.primary }"
+						>
+							{{ getSlideText(button.label) }}
+						</RouterLink>
+					</div>
 					<RouterLink
+						v-else
 						:to="getCarDetailLink()"
 						class="btn btn--orange carousel__more"
 					>
@@ -392,8 +409,9 @@ watch(isModalOpened, (val) => {
 const mainSliderSlides = [
   {
     pc: banner8x,
-    tablet: banner8x,
+    tablet: banner8xMb,
     mobile: banner8xMb,
+    is8xBanner: true,
     title: {
       ua: 'Zeekr 8X',
       en: 'Zeekr 8X'
@@ -409,7 +427,8 @@ const mainSliderSlides = [
       },
       {
         label: { ua: 'Zeekr 8X', en: 'Zeekr 8X' },
-        link: '/zeekr-8x'
+        link: '/zeekr-8x',
+        primary: true
       }
     ]
   },
@@ -547,7 +566,17 @@ const getSlideText = (field) => {
 
 const carouselModels = ref([
   { id: "9x", label: "9X", image: img9x, imageMobile: img9xMb, link: "/zeekr-9x" },
-  { id: "8x", label: "8X", image: img8x, imageMobile: img8xMb, link: "/zeekr-8x-select" },
+  {
+    id: "8x",
+    label: "8X",
+    image: img8x,
+    imageMobile: img8xMb,
+    link: "/zeekr-8x-select",
+    buttons: [
+      { label: { ua: 'Zeekr 8X «Dawn»', en: 'Zeekr 8X Dawn' }, link: '/zeekr-8x-dawn' },
+      { label: { ua: 'Zeekr 8X', en: 'Zeekr 8X' }, link: '/zeekr-8x', primary: true }
+    ]
+  },
   { id: "7x", label: "7X", image: img7x, imageMobile: img7xMb, imageEu: img7xEu, imageEuMobile: img7xEuMb, link: "/zeekr-7x" },
   { id: "x", label: "X", image: imgX, imageMobile: imgXMb, link: "/zeekr-x" },
   { id: "007gt", label: "007 GT", image: img007gt, imageMobile: img007gtMb, link: "/zeekr-007gt" },
@@ -828,6 +857,37 @@ onMounted(async () => {
     align-items: center;
   }
 
+  &__version-pills {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__version-pill {
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 0.7);
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+
+    &--active {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+
+    &:hover:not(&--active) {
+      border-color: rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.9);
+    }
+  }
+
   &__more.btn--orange {
     background: #1a1a1a;
     border-color: #1a1a1a;
@@ -934,6 +994,11 @@ onMounted(async () => {
 
     &__actions {
       margin-top: 24px;
+    }
+
+    &__version-pill {
+      font-size: 12px;
+      padding: 6px 14px;
     }
 
     &__more {
@@ -1080,9 +1145,53 @@ onMounted(async () => {
     }
 
     @media screen and (max-width: 876px) {
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       width: 100%;
+    }
+  }
+
+  .slide--8x-banner {
+    .article-1__slide-content {
+      @media screen and (max-width: 876px) {
+        padding: 108px 16px 48px;
+      }
+    }
+
+    .article-1__h--top {
+      @media screen and (max-width: 876px) {
+        animation: none;
+        background: none;
+        -webkit-text-fill-color: #fff;
+        color: #fff;
+      }
+    }
+
+    .article-1__h--2 {
+      @media screen and (max-width: 876px) {
+        font-size: 16px;
+        line-height: 1.4;
+        max-width: 280px;
+      }
+    }
+
+    .article-1__slide-buttons {
+      @media screen and (max-width: 876px) {
+        flex-wrap: nowrap;
+        max-width: 340px;
+        gap: 10px;
+      }
+
+      .article-1__testdrive-btn {
+        @media screen and (max-width: 876px) {
+          flex: 1 1 0;
+          min-width: 0;
+          width: auto;
+          padding: 10px 10px;
+          font-size: 12px;
+          line-height: 1.2;
+        }
+      }
     }
   }
 
