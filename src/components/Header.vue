@@ -211,7 +211,6 @@ import Dropdown from "./icons/dropdown.vue";
 import { useLangStore } from "@/stores/lang";
 import { nextTick, onMounted, ref, watch } from "vue";
 import API from "@/composables/API";
-import { sortCarModelsForHeader } from "@/composables/sortCarModelsForHeader";
 import Burger from "./icons/burger.vue";
 import Expand from "./icons/expand.vue";
 import addDropdown from "@/composables/dropdown";
@@ -307,9 +306,7 @@ watch(useRoute(), () => {
 }, { flush: 'pre', deep: true })
 
 watch(() => langStore.activeLang, async () => {
-  headerItems.value[0].children = sortCarModelsForHeader(
-    (await API.Models.get()).car_models
-  );
+  headerItems.value[0].children = (await API.Models.get()).car_models || [];
 
 
   // Load phone number from API
@@ -383,9 +380,7 @@ onMounted(async () => {
     }
   });
 
-  headerItems.value[0].children = sortCarModelsForHeader(
-    (await API.Models.get()).car_models
-  );
+  headerItems.value[0].children = (await API.Models.get()).car_models || [];
 
 
   // Load phone number from API
