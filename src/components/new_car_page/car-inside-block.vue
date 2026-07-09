@@ -6,8 +6,9 @@
         :key="opt.id"
         class="car-inside-block__image"
         :class="{ 'active': activeId === opt.id }"
-        :style="{ 
-          backgroundImage: `url(${getInsideImage(opt)})`
+        :style="{
+          '--bg-desktop': `url(${getInsideImage(opt)})`,
+          '--bg-mobile': opt.imageMobile ? `url(${resolveMediaPath(opt.imageMobile, { carId: props.carId })})` : `url(${getInsideImage(opt)})`
         }"
       ></div>
     </div>
@@ -23,10 +24,11 @@
           @click="activeId = opt.id"
         >
           <img
-            :src="getColorIcon(opt.id)"
+            :src="getColorIcon(opt)"
             :alt="getText(opt.name)"
             class="car-inside-block__color-image"
           />
+          <span v-if="opt.isNew" class="car-inside-block__color-new">NEW</span>
         </button>
       </div>
 
@@ -91,8 +93,9 @@ const getInsideImage = (option) => {
 
   return resolveMediaPath(`inside/inside_${id}.webp`, { carId: props.carId })
 }
-const getColorIcon = (id) => {
-  const iconId = id === 'biege' ? 'beige' : id
+const getColorIcon = (opt) => {
+  const id = opt?.id
+  const iconId = opt?.colorIcon || (id === 'biege' ? 'beige' : id)
   return `/src/assets/colors/${iconId}.webp`
 }
 
@@ -124,6 +127,7 @@ onMounted(() => {
     position: absolute;
     inset: 0px;
     background-color: transparent;
+    background-image: var(--bg-desktop);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -176,9 +180,10 @@ onMounted(() => {
     cursor: pointer;
     background: transparent;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.25));
     transition: transform 0.2s ease;
+    position: relative;
 
     &:hover {
       transform: scale(1.08);
@@ -187,6 +192,27 @@ onMounted(() => {
     &--active {
       border: 0.5px solid #fff;
     }
+  }
+
+  &__color-image {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__color-new {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #E8631A;
+    color: #fff;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    padding: 2px 3px;
+    border-radius: 3px;
+    pointer-events: none;
+    white-space: nowrap;
   }
 
   &__color-image {
@@ -232,6 +258,7 @@ onMounted(() => {
     height: 60vh;
 
     &__image {
+      background-image: var(--bg-mobile);
       background-size: cover;
       background-position: center;
     }
@@ -247,6 +274,7 @@ onMounted(() => {
     &__color {
       width: 28px;
       height: 28px;
+      overflow: visible;
     }
   }
 }

@@ -88,12 +88,12 @@ const langStore = useLangStore()
 
 let first = ref({
   heading: {
-    en: "Innovation, convenience, profitability - Zeekr",
-    ua: "Інновації, комфорт, вигода — Zeekr"
+    en: "Innovation. Comfort. Perfection. — Zeekr",
+    ua: "Інновації. Комфорт. Досконалість. — Zeekr"
   },
   text: {
-    en: "Official importer and distributor of Zeekr electric vehicles in Ukraine",
-    ua: "Офіційний імпортер та дистриб’ютор електромобілів Zeekr в Україні"
+    en: "TOV SKM-1 official distributor of Zeekr brand in Ukraine",
+    ua: "ТОВ СКМ-1 офіційний дистриб’ютор бренду Zeekr в Україні"
   }
 })
 

@@ -1360,8 +1360,8 @@
   },
   "textBlockInside": {
     "title": {
-      "ua": "4 стилістичні рішення інтер’єру",
-      "en": "4 stylish interior solutions"
+      "ua": "5 стилістичних рішень інтер’єру",
+      "en": "5 stylish interior solutions"
     },
     "subtitle": {
       "ua": "",
@@ -1416,6 +1416,21 @@
         "description": {
           "ua": "Сучасний срібний інтер'єр",
           "en": "Modern silver interior"
+        }
+      },
+      {
+        "id": "pink",
+        "isNew": true,
+        "colorIcon": "pink_inside",
+        "image": "inside_001_pink_pc.webp",
+        "imageMobile": "inside_001_pink_mb.webp",
+        "name": {
+          "ua": "Рожевий",
+          "en": "Pink"
+        },
+        "description": {
+          "ua": "Ніжний рожевий інтер'єр",
+          "en": "Delicate pink interior"
         }
       }
     ],
