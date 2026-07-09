@@ -46,6 +46,8 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useLangStore } from '@/stores/lang'
 import { resolveMediaPath } from '@/utils/resolveMedia'
 
+const colorImages = import.meta.glob('/src/assets/colors/*.webp', { eager: true, import: 'default' })
+
 const props = defineProps({
   data: { type: Object, required: true },
   carId: { type: String, default: '7x' }

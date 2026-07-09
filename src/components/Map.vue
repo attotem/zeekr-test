@@ -154,7 +154,7 @@ const coordinatesMap = {
 			lat: 49.7874,
 			lng: 23.9892,
 			name: 'Zeekr+Львів+Сокільники',
-			link: 'https://maps.app.goo.gl/e6zKAFixSckortbp7'
+			link: 'https://maps.app.goo.gl/dUCBvfzCcU4RQVS28'
 		},
 
 		};

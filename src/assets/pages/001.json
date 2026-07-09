@@ -1425,12 +1425,12 @@
         "image": "inside_001_pink_pc.webp",
         "imageMobile": "inside_001_pink_mb.webp",
         "name": {
-          "ua": "Рожевий",
-          "en": "Pink"
+          "ua": "Зоряний фіолетовий",
+          "en": "Starry Violet"
         },
         "description": {
-          "ua": "Ніжний рожевий інтер'єр",
-          "en": "Delicate pink interior"
+          "ua": "Зоряний фіолетовий інтер'єр",
+          "en": "Starry violet interior"
         }
       }
     ],
