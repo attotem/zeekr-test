@@ -151,10 +151,10 @@ const coordinatesMap = {
 			link: 'https://www.google.com/maps/place/%D0%90%D0%B2%D1%82%D0%BE%D1%81%D0%B0%D0%BB%D0%BE%D0%BD+Zeekr+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2/@49.8817087,24.0736147,837m/data=!3m2!1e3!4b1!4m6!3m5!1s0x473addacef7288bb:0x961afef3dd1df0f7!8m2!3d49.8817087!4d24.0736147!16s%2Fg%2F11n3xpvl4r!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D'
 		},
 		"c24da83f-544a-46cb-8570-b696848e43c1": {
-			lat: 49.7874,
-			lng: 23.9892,
-			name: 'Zeekr+Львів+Сокільники',
-			link: 'https://maps.app.goo.gl/dUCBvfzCcU4RQVS28'
+			lat: 49.7845442,
+			lng: 23.9548297,
+			name: 'Автосалон+Zeekr+Львів+(Сокільники)',
+			link: 'https://www.google.com/maps/place/%D0%90%D0%B2%D1%82%D0%BE%D1%81%D0%B0%D0%BB%D0%BE%D0%BD+Zeekr+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2+(%D0%A1%D0%BE%D0%BA%D1%96%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%D0%B8)/@49.7925196,23.9676436,13.55z/data=!4m10!1m2!2m1!1szeekr!3m6!1s0x473ae7eea5982a87:0x2e57861310178ae8!8m2!3d49.7845442!4d23.9548297!15sCgV6ZWVrcpIBCmNhcl9kZWFsZXLgAQA!16s%2Fg%2F11nk80pshr?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D'
 		},
 
 		};
