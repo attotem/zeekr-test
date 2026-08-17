@@ -1,34 +1,8 @@
 <template>
-	<Header />
 	<RouterView />
-	<Cookies />
-	<Chat />
-	<Footer v-if="route.name !== '8x-select'" />
-	<Legal v-if="route.name !== '8x-select'" />
-
-	
 </template>
 
 <script setup>
-import Header from './components/Header.vue';
-import Cookies from './components/Cookies.vue';
-import Chat from './components/Chat.vue';
-import Footer from './components/Footer.vue';
-import Legal from './components/Legal.vue';
-import { computed, nextTick, onMounted, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { useLoaderStore } from './stores/loader';
-
-let route = useRoute()
-let isLoading = computed(() => useLoaderStore().isLoading)
-
-watch(() => route.fullPath, () => {
-  nextTick(() => {
-    setTimeout(() => {
-      scrollTo(0,0)
-    }, 100)
-  })
-})
 </script>
 
 <style lang="scss">

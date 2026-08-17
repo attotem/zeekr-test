@@ -2,8 +2,11 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueDevTools from "vite-plugin-vue-devtools";
+import obfuscatorPlugin from "vite-plugin-javascript-obfuscator";
 import {  readdirSync, statSync, existsSync, readFileSync } from "fs";
-import { join, relative } from "path";
+import { join, relative, extname } from "path";
+
+const SKIPPED_COPY_EXTENSIONS = [".json", ".bak"];
 
 function copyPagesPlugin() {
 	return {
@@ -24,6 +27,8 @@ function copyPagesPlugin() {
 						copyRecursive(join(src, file), baseSrc, destPrefix);
 					});
 				} else {
+					if (SKIPPED_COPY_EXTENSIONS.includes(extname(src).toLowerCase())) return;
+
 					const relPath = relative(baseSrc, src);
 					self.emitFile({
 						type: "asset",
@@ -54,7 +59,26 @@ export default defineConfig(({ mode }) => {
 
 	return {
 		base: "/",
-		plugins: [vue(), vueDevTools(), copyPagesPlugin()],
+		plugins: [
+			vue(),
+			vueDevTools(),
+			copyPagesPlugin(),
+			obfuscatorPlugin({
+				apply: "build",
+				options: {
+					compact: true,
+					controlFlowFlattening: false,
+					deadCodeInjection: false,
+					identifierNamesGenerator: "hexadecimal",
+					stringArray: true,
+					stringArrayEncoding: ["base64"],
+					stringArrayThreshold: 0.75,
+					rotateStringArray: true,
+					selfDefending: true,
+					disableConsoleOutput: false,
+				},
+			}),
+		],
 		resolve: {
 			alias: {
 				"@": fileURLToPath(new URL("./src", import.meta.url)),

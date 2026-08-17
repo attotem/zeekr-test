@@ -288,7 +288,7 @@ let headerItems = ref([
   {
     label: {
       en: 'Service',
-      ua: 'Сервіс'
+      ua: 'Сервіс та запчастини'
     },
     name: 'service'
   }
